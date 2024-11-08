@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PromotionTypeLabelControl.Text" xml:space="preserve">
+    <value>Promotion type</value>
+  </data>
+  <data name="PromotionTypeLabelControl.Help" xml:space="preserve">
+    <value>Select the type of promotion to apply.</value>
+  </data>
+  <data name="RuleTypeLabelControl.Text" xml:space="preserve">
+    <value>Promotion rule</value>
+  </data>
+  <data name="RuleTypeLabelControl.Help" xml:space="preserve">
+    <value>Provide any promotion rule.</value>
+  </data>
+  <data name="PromotionPriceFlatPriceProductLabelControl.Text" xml:space="preserve">
+    <value>Promotion price</value>
+  </data>
+  <data name="PromotionPriceFlatPriceProductLabelControl.Help" xml:space="preserve">
+    <value>The fixed promotion price to charge.</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountProductLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountProductLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="MinPromotionPriceTierDiscountProductLabelControl.Text" xml:space="preserve">
+    <value>Minimum promotion price</value>
+  </data>
+  <data name="MinPromotionPriceTierDiscountProductLabelControl.Help" xml:space="preserve">
+    <value>The promotion price that will be charged if the calculated price is less than this minimum price.</value>
+  </data>
+  <data name="RangeTierDiscountProductLabelControl.Text" xml:space="preserve">
+    <value>Range</value>
+  </data>
+  <data name="RangeTierDiscountProductLabelControl.Help" xml:space="preserve">
+    <value>Discount is calculated by finding the matching range.</value>
+  </data>
+  <data name="QtyBegin.Header" xml:space="preserve">
+    <value>Qty Begin</value>
+    <comment>Quantity Begin</comment>
+  </data>
+  <data name="QtyEnd.Header" xml:space="preserve">
+    <value>Qty End</value>
+    <comment>Quantity End</comment>
+  </data>
+  <data name="Categories.Header" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Roles.Header" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Discount.Header" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="AddRangeTierDiscountProductLinkButton.Text" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="QuantityBeginRangeTierDiscountProductDetailsViewLabelControl.Text" xml:space="preserve">
+    <value>Quantity begin</value>
+  </data>
+  <data name="QuantityEndRangeTierDiscountProductDetailsViewLabelControl.Text" xml:space="preserve">
+    <value>Quantity end</value>
+  </data>
+  <data name="CategoryBehaviorRangeTierDiscountProductDetailsLabelControl.Text" xml:space="preserve">
+    <value>Category match</value>
+  </data>
+  <data name="CategoryBehaviorRangeTierDiscountProductDetailsLabelControl.Help" xml:space="preserve">
+    <value>Determine if rule is allowed or disallowed.</value>
+  </data>
+  <data name="CategoryRangeTierDiscountProductDetailsLabelControl.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="CategoryRangeTierDiscountProductDetailsLabelControl.Help" xml:space="preserve">
+    <value>Select the categories that should match.</value>
+  </data>
+  <data name="RoleBehaviorRangeTierDiscountProductDetailsLabelControl.Text" xml:space="preserve">
+    <value>Role match</value>
+  </data>
+  <data name="RoleBehaviorRangeTierDiscountProductDetailsLabelControl.Help" xml:space="preserve">
+    <value>Determine if rule is allowed or disallowed.</value>
+  </data>
+  <data name="RoleRangeTierDiscountProductDetailsLabelControl.Text" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="DiscountTierDiscountProductDetailsViewLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountTierDiscountProductDetailsViewLabelControl.Help" xml:space="preserve">
+    <value>The amount or percentage to discount from the price.</value>
+  </data>
+  <data name="SaveRangeTierDiscountProductLinkButton.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="CouponFlatDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Require coupon</value>
+  </data>
+  <data name="CouponFlatDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the coupon required to qualify for discount or leave empty.</value>
+  </data>
+  <data name="ProductVariantBehaviorFlatDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Product/Category match</value>
+  </data>
+  <data name="ProductVariantBehaviorFlatDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Determine when the promotion is only applied to certain products in the cart. By default, the promotion will apply to all products.</value>
+  </data>
+  <data name="ProductVariantInclusionFlatDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="ProductVariantInclusionFlatDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the products that should match the condition.</value>
+  </data>
+  <data name="ExcludeProductVariantInclusionFlatDiscountSalesOrderDetailLinkButton.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountShippingLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountShippingLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="CouponFlatDiscountShippingLabelControl.Text" xml:space="preserve">
+    <value>Require coupon</value>
+  </data>
+  <data name="CouponFlatDiscountShippingLabelControl.Help" xml:space="preserve">
+    <value>Select the coupon required to qualify for discount or leave empty.</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountHandlingLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountHandlingLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="CouponFlatDiscountHandlingLabelControl.Text" xml:space="preserve">
+    <value>Require coupon</value>
+  </data>
+  <data name="CouponFlatDiscountHandlingLabelControl.Help" xml:space="preserve">
+    <value>Select the coupon required to qualify for discount or leave empty.</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountTaxLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountTaxLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="CouponFlatDiscountTaxLabelControl.Text" xml:space="preserve">
+    <value>Require coupon</value>
+  </data>
+  <data name="CouponFlatDiscountTaxLabelControl.Help" xml:space="preserve">
+    <value>Select the coupon required to qualify for discount or leave empty.</value>
+  </data>
+  <data name="PromotionRuleLabelControl.Text" xml:space="preserve">
+    <value>XSLT rule</value>
+  </data>
+  <data name="ByAmountLabel.Text" xml:space="preserve">
+    <value>By amount</value>
+  </data>
+  <data name="ByPercentageLabel.Text" xml:space="preserve">
+    <value>By percentage</value>
+  </data>
+  <data name="AllowAllExceptSelectedBelowLabel.Text" xml:space="preserve">
+    <value>Allow all except selected below</value>
+  </data>
+  <data name="AllowOnlyThoseSelectedBelowLabel.Text" xml:space="preserve">
+    <value>Allow only those selected below</value>
+  </data>
+  <data name="AllowAllExceptListedBelowLabel.Text" xml:space="preserve">
+    <value>Allow all except listed below</value>
+  </data>
+  <data name="AllowOnlyThoseListedBelowLabel.Text" xml:space="preserve">
+    <value>Allow only those listed below</value>
+  </data>
+  <data name="ProductPromotionTypeLabel.Text" xml:space="preserve">
+    <value>Product - apply to product before add to cart</value>
+  </data>
+  <data name="SalesOrderDetailPromotionTypeLabel.Text" xml:space="preserve">
+    <value>Sales Order Detail - apply to each item in cart</value>
+  </data>
+  <data name="ShippingPromotionTypeLabel.Text" xml:space="preserve">
+    <value>Shipping - apply to shipping</value>
+  </data>
+  <data name="HandlingPromotionTypeLabel.Text" xml:space="preserve">
+    <value>Handling - apply to handling</value>
+  </data>
+  <data name="TaxPromotionTypeLabel.Text" xml:space="preserve">
+    <value>Tax - apply to tax</value>
+  </data>
+  <data name="CustomRuleLabel.Text" xml:space="preserve">
+    <value>Custom rule</value>
+  </data>
+  <data name="FlatDiscountLabel.Text" xml:space="preserve">
+    <value>Flat discount - discount by amount or rate</value>
+  </data>
+  <data name="FlatPriceLabel.Text" xml:space="preserve">
+    <value>Flat price - fixed promotion price</value>
+  </data>
+  <data name="NoneLabel.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="BuyXGetYDiscountLabel.Text" xml:space="preserve">
+    <value>Buy X Get Y discount - BOGO, Buy 2 get 1 half price...</value>
+  </data>
+  <data name="BuyCategoryBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the categories that should match.</value>
+  </data>
+  <data name="BuyCategoryBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="BuyProductVariantBehaviorBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Determine when the promotion is only applied to certain products in the cart. By default, the promotion will apply to all products.</value>
+  </data>
+  <data name="BuyProductVariantBehaviorBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Product/Category match</value>
+  </data>
+  <data name="BuyProductVariantInclusionBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the products that should match the condition.</value>
+  </data>
+  <data name="BuyProductVariantInclusionBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="BuyQuantityBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Buy quantity</value>
+  </data>
+  <data name="CouponBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the coupon required to qualify for discount or leave empty.</value>
+  </data>
+  <data name="CouponBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Require coupon</value>
+  </data>
+  <data name="DiscountAmountBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="DiscountAmountBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="ExcludeBuyProductVariantInclusionBuyXGetYDiscountSalesOrderDetailLinkButton.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="ExcludeGetProductVariantInclusionBuyXGetYDiscountSalesOrderDetailLinkButton.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="GetCategoryBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the categories that should match.</value>
+  </data>
+  <data name="GetCategoryBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="GetProductVariantBehaviorBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Determine when the promotion is only applied to certain products in the cart. By default, the promotion will apply to all products.</value>
+  </data>
+  <data name="GetProductVariantBehaviorBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Product/Category match</value>
+  </data>
+  <data name="GetProductVariantInclusionBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the products that should match the condition.</value>
+  </data>
+  <data name="GetProductVariantInclusionBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="GetQuantityBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Get quantity</value>
+  </data>
+  <data name="AllowAllExceptListedSelectedBelowLabel.Text" xml:space="preserve">
+    <value>Allow all except listed or selected below</value>
+  </data>
+  <data name="AllowOnlyThoseListedSelectedBelowLabel.Text" xml:space="preserve">
+    <value>Allow only those listed or selected below</value>
+  </data>
+  <data name="BuyHeader.Text" xml:space="preserve">
+    <value>Customer buys</value>
+  </data>
+  <data name="GetHeader.Text" xml:space="preserve">
+    <value>Customer gets</value>
+  </data>
+  <data name="RepeatBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>The number of times to repeat the promotion or leave field blank to repeat indefinitely. e.g. If you have a "buy 1 get 1" promotion with a repeat of 0, this means the discount will not be repeated after the discount is given for the first 2 qualified products even if the customer buys more than 2 qualified products. If you entered a repeat of 5, the discount will be repeated for the next 5 set of 2 qualified products for a total of 6 sets including the first set.</value>
+  </data>
+  <data name="RepeatBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Max repeat</value>
+  </data>
+  <data name="RoleBehaviorBuyXGetYDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Determine if rule is allowed or disallowed.</value>
+  </data>
+  <data name="RoleBehaviorBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Role match</value>
+  </data>
+  <data name="RoleBuyXGetYDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="TierDiscountLabel.Text" xml:space="preserve">
+    <value>Tier discount - discount by quantity, category, role...</value>
+  </data>
+  <data name="EditLink.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="CategoryInclusionFlatDiscountSalesOrderDetailLabelControl.Help" xml:space="preserve">
+    <value>Select the categories that should match</value>
+  </data>
+  <data name="CategoryInclusionFlatDiscountSalesOrderDetailLabelControl.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="NewLink.Text" xml:space="preserve">
+    <value>New</value>
+  </data>
+</root>

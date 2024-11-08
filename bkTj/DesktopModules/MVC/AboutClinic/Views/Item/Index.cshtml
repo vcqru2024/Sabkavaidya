@@ -1,0 +1,62 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddClinic.Models.Clinic>
+
+@{
+    ViewBag.Title = "Clinic List";
+}
+
+@if (Model == null)
+{
+    <div class="row">
+        <h2>No Selected clinic available</h2>
+    </div>
+}
+else
+{
+    <div class="doctor-profile-card">
+        <div class="row" id="Clinic-@Model.ClinicId">
+            <div class="col-lg-4">
+                @if (!string.IsNullOrEmpty(Model.ClinicImage))
+                {
+                    <img src="@Url.Content(Model.ClinicImage)" alt="clinic-image" style="height:200px">
+                }
+                else
+                {
+                    <img id="preview" src="#" alt="Preview Image" />
+                }
+
+            </div>
+            <div class="col-lg-8">
+                <h1>@Model.ClinicName</h1>
+                <ul class="logoanddetail">
+                    <li><i class="fa-solid fa-location-dot"></i>@Model.ClinicLocation</li>
+                    <li><i class="fa-solid fa-clock"></i> @Model.ClinicAvailability</li>
+                </ul>
+
+                <div class="headers-btn">
+                    <a href="#" class="btn btn-primary">Book Appointment</a>
+                    <a href="#" class="btn btn-outline-primary">@Model.ClinicContact</a>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="description-about-dr">
+
+        @Html.Raw(Model.ClinicDescription)
+
+
+    </div>
+    if (Dnn.ModuleContext.IsEditable)
+    {
+        <div class="card-footer">
+            <div>
+                <a href="@Url.Action("Edit", "Clinic", new { ctl = "Edit", clinicId = Model.ClinicId })" class="btn btn-primary">Edit</a>
+                <a href="@Url.Action("Delete", "Clinic", new { clinicId = Model.ClinicId })" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+ 
+}

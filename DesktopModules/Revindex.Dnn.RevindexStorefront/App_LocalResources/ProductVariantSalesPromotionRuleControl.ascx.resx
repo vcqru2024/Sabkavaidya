@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="RuleTypeLabelControl.Text" xml:space="preserve">
+    <value>Promotion rule</value>
+  </data>
+  <data name="RuleTypeLabelControl.Help" xml:space="preserve">
+    <value>Provide any price promotion rule.</value>
+  </data>
+  <data name="PromotionPriceFlatPriceLabelControl.Text" xml:space="preserve">
+    <value>Promotion price</value>
+  </data>
+  <data name="PromotionPriceFlatPriceLabelControl.Help" xml:space="preserve">
+    <value>The fixed promotion price to charge.</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountAmountFlatDiscountLabelControl.Help" xml:space="preserve">
+    <value>Enter the amount or percentage to discount.</value>
+  </data>
+  <data name="MinPromotionPriceTierDiscountLabelControl.Text" xml:space="preserve">
+    <value>Minimum promotion price</value>
+  </data>
+  <data name="MinPromotionPriceTierDiscountLabelControl.Help" xml:space="preserve">
+    <value>The promotion price that will be charged if the calculated price is less than this minimum price.</value>
+  </data>
+  <data name="RangeTierDiscounteLabelControl.Text" xml:space="preserve">
+    <value>Range</value>
+  </data>
+  <data name="RangeTierDiscounteLabelControl.Help" xml:space="preserve">
+    <value>Discount is calculated by finding the matching range.</value>
+  </data>
+  <data name="QtyBegin.Header" xml:space="preserve">
+    <value>Qty Begin</value>
+    <comment>Quantity Begin</comment>
+  </data>
+  <data name="QtyEnd.Header" xml:space="preserve">
+    <value>Qty End</value>
+    <comment>Quantity End</comment>
+  </data>
+  <data name="Roles.Header" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="Discount.Header" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="AddRangeTierDiscountLinkButton.Text" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="QuantityBeginRangeTierDiscountDetailsViewLabelControl.Text" xml:space="preserve">
+    <value>Quantity begin</value>
+  </data>
+  <data name="QuantityEndRangeTierDiscountDetailsViewLabelControl.Text" xml:space="preserve">
+    <value>Quantity end</value>
+  </data>
+  <data name="RoleBehaviorRangeTierDiscountDetailsLabelControl.Text" xml:space="preserve">
+    <value>Role match</value>
+  </data>
+  <data name="RoleBehaviorRangeTierDiscountDetailsLabelControl.Help" xml:space="preserve">
+    <value>Determine if rule is allowed or disallowed.</value>
+  </data>
+  <data name="RoleRangeTierDiscountDetailsLabelControl.Text" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="DiscountTierDiscountDetailsViewLabelControl.Text" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="DiscountTierDiscountDetailsViewLabelControl.Help" xml:space="preserve">
+    <value>The amount or percentage to discount from the price.</value>
+  </data>
+  <data name="SaveRangeTierDiscountLinkButton.Text" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="RateRuleLabelControl.Text" xml:space="preserve">
+    <value>XSLT rule</value>
+  </data>
+  <data name="NoneLabel.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="FlatPriceLabel.Text" xml:space="preserve">
+    <value>Flat price - fixed promotion price</value>
+  </data>
+  <data name="FlatDiscountLabel.Text" xml:space="preserve">
+    <value>Flat discount - discount by amount or rate</value>
+  </data>
+  <data name="TierDiscountLabel.Text" xml:space="preserve">
+    <value>Tier discount - discount by quantity, role...</value>
+  </data>
+  <data name="CustomRuleLabel.Text" xml:space="preserve">
+    <value>Custom rule</value>
+  </data>
+  <data name="ByAmountLabel.Text" xml:space="preserve">
+    <value>By amount</value>
+  </data>
+  <data name="ByPercentageLabel.Text" xml:space="preserve">
+    <value>By percentage</value>
+  </data>
+  <data name="AllowAllExceptSelectedBelowLabel.Text" xml:space="preserve">
+    <value>Allow all except selected below</value>
+  </data>
+  <data name="AllowOnlyThoseSelectedBelowLabel.Text" xml:space="preserve">
+    <value>Allow only those selected below</value>
+  </data>
+</root>

@@ -1,0 +1,1010 @@
+2024-03-07 10:31:07.838+05:30 [DESKTOP-TU3857L][D:4][T:70][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-03-07 12:22:59.822+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 12:25:27.084+05:30 [DESKTOP-TU3857L][D:3][T:28][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 12:39:33.188+05:30 [DESKTOP-TU3857L][D:4][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 15:52:01.058+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 15:58:34.761+05:30 [DESKTOP-TU3857L][D:3][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 16:30:24.391+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 16:30:29.235+05:30 [DESKTOP-TU3857L][D:2][T:9][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadModuleControls(XmlReader reader)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadModuleDefinitions(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Common.Utilities.CBO.DeserializeObject[TObject](XmlReader reader)
+   at DotNetNuke.Services.Installer.Installers.ModuleInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.InstallerFactory.GetInstaller(XPathNavigator manifestNav, PackageInfo package)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadComponents(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller..ctor(String packageManifest, InstallerInfo info)
+   at DotNetNuke.Services.Installer.Installer.ProcessPackages(XPathNavigator rootNav)
+   at DotNetNuke.Services.Installer.Installer.ReadManifest(Boolean deleteTemp)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.GetInstaller(Stream stream, String fileName, Int32 portalId, String legacySkin, Boolean isPortalPackage)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.ParsePackage(PortalSettings portalSettings, UserInfo user, String filePath, Stream stream)
+   at Dnn.PersonaBar.Extensions.Services.ExtensionsController.<>c__DisplayClass42_1.<UploadFileAction>b__1(Object <p0>)
+   at System.Web.Util.SynchronizationHelper.SafeWrapCallback(Action action)
+2024-03-07 16:31:05.504+05:30 [DESKTOP-TU3857L][D:2][T:5][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadModuleControls(XmlReader reader)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadModuleDefinitions(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Common.Utilities.CBO.DeserializeObject[TObject](XmlReader reader)
+   at DotNetNuke.Services.Installer.Installers.ModuleInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.InstallerFactory.GetInstaller(XPathNavigator manifestNav, PackageInfo package)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadComponents(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller..ctor(String packageManifest, InstallerInfo info)
+   at DotNetNuke.Services.Installer.Installer.ProcessPackages(XPathNavigator rootNav)
+   at DotNetNuke.Services.Installer.Installer.ReadManifest(Boolean deleteTemp)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.GetInstaller(Stream stream, String fileName, Int32 portalId, String legacySkin, Boolean isPortalPackage)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.ParsePackage(PortalSettings portalSettings, UserInfo user, String filePath, Stream stream)
+   at Dnn.PersonaBar.Extensions.Services.ExtensionsController.<>c__DisplayClass42_1.<UploadFileAction>b__1(Object <p0>)
+   at System.Web.Util.SynchronizationHelper.SafeWrapCallback(Action action)
+2024-03-07 16:32:49.102+05:30 [DESKTOP-TU3857L][D:3][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 16:39:29.921+05:30 [DESKTOP-TU3857L][D:4][T:55][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:00:13.236+05:30 [DESKTOP-TU3857L][D:4][T:44][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Database 'dbo' does not exist.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:89f7519f-7720-4cb5-889a-ca7a1e77cb8e
+Error Number:2702,State:2,Class:16
+2024-03-07 17:00:13.285+05:30 [DESKTOP-TU3857L][D:4][T:44][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:89f7519f-7720-4cb5-889a-ca7a1e77cb8e
+Error Number:102,State:1,Class:15
+2024-03-07 17:00:13.287+05:30 [DESKTOP-TU3857L][D:4][T:44][ERROR] DotNetNuke.Services.Installer.Log.Logger - SQL Execution resulted in following Exceptions: 
+System.Data.SqlClient.SqlException (0x80131904): Database 'dbo' does not exist.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:89f7519f-7720-4cb5-889a-ca7a1e77cb8e
+Error Number:2702,State:2,Class:16
+
+CREATE TABLE dbo.SaatvikModules.Doctor_Items
+    (
+    ItemId int NOT NULL IDENTITY (1, 1),
+    ItemName nvarchar(MAX) NOT NULL,
+    ItemDescription nvarchar(MAX) NOT NULL,
+    AssignedUserId int NULL,
+    ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:89f7519f-7720-4cb5-889a-ca7a1e77cb8e
+Error Number:102,State:1,Class:15
+
+ALTER TABLE dbo.SaatvikModules.Doctor_Items ADD CONSTRAINT
+    PK_SaatvikModules.Doctor_Items PRIMARY KEY CLUSTERED 
+    (
+    ItemId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+
+2024-03-07 17:00:13.289+05:30 [DESKTOP-TU3857L][D:4][T:44][ERROR] DotNetNuke.Services.Installer.Log.Logger - Installation Failed - Script
+2024-03-07 17:03:11.181+05:30 [DESKTOP-TU3857L][D:5][T:20][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:03:14.983+05:30 [DESKTOP-TU3857L][D:5][T:32][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadModuleControls(XmlReader reader)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadModuleDefinitions(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Common.Utilities.CBO.DeserializeObject[TObject](XmlReader reader)
+   at DotNetNuke.Services.Installer.Installers.ModuleInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.InstallerFactory.GetInstaller(XPathNavigator manifestNav, PackageInfo package)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadComponents(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller..ctor(String packageManifest, InstallerInfo info)
+   at DotNetNuke.Services.Installer.Installer.ProcessPackages(XPathNavigator rootNav)
+   at DotNetNuke.Services.Installer.Installer.ReadManifest(Boolean deleteTemp)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.GetInstaller(Stream stream, String fileName, Int32 portalId, String legacySkin, Boolean isPortalPackage)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.ParsePackage(PortalSettings portalSettings, UserInfo user, String filePath, Stream stream)
+   at Dnn.PersonaBar.Extensions.Services.ExtensionsController.<>c__DisplayClass42_1.<UploadFileAction>b__1(Object <p0>)
+   at System.Web.Util.SynchronizationHelper.SafeWrapCallback(Action action)
+2024-03-07 17:07:02.137+05:30 [DESKTOP-TU3857L][D:6][T:20][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:07:04.696+05:30 [DESKTOP-TU3857L][D:6][T:8][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.ArgumentException: An item with the same key has already been added.
+   at System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadModuleControls(XmlReader reader)
+   at DotNetNuke.Entities.Modules.Definitions.ModuleDefinitionInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadModuleDefinitions(XmlReader reader)
+   at DotNetNuke.Entities.Modules.DesktopModuleInfo.ReadXml(XmlReader reader)
+   at DotNetNuke.Common.Utilities.CBO.DeserializeObject[TObject](XmlReader reader)
+   at DotNetNuke.Services.Installer.Installers.ModuleInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.InstallerFactory.GetInstaller(XPathNavigator manifestNav, PackageInfo package)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadComponents(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller.ReadManifest(XPathNavigator manifestNav)
+   at DotNetNuke.Services.Installer.Installers.PackageInstaller..ctor(String packageManifest, InstallerInfo info)
+   at DotNetNuke.Services.Installer.Installer.ProcessPackages(XPathNavigator rootNav)
+   at DotNetNuke.Services.Installer.Installer.ReadManifest(Boolean deleteTemp)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.GetInstaller(Stream stream, String fileName, Int32 portalId, String legacySkin, Boolean isPortalPackage)
+   at Dnn.PersonaBar.Extensions.Components.InstallController.ParsePackage(PortalSettings portalSettings, UserInfo user, String filePath, Stream stream)
+   at Dnn.PersonaBar.Extensions.Services.ExtensionsController.<>c__DisplayClass42_1.<UploadFileAction>b__1(Object <p0>)
+   at System.Web.Util.SynchronizationHelper.SafeWrapCallback(Action action)
+2024-03-07 17:09:51.619+05:30 [DESKTOP-TU3857L][D:7][T:20][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:10:30.918+05:30 [DESKTOP-TU3857L][D:7][T:51][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.ArgumentException: desktopModuleId
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+2024-03-07 17:12:46.699+05:30 [DESKTOP-TU3857L][D:7][T:14][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Database 'dbo' does not exist.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:2702,State:2,Class:16
+2024-03-07 17:12:46.705+05:30 [DESKTOP-TU3857L][D:7][T:14][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:102,State:1,Class:15
+2024-03-07 17:12:46.707+05:30 [DESKTOP-TU3857L][D:7][T:14][ERROR] DotNetNuke.Services.Installer.Log.Logger - SQL Execution resulted in following Exceptions: 
+System.Data.SqlClient.SqlException (0x80131904): Database 'dbo' does not exist.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:2702,State:2,Class:16
+
+CREATE TABLE dbo.SaatvikModules.Doctor_Items
+    (
+    ItemId int NOT NULL IDENTITY (1, 1),
+    ItemName nvarchar(MAX) NOT NULL,
+    ItemDescription nvarchar(MAX) NOT NULL,
+    AssignedUserId int NULL,
+    ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:102,State:1,Class:15
+
+ALTER TABLE dbo.SaatvikModules.Doctor_Items ADD CONSTRAINT
+    PK_SaatvikModules.Doctor_Items PRIMARY KEY CLUSTERED 
+    (
+    ItemId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+
+2024-03-07 17:12:46.709+05:30 [DESKTOP-TU3857L][D:7][T:14][ERROR] DotNetNuke.Services.Installer.Log.Logger - Installation Failed - Script
+2024-03-07 17:18:24.962+05:30 [DESKTOP-TU3857L][D:7][T:65][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Database 'dbo' does not exist.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:2702,State:2,Class:16
+2024-03-07 17:18:24.967+05:30 [DESKTOP-TU3857L][D:7][T:65][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:102,State:1,Class:15
+2024-03-07 17:18:24.969+05:30 [DESKTOP-TU3857L][D:7][T:65][ERROR] DotNetNuke.Services.Installer.Log.Logger - SQL Execution resulted in following Exceptions: 
+System.Data.SqlClient.SqlException (0x80131904): Database 'dbo' does not exist.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:2702,State:2,Class:16
+
+CREATE TABLE dbo.SaatvikModules.Doctor_Items
+    (
+    ItemId int NOT NULL IDENTITY (1, 1),
+    ItemName nvarchar(MAX) NOT NULL,
+    ItemDescription nvarchar(MAX) NOT NULL,
+    AssignedUserId int NULL,
+    ModuleId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    LastModifiedByUserId int NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:bf4213e4-c3ce-4b1f-8b05-96c288fd12ee
+Error Number:102,State:1,Class:15
+
+ALTER TABLE dbo.SaatvikModules.Doctor_Items ADD CONSTRAINT
+    PK_SaatvikModules.Doctor_Items PRIMARY KEY CLUSTERED 
+    (
+    ItemId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+
+2024-03-07 17:18:24.970+05:30 [DESKTOP-TU3857L][D:7][T:65][ERROR] DotNetNuke.Services.Installer.Log.Logger - Installation Failed - Script
+2024-03-07 17:32:49.037+05:30 [DESKTOP-TU3857L][D:8][T:82][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:33:02.272+05:30 [DESKTOP-TU3857L][D:8][T:84][ERROR] DotNetNuke.Data.SqlDataProvider - System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:deec269e-ead4-4600-9d7d-4ad67b0b5764
+Error Number:102,State:1,Class:15
+2024-03-07 17:33:02.277+05:30 [DESKTOP-TU3857L][D:8][T:84][ERROR] DotNetNuke.Services.Installer.Log.Logger - SQL Execution resulted in following Exceptions: 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '.'.
+Incorrect syntax near the keyword 'with'. If this statement is a common table expression, an xmlnamespaces clause or a change tracking context clause, the previous statement must be terminated with a semicolon.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at DotNetNuke.Data.SqlDatabaseConnectionProvider.ExecuteNonQuery(String connectionString, CommandType commandType, Int32 commandTimeout, String query)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteScriptInternal(String connectionString, String script, Int32 timeoutSec)
+ClientConnectionId:deec269e-ead4-4600-9d7d-4ad67b0b5764
+Error Number:102,State:1,Class:15
+
+ALTER TABLE dbo.SaatvikModules_Doctor_Items ADD CONSTRAINT
+    PK_SaatvikModules.Doctor_Items PRIMARY KEY CLUSTERED 
+    (
+    ItemId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+
+2024-03-07 17:33:02.278+05:30 [DESKTOP-TU3857L][D:8][T:84][ERROR] DotNetNuke.Services.Installer.Log.Logger - Installation Failed - Script
+2024-03-07 17:35:05.308+05:30 [DESKTOP-TU3857L][D:9][T:53][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:35:32.061+05:30 [DESKTOP-TU3857L][D:10][T:53][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 17:37:06.913+05:30 [DESKTOP-TU3857L][D:10][T:70][ERROR] DotNetNuke.Web.InternalServices.ControlBarController - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.AddModule(ModuleInfo module)
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+   at DotNetNuke.Web.InternalServices.ControlBarController.AddModule(AddModuleDTO dto)
+2024-03-07 17:37:47.528+05:30 [DESKTOP-TU3857L][D:10][T:71][ERROR] DotNetNuke.Web.InternalServices.ControlBarController - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.AddModule(ModuleInfo module)
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+   at DotNetNuke.Web.InternalServices.ControlBarController.AddModule(AddModuleDTO dto)
+2024-03-07 18:02:52.686+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:04:07.513+05:30 [DESKTOP-TU3857L][D:3][T:32][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:06:19.260+05:30 [DESKTOP-TU3857L][D:3][T:28][ERROR] DotNetNuke.Data.PetaPoco.PetaPocoHelper - [3] Error executing SQL: ;Exec dbo.GetAllTabsModulesByModuleID @0
+Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2024-03-07 18:06:19.263+05:30 [DESKTOP-TU3857L][D:3][T:28][ERROR] DotNetNuke.Web.InternalServices.ControlBarController - System.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at DotNetNuke.Data.PetaPoco.PetaPocoExt.ExecuteReader(Database database, String sql, Object[] args)
+   at DotNetNuke.Data.PetaPoco.PetaPocoHelper.ExecuteReader(String connectionString, CommandType type, Int32 timeoutSec, String sql, Object[] args)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteReader(String procedureName, Object[] commandParameters)
+   at DotNetNuke.Entities.Modules.ModuleController.GetAllTabsModulesByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleVersionsByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModuleInternal(ModuleInfo module)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModule(ModuleInfo module)
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+   at DotNetNuke.Web.InternalServices.ControlBarController.AddModule(AddModuleDTO dto)
+ClientConnectionId:e7433cb2-3096-457e-8777-0e48c83aed0e
+Error Number:-2,State:0,Class:11
+2024-03-07 18:08:57.625+05:30 [DESKTOP-TU3857L][D:3][T:24][ERROR] DotNetNuke.Data.PetaPoco.PetaPocoHelper - [3] Error executing SQL: ;Exec dbo.GetAllTabsModulesByModuleID @0
+Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2024-03-07 18:08:57.627+05:30 [DESKTOP-TU3857L][D:3][T:24][ERROR] DotNetNuke.Web.InternalServices.ControlBarController - System.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at DotNetNuke.Data.PetaPoco.PetaPocoExt.ExecuteReader(Database database, String sql, Object[] args)
+   at DotNetNuke.Data.PetaPoco.PetaPocoHelper.ExecuteReader(String connectionString, CommandType type, Int32 timeoutSec, String sql, Object[] args)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteReader(String procedureName, Object[] commandParameters)
+   at DotNetNuke.Entities.Modules.ModuleController.GetAllTabsModulesByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleVersionsByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModuleInternal(ModuleInfo module)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModule(ModuleInfo module)
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+   at DotNetNuke.Web.InternalServices.ControlBarController.AddModule(AddModuleDTO dto)
+ClientConnectionId:f1058e7b-e390-4422-8239-fdeef0e178ad
+Error Number:-2,State:0,Class:11
+2024-03-07 18:19:11.598+05:30 [DESKTOP-TU3857L][D:4][T:52][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:20:03.322+05:30 [DESKTOP-TU3857L][D:4][T:50][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.322+05:30 [DESKTOP-TU3857L][D:4][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.322+05:30 [DESKTOP-TU3857L][D:4][T:51][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.322+05:30 [DESKTOP-TU3857L][D:4][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.322+05:30 [DESKTOP-TU3857L][D:4][T:54][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.366+05:30 [DESKTOP-TU3857L][D:4][T:51][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.366+05:30 [DESKTOP-TU3857L][D:4][T:50][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.366+05:30 [DESKTOP-TU3857L][D:4][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.366+05:30 [DESKTOP-TU3857L][D:4][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.370+05:30 [DESKTOP-TU3857L][D:4][T:54][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.376+05:30 [DESKTOP-TU3857L][D:4][T:51][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.376+05:30 [DESKTOP-TU3857L][D:4][T:50][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.379+05:30 [DESKTOP-TU3857L][D:4][T:54][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.379+05:30 [DESKTOP-TU3857L][D:4][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:20:03.381+05:30 [DESKTOP-TU3857L][D:4][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-07 18:21:54.890+05:30 [DESKTOP-TU3857L][D:5][T:42][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:23:05.977+05:30 [DESKTOP-TU3857L][D:6][T:42][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:23:57.566+05:30 [DESKTOP-TU3857L][D:6][T:31][ERROR] DotNetNuke.Framework.Reflection - Saatvik.Modules.DNNModule1.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Saatvik.Modules.DNNModule1.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-03-07 18:23:57.577+05:30 [DESKTOP-TU3857L][D:6][T:31][ERROR] DotNetNuke.Entities.Modules.EventMessageProcessor - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Entities.Modules.EventMessageProcessor.UpdateSupportedFeatures(EventMessage message)
+   at DotNetNuke.Entities.Modules.EventMessageProcessor.ProcessMessage(EventMessage message)
+2024-03-07 18:24:19.778+05:30 [DESKTOP-TU3857L][D:6][T:31][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:24:23.553+05:30 [DESKTOP-TU3857L][D:6][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-07 18:24:23.746+05:30 [DESKTOP-TU3857L][D:6][T:48][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:24:30.607+05:30 [DESKTOP-TU3857L][D:6][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error:  is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:24:57.071+05:30 [DESKTOP-TU3857L][D:6][T:49][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:25:08.480+05:30 [DESKTOP-TU3857L][D:6][T:43][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-07 18:25:18.630+05:30 [DESKTOP-TU3857L][D:6][T:55][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:25:20.794+05:30 [DESKTOP-TU3857L][D:6][T:47][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-07 18:25:21.042+05:30 [DESKTOP-TU3857L][D:6][T:47][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:25:25.903+05:30 [DESKTOP-TU3857L][D:6][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error:  is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:25:28.258+05:30 [DESKTOP-TU3857L][D:6][T:50][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:31:31.468+05:30 [DESKTOP-TU3857L][D:7][T:38][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:32:10.637+05:30 [DESKTOP-TU3857L][D:8][T:59][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:32:30.936+05:30 [DESKTOP-TU3857L][D:9][T:59][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-07 18:33:04.621+05:30 [DESKTOP-TU3857L][D:9][T:53][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:33:28.388+05:30 [DESKTOP-TU3857L][D:9][T:48][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-07 18:33:37.701+05:30 [DESKTOP-TU3857L][D:9][T:45][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:33:42.052+05:30 [DESKTOP-TU3857L][D:9][T:61][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-07 18:33:42.261+05:30 [DESKTOP-TU3857L][D:9][T:50][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:33:47.283+05:30 [DESKTOP-TU3857L][D:9][T:45][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error:  is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:33:54.016+05:30 [DESKTOP-TU3857L][D:9][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-07 18:34:03.015+05:30 [DESKTOP-TU3857L][D:9][T:40][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)

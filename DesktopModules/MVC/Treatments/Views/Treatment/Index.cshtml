@@ -1,0 +1,83 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<VCQRU.Modules.TreatmentsTreatments.Models.Treatment>>
+
+<div class="our-treatments">
+    <div class="our-treatments-banner">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-8">
+                <h1 class="text-white">Our Treatments</h1>
+                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic voluptates quod beatae error facere similique quas.</p>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.Count() == 0)
+    {
+        <p>No treatments available at the moment.</p>
+    }
+    else
+    {
+        <div class="treatments-filter">
+            <div class="row">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
+                    <div class="treatments-accordion">
+                        <div class="accordion" id="accordionExample">
+                            @foreach (var group in Model.GroupBy(t => t.TreatmentName.Substring(0, 1).ToUpper()))
+                            {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button @(group.First() == Model.First() ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(group.Key)" aria-expanded="@(group.First() == Model.First() ? "true" : "false")" aria-controls="collapse@(group.Key)">
+                                            @group.Key
+                                        </button>
+                                    </h2>
+                                    <div id="collapse@(group.Key)" class="accordion-collapse collapse @(group.First() == Model.First() ? "show" : "")" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                @foreach (var treatment in group)
+                                                {
+                                                    <li>
+                                                        <a href="@Url.Action("Details", "Treatment", new { treatmentId = treatment.TreatmentId })" class="btn btn-sm btn-light">@treatment.TreatmentName</a>
+                                                        @* Check if the module is editable before showing the Edit and Delete links *@
+                                                        @if (Dnn.ModuleContext.IsEditable)
+                                                        {
+                                                            <div class="btn-group">
+                                                                <a href="@Url.Action("Edit", "Treatment", new { ctl = "Edit", treatmentId = treatment.TreatmentId })" class="btn btn-sm btn-primary">Edit</a>
+                                                                <a href="@Url.Action("Delete", "Treatment", new { treatmentId = treatment.TreatmentId })" class="btn btn-sm btn-danger">Delete</a>
+                                                            </div>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-12">
+                    @foreach (var group in Model.GroupBy(t => t.TreatmentName.Substring(0, 1).ToUpper()))
+                    {
+                        <div class="treatments-listing">
+                            <div class="diseases-alphabetically">@group.Key</div>
+                            <ul>
+                                @foreach (var treatment in group)
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Details", "Treatment", new { treatmentId = treatment.TreatmentId })" class="">
+                                            <img src="https://svaidya.vcqru.com/Portals/0/charity.png?ver=L5icQzao4YYeJBbApSyXRA%3d%3d" alt="icon">
+                                            @treatment.TreatmentName
+                                        </a>
+                                        @*<p>@treatment.TreatmentDescription</p>*@
+
+                                       
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblProductName.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="lblFeatured.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="lblViews.Text" xml:space="preserve">
+    <value>Views:</value>
+  </data>
+  <data name="NoRecord.Text" xml:space="preserve">
+    <value>No Record</value>
+  </data>
+  <data name="lblPromoStart.Text" xml:space="preserve">
+    <value>Promo Start:</value>
+  </data>
+  <data name="lblPromoEnd.Text" xml:space="preserve">
+    <value>Promo End:</value>
+  </data>
+  <data name="lblCreatedDate.Text" xml:space="preserve">
+    <value>Created:</value>
+  </data>
+  <data name="lblPromoPrice.Text" xml:space="preserve">
+    <value>Prom Price:</value>
+  </data>
+  <data name="lblCreatedDate1.Text" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="lblFeatured1.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="lblPromoPrice1.Text" xml:space="preserve">
+    <value>Promo Price</value>
+  </data>
+  <data name="lblPromoStart1.Text" xml:space="preserve">
+    <value>Promo Start</value>
+  </data>
+  <data name="lblPromoEnd1.Text" xml:space="preserve">
+    <value>Promo End</value>
+  </data>
+  <data name="lblViews1.Text" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="lblProductName1.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblRating1.Text" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="lblSummary1.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="btnClear.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="btnSearch.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="lblSearchPrefix.Text" xml:space="preserve">
+    <value>Input search text</value>
+  </data>
+  <data name="lblPurchasePrice.Text" xml:space="preserve">
+    <value>Sell Price:</value>
+  </data>
+  <data name="lblPurchasePrice1.Text" xml:space="preserve">
+    <value>Sell Price</value>
+  </data>
+  <data name="lblSummaryHead.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="lblPackageFee.Text" xml:space="preserve">
+    <value>Package Fee:</value>
+  </data>
+  <data name="lblPackageFee1.Text" xml:space="preserve">
+    <value>Package Fee</value>
+  </data>
+  <data name="lblSku.Text" xml:space="preserve">
+    <value>SKU:</value>
+  </data>
+  <data name="lblSku1.Text" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="lblWeight.Text" xml:space="preserve">
+    <value>Weight:</value>
+  </data>
+  <data name="lblWeight1.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="lblVendorProfile.Text" xml:space="preserve">
+    <value>Vendor Profile</value>
+  </data>
+  <data name="lblVendorProduct.Text" xml:space="preserve">
+    <value>Vendor Product List</value>
+  </data>
+  <data name="lblSortBy.Text" xml:space="preserve">
+    <value>Order By:</value>
+  </data>
+  <data name="li_SortField_CreationDateAsc.Text" xml:space="preserve">
+    <value>Creation Date Ascending</value>
+  </data>
+  <data name="li_SortField_CreationDateDesc.Text" xml:space="preserve">
+    <value>Creation Date Descending</value>
+  </data>
+  <data name="li_SortField_LastModifiedDateAsc.Text" xml:space="preserve">
+    <value>Last Modified Date Ascending</value>
+  </data>
+  <data name="li_SortField_LastModifiedDateDesc.Text" xml:space="preserve">
+    <value>Last Modified Date Descending</value>
+  </data>
+  <data name="li_SortField_NameAsc.Text" xml:space="preserve">
+    <value>Name Ascending (A - Z)</value>
+  </data>
+  <data name="li_SortField_NameDesc.Text" xml:space="preserve">
+    <value>Name Descending (Z - A)</value>
+  </data>
+  <data name="li_SortField_PublishDateAsc.Text" xml:space="preserve">
+    <value>Publish Date Ascending</value>
+  </data>
+  <data name="li_SortField_PublishDateDesc.Text" xml:space="preserve">
+    <value>Publish Date Descending</value>
+  </data>
+  <data name="li_SortField_PurchasePriceAsc.Text" xml:space="preserve">
+    <value>Purchase Price Ascending</value>
+  </data>
+  <data name="li_SortField_PurchasePriceDesc.Text" xml:space="preserve">
+    <value>Purchase Price Descending</value>
+  </data>
+  <data name="li_SortField_ViewsAsc.Text" xml:space="preserve">
+    <value>Views Ascending</value>
+  </data>
+  <data name="li_SortField_ViewsDesc.Text" xml:space="preserve">
+    <value>Views Descending</value>
+  </data>
+  <data name="lblPage.Text" xml:space="preserve">
+    <value>Page:</value>
+  </data>
+  <data name="lblBuiltInField_And.Text" xml:space="preserve">
+    <value> and </value>
+  </data>
+  <data name="lblBuiltInField_Category.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="lblBuiltInField_CreatedDate.Text" xml:space="preserve">
+    <value>Created Date:</value>
+  </data>
+  <data name="lblBuiltInField_ExpireDate.Text" xml:space="preserve">
+    <value>Expire Date:</value>
+  </data>
+  <data name="lblBuiltInField_Price.Text" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="lblBuiltInField_PublishDate.Text" xml:space="preserve">
+    <value>Publish Date:</value>
+  </data>
+  <data name="lblBuiltInField_RatingAverage.Text" xml:space="preserve">
+    <value>Rating Average</value>
+  </data>
+  <data name="lblBuiltInField_Title.Text" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="lblBuiltInField_Views.Text" xml:space="preserve">
+    <value>Views:</value>
+  </data>
+  <data name="li_Oper_between.Text" xml:space="preserve">
+    <value>Between</value>
+  </data>
+  <data name="li_Oper_equal.Text" xml:space="preserve">
+    <value>=</value>
+  </data>
+  <data name="li_Oper_greaterthan.Text" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="li_Oper_lessthan.Text" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="li_Oper_like.Text" xml:space="preserve">
+    <value>Like</value>
+  </data>
+  <data name="li_Oper_unequal.Text" xml:space="preserve">
+    <value>!=</value>
+  </data>
+  <data name="li_Oper_unlike.Text" xml:space="preserve">
+    <value>Unlike</value>
+  </data>
+  <data name="MustBeInteger.Text" xml:space="preserve">
+    <value>Value must be integer</value>
+  </data>
+  <data name="SelectCategory.Text" xml:space="preserve">
+    <value>Select Category</value>
+  </data>
+  <data name="lblBuiltInField_Paging.Text" xml:space="preserve">
+    <value>Page Size:</value>
+  </data>
+  <data name="lblBuiltInField_Sort.Text" xml:space="preserve">
+    <value>Order By:</value>
+  </data>
+  <data name="lblCity.Text" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="lblCityHead.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="lblCountry.Text" xml:space="preserve">
+    <value>Country:</value>
+  </data>
+  <data name="lblCountryHead.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="lblState.Text" xml:space="preserve">
+    <value>State/Province:</value>
+  </data>
+  <data name="lblStateHead.Text" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="lblTown.Text" xml:space="preserve">
+    <value>Town:</value>
+  </data>
+  <data name="lblTownHead.Text" xml:space="preserve">
+    <value>Town</value>
+  </data>
+  <data name="lblBuiltInField_Sku.Text" xml:space="preserve">
+    <value>Sku:</value>
+  </data>
+  <data name="li_Oper_contain.Text" xml:space="preserve">
+    <value>Contain</value>
+  </data>
+  <data name="li_Oper_notcontain.Text" xml:space="preserve">
+    <value>Not Contain</value>
+  </data>
+  <data name="lblAddress.Text" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="lblBusinessScope.Text" xml:space="preserve">
+    <value>Business Scope:</value>
+  </data>
+  <data name="lblCompany.Text" xml:space="preserve">
+    <value>Company:</value>
+  </data>
+  <data name="lblFax.Text" xml:space="preserve">
+    <value>Fax:</value>
+  </data>
+  <data name="lblIM.Text" xml:space="preserve">
+    <value>IM:</value>
+  </data>
+  <data name="lblLinkman.Text" xml:space="preserve">
+    <value>Linkman:</value>
+  </data>
+  <data name="lblLocationCity.Text" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="lblLocationCountry.Text" xml:space="preserve">
+    <value>Country:</value>
+  </data>
+  <data name="lblLocationState.Text" xml:space="preserve">
+    <value>State/Province:</value>
+  </data>
+  <data name="lblLocationTown.Text" xml:space="preserve">
+    <value>Town:</value>
+  </data>
+  <data name="lblLogoUrl.Text" xml:space="preserve">
+    <value>Logo:</value>
+  </data>
+  <data name="lblLogoUrl.Text1" xml:space="preserve">
+    <value>Logo:</value>
+  </data>
+  <data name="lblSiteUrl.Text" xml:space="preserve">
+    <value>Web Site:</value>
+  </data>
+  <data name="lblSlogan.Text" xml:space="preserve">
+    <value>Slogan:</value>
+  </data>
+  <data name="lblTel.Text" xml:space="preserve">
+    <value>Tel:</value>
+  </data>
+  <data name="lblZipcode.Text" xml:space="preserve">
+    <value>Zipcode:</value>
+  </data>
+</root>

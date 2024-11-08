@@ -1,0 +1,274 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<vcqru.Modules.bookappointmentbookappointment.Models.BookAppointment>
+
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Web.Mvc.Helpers
+<div class="rudra">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- left div -->
+            <div class="col-lg-12 col-xl-12 col-xxl-12">
+                <div id="carouselExampleIndicators" class="carousel slide pointer-event" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                                aria-label="Slide 1" aria-current="true"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"
+                                class=""></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/assets/img/Assets/sbka-vaidya-banner.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/assets/img/Assets/sbka-vaidya-banner-2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="banner-icons">
+    <div class="container">
+
+        <div class="row g-3 row-cols-2 row-cols-lg-4 row-cols-md-4 row-cols-xl-4 row-cols-xxl-4">
+            <div class="col d-flex">
+                <div class="card">
+                    <div class="card-body">
+                        <img alt="Video" src="/assets/img/Assets/icons/video.svg">
+                        <button class="btn stretched-link" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Video
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex">
+                <div class="card">
+                    <div class="card-body">
+                        <img alt="Chat" src="/assets/img/Assets/icons/chat.svg"> <button class="btn stretched-link" type="button" data-bs-toggle="modal"
+                                                                                         data-bs-target="#exampleModal">
+                            Chat
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex">
+                <div class="card">
+                    <div class="card-body">
+                        <img alt="Telephonic" src="/assets/img/Assets/icons/call.svg"> <button class="btn stretched-link" type="button" data-bs-toggle="modal"
+                                                                                               data-bs-target="#exampleModal">
+                            Telephonic
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex">
+                <div class="card">
+                    <div class="card-body">
+                        <img alt="Offline" src="/assets/img/Assets/icons/location.svg"> <button class="btn stretched-link" type="button" data-bs-toggle="modal"
+                                                                                                data-bs-target="#exampleModal">
+                            Location
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Section -->
+<div class="fade modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="exampleModalLabel">Book an Appointment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-lg-12">
+                        <label for="fullName" class="form-label">Full Name*</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName"
+                               onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32)" required>
+                        <span id="fullNameCheck" class="text-danger" data-valmsg-for="fullName"></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="email" class="form-label">Email*</label>
+                        <input type="email" class="form-control" id="email" required>
+                        <span id="emailCheck" class="text-danger" data-valmsg-for="email"></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="MobileNumber" class="form-label">Contact Number*</label>
+                        <input type="text" class="form-control" id="MobileNumber" maxlength="10"
+                               onkeypress="if ( isNaN(this.value + String.fromCharCode(event.keyCode) )) return false;"
+                               name="MobileNumber" required>
+                        <span id="mobileCheck" class="text-danger" data-valmsg-for="MobileNumber"></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="diseases" class="form-label">Diseases*</label>
+                        <input type="text" class="form-control" id="diseases" required>
+                        <span id="diseasesCheck" class="text-danger" data-valmsg-for="diseases"></span>
+                    </div>
+                    <div class="col-lg-12">
+                        <label for="city" class="form-label">City*</label>
+                        <input type="text" class="form-control" id="city" required>
+                        <span id="cityCheck" class="text-danger" data-valmsg-for="city"></span>
+                    </div>
+
+                    <div class="col-lg-12 text-center">
+                        <button class="btn btn-primary" id="submitBtn">Book Free Appointment</button>
+                        <button type="button" id="btnloadsubmit" style="display: none"
+                                data-toggle="modal" class="form-control login-btn">
+                            <i class="fa fa-spinner fa-spin"></i>Loading..
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+      $('#email').keyup(function () {
+    Mail_check();
+});
+
+/* Validation for the Email */
+function Mail_check() {
+    var Mail_val = $('#email').val();
+    var regex = /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    if (Mail_val.length == 0) { // Check for empty email field
+        $('#emailCheck').show();
+        $('#emailCheck').html("**Please enter Email");
+        $('#emailCheck').css("color", "red");
+        return false;
+    } else if (!regex.test(Mail_val)) { // Check for invalid email format
+        $('#emailCheck').show();
+        $('#emailCheck').html("**Please enter valid Email");
+        $('#emailCheck').css("color", "red");
+        return false;
+    } else { // Email is valid
+        $('#emailCheck').html("");
+    }
+}
+    function showAlert(title, text, icon) {
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: icon,
+            confirmButtonText: 'OK'
+        });
+    }
+document.getElementById('submitBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Reset validation messages
+    document.querySelectorAll('.text-danger').forEach(el => el.innerHTML = '');
+
+    // Get form values
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const mobileNumber = document.getElementById('MobileNumber').value;
+    const diseases = document.getElementById('diseases').value;
+    const city = document.getElementById('city').value;
+
+    // Simple front-end validation
+    let isValid = true;
+
+    if (fullName === "") {
+        document.getElementById('fullNameCheck').innerHTML = "**Please enter your Full Name";
+        isValid = false;
+    }
+    if (email === "") {
+        document.getElementById('emailCheck').innerHTML = "**Please enter your Email";
+        isValid = false;
+    } else {
+        Mail_check();
+        if ($('#emailCheck').text() !== "") {
+            isValid = false;
+        }
+    }
+    if (mobileNumber === "") {
+        document.getElementById('mobileCheck').innerHTML = "**Please enter your Contact Number";
+        isValid = false;
+    }
+    if (diseases === "") {
+        document.getElementById('diseasesCheck').innerHTML = "**Please enter Diseases";
+        isValid = false;
+    }
+    if (city === "") {
+        document.getElementById('cityCheck').innerHTML = "**Please enter your City";
+        isValid = false;
+    }
+
+    if (isValid) {
+        // Create the model data object
+        const Contactus = {
+            FullName: fullName,
+            Email: email,
+            MobileNumber: mobileNumber,
+            Disease: diseases,
+            City: city
+        };
+        $('#submitBtn').hide();
+        $('#btnloadsubmit').show();
+        // Make the AJAX call using fetch
+        fetch('@Url.Action("Index", "Item")', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'RequestVerificationToken': '@Html.AntiForgeryToken()'
+            },
+            body: JSON.stringify(Contactus)
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('data', data);
+            $('#submitBtn').show();
+            $('#btnloadsubmit').hide();
+            debugger;
+            var jsonStartIndex = data.indexOf('{'); // Find where the JSON starts
+            var jsonEndIndex = data.lastIndexOf('}<!DOCTYPE html>'); // Find where the JSON ends
+            var jsonData = JSON.parse(data.substring(jsonStartIndex, jsonEndIndex + 1));
+            if (jsonData.success) {
+
+                // Use SweetAlert or any other alert mechanism
+                showAlert('Success', jsonData.message, 'success');
+
+                // Clear form inputs
+                document.getElementById('fullName').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('MobileNumber').value = '';
+                document.getElementById('diseases').value = '';
+                document.getElementById('city').value = '';
+            } else {
+                showAlert('Error', jsonData.message, 'error');
+                // Display validation errors
+                if (jsonData.errors) {
+                    for (const key in jsonData.errors) {
+                        const errorElement = document.querySelector(`[data-valmsg-for="${key}"]`);
+                        if (errorElement) {
+                            errorElement.innerHTML = jsonData.errors[key].join('<br>');
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+
+</script>

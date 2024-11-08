@@ -1,0 +1,432 @@
+
+
+/******   alter table CP_Product_OrderDetail ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add ShippingMethod nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add ShippingNo nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add ClientSignDate datetime NULL
+
+go
+
+
+/****** drop legacy stored procedures ******/
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+GO
+
+
+/****** create new stored procedures ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+	@Id int, 
+	@PortalId int, 
+	@TypeId int, 
+	@UserId int, 
+	@CreatedDate datetime, 
+	@Name nvarchar(200),
+    @PreviousVersion int, 
+	@Authed bit, 
+	@Featured bit, 
+	@Active bit, 
+	@Summary nvarchar(1000), 
+	@LinkUrl nvarchar(200), 
+	@Description ntext, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@Support ntext, 
+	@License ntext, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@PurchasePrice decimal(18, 2), 
+	@PromoPrice decimal(18, 2), 
+    @EnablePromoPrice bit,
+	@PromoStart datetime, 
+	@PromoEnd datetime, 
+	@StockQuantity int, 
+	@LowThreshold int, 
+	@Delivery ntext, 
+	@SpecialOffer ntext, 
+	@Views int, 
+	@PublishDate datetime, 
+	@ExpireDate datetime, 
+	@LastModifiedDate datetime, 
+	@AllowComment bit, 
+	@AllowRating bit, 
+	@CommentRoles nvarchar(200), 
+	@RatingRoles nvarchar(200), 
+	@DownloadRoles nvarchar(200), 
+	@AutoAuthComment bit, 
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @MapTitle nvarchar(2000),
+    @ManufacturerId int,
+    @IsAuction bit,
+    @StartPrice decimal(18, 2), 
+    @ReservePrice decimal(18, 2), 
+    @BuyNowPrice decimal(18, 2), 
+    @AuctionDays int,
+    @TaxRateType int,
+    @FixedTaxRate decimal(18, 2),
+    @ShippingFeeType int,
+    @FixedShippingFee decimal(18, 2),
+    @BidIncrement decimal(18, 2),
+    @AuctionCheck bit,
+    @AuctionCheckResult int, 
+    @CountryId int, 
+	@Country nvarchar(200), 
+	@StateId int, 
+	@State nvarchar(200), 
+	@CityId int, 
+	@City nvarchar(200), 
+	@TownId int, 
+	@Town nvarchar(200),
+	@ShippingProperty nvarchar(400),
+	@MinSellQuantity int,
+    @ViewRoles nvarchar(200), 
+    @Categories nvarchar(200),
+    @Tags nvarchar(200),
+    @RefreshRelation bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Product SET
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[UserId] = @UserId,
+	[CreatedDate] = @CreatedDate,
+	[Name] = @Name,
+    [PreviousVersion]=@PreviousVersion,
+	[Authed] = @Authed,
+	[Featured] = @Featured,
+	[Active] = @Active,
+	[Summary] = @Summary,
+	[LinkUrl] = @LinkUrl,
+	[Description] = @Description,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[Support] = @Support,
+	[License] = @License,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[PurchasePrice] = @PurchasePrice,
+	[PromoPrice] = @PromoPrice,
+    [EnablePromoPrice]=@EnablePromoPrice,
+	[PromoStart] = @PromoStart,
+	[PromoEnd] = @PromoEnd,
+	[StockQuantity] = @StockQuantity,
+	[LowThreshold] = @LowThreshold,
+	[Delivery] = @Delivery,
+	[SpecialOffer] = @SpecialOffer,
+	[Views] = @Views,
+	[PublishDate] = @PublishDate,
+	[ExpireDate] = @ExpireDate,
+	[LastModifiedDate] = GetDate(),
+	[AllowComment] = @AllowComment,
+	[AllowRating] = @AllowRating,
+	[CommentRoles] = @CommentRoles,
+	[RatingRoles] = @RatingRoles,
+	[DownloadRoles] = @DownloadRoles,
+	[AutoAuthComment] = @AutoAuthComment,
+	[Order] = @Order,
+    [Weight]=@Weight,
+    [PackageFee]=@PackageFee,
+    [Sku]=@Sku,
+    [Field1]=@Field1,
+    [Field2]=@Field2,
+    [Field3]=@Field3,
+    [Field4]=@Field4,
+    [Field5]=@Field5,
+    [Longitude] = @Longitude,
+    [Latitude] = @Latitude,
+    [RecursiveBill] = @RecursiveBill,
+    [BillPeriod] = @BillPeriod,
+    [BillFrequency] = @BillFrequency,
+    [MapTitle] = @MapTitle,
+    [ManufacturerId] = @ManufacturerId,
+    [IsAuction] = @IsAuction,
+    [StartPrice] = @StartPrice,
+    [ReservePrice] = @ReservePrice,
+    [BuyNowPrice] = @BuyNowPrice,
+    [AuctionDays] = @AuctionDays,
+    [TaxRateType] = @TaxRateType,
+    [FixedTaxRate] = @FixedTaxRate,
+    [ShippingFeeType] = @ShippingFeeType,
+    [FixedShippingFee] = @FixedShippingFee,
+    [BidIncrement] = @BidIncrement,
+    [AuctionCheck] = @AuctionCheck,
+    [AuctionCheckResult] = @AuctionCheckResult,
+    [CountryId] = @CountryId,
+	[Country] = @Country,
+	[StateId] = @StateId,
+	[State] = @State,
+	[CityId] = @CityId,
+	[City] = @City,
+	[TownId] = @TownId,
+	[Town] = @Town,
+	[ShippingProperty] = @ShippingProperty,
+	[MinSellQuantity] = @MinSellQuantity
+WHERE
+	[Id] = @Id
+
+If (@RefreshRelation=1)
+Begin
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+
+     DELETE from {databaseOwner}{objectQualifier}CP_Product_ProductToTag
+      where [Id] in 
+      (select a.[Id] from {databaseOwner}{objectQualifier}CP_Product_ProductToTag a, {databaseOwner}{objectQualifier}CP_Product_Tag b
+       WHERE (a.[ProductId] = @Id) 
+       and (a.[TagId] = b.[Id])
+       and (b.[CultureCode]=''''))
+       
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToRole WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+end 
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+	@Id int, 
+	@OrderId int, 
+	@PortalId int, 
+	@TypeId int, 
+	@OrderNo nvarchar(100), 
+	@InvoiceNo nvarchar(100), 
+	@ClientId int, 
+	@ClientName nvarchar(50), 
+	@VendorId int, 
+	@VendorName nvarchar(50), 
+	@ProductId int, 
+	@ProductName nvarchar(200), 
+	@OptionId int, 
+	@OptionName nvarchar(200), 
+	@Quantity int, 
+	@UnitPrice decimal(18, 2), 
+	@TaxFee decimal(18, 2), 
+	@ShipFee decimal(18, 2), 
+	@ItemSum decimal(18, 2), 
+	@CreatedDate datetime, 
+	@ShipDate datetime, 
+	@ArriveDate datetime, 
+	@DiscountRequest nvarchar(1000), 
+	@DiscountResponse nvarchar(1000), 
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int,
+    @RecursiveBill bit,
+    @NextBillDate datetime,
+    @Guid nvarchar(200),
+    @Coupon nvarchar(200),
+    @ShippingStatus int,
+    @ShippingMethod nvarchar(200),
+    @ShippingNo nvarchar(200),
+    @ClientSignDate datetime
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_OrderDetail SET
+	[OrderId] = @OrderId,
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[OrderNo] = @OrderNo,
+	[InvoiceNo] = @InvoiceNo,
+	[ClientId] = @ClientId,
+	[ClientName] = @ClientName,
+	[VendorId] = @VendorId,
+	[VendorName] = @VendorName,
+	[ProductId] = @ProductId,
+	[ProductName] = @ProductName,
+	[OptionId] = @OptionId,
+	[OptionName] = @OptionName,
+	[Quantity] = @Quantity,
+	[UnitPrice] = @UnitPrice,
+	[TaxFee] = @TaxFee,
+	[ShipFee] = @ShipFee,
+	[ItemSum] = @ItemSum,
+	[CreatedDate] = @CreatedDate,
+	[ShipDate] = @ShipDate,
+	[ArriveDate] = @ArriveDate,
+	[DiscountRequest] = @DiscountRequest,
+	[DiscountResponse] = @DiscountResponse,
+	[OrderMemo] = @OrderMemo,
+    [OrderStatus] = @OrderStatus,
+    [RecursiveBill] = @RecursiveBill,
+    [NextBillDate] = NextBillDate,
+    [Guid] = @Guid,
+    [Coupon] = @Coupon,
+    [ShippingStatus] = @ShippingStatus,
+    [ShippingMethod] = @ShippingMethod,
+    [ShippingNo] = @ShippingNo,
+    [ClientSignDate] = @ClientSignDate
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+	@OrderId int,
+	@PortalId int,
+	@TypeId int,
+	@OrderNo nvarchar(100),
+	@InvoiceNo nvarchar(100),
+	@ClientId int,
+	@ClientName nvarchar(50),
+	@VendorId int,
+	@VendorName nvarchar(50),
+	@ProductId int,
+	@ProductName nvarchar(200),
+	@OptionId int,
+	@OptionName nvarchar(200),
+	@Quantity int,
+	@UnitPrice decimal(18, 2),
+	@TaxFee decimal(18, 2),
+	@ShipFee decimal(18, 2),
+	@ItemSum decimal(18, 2),
+	@CreatedDate datetime,
+	@ShipDate datetime,
+	@ArriveDate datetime,
+	@DiscountRequest nvarchar(1000),
+	@DiscountResponse nvarchar(1000),
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int,
+    @RecursiveBill bit,
+    @NextBillDate datetime,
+    @Guid nvarchar(200),
+    @Coupon nvarchar(200),
+    @ShippingStatus int,
+    @ShippingMethod nvarchar(200),
+    @ShippingNo nvarchar(200),
+    @ClientSignDate datetime
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_OrderDetail (
+	[OrderId],
+	[PortalId],
+	[TypeId],
+	[OrderNo],
+	[InvoiceNo],
+	[ClientId],
+	[ClientName],
+	[VendorId],
+	[VendorName],
+	[ProductId],
+	[ProductName],
+	[OptionId],
+	[OptionName],
+	[Quantity],
+	[UnitPrice],
+	[TaxFee],
+	[ShipFee],
+	[ItemSum],
+	[CreatedDate],
+	[ShipDate],
+	[ArriveDate],
+	[DiscountRequest],
+	[DiscountResponse],
+	[OrderMemo],
+    [OrderStatus],
+    [RecursiveBill],
+    [NextBillDate],
+    [Guid],
+    [Coupon],
+    [ShippingStatus],
+    [ShippingMethod],
+    [ShippingNo],
+    [ClientSignDate]
+) VALUES (
+	@OrderId,
+	@PortalId,
+	@TypeId,
+	@OrderNo,
+	@InvoiceNo,
+	@ClientId,
+	@ClientName,
+	@VendorId,
+	@VendorName,
+	@ProductId,
+	@ProductName,
+	@OptionId,
+	@OptionName,
+	@Quantity,
+	@UnitPrice,
+	@TaxFee,
+	@ShipFee,
+	@ItemSum,
+	GetDate(),
+	@ShipDate,
+	@ArriveDate,
+	@DiscountRequest,
+	@DiscountResponse,
+	@OrderMemo,
+    @OrderStatus,
+    @RecursiveBill,
+    @NextBillDate,
+    @Guid,
+    @Coupon,
+    @ShippingStatus,
+    @ShippingMethod,
+    @ShippingNo,
+    @ClientSignDate
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+
+
+

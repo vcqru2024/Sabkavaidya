@@ -1,0 +1,439 @@
+2024-02-22 10:23:34.254+05:30 [DESKTOP-TU3857L][D:2][T:77][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.UI.Utilities.ApplySkin(Control targetControl, String fallBackEmbeddedSkinName, String controlName, String webControlSkinSubFolderName)
+2024-02-22 10:23:34.312+05:30 [DESKTOP-TU3857L][D:2][T:77][ERROR] DotNetNuke.Services.Exceptions.BasePortalException - System.ArgumentNullException: Value cannot be null.
+Parameter name: provider
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at DotNetNuke.Application.DotNetNukeContext.get_Current()
+   at DotNetNuke.Services.Exceptions.BasePortalException.InitializePrivateVariables()
+2024-02-22 12:15:47.693+05:30 [DESKTOP-TU3857L][D:2][T:16][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.DNNModule1.Components.FeatureController, DNNModule1
+System.IO.FileNotFoundException: Could not load file or assembly 'DNNModule1' or one of its dependencies. The system cannot find the file specified.
+File name: 'DNNModule1'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+
+=== Pre-bind state information ===
+LOG: DisplayName = DNNModule1
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: DNNModule1 | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///E:/dnn9me/
+LOG: Initial PrivatePath = E:\dnn9me\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: E:\dnn9me\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/3a103a44/4ece2809/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/3a103a44/4ece2809/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/HttpModules/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/HttpModules/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Providers/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Providers/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Modules/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Modules/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Support/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Support/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///E:/dnn9me/DNNModule1/DNNModule1.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/3a103a44/4ece2809/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/3a103a44/4ece2809/DNNModule1/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/DNNModule1/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/HttpModules/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/HttpModules/DNNModule1/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Providers/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Providers/DNNModule1/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Modules/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Modules/DNNModule1/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Support/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/bin/Support/DNNModule1/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/DNNModule1.EXE.
+LOG: Attempting download of new URL file:///E:/dnn9me/DNNModule1/DNNModule1.EXE.
+
+2024-02-22 12:15:47.720+05:30 [DESKTOP-TU3857L][D:2][T:16][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Entities.Modules.EventMessageProcessor.UpgradeModule(EventMessage message)
+2024-02-22 12:17:13.273+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:17:13.341+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:17:18.343+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:17:18.460+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:17:18.771+05:30 [DESKTOP-TU3857L][D:2][T:11][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:17:18.771+05:30 [DESKTOP-TU3857L][D:2][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:17:40.404+05:30 [DESKTOP-TU3857L][D:2][T:16][FATAL] DotNetNuke.Framework.PageBase - An error has occurred while loading page.
+System.IO.FileNotFoundException: Could not find file 'E:\dnn9me\DesktopModules\dipak\testNwMd\testNw.ascx'.
+File name: 'E:\dnn9me\DesktopModules\dipak\testNwMd\testNw.ascx'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path)
+   at System.IO.File.OpenText(String path)
+   at DotNetNuke.Modules.Admin.Modules.ViewSource.DisplayFile()
+   at System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Web.UI.Page.<RaiseChangedEventsAsync>d__396.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Util.WithinCancellableCallbackTaskAwaitable.WithinCancellableCallbackTaskAwaiter.GetResult()
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-02-22 12:17:40.411+05:30 [DESKTOP-TU3857L][D:2][T:16][ERROR] DotNetNuke.Services.Exceptions.Exceptions - ~/Default.aspx?tabid=21&error=Could+not+find+file+%27E%3a%5cdnn9me%5cDesktopModules%5cdipak%5ctestNwMd%5ctestNw.ascx%27.
+System.IO.FileNotFoundException: Could not find file 'E:\dnn9me\DesktopModules\dipak\testNwMd\testNw.ascx'.
+File name: 'E:\dnn9me\DesktopModules\dipak\testNwMd\testNw.ascx'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamReader..ctor(String path)
+   at System.IO.File.OpenText(String path)
+   at DotNetNuke.Modules.Admin.Modules.ViewSource.DisplayFile()
+   at System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged(EventArgs e)
+   at System.Web.UI.Page.<RaiseChangedEventsAsync>d__396.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Util.WithinCancellableCallbackTaskAwaitable.WithinCancellableCallbackTaskAwaiter.GetResult()
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-02-22 12:17:40.527+05:30 [DESKTOP-TU3857L][D:2][T:11][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:17:40.535+05:30 [DESKTOP-TU3857L][D:2][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:17:40.716+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:17:40.719+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:17:50.597+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:17:50.609+05:30 [DESKTOP-TU3857L][D:2][T:12][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:20:46.566+05:30 [DESKTOP-TU3857L][D:2][T:14][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:20:46.599+05:30 [DESKTOP-TU3857L][D:2][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:20:51.562+05:30 [DESKTOP-TU3857L][D:2][T:16][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:20:51.592+05:30 [DESKTOP-TU3857L][D:2][T:16][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:20:51.931+05:30 [DESKTOP-TU3857L][D:2][T:14][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:20:51.943+05:30 [DESKTOP-TU3857L][D:2][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:23:23.392+05:30 [DESKTOP-TU3857L][D:2][T:13][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:23:23.417+05:30 [DESKTOP-TU3857L][D:2][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:23:30.321+05:30 [DESKTOP-TU3857L][D:2][T:13][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:23:30.328+05:30 [DESKTOP-TU3857L][D:2][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: nwcntrlmdl is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:23:36.296+05:30 [DESKTOP-TU3857L][D:2][T:13][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:23:36.309+05:30 [DESKTOP-TU3857L][D:2][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:28:53.707+05:30 [DESKTOP-TU3857L][D:2][T:34][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:28:53.733+05:30 [DESKTOP-TU3857L][D:2][T:34][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:02.305+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:02.315+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:02.317+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:02.326+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:05.001+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:05.012+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:05.014+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:05.022+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:05.348+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:05.363+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:05.366+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:05.379+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:12.520+05:30 [DESKTOP-TU3857L][D:2][T:34][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:12.530+05:30 [DESKTOP-TU3857L][D:2][T:34][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:12.532+05:30 [DESKTOP-TU3857L][D:2][T:34][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:12.538+05:30 [DESKTOP-TU3857L][D:2][T:34][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:12.615+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:12.619+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:12.621+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:12.625+05:30 [DESKTOP-TU3857L][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:21.813+05:30 [DESKTOP-TU3857L][D:2][T:47][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:21.823+05:30 [DESKTOP-TU3857L][D:2][T:47][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:21.825+05:30 [DESKTOP-TU3857L][D:2][T:47][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:21.832+05:30 [DESKTOP-TU3857L][D:2][T:47][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: index is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 12:29:21.917+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.UI.Modules.ModuleHost - System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()
+2024-02-22 12:29:21.928+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: testNewMd is currently unavailable." ctrl="DotNetNuke.UI.Modules.ModuleControlBase" exc="System.Web.HttpException (0x80004005): The file '/DesktopModules/dipak/testNwMd/testNw.ascx' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   at DotNetNuke.UI.ControlUtilities.LoadControl[T](TemplateControl containerControl, String ControlSrc)
+   at DotNetNuke.ModulePipeline.ModuleControlPipeline.LoadModuleControl(TemplateControl containerControl, ModuleInfo moduleConfiguration)
+   at DotNetNuke.UI.Modules.ModuleHost.LoadModuleControl()"
+2024-02-22 14:08:07.433+05:30 [DESKTOP-TU3857L][D:2][T:54][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-02-22 15:54:14.768+05:30 [DESKTOP-TU3857L][D:2][T:50][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-02-22 16:04:44.723+05:30 [DESKTOP-TU3857L][D:2][T:39][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-02-22 17:52:05.491+05:30 [DESKTOP-TU3857L][D:2][T:101][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

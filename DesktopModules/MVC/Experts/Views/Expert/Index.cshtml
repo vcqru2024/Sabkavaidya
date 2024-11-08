@@ -1,0 +1,52 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<vcqru.experts.Models.Expert>>
+
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Linq
+<section class="here-are-the-experts">
+    <div id="Experts-@Dnn.ModuleContext.ModuleId">
+        @if (!Model.Any())
+        {
+            <p>No Experts</p>
+        }
+        else
+        {
+            <div class="container">
+                <div class="text-center web-heading">
+                    <h1>@Dnn.LocalizeString("ExpertsHeading")</h1>
+                </div>
+
+                <div class="here-are-the-experts-cards">
+                    <div class="g-4 row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xl-3 row-cols-xxl-3">
+                        @foreach (var expert in Model)
+                        {
+                            <div class="col d-flex">
+                                <div class="card">
+                                    <img alt="Expert image" class="card-img-top" src="@expert.ImageUrl" />
+                                    <div class="card-body">
+                                        <p><span class="badge text-bg-info">@expert.Specialty</span></p>
+                                        <h5 class="card-title">@expert.Name</h5>
+                                        <p class="card-text">@expert.Qualifications</p>
+                                        <p class="card-text"><i class="fa-solid fa-business-time"></i>&nbsp;&nbsp;Experience: @expert.Experience Years</p>
+                                        <p class="card-text"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;@expert.Location</p>
+                                        <a class="btn" href="#"><i class="fa-solid fa-calendar"></i>@Dnn.LocalizeString("Availability")</a>
+                                    </div>
+                                    @if (Dnn.ModuleContext.IsEditable)
+                                    {
+                                        <div>
+                                            <a href="@Url.Action("Edit", "Expert", new {ctl = "Edit", expertId = expert.ExpertId})">@Dnn.LocalizeString("EditItem")</a>
+                                            <a href="@Url.Action("Delete", "Expert", new {expertId = expert.ExpertId})">@Dnn.LocalizeString("DeleteItem")</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</section>

@@ -1,0 +1,63 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support Bought Together recommendation strategy
+	CREATE TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct
+	(
+		BoughtProductID int NOT NULL IDENTITY (1, 1),
+		ProductID int NOT NULL,
+		PurchasedProductID int NOT NULL,
+		Occurrence int NOT NULL,
+		RowVersion timestamp NOT NULL,
+		CreateDate datetime NOT NULL,
+		UpdateDate datetime NOT NULL
+	)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct ADD CONSTRAINT
+	PK_{objectQualifier}Revindex_Storefront_BoughtProduct PRIMARY KEY CLUSTERED (BoughtProductID)
+
+	CREATE UNIQUE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_BoughtProduct ON {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct (ProductID, PurchasedProductID)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct ADD CONSTRAINT
+	FK_{objectQualifier}Revindex_Storefront_BoughtProduct_Revindex_Storefront_Product FOREIGN KEY
+	(ProductID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_Product
+	(ProductID) ON UPDATE  NO ACTION ON DELETE  NO ACTION 
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct ADD CONSTRAINT
+	FK_{objectQualifier}Revindex_Storefront_BoughtProduct_Revindex_Storefront_Product1 FOREIGN KEY
+	(PurchasedProductID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_Product
+	(ProductID) ON UPDATE  NO ACTION ON DELETE  NO ACTION 
+
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		-- Fix incorrect sales return detail status being set
+		UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesReturnDetail SET Status = 1 WHERE Status = 0
+
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

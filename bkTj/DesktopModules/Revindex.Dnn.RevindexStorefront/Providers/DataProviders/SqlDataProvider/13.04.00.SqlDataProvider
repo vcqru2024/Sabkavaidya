@@ -1,0 +1,47 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Allow RecurringSalesOrder.UserPaymentID to be nullable
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ALTER COLUMN UserPaymentID INT NULL
+
+	-- Add price override for recurring sales order
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD Price decimal(19, 4) NULL
+
+	-- Support custom payment retry date per order
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD PaymentIncompleteNextRetryDate datetime NULL
+
+	-- Support currency switcher
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD CurrencyDisplayTemplate varchar(255) NULL
+	
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		-- Set default currency switcher template
+		UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration SET CurrencyDisplayTemplate = 'StandardNavBar'
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

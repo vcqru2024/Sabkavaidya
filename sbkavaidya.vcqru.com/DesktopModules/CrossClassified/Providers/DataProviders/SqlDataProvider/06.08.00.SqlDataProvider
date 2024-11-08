@@ -1,0 +1,606 @@
+/******   add columns in CP_Product_Address ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Address add Title nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Address add Email nvarchar(200) NULL
+
+/******   add columns in CP_Product_CartAddress ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add B_Title nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add B_Email nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add S_Title nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add S_Email nvarchar(200) NULL
+
+/******   add columns in CP_Product_Order ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add B_Title nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add B_Email nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add S_Title nvarchar(200) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add S_Email nvarchar(200) NULL
+
+/******   drop legacy procedure CP_Product_Address_Add ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_Add]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Add]
+GO
+
+/******   drop legacy procedure CP_Product_Address_Update ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Update]
+GO
+
+/******   drop legacy procedure CP_Product_CartAddress_Update ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Order_Add ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_Add]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Add]
+GO
+
+/******   drop legacy procedure CP_Product_Order_Update ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Update]
+GO
+
+
+/******   create new procedure  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Add]
+	@PortalId int,
+	@UserId int,
+    @CountryId int,
+    @StateId int,
+	@Name nvarchar(100),
+	@Address1 nvarchar(200),
+	@Address2 nvarchar(200),
+	@City nvarchar(200),
+	@RegionCode nvarchar(200),
+	@CountryCode nvarchar(200),
+	@PostalCode nvarchar(10),
+	@Phone1 nvarchar(20),
+	@Phone2 nvarchar(20),
+	@IsPrimary bit,
+	@CreatedDate datetime,
+	@FirstName nvarchar(50),
+	@LastName nvarchar(50),
+    @Title nvarchar(200),
+    @Email nvarchar(200)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Address (
+	[PortalId],
+	[UserId],
+    [CountryId],
+    [StateId],
+	[Name],
+	[Address1],
+	[Address2],
+	[City],
+	[RegionCode],
+	[CountryCode],
+	[PostalCode],
+	[Phone1],
+	[Phone2],
+	[IsPrimary],
+	[CreatedDate],
+	[FirstName],
+	[LastName],
+    [Title],
+    [Email]
+) VALUES (
+	@PortalId,
+	@UserId,
+    @CountryId,
+    @StateId,
+	@Name,
+	@Address1,
+	@Address2,
+	@City,
+	@RegionCode,
+	@CountryCode,
+	@PostalCode,
+	@Phone1,
+	@Phone2,
+	@IsPrimary,
+	getdate(),
+	@FirstName,
+	@LastName,
+    @Title,
+    @Email
+)
+
+select SCOPE_IDENTITY()
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Update]
+	@Id int, 
+	@PortalId int, 
+	@UserId int, 
+    @CountryId int,
+    @StateId int,
+	@Name nvarchar(100), 
+	@Address1 nvarchar(200), 
+	@Address2 nvarchar(200), 
+	@City nvarchar(200), 
+	@RegionCode nvarchar(200), 
+	@CountryCode nvarchar(200), 
+	@PostalCode nvarchar(10), 
+	@Phone1 nvarchar(20), 
+	@Phone2 nvarchar(20), 
+	@IsPrimary bit, 
+	@CreatedDate datetime, 
+	@FirstName nvarchar(50), 
+	@LastName nvarchar(50),
+    @Title nvarchar(200),
+    @Email nvarchar(200) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Address 
+ SET
+	[PortalId] = @PortalId,
+	[UserId] = @UserId,
+    [CountryId]=@CountryId,
+    [StateId]=@StateId,
+	[Name] = @Name,
+	[Address1] = @Address1,
+	[Address2] = @Address2,
+	[City] = @City,
+	[RegionCode] = @RegionCode,
+	[CountryCode] = @CountryCode,
+	[PostalCode] = @PostalCode,
+	[Phone1] = @Phone1,
+	[Phone2] = @Phone2,
+	[IsPrimary] = @IsPrimary,
+	[CreatedDate] = @CreatedDate,
+	[FirstName] = @FirstName,
+	[LastName] = @LastName,
+    [Title] = @Title,
+    [Email] = @Email
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]
+	@UserId int, 
+    @B_CountryId int,
+    @B_StateId int,
+	@B_FirstName nvarchar(50), 
+	@B_LastName nvarchar(50), 
+	@B_Address1 nvarchar(200), 
+	@B_Address2 nvarchar(200), 
+	@B_City nvarchar(200), 
+	@B_RegionCode nvarchar(200), 
+	@B_CountryCode nvarchar(200), 
+	@B_PostalCode nvarchar(50), 
+	@B_Phone1 nvarchar(20), 
+	@B_Phone2 nvarchar(20), 
+    @B_Title  nvarchar(200), 
+    @B_Email  nvarchar(200), 
+    @S_CountryId int,
+    @S_StateId int,
+	@S_FirstName nvarchar(50), 
+	@S_LastName nvarchar(50), 
+	@S_Address1 nvarchar(200), 
+	@S_Address2 nvarchar(200), 
+	@S_City nvarchar(200), 
+	@S_RegionCode nvarchar(200), 
+	@S_CountryCode nvarchar(200), 
+	@S_PostalCode nvarchar(50), 
+	@S_Phone1 nvarchar(20), 
+	@S_Phone2 nvarchar(20), 
+    @S_Title  nvarchar(200), 
+    @S_Email  nvarchar(200), 
+	@NeedAddress bit, 
+	@ShipSameAsBill bit,
+    @ShipMethodId int,
+    @ShipMethodName  nvarchar(200),
+    @NeedBillAddress bit
+AS
+Declare @RecordCount int
+
+Select @RecordCount=count(UserId) 
+from {databaseOwner}{objectQualifier}CP_Product_CartAddress
+where UserId=@UserId
+
+if (@RecordCount>0) 
+    begin
+    UPDATE {databaseOwner}{objectQualifier}CP_Product_CartAddress 
+    SET
+    [B_CountryId]=@B_CountryId,
+    [B_StateId]=@B_StateId,
+	[B_FirstName] = @B_FirstName,
+	[B_LastName] = @B_LastName,
+	[B_Address1] = @B_Address1,
+	[B_Address2] = @B_Address2,
+	[B_City] = @B_City,
+	[B_RegionCode] = @B_RegionCode,
+	[B_CountryCode] = @B_CountryCode,
+	[B_PostalCode] = @B_PostalCode,
+	[B_Phone1] = @B_Phone1,
+	[B_Phone2] = @B_Phone2,
+    [B_Title] = @B_Title,
+    [B_Email] = @B_Email,
+    [S_CountryId]=@S_CountryId,
+    [S_StateId]=@S_StateId,
+	[S_FirstName] = @S_FirstName,
+	[S_LastName] = @S_LastName,
+	[S_Address1] = @S_Address1,
+	[S_Address2] = @S_Address2,
+	[S_City] = @S_City,
+	[S_RegionCode] = @S_RegionCode,
+	[S_CountryCode] = @S_CountryCode,
+	[S_PostalCode] = @S_PostalCode,
+	[S_Phone1] = @S_Phone1,
+	[S_Phone2] = @S_Phone2,
+    [S_Title] = @S_Title,
+    [S_Email] = @S_Email,
+	[NeedAddress] = @NeedAddress,
+	[ShipSameAsBill] = @ShipSameAsBill,
+    [ShipMethodId]=@ShipMethodId,
+    [ShipMethodName]=@ShipMethodName,
+    [NeedBillAddress]=@NeedBillAddress
+    WHERE [UserId] = @UserId
+  end
+else
+    begin
+   INSERT INTO {databaseOwner}{objectQualifier}CP_Product_CartAddress (
+    [UserId],
+    [B_CountryId],
+    [B_StateId],
+	[B_FirstName],
+	[B_LastName],
+	[B_Address1],
+	[B_Address2],
+	[B_City],
+	[B_RegionCode],
+	[B_CountryCode],
+	[B_PostalCode],
+	[B_Phone1],
+	[B_Phone2],
+    [B_Title],
+    [B_Email],
+    [S_CountryId],
+    [S_StateId],
+	[S_FirstName],
+	[S_LastName],
+	[S_Address1],
+	[S_Address2],
+	[S_City],
+	[S_RegionCode],
+	[S_CountryCode],
+	[S_PostalCode],
+	[S_Phone1],
+	[S_Phone2],
+    [S_Title],
+    [S_Email],
+	[NeedAddress],
+	[ShipSameAsBill],
+    [ShipMethodId],
+    [ShipMethodName],
+    [NeedBillAddress]
+) VALUES (
+    @UserId,
+    @B_CountryId,
+    @B_StateId,
+	@B_FirstName,
+	@B_LastName,
+	@B_Address1,
+	@B_Address2,
+	@B_City,
+	@B_RegionCode,
+	@B_CountryCode,
+	@B_PostalCode,
+	@B_Phone1,
+	@B_Phone2,
+    @B_Title,
+    @B_Email,
+    @S_CountryId,
+    @S_StateId,
+	@S_FirstName,
+	@S_LastName,
+	@S_Address1,
+	@S_Address2,
+	@S_City,
+	@S_RegionCode,
+	@S_CountryCode,
+	@S_PostalCode,
+	@S_Phone1,
+	@S_Phone2,
+    @S_Title,
+    @S_Email,
+	@NeedAddress,
+	@ShipSameAsBill,
+    @ShipMethodId,
+    @ShipMethodName,
+    @NeedBillAddress
+    )
+end
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Add]
+	@UserId int,
+	@PortalId int,
+	@UserName nvarchar(50),
+	@OrderNo nvarchar(100),
+	@OrderDate datetime,
+    @B_CountryId int,
+	@B_StateId int,
+	@B_FirstName nvarchar(50),
+	@B_LastName nvarchar(50),
+	@B_Address1 nvarchar(200),
+	@B_Address2 nvarchar(200),
+	@B_City nvarchar(200),
+	@B_RegionCode nvarchar(200),
+	@B_CountryCode nvarchar(200),
+	@B_PostalCode nvarchar(50),
+	@B_Phone1 nvarchar(20),
+	@B_Phone2 nvarchar(20),
+    @B_Title  nvarchar(200), 
+    @B_Email  nvarchar(200), 
+    @S_CountryId int,
+	@S_StateId int,
+	@S_FirstName nvarchar(50),
+	@S_LastName nvarchar(50),
+	@S_Address1 nvarchar(200),
+	@S_Address2 nvarchar(200),
+	@S_City nvarchar(200),
+	@S_RegionCode nvarchar(200),
+	@S_CountryCode nvarchar(200),
+	@S_PostalCode nvarchar(50),
+	@S_Phone1 nvarchar(20),
+	@S_Phone2 nvarchar(20),
+    @S_Title  nvarchar(200), 
+    @S_Email  nvarchar(200), 
+	@ItemSummary decimal(18, 2),
+	@OrderIsPlaced bit,
+	@OrderStatus int,
+    @NeedAddress bit,
+    @ShipSameAsBill bit,
+    @ShipMethodId int,
+	@ShipMethodName nvarchar(200),
+	@NeedBillAddress bit
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Order (
+	[UserId],
+	[PortalId],
+	[UserName],
+	[OrderNo],
+	[OrderDate],
+    [B_CountryId],
+	[B_StateId],
+	[B_FirstName],
+	[B_LastName],
+	[B_Address1],
+	[B_Address2],
+	[B_City],
+	[B_RegionCode],
+	[B_CountryCode],
+	[B_PostalCode],
+	[B_Phone1],
+	[B_Phone2],
+    [B_Title],
+    [B_Email],
+    [S_CountryId],
+	[S_StateId],
+	[S_FirstName],
+	[S_LastName],
+	[S_Address1],
+	[S_Address2],
+	[S_City],
+	[S_RegionCode],
+	[S_CountryCode],
+	[S_PostalCode],
+	[S_Phone1],
+	[S_Phone2],
+    [S_Title],
+    [S_Email],
+	[ItemSummary],
+	[OrderIsPlaced],
+	[OrderStatus],
+    [NeedAddress],
+    [ShipSameAsBill],
+    [ShipMethodId],
+	[ShipMethodName],
+	[NeedBillAddress]
+) VALUES (
+	@UserId,
+	@PortalId,
+	@UserName,
+	@OrderNo,
+	GetDate(),
+    @B_CountryId,
+	@B_StateId,
+	@B_FirstName,
+	@B_LastName,
+	@B_Address1,
+	@B_Address2,
+	@B_City,
+	@B_RegionCode,
+	@B_CountryCode,
+	@B_PostalCode,
+	@B_Phone1,
+	@B_Phone2,
+    @B_Title,
+    @B_Email,
+    @S_CountryId,
+	@S_StateId,
+	@S_FirstName,
+	@S_LastName,
+	@S_Address1,
+	@S_Address2,
+	@S_City,
+	@S_RegionCode,
+	@S_CountryCode,
+	@S_PostalCode,
+	@S_Phone1,
+	@S_Phone2,
+    @S_Title,
+    @S_Email,
+	@ItemSummary,
+	@OrderIsPlaced,
+	@OrderStatus,
+    @NeedAddress,
+    @ShipSameAsBill,
+    @ShipMethodId,
+	@ShipMethodName,
+	@NeedBillAddress
+)
+
+select SCOPE_IDENTITY()
+
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Update]
+	@Id int, 
+	@UserId int, 
+	@PortalId int, 
+	@UserName nvarchar(50), 
+	@OrderNo nvarchar(100), 
+	@OrderDate datetime, 
+	@B_CountryId int, 
+	@B_StateId int, 
+	@B_FirstName nvarchar(50), 
+	@B_LastName nvarchar(50), 
+	@B_Address1 nvarchar(200), 
+	@B_Address2 nvarchar(200), 
+	@B_City nvarchar(200), 
+	@B_RegionCode nvarchar(200), 
+	@B_CountryCode nvarchar(200), 
+	@B_PostalCode nvarchar(50), 
+	@B_Phone1 nvarchar(20), 
+	@B_Phone2 nvarchar(20), 
+    @B_Title  nvarchar(200), 
+    @B_Email  nvarchar(200), 
+	@S_CountryId int, 
+	@S_StateId int, 
+	@S_FirstName nvarchar(50), 
+	@S_LastName nvarchar(50), 
+	@S_Address1 nvarchar(200), 
+	@S_Address2 nvarchar(200), 
+	@S_City nvarchar(200), 
+	@S_RegionCode nvarchar(200), 
+	@S_CountryCode nvarchar(200), 
+	@S_PostalCode nvarchar(50), 
+	@S_Phone1 nvarchar(20), 
+	@S_Phone2 nvarchar(20), 
+    @S_Title  nvarchar(200), 
+    @S_Email  nvarchar(200), 
+	@ItemSummary decimal(18, 2), 
+	@OrderIsPlaced bit, 
+	@OrderStatus int, 
+	@NeedAddress bit, 
+	@ShipSameAsBill bit, 
+	@ShipMethodId int, 
+	@ShipMethodName nvarchar(200), 
+	@NeedBillAddress bit
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Order 
+SET
+	[UserId] = @UserId,
+	[PortalId] = @PortalId,
+	[UserName] = @UserName,
+	[OrderNo] = @OrderNo,
+	[OrderDate] = @OrderDate,
+	[B_CountryId] = @B_CountryId,
+	[B_StateId] = @B_StateId,
+	[B_FirstName] = @B_FirstName,
+	[B_LastName] = @B_LastName,
+	[B_Address1] = @B_Address1,
+	[B_Address2] = @B_Address2,
+	[B_City] = @B_City,
+	[B_RegionCode] = @B_RegionCode,
+	[B_CountryCode] = @B_CountryCode,
+	[B_PostalCode] = @B_PostalCode,
+	[B_Phone1] = @B_Phone1,
+	[B_Phone2] = @B_Phone2,
+    [B_Title] = @B_Title,
+    [B_Email] = @B_Email,
+	[S_CountryId] = @S_CountryId,
+	[S_StateId] = @S_StateId,
+	[S_FirstName] = @S_FirstName,
+	[S_LastName] = @S_LastName,
+	[S_Address1] = @S_Address1,
+	[S_Address2] = @S_Address2,
+	[S_City] = @S_City,
+	[S_RegionCode] = @S_RegionCode,
+	[S_CountryCode] = @S_CountryCode,
+	[S_PostalCode] = @S_PostalCode,
+	[S_Phone1] = @S_Phone1,
+	[S_Phone2] = @S_Phone2,
+    [S_Title] = @S_Title,
+    [S_Email] = @S_Email,
+	[ItemSummary] = @ItemSummary,
+	[OrderIsPlaced] = @OrderIsPlaced,
+	[OrderStatus] = @OrderStatus,
+	[NeedAddress] = @NeedAddress,
+	[ShipSameAsBill] = @ShipSameAsBill,
+	[ShipMethodId] = @ShipMethodId,
+	[ShipMethodName] = @ShipMethodName,
+	[NeedBillAddress] = @NeedBillAddress
+WHERE
+	[Id] = @Id
+
+
+' 
+END

@@ -1,0 +1,125 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Drop CheckoutPageViewMode column
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'CheckoutPageViewMode')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN CheckoutPageViewMode
+END
+GO
+
+-- Drop Gallery zoom columns
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'GalleryProductsZoomActive')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN GalleryProductsZoomActive, GalleryProductsZoomWidth, GalleryProductsZoomEffect, GalleryProductsZoomPosition
+END
+GO
+
+-- Drop ProductDetailAddToCartInPlace column
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductDetailAddToCartInPlace')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductDetailAddToCartInPlace
+END
+GO
+
+-- Drop ProductListAddToCartInPlace, ProductListSummaryShow columns
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductListAddToCartInPlace')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductListAddToCartInPlace, ProductListSummaryShow
+END
+GO
+
+-- Drop ProductShowcaseAddToCartInPlace, ProductShowcaseScrollDirection, ProductShowcaseScrollDuration columns
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductShowcaseAddToCartInPlace')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductShowcaseAddToCartInPlace, ProductShowcaseScrollDirection, ProductShowcaseScrollDuration
+END
+GO
+
+-- Drop InternetSecure gateway
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysInternetSecureMDGatewayID')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN PaymentGatewaysInternetSecureMDGatewayID, PaymentGatewaysInternetSecureMDTestMode
+
+    UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration SET PaymentMethodsCreditCardPaymentGateway = '' WHERE PaymentMethodsCreditCardPaymentGateway = 'InternetSecureMD'
+    UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment SET PaymentGateway = '' WHERE PaymentGateway = 'InternetSecureMD'
+END
+GO
+
+-- Drop SuomenVerkkomaksut gateway (payment method 12)
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysSuomenVerkkomaksutMerchantID')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN PaymentGatewaysSuomenVerkkomaksutMerchantID, PaymentGatewaysSuomenVerkkomaksutSecretCode, PaymentGatewaysSuomenVerkkomaksutTestMode, PaymentMethodsSuomenVerkkomaksutActive, PaymentMethodsSuomenVerkkomaksutAvailabilityRule
+
+    -- Set to Other (payment method 27)
+    UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment SET PaymentMethod = 27, PaymentGateway = '' WHERE PaymentMethod = 12
+
+    UPDATE rso
+    SET rso.UserPaymentID = NULL
+    FROM {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder rso 
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment up
+    ON up.UserPaymentID = rso.UserPaymentID
+    WHERE up.PaymentMethod = 12
+
+    UPDATE so
+    SET so.PreferredUserPaymentID = NULL
+    FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so 
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment up
+    ON up.UserPaymentID = so.PreferredUserPaymentID
+    WHERE up.PaymentMethod = 12
+
+    DELETE FROM {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment
+    WHERE PaymentMethod = 12
+END
+GO
+
+-- Drop Towah gateway (payment method 9)
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysTowahMerchantID')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN PaymentGatewaysTowahMerchantID, PaymentGatewaysTowahSecretKey, PaymentGatewaysTowahTestMode, PaymentMethodsTowahActive, PaymentMethodsTowahAvailabilityRule
+
+    -- Set to Other (payment method 27)
+    UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment SET PaymentMethod = 27, PaymentGateway = '' WHERE PaymentMethod = 9
+
+    UPDATE rso
+    SET rso.UserPaymentID = NULL
+    FROM {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder rso 
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment up
+    ON up.UserPaymentID = rso.UserPaymentID
+    WHERE up.PaymentMethod = 9
+
+    UPDATE so
+    SET so.PreferredUserPaymentID = NULL
+    FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so 
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment up
+    ON up.UserPaymentID = so.PreferredUserPaymentID
+    WHERE up.PaymentMethod = 9
+
+    DELETE FROM {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment
+    WHERE PaymentMethod = 9
+END
+GO
+
+-- Drop Zooz gateway
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysZoozAppKey')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN PaymentGatewaysZoozAppKey, PaymentGatewaysZoozTestMode, PaymentGatewaysZoozUniqueID
+
+    UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration SET PaymentMethodsCreditCardPaymentGateway = '' WHERE PaymentMethodsCreditCardPaymentGateway = 'Zooz'
+    UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment SET PaymentGateway = '' WHERE PaymentGateway = 'Zooz'
+END
+GO
+
+
+-- Add support for Pineapple Payments Transax gateway
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysPineappleTransaxUsername')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+	    PaymentGatewaysPineappleTransaxUsername varchar(255) NULL,
+	    PaymentGatewaysPineappleTransaxPassword varchar(255) NULL
+END
+GO

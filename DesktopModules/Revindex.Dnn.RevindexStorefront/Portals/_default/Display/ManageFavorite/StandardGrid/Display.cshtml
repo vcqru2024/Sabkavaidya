@@ -1,0 +1,315 @@
+﻿@* Template name: StandardGrid *@
+@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ManageFavoriteWebViewPage
+
+<div id="rvdsfManageFavoritePanelContainer" class="rvd-module-container rvdsf rvdsf-managefavorite-container rvdsf-managefavorite-grid" style="display:none" data-bind="visible: true">		
+	<!-- ko if: Favorites().length == 0 -->
+	<div class="col-12 col">
+		<div class="alert alert-info">@Html.LocalizeString("EmptyFavoriteMessage")</div>
+	</div>
+	<div class="col-12 col">
+		<button class="btn btn-primary" type="button" data-bind="click: function() { location.href = ProductList.TabUrl(); }">@Html.LocalizeString("BrowseProductsLink")</button>
+	</div>
+	<!-- /ko -->
+
+	<!-- ko if: Favorites().length > 0 -->
+		<div class="row rvdsf-actionbar-container">
+			<div class="col-sm-6">
+				
+			</div>
+			<div class="col-sm-6 text-sm-right">
+				<button type="button" class="btn btn-primary" data-bind="click: removeFavorites" >@Html.LocalizeString("RemoveAllLink")</button>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<!-- ko foreach: { data: Favorites, as: 'favorite' } -->
+				<div class="@(Revindex.Web.UI.WebControls.Util.IsMobileDevice() ? "col-xs-12 col-12" : "col-sm-4")">
+					<div class="rvdsf-product-container">
+						<!-- ko if: favorite.Product.ShowPrice && favorite.Product.DefaultProductVariant.CombinedSavings() > 0 -->
+							<div class="rvdsf-label-savings">
+								@Html.LocalizeString("SavingsLabel")
+								<!-- ko if: favorite.Product.ProductVariants().length == 1 -->
+									<span> <!-- ko text: favorite.Product.DefaultProductVariant.FormattedCombinedPercentSavings() --><!-- /ko --></span>
+								<!-- /ko -->
+							</div>
+						<!-- /ko -->
+						<div class="rvdsf-product-gallery-container">
+							<!-- ko if: favorite.Product.DefaultThumbnailGallery != null -->
+								<a data-bind="attr: { href: favorite.Product.DefaultProductVariant.ProductDetail.TabUrl }" ><img class="img-responsive img-fluid center-block d-block mx-auto" data-bind="attr: { src: favorite.Product.DefaultThumbnailGallery.MediaUrl, alt: favorite.Product.DefaultThumbnailGallery.AlternateText }" /></a>
+							<!-- /ko -->
+						</div>
+						<div class="rvdsf-product-info-container">
+							<div class="rvdsf-field-name">
+								<i class="glyphicon glyphicon-heart fas fa-heart rvdsf-btn-addtofavorite active" data-bind="click : $root.removeFavorite" title="@Html.LocalizeString("AddToFavoriteLink")"></i>
+								<a class="rvdsf-label-name" data-bind="attr: { href : favorite.Product.ProductDetail.TabUrl }, text: favorite.Product.Name"></a>
+							</div>
+							<!-- ko if: favorite.Product.ShowProductReviews -->
+								<div class="rvdsf-field-rating">
+									<input type="hidden" class="rating" readonly data-bind="attr: { value : favorite.Product.AverageOverallRating() == 0 ? '' : favorite.Product.AverageOverallRating() }" />
+									<!-- ko if: favorite.Product.RatingCount() > 0 -->
+										<span class="badge"><!-- ko text: favorite.Product.RatingCount --><!-- /ko --></span>
+									<!-- /ko -->
+								</div>
+							<!-- /ko -->
+							<!-- ko if: favorite.Product.ShowPrice -->
+								<!-- ko if: favorite.Product.ProductVariants().length == 1 -->
+									<!-- ko ifnot: favorite.Product.DefaultProductVariant.PriceText -->
+										<div class="rvdsf-field-price">
+											<!-- ko if: favorite.Product.DefaultProductVariant.CombinedPromotionPrice -->
+												<span class="rvdsf-label-price"><s><!-- ko text: favorite.Product.DefaultProductVariant.FormattedCombinedPrice --><!-- /ko --></s></span>
+												<span class="rvdsf-label-promotionprice"><!-- ko text: favorite.Product.DefaultProductVariant.FormattedCombinedPromotionPrice --><!-- /ko --></span>
+											<!-- /ko -->
+											<!-- ko ifnot: favorite.Product.DefaultProductVariant.CombinedPromotionPrice -->
+												<span class="rvdsf-label-price"><!-- ko text: favorite.Product.DefaultProductVariant.FormattedCombinedPrice --><!-- /ko --></span>
+											<!-- /ko -->
+										</div>
+									<!-- /ko -->
+									<!-- ko if: favorite.Product.DefaultProductVariant.PriceText -->
+										<div class="rvdsf-field-price">
+											<span class="rvdsf-label-pricetext"><!-- ko text: favorite.Product.DefaultProductVariant.PriceText --><!-- /ko --></span>
+										</div>
+									<!-- /ko -->
+								<!-- /ko -->
+								<!-- ko if: favorite.Product.ProductVariants().length > 1 && favorite.Product.FormattedMinCombinedSellingPrice && favorite.Product.FormattedMaxCombinedSellingPrice -->
+									<div class="rvdsf-field-price">
+										<span class="rvdsf-label-price"><!-- ko text: favorite.Product.FormattedMinCombinedSellingPrice() == favorite.Product.FormattedMaxCombinedSellingPrice() ? favorite.Product.FormattedMinCombinedSellingPrice() : favorite.Product.FormattedMinCombinedSellingPrice() + ' - ' + favorite.Product.FormattedMaxCombinedSellingPrice() --><!-- /ko --></span>
+									</div>
+								<!-- /ko -->
+							<!-- /ko -->
+							<!-- ko if: favorite.Product.ShowQuantity() && favorite.Product.AllowInternetOrder() && !favorite.Product.DefaultProductVariant.HasFormFields() && favorite.Product.ProductVariants().length == 1 -->
+								<div class="rvdsf-product-form-container form-horizontal">
+									<div class="form-group rvdsf-field-qty row">
+										<label class="control-label col-form-label col-sm-6 text-sm-right" data-bind="attr: { for: 'rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID() }">@Html.LocalizeString("QuantityLabel")</label>
+										<div class="col-sm-6 text-left">
+											<!-- ko if: favorite.Product.DefaultProductVariant.AllowableOrderQuantityList().length == 0 -->
+												<input data-bind="attr: { id: 'rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID(), 
+																			name: 'rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID(), 
+																			min: (favorite.Product.DefaultProductVariant.MinOrderQuantity() ? favorite.Product.DefaultProductVariant.MinOrderQuantity() : favorite.Product.DefaultProductVariant.DefaultQuantity()), 
+																			max: (favorite.Product.DefaultProductVariant.MaxOrderQuantity() ? favorite.Product.DefaultProductVariant.MaxOrderQuantity() : 9999 ), 
+																			value: favorite.Product.DefaultProductVariant.DefaultQuantity }" type="number" class="form-control" required step="1" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+											<!-- /ko -->
+											<!-- ko ifnot: favorite.Product.DefaultProductVariant.AllowableOrderQuantityList().length == 0 -->
+												<select data-bind="attr: { id: 'rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID(), name: 'rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID() }" class="form-control">
+													<!-- ko foreach: { data: favorite.Product.DefaultProductVariant.AllowableOrderQuantityList, as: 'qty' } -->
+														<option data-bind="value: qty" ><!-- ko text: qty --><!-- /ko --></option>
+													<!-- /ko -->
+												</select>
+											<!-- /ko -->
+										</div>
+									</div>
+								</div>
+							<!-- /ko -->
+							<div class="btn-toolbar">
+								<!-- ko if: favorite.Product.ShowSeeDetails -->
+									<button type="button" class="rvdsf-btn-seedetails btn btn-primary" data-bind="click: function() { location.href = favorite.Product.DefaultProductVariant.ProductDetail.TabUrl(); }" >@Html.LocalizeString("SeeDetailsLink")</button>
+								<!-- /ko -->
+
+								<!-- ko if: favorite.Product.AllowInternetOrder() && favorite.Product.ProductVariants().length == 1 && !favorite.Product.DefaultProductVariant.HasFormFields() && favorite.Product.DefaultProductVariant.HasAcceptableInventory() -->
+									<!-- ko if: favorite.Product.ShowAddToCart -->
+										<button type="button" class="rvdsf-btn-addtocart btn btn-primary" data-bind="click: function() { $root.addProductToCart(favorite.Product.DefaultProductVariant.ProductVariantID(), ($('#rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID()).length ? $('#rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID()).val() : favorite.Product.DefaultProductVariant.DefaultQuantity()), 'rvdsfManageFavoriteMessage_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID(), null); }"><!-- ko text: (favorite.Product.DefaultProductVariant.SalesType() == 2 ? '@Html.LocalizeString("AddToQuoteLink")' : '@Html.LocalizeString("AddToCartLink")') --><!-- /ko --></button>
+									<!-- /ko -->
+
+									<!-- ko if: favorite.Product.ShowBuyNow -->
+										<button type="button" class="rvdsf-btn-buynow btn btn-primary" data-bind="click: function() { $root.addProductToCart(favorite.Product.DefaultProductVariant.ProductVariantID(), ($('#rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID()).length ? $('#rvdsfManageFavoriteQuantityInput_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID()).val() : favorite.Product.DefaultProductVariant.DefaultQuantity()), 'rvdsfManageFavoriteMessage_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID(), $root.Checkout.TabUrl()); }"><!-- ko text: favorite.Product.DefaultProductVariant.SalesType() == 2 ? '@Html.LocalizeString("QuoteNowLink")' : '@Html.LocalizeString("BuyNowLink")' --><!-- /ko --></button>
+									<!-- /ko -->
+								<!-- /ko -->
+							</div>
+							<!-- ko if: !favorite.Product.ProductVariants().some(pv => pv.HasAcceptableInventory()) -->
+								<div class="alert alert-info rvdsf-label-soldout">@Html.LocalizeString("SoldOutLabel")</div>
+							<!-- /ko -->
+							<div data-bind="attr: { id: 'rvdsfManageFavoriteMessage_@(Dnn.Module.ModuleID)_' + favorite.FavoriteID() }" style="display:none"></div>
+						</div>
+					</div>
+				</div>
+			<!-- /ko -->	
+		</div>
+	<!-- /ko -->
+</div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses KnockoutJS. See http://knockoutjs.com *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+}
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script type="text/javascript">
+	var rvdsfManageFavorite = rvdsfManageFavorite || {}
+
+	$(document).ready(function () {
+
+        // Initialize progress loading
+        $(document).ajaxStart(function () {
+            // Only show loading if it exceeds 1 sec
+            $("#rvdsfLoading").data("timer", setTimeout(function () { $("#rvdsfLoading").show(); }, 1000))
+        }).ajaxStop(function () {
+            if ($("#rvdsfLoading").data("timer"))
+                clearTimeout($("#rvdsfLoading").data("timer"))
+
+            $("#rvdsfLoading").hide();
+        })
+
+    	// Handle anti-forgery error when user is logged out
+        $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+        	if (jqxhr.status == 401)
+        		window.location.reload(true)
+        })
+
+        // Initialize jQuery Validation with Bootstrap default styles
+        $('#Form').validate({
+            highlight: function(element) {
+				$(element).closest('.form-group').addClass('has-error');
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-error');
+				$(element).removeClass('is-invalid');
+			},
+			errorElement: 'div',
+			errorClass: 'help-block invalid-feedback',
+			errorPlacement: function(error, element) {
+				if (element.parent('.input-group').length) {
+					error.insertAfter(element.parent());
+				} else if(element.prop('type') === 'checkbox') {
+					error.appendTo(element.parent().parent());
+				} else if(element.prop('type') === 'radio') {
+					error.appendTo(element.parent().parent());
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			onsubmit: false
+        })
+
+        // Add custom method to validate at least one checkbox in group is selected
+        $.validator.addMethod("requiredGroup", function (value, element, params) {
+            if (params)
+                return ($("input[name='" + params + "']:checked").length > 0)
+            else
+                return true
+        }, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+        // Bind KnockoutJS view model
+        var manageFavoriteContainer = document.getElementById("rvdsfManageFavoritePanelContainer")
+        manageFavoriteContainer.databind = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+			var that = this
+
+			$.ajax({
+				context: this,
+                beforeSend: servicesFramework.setModuleHeaders,
+				url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageFavorite/ViewModel"
+            })
+            .done(function (data, status) {
+
+                var mapping = {}
+
+                if (this.viewModel) {
+                    ko.mapping.fromJS(data, mapping, this.viewModel)
+                }
+                else {
+                    this.viewModel = ko.mapping.fromJS(data, mapping);
+
+                    this.viewModel.addProductToCart = function (productVariantID, quantity, messageContainerID, redirect) {
+                        var salesOrderDetailData = {
+                            ProductVariantID: productVariantID,
+                            Quantity: quantity
+                        }
+
+                        $.ajax({
+                            type: "POST",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                            data: salesOrderDetailData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+
+                            // Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+                            })
+
+                            $("#" + messageContainerID).attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToCart, Global.FilePaths.LocalSharedResourceFile)) <a class='btn btn-link' href='" + that.viewModel.Cart.TabUrl() + "'>@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("CartLink"))</a>").show().fadeOut(10000)
+
+                            if (redirect)
+                                location.href = redirect
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            $("#" + messageContainerID).attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+                        })
+					}
+
+                    // Helper function to format currency
+                    this.viewModel.formatCurrency = function (number) {
+                        return new Intl.NumberFormat(this.Currency.CultureCode(), { style: 'currency', currency: this.Currency.CurrencyCode() }).format((typeof number === "function" ? number() : number) * this.Currency.ExchangeRate());
+					}
+
+					this.viewModel.removeFavorite = function (favorite) {
+
+						var favoriteData = {
+							ProductID: favorite.Product.ProductID(),
+						}
+
+						$.ajax({
+							type: "DELETE",
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Favorite/Product",
+							data: favoriteData,
+							statusCode: {
+								401: function() { location.href = that.viewModel.Login.TabUrl() + '?returnurl=' + escape(window.location.href) }
+							},
+						})
+						.done(function () {
+							that.viewModel.Favorites.remove(favorite)
+						})
+					}
+
+					this.viewModel.removeFavorites = function () {
+
+						$.ajax({
+							type: "DELETE",
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Favorite/Products",
+							statusCode: {
+								401: function() { location.href = that.viewModel.Login.TabUrl() + '?returnurl=' + escape(window.location.href) }
+							},
+						})
+						.done(function () {
+							that.viewModel.Favorites.removeAll()
+						})
+					}
+
+					ko.applyBindings(this.viewModel, manageFavoriteContainer)
+                }
+
+				// Initialize ratings after KO has run
+				$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+            })
+        }
+
+        manageFavoriteContainer.databind()
+    })
+</script>

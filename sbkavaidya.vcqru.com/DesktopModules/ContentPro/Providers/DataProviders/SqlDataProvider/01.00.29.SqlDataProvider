@@ -1,0 +1,48 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Template] ALTER COLUMN List INT;
+
+EXEC sp_RENAME '{databaseOwner}{objectQualifier}ContentPro_Template.List', 'TemplateTypeID', 'COLUMN'
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_TemplateTypes](
+	[TemplateTypeID] [int] NOT NULL,
+	[Name] [varchar](max) NULL,
+ CONSTRAINT [PK_{objectQualifier}ContentPro_TemplateTypes] PRIMARY KEY CLUSTERED 
+(
+	[TemplateTypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) 
+)  
+
+GO
+
+INSERT INTO {databaseOwner}[{objectQualifier}ContentPro_TemplateTypes]
+           ([TemplateTypeID]
+           ,[Name])
+     VALUES
+           (1,'List'),(2,'Details'),(3,'CatTag'),(4,'Archive')
+GO
+
+UPDATE {databaseOwner}[{objectQualifier}ContentPro_Template] SET TemplateTypeID = 2 WHERE TemplateTypeID IN (SELECT TemplateTypeID FROM {databaseOwner}[{objectQualifier}ContentPro_Template] Where TemplateTypeID = 0);
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Template]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}ContentPro_Template_ContentPro_TemplateTypes] FOREIGN KEY([TemplateTypeID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_TemplateTypes] ([TemplateTypeID])
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Template] CHECK CONSTRAINT [FK_{objectQualifier}ContentPro_Template_ContentPro_TemplateTypes]
+GO
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

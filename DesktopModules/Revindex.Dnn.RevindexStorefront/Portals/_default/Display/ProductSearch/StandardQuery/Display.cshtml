@@ -1,0 +1,77 @@
+﻿@* Template name: StandardQuery *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ProductSearchWebViewPage<ProductSearchViewModel>
+
+<div class="rvdsf rvdsf-productsearch-container">
+    <div class="input-group">
+        <input id="rvdsfProductSearchQueryInput" type="search" onkeypress="if (event.keyCode == '13') { event.preventDefault(); $('.DnnModule-@(Dnn.Module.ModuleID) #rvdsfProductSearchSubmitButton').click() }" class="form-control" placeholder="@Html.LocalizeString("SearchPlaceholder")" value="@Model.SearchQuery">
+        <div class="input-group-btn input-group-append">
+            <button id="rvdsfProductSearchSubmitButton" class="btn btn-primary rvd-btn-search" type="button" onclick="var url = new window.URL('@Model.ProductList.TabUrl'); if ($('.DnnModule-@(Dnn.Module.ModuleID) #rvdsfProductSearchQueryInput').val() == '') url.searchParams.delete('@Global.QueryStringKeys.SearchQuery'); else url.searchParams.set('@Global.QueryStringKeys.SearchQuery', $('.DnnModule-@(Dnn.Module.ModuleID) #rvdsfProductSearchQueryInput').val()); location.href = url.href;"><i class="glyphicon glyphicon-search fa fas fa-search"></i></button>
+        </div>
+    </div>
+</div>
+@* Uses polyfill. See https://qa.polyfill.io *@
+<script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default"></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.data.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.popup.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.list.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.autocomplete.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script>
+    $(document).ready(function () {
+        var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);        
+
+        var queryAutoComplete = $(".DnnModule-@(Dnn.Module.ModuleID) #rvdsfProductSearchQueryInput").kendoAutoComplete({
+            dataTextField: "Name",
+			dataValueField: "ProductID",
+            dataSource: new kendo.data.DataSource({
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        type: "POST",
+                        url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Product/Search",
+                        beforeSend: servicesFramework.setModuleHeaders,
+                        data: function () {
+                        	return {
+                        		Query: queryAutoComplete.value(),
+                                MaxItems: 30
+                        	}
+                        },
+                        dataType: "json",
+                        contentType: "application/json; charset=UTF-8",
+                    },
+                    parameterMap: function (data, type) {
+                        return kendo.stringify(data);
+                    }
+                },
+                schema: {
+					data: function (response) {
+
+						// We need to decycle any circular references because Kendo UI can only support flat structure
+						return JSON.decycle(response)
+					}
+				},
+            }),
+            autoWidth: true,
+            enforceMinLength: true,
+            height: 400,
+            minLength: 3,
+            filter: "contains",
+            suggest: false,
+            template: `<div class="k-state-default" style="margin: 10px;"><a href="#: data.ProductDetail.TabUrl #"><img src="#if (data.DefaultThumbnailGallery != null) {# #= data.DefaultThumbnailGallery.MediaUrl # #}#" style="min-width: 40px; width: 40px; margin-right: 10px;" /></a><strong><a href="#: data.ProductDetail.TabUrl #">#: data.Name #</a></strong></div>`,
+            footerTemplate: `<div class="text-center" style="margin: 10px;"><a class="btn btn-primary btn-sm" href="\\\\#" onclick="$('.DnnModule-@(Dnn.Module.ModuleID) \\\\#rvdsfProductSearchSubmitButton').click();">@Html.Raw(Html.LocalizeString("MoreResultsLabel")))</a></div>`,
+        }).data("kendoAutoComplete")
+    })
+</script>

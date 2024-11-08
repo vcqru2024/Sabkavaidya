@@ -1,0 +1,63 @@
+
+/******   drop legacy procedure CP_Common_Role_Get ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Get]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Get]
+GO
+
+/******   drop legacy procedure CP_Common_Role_GetByPortals ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]
+GO
+
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Get]    ScriptDate: 08/15/2010 21:56:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Get]
+	@RoleId int
+	
+AS
+
+SELECT a.*,
+       b.RoleName
+FROM {databaseOwner}{objectQualifier}CP_Common_Role a,{databaseOwner}{objectQualifier}Roles b
+WHERE
+	(a.[RoleId] = @RoleId) and
+    (a.RoleId=b.RoleId)
+	
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]    ScriptDate: 08/15/2010 21:56:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]
+	@PortalId int
+AS
+
+SELECT  a.*,
+        b.RoleName
+FROM {databaseOwner}{objectQualifier}CP_Common_Role a,{databaseOwner}{objectQualifier}Roles b
+WHERE
+	(a.[PortalId]=@PortalId) and
+    (a.RoleId=b.RoleId)
+
+' 
+END
+GO

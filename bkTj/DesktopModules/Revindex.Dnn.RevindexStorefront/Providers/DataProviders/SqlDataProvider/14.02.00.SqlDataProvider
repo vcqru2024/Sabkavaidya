@@ -1,0 +1,46 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Add UserPaymentGUID column
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment ADD UserPaymentGUID uniqueidentifier NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_UserPayment_UserPaymentGUID DEFAULT NEWID()
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_UserPayment_UserPaymentGUID
+	CREATE UNIQUE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_UserPayment_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment (UserPaymentGUID)
+	
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		-- Set product Featured flag if not associated to any category. For performance reasons, we no longer display products that
+		-- do not belong to any category to avoid this extra lookup.
+		UPDATE p
+		SET p.Featured = 1
+		FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+		LEFT JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductCategory pc
+		ON pc.ProductID = p.ProductID
+		WHERE p.Deleted = 0 AND p.Featured = 0 AND pc.ProductCategoryID IS NULL
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

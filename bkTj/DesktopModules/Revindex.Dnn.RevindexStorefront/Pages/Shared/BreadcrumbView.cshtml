@@ -1,0 +1,9 @@
+﻿@using Revindex.Web.UI.WebUserControls.Dnn.Pages.Shared;
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<BreadcrumbViewModel>
+
+<ul class="rvdBreadcrumb">
+	@foreach (var item in Model.Items)
+	{
+		<li><a href="@item.Url">@item.Name</a></li>
+	}
+</ul>

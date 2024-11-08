@@ -1,0 +1,31 @@
+﻿<dotnetnuke version="9.0" type="Module">
+	<friendlyName>HomepageTest</friendlyName>
+	<description>A test module for homepage</description>
+	<version>01.00.00</version>
+	<modules>
+		<module>
+			<friendlyName>HomepageTest</friendlyName>
+			<controls>
+				<control>
+					<key>View</key>
+					<src>DesktopModules/FORM/homepage.test.ascx</src>
+					<type>View</type>
+					<title>Homepage Test</title>
+					<helpUrl />
+					<supportAssembly />
+					<supportClass />
+				</control>
+			</controls>
+		</module>
+	</modules>
+	<components>
+		<component type="File">
+			<files>
+				<basePath>DesktopModules/FORM/</basePath>
+				<path>homepage.test.ascx</path>
+				<path>homepage.test.ascx.cs</path>
+				<path>homepage.js</path>
+			</files>
+		</component>
+	</components>
+</dotnetnuke>

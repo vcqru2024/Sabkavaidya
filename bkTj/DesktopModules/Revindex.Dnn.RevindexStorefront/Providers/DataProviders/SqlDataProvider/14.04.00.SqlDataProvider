@@ -1,0 +1,39 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Rename Authorize.net SIM MD5 to SignatureKey
+	EXECUTE sp_rename N'{databaseOwner}{objectQualifier}Revindex_Storefront_Configuration.PaymentGatewaysAuthorizeNetSIMMD5Hash', N'PaymentGatewaysAuthorizeNetSIMSignatureKey', 'COLUMN' 
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		-- Upgrade default Checkout template to "StandardMultipleStep" or "StandardSingleStep"
+		UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_Configuration] SET CheckoutDisplayTemplate = 'StandardMultipleStep' WHERE CheckoutDisplayTemplate LIKE 'Standard%' AND CheckoutPageViewMode = 2
+		UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_Configuration] SET CheckoutDisplayTemplate = 'StandardSingleStep' WHERE CheckoutDisplayTemplate LIKE 'Standard%' AND CheckoutPageViewMode = 1
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

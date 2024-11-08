@@ -1,0 +1,1684 @@
+2024-03-08 10:01:08.259+05:30 [DESKTOP-TU3857L][D:10][T:52][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 10:06:17.804+05:30 [DESKTOP-TU3857L][D:10][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 10:06:17.807+05:30 [DESKTOP-TU3857L][D:10][T:63][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 10:08:34.261+05:30 [DESKTOP-TU3857L][D:10][T:63][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 10:09:44.526+05:30 [DESKTOP-TU3857L][D:10][T:25][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikModules.Appointment is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClass14_0.<FindView>b__0(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 10:14:26.431+05:30 [DESKTOP-TU3857L][D:10][T:63][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 10:15:10.938+05:30 [DESKTOP-TU3857L][D:10][T:63][ERROR] DotNetNuke.Data.PetaPoco.PetaPocoHelper - [3] Error executing SQL: ;Exec dbo.GetAllTabsModulesByModuleID @0
+Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2024-03-08 10:15:10.941+05:30 [DESKTOP-TU3857L][D:10][T:63][ERROR] DotNetNuke.Web.InternalServices.ControlBarController - System.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at DotNetNuke.Data.PetaPoco.PetaPocoExt.ExecuteReader(Database database, String sql, Object[] args)
+   at DotNetNuke.Data.PetaPoco.PetaPocoHelper.ExecuteReader(String connectionString, CommandType type, Int32 timeoutSec, String sql, Object[] args)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteReader(String procedureName, Object[] commandParameters)
+   at DotNetNuke.Entities.Modules.ModuleController.GetAllTabsModulesByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleVersionsByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModuleInternal(ModuleInfo module)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModule(ModuleInfo module)
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+   at DotNetNuke.Web.InternalServices.ControlBarController.AddModule(AddModuleDTO dto)
+ClientConnectionId:d3514cd0-8c44-4d9b-a97c-c4c827bf5d10
+Error Number:-2,State:0,Class:11
+2024-03-08 10:20:41.944+05:30 [DESKTOP-TU3857L][D:11][T:52][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 11:01:48.999+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 11:02:18.120+05:30 [DESKTOP-TU3857L][D:3][T:22][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 11:02:55.989+05:30 [DESKTOP-TU3857L][D:4][T:22][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 11:03:49.354+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 11:04:07.002+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 11:04:51.210+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error:  is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'PatientPhoneNumber', table 'dnn.dbo.DNNModule1_appointment'; column does not allow nulls. INSERT fails.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.Read()
+   at System.Data.SqlClient.SqlCommand.CompleteExecuteScalar(SqlDataReader ds, Boolean returnSqlValue)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Providers.SqlServerDatabaseProvider.ExecuteInsert(Database db, IDbCommand cmd, String primaryKeyName)
+   at PetaPoco.Database.ExecuteInsert(String tableName, String primaryKeyName, Boolean autoIncrement, Object poco)
+   at PetaPoco.Database.Insert(Object poco)
+   at DotNetNuke.Data.RepositoryBase`1.Insert(T item)
+   at Saatvik.Modules.DNNModule1.Components.AppointmentManager.CreateAppointment(appointment t) in E:\dnn9me\DesktopModules\MVC\SaatvikModules.Appointment\Components\AppoitnmentManger.cs:line 36
+   at Saatvik.Modules.DNNModule1.Controllers.AppointmentController.Edit(appointment appointments) in E:\dnn9me\DesktopModules\MVC\SaatvikModules.Appointment\Controllers\AppointmentController.cs:line 45
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()
+ClientConnectionId:ba33f0a4-4cca-48b6-916c-8dcad30bba3a
+Error Number:515,State:2,Class:16"
+2024-03-08 11:04:51.229+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 11:46:28.025+05:30 [DESKTOP-TU3857L][D:5][T:106][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 12:06:32.574+05:30 [DESKTOP-TU3857L][D:6][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 12:06:58.276+05:30 [DESKTOP-TU3857L][D:6][T:60][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 12:11:40.743+05:30 [DESKTOP-TU3857L][D:6][T:63][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 12:16:11.337+05:30 [DESKTOP-TU3857L][D:6][T:75][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 12:16:35.352+05:30 [DESKTOP-TU3857L][D:6][T:70][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 12:17:15.217+05:30 [DESKTOP-TU3857L][D:6][T:129][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 12:23:44.085+05:30 [DESKTOP-TU3857L][D:7][T:43][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 12:26:12.046+05:30 [DESKTOP-TU3857L][D:8][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 12:31:46.909+05:30 [DESKTOP-TU3857L][D:8][T:86][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.909+05:30 [DESKTOP-TU3857L][D:8][T:59][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.909+05:30 [DESKTOP-TU3857L][D:8][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.966+05:30 [DESKTOP-TU3857L][D:8][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.966+05:30 [DESKTOP-TU3857L][D:8][T:59][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.968+05:30 [DESKTOP-TU3857L][D:8][T:86][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.976+05:30 [DESKTOP-TU3857L][D:8][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.983+05:30 [DESKTOP-TU3857L][D:8][T:59][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 12:31:46.985+05:30 [DESKTOP-TU3857L][D:8][T:86][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Threading.Tasks.TaskCanceledException: A task was canceled.
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 14:32:49.546+05:30 [DESKTOP-TU3857L][D:9][T:43][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 14:49:22.238+05:30 [DESKTOP-TU3857L][D:9][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Modules.ModuleController.IsSharedModule(ModuleInfo module)
+   at DotNetNuke.Entities.Tabs.TabChangeTracker.TrackModuleModification(ModuleInfo module, Int32 moduleVersion, Int32 userId)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleOrder(Int32 tabId)
+2024-03-08 14:50:06.606+05:30 [DESKTOP-TU3857L][D:9][T:79][ERROR] DotNetNuke.Services.Installer.Log.Logger - Exception - Could not find file 'E:\dnn9me\DesktopModules\MVC\SaatvikModules.Doctor\Resources.zip.manifest'.
+2024-03-08 14:50:55.825+05:30 [DESKTOP-TU3857L][D:10][T:125][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 14:50:57.100+05:30 [DESKTOP-TU3857L][D:10][T:123][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.NullReferenceException: Object reference not set to an instance of an object.
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at DotNetNuke.Web.Mvc.Framework.ModuleDelegatingViewEngine.RunAgainstModuleViewEngines(ControllerContext controllerContext, Func`2 engineRequest)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindPartialView(ControllerContext controllerContext, String partialViewName)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnPartialViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-03-08 14:50:58.339+05:30 [DESKTOP-TU3857L][D:10][T:118][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.IO.DirectoryNotFoundException: Could not find a part of the path 'E:\dnn9me\DesktopModules\MVC\Dnn\ContactList\Views\Contact\_DemoPartial.cshtml'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Web.Hosting.MapPathBasedVirtualFile.Open()
+   at System.Web.WebPages.Razor.RazorBuildProvider.InternalOpenReader()
+   at System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()
+   at System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()
+   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnPartialViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-03-08 14:50:58.343+05:30 [DESKTOP-TU3857L][D:10][T:44][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): The file '/DesktopModules/MVC/Dnn/ContactList/Views/Contact/_DemoPartial.cshtml' does not exist.
+   at System.Web.UI.Util.CheckVirtualFileExists(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnPartialViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-03-08 14:50:58.541+05:30 [DESKTOP-TU3857L][D:10][T:132][ERROR] DotNetNuke.Services.Installer.Log.Logger - Exception - Could not find a part of the path 'E:\dnn9me\DesktopModules\MVC\Dnn\ContactList\Providers\DataProviders\SqlDataProvider'.
+2024-03-08 14:50:58.544+05:30 [DESKTOP-TU3857L][D:10][T:132][ERROR] DotNetNuke.Services.Installer.Log.Logger - Exception - Could not find a part of the path 'E:\dnn9me\DesktopModules\MVC\Dnn\ContactList\Resources.zip.manifest'.
+2024-03-08 14:51:01.380+05:30 [DESKTOP-TU3857L][D:11][T:106][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 15:17:48.638+05:30 [DESKTOP-TU3857L][D:12][T:77][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 16:47:40.255+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 16:50:25.321+05:30 [DESKTOP-TU3857L][D:3][T:26][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 16:50:57.487+05:30 [DESKTOP-TU3857L][D:3][T:15][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 16:51:01.007+05:30 [DESKTOP-TU3857L][D:3][T:15][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 16:51:37.244+05:30 [DESKTOP-TU3857L][D:3][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:03:47.076+05:30 [DESKTOP-TU3857L][D:3][T:42][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:03:47.186+05:30 [DESKTOP-TU3857L][D:3][T:42][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:03:50.269+05:30 [DESKTOP-TU3857L][D:3][T:31][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:03:50.316+05:30 [DESKTOP-TU3857L][D:3][T:31][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:03:50.595+05:30 [DESKTOP-TU3857L][D:3][T:8][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:03:50.622+05:30 [DESKTOP-TU3857L][D:3][T:8][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:11:55.796+05:30 [DESKTOP-TU3857L][D:3][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:11:55.872+05:30 [DESKTOP-TU3857L][D:3][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:18.869+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:18.898+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:28.191+05:30 [DESKTOP-TU3857L][D:3][T:15][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:28.243+05:30 [DESKTOP-TU3857L][D:3][T:15][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:28.523+05:30 [DESKTOP-TU3857L][D:3][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:28.555+05:30 [DESKTOP-TU3857L][D:3][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:39.285+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:39.292+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:39.323+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:39.332+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:42.120+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:42.127+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:42.166+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:42.175+05:30 [DESKTOP-TU3857L][D:3][T:20][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:42.456+05:30 [DESKTOP-TU3857L][D:3][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:42.461+05:30 [DESKTOP-TU3857L][D:3][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:12:42.500+05:30 [DESKTOP-TU3857L][D:3][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:12:42.506+05:30 [DESKTOP-TU3857L][D:3][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:16:32.424+05:30 [DESKTOP-TU3857L][D:4][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 17:16:43.785+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:16:43.796+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:16:47.317+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:16:47.329+05:30 [DESKTOP-TU3857L][D:4][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:16:58.787+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:16:58.792+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:16:58.857+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:16:58.864+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:17:01.628+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:17:01.654+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:17:01.751+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:17:01.757+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:17:03.771+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:17:03.781+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Web.HttpException (0x80004005): The controller for path '/Default.aspx' was not found or does not implement IController.
+   at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:17:03.840+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:17:03.847+05:30 [DESKTOP-TU3857L][D:4][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:19:18.526+05:30 [DESKTOP-TU3857L][D:5][T:43][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 17:19:30.274+05:30 [DESKTOP-TU3857L][D:5][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 62
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:19:30.347+05:30 [DESKTOP-TU3857L][D:5][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 62
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:19:30.352+05:30 [DESKTOP-TU3857L][D:5][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 62
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:19:30.360+05:30 [DESKTOP-TU3857L][D:5][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 62
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:19:32.631+05:30 [DESKTOP-TU3857L][D:5][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:19:32.692+05:30 [DESKTOP-TU3857L][D:5][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:21:01.609+05:30 [DESKTOP-TU3857L][D:6][T:43][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 17:21:12.104+05:30 [DESKTOP-TU3857L][D:6][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:21:12.151+05:30 [DESKTOP-TU3857L][D:6][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:21:12.154+05:30 [DESKTOP-TU3857L][D:6][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:21:12.161+05:30 [DESKTOP-TU3857L][D:6][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:21:14.146+05:30 [DESKTOP-TU3857L][D:6][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:21:14.152+05:30 [DESKTOP-TU3857L][D:6][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:26:02.858+05:30 [DESKTOP-TU3857L][D:6][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:26:02.887+05:30 [DESKTOP-TU3857L][D:6][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:26:06.689+05:30 [DESKTOP-TU3857L][D:6][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:26:06.705+05:30 [DESKTOP-TU3857L][D:6][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:26:06.803+05:30 [DESKTOP-TU3857L][D:6][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:26:06.811+05:30 [DESKTOP-TU3857L][D:6][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:29:03.476+05:30 [DESKTOP-TU3857L][D:7][T:43][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 17:30:04.822+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:30:04.822+05:30 [DESKTOP-TU3857L][D:7][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:30:04.905+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:30:04.905+05:30 [DESKTOP-TU3857L][D:7][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:30:04.908+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:30:04.908+05:30 [DESKTOP-TU3857L][D:7][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:30:04.916+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:30:04.916+05:30 [DESKTOP-TU3857L][D:7][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:30:07.353+05:30 [DESKTOP-TU3857L][D:7][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:30:07.353+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:30:07.359+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:30:07.359+05:30 [DESKTOP-TU3857L][D:7][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:30:48.245+05:30 [DESKTOP-TU3857L][D:7][T:42][ERROR] DotNetNuke.Data.PetaPoco.PetaPocoHelper - [3] Error executing SQL: ;Exec dbo.GetAllTabsModulesByModuleID @0
+Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+2024-03-08 17:30:48.248+05:30 [DESKTOP-TU3857L][D:7][T:42][ERROR] DotNetNuke.Web.InternalServices.ControlBarController - System.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception (0x80004005): The wait operation timed out
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at DotNetNuke.Data.PetaPoco.PetaPocoExt.ExecuteReader(Database database, String sql, Object[] args)
+   at DotNetNuke.Data.PetaPoco.PetaPocoHelper.ExecuteReader(String connectionString, CommandType type, Int32 timeoutSec, String sql, Object[] args)
+   at DotNetNuke.Data.SqlDataProvider.ExecuteReader(String procedureName, Object[] commandParameters)
+   at DotNetNuke.Entities.Modules.ModuleController.GetAllTabsModulesByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.UpdateTabModuleVersionsByModuleID(Int32 moduleID)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModuleInternal(ModuleInfo module)
+   at DotNetNuke.Entities.Modules.ModuleController.AddModule(ModuleInfo module)
+   at DotNetNuke.Web.InternalServices.ControlBarController.DoAddNewModule(String title, Int32 desktopModuleId, String paneName, Int32 position, Int32 permissionType, String align)
+   at DotNetNuke.Web.InternalServices.ControlBarController.AddModule(AddModuleDTO dto)
+ClientConnectionId:6af8e640-6082-4efc-a022-4e5eab218c6e
+Error Number:-2,State:0,Class:11
+2024-03-08 17:32:40.380+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:32:40.449+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:32:40.452+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+2024-03-08 17:32:40.468+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: Doctor is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.NotSupportedException: This method requires the model to be cacheable and have a cache scope defined
+   at DotNetNuke.Data.RepositoryBase`1.CheckIfScoped()
+   at DotNetNuke.Data.RepositoryBase`1.Get[TScopeType](TScopeType scopeValue)
+   at VCQRU.Modules.Doctor.Components.DoctorManager.GetDoctors(Int32 moduleId) in E:\dnn9me\DesktopModules\MVC\Doctor\Components\DoctorManager.cs:line 63
+   at VCQRU.Modules.Doctors.Controllers.DoctorController.Index() in E:\dnn9me\DesktopModules\MVC\Doctor\Controllers\DoctorController.cs:line 132
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()"
+2024-03-08 17:32:40.622+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:32:40.629+05:30 [DESKTOP-TU3857L][D:7][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 17:35:05.278+05:30 [DESKTOP-TU3857L][D:8][T:51][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 17:42:57.902+05:30 [DESKTOP-TU3857L][D:9][T:43][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 18:04:54.112+05:30 [DESKTOP-TU3857L][D:9][T:62][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 18:04:54.112+05:30 [DESKTOP-TU3857L][D:9][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 18:04:54.212+05:30 [DESKTOP-TU3857L][D:9][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 18:04:54.212+05:30 [DESKTOP-TU3857L][D:9][T:62][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 18:04:54.224+05:30 [DESKTOP-TU3857L][D:9][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 18:04:54.229+05:30 [DESKTOP-TU3857L][D:9][T:62][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.OperationCanceledException: The operation was canceled.
+   at System.Threading.CancellationToken.ThrowOperationCanceledException()
+   at System.Net.Http.HttpContentExtensions.<ReadAsAsyncCore>d__17`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.ModelBinding.FormatterParameterBinding.<ExecuteBindingAsyncCore>d__18.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Web.Http.Controllers.HttpActionBinding.<ExecuteBindingAsyncCore>d__12.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Tracing.ITraceWriterExtensions.<TraceBeginEndAsyncCore>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__5.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Filters.AuthorizationFilterAttribute.<ExecuteAuthorizationFilterAsyncCore>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ExceptionFilterResult.<ExecuteAsync>d__6.MoveNext()
+2024-03-08 18:05:20.076+05:30 [DESKTOP-TU3857L][D:9][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Net.WebException: The operation has timed out
+   at System.Net.HttpWebRequest.GetResponse()
+   at Dnn.PersonaBar.UI.Services.ServerSummaryController.GetJsonObject[T](String url)
+   at Dnn.PersonaBar.UI.Services.ServerSummaryController.RetrieveUpdateUrl(CacheItemArgs args)
+2024-03-08 18:13:29.018+05:30 [DESKTOP-TU3857L][D:10][T:38][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 22:56:58.847+05:30 [DESKTOP-TU3857L][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 22:59:51.102+05:30 [DESKTOP-TU3857L][D:3][T:24][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:00:20.295+05:30 [DESKTOP-TU3857L][D:3][T:15][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:f22f9bda-a6b0-467c-8134-0811d113e5c5
+Error Number:208,State:1,Class:16
+2024-03-08 23:00:23.276+05:30 [DESKTOP-TU3857L][D:3][T:15][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:00:26.663+05:30 [DESKTOP-TU3857L][D:3][T:21][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:f22f9bda-a6b0-467c-8134-0811d113e5c5
+Error Number:208,State:1,Class:16
+2024-03-08 23:02:20.918+05:30 [DESKTOP-TU3857L][D:3][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Providers.SqlServerDatabaseProvider.ExecuteInsert(Database db, IDbCommand cmd, String primaryKeyName)
+   at PetaPoco.Database.ExecuteInsert(String tableName, String primaryKeyName, Boolean autoIncrement, Object poco)
+   at PetaPoco.Database.Insert(Object poco)
+   at DotNetNuke.Data.RepositoryBase`1.Insert(T item)
+   at Saatvik.Modules.SaatvikDoctors.Components.DoctorManager.CreateDoctor(Doctor doctor)
+   at Saatvik.Modules.SaatvikDoctors.Controllers.DoctorController.Edit(Doctor doctorModel, HttpPostedFileBase doctorImage)
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+ClientConnectionId:f22f9bda-a6b0-467c-8134-0811d113e5c5
+Error Number:208,State:1,Class:16
+2024-03-08 23:02:21.002+05:30 [DESKTOP-TU3857L][D:3][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error:  is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Providers.SqlServerDatabaseProvider.ExecuteInsert(Database db, IDbCommand cmd, String primaryKeyName)
+   at PetaPoco.Database.ExecuteInsert(String tableName, String primaryKeyName, Boolean autoIncrement, Object poco)
+   at PetaPoco.Database.Insert(Object poco)
+   at DotNetNuke.Data.RepositoryBase`1.Insert(T item)
+   at Saatvik.Modules.SaatvikDoctors.Components.DoctorManager.CreateDoctor(Doctor doctor)
+   at Saatvik.Modules.SaatvikDoctors.Controllers.DoctorController.Edit(Doctor doctorModel, HttpPostedFileBase doctorImage)
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass24_0.<InvokeActionMethodWithFilters>b__0()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ResultCapturingActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.ExecuteCore()
+   at System.Web.Mvc.ControllerBase.Execute(RequestContext requestContext)
+   at DotNetNuke.Web.Mvc.Framework.Modules.ModuleApplication.ExecuteRequest(ModuleRequestContext context)
+   at DotNetNuke.Web.Mvc.MvcHostControl.ExecuteModule()
+ClientConnectionId:f22f9bda-a6b0-467c-8134-0811d113e5c5
+Error Number:208,State:1,Class:16"
+2024-03-08 23:02:21.016+05:30 [DESKTOP-TU3857L][D:3][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="An error has occurred." ctrl="ASP.admin_menus_moduleactions_moduleactions_ascx" exc="System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.LoadActions(HttpRequest request)
+   at DotNetNuke.UI.Modules.ModuleInstanceContext.get_Actions()
+   at DotNetNuke.UI.Containers.ActionBase.OnLoad(EventArgs e)"
+2024-03-08 23:02:36.564+05:30 [DESKTOP-TU3857L][D:3][T:21][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:f22f9bda-a6b0-467c-8134-0811d113e5c5
+Error Number:208,State:1,Class:16
+2024-03-08 23:02:36.694+05:30 [DESKTOP-TU3857L][D:3][T:21][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:04:17.178+05:30 [DESKTOP-TU3857L][D:3][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:3d299391-3207-4b20-9524-99d974f9edca
+Error Number:208,State:1,Class:16
+2024-03-08 23:04:17.339+05:30 [DESKTOP-TU3857L][D:3][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:09:45.853+05:30 [DESKTOP-TU3857L][D:4][T:61][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:09:54.067+05:30 [DESKTOP-TU3857L][D:4][T:57][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:c2cde03f-a7c5-4a57-8707-f4d16af90bce
+Error Number:208,State:1,Class:16
+2024-03-08 23:10:00.856+05:30 [DESKTOP-TU3857L][D:4][T:57][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:18:42.647+05:30 [DESKTOP-TU3857L][D:5][T:61][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:18:52.897+05:30 [DESKTOP-TU3857L][D:5][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:b6ee2d6f-3afd-4d41-a5a6-cc90f55f2586
+Error Number:208,State:1,Class:16
+2024-03-08 23:18:58.679+05:30 [DESKTOP-TU3857L][D:5][T:67][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:23:04.800+05:30 [DESKTOP-TU3857L][D:5][T:77][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:7e9906f4-0c4d-489c-981d-9e6ca5b6c80a
+Error Number:208,State:1,Class:16
+2024-03-08 23:25:11.677+05:30 [DESKTOP-TU3857L][D:5][T:77][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:25:20.277+05:30 [DESKTOP-TU3857L][D:5][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:7e9906f4-0c4d-489c-981d-9e6ca5b6c80a
+Error Number:208,State:1,Class:16
+2024-03-08 23:26:05.623+05:30 [DESKTOP-TU3857L][D:5][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:26:16.850+05:30 [DESKTOP-TU3857L][D:5][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:7e9906f4-0c4d-489c-981d-9e6ca5b6c80a
+Error Number:208,State:1,Class:16
+2024-03-08 23:28:07.929+05:30 [DESKTOP-TU3857L][D:5][T:80][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:30:57.300+05:30 [DESKTOP-TU3857L][D:6][T:16][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:31:03.008+05:30 [DESKTOP-TU3857L][D:6][T:55][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:5d02be36-b3ea-4714-96ea-e9b30a378c11
+Error Number:208,State:1,Class:16
+2024-03-08 23:31:07.097+05:30 [DESKTOP-TU3857L][D:6][T:55][ERROR] DotNetNuke.Services.Exceptions.Exceptions - FriendlyMessage="Error: SaatvikDoctors is currently unavailable." ctrl="DotNetNuke.Web.Mvc.MvcHostControl" exc="System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at ASP._Page_DesktopModules_MVC_SaatvikDoctors_Views_Doctor_Index_cshtml.Execute() in e:\dnn9me\DesktopModules\MVC\SaatvikDoctors\Views\Doctor\Index.cshtml:line 7
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at DotNetNuke.Web.Mvc.Framework.ActionResults.DnnViewResult.ExecuteResult(ControllerContext context, TextWriter writer)
+   at DotNetNuke.Web.Mvc.MvcHostControl.RenderModule(ModuleRequestResult moduleResult)
+   at DotNetNuke.Web.Mvc.MvcHostControl.OnPreRender(EventArgs e)"
+2024-03-08 23:31:52.847+05:30 [DESKTOP-TU3857L][D:6][T:55][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'SaatvikModules_Doctor'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at PetaPoco.Database.CommandHelper(IDbCommand cmd, Func`2 cmdFunc)
+   at PetaPoco.Database.ExecuteReaderHelper(IDbCommand cmd)
+   at PetaPoco.Database.<ExecuteReader>d__157`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at DotNetNuke.Common.Utilities.DataCache.GetCachedDataFromRuntimeCache(CacheItemArgs cacheItemArgs, CacheItemExpiredCallback cacheItemExpired)
+ClientConnectionId:5d02be36-b3ea-4714-96ea-e9b30a378c11
+Error Number:208,State:1,Class:16
+2024-03-08 23:32:45.101+05:30 [DESKTOP-TU3857L][D:7][T:74][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:33:04.389+05:30 [DESKTOP-TU3857L][D:8][T:74][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:38:58.148+05:30 [DESKTOP-TU3857L][D:9][T:61][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:56:52.019+05:30 [DESKTOP-TU3857L][D:10][T:53][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-03-08 23:59:55.836+05:30 [DESKTOP-TU3857L][D:11][T:71][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle

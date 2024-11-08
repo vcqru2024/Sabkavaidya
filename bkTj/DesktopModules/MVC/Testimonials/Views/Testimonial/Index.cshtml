@@ -1,0 +1,54 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<vcqru.Testimonials.Models.Testimonial>>
+
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Linq
+
+<div id="Testimonials-@Dnn.ModuleContext.ModuleId">
+    @if (!Model.Any())
+    {
+        <p>No Testimonials</p>
+    }
+    else
+    {
+        <div class="container">
+            <div class="patanjali-products">
+                <div class="text-center web-heading">
+                    <h1>@Dnn.LocalizeString("TestimonialsHeading")</h1>
+                </div>
+
+                <div class="owl-carousel">
+                    @foreach (var testimonial in Model)
+                    {
+                        <div class="item">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <ul>
+                                        <li>
+                                            <img alt="Customer Profile" src="@testimonial.ImageUrl" />
+                                        </li>
+                                        <li>
+                                            <h5>@testimonial.Name</h5>
+                                            <p>@testimonial.Location</p>
+                                            <p>@testimonial.Condition</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <p>@testimonial.Message</p>
+                                </div>
+                                @if (Dnn.ModuleContext.IsEditable)
+                                {
+                                    <div>
+                                        <a href="@Url.Action("Edit", "Testimonial", new { ctl = "Edit", testimonialId = testimonial.TestimonialId })">@Dnn.LocalizeString("EditItem")</a>
+                                        <a href="@Url.Action("Delete", "Testimonial", new { testimonialId = testimonial.TestimonialId })">@Dnn.LocalizeString("DeleteItem")</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    }
+</div>

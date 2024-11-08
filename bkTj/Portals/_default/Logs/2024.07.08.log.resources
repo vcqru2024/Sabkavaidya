@@ -1,0 +1,1579 @@
+2024-07-08 10:23:32.063+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.Extensions.StartupExtensions - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 10:23:33.492+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.Mvc.Extensions.StartupExtensions - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 10:23:33.967+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.DependencyInjectionInitialize - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 10:23:34.430+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-07-08 10:23:53.654+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:23:53.661+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.DNNModule3.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.DNNModule3.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:24:07.646+05:30 [Naincygarg][D:2][T:14][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 10:25:17.834+05:30 [Naincygarg][D:2][T:14][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:25:17.836+05:30 [Naincygarg][D:2][T:14][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:25:17.838+05:30 [Naincygarg][D:2][T:14][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:26:17.607+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:26:17.611+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:26:17.616+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:27:20.489+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:27:20.490+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:27:20.491+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:27:24.775+05:30 [Naincygarg][D:2][T:14][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 10:27:33.273+05:30 [Naincygarg][D:2][T:32][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 10:28:23.714+05:30 [Naincygarg][D:2][T:13][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:28:23.718+05:30 [Naincygarg][D:2][T:13][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:28:23.720+05:30 [Naincygarg][D:2][T:13][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:29:26.921+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:29:26.924+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:29:26.927+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:30:29.922+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:30:29.927+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:30:29.930+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:31:19.907+05:30 [Naincygarg][D:2][T:13][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 10:31:33.883+05:30 [Naincygarg][D:2][T:33][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:31:33.885+05:30 [Naincygarg][D:2][T:33][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:31:33.893+05:30 [Naincygarg][D:2][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:32:36.155+05:30 [Naincygarg][D:2][T:31][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:32:36.157+05:30 [Naincygarg][D:2][T:31][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:32:36.160+05:30 [Naincygarg][D:2][T:31][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:33:39.530+05:30 [Naincygarg][D:2][T:40][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:33:39.535+05:30 [Naincygarg][D:2][T:40][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:33:39.538+05:30 [Naincygarg][D:2][T:40][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:34:42.373+05:30 [Naincygarg][D:2][T:60][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:34:42.375+05:30 [Naincygarg][D:2][T:60][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:34:42.377+05:30 [Naincygarg][D:2][T:60][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:35:46.179+05:30 [Naincygarg][D:2][T:54][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:35:46.181+05:30 [Naincygarg][D:2][T:54][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:35:46.183+05:30 [Naincygarg][D:2][T:54][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:36:49.110+05:30 [Naincygarg][D:2][T:54][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:36:49.116+05:30 [Naincygarg][D:2][T:54][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:36:49.118+05:30 [Naincygarg][D:2][T:54][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:37:51.983+05:30 [Naincygarg][D:2][T:60][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:37:51.986+05:30 [Naincygarg][D:2][T:60][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:37:51.991+05:30 [Naincygarg][D:2][T:60][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:38:55.201+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:38:55.205+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:38:55.210+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:39:58.147+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:39:58.151+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:39:58.156+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:41:01.361+05:30 [Naincygarg][D:2][T:77][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:41:01.363+05:30 [Naincygarg][D:2][T:77][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:41:01.365+05:30 [Naincygarg][D:2][T:77][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:42:04.303+05:30 [Naincygarg][D:2][T:91][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:42:04.305+05:30 [Naincygarg][D:2][T:91][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:42:04.306+05:30 [Naincygarg][D:2][T:91][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:43:07.557+05:30 [Naincygarg][D:2][T:78][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:43:07.560+05:30 [Naincygarg][D:2][T:78][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:43:07.563+05:30 [Naincygarg][D:2][T:78][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:44:10.418+05:30 [Naincygarg][D:2][T:92][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:44:10.420+05:30 [Naincygarg][D:2][T:92][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:44:10.422+05:30 [Naincygarg][D:2][T:92][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:45:13.580+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:45:13.583+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:45:13.585+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:46:16.614+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:46:16.617+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:46:16.619+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:47:20.055+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:47:20.058+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:47:20.060+05:30 [Naincygarg][D:2][T:39][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:48:23.144+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:48:23.147+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:48:23.149+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:49:26.204+05:30 [Naincygarg][D:2][T:85][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:49:26.208+05:30 [Naincygarg][D:2][T:85][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:49:26.211+05:30 [Naincygarg][D:2][T:85][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:50:29.051+05:30 [Naincygarg][D:2][T:84][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:50:29.055+05:30 [Naincygarg][D:2][T:84][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:50:29.058+05:30 [Naincygarg][D:2][T:84][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 10:51:32.861+05:30 [Naincygarg][D:2][T:85][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 10:51:32.867+05:30 [Naincygarg][D:2][T:85][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 10:51:32.871+05:30 [Naincygarg][D:2][T:85][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:40:21.326+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.Extensions.StartupExtensions - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 13:40:22.767+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.Mvc.Extensions.StartupExtensions - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 13:40:23.165+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.DependencyInjectionInitialize - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 13:40:23.691+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-07-08 13:40:53.930+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:40:53.936+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.DNNModule3.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.DNNModule3.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:41:00.373+05:30 [Naincygarg][D:2][T:6][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 13:42:06.355+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:42:06.358+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:42:06.364+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:43:06.949+05:30 [Naincygarg][D:2][T:21][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:43:06.952+05:30 [Naincygarg][D:2][T:21][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:43:06.954+05:30 [Naincygarg][D:2][T:21][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:44:10.579+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:44:10.580+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:44:10.583+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:45:13.037+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:45:13.039+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:45:13.040+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:46:16.038+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:46:16.039+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:46:16.040+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:47:19.209+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:47:19.212+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:47:19.213+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:47:23.405+05:30 [Naincygarg][D:2][T:21][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 13:48:09.934+05:30 [Naincygarg][D:2][T:46][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 13:48:22.234+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:48:22.235+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:48:22.238+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:49:25.402+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:49:25.404+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:49:25.405+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:50:28.507+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:50:28.509+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:50:28.510+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:51:31.800+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:51:31.802+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:51:31.805+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:52:34.680+05:30 [Naincygarg][D:2][T:53][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:52:34.681+05:30 [Naincygarg][D:2][T:53][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:52:34.684+05:30 [Naincygarg][D:2][T:53][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:53:38.438+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:53:38.439+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:53:38.440+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:54:41.195+05:30 [Naincygarg][D:2][T:51][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:54:41.197+05:30 [Naincygarg][D:2][T:51][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:54:41.198+05:30 [Naincygarg][D:2][T:51][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:55:43.962+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:55:43.963+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:55:43.965+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:56:47.235+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:56:47.237+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:56:47.241+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:57:50.669+05:30 [Naincygarg][D:2][T:59][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:57:50.670+05:30 [Naincygarg][D:2][T:59][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:57:50.671+05:30 [Naincygarg][D:2][T:59][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:58:29.061+05:30 [Naincygarg][D:2][T:49][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 13:58:53.185+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:58:53.186+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:58:53.187+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 13:59:57.156+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 13:59:57.159+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 13:59:57.159+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:00:59.463+05:30 [Naincygarg][D:2][T:43][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:00:59.464+05:30 [Naincygarg][D:2][T:43][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:00:59.464+05:30 [Naincygarg][D:2][T:43][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:02:03.666+05:30 [Naincygarg][D:2][T:73][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:02:03.667+05:30 [Naincygarg][D:2][T:73][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:02:03.668+05:30 [Naincygarg][D:2][T:73][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:03:07.026+05:30 [Naincygarg][D:2][T:40][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:03:07.029+05:30 [Naincygarg][D:2][T:40][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:03:07.031+05:30 [Naincygarg][D:2][T:40][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:04:10.308+05:30 [Naincygarg][D:2][T:45][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:04:10.311+05:30 [Naincygarg][D:2][T:45][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:04:10.313+05:30 [Naincygarg][D:2][T:45][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:05:13.743+05:30 [Naincygarg][D:2][T:43][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:05:13.746+05:30 [Naincygarg][D:2][T:43][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:05:13.748+05:30 [Naincygarg][D:2][T:43][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:06:16.797+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:06:16.798+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:06:16.799+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:07:19.250+05:30 [Naincygarg][D:2][T:45][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:07:19.251+05:30 [Naincygarg][D:2][T:45][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:07:19.252+05:30 [Naincygarg][D:2][T:45][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:08:23.130+05:30 [Naincygarg][D:2][T:59][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:08:23.137+05:30 [Naincygarg][D:2][T:59][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:08:23.138+05:30 [Naincygarg][D:2][T:59][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:09:26.505+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:09:26.506+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:09:26.507+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:10:28.375+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:10:28.377+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:10:28.378+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:11:31.460+05:30 [Naincygarg][D:2][T:47][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:11:31.462+05:30 [Naincygarg][D:2][T:47][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:11:31.463+05:30 [Naincygarg][D:2][T:47][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:12:34.471+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:12:34.471+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:12:34.472+05:30 [Naincygarg][D:2][T:30][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:13:37.651+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:13:37.655+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:13:37.657+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:14:43.256+05:30 [Naincygarg][D:2][T:51][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:14:43.259+05:30 [Naincygarg][D:2][T:51][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:14:43.259+05:30 [Naincygarg][D:2][T:51][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:15:43.958+05:30 [Naincygarg][D:2][T:77][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:15:43.960+05:30 [Naincygarg][D:2][T:77][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:15:43.961+05:30 [Naincygarg][D:2][T:77][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:16:47.053+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:16:47.054+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:16:47.055+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 14:17:50.238+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 14:17:50.243+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 14:17:50.248+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:48:07.580+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.Extensions.StartupExtensions - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 16:48:09.088+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.Mvc.Extensions.StartupExtensions - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 16:48:09.598+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.Web.DependencyInjectionInitialize - Unable to configure services for IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, see exception for details 
+- LoaderException: Could not load file or assembly 'IKVM.OpenJDK.Security, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58' or one of its dependencies. The system cannot find the file specified.
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at DotNetNuke.DependencyInjection.Extensions.TypeExtensions.SafeGetTypes(Assembly assembly, ILog logger)
+2024-07-08 16:48:10.041+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-07-08 16:48:47.539+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:48:47.546+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.DNNModule3.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.DNNModule3.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:48:59.583+05:30 [Naincygarg][D:2][T:9][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 16:49:43.189+05:30 [Naincygarg][D:2][T:25][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:49:43.194+05:30 [Naincygarg][D:2][T:25][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:49:43.207+05:30 [Naincygarg][D:2][T:25][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:50:43.524+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:50:43.526+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:50:43.529+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:51:47.079+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:51:47.083+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:51:47.088+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:52:49.859+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:52:49.862+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:52:49.865+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:53:53.157+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:53:53.158+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:53:53.164+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:54:56.171+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:54:56.176+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:54:56.182+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:55:37.316+05:30 [Naincygarg][D:2][T:10][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 16:55:59.205+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:55:59.212+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:55:59.216+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:57:02.319+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:57:02.321+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:57:02.322+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:58:05.472+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:58:05.477+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:58:05.480+05:30 [Naincygarg][D:2][T:32][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 16:59:08.794+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 16:59:08.801+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 16:59:08.805+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:00:11.863+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:00:11.866+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:00:11.868+05:30 [Naincygarg][D:2][T:46][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:00:28.246+05:30 [Naincygarg][D:2][T:50][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-07-08 17:01:14.840+05:30 [Naincygarg][D:2][T:28][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:01:14.843+05:30 [Naincygarg][D:2][T:28][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:01:14.845+05:30 [Naincygarg][D:2][T:28][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:02:17.629+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:02:17.634+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:02:17.635+05:30 [Naincygarg][D:2][T:36][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:03:21.523+05:30 [Naincygarg][D:2][T:71][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:03:21.525+05:30 [Naincygarg][D:2][T:71][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:03:21.528+05:30 [Naincygarg][D:2][T:71][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:04:24.267+05:30 [Naincygarg][D:2][T:82][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:04:24.270+05:30 [Naincygarg][D:2][T:82][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:04:24.272+05:30 [Naincygarg][D:2][T:82][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:05:27.114+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:05:27.117+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:05:27.119+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:06:32.642+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:06:32.645+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:06:32.647+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:07:34.455+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:07:34.459+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:07:34.461+05:30 [Naincygarg][D:2][T:90][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:08:39.981+05:30 [Naincygarg][D:2][T:97][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:08:39.984+05:30 [Naincygarg][D:2][T:97][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:08:39.986+05:30 [Naincygarg][D:2][T:97][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:09:42.176+05:30 [Naincygarg][D:2][T:97][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:09:42.178+05:30 [Naincygarg][D:2][T:97][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:09:42.180+05:30 [Naincygarg][D:2][T:97][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:10:44.301+05:30 [Naincygarg][D:2][T:106][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:10:44.302+05:30 [Naincygarg][D:2][T:106][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:10:44.303+05:30 [Naincygarg][D:2][T:106][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:12:11.547+05:30 [Naincygarg][D:2][T:81][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:12:11.549+05:30 [Naincygarg][D:2][T:81][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:12:11.550+05:30 [Naincygarg][D:2][T:81][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:12:54.613+05:30 [Naincygarg][D:2][T:81][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:12:54.615+05:30 [Naincygarg][D:2][T:81][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:12:54.616+05:30 [Naincygarg][D:2][T:81][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:14:00.792+05:30 [Naincygarg][D:2][T:99][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:14:00.793+05:30 [Naincygarg][D:2][T:99][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:14:00.794+05:30 [Naincygarg][D:2][T:99][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:15:06.575+05:30 [Naincygarg][D:2][T:115][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:15:06.579+05:30 [Naincygarg][D:2][T:115][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:15:06.580+05:30 [Naincygarg][D:2][T:115][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:16:08.403+05:30 [Naincygarg][D:2][T:127][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:16:08.407+05:30 [Naincygarg][D:2][T:127][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:16:08.409+05:30 [Naincygarg][D:2][T:127][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:17:13.456+05:30 [Naincygarg][D:2][T:130][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:17:13.458+05:30 [Naincygarg][D:2][T:130][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:17:13.460+05:30 [Naincygarg][D:2][T:130][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:18:14.091+05:30 [Naincygarg][D:2][T:129][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:18:14.092+05:30 [Naincygarg][D:2][T:129][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:18:14.093+05:30 [Naincygarg][D:2][T:129][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:19:16.982+05:30 [Naincygarg][D:2][T:154][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:19:16.983+05:30 [Naincygarg][D:2][T:154][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:19:16.985+05:30 [Naincygarg][D:2][T:154][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-07-08 17:20:20.012+05:30 [Naincygarg][D:2][T:154][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-07-08 17:20:20.013+05:30 [Naincygarg][D:2][T:154][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-07-08 17:20:20.015+05:30 [Naincygarg][D:2][T:154][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)

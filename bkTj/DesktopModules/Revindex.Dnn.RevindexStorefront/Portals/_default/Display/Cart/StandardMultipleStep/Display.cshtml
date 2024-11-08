@@ -1,0 +1,954 @@
+﻿@* Template name: StandardMultipleStep *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Globalization;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.CartWebViewPage
+
+<div id="rvdsfCartPanelContainer" class="rvdsf rvdsf-cart-container">
+	<div class="alert alert-danger" data-bind="visible: ValidationResults().length > 0" style="display:none">
+		<div data-bind="foreach: ValidationResults">
+			<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> <span data-bind="text: Message"></span>
+		</div>
+	</div>
+	<div class="rvdsf-checkout-breadcrumb">
+		<a class="rvdsf-checkout-breadcrumb-selected" disabled>@Html.LocalizeString("ViewCartLink")</a>
+		<span class="rvdsf-checkout-breadcrumb-separator"></span>
+		<a disabled>@Html.LocalizeString("BillingAndShippingLink")</a>
+		<span class="rvdsf-checkout-breadcrumb-separator"></span>
+		<a disabled>@Html.LocalizeString("ReviewPlaceOrderLink")</a>
+		<span class="rvdsf-checkout-breadcrumb-separator"></span>
+		<a disabled>@Html.LocalizeString("ConfirmationLink")</a>
+	</div>
+	<div class="page-header pb-2 mt-4 mb-2 border-bottom dnnFormSectionHead">
+		<h4><span>@Html.LocalizeString("ViewCartSectionLabel")</span></h4>
+	</div>
+	<div data-bind="visible: SalesOrderSet.MainQuantity() == 0" style="display:none">
+		<div class="alert alert-info">@Html.LocalizeString(Global.LocalizedStrings.Message_CartEmpty, Global.FilePaths.LocalSharedResourceFile)</div>
+		<div class="btn-toolbar">
+			<button type="button" data-bind="click: function() { location.href = Shopping.TabUrl() }" class="btn btn-primary rvdsf-btn-continueshopping">@Html.LocalizeString("ContinueShoppingLink")</button>
+		</div>
+	</div>
+	<div data-bind="visible: SalesOrderSet.MainQuantity() > 0" style="display:none">
+		<table class="table table-striped rvdsf-salesorderdetail-table">
+			<thead>
+				<tr>
+					<th class="col-sm-2 hidden-xs d-none d-sm-table-cell"></th>
+					<th class="col-sm-6">@Html.LocalizeString("ProductColumn")</th>
+					<th class="col-sm-1">@Html.LocalizeString("QuantityColumn")</th>
+					<th class="col-sm-1"></th>
+					<th class="col-sm-2 hidden-xs d-none d-sm-table-cell">@Html.LocalizeString("AmountColumn")</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: { data: SalesOrderSet.MainSalesOrderDetails, as: 'sod'}">
+				<tr>
+					<td class="hidden-xs d-none d-sm-table-cell" data-bind="if: sod.ProductVariant.MainThumbnailGallery"><a data-bind="attr: { href: sod.ProductVariant.ProductDetail.TabUrl }"><img class="img-responsive img-fluid" data-bind="attr: {src: sod.ProductVariant.MainThumbnailGallery.MediaUrl}" /></a></td>
+					<td>
+						<a data-bind="text: sod.ProductName, attr: { href: sod.ProductVariant.ProductDetail.TabUrl }"></a>
+						<div class="rvdsf-productvariant-name" data-bind="visible: sod.ProductVariantName, text: sod.ProductVariantName"></div>
+						<!-- ko if: FormattedBookingStartDate -->
+						<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-bookingdates" style="width: auto">
+							<tr>
+								<td><strong>@Html.LocalizeString("BookingStartDateLabel")</strong></td>
+								<td data-bind="text: sod.FormattedBookingStartDate"></td>
+							</tr>
+							<tr>
+								<td><strong>@Html.LocalizeString("BookingStopDateLabel")</strong></td>
+								<td data-bind="text: sod.FormattedBookingStopDate"></td>
+							</tr>
+						</table>
+						<!-- /ko -->
+						<!-- ko if: Object.keys(sod.DynamicFormResult).length > 0 -->
+						<!-- ko with: sod.DynamicFormResult -->
+						<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-dynamicformresult" data-bind="foreach: Object.keys($data)" style="width: auto">
+							<tr>
+								<td><strong data-bind="text: $data + ':'"></strong></td>
+								<td data-bind="text: $parent[$data]"></td>
+							</tr>
+						</table>
+						<!-- /ko -->
+						<!-- /ko -->
+						<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-productparts" data-bind="foreach: { data: $parent.SalesOrderSet.SalesOrderDetails, as: 'csod' }" style="width: auto">
+							<tr data-bind="if: csod.ParentSalesOrderDetailID() == sod.SalesOrderDetailID()">
+								<td><strong data-bind="text: csod.ProductName"></strong><strong data-bind="visible: csod.ProductVariantName, text: ' - ' + csod.ProductVariantName()"></strong></td>
+								<td data-bind="text: csod.PartQuantity"></td>
+							</tr>
+						</table>
+					</td>
+					<td class="rvdsf-field-qty">
+						<!-- ko if: ProductVariant.AllowableOrderQuantityList().length == 0 -->
+						<input class="form-control" type="number" data-bind="value: Quantity, attr: {'id': 'rvdsfSalesOrderDetailQuantityInput_' + SalesOrderDetailID(), 'readonly': $parent.SalesOrderSet.OrderLocked(), 'min': ProductVariant.MinOrderQuantity() == null ? ProductVariant.DefaultQuantity() : ProductVariant.MinOrderQuantity(), 'max': ProductVariant.MaxOrderQuantity() == null ? 9999 : ProductVariant.MaxOrderQuantity(), 'data-salesorderdetailid': sod.SalesOrderDetailID() }" required step="1" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+						<!-- /ko -->
+						<!-- ko ifnot: ProductVariant.AllowableOrderQuantityList().length == 0 -->
+						<select class="form-control" data-bind="value: Quantity, options: ProductVariant.AllowableOrderQuantityList, attr: {'id': 'rvdsfSalesOrderDetailQuantityInput_' + SalesOrderDetailID(), 'readonly': $parent.SalesOrderSet.OrderLocked(), 'data-salesorderdetailid': sod.SalesOrderDetailID() }"></select>
+						<!-- /ko -->
+						<div class="visible-xs d-block d-sm-none rvdsf-label-amount" data-bind="text: Status() == 9 ? null : FormattedCombinedTotalAmount"></div>
+					</td>
+					<td><a class="btn btn-link rvdsf-btn-remove" data-bind="visible: !$parent.SalesOrderSet.OrderLocked(), click: $root.removeSalesOrderDetail" href="#"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></a></td>
+					<td class="rvdsf-label-amount hidden-xs d-none d-sm-table-cell" data-bind="text: Status() == 9 ? null : FormattedCombinedTotalAmount"></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- ko if: Object.keys(SalesOrderSet.DynamicFormResult).length > 0 -->
+		<!-- ko with: SalesOrderSet.DynamicFormResult -->
+		<table class="table table-condensed table-sm table-borderless rvdsf-dynamicformresult clearfix" data-bind="foreach: Object.keys($data)" style="width: auto">
+			<tr>
+				<td><strong data-bind="text: $data + ':'"></strong></td>
+				<td data-bind="text: $parent[$data]"></td>
+			</tr>
+		</table>
+		<!-- /ko -->
+		<!-- /ko -->
+		<div class="btn-toolbar pull-right float-right">
+			<button type="button" data-bind="click: resetCart" class="btn btn-default btn-light rvdsf-btn-resetcart">@Html.LocalizeString("ResetCartLink")</button>
+			<button type="button" class="btn btn-primary rvdsf-btn-updatecart" data-bind="click: updateCart">@Html.LocalizeString("UpdateCartLink")</button>
+		</div>
+		<div class="clearfix"></div>
+		<div data-bind="visible: ShowCoupon">
+			<div class="page-header pb-2 mt-4 mb-2 border-bottom dnnFormSectionHead"><h4><a href="#rvdsfCartCouponPanel" class="collapsed" data-toggle="collapse"><span>@Html.LocalizeString("CouponSectionLabel")</span><em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em></a></h4></div>
+			<div class="collapse row" id="rvdsfCartCouponPanel">
+				<div class="col-sm-offset-3 offset-sm-3 col-sm-6">
+					<div class="alert alert-danger" style="display:none" data-bind="visible: CouponError, text: CouponError"></div>
+					<div class="form-group">
+						<label>@Html.LocalizeString("CouponLabel")</label>
+						<div class="input-group">
+							<input type="text" class="form-control" data-bind="value: CouponCode" />
+							<div class="input-group-btn input-group-append">
+								<button type="button" class="btn btn-outline-secondary rvdsf-btn-apply" data-bind="click: addCoupon">@Html.LocalizeString("ApplyLink")</button>
+							</div>
+						</div>
+					</div>
+					<div>
+						<ul class="rvdsf-coupon-list clearfix" data-bind="foreach: SalesOrderSet.CouponCodeList">
+							<li><a href="#" data-bind="click: $root.removeCoupon"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></a> <span data-bind="text: $data"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div data-bind="visible: ShowEstimateShippingTax()">
+			<div class="page-header pb-2 mt-4 mb-2 border-bottom dnnFormSectionHead"><h4><a href="#rvdsfCartEstimateShippingTaxPanel" class="collapsed" data-toggle="collapse"><span>@Html.LocalizeString("EstimateShippingTaxSectionLabel")</span><em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em></a></h4></div>
+			<div class="collapse row" id="rvdsfCartEstimateShippingTaxPanel">
+				<div class="col-sm-offset-3 offset-sm-3 col-sm-6">
+					<div class="alert alert-danger" style="display:none" data-bind="visible: EstimateShippingTaxError, text: EstimateShippingTaxError"></div>
+					<div class="rvdsf-cart-estimateshippingtax-form-container">
+						<div class="form-group">
+							<label>@Html.LocalizeString("ShippingCountryLabel")</label>
+							<select class="form-control" data-bind="options: EstimateShippingTaxCountries, optionsText: 'Name', optionsValue: 'IsoAlpha2Code', value: EstimateShippingTaxCountry, event: { blur: estimateShippingTaxCountryChanged }"></select>
+						</div>
+						<div class="form-group" data-bind="if: EstimateShippingTaxDistrictRequired">
+							<label>@Html.LocalizeString("ShippingDistrictLabel")</label>
+							<input name="rvdsfCartShippingDistrictInput" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" type="text" maxlength="50" class="form-control" data-bind="value: EstimateShippingTaxDistrict" />
+						</div>
+						<div class="form-group">
+							<label>@Html.LocalizeString("ShippingCityLabel")</label>
+							<input type="text" name="rvdsfCartShippingCityInput" required data-msg="@Html.LocalizeString("ShippingCityRequiredError")" maxlength="50" class="form-control" data-bind="value: EstimateShippingTaxCity" />
+						</div>
+						<div class="form-group" data-bind="visible: EstimateShippingTaxSubdivisions().length > 1">
+							<label>@Html.LocalizeString("ShippingSubdivisionLabel")</label>
+							<select class="form-control" data-bind="options: EstimateShippingTaxSubdivisions, optionsText: 'Name', optionsValue: 'IsoCode', value: EstimateShippingTaxSubdivision"></select>
+						</div>
+						<div class="form-group" data-bind="if: EstimateShippingTaxPostalCodeRequired">
+							<label>@Html.LocalizeString("ShippingPostalCodeLabel")</label>
+							<input name="rvdsfCartShippingPostalCodeInput" required data-msg="@Html.LocalizeString("ShippingPostalCodeRequiredError")" type="text" maxlength="10" class="form-control" data-bind="value: EstimateShippingTaxPostalCode" />
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary rvdsf-btn-submit" data-bind="click: estimateShippingTax">@Html.LocalizeString("EstimateShippingTaxLink")</button>
+						</div>
+					</div>
+					<div class="rvdsf-cart-estimateshippingtax-result-container" data-bind="foreach: SalesOrderSet.SalesOrders">
+						<div class="card panel panel-default" data-bind="visible: $root.EstimateShippingTaxSubmitted">
+							<div class="card-header panel-heading" data-bind="visible: $root.EstimateShippingTaxSubmitted() && $root.SalesOrderSet.SalesOrders().length > 1">
+								<strong data-bind="foreach: MainSalesOrderDetails"><span data-bind="text: ($index() > 0 ? ', ' : '') + ProductName()"></span></strong>
+							</div>
+							<div class="card-body panel-body">
+								<!-- ko if: typeof EstimateShippingTaxError === 'function' -->
+								<div class="alert alert-info" data-bind="visible: EstimateShippingTaxError, text: EstimateShippingTaxError" style="display:none"></div>
+								<!-- ko foreach: AvailableShippingMethods -->
+								<div class="radio form-check">
+									<input class="form-check-input" type="radio" data-bind="value: ShippingMethodID, event: { change: function(data, event) { $root.availableShippingMethodsInputChanged($parent.SalesOrderID(), data, event) } }, attr: { id: 'rvdsfCartEstimateShippingMethod_' + $parent.SalesOrderID() + '_' + $index(), name: 'rvdsfCartEstimateShippingMethod_' + $parent.SalesOrderID()}" />
+									<label class="form-check-label" data-bind="attr: { for: 'rvdsfCartEstimateShippingMethod_' + $parent.SalesOrderID() + '_' + $index() }">
+										<span data-bind="text: Name"></span><span data-bind="visible: SalesType == 1 && !$root.SalesOrderSet.HasQuotedProduct() && !$root.SalesOrderSet.HasQuotedShipping()"> - <span data-bind="text: FormattedEstimatedRate"></span></span>
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- /ko -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-horizontal rvdsf-cart-amount-container" data-bind="visible: !SalesOrderSet.HasQuotedProduct() && !SalesOrderSet.HasQuotedShipping()">
+			<div class="col-sm-offset-6 offset-sm-6 col-sm-6 col-xs-12 col-12">
+				<div class="form-group row rvdsf-label-totalsalesorderdetaildiscountamount" data-bind="visible: SalesOrderSet.TotalSalesOrderDetailDiscountAmount() < 0">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalSalesOrderDetailDiscountLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalSalesOrderDetailDiscountAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-subtotalamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("SubTotalLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedSubTotalAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalhandlingamount" data-bind="visible: SalesOrderSet.TotalHandlingAmount() > 0">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalHandlingLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalHandlingAmount"></p>
+					</div>
+				</div>
+				<!-- ko if: SalesOrderSet.RequireShipping() -->
+				<div class="form-group row rvdsf-label-totalshippingamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalShippingLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalShippingAmount"></p>
+					</div>
+				</div>
+				<!-- /ko -->
+				<div class="form-group row rvdsf-label-totaltaxamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalTaxLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalTaxAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row row rvdsf-label-totalamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalsavingsamount" data-bind="visible: SalesOrderSet.TotalSavingsAmount() < 0">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalSavingsLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalSavingsAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalrewardspoint" data-bind="visible: ShowRewardsPoint">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("RewardsPointQualifiedLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedRewardsPointsQualified"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn-toolbar justify-content-between mt-4">
+			<button type="button" data-bind="click: function() { location.href = Shopping.TabUrl() }" class="btn btn-default btn-light rvdsf-btn-continueshopping">@Html.LocalizeString("ContinueShoppingLink")</button>
+			<div class="pull-right">
+				<!-- ko template: {if: AvailablePaymentMethods().some(function (o) { return o.PaymentMethod() == 6 && o.PaymentGateway() == 'PayPalCheckout' }), afterRender: initializePayPalCheckoutPayment.bind($root) } -->
+				<a id="paypal-button-container" class="btn" style="padding: 0; border: 0; margin: 0 6px 0 3px; width: 162px"></a>
+				<!-- /ko -->
+				<button type="button" data-bind="visible: ValidationResults().length == 0, click: checkout" class="pull-right float-right btn btn-primary rvdsf-btn-checkout">@Html.LocalizeString("CheckoutLink")</button>
+			</div>
+		</div>
+	</div>
+    <div id="rvdsfCartCrosssellProductModal" class="modal fade rvdsf-crosssellproduct-container" tabindex="-1" role="dialog">
+	    <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+			    <div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel" style="display: inline-block">@Html.LocalizeString("CrosssellProductLabel")</h4>
+				    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			    </div>
+			    <div class="modal-body row" data-bind="foreach: CrosssellProducts" style="padding: 20px">
+				    <div class="col-xs-12 col-12 col-sm-6">
+					    <div class="row">
+						    <div class="rvdsf-crosssellproduct-header col-xs-12 col-12">
+							    <h5 data-bind="text: Title"></h5>
+							    <div data-bind="text: Description"></div>
+						    </div>
+					    </div>
+					    <div class="row">
+						    <div class="col-xs-12 col-12">
+							    <div class="rvdsf-product-container">
+								    <!-- ko if: OfferProduct.ShowPrice() && OfferProduct.DefaultProductVariant.CombinedSavings() > 0 -->
+								    <div class="rvdsf-label-savings">
+									    @Html.LocalizeString("SavingsLabel")
+									    <span data-bind="visible: OfferProduct.ProductVariants().length == 1, text: ' ' + OfferProduct.DefaultProductVariant.FormattedCombinedPercentSavings()"></span>
+								    </div>
+								    <!-- /ko -->
+								    <div class="rvdsf-product-gallery-container">
+									    <!-- ko if: OfferProduct.DefaultThumbnailGallery -->
+									    <a data-bind="attr: { href: OfferProduct.ProductDetail.TabUrl }"><img class="img-responsive img-fluid center-block d-block mx-auto" data-bind="attr: { src: OfferProduct.DefaultThumbnailGallery.MediaUrl, alt: OfferProduct.DefaultThumbnailGallery.AlternateText }" /></a>
+									    <!-- /ko -->
+								    </div>
+								    <div class="rvdsf-product-info-container">
+
+									    <div class="rvdsf-field-name">
+										    <a class="rvdsf-label-name" data-bind="text: OfferProduct.Name, attr: { href: OfferProduct.ProductDetail.TabUrl }"></a>
+									    </div>
+									    <!-- ko if: OfferProduct.ShowProductReviews -->
+									    <div class="rvdsf-field-rating">
+										    <input class="rating" type="hidden" readonly data-bind="attr: { 'value': (OfferProduct.AverageOverallRating() == 0 ? '' : OfferProduct.AverageOverallRating()) }" />
+										    <span class="badge" data-bind="visible: OfferProduct.RatingCount() > 0, text: OfferProduct.RatingCount"></span>
+									    </div>
+									    <!-- /ko -->
+									    <!-- ko if: OfferProduct.ShowPrice -->
+									    <!-- ko if: OfferProduct.ProductVariants().length == 1 -->
+									    <!-- ko if: !OfferProduct.DefaultProductVariant.PriceText() && OfferProduct.DefaultProductVariant.SalesType() != 2 -->
+									    <div class="rvdsf-field-price">
+										    <!-- ko if: OfferProduct.DefaultProductVariant.CombinedPromotionPrice() != null -->
+										    <span class="rvdsf-label-price"><s data-bind="text: OfferProduct.DefaultProductVariant.FormattedCombinedPrice"></s></span>
+										    <span class="rvdsf-label-promotionprice" data-bind="text: OfferProduct.DefaultProductVariant.FormattedCombinedPromotionPrice"></span>
+										    <!-- /ko -->
+										    <!-- ko if: OfferProduct.DefaultProductVariant.CombinedPromotionPrice() == null -->
+										    <span class="rvdsf-label-price" data-bind="text: OfferProduct.DefaultProductVariant.FormattedCombinedPrice"></span>
+										    <!-- /ko -->
+									    </div>
+									    <!-- /ko -->
+									    <!-- ko if: OfferProduct.DefaultProductVariant.PriceText() -->
+									    <div class="rvdsf-field-price">
+										    <span class="rvdsf-label-pricetext" data-bind="text: OfferProduct.DefaultProductVariant.PriceText"></span>
+									    </div>
+									    <!-- /ko -->
+									    <!-- /ko -->
+									    <!-- ko if: OfferProduct.ProductVariants().length > 1 && OfferProduct.FormattedMinCombinedSellingPrice() && OfferProduct.FormattedMaxCombinedSellingPrice -->
+									    <div class="rvdsf-field-price">
+										    <span class="rvdsf-label-price" data-bind="text: OfferProduct.FormattedMinCombinedSellingPrice() == OfferProduct.FormattedMaxCombinedSellingPrice() ? OfferProduct.FormattedMinCombinedSellingPrice() : OfferProduct.FormattedMinCombinedSellingPrice() + ' - ' + OfferProduct.FormattedMaxCombinedSellingPrice()"></span>
+									    </div>
+									    <!-- /ko -->
+									    <!-- /ko -->
+								    </div>
+								    <!-- ko if: OfferProduct.ShowQuantity() && OfferProduct.AllowInternetOrder() && !OfferProduct.DefaultProductVariant.HasFormFields() && OfferProduct.ProductVariants().length == 1 -->
+								    <div class="rvdsf-product-form-container form-horizontal">
+									    <div class="form-group rvdsf-field-qty row">
+										    <label class="control-label col-form-label col-xs-6 col-6 text-right" data-bind="attr: { for: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID() } ">@Html.LocalizeString("QuantityLabel")</label>
+										    <div class="col-xs-6 col-6 text-left">
+											    <!-- ko if: OfferProduct.DefaultProductVariant.AllowableOrderQuantityList().length == 0 -->
+											    <input data-bind="value: OfferProduct.DefaultProductVariant.DefaultQuantity, attr: { id: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID(), name: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID(), min: OfferProduct.DefaultProductVariant.MinOrderQuantity() ? OfferProduct.DefaultProductVariant.MinOrderQuantity() : OfferProduct.DefaultProductVariant.DefaultQuantity(), max: OfferProduct.DefaultProductVariant.MaxOrderQuantity() ? OfferProduct.DefaultProductVariant.MaxOrderQuantity() : 9999 } " type="number" required step="1" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+											    <!-- /ko -->
+											    <!-- ko ifnot: OfferProduct.DefaultProductVariant.AllowableOrderQuantityList().length == 0 -->
+											    <select class="form-control" data-bind="options: OfferProduct.DefaultProductVariant.AllowableOrderQuantityList, attr: {'id': 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID(), name: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID() }"></select>
+											    <!-- /ko -->
+										    </div>
+									    </div>
+								    </div>
+								    <!-- /ko -->
+								    <div>
+									    <!-- ko if: OfferProduct.ShowSeeDetails -->
+									    <button type="button" class="rvdsf-btn-seedetails btn btn-primary" data-bind="click: function() { location.href = OfferProduct.ProductDetail.TabUrl(); } ">@Html.LocalizeString("SeeDetailsLink")</button>
+									    <!-- /ko -->
+									    <!-- ko if: OfferProduct.AllowInternetOrder() && OfferProduct.ProductVariants().length == 1 && !OfferProduct.DefaultProductVariant.HasFormFields() && OfferProduct.DefaultProductVariant.HasAcceptableInventory() -->
+									    <!-- ko if: OfferProduct.ShowAddToCart -->
+									    <button type="button" class="rvdsf-btn-addtocart btn btn-primary" data-bind="text: OfferProduct.DefaultProductVariant.SalesType() == 2 ? '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("AddToQuoteLink"))' : '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("AddToCartLink"))', click: function () { $root.addProductToCart(OfferProduct.DefaultProductVariant.ProductVariantID(), ($('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).length ? $('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).val() : OfferProduct.DefaultProductVariant.DefaultQuantity()), 'rvdsfProductListMessage_' + OfferProduct.ProductID(), null) }"></button>
+									    <!-- /ko -->
+									    <!-- ko if: OfferProduct.ShowBuyNow -->
+									    <button type="button" class="rvdsf-btn-buynow btn btn-primary" data-bind="text: OfferProduct.DefaultProductVariant.SalesType() == 2 ? '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("QuoteNowLink"))' : '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("BuyNowLink"))', click: function () { $root.addProductToCart(OfferProduct.DefaultProductVariant.ProductVariantID(), ($('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).length ? $('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).val() : OfferProduct.DefaultProductVariant.DefaultQuantity()), 'rvdsfProductListMessage_' + OfferProduct.ProductID(), $root.Checkout.TabUrl()) }"></button>
+									    <!-- /ko -->
+									    <!-- /ko -->
+								    </div>
+								    <!-- ko ifnot: OfferProduct.ProductVariants().some(function (pv) { return pv.HasAcceptableInventory()}) -->
+								    <div class="alert alert-info rvdsf-label-soldout">@Html.LocalizeString("SoldOutLabel")</div>
+								    <!-- /ko -->
+								    <div data-bind="attr: { id: 'rvdsfProductListMessage_' + OfferProduct.ProductID() }" style="display:none"></div>
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+			    <div class="modal-footer">
+				    <button type="button" data-bind="click: function() { location.href = Checkout.TabUrl() }" class="pull-right float-right btn btn-primary rvdsf-btn-checkout">@Html.LocalizeString("CloseCrosssellProductLink")</button>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+</div>
+
+<div id="rvdsfLoading" class="rvd-loading" style="display: none"><img src="~/Images/Loading.gif" /></div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses KnockoutJS. See http://knockoutjs.com *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+}
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script type="text/javascript">
+    var rvdsfCart = rvdsfCart || {}
+
+    $(document).ready(function () {
+
+        // Initialize progress loading
+        $(document).ajaxStart(function () {
+            // Only show loading if it exceeds 1 sec
+            $("#rvdsfLoading").data("timer", setTimeout(function () { $("#rvdsfLoading").show(); }, 1000))
+        }).ajaxStop(function () {
+            if ($("#rvdsfLoading").data("timer"))
+                clearTimeout($("#rvdsfLoading").data("timer"))
+
+            $("#rvdsfLoading").hide();
+        })
+
+    	// Handle anti-forgery error when user is logged out
+        $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+        	if (jqxhr.status == 401)
+        		window.location.reload(true)
+        })
+
+        // Initialize jQuery Validation with Bootstrap default styles
+        $('#Form').validate({
+            highlight: function(element) {
+				$(element).closest('.form-group').addClass('has-error');
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-error');
+				$(element).removeClass('is-invalid');
+			},
+			errorElement: 'div',
+			errorClass: 'help-block invalid-feedback',
+			errorPlacement: function(error, element) {
+				if (element.parent('.input-group').length) {
+					error.insertAfter(element.parent());
+				} else if(element.prop('type') === 'checkbox') {
+					error.appendTo(element.parent().parent());
+				} else if(element.prop('type') === 'radio') {
+					error.appendTo(element.parent().parent());
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			onsubmit: false
+        })
+
+        // Add custom method to validate at least one checkbox in group is selected
+        $.validator.addMethod("requiredGroup", function (value, element, params) {
+            if (params)
+                return ($("input[name='" + params + "']:checked").length > 0)
+            else
+                return true
+        }, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+        // Bind KnockoutJS view model
+        var cartContainer = document.getElementById("rvdsfCartPanelContainer")
+        cartContainer.databind = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+            $.ajax({
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/ViewModel"
+            })
+            .done(function (data, status) {
+
+                var mapping = {
+                    'SalesOrders': {
+                        key: function (data) {
+                            return ko.utils.unwrapObservable(data.SalesOrderID);
+                        }
+                    }
+                }
+
+                if (cartContainer.viewModel) {
+                    ko.mapping.fromJS(data, mapping, cartContainer.viewModel)
+
+                    // Re-add client side observables in case new product was added to cart
+                    // that belongs to a new sales order but page wasn't refreshed
+                    cartContainer.viewModel.SalesOrderSet.SalesOrders().map(function (so) {
+                        if (typeof so.AvailableShippingMethods !== "function")
+                            so.AvailableShippingMethods = ko.observableArray()
+
+                        if (typeof so.EstimateShippingTaxError !== "function")
+                            so.EstimateShippingTaxError = ko.observable(null)
+					})
+
+					cartContainer.viewModel.SalesOrderSet.MainSalesOrderDetails().map(function (sod) {
+						if (typeof sod.EstimateShippingTaxError !== "function")
+							sod.PreviousQuantity = ko.observable(sod.Quantity())
+					})
+                }
+                else {
+                    cartContainer.viewModel = ko.mapping.fromJS(data, mapping);
+
+                    cartContainer.viewModel.CouponError = ko.observable(null)
+                    cartContainer.viewModel.CouponCode = ko.observable('')
+					cartContainer.viewModel.EstimateShippingTaxSubmitted = ko.observable(false)
+					cartContainer.viewModel.EstimateShippingTaxDistrict = ko.observable(cartContainer.viewModel.DefaultDistrict())
+                    cartContainer.viewModel.EstimateShippingTaxDistrictRequired = ko.observable(false)
+                    cartContainer.viewModel.EstimateShippingTaxCity = ko.observable(cartContainer.viewModel.DefaultCity())
+                    cartContainer.viewModel.EstimateShippingTaxCountry = ko.observable(cartContainer.viewModel.DefaultCountryCode())
+                    cartContainer.viewModel.EstimateShippingTaxCountries = ko.observableArray()
+                    cartContainer.viewModel.EstimateShippingTaxError = ko.observable(null)
+                    cartContainer.viewModel.EstimateShippingTaxPostalCode = ko.observable(cartContainer.viewModel.DefaultPostalCode())
+                    cartContainer.viewModel.EstimateShippingTaxPostalCodeRequired = ko.observable(true)
+                    cartContainer.viewModel.EstimateShippingTaxSubdivision = ko.observable(cartContainer.viewModel.DefaultSubdivisionCode())
+                    cartContainer.viewModel.EstimateShippingTaxSubdivisions = ko.observableArray()
+                    cartContainer.viewModel.SalesOrderSet.CouponCodeList = ko.observableArray(cartContainer.viewModel.SalesOrderSet.CouponCodes() ? cartContainer.viewModel.SalesOrderSet.CouponCodes().split('|') : null)
+                    cartContainer.viewModel.SalesOrderSet.SalesOrders().map(function (so) {
+                        so.AvailableShippingMethods = ko.observableArray()
+                        so.EstimateShippingTaxError = ko.observable(null)
+					})
+					cartContainer.viewModel.SalesOrderSet.MainSalesOrderDetails().map(function (sod) {
+						sod.PreviousQuantity = ko.observable(sod.Quantity())
+					})
+
+                    cartContainer.viewModel.addCoupon = function () {
+                        cartContainer.viewModel.CouponError(null)
+
+                        var couponData = { CouponCode: cartContainer.viewModel.CouponCode() }
+
+                        $.ajax({
+                            type: "POST",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/Coupon",
+                            data: couponData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+                            })
+
+                            cartContainer.viewModel.SalesOrderSet.CouponCodeList.push(cartContainer.viewModel.CouponCode())
+
+                            // Clear input
+                            cartContainer.viewModel.CouponCode('')
+                            cartContainer.databind()
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            if ($.trim(data.responseText))
+                                cartContainer.viewModel.CouponError(data.responseJSON.Message)
+                        })
+                    }
+
+                    cartContainer.viewModel.addProductToCart = function (productVariantID, quantity, messageContainerID, redirect) {
+                        var salesOrderDetailData = {
+                            ProductVariantID: productVariantID,
+                            Quantity: quantity
+                        }
+
+                        var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+                        $.ajax({
+                            type: "POST",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                            data: salesOrderDetailData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+
+                            // Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+                            })
+
+                            $("#" + messageContainerID).attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToCart, Global.FilePaths.LocalSharedResourceFile))").show()
+
+                            if (redirect)
+                                location.href = redirect
+                            else
+                                cartContainer.databind()
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            $("#" + messageContainerID).attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show()
+                        })
+                    }
+
+                    cartContainer.viewModel.validateEstimateShippingTax = function () {
+                        return $('#Form .rvdsf-cart-estimateshippingtax-form-container input, .rvdsf-cart-estimateshippingtax-form-container select').valid()
+                    }
+
+                    cartContainer.viewModel.availableShippingMethodsInputChanged = function (salesOrderID, shippingMethod, event) {
+                        var salesOrderShippingMethodData = {
+                            SalesOrderID: salesOrderID,
+                            ShippingMethodID: shippingMethod.ShippingMethodID
+                        }
+
+                        $.ajax({
+                            type: "PUT",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderShippingMethod",
+                            data: salesOrderShippingMethodData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+                            cartContainer.databind()
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            if ($.trim(data.responseText))
+                                cartContainer.viewModel.EstimateShippingTaxError(data.responseJSON.Message)
+                        })
+                    }
+
+                    cartContainer.viewModel.estimateShippingTax = function () {
+                        cartContainer.viewModel.EstimateShippingTaxError(null)
+                        cartContainer.viewModel.EstimateShippingTaxSubmitted(true)
+
+                        if (this.validateEstimateShippingTax()) {
+
+                            // Estimate shipping for each order
+                            cartContainer.viewModel.SalesOrderSet.SalesOrders().map(function (so) {
+
+                                // Re-add client side observables in case new product was added to cart
+                                // that belongs to a new sales order but page wasn't refreshed
+                                if (typeof so.AvailableShippingMethods !== "function")
+                                    so.AvailableShippingMethods = ko.observableArray()
+
+                                if (typeof so.EstimateShippingTaxError !== "function")
+                                    so.EstimateShippingTaxError = ko.observable(null)
+
+                                so.EstimateShippingTaxError(null)
+                                so.AvailableShippingMethods.removeAll()
+
+                                $.ajax({
+                                    type: "GET",
+                                    beforeSend: servicesFramework.setModuleHeaders,
+                                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/ShippingEstimationViewModel?SalesOrderID=" + so.SalesOrderID() + "&ShippingDistrict=" + escape(cartContainer.viewModel.EstimateShippingTaxDistrict()) + "&ShippingCity=" + escape(cartContainer.viewModel.EstimateShippingTaxCity()) + "&ShippingCountryCode=" + cartContainer.viewModel.EstimateShippingTaxCountry() + "&ShippingPostalCode=" + escape(cartContainer.viewModel.EstimateShippingTaxPostalCode()) + "&ShippingSubdivisionCode=" + (cartContainer.viewModel.EstimateShippingTaxSubdivision() ? cartContainer.viewModel.EstimateShippingTaxSubdivision() : "")
+                                })
+                                .done(function (data, textStatus, jqXHR) {
+
+                                    if (so.RequireShipping() && data.ShippingMethods.length == 0)
+                                        so.EstimateShippingTaxError("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ShippingMethodsUndefined, Global.FilePaths.LocalSharedResourceFile))")
+
+                                    so.AvailableShippingMethods.removeAll()
+                                    data.ShippingMethods.map(function (sm) {
+
+                                        so.AvailableShippingMethods.push(ko.observable(sm))
+                                    })
+                                })
+                                .fail(function (data, textStatus, errorThrown) {
+                                    if ($.trim(data.responseText))
+                                        so.EstimateShippingTaxError(data.responseJSON.Message)
+                                })
+                            })
+
+                            // Estimate tax
+							var salesOrderSetData = {
+								BillingDistrict: cartContainer.viewModel.EstimateShippingTaxDistrict(),
+                                BillingCity: cartContainer.viewModel.EstimateShippingTaxCity(),
+                                BillingCountryCode: cartContainer.viewModel.EstimateShippingTaxCountry(),
+                                BillingSubdivisionCode: cartContainer.viewModel.EstimateShippingTaxSubdivision() ? cartContainer.viewModel.EstimateShippingTaxSubdivision() : "",
+								BillingPostalCode: cartContainer.viewModel.EstimateShippingTaxPostalCode(),
+								ShippingDistrict: cartContainer.viewModel.EstimateShippingTaxDistrict(),
+                                ShippingCity: cartContainer.viewModel.EstimateShippingTaxCity(),
+                                ShippingCountryCode: cartContainer.viewModel.EstimateShippingTaxCountry(),
+                                ShippingSubdivisionCode: cartContainer.viewModel.EstimateShippingTaxSubdivision() ? cartContainer.viewModel.EstimateShippingTaxSubdivision() : "",
+                                ShippingPostalCode: cartContainer.viewModel.EstimateShippingTaxPostalCode()
+                            }
+
+                            $.ajax({
+                                type: "PUT",
+                                beforeSend: servicesFramework.setModuleHeaders,
+                                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderSetAddress",
+                                data: salesOrderSetData
+                            })
+                            .done(function (data, textStatus, jqXHR) {
+                                cartContainer.databind()
+                            })
+                            .fail(function (data, textStatus, errorThrown) {
+                                if ($.trim(data.responseText))
+                                    cartContainer.viewModel.EstimateShippingTaxError(data.responseJSON.Message)
+                            })
+                        }
+                    }
+
+                    cartContainer.viewModel.checkout = function () {
+						if (!cartContainer.viewModel.CrosssellProductShown && cartContainer.viewModel.ShowCrosssellProduct() && cartContainer.viewModel.CrosssellProducts().length > 0) {
+							$('#rvdsfCartCrosssellProductModal').modal({ backdrop: false })
+                            cartContainer.viewModel.CrosssellProductShown = true
+
+							// Initialize ratings after KO has run
+							$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+						}
+                        else
+                            window.location = cartContainer.viewModel.Checkout.TabUrl()
+                    }
+
+                    cartContainer.viewModel.estimateShippingTaxCountryChanged = function () {
+
+                        $.ajax({
+                            type: "GET",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Globalization/Subdivisions?Active=true&CountryCode=" + this.EstimateShippingTaxCountry(),
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+
+                            cartContainer.viewModel.EstimateShippingTaxSubdivisions.removeAll()
+
+                            var country = null
+                            cartContainer.viewModel.EstimateShippingTaxCountries().map(function (c) {
+                                if (c.IsoAlpha2Code == cartContainer.viewModel.EstimateShippingTaxCountry())
+                                    country = c
+							})
+							cartContainer.viewModel.EstimateShippingTaxDistrictRequired(country.HasDistrictSystem)
+                            cartContainer.viewModel.EstimateShippingTaxPostalCodeRequired(country.HasPostalCodeSystem)
+
+							if (country.IsSubdivisionRequired) {
+								$.each(data, function () {
+									cartContainer.viewModel.EstimateShippingTaxSubdivisions.push({ Name: this.Name, IsoCode: this.IsoCode })
+								})
+							}
+
+                            cartContainer.viewModel.EstimateShippingTaxSubdivision(cartContainer.viewModel.DefaultSubdivisionCode())
+                        })
+					}
+
+					cartContainer.viewModel.initializePayPalCheckoutPayment = function () {
+						var that = this
+
+						var paymentMethod = this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == 6 })
+						if (paymentMethod && paymentMethod.PaymentGateway() == 'PayPalCheckout') {
+
+							let script = document.createElement("script");
+							script.setAttribute("src", "https://www.paypal.com/sdk/js?vault=false&intent=authorize&commit=false&currency=" + that.PrimaryCurrency.CurrencyCode() + "&client-id=" + paymentMethod.PublicKey());
+							document.body.appendChild(script);
+
+							setTimeout(function () {
+								if ($("#paypal-button-container").children().length == 0) {
+
+									paypal.Buttons({
+										style: {
+											layout: 'horizontal',
+											shape: 'rect',
+											height: Math.max($(".rvdsf-btn-checkout").outerHeight(), 25),
+											label: 'checkout',
+											tagline: false
+										},
+										createOrder: function (data, actions) {
+											return actions.order.create({
+												payer: {
+													name: {
+														given_name: that.SalesOrderSet.BillingFirstName(),
+														surname: that.SalesOrderSet.BillingLastName()
+													}
+												},
+												purchase_units: [{
+													amount: {
+														value: that.SalesOrderSet.TotalAmount().toFixed(2),
+														currency_code: that.PrimaryCurrency.CurrencyCode()
+													}
+												}]
+											});
+										},
+										onApprove: function (data, actions) {
+
+											actions.order.get().then(function (details) {
+												// Update address
+												var salesOrderSetData = {
+													Operation: 'BillingInformation|ShippingInformation',
+													BillingFirstName: details.payer.name.given_name,
+													BillingLastName: details.payer.name.surname,
+													BillingStreet: details.purchase_units[0].shipping.address.address_line_1,
+													BillingUnit: details.purchase_units[0].shipping.address.address_line_2,
+													BillingDistrict: '',
+													BillingCity: details.purchase_units[0].shipping.address.admin_area_2,
+													BillingCountryCode: details.purchase_units[0].shipping.address.country_code,
+													BillingSubdivisionCode: details.purchase_units[0].shipping.address.admin_area_1 && details.purchase_units[0].shipping.address.admin_area_1.length <= 3 ? details.purchase_units[0].shipping.address.country_code + '-' + details.purchase_units[0].shipping.address.admin_area_1 : '',
+													BillingPostalCode: details.purchase_units[0].shipping.address.postal_code,
+													BillingEmail: details.payer.email_address,
+													BillingPhone: details.payer.phone ? details.payer.phone.phone_number : '',
+													ShippingFirstName: details.payer.name.given_name,
+													ShippingLastName: details.payer.name.surname,
+													ShippingStreet: details.purchase_units[0].shipping.address.address_line_1,
+													ShippingUnit: details.purchase_units[0].shipping.address.address_line_2,
+													ShippingDistrict: '',
+													ShippingCity: details.purchase_units[0].shipping.address.admin_area_2,
+													ShippingCountryCode: details.purchase_units[0].shipping.address.country_code,
+													ShippingSubdivisionCode: details.purchase_units[0].shipping.address.admin_area_1 && details.purchase_units[0].shipping.address.admin_area_1.length <= 3 ? details.purchase_units[0].shipping.address.country_code + '-' + details.purchase_units[0].shipping.address.admin_area_1 : '',
+													ShippingPostalCode: details.purchase_units[0].shipping.address.postal_code,
+													ShippingEmail: details.payer.email_address,
+													ShippingPhone: details.payer.phone ? details.payer.phone.phone_number : '',
+												}
+
+												$.ajax({
+													type: "PUT",
+													beforeSend: servicesFramework.setModuleHeaders,
+													url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Checkout/SalesOrderSet",
+													data: salesOrderSetData
+												})
+												.then(function () {
+													// Update selected payment
+													var salesPaymentData = {
+														Amount: that.SalesOrderSet.TotalAmount().toFixed(2),
+														CreditCardHint: null,
+														CreditCardNumber: null,
+														CreditCardExpiryMonth: null,
+														CreditCardExpiryYear: null,
+														CreditCardCvv: null,
+														PaymentMethod: 6,
+														ProfileNumber: null,
+														PaymentNumber: null,
+														PaymentNonce: data.orderID,
+														PaymentHint: null,
+														AuthenticationToken: null,
+														InstitutionName: null,
+														InstitutionNumber: null,
+														AccountNumber: null,
+														AccountType: null,
+														UserPaymentGUID: null,
+														ClientTimeZoneOffset: new Date().getTimezoneOffset(),
+														ClientScreenHeight: window.screen.height,
+														ClientScreenWidth: window.screen.width,
+														ClientScreenColorDepth: window.screen.colorDepth,
+														ClientLanguage: window.navigator.language
+													}
+
+													$.ajax({
+														context: this,
+														type: "POST",
+														beforeSend: servicesFramework.setModuleHeaders,
+														url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Checkout/SalesPayment",
+														data: salesPaymentData
+													})
+													.done(function (data, textStatus, jqXHR) {
+														// Redirect to Checkout
+														location.href = that.Checkout.TabUrl()
+													})
+												})
+											})											
+										}
+									}).render('#paypal-button-container')
+
+								}
+							}, 2000)
+						}
+					}
+
+                    cartContainer.viewModel.removeCoupon = function (couponCode) {
+                        cartContainer.viewModel.CouponError(null)
+
+                        var couponData = { CouponCode: couponCode }
+
+                        $.ajax({
+                            type: "DELETE",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/Coupon",
+                            data: couponData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+                            })
+
+                            cartContainer.viewModel.SalesOrderSet.CouponCodeList.remove(couponCode)
+                            cartContainer.databind()
+                        })
+                    }
+
+                    cartContainer.viewModel.removeSalesOrderDetail = function (sod) {
+                        cartContainer.viewModel.EstimateShippingTaxError(null)
+                        cartContainer.viewModel.EstimateShippingTaxSubmitted(false)
+
+                        var salesOrderDetailData = {
+                            SalesOrderDetailID: sod.SalesOrderDetailID()
+                        }
+
+                        $.ajax({
+                            type: "DELETE",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                            data: salesOrderDetailData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+							})
+
+                            cartContainer.databind()
+                        })
+                    }
+
+                    cartContainer.viewModel.resetCart = function () {
+
+                        cartContainer.viewModel.EstimateShippingTaxError(null)
+                        cartContainer.viewModel.EstimateShippingTaxSubmitted(false)
+
+                        $.ajax({
+                            type: "DELETE",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/Cart"
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+                            })
+
+                            cartContainer.databind()
+                        })
+                    }
+
+                    cartContainer.viewModel.updateCart = function () {
+                        cartContainer.viewModel.EstimateShippingTaxError(null)
+                        cartContainer.viewModel.EstimateShippingTaxSubmitted(false)
+
+                        var salesOrderDetailDataList = []
+
+						cartContainer.viewModel.SalesOrderSet.MainSalesOrderDetails().map(function (sod) {
+							if (sod.PreviousQuantity() != sod.Quantity()) {
+								var salesOrderDetailData = { SalesOrderDetailID: sod.SalesOrderDetailID(), Quantity: sod.Quantity() }
+								salesOrderDetailDataList.push(salesOrderDetailData)
+							}
+                        })
+
+                        $.ajax({
+                            type: "PUT",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetails",
+                            data: JSON.stringify(salesOrderDetailDataList),
+                            contentType: 'application/json'
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+							})
+
+                            cartContainer.databind()
+						})
+						.fail(function (data, textStatus, errorThrown) {
+								cartContainer.viewModel.ValidationResults.push({ Message : data.responseJSON.Message ? data.responseJSON.Message : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_UnknownErrorOccured, Global.FilePaths.LocalSharedResourceFile))" })
+                        })
+                    }
+
+                    // Helper function to format currency
+                    cartContainer.viewModel.formatCurrency = function (number) {
+                        return new Intl.NumberFormat(this.Currency.CultureCode(), { style: 'currency', currency: this.Currency.CurrencyCode() }).format((typeof number === "function" ? number() : number) * this.Currency.ExchangeRate());
+                    }
+
+                    // Initialize countries
+                    $.ajax({
+                        type: "GET",
+                        beforeSend: servicesFramework.setModuleHeaders,
+                        url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Globalization/Countries?Active=true",
+                    })
+                    .done(function (data, textStatus, jqXHR) {
+
+                        cartContainer.viewModel.EstimateShippingTaxCountries.removeAll()
+
+                        $.each(data, function () {
+                            cartContainer.viewModel.EstimateShippingTaxCountries.push(this)
+                        });
+
+                        ko.applyBindings(cartContainer.viewModel, cartContainer)
+
+                        cartContainer.viewModel.estimateShippingTaxCountryChanged()
+                    })
+                }
+
+				// Initialize ratings after KO has run
+				if (cartContainer.viewModel.CrosssellProductShown)
+					$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+            })
+        }
+
+        cartContainer.databind()
+    })
+</script>
+

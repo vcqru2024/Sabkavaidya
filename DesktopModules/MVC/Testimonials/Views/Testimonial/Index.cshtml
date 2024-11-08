@@ -1,0 +1,105 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<vcqru.Testimonials.Models.Testimonial>>
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Linq
+
+@{
+    var moduleId = Dnn.ModuleContext.ModuleId;
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/Testimonials/Resources/owl-carasoul.min.css");
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/Testimonials/Resources/Custome.js", 20);
+    ClientResourceManager.RegisterScript(Dnn.DnnPage, "~/DesktopModules/MVC/Testimonials/Resources/owlcarasoul.js", 20);
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, "~/DesktopModules/MVC/Testimonials/Resources/owl-carasoul.min.css");
+}
+
+<div id="Testimonials-@Dnn.ModuleContext.ModuleId">
+    @if (!Model.Any())
+    {
+        <p>No Testimonials</p>
+    }
+    else
+    {
+        if (ViewBag.SettingValue == true)
+        {
+            <div class="container">
+                <div class="patanjali-products">
+                    <div class="text-center web-heading">
+                        <h1>@Dnn.LocalizeString("TestimonialsHeading")</h1>
+                    </div>
+
+                    <div class="owl-carousel">
+                        @foreach (var testimonial in Model)
+                        {
+                            <div class="item">
+                                <div class="card">
+                                    <div class="card-img-top">
+                                        <ul>
+                                            <li>
+                                                <img alt="Customer Profile" src="@testimonial.ImageUrl" />
+                                            </li>
+                                            <li>
+                                                <h5>@testimonial.Name</h5>
+                                                <p>@testimonial.Location</p>
+                                                <p>@testimonial.Condition</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>@testimonial.Message</p>
+                                    </div>
+                                    @if (Dnn.ModuleContext.IsEditable)
+                                    {
+                                        <div>
+                                            <a href="@Url.Action("Edit", "Testimonial", new { ctl = "Edit", testimonialId = testimonial.TestimonialId })">@Dnn.LocalizeString("EditItem")</a>
+                                            <a href="@Url.Action("Delete", "Testimonial", new { testimonialId = testimonial.TestimonialId })">@Dnn.LocalizeString("DeleteItem")</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <section class="patient-testimonials">
+                <div class="container">
+                    <div class="web-heading">
+                        <h1>Patient Testimonials and Success Stories</h1>
+                        <p>No two individuals are alike. Sbka Vaidya follows &ldquo;Ayunique&rdquo;. It examines the patient and disease with an aim to diagnose the root cause and offer completely personalised treatment.</p>
+                    </div>
+
+                    <div class="g-3 g-lg-4 g-md-4 g-xl-4 g-xxl-4 row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xl-3 row-cols-xxl-3">
+                        @foreach (var testimonial in Model)
+                        {
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-img-top">
+                                        <ul>
+                                            <li><img alt="Patient Profile" src="@testimonial.ImageUrl" /></li>
+                                            <li>
+                                                <h5>@testimonial.Name</h5>
+                                                <p>@testimonial.Location</p>
+                                                <p>@testimonial.Condition</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>@testimonial.Message</p>
+                                    </div>
+                                    @if (Dnn.ModuleContext.IsEditable)
+                                    {
+                                        <div>
+                                            <a href="@Url.Action("Edit", "Testimonial", new { ctl = "Edit", testimonialId = testimonial.TestimonialId })">@Dnn.LocalizeString("EditItem")</a>
+                                            <a href="@Url.Action("Delete", "Testimonial", new { testimonialId = testimonial.TestimonialId })">@Dnn.LocalizeString("DeleteItem")</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+    }
+</div>

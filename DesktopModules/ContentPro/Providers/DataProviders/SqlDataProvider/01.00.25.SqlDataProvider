@@ -1,0 +1,33 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF (OBJECT_ID('[FK{objectQualifier}ContentPro_Versions_ContentPro_Content]', 'F') IS NOT NULL)
+BEGIN
+    alter table {databaseOwner}[{objectQualifier}ContentPro_Versions]
+drop constraint [FK{objectQualifier}ContentPro_Versions_ContentPro_Content]
+
+END
+GO
+
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Versions]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Versions_ContentPro_Content] FOREIGN KEY([ContentID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_Content] ([ContentID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Versions] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_Versions_ContentPro_Content]
+GO
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

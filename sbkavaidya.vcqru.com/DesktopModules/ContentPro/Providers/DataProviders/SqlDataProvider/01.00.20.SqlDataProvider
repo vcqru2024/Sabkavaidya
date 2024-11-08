@@ -1,0 +1,63 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_CategoryTree') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_CategoryTree
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_CategoryTree] 
+	-- Add the parameters for the stored procedure here
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	WITH CategoryTree
+AS (
+    SELECT
+        CatID,ParentID,CatName,0 AS LEVEL,CatID AS root,RIGHT('000000' + CAST(CatID AS varchar(MAX)), 6) AS sort
+    FROM {databaseOwner}[{objectQualifier}ContentPro_Categories]
+    WHERE
+        ParentID = 0 And IsPublic = 1 And IsTag = 0
+
+    UNION ALL
+
+    SELECT 
+        RUT.CatID
+        ,RUT.ParentID
+        ,RUT.CatName
+		,
+		LEVEL + 1 AS LEVEL,RUT.ParentID AS root,
+		uh.sort+'/'+RIGHT('000000' + CAST(RUT.CatID AS varchar(20)), 6) AS sort
+    FROM {databaseOwner}[{objectQualifier}ContentPro_Categories] AS RUT
+    INNER JOIN CategoryTree uh ON uh.CatID = rut.ParentID    
+    )
+SELECT *
+FROM CategoryTree
+ORDER BY sort 
+
+END
+
+GO
+
+
+
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ViewCategories]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_ViewCategories_ContentPro_View] FOREIGN KEY([ViewID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_View] ([ViewID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ViewCategories] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_ViewCategories_ContentPro_View]
+GO

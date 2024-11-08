@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="secGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="plImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="plImageWidth.Help" xml:space="preserve">
+    <value>Set product image width (px), it works when "Force image width" option is checked.</value>
+  </data>
+  <data name="plTemplate.Text" xml:space="preserve">
+    <value>Template </value>
+  </data>
+  <data name="plTemplate.Help" xml:space="preserve">
+    <value>Select which template is used to display product list. Template files locate under desktopmodules/crossclassified/template/product/VendorProfile, you can customize your own.</value>
+  </data>
+  <data name="plShowPrice.Text" xml:space="preserve">
+    <value>Show Price</value>
+  </data>
+  <data name="plShowImageOnly.Text" xml:space="preserve">
+    <value>Records With Image Only</value>
+  </data>
+  <data name="plShowImageOnly.Help" xml:space="preserve">
+    <value>Check to only show products which has image specified</value>
+  </data>
+  <data name="plShowImage.Text" xml:space="preserve">
+    <value>Show Image</value>
+  </data>
+  <data name="plShowImage.Help" xml:space="preserve">
+    <value>show image in list</value>
+  </data>
+  <data name="plShowPrice.Help" xml:space="preserve">
+    <value>Check to show product price</value>
+  </data>
+  <data name="plShowFeaturedOnly.Text" xml:space="preserve">
+    <value>Featured Products Only</value>
+  </data>
+  <data name="plShowFeaturedOnly.Help" xml:space="preserve">
+    <value>Check to display featured products only.</value>
+  </data>
+  <data name="plPaging.Text" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="plPaging.Help" xml:space="preserve">
+    <value>Display paging navigation</value>
+  </data>
+  <data name="plRowCount.Text" xml:space="preserve">
+    <value>Rows Per Page</value>
+  </data>
+  <data name="plRowCount.Help" xml:space="preserve">
+    <value>Rows per page</value>
+  </data>
+  <data name="plColCount.Text" xml:space="preserve">
+    <value>Items Per Row</value>
+  </data>
+  <data name="plColCount.Help" xml:space="preserve">
+    <value>Columns per row</value>
+  </data>
+  <data name="plPageSpan.Text" xml:space="preserve">
+    <value>Paging Navigate Span</value>
+  </data>
+  <data name="plPageSpan.Help" xml:space="preserve">
+    <value>Paging navigate span</value>
+  </data>
+  <data name="plShowSearch.Help" xml:space="preserve">
+    <value>Check to display the search box at the top of the product list.</value>
+  </data>
+  <data name="plShowSearch.Text" xml:space="preserve">
+    <value>Show Search</value>
+  </data>
+  <data name="plShowName.Text" xml:space="preserve">
+    <value>Show Name</value>
+  </data>
+  <data name="plShowName.Help" xml:space="preserve">
+    <value>Check to show product name</value>
+  </data>
+  <data name="li_SortField_CreationDate.Text" xml:space="preserve">
+    <value>Creation Date</value>
+  </data>
+  <data name="li_SortField_PublishDate.Text" xml:space="preserve">
+    <value>Publish Date</value>
+  </data>
+  <data name="li_SortField_LastModifiedDate.Text" xml:space="preserve">
+    <value>Last modified date</value>
+  </data>
+  <data name="li_SortField_Views.Text" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="plSortField.Text" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="plSortField.Help" xml:space="preserve">
+    <value>Sort Fields</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Vendor/Seller Profile Settings</value>
+  </data>
+  <data name="secImage.Text" xml:space="preserve">
+    <value>Images</value>
+  </data>
+  <data name="secPaging.Text" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="secContent.Text" xml:space="preserve">
+    <value>Display Contents (apply to all departments)</value>
+  </data>
+  <data name="plLinkTarget.Text" xml:space="preserve">
+    <value>Link Target</value>
+  </data>
+  <data name="plLinkTarget.Help" xml:space="preserve">
+    <value>Set how to display product detail.</value>
+  </data>
+  <data name="li_ListStyle_Grid.Text" xml:space="preserve">
+    <value>Grid (1 record per row)</value>
+  </data>
+  <data name="li_ListStyle_List.Text" xml:space="preserve">
+    <value>List (supports multiple records per row)</value>
+  </data>
+  <data name="plListStyle.Help" xml:space="preserve">
+    <value>Select product list style</value>
+  </data>
+  <data name="plListStyle.Text" xml:space="preserve">
+    <value>Product List Style</value>
+  </data>
+  <data name="plShowCreatedDate.Text" xml:space="preserve">
+    <value>Show Created Date</value>
+  </data>
+  <data name="plShowFeaturedField.Text" xml:space="preserve">
+    <value>Show Featured Status</value>
+  </data>
+  <data name="plShowViews.Text" xml:space="preserve">
+    <value>Show Views</value>
+  </data>
+  <data name="chkForceImageHeight.Text" xml:space="preserve">
+    <value>Fix Image Height</value>
+  </data>
+  <data name="chkForceImageWidth.Text" xml:space="preserve">
+    <value>Fix Image Width</value>
+  </data>
+  <data name="plImageHeight.Help" xml:space="preserve">
+    <value>Set product image height (px), it works when "Force image height" option is checked.</value>
+  </data>
+  <data name="plImageHeight.Text" xml:space="preserve">
+    <value>Image Height</value>
+  </data>
+  <data name="plUseLightBoxEffect.Help" xml:space="preserve">
+    <value>When click product item, popup the big image using the light box effect instead of open product detail window.</value>
+  </data>
+  <data name="plUseLightBoxEffect.Text" xml:space="preserve">
+    <value>Light Box Effect Popup</value>
+  </data>
+  <data name="plShowPromoStart.Help" xml:space="preserve">
+    <value>Check to show promo price start if it exist</value>
+  </data>
+  <data name="plShowPromoStart.Text" xml:space="preserve">
+    <value>Show Promo Start</value>
+  </data>
+  <data name="plShowPromoEnd.Help" xml:space="preserve">
+    <value>Check to show promo price end if it exist</value>
+  </data>
+  <data name="plShowPromoEnd.Text" xml:space="preserve">
+    <value>Show Promo End</value>
+  </data>
+  <data name="plShowSummary.Help" xml:space="preserve">
+    <value>Check to show summary in product list</value>
+  </data>
+  <data name="plShowSummary.Text" xml:space="preserve">
+    <value>Show Summary</value>
+  </data>
+  <data name="plShowCreatedDate.Help" xml:space="preserve">
+    <value>Show product created date</value>
+  </data>
+  <data name="plShowFeaturedField.Help" xml:space="preserve">
+    <value>Show product featured status</value>
+  </data>
+  <data name="plShowViews.Help" xml:space="preserve">
+    <value>Show product views in list</value>
+  </data>
+  <data name="plShowPromoOnly.Help" xml:space="preserve">
+    <value>Check to show products which has promo price specified.</value>
+  </data>
+  <data name="plShowPromoOnly.Text" xml:space="preserve">
+    <value>Show Promo Only</value>
+  </data>
+  <data name="plRatingImage.Help" xml:space="preserve">
+    <value>Choose rating image.</value>
+  </data>
+  <data name="plRatingImage.Text" xml:space="preserve">
+    <value>Rating Image</value>
+  </data>
+  <data name="plShowRating.Help" xml:space="preserve">
+    <value>Show product rating result.</value>
+  </data>
+  <data name="plShowRating.Text" xml:space="preserve">
+    <value>Show Rating</value>
+  </data>
+  <data name="plShowPageInfo.Help" xml:space="preserve">
+    <value>Check this option to show paging detail information (record counts, page size, page count, page counts,..etc).</value>
+  </data>
+  <data name="plShowPageInfo.Text" xml:space="preserve">
+    <value>Show Paging Info</value>
+  </data>
+  <data name="plDetailTab.Help" xml:space="preserve">
+    <value>Select which page to display product detail, that page should have a Cp_Product_Detail module instance on it. If you don't specify it, module will use the default detail tab specify for selectd department.</value>
+  </data>
+  <data name="plDetailTab.Text" xml:space="preserve">
+    <value>Cp_Product_Detail Module Page</value>
+  </data>
+  <data name="plDisplayRss.Help" xml:space="preserve">
+    <value>Display RSS link below product list.</value>
+  </data>
+  <data name="plDisplayRss.Text" xml:space="preserve">
+    <value>Display RSS</value>
+  </data>
+  <data name="plRssItemCounts.Help" xml:space="preserve">
+    <value>Enter how many items are displayed to RSS feeds</value>
+  </data>
+  <data name="plRssItemCounts.Text" xml:space="preserve">
+    <value>RSS Item Counts</value>
+  </data>
+  <data name="plSummaryLength.Help" xml:space="preserve">
+    <value>Enter sumary length while displaying, enter 0 to display full summary.</value>
+  </data>
+  <data name="plSummaryLength.Text" xml:space="preserve">
+    <value>Summary Length</value>
+  </data>
+  <data name="secRss.Text" xml:space="preserve">
+    <value>RSS</value>
+  </data>
+  <data name="plUDFieldList.Help" xml:space="preserve">
+    <value>Choose user defined fields which will be displayed in built in template. Note, it works only when "Use built in template" option is checked.</value>
+  </data>
+  <data name="plUDFieldList.Text" xml:space="preserve">
+    <value>Display Fields</value>
+  </data>
+  <data name="plUDField_ImageHeight.Help" xml:space="preserve">
+    <value>Control the image height of user defined fields.</value>
+  </data>
+  <data name="plUDField_ImageHeight.Text" xml:space="preserve">
+    <value>Custom Image Height</value>
+  </data>
+  <data name="plUDField_ImageWidth.Help" xml:space="preserve">
+    <value>Control the image width of user defined fields. </value>
+  </data>
+  <data name="plUDField_ImageWidth.Text" xml:space="preserve">
+    <value>Custom Image Width</value>
+  </data>
+  <data name="plUseBuiltInTemplate.Help" xml:space="preserve">
+    <value>Use built-in tempate to display user defined fields. Uncheck this option if you want to display user defined fields via your own tempaltes. For more detail about customize template, please see user guide document.</value>
+  </data>
+  <data name="plUseBuiltInTemplate.Text" xml:space="preserve">
+    <value>Use Built-In Template</value>
+  </data>
+  <data name="secUDField.Text" xml:space="preserve">
+    <value>Custom Attributes</value>
+  </data>
+  <data name="plType.Help" xml:space="preserve">
+    <value>Select department which products belongs.</value>
+  </data>
+  <data name="plType.Text" xml:space="preserve">
+    <value>Select Department</value>
+  </data>
+  <data name="secVendor.Text" xml:space="preserve">
+    <value>Sellers</value>
+  </data>
+  <data name="plShowPackageFee.Help" xml:space="preserve">
+    <value>Show product package fee in list</value>
+  </data>
+  <data name="plShowPackageFee.Text" xml:space="preserve">
+    <value>Show Package Fee</value>
+  </data>
+  <data name="plShowSku.Help" xml:space="preserve">
+    <value>Show product sku in list</value>
+  </data>
+  <data name="plShowSku.Text" xml:space="preserve">
+    <value>Show Sku</value>
+  </data>
+  <data name="plShowWeight.Help" xml:space="preserve">
+    <value>Show product weight in list</value>
+  </data>
+  <data name="plShowWeight.Text" xml:space="preserve">
+    <value>Show Weight</value>
+  </data>
+  <data name="plUserIdMapping.Help" xml:space="preserve">
+    <value>Module will display vendor profile and his products which belong to specific user when  "ProductUserId" parameter is specified. However, you can specify a different parameter to replace "ProductUserId". For example, if you enter "AcId" as "User Id Mapping", and then type url like http://DnnModule.com/default.aspx?AcId=3", then module will display products which belong to user id=3.</value>
+  </data>
+  <data name="plUserIdMapping.Text" xml:space="preserve">
+    <value>User Id Mapping</value>
+  </data>
+  <data name="Tip_DetailTab.Text" xml:space="preserve">
+    <value>Select which page to display product detail, that page should have a Cp_Product_Detail module instance on it. If you don't specify it, module will use the default detail page for selected department (which is specified in "Cp_Admin sub module - Admin Control Panel - Departments") to display.</value>
+  </data>
+  <data name="Tip_DisplayContent.Text" xml:space="preserve">
+    <value>Choose fields which will be displayed in list. Note, these fields can be applied to all departments.</value>
+  </data>
+  <data name="Tip_UdField.Text" xml:space="preserve">
+    <value>Custom attributes are created in "Cp_Admin sub module - Admin Control Panel - System Data - Attributes". You can use built-in tempate to display these custom fields. Uncheck this option if you want to display custom fields via your own tempaltes. For more detail about customize template, please see user guide document.</value>
+  </data>
+  <data name="plUDField_CheckBoxList_Enabled.Help" xml:space="preserve">
+    <value>If you use check box list to display your custom attributes, they will display as disabled by default to avoid visitor select. However, if they look too dim, you can check on this option to enable it.</value>
+  </data>
+  <data name="plUDField_CheckBoxList_Enabled.Text" xml:space="preserve">
+    <value>Check Box List Enabled</value>
+  </data>
+  <data name="plUDField_CheckBoxList_RepeatColumns.Help" xml:space="preserve">
+    <value>If you use check box list to display your custom attributes, they will display as 1 column per row by default. You can specify more columns per row to let it looks good.</value>
+  </data>
+  <data name="plUDField_CheckBoxList_RepeatColumns.Text" xml:space="preserve">
+    <value>Check Box List Repeat</value>
+  </data>
+  <data name="Tip_Image.Text" xml:space="preserve">
+    <value>Enter image width/height and check on "Fix image width/height" options to control image layout.</value>
+  </data>
+  <data name="plShowAddCart.Help" xml:space="preserve">
+    <value>Check to show "Add Cart" button in list</value>
+  </data>
+  <data name="plShowAddCart.Text" xml:space="preserve">
+    <value>Show "Add To Cart" Button</value>
+  </data>
+  <data name="plShowOrderNow.Help" xml:space="preserve">
+    <value>Check to show "Order Now" button in list</value>
+  </data>
+  <data name="plShowOrderNow.Text" xml:space="preserve">
+    <value>Show "Order Now" Button</value>
+  </data>
+  <data name="plShowBidButton.Help" xml:space="preserve">
+    <value>Show Bid button</value>
+  </data>
+  <data name="plShowBidButton.Text" xml:space="preserve">
+    <value>Show "Bid" Button</value>
+  </data>
+  <data name="plShowBidCount.Help" xml:space="preserve">
+    <value>Show bid count</value>
+  </data>
+  <data name="plShowBidCount.Text" xml:space="preserve">
+    <value>Show Bid Count</value>
+  </data>
+  <data name="plShowBuyNowPrice.Help" xml:space="preserve">
+    <value>Check to show buy now price in list</value>
+  </data>
+  <data name="plShowBuyNowPrice.Text" xml:space="preserve">
+    <value>Show "Buy Now" price</value>
+  </data>
+  <data name="plShowCurrentBid.Help" xml:space="preserve">
+    <value>Show current bid price</value>
+  </data>
+  <data name="plShowCurrentBid.Text" xml:space="preserve">
+    <value>Show Current Bid Price</value>
+  </data>
+  <data name="plShowCurrentBidder.Help" xml:space="preserve">
+    <value>Show current bidder</value>
+  </data>
+  <data name="plShowCurrentBidder.Text" xml:space="preserve">
+    <value>Show Current Bidder</value>
+  </data>
+  <data name="plShowExpireDate.Help" xml:space="preserve">
+    <value>Show expire date</value>
+  </data>
+  <data name="plShowExpireDate.Text" xml:space="preserve">
+    <value>Show Expire Date</value>
+  </data>
+  <data name="plShowPublishDate.Help" xml:space="preserve">
+    <value>Show publish date</value>
+  </data>
+  <data name="plShowPublishDate.Text" xml:space="preserve">
+    <value>Show Publish Date</value>
+  </data>
+  <data name="plShowRemainTime.Help" xml:space="preserve">
+    <value>Show remain time</value>
+  </data>
+  <data name="plShowRemainTime.Text" xml:space="preserve">
+    <value>Show Remain Time</value>
+  </data>
+  <data name="plShowStartPrice.Help" xml:space="preserve">
+    <value>Check to show start price in list</value>
+  </data>
+  <data name="plShowStartPrice.Text" xml:space="preserve">
+    <value>Show Start Price</value>
+  </data>
+  <data name="plTemplate_Ad.Help" xml:space="preserve">
+    <value>Choose classified ads vendor profile template</value>
+  </data>
+  <data name="plTemplate_Ad.Text" xml:space="preserve">
+    <value>Classified ads vendor profile template</value>
+  </data>
+  <data name="plTemplate_Auction.Help" xml:space="preserve">
+    <value>Choose auction vendor profile Template</value>
+  </data>
+  <data name="plTemplate_Auction.Text" xml:space="preserve">
+    <value>Auction vendor profile template</value>
+  </data>
+  <data name="plTemplate_FixedPrice.Help" xml:space="preserve">
+    <value>Choose Fixed Price Products vendor profile Template</value>
+  </data>
+  <data name="plTemplate_FixedPrice.Text" xml:space="preserve">
+    <value>Fixed price products vendor profile template</value>
+  </data>
+  <data name="secAuction.Text" xml:space="preserve">
+    <value>Auction Contents (mainly apply to "Auction" departments)</value>
+  </data>
+  <data name="secFixedPrice.Text" xml:space="preserve">
+    <value>Fixed Price Contents (mainly apply to "Fixed Price" departments)</value>
+  </data>
+  <data name="Tip_AuctionContent.Text" xml:space="preserve">
+    <value>Choose auction fields which will be displayed in list. Note, these fields are mainly applied to "Auction" departments.</value>
+  </data>
+  <data name="Tip_FixedPriceContent.Text" xml:space="preserve">
+    <value>Choose fields which will be displayed in list. Note, these fields are mainly applied to "Fixed Price" departments.</value>
+  </data>
+  <data name="Tip_Template.Text" xml:space="preserve">
+    <value>All sub modules on Classified Pro package are template based, you can customize your desired display effect by creating different templates. See "Classified Pro user guide.pdf" for more detail.&lt;br/&gt;&lt;br/&gt; Note, Cp_Product_VendorProfile templates for "Fixed Price" departments locates under DesktopModules\CrossClassified\Template\Product\VendorProfile\FixedPrice folder; templates for "Classified Ads" departments locates under DesktopModules\CrossClassified\Template\Product\VendorProfile\Ad folder; templates for "Auction" departments locates under DesktopModules\CrossClassified\Template\Product\VendorProfile\Auction folder, you should put related templates under corresponding folder.</value>
+  </data>
+  <data name="Tip_UseLightBoxEffect.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;When click product item, popup the big image using the light box effect instead of open product detail window.
+&lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, this feature works for "Classified Ads" departments only. Check this option if you want to show ads as photo gallery.</value>
+  </data>
+  <data name="Tip_Rating.Text" xml:space="preserve">
+    <value>Note, module will show seller average rating for auction listings. For other listings like fixed price products or classified ads, module will show average rating for current listing.</value>
+  </data>
+  <data name="plRefreshAfterAddCart.Help" xml:space="preserve">
+    <value>Check to refresh cart data</value>
+  </data>
+  <data name="plRefreshAfterAddCart.Text" xml:space="preserve">
+    <value>Refresh Cart Data</value>
+  </data>
+  <data name="Tip_RefreshAfterAddCart.Text" xml:space="preserve">
+    <value>If you also have a Cp_Product_MiniCart sub module (or store skin object) in current page, check on this option to refresh cart data after user click "Add To Cart" button.</value>
+  </data>
+  <data name="plShowSort.Help" xml:space="preserve">
+    <value>Check to show product sort options with search</value>
+  </data>
+  <data name="plShowSort.Text" xml:space="preserve">
+    <value>Show Sort Options</value>
+  </data>
+  <data name="plShowPageInSearch.Help" xml:space="preserve">
+    <value>Check to show paging number in search so visitors can select page size. </value>
+  </data>
+  <data name="plShowPageInSearch.Text" xml:space="preserve">
+    <value>Show Paging Number In Search</value>
+  </data>
+  <data name="li_SearchMode_Advanced.Text" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="li_SearchMode_Basic.Text" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="li_SearchMode_None.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="plBasic_ShowPageInSearch.Help" xml:space="preserve">
+    <value>Show "Paging" options in search</value>
+  </data>
+  <data name="plBasic_ShowPageInSearch.Text" xml:space="preserve">
+    <value>Show "Paging Size" In Search</value>
+  </data>
+  <data name="plBasic_ShowSortInSearch.Help" xml:space="preserve">
+    <value>Show "Sort By" options in search</value>
+  </data>
+  <data name="plBasic_ShowSortInSearch.Text" xml:space="preserve">
+    <value>Show "Sort By" In Search</value>
+  </data>
+  <data name="plBasic_TitleInputWidth.Help" xml:space="preserve">
+    <value>Enter the product title input width, default value is 200.</value>
+  </data>
+  <data name="plBasic_TitleInputWidth.Text" xml:space="preserve">
+    <value>Title Input Width</value>
+  </data>
+  <data name="plBuiltInField_Category.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product category</value>
+  </data>
+  <data name="plBuiltInField_Category.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="plBuiltInField_CreatedDate.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product created date</value>
+  </data>
+  <data name="plBuiltInField_CreatedDate.Text" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="plBuiltInField_ExpireDate.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product expire date</value>
+  </data>
+  <data name="plBuiltInField_ExpireDate.Text" xml:space="preserve">
+    <value>Expire Date</value>
+  </data>
+  <data name="plBuiltInField_Paging.Help" xml:space="preserve">
+    <value>Check on to allow user to choose "Page Size"</value>
+  </data>
+  <data name="plBuiltInField_Paging.Text" xml:space="preserve">
+    <value>Page Size</value>
+  </data>
+  <data name="plBuiltInField_Price.Help" xml:space="preserve">
+    <value>Check to allow user to search by price</value>
+  </data>
+  <data name="plBuiltInField_Price.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="plBuiltInField_PublishDate.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product publish date</value>
+  </data>
+  <data name="plBuiltInField_PublishDate.Text" xml:space="preserve">
+    <value>Publish Date</value>
+  </data>
+  <data name="plBuiltInField_RatingAverage.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product average rating</value>
+  </data>
+  <data name="plBuiltInField_RatingAverage.Text" xml:space="preserve">
+    <value>Rating Average</value>
+  </data>
+  <data name="plBuiltInField_Sort.Help" xml:space="preserve">
+    <value>Check on to allow user to choose "Sort By"</value>
+  </data>
+  <data name="plBuiltInField_Sort.Text" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="plBuiltInField_Title.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product title</value>
+  </data>
+  <data name="plBuiltInField_Title.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="plBuiltInField_Views.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product views</value>
+  </data>
+  <data name="plBuiltInField_Views.Text" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="plSearchMode.Help" xml:space="preserve">
+    <value>Choose search mode in product list</value>
+  </data>
+  <data name="plSearchMode.Text" xml:space="preserve">
+    <value>Product Search Mode</value>
+  </data>
+  <data name="plUDT_1.Help" xml:space="preserve">
+    <value>Select custom attribute 1 which allow user to search</value>
+  </data>
+  <data name="plUDT_1.Text" xml:space="preserve">
+    <value>Custom Attribute 1</value>
+  </data>
+  <data name="plUDT_10.Help" xml:space="preserve">
+    <value>Select custom attribute 10 which allow user to search</value>
+  </data>
+  <data name="plUDT_10.Text" xml:space="preserve">
+    <value>Custom Attribute 10</value>
+  </data>
+  <data name="plUDT_2.Help" xml:space="preserve">
+    <value>Select custom attribute 2 which allow user to search</value>
+  </data>
+  <data name="plUDT_2.Text" xml:space="preserve">
+    <value>Custom Attribute 2</value>
+  </data>
+  <data name="plUDT_3.Help" xml:space="preserve">
+    <value>Select custom attribute 3 which allow user to search</value>
+  </data>
+  <data name="plUDT_3.Text" xml:space="preserve">
+    <value>Custom Attribute 3</value>
+  </data>
+  <data name="plUDT_4.Help" xml:space="preserve">
+    <value>Select custom attribute 4 which allow user to search</value>
+  </data>
+  <data name="plUDT_4.Text" xml:space="preserve">
+    <value>Custom Attribute 4</value>
+  </data>
+  <data name="plUDT_5.Help" xml:space="preserve">
+    <value>Select custom attribute 5 which allow user to search</value>
+  </data>
+  <data name="plUDT_5.Text" xml:space="preserve">
+    <value>Custom Attribute 5</value>
+  </data>
+  <data name="plUDT_6.Help" xml:space="preserve">
+    <value>Select custom attribute 6 which allow user to search</value>
+  </data>
+  <data name="plUDT_6.Text" xml:space="preserve">
+    <value>Custom Attribute 6</value>
+  </data>
+  <data name="plUDT_7.Help" xml:space="preserve">
+    <value>Select custom attribute 7 which allow user to search</value>
+  </data>
+  <data name="plUDT_7.Text" xml:space="preserve">
+    <value>Custom Attribute 7</value>
+  </data>
+  <data name="plUDT_8.Help" xml:space="preserve">
+    <value>Select custom attribute 8 which allow user to search</value>
+  </data>
+  <data name="plUDT_8.Text" xml:space="preserve">
+    <value>Custom Attribute 8</value>
+  </data>
+  <data name="plUDT_9.Help" xml:space="preserve">
+    <value>Select custom attribute 9 which allow user to search</value>
+  </data>
+  <data name="plUDT_9.Text" xml:space="preserve">
+    <value>Custom Attribute 9</value>
+  </data>
+  <data name="plWidth_Input.Help" xml:space="preserve">
+    <value>Enter the input width</value>
+  </data>
+  <data name="plWidth_Input.Text" xml:space="preserve">
+    <value>Input Width</value>
+  </data>
+  <data name="plWidth_Label.Help" xml:space="preserve">
+    <value>Enter the label width</value>
+  </data>
+  <data name="plWidth_Label.Text" xml:space="preserve">
+    <value>Label Width</value>
+  </data>
+  <data name="plWidth_Operator.Help" xml:space="preserve">
+    <value>Specify the operator (=, &lt;, &gt;, like, unlike) width</value>
+  </data>
+  <data name="plWidth_Operator.Text" xml:space="preserve">
+    <value>Operator Width</value>
+  </data>
+  <data name="secSearch_Advanced.Text" xml:space="preserve">
+    <value>Advanced Search Options (works when "Search Mode" is "Advanced")</value>
+  </data>
+  <data name="secSearch_Basic.Text" xml:space="preserve">
+    <value>Basic Search Options (works when "Search Mode" is "Basic")</value>
+  </data>
+  <data name="Tip_Advanced_BuiltInField.Text" xml:space="preserve">
+    <value>Specify the built-in fields which allow user to search below. For example, if you check on "Publish Date", then user can search products based their publish date.</value>
+  </data>
+  <data name="Tip_Advanced_Input.Text" xml:space="preserve">
+    <value>Specify the width of lable / input / perator below. For example, if you enter 300 as "Input Width", then all input controls (text box, drop down list, etc) will take 300px as their width.</value>
+  </data>
+  <data name="Tip_Advanced_UDT.Text" xml:space="preserve">
+    <value>Besides the built-in fields, you can also specify up to 10 custom attributes below to let user to search. For example, if you create a "Color" attribute and limit its value as "Red", "White", "Green" at "CrossProduct_Admin sub module - Admin Control Panel - System Data - Attributes", you can select "Custom Attribute 1" as "Color" below, then user will see a "Color" search condition, and can select its value from "Red", "White", "Green" drop down list.</value>
+  </data>
+  <data name="Tip_RepeatColumns.Text" xml:space="preserve">
+    <value>If an attribute uses check box list (or radio button list) to display its value, specify check box list (or radio button list) repeat columns here. Enter -1 to ignore this setting.</value>
+  </data>
+  <data name="Tip_SearchMode.Text" xml:space="preserve">
+    <value>Choose "None" mode to remove the search feature from product/ad/auction list. Choose "Advanced" mode to allow user to search custom attributes (which are created at "Cp_Admin sub module - Admin control panel - System Data - Attributes")</value>
+  </data>
+  <data name="plRepeatColumns.Help" xml:space="preserve">
+    <value>If an attribute uses check box list (or radio button list) to display its value, specify check box list (or radio button list) repeat columns here.</value>
+  </data>
+  <data name="plRepeatColumns.Text" xml:space="preserve">
+    <value>Repeat Columns</value>
+  </data>
+  <data name="plBuiltInField_City.Help" xml:space="preserve">
+    <value>Search City</value>
+  </data>
+  <data name="plBuiltInField_City.Text" xml:space="preserve">
+    <value>Search City</value>
+  </data>
+  <data name="plBuiltInField_Country.Help" xml:space="preserve">
+    <value>Allow to search country</value>
+  </data>
+  <data name="plBuiltInField_Country.Text" xml:space="preserve">
+    <value>Search Country</value>
+  </data>
+  <data name="plBuiltInField_State.Help" xml:space="preserve">
+    <value>Search State/Province</value>
+  </data>
+  <data name="plBuiltInField_State.Text" xml:space="preserve">
+    <value>Search State/Province</value>
+  </data>
+  <data name="plBuiltInField_Town.Help" xml:space="preserve">
+    <value>Search Town</value>
+  </data>
+  <data name="plBuiltInField_Town.Text" xml:space="preserve">
+    <value>Search Town</value>
+  </data>
+  <data name="plShowLocation_City.Help" xml:space="preserve">
+    <value>Show City</value>
+  </data>
+  <data name="plShowLocation_City.Text" xml:space="preserve">
+    <value>Show City</value>
+  </data>
+  <data name="plShowLocation_Country.Help" xml:space="preserve">
+    <value>Show Country</value>
+  </data>
+  <data name="plShowLocation_Country.Text" xml:space="preserve">
+    <value>Show Country</value>
+  </data>
+  <data name="plShowLocation_State.Help" xml:space="preserve">
+    <value>Show State/Province</value>
+  </data>
+  <data name="plShowLocation_State.Text" xml:space="preserve">
+    <value>Show State/Province</value>
+  </data>
+  <data name="plShowLocation_Town.Help" xml:space="preserve">
+    <value>Show Town</value>
+  </data>
+  <data name="plShowLocation_Town.Text" xml:space="preserve">
+    <value>Show Town</value>
+  </data>
+  <data name="Tip_Advanced_Location.Text" xml:space="preserve">
+    <value>Module also allows you to search based location. For example, search products (listings) which country = USA, state/province = California, city = Los Angeles, town = Bell. Note, 1. Current department must enable "Location" property (can be modified at "Cp_Admin sub module - Admin Control Panel - Departments"). 2. If there is only 1 country (specified at ""Cp_Admin sub module - Admin control panel - Configurations - Location"), then the country drop down list will be hidden even "Search Country" option is checked.</value>
+  </data>
+  <data name="Tip_ShowLocation.Text" xml:space="preserve">
+    <value>Check to show product/ad/auction location in list. For example, country = USA, state/province = California, city = Los Angeles, town = Bell. Note, current department must enable "Location" property (can be modified at "Cp_Admin sub module - Admin Control Panel - Departments").</value>
+  </data>
+  <data name="plBuiltInField_Sku.Help" xml:space="preserve">
+    <value>Check to allow search by Sku</value>
+  </data>
+  <data name="plBuiltInField_Sku.Text" xml:space="preserve">
+    <value>Sku</value>
+  </data>
+  <data name="secAbout.Text" xml:space="preserve">
+    <value>About Cp_Product_VendorProfile sub module</value>
+  </data>
+  <data name="Tip_About.Text" xml:space="preserve">
+    <value>Classified Pro is an enterprise-class DNN module which helps you to create an online store, auction website and also publish classified ads. It contains 17 sub modules and 1 skin object. Cp_Product_VendorProfile is one of these 17 sub modules, it is used to show vendor profile and his products (listings).&lt;br/&gt;&lt;br/&gt;
+Cp_Product_VendorProfile sub module is always used combined with other sub modules. For example, when click a vendor/seller item in Cp_Product_Vendor sub module, or click the vendor/seller name in Cp_Product_List and Cp_Product_Detail sub module, Classified Pro can navigate to Cp_Product_VendorProfile sub module and show this vendor profile detail and his products.
+When you have a lot of vendors/sellers who post products on the site, this sub module maybe useful. If not, you can ignore this sub module.&lt;br/&gt;&lt;br/&gt;
+
+
+Normally you need to provide 1 instance of Cp_Product_VendorProfile sub module for each product department. It is template based, you can customize your desired display effect by creating different templates.&lt;br/&gt;&lt;br/&gt;
+
+If current site enables content localization, Cp_Product_VendorProfile sub module will display content according to page culture. For example, if current page culture is "en-US (English)", it will display English content; if current page culture is "zh-CN (Simple Chinese)", it will display Simple Chinese content; if page culture is neutral, it will display content according to current context culture.&lt;br/&gt;&lt;br/&gt;As you can see, to support content localization, you need to create at least 1 page for each language (e.g. English and Chinese), and put Cp_Product_VendorProfile sub module on them. Of course, you can choose to create only 1 neutral page, and put Cp_Product_VendorProfile sub module on it.</value>
+  </data>
+  <data name="Tip_GroupIdMapping.Text" xml:space="preserve">
+    <value>When creating a classified ad (news article, job listing, etc), author can mark that ad as protected, or share between his friends/followers/social groups. The "Group Id Mapping" property allows you to define a specific group id parameter in the browser url, and shows ads which are shared between this group. For example:&lt;br/&gt;&lt;br/&gt; 1. You can add the DNN built-in "Social Group" module to a page, and create some groups (like "Football", "Music", "Guitar").&lt;br/&gt; 2. When creating an ad, you can then share it in certain groups (e.g, share it in "Football" group only). &lt;br/&gt;3. Put "Cp_Product_List" sub module to the group detail page (the DNN built-in "Social Group" module will create two pages, one is used to show the group list. Click a group, it will navigate to the group detail page), give it a significative module title (like "Group Ads"), and input "groupid" as "Group Id Mapping", then Cp_Product_List sub module will show ads which are shared to that "groupid" value. For example, if group detail url is http://localhost/dnn8dev/Social/Group-Activity/groupid/5 (in this url, groupid = 5), then module will show ads which are shared between that group. Note, this feature only works for classified ads, doesn't support auction (and fixed price) products.</value>
+  </data>
+  <data name="Tip_UserIdMapping.Text" xml:space="preserve">
+    <value>By default, module only accepts the "ProductUserId" parameter in the browser url as vendor id. However, the "User Id Mapping" option allows you to define another specific user id parameter in the browser url, and shows seller profile and his products which belong to this user. For example, you can put this sub module to the built-in DNN user profile page, and input "userid" as "User Id Mapping", then module will show products which are created by that "userid" value. For example, if user profile url is http://localhost/dnn8dev/Activity-Feed/userId/1 (in this url, userid = 1), then module will show products which are created by that user (id=1). Note, (1) The DNN profile page uses "UserId" parameter, other DNN modules (pages) may use other pamater. For example, if you want to accept http://localhost/dnn8dev/MyUserId/1 (in this url, MyUserId represents the user id), you should input "MyUserId" as "User Id Mapping".</value>
+  </data>
+  <data name="plShowAddress.Help" xml:space="preserve">
+    <value>Show Address</value>
+  </data>
+  <data name="plShowAddress.Text" xml:space="preserve">
+    <value>Show Address</value>
+  </data>
+  <data name="plShowBiography.Help" xml:space="preserve">
+    <value>Show Biography</value>
+  </data>
+  <data name="plShowBiography.Text" xml:space="preserve">
+    <value>Show Biography</value>
+  </data>
+  <data name="plShowBusinessScope.Help" xml:space="preserve">
+    <value>Show business scope</value>
+  </data>
+  <data name="plShowBusinessScope.Text" xml:space="preserve">
+    <value>Show Business Scope</value>
+  </data>
+  <data name="plShowCity.Help" xml:space="preserve">
+    <value>Show City</value>
+  </data>
+  <data name="plShowCity.Text" xml:space="preserve">
+    <value>Show City</value>
+  </data>
+  <data name="plShowCompany.Help" xml:space="preserve">
+    <value>Show Company</value>
+  </data>
+  <data name="plShowCompany.Text" xml:space="preserve">
+    <value>Show Company</value>
+  </data>
+  <data name="plShowCountry.Help" xml:space="preserve">
+    <value>Show Country</value>
+  </data>
+  <data name="plShowCountry.Text" xml:space="preserve">
+    <value>Show Country</value>
+  </data>
+  <data name="plShowFax.Help" xml:space="preserve">
+    <value>Show Fax</value>
+  </data>
+  <data name="plShowFax.Text" xml:space="preserve">
+    <value>Show Fax</value>
+  </data>
+  <data name="plShowIM.Help" xml:space="preserve">
+    <value>Show IM</value>
+  </data>
+  <data name="plShowIM.Text" xml:space="preserve">
+    <value>Show IM</value>
+  </data>
+  <data name="plShowLinkman.Help" xml:space="preserve">
+    <value>Show Linkman</value>
+  </data>
+  <data name="plShowLinkman.Text" xml:space="preserve">
+    <value>Show Linkman</value>
+  </data>
+  <data name="plShowLogoUrl.Help" xml:space="preserve">
+    <value>Show logo image</value>
+  </data>
+  <data name="plShowLogoUrl.Text" xml:space="preserve">
+    <value>Show Logo Image</value>
+  </data>
+  <data name="plShowSiteUrl.Help" xml:space="preserve">
+    <value>Show site url</value>
+  </data>
+  <data name="plShowSiteUrl.Text" xml:space="preserve">
+    <value>Show Site Url</value>
+  </data>
+  <data name="plShowSlogan.Help" xml:space="preserve">
+    <value>Show Slogan</value>
+  </data>
+  <data name="plShowSlogan.Text" xml:space="preserve">
+    <value>Show Slogan</value>
+  </data>
+  <data name="plShowState.Help" xml:space="preserve">
+    <value>Show State</value>
+  </data>
+  <data name="plShowState.Text" xml:space="preserve">
+    <value>Show State</value>
+  </data>
+  <data name="plShowTel.Help" xml:space="preserve">
+    <value>Show Telephone</value>
+  </data>
+  <data name="plShowTel.Text" xml:space="preserve">
+    <value>Show Telephone</value>
+  </data>
+  <data name="plShowTown.Help" xml:space="preserve">
+    <value>Show Town</value>
+  </data>
+  <data name="plShowTown.Text" xml:space="preserve">
+    <value>Show Town</value>
+  </data>
+  <data name="plShowZipcode.Help" xml:space="preserve">
+    <value>Show Zipcode</value>
+  </data>
+  <data name="plShowZipcode.Text" xml:space="preserve">
+    <value>Show Zipcode</value>
+  </data>
+  <data name="secVendorProfile.Text" xml:space="preserve">
+    <value>Seller Profile</value>
+  </data>
+  <data name="Tip_VendorProfile.Text" xml:space="preserve">
+    <value>In this section, you can choose the seller/vendor information which needs to show.</value>
+  </data>
+</root>

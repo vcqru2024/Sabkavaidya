@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SalesOrdersHeader.Text" xml:space="preserve">
+    <value>Sales orders</value>
+  </data>
+  <data name="ExportAllLink.Text" xml:space="preserve">
+    <value>Export all</value>
+    <comment>Export everything ||file||</comment>
+  </data>
+  <data name="EditSelectedLinkButton.Text" xml:space="preserve">
+    <value>Edit selected</value>
+  </data>
+  <data name="SalesOrderSearchOrderStartDateLabelControl.Text" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="SalesOrderSearchOrderStopDateLabelControl.Text" xml:space="preserve">
+    <value>Stop date</value>
+  </data>
+  <data name="SalesOrderSearchStatusLabelControl.Text" xml:space="preserve">
+    <value>Order status</value>
+  </data>
+  <data name="SalesOrderSearchSalesPaymentStatusLabelControl.Text" xml:space="preserve">
+    <value>Payment status</value>
+  </data>
+  <data name="SalesOrderSearchShippingStatusLabelControl.Text" xml:space="preserve">
+    <value>Shipping status</value>
+  </data>
+  <data name="SalesOrderSearchSellerLabelControl.Text" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="ResetLinkButton.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SearchLinkButton.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Order.Header" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Date.Header" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Origin.Header" xml:space="preserve">
+    <value>Origin</value>
+  </data>
+  <data name="Payment.Header" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="Shipping.Header" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="Fraud.Header" xml:space="preserve">
+    <value>Fraud</value>
+  </data>
+  <data name="Total.Header" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="EmailCartAbandonLinkButton.Text" xml:space="preserve">
+    <value>Cart abandon</value>
+  </data>
+  <data name="EmailSalesOrderInvoiceLinkButton.Text" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="EmailSalesOrderReceiptLinkButton.Text" xml:space="preserve">
+    <value>Receipt</value>
+  </data>
+  <data name="RecalculateAllLinkButton.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="RecalculateOrderLinkButton.Text" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="GeneralDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="CustomFieldDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Custom field</value>
+  </data>
+  <data name="PackingDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Packing</value>
+  </data>
+  <data name="ShippingDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="HandlingDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="TaxDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Tax</value>
+  </data>
+  <data name="BillingDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Billing</value>
+  </data>
+  <data name="PaymentDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="RewardsPointDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Reward</value>
+  </data>
+  <data name="NotesDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="OtherDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="OrderDateLabelControl.Text" xml:space="preserve">
+    <value>Order date</value>
+  </data>
+  <data name="StatusLabelControl.Text" xml:space="preserve">
+    <value>Order status</value>
+  </data>
+  <data name="SalesPaymentStatusLabelControl.Text" xml:space="preserve">
+    <value>Payment status</value>
+  </data>
+  <data name="ShippingStatusLabelControl.Text" xml:space="preserve">
+    <value>Shipping status</value>
+  </data>
+  <data name="SellerLabelControl.Text" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="SellerLabelControl.Help" xml:space="preserve">
+    <value>Enter the name if this item belongs to a seller.</value>
+  </data>
+  <data name="WarehouseLabelControl.Text" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="WarehouseLabelControl.Help" xml:space="preserve">
+    <value>Associate this order with the warehouse where all the products will be shipped from. If you leave blank, the products are assumed to be shipped from your business address.</value>
+  </data>
+  <data name="RelatedSalesOrderLabelControl.Text" xml:space="preserve">
+    <value>Related orders</value>
+  </data>
+  <data name="RelatedSalesOrderLabelControl.Help" xml:space="preserve">
+    <value>Related orders are from products ordered together in a single checkout, but splitted by different seller or warehouse.</value>
+  </data>
+  <data name="Status.Header" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="UsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="EditLink.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="UserDisplayNameLabelControl.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="UserPhoneLabelControl.Text" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="UserEmailLabelControl.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="FraudScoreLabelControl.Text" xml:space="preserve">
+    <value>Fraud score</value>
+  </data>
+  <data name="FraudScoreLabelControl.Help" xml:space="preserve">
+    <value>Score level ranges from (high fraud risk) 0 to 100 (low fraud risk).</value>
+  </data>
+  <data name="CouponCodesLabelControl.Text" xml:space="preserve">
+    <value>Coupon codes</value>
+  </data>
+  <data name="AddCouponLinkButton.Text" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="BillToLabelControl.Text" xml:space="preserve">
+    <value>Bill to</value>
+  </data>
+  <data name="ViewMapLink.Text" xml:space="preserve">
+    <value>View map</value>
+  </data>
+  <data name="ShipToLabelControl.Text" xml:space="preserve">
+    <value>Ship to</value>
+  </data>
+  <data name="ShippingMethodNameLabelControl.Text" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="SubTotalAmountLabelControl.Text" xml:space="preserve">
+    <value>Sub total</value>
+  </data>
+  <data name="TotalShippingLabelControl.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="TotalHandlingAmountLabelControl.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="TotalTaxAmountLabelControl.Text" xml:space="preserve">
+    <value>Taxes</value>
+  </data>
+  <data name="TotalAmountLabelControl.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="GroupTotalAmountLabelControl.Text" xml:space="preserve">
+    <value>Group total</value>
+  </data>
+  <data name="TotalPaymentReceivedLabelControl.Text" xml:space="preserve">
+    <value>Authorized</value>
+  </data>
+  <data name="TotalPaymentCommittedLabelControl.Text" xml:space="preserve">
+    <value>Captured</value>
+  </data>
+  <data name="BalanceDueLabelControl.Text" xml:space="preserve">
+    <value>Balance due</value>
+  </data>
+  <data name="GroupTotalPaymentReceivedLabelControl.Text" xml:space="preserve">
+    <value>Group authorized</value>
+  </data>
+  <data name="GroupTotalPaymentCommittedLabelControl.Text" xml:space="preserve">
+    <value>Group captured</value>
+  </data>
+  <data name="GroupBalanceDueLabelControl.Text" xml:space="preserve">
+    <value>Group balance due</value>
+  </data>
+  <data name="SalesPaymentMethodNameLabelControl.Text" xml:space="preserve">
+    <value>Method</value>
+  </data>
+  <data name="PackingMethodNameLabelControl.Text" xml:space="preserve">
+    <value>Packing method</value>
+  </data>
+  <data name="ShippingFirstNameLabelControl.Text" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="ShippingLastNameLabelControl.Text" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="ShippingCompanyLabelControl.Text" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="ShippingCountryLabelControl.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="ShippingStreetLabelControl.Text" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="ShippingCityLabelControl.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ShippingSubdivisionLabelControl.Text" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="ShippingPostalCodeLabelControl.Text" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="ShippingPhoneLabelControl.Text" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="ShippingEmailLabelControl.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ShippingMethodLabelControl.Text" xml:space="preserve">
+    <value>Shipping method</value>
+  </data>
+  <data name="ShippingTrackingCodeLabelControl.Text" xml:space="preserve">
+    <value>Tracking code</value>
+  </data>
+  <data name="ShippedDateLabelControl.Text" xml:space="preserve">
+    <value>Shipped date</value>
+  </data>
+  <data name="ShippingAmountLabelControl.Text" xml:space="preserve">
+    <value>Shipping amount</value>
+  </data>
+  <data name="ShippingDiscountAmountLabelControl.Text" xml:space="preserve">
+    <value>Shipping discount amount</value>
+  </data>
+  <data name="ShippingDiscountAmountLabelControl.Help" xml:space="preserve">
+    <value>The discount applied to the shipping amount. For example, to give a discount of $10.00, you would enter -10.00.</value>
+  </data>
+  <data name="HandlingAmountLabelControl.Text" xml:space="preserve">
+    <value>Handling amount</value>
+  </data>
+  <data name="HandlingDiscountAmountLabelControl.Text" xml:space="preserve">
+    <value>Handling discount amount</value>
+  </data>
+  <data name="HandlingDiscountAmountLabelControl.Help" xml:space="preserve">
+    <value>The discount applied to the handling amount. For example, to give a discount of $10.00, you would enter -10.00.</value>
+  </data>
+  <data name="HandlingMethodNameLabelControl.Text" xml:space="preserve">
+    <value>Handling method</value>
+  </data>
+  <data name="TaxAmount1LabelControl.Text" xml:space="preserve">
+    <value>Tax amount 1</value>
+  </data>
+  <data name="TaxAmount2LabelControl.Text" xml:space="preserve">
+    <value>Tax amount 2</value>
+  </data>
+  <data name="TaxAmount3LabelControl.Text" xml:space="preserve">
+    <value>Tax amount 3</value>
+  </data>
+  <data name="TaxAmount4LabelControl.Text" xml:space="preserve">
+    <value>Tax amount 4</value>
+  </data>
+  <data name="TaxAmount5LabelControl.Text" xml:space="preserve">
+    <value>Tax amount 5</value>
+  </data>
+  <data name="TaxDiscountAmountLabelControl.Text" xml:space="preserve">
+    <value>Tax discount amount</value>
+  </data>
+  <data name="TaxDiscountAmountLabelControl.Help" xml:space="preserve">
+    <value>The discount applied to the tax amount. For example, to give a discount of $10.00, you would enter -10.00.</value>
+  </data>
+  <data name="BillingFirstNameLabelControl.Text" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="BillingLastNameLabelControl.Text" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="BillingCompanyLabelControl.Text" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="BillingCountryLabelControl.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="BillingStreetLabelControl.Text" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="BillingCityLabelControl.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="BillingSubdivisionLabelControl.Text" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="BillingPostalCodeLabelControl.Text" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="BillingPhoneLabelControl.Text" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="BillingEmailLabelControl.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="BusinessTaxNumberLabelControl.Text" xml:space="preserve">
+    <value>Business tax number</value>
+  </data>
+  <data name="PaymentTermLabelControl.Text" xml:space="preserve">
+    <value>Payment term</value>
+  </data>
+  <data name="PaymentTermLabelControl.Help" xml:space="preserve">
+    <value>The time and condition that the customer is expected to make payment.</value>
+  </data>
+  <data name="PreferredUserPaymentLabelControl.Text" xml:space="preserve">
+    <value>Preferred user payment</value>
+  </data>
+  <data name="PreferredUserPaymentLabelControl.Help" xml:space="preserve">
+    <value>Customer prefers to pay with this payment method when possible.</value>
+  </data>
+  <data name="PaymentIncompleteRetryDateLabelControl.Text" xml:space="preserve">
+    <value>Next retry date</value>
+  </data>
+  <data name="PaymentIncompleteRetryDateLabelControl.Help" xml:space="preserve">
+    <value>Enter a custom date to override the default date to affect when the next automatic payment charge will be re-attempted.</value>
+  </data>
+  <data name="RewardsPointsQualifiedLabelControl.Text" xml:space="preserve">
+    <value>Rewards points qualified</value>
+  </data>
+  <data name="RewardsPointsQualifiedLabelControl.Help" xml:space="preserve">
+    <value>The number of rewards points the customer would earn from this order.</value>
+  </data>
+  <data name="RewardsPointsRewardedLabelControl.Text" xml:space="preserve">
+    <value>Rewards points awarded</value>
+  </data>
+  <data name="RewardsPointsRewardedLabelControl.Help" xml:space="preserve">
+    <value>The number of rewards points the customer has been rewarded for this order.</value>
+  </data>
+  <data name="AdminNotesLabelControl.Text" xml:space="preserve">
+    <value>Admin notes</value>
+  </data>
+  <data name="AdminNotesLabelControl.Help" xml:space="preserve">
+    <value>Notes entered here are not visible to the customer.</value>
+  </data>
+  <data name="CustomerNotesLabelControl.Text" xml:space="preserve">
+    <value>Customer notes</value>
+  </data>
+  <data name="CustomerNotesLabelControl.Help" xml:space="preserve">
+    <value>Notes entered here are visible to the customer.</value>
+  </data>
+  <data name="SalesOrderGUIDLabelControl.Text" xml:space="preserve">
+    <value>Order GUID</value>
+  </data>
+  <data name="SalesOrderGUIDLabelControl.Help" xml:space="preserve">
+    <value>This is the internal globally unique identifier that may be used by third party providers such as payment gateways to reference this order.</value>
+  </data>
+  <data name="CreateDateLabelControl.Text" xml:space="preserve">
+    <value>Create date</value>
+  </data>
+  <data name="UpdateDateLabelControl.Text" xml:space="preserve">
+    <value>Last modified</value>
+  </data>
+  <data name="OriginLabelControl.Text" xml:space="preserve">
+    <value>Origin</value>
+  </data>
+  <data name="UserHostAddressLabelControl.Text" xml:space="preserve">
+    <value>IP address</value>
+  </data>
+  <data name="CultureCodeLabelControl.Text" xml:space="preserve">
+    <value>Culture code</value>
+  </data>
+  <data name="CultureCodeLabelControl.Help" xml:space="preserve">
+    <value>The culture seen by the customer at the moment of purchasing the product.</value>
+  </data>
+  <data name="CurrencyCultureCodeLabelControl.Text" xml:space="preserve">
+    <value>Currency culture</value>
+  </data>
+  <data name="CurrencyCultureCodeLabelControl.Help" xml:space="preserve">
+    <value>The monetary currency of the order.</value>
+  </data>
+  <data name="ExchangeRateLabelControl.Text" xml:space="preserve">
+    <value>Exchange rate</value>
+  </data>
+  <data name="ExchangeRateLabelControl.Help" xml:space="preserve">
+    <value>The exchange rate for the culture at the moment of purchasing the product.</value>
+  </data>
+  <data name="PurchaseOrderNumberLabelControl.Text" xml:space="preserve">
+    <value>PO number</value>
+  </data>
+  <data name="WishListIDLabelControl.Text" xml:space="preserve">
+    <value>Wish list ID</value>
+  </data>
+  <data name="AffiliateLabelControl.Text" xml:space="preserve">
+    <value>Affiliate</value>
+  </data>
+  <data name="AffiliateLabelControl.Help" xml:space="preserve">
+    <value>Indicates if this order was referred by an affiliate vendor.</value>
+  </data>
+  <data name="CartAbandonNotifiedLabelControl.Text" xml:space="preserve">
+    <value>Cart abandon notified</value>
+  </data>
+  <data name="CartAbandonNotifiedLabelControl.Help" xml:space="preserve">
+    <value>Indicates if the system has already automatically sent a cart abandon email.</value>
+  </data>
+  <data name="OrderLockedLabelControl.Text" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="OrderLockedLabelControl.Help" xml:space="preserve">
+    <value>Lock the order from customer changes. The customer will not be allowed to modify the order details when the customer is resuming an incomplete order.</value>
+  </data>
+  <data name="SessionLabelControl.Text" xml:space="preserve">
+    <value>Session link</value>
+  </data>
+  <data name="SessionLabelControl.Help" xml:space="preserve">
+    <value>This link may be sent to a customer to resume an incomplete cart session for this order.</value>
+  </data>
+  <data name="BackControl.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SaveLinkButton.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save ||file||</comment>
+  </data>
+  <data name="SaveAndBackLinkButton.Text" xml:space="preserve">
+    <value>Save &amp; return</value>
+  </data>
+  <data name="OrderHeader.Text" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="CustomerHeader.Text" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="OrderDetailHeader.Text" xml:space="preserve">
+    <value>Order detail</value>
+  </data>
+  <data name="BillingHeader.Text" xml:space="preserve">
+    <value>Billing</value>
+  </data>
+  <data name="ShippingHeader.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="TotalsHeader.Text" xml:space="preserve">
+    <value>Totals</value>
+  </data>
+  <data name="PaymentHeader.Text" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="NotesHeader.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="ShippingMethodHeader.Text" xml:space="preserve">
+    <value>Shipping method</value>
+  </data>
+  <data name="AdminNotesHeader.Text" xml:space="preserve">
+    <value>Admin notes</value>
+  </data>
+  <data name="CustomerNotesHeader.Text" xml:space="preserve">
+    <value>Customer notes</value>
+  </data>
+  <data name="EmailLink.Text" xml:space="preserve">
+    <value>Email</value>
+    <comment>Send</comment>
+  </data>
+  <data name="PrintLink.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="RecalculateLink.Text" xml:space="preserve">
+    <value>Recalculate</value>
+  </data>
+  <data name="MoreActionsLink.Text" xml:space="preserve">
+    <value>More actions</value>
+  </data>
+  <data name="CopyProfileLink.Text" xml:space="preserve">
+    <value>Copy profile</value>
+  </data>
+  <data name="CopyShippingLink.Text" xml:space="preserve">
+    <value>Copy shipping</value>
+  </data>
+  <data name="CopyBillingLink.Text" xml:space="preserve">
+    <value>Copy billing</value>
+  </data>
+  <data name="DecrementInventoryLinkButton.Text" xml:space="preserve">
+    <value>Decrement inventory</value>
+  </data>
+  <data name="IncrementInventoryLinkButton.Text" xml:space="preserve">
+    <value>Increment inventory</value>
+  </data>
+  <data name="RewardPointsLinkButton.Text" xml:space="preserve">
+    <value>Award points</value>
+  </data>
+  <data name="RunPlaceOrderActionLinkButton.Text" xml:space="preserve">
+    <value>Run place order action</value>
+  </data>
+  <data name="AnyExceptIncompleteLabel.Text" xml:space="preserve">
+    <value>Any except Incomplete</value>
+  </data>
+  <data name="AnyLabel.Text" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="PageItemsLabel.Text" xml:space="preserve">
+    <value>Page items:</value>
+  </data>
+  <data name="TotalHeader.Text" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="BalanceHeader.Text" xml:space="preserve">
+    <value>Balance</value>
+    <comment>Balance ||amount||</comment>
+  </data>
+  <data name="RecalculateAllMessage.Text" xml:space="preserve">
+    <value>Are you sure you want to recalculate all? Recalculate all will reset the rewards points due, shipping, handling and tax amounts including all sales order detail items to the newly calculated values.</value>
+  </data>
+  <data name="RecalculateOrderMessage.Text" xml:space="preserve">
+    <value>Are you sure you want to recalculate the order? Recalculate order will reset the rewards points due, shipping, handling and tax amounts to the newly calculated values, but will not affect products in the order details.</value>
+  </data>
+  <data name="NoneLabel.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="AddHyperLink.Text" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="CartSessionHyperLink.Text" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="CheckoutSessionHyperLink.Text" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="PaymentSessionHyperLink.Text" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="PrintPackingSlipHyperLink.Text" xml:space="preserve">
+    <value>Packing</value>
+  </data>
+  <data name="PrintSalesOrderInvoiceHyperLink.Text" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="PrintSalesOrderReceiptHyperLink.Text" xml:space="preserve">
+    <value>Receipt</value>
+  </data>
+  <data name="UseAddressLink.Text" xml:space="preserve">
+    <value>Use address book</value>
+  </data>
+  <data name="ShippingDestinationPointLabelControl.Text" xml:space="preserve">
+    <value>Destination point</value>
+  </data>
+  <data name="CreateShipmentLinkButton.Text" xml:space="preserve">
+    <value>Create shipment</value>
+  </data>
+  <data name="PrintShippingLabelHyperLink.Text" xml:space="preserve">
+    <value>Shipping label</value>
+  </data>
+  <data name="FilterLink.Text" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="SalesOrderSearchQueryPlaceholder.Text" xml:space="preserve">
+    <value>Search by order number, company, user, name or email</value>
+  </data>
+  <data name="UserAgentLabelControl.Text" xml:space="preserve">
+    <value>User agent</value>
+  </data>
+  <data name="UsernamePlaceholder.Text" xml:space="preserve">
+    <value>Find user or create new...</value>
+  </data>
+  <data name="ShippingQuotedLabelControl.Help" xml:space="preserve">
+    <value>Indicates if the shipping amount has yet to be finalized.</value>
+  </data>
+  <data name="ShippingQuotedLabelControl.Text" xml:space="preserve">
+    <value>Require quote</value>
+  </data>
+  <data name="ExportViewLink.Text" xml:space="preserve">
+    <value>Export view</value>
+    <comment>Export view ||file||</comment>
+  </data>
+  <data name="BillingDistrictLabelControl.Text" xml:space="preserve">
+    <value>District / Suburb</value>
+  </data>
+  <data name="ShippingDistrictLabelControl.Text" xml:space="preserve">
+    <value>District / Suburb</value>
+  </data>
+  <data name="StreetPlaceHolder.Text" xml:space="preserve">
+    <value>Street and number, P.O. box, c/o.</value>
+  </data>
+  <data name="UnitPlaceHolder.Text" xml:space="preserve">
+    <value>Apartment, suite, unit, building, floor, etc.</value>
+  </data>
+</root>

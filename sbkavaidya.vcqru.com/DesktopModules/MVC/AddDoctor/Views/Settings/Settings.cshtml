@@ -1,0 +1,25 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage <Saatvik.Modules.AddDoctor.Models.Settings>
+
+@using DotNetNuke.Web.Mvc.Helpers
+
+<h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a></h2>
+<fieldset>
+    <!-- New dropdown for PageSize -->
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.PageSize, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.DropDownListFor(m => Model.PageSize, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "3", Value = "3" },
+            new SelectListItem { Text = "6", Value = "6" },
+            new SelectListItem { Text = "9", Value = "9" },
+            new SelectListItem { Text = "12", Value = "12" },
+            new SelectListItem { Text = "15", Value = "15" }
+            // Add more options as needed
+        }, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => Model.PageSize, null, new { @class = "text-danger" })
+    </div>
+
+</fieldset>
+

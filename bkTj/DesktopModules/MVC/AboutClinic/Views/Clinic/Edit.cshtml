@@ -1,0 +1,148 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddClinic.Models.Clinic>
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Collections.Generic
+
+<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
+<div id="Clinic-@Model.ModuleId">
+
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight ">
+            <a href="#">Expand All</a>
+        </div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">Clinic Basic Settings</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="clinicName">Clinic Name</label>
+                </div>
+                @Html.TextBoxFor(m => m.ClinicName)
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="clinicLocation">Clinic Location</label>
+                </div>
+                @Html.TextBoxFor(m => m.ClinicLocation)
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="DisplayOrder">Display Order</label>
+                </div>
+                @Html.TextBoxFor(m => m.DisplayOrder)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="clinicShortDescription">Short Description</label></div>
+                <textarea id="clinicShortDescription" name="clinicShortDescription">@Model.ClinicShortDescription</textarea>
+                <!-- CKEditor initialization -->
+                <script>
+                    CKEDITOR.replace('clinicShortDescription');
+                </script>
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="clinicDescription">Description</label></div>
+                <textarea id="clinicDescription" name="clinicDescription">@Model.ClinicDescription</textarea>
+                <!-- CKEditor initialization -->
+                <script>
+                    CKEDITOR.replace('clinicDescription');
+                </script>
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="clinicUrl">About Clinic Url</label>
+                </div>
+                @Html.TextBoxFor(m => m.ClinicUrl)
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="clinicContact">Contact</label>
+                </div>
+                @Html.TextBoxFor(m => m.ClinicContact)
+                @Html.ValidationMessageFor(m => m.ClinicContact)
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="file">Clinic Image</label>
+                </div>
+                <input type="file" name="file" id="file" onchange="previewImage(event)" />
+                @if (!string.IsNullOrEmpty(Model.ClinicImage))
+                {
+                    <img id="preview" src="@Url.Content(Model.ClinicImage)" alt="Preview Image" style="max-width: 200px;" />
+                }
+                else
+                {
+                    <img id="preview" src="#" alt="Preview Image" style="max-width: 200px; display: none;" />
+                }
+                @Html.HiddenFor(m => m.ClinicImage, new { id = "existingImageUrl" })
+            </div>
+
+            <script>
+                window.onload = function () {
+                    var fileInput = document.getElementById('file');
+                    var previewImg = document.getElementById('preview');
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            previewImg.src = e.target.result;
+                            previewImg.style.display = 'block';
+                        }
+                        reader.readAsDataURL(fileInput.files[0]);
+                    }
+                };
+
+                function previewImage(event) {
+                    var input = event.target;
+                    var img = document.getElementById('preview');
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            img.src = e.target.result;
+                            img.style.display = 'block';
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    } else {
+                        img.src = "#";
+                        img.style.display = 'none';
+                    }
+                }
+            </script>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="clinicAvailability">Availability</label>
+                </div>
+                @Html.TextBoxFor(m => m.ClinicAvailability)
+            </div>
+
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+
+    <button type="submit" class="dnnPrimaryAction">Save</button>
+    <a href="@Url.Action("index", "Clinic")" class="btn btn-success">Cancel</a>
+</div>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function ($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({
+                expandText: '@Dnn.LocalizeString("ExpandAll")',
+                collapseText: '@Dnn.LocalizeString("CollapseAll")',
+                targetArea: '#dnnEditBasicSettings'
+            });
+        }
+
+        $(function () {
+            $('#cancelEdit').click(function () { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+</script>

@@ -1,0 +1,52 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetCommentsForContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetCommentsForContent
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetCommentsForContent]
+	-- Add the parameters for the stored procedure here
+	@ContentID int = 0
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+   with Replies as (
+  -- Start with the base comments.
+  select CommentID, ParentId, Author, Comment,LastModifiedByUser,LastModifiedOnDate,IsDeleted,CreatedByUser,
+    Cast( Right( '0000' + Cast( Row_Number() over ( order by {databaseOwner}{objectQualifier}ContentPro_Comments.CommentID ) as VarChar(4) ), 5 ) as VarChar(1000) ) as OrderPath
+    from {databaseOwner}{objectQualifier}ContentPro_Comments 
+    where ParentId = -1 AND ContentID = @ContentID AND Approved = 1
+  union all
+  -- Add replies on layer at a time.
+  select CT.CommentId, CT.ParentId,CT.Author,CT.Comment,CT.LastModifiedByUser, CT.LastModifiedOnDate,CT.IsDeleted,CT.CreatedByUser,
+    Cast(  C.OrderPath + Right( '0000' + Cast( Row_Number() over ( order by CT.CommentID ) as VarChar(4) ), 5 ) as VarChar(1000) )
+    from {databaseOwner}{objectQualifier}ContentPro_Comments as CT inner join
+      Replies as C on C.CommentId = CT.ParentId
+	 where  Approved = 1 
+  )
+  select *
+    from Replies
+    order by OrderPath
+
+END
+GO
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

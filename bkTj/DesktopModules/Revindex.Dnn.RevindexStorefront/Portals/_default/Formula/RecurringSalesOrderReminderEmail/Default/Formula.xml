@@ -1,0 +1,41 @@
+﻿<data method="BasicRecurringSalesOrderReminderEmail" version="1.0">
+  <mailFrom></mailFrom>
+  <mailTo></mailTo>
+  <subject>Thank you for visiting {xsl:value-of select="in/configuration/generalStoreName" /} [Order #{xsl:value-of select="in/salesOrder/salesOrderNumber" /}]</subject>
+  <htmlBody>
+    <![CDATA[
+<p>Hi {xsl:value-of select="concat(in/user/firstName, ' ', in/user/lastName)" /}</p>
+<p>This is a friendly reminder that your recurring order will be processed on {xsl:value-of select="format-dateTime(in/recurringSalesOrders/recurringSalesOrder[1]/nextRecurringDate, '[FNn], [MNn] [D1o], [Y]')" /}. Please ensure that your address and payment information on file are up-to-date to prevent any service interruption. We hope you continue enjoying our service. If you have any questions, please do not hesitate to contact us.</p>
+<a href="{xsl:value-of select='in/manageRecurringOrder/tabUrl' /}">Click here to manage your recurring orders</a>
+<br />
+    &nbsp;
+    
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%; word-wrap: break-word; border-collapse: collapse;">
+	<tbody>
+		<tr style="background-color: #ccc;">
+			<td width="85%">
+				<strong>Item</strong>
+			</td>
+			<td width="15%">
+				<strong>Qty</strong>
+			</td>
+		</tr>
+    {xsl:for-each select="in/recurringSalesOrders/recurringSalesOrder"}
+		<tr>
+			<td>
+				<span>{xsl:value-of select="productVariant/product/name" /}</span>
+				<br />
+    {xsl:value-of select="productVariant/name" /}
+				<br />
+    {xsl:for-each select="dynamicFormResult/fields/field"}{xsl:value-of select="replace(@id, '_', ' ')" /}: {xsl:value-of select="*|text()" separator=", " /}
+				<br />
+    {/xsl:for-each}
+			</td>
+			<td>{xsl:value-of select="quantity" /}</td>
+		</tr>
+    {/xsl:for-each}
+  </tbody>
+</table>
+]]>
+  </htmlBody>
+</data>

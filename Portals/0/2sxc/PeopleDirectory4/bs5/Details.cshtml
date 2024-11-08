@@ -1,0 +1,88 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
+
+@{
+  var person = AsItems(MyData).FirstOrDefault();
+}
+
+@* If we don't have data, stop here *@
+@if (person == null) {
+  <h1>
+    @App.Resources.String("NoPerson")
+  </h1>
+  return;
+}
+
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-7">
+      <h1>
+        @person.String("Title")
+      </h1>
+        @person.Html("Text").Class("mb-4")
+      <a class="btn btn-outline-primary d-none d-lg-inline-block" href='@Link.To(api: "api/VCard/Get", parameters: "id=" + person.String("UrlKey"))' target="_blank">
+        @App.Resources.String("AddContact")
+      </a>
+    </div>
+    <div class="col-12 col-md-6 col-lg-4 offset-lg-1 card-wrapper" @Kit.Toolbar.Default(person)>
+      <div class="shadow rounded bg-white p-3 d-flex flex-column alging-items-center text-center mb-4 mb-lg-0">
+        <div class="mb-1">
+          @person.Picture("Image", settings: Kit.Image.Settings("Employees"), imgClass:"img-fluid rounded-circle", imgAltFallback: person.String("Title"))
+        </div>
+        <strong>
+          @person.String("FullName")
+        </strong>
+        <p class="small">
+          @person.String("Function")
+        </p>
+        <p class="small">
+          @person.String("Street")
+          <br>
+          @person.String("ZipCode") @person.String("City")<span>@if (Text.Has(person.String("Country"))) {<text>, @person.String("Country")</text>}</span>
+        </p>
+        <p class="small">
+          <a class="mb-1" href='tel:@person.String("Phone").Replace(" ", "")'>
+            Telefon @person.String("Phone")
+          </a>
+          <br>
+          <a href="mailto:@person.String("EMail")">
+            @person.String("EMail")
+          </a>
+        </p>
+        @* Social Media buttons *@
+        <p class="d-flex justify-content-around">
+          @if (Text.Has(person.String("LinkedIn"))) {
+            <a href="@person.String("LinkedIn")" title="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          }
+          @if (Text.Has(person.String("Facebook"))) {
+            <a href="@person.String("Facebook")" title="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          }
+          @if (Text.Has(person.String("Twitter"))) {
+            <a href="@person.String("Twitter")" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+          }
+          @if (Text.Has(person.String("Instagram"))) {
+            <a href="@person.String("Instagram")" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          }
+        </p>
+      </div>
+
+      <a class="btn btn-outline-primary d-block d-lg-none" href='@Link.To(api: "api/VCard/Get", parameters: "id=" + person.String("UrlKey"))' target="_blank">
+        @App.Resources.String("AddContact")
+      </a>
+
+    </div>
+  </div>
+</div>
+
+@* Include FontAwesome5 and other assets *@
+@Kit.Page.Activate("FontAwesome5")
+@Html.Partial("./Assets.cshtml")

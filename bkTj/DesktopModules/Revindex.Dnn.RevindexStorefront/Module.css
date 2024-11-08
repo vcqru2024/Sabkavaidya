@@ -1,0 +1,4336 @@
+/******************
+DNN overrides
+*******************/
+span.dnnFormMessage {
+  display: block;
+}
+div.dnnFormGroup {
+  background-color: inherit;
+  width: 100%;
+}
+.dnnGrid {
+  width: 100%;
+}
+.dnnGridHeader th {
+  text-align: left;
+}
+.dnnFormItem input.rvd-form-number,
+.dnnFormItem input[type="text"].rvd-form-number,
+input.rvd-form-number,
+input[type="text"].rvd-form-number,
+.dnnFormItem input[type="number"] {
+  width: 45%;
+  max-width: 160px;
+}
+.dnnFormItem input[type="number"] {
+  margin-bottom: 18px;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid #c9c9c9;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8), inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8), inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 12px;
+}
+.dnnFormItem input.rvd-form-datetime,
+.dnnFormItem input[type="text"].rvd-form-datetime,
+input.rvd-form-datetime,
+input[type="text"].rvd-form-datetime,
+.dnnFormItem input[type="datetime"] {
+  width: 45%;
+  max-width: 220px;
+}
+.dnnFormItem span.rvd-form-datetime,
+.dnnFormItem span.k-widget.k-combobox {
+  margin-bottom: 12px;
+}
+/* DNN 7.1 default template doesn't shrink form and makes it hard to see where nested form begins and ends */
+.dnnForm {
+  max-width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* DNN 6.x uses position relative that causes the tab to overlay over the page */
+.dnnForm .ui-tabs {
+  position: inherit;
+}
+/* Make Kendo ComboBox look like DNN form */
+.dnnFormItem input[type="text"].k-input {
+  width: 100%;
+  margin-bottom: 0;
+  border: 0;
+  box-shadow: none;
+  line-height: normal;
+}
+div.RadComboBox {
+  width: 100%;
+}
+.dnnForm .dnnFormItem > .RadComboBox_Default .rcbInputCell .rcbEmptyMessage {
+  color: #666;
+}
+.dnnForm .dnnFormItem > .RadComboBox_Default {
+  margin-bottom: 18px;
+}
+.dnnForm .dnnFormItem > .RadComboBox + a {
+  vertical-align: top;
+  margin-top: 10px;
+}
+.dnnForm .dnnFormItem > .RadComboBox_Default .rcbInput {
+  padding: 6px !important;
+}
+.dnnForm .dnnFormItem > .RadComboBox_Default td.rcbArrowCellRight,
+.dnnForm .dnnFormItem > .RadComboBox_Default td.rcbArrowCellLeft {
+  background: white !important;
+}
+.dnnForm .dnnFormItem > .RadComboBox_Default td.rcbInputCellLeft,
+.dnnForm .dnnFormItem > .RadComboBox_Default td.rcbInputCellRight {
+  background: white !important;
+}
+.dnnForm .dnnFormItem > .dnnInputFileWrapper {
+  margin-bottom: 18px;
+}
+.dnnFormItem .rvd-htmleditor {
+  display: inline-block;
+  margin: 0 -8px;
+  width: 43%;
+}
+.TelerikModalOverlay {
+  background-color: #000000 !important;
+  filter: alpha(opacity=80) !important;
+  opacity: 0.8 !important;
+}
+/* Make images responsive */
+/*img
+{
+	width: auto;
+	max-width: 100%;
+}*/
+/* Zoom image should not shrink */
+.zoomWrapperImage img {
+  max-height: none;
+  max-width: none;
+}
+p.form-control-static {
+  font-size: inherit;
+}
+/* DNN 7.1 default template uses inline-block, which doesn't push the content down when tabs are wrapped. We need to set height auto to fix it. */
+ul.dnnAdminTabNav {
+  height: auto;
+}
+/* DNN 7.1 default template uses a large padding on the tab causing the ugly wrap */
+ul.dnnAdminTabNav li.ui-tabs-active a {
+  margin-top: -2px;
+  padding-bottom: 8px;
+}
+/* DNN 7.1 default template need larger padding between tab strip and tab panel */
+.ui-tabs .ui-tabs-panel {
+  padding-top: 10px;
+}
+/* Fix DNN bug DNN-26843 that injects jScrollPane causing scroll pane to render incorrectly */
+.RadComboBoxDropDown .jspContainer {
+  position: absolute;
+}
+/* Fix RadComboBox does not show vertical scroll when available selections exceed box size */
+.RadComboBoxDropDown .rcbScroll {
+  overflow-y: auto !important;
+}
+/* Fix DNN bug DNN-4983 adding extra padding to input button causing radsplitbar to be oversized */
+input[type="button"].rspCollapseBarSpacer {
+  min-width: 0;
+  padding: 0 0;
+}
+/* Fix bootstrap forces box-sizing to border-box causing RadMenu multicolumn to render as single column. See http://www.telerik.com/forums/radmenu-with-repeatcolumns-renders-as-single-column-with-bootstrap */
+ul.rmMultiColumn {
+  box-sizing: content-box;
+}
+/* Remove rounded corners from kendo menu */
+.k-widget.k-menu {
+  border-radius: 0;
+}
+/* Allow Kendo UI treeview to display icons */
+.glyphicon.k-sprite,
+.fa.k-sprite,
+.fas.k-sprite {
+  font-size: 1em;
+  line-height: 1em;
+}
+/* Fix kendo slider showing dots */
+ul.k-slider-items li {
+  list-style-type: none;
+}
+/* Fix kendo autocomplete input */
+.k-autocomplete input.k-input {
+  height: 100%;
+}
+/* Fix IE11 rendering vertical radslider text incorrectly. */
+.RadSplitter .rspPaneTabText.rspRotatedTabText {
+  -ms-transform: rotate(90deg);
+  writing-mode: lr-tb;
+}
+.RadCalendar td.rcDisabled > a {
+  cursor: default;
+  visibility: hidden;
+}
+/* Fix default skin shows list style in RadWindow */
+.RadWindow .rwControlButtons li {
+  list-style-type: none;
+}
+/* Fix default DNN skin forces list style causing a dot to appear next to Bootstrap dropdowns */
+ul.dropdown-menu li,
+ul.nav li,
+ul.pagination li {
+  list-style-type: none;
+}
+/* Fix Websitescreative skin overrides LI element with padding causing multi-column Telerik RadMenu to show incorrectly */
+ul.rmMultiColumn li.rmGroupColumn {
+  padding-left: 0;
+}
+/* Fix bootstrap does not include some bottom margin when buttons are stacked together */
+.btn-toolbar > .btn,
+.btn-toolbar > .btn-group {
+  margin-bottom: 5px;
+}
+/* Make form controls look like plain text when disabled */
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background-color: transparent !important;
+  border: 0 !important;
+  font-size: 1em;
+  box-shadow: none !important;
+}
+/* Hide arrow for select box when in plain text disabled mode */
+select.form-control[disabled],
+fieldset[disabled] select.form-control {
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  text-indent: 0.01px !important;
+  text-overflow: '' !important;
+}
+/* Show required field asterisk */
+label.required:after {
+  display: inline-block;
+  padding: 0px 4px;
+  background: transparent;
+  content: '*';
+  font-weight: bold;
+  color: red;
+}
+/* Bootstrap-select creates a button with border radius inside input-group */
+.input-group-btn .dropdown.bootstrap-select button {
+  border-radius: 0;
+}
+/******************
+Common
+*******************/
+.rvdActions {
+  clear: both;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.rvdAddNewGridAction {
+  background-image: url(../../Icons/Sigma/Add_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+ul.rvdBreadcrumb {
+  display: inline;
+  margin: 0 0;
+}
+.rvdBreadcrumb li {
+  list-style: none;
+  display: inline;
+  font-size: inherit;
+}
+.rvdBreadcrumb li:before {
+  content: " / ";
+  padding-right: 3px;
+}
+.rvdBreadcrumb li:first-child:before {
+  content: "";
+  padding-right: 0;
+}
+.rvdBreadcrumb li:last-child a {
+  pointer-events: none;
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+.rvdCopyGridAction {
+  background-image: url(../../Icons/Sigma/CopyFile_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.rvdDownGridAction {
+  background-image: url(../../Icons/Sigma/Dn_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.rvdDownloadGridAction {
+  background-image: url(../../Icons/Sigma/FileDownload_16x16_Gray.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.rvdEditGridAction {
+  background-image: url(../../Icons/Sigma/Edit_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.rvdFormCheckBoxes {
+  display: block;
+  float: left;
+  width: auto;
+}
+.rvd-form-checkboxes {
+  border: solid 10px transparent;
+  max-height: 250px;
+  overflow: auto;
+}
+.dnnFormItem > div.rvd-form-checkboxes {
+  width: 42%;
+}
+.rvdFormCheckBoxes input[type=checkbox] {
+  float: none;
+}
+.rvdFormCheckBoxes label {
+  display: inline;
+  float: none;
+  font-weight: normal;
+  margin: 0 10px 0 4px;
+  padding-right: 0;
+  text-align: left;
+  width: auto;
+}
+.rvd-form-checklist .dnnCheckbox img {
+  background: transparent url(../../Icons/Sigma/Delete_16X16_Standard.png) no-repeat;
+}
+.rvd-form-checklist .mark {
+  background-color: transparent;
+}
+select.rvdFormListBox {
+  height: 160px;
+}
+.rvdLinkAction {
+  background-image: url(../../Icons/Sigma/Edit_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 20px;
+}
+.rvdUpGridAction {
+  background-image: url(../../Icons/Sigma/Up_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.rvdFormMessage {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: table;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 100%;
+}
+.rvdFormWarning {
+  background-color: #FFFFCC;
+}
+.rvdFormSubContainer {
+  display: inline-block;
+  width: 50%;
+}
+.dnnFormItem > .rvdFormSubContainer {
+  display: inline-block;
+  width: 45%;
+}
+a.rvdModalCloseAction {
+  background-image: url(../../Images/Close-icn.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: block;
+  min-height: 20px;
+  padding-left: 30px;
+  float: right;
+}
+.rvdModalContainer {
+  background-color: White;
+  width: 500px;
+  vertical-align: middle;
+}
+.rvdModalToolbar {
+  background: #4E4E4E;
+  background: -moz-linear-gradient(top, #4E4E4E 0%, #282828 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4E4E4E), color-stop(100%, #282828));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4E4E4E', endColorstr='#282828', GradientType=0);
+  border-bottom: solid 1px #cccccc;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  width: 100%;
+}
+/* Shift start anchor vertically higher so it won't be covered by admin bar */
+.rvdModuleStartAnchor {
+  float: left;
+  position: relative;
+  top: -60px;
+}
+.rvdPager {
+  border-top: solid 1px #cccccc;
+  text-align: right;
+}
+.rvdSliderMaxValue {
+  float: right;
+}
+.rvdSliderMinValue {
+  float: left;
+}
+.rvdDeleteGridAction {
+  background-image: url(../../Icons/Sigma/Delete_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.dnnForm .dnnFormItem > .RadPicker_Default {
+  margin-bottom: 18px;
+}
+.dnnForm .dnnFormItem > .RadPicker_Default.rvdDateTimeInput {
+  display: inline-block;
+  width: 47% !important;
+  min-width: 0px;
+}
+.dnnFormItem input.rvdCharacterInput,
+input.rvdCharacterInput {
+  width: 20px !important;
+  min-width: 0px;
+}
+.dnnFormItem input.rvdQuantityInput,
+input.rvdQuantityInput {
+  width: 70px !important;
+  min-width: 0px;
+}
+.dnnFormItem select.rvdUnitInput,
+select.rvdUnitInput {
+  width: 125px !important;
+  min-width: 0px;
+  margin-left: 5px;
+}
+/* Split form items in 2 columns */
+.rvdSplit2 > div.dnnFormGroup,
+.rvdSplit2 > div.dnnFormItem {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+}
+/* Split form items in 3 columns */
+.rvdSplit3 > div.dnnFormGroup,
+.rvdSplit3 > div.dnnFormItem {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 32%;
+}
+/* Split form items in 4 columns */
+.rvdSplit4 > div.dnnFormGroup,
+.rvdSplit4 > div.dnnFormItem {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 24%;
+}
+.rvdUpdateGridAction {
+  background: url(../../Icons/Sigma/Refresh_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+.rvd-loading,
+.rvdUpdateProgressContainer {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+}
+.rvd-loading img,
+.rvdUpdateProgress {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+}
+.rvdViewGridAction {
+  background-image: url(../../Icons/Sigma/View_16x16_Standard.png);
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 16px;
+}
+/* Add chevron indicators for Bootstrap page headers */
+/* Rotate font icons when panel is collapsed to indicate state */
+.collapsed em.glyphicon-chevron-down,
+.collapsed em.fa-chevron-down {
+  transform: rotate(-90deg);
+}
+.tab-pane {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+/* Bootstrap 4 implementation in Bootstrap 3 */
+.table-borderless tbody + tbody,
+.table-borderless td,
+.table-borderless th,
+.table-borderless thead th {
+  border: 0 !important;
+}
+.columns.columns-2 {
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  max-width: none !important;
+}
+.columns.columns-3 {
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  column-count: 3;
+  max-width: none !important;
+}
+.columns.columns-4 {
+  -moz-column-count: 4;
+  -webkit-column-count: 4;
+  column-count: 4;
+  max-width: none !important;
+}
+.bg-transparent {
+  background-color: transparent !important;
+}
+.border-0 {
+  border: 0 !important;
+}
+/* Bootstrap 3 adds unnecessary left padding when input is used with label according to Bootstrap 4 syntax */
+.checkbox label,
+.radio label {
+  padding-left: 0 !important;
+}
+.checkbox,
+.radio {
+  padding-left: 1.25rem;
+}
+/* Bootstrap 4 no longer adds margin for buttons in a btn-toolbar */
+.btn-toolbar > .btn,
+.btn-toolbar > .btn-group,
+.btn-toolbar > .input-group,
+.btn-toolbar > .dropdown {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+/* Bootstrap 4 no longer supports btn-group-xs */
+.btn-group-xs > .btn,
+.btn-xs {
+  padding: 0.25rem 0.4rem;
+  font-size: 0.875rem;
+  line-height: 0.5;
+  border-radius: 0.2rem;
+}
+/* Bootstrap 4 no longer supports col-x size in table */
+td.col-1,
+th.col-1 {
+  width: 8.33333%;
+}
+td.col-2,
+th.col-2 {
+  width: 16.66667%;
+}
+td.col-3,
+th.col-3 {
+  width: 25%;
+}
+td.col-4,
+th.col-4 {
+  width: 33.33333%;
+}
+td.col-5,
+th.col-5 {
+  width: 41.66667%;
+}
+td.col-6,
+th.col-6 {
+  width: 50%;
+}
+td.col-7,
+th.col-7 {
+  width: 58.33333%;
+}
+td.col-8,
+th.col-8 {
+  width: 66.66667%;
+}
+td.col-9,
+th.col-9 {
+  width: 75%;
+}
+td.col-10,
+th.col-10 {
+  width: 83.33333%;
+}
+td.col-11,
+th.col-11 {
+  width: 91.66667%;
+}
+td.col-12,
+th.col-12 {
+  width: 100%;
+}
+td.col-sm-1,
+th.col-sm-1 {
+  width: 8.33333%;
+}
+td.col-sm-2,
+th.col-sm-2 {
+  width: 16.66667%;
+}
+td.col-sm-3,
+th.col-sm-3 {
+  width: 25%;
+}
+td.col-sm-4,
+th.col-sm-4 {
+  width: 33.33333%;
+}
+td.col-sm-5,
+th.col-sm-5 {
+  width: 41.66667%;
+}
+td.col-sm-6,
+th.col-sm-6 {
+  width: 50%;
+}
+td.col-sm-7,
+th.col-sm-7 {
+  width: 58.33333%;
+}
+td.col-sm-8,
+th.col-sm-8 {
+  width: 66.66667%;
+}
+td.col-sm-9,
+th.col-sm-9 {
+  width: 75%;
+}
+td.col-sm-10,
+th.col-sm-10 {
+  width: 83.33333%;
+}
+td.col-sm-11,
+th.col-sm-11 {
+  width: 91.66667%;
+}
+td.col-sm-12,
+th.col-sm-12 {
+  width: 100%;
+}
+td.col-md-1,
+th.col-md-1 {
+  width: 8.33333%;
+}
+td.col-md-2,
+th.col-md-2 {
+  width: 16.66667%;
+}
+td.col-md-3,
+th.col-md-3 {
+  width: 25%;
+}
+td.col-md-4,
+th.col-md-4 {
+  width: 33.33333%;
+}
+td.col-md-5,
+th.col-md-5 {
+  width: 41.66667%;
+}
+td.col-md-6,
+th.col-md-6 {
+  width: 50%;
+}
+td.col-md-7,
+th.col-md-7 {
+  width: 58.33333%;
+}
+td.col-md-8,
+th.col-md-8 {
+  width: 66.66667%;
+}
+td.col-md-9,
+th.col-md-9 {
+  width: 75%;
+}
+td.col-md-10,
+th.col-md-10 {
+  width: 83.33333%;
+}
+td.col-md-11,
+th.col-md-11 {
+  width: 91.66667%;
+}
+td.col-md-12,
+th.col-md-12 {
+  width: 100%;
+}
+td.col-lg-1,
+th.col-lg-1 {
+  width: 8.33333%;
+}
+td.col-lg-2,
+th.col-lg-2 {
+  width: 16.66667%;
+}
+td.col-lg-3,
+th.col-lg-3 {
+  width: 25%;
+}
+td.col-lg-4,
+th.col-lg-4 {
+  width: 33.33333%;
+}
+td.col-lg-5,
+th.col-lg-5 {
+  width: 41.66667%;
+}
+td.col-lg-6,
+th.col-lg-6 {
+  width: 50%;
+}
+td.col-lg-7,
+th.col-lg-7 {
+  width: 58.33333%;
+}
+td.col-lg-8,
+th.col-lg-8 {
+  width: 66.66667%;
+}
+td.col-lg-9,
+th.col-lg-9 {
+  width: 75%;
+}
+td.col-lg-10,
+th.col-lg-10 {
+  width: 83.33333%;
+}
+td.col-lg-11,
+th.col-lg-11 {
+  width: 91.66667%;
+}
+td.col-lg-12,
+th.col-lg-12 {
+  width: 100%;
+}
+td.col-xl-1,
+th.col-xl-1 {
+  width: 8.33333%;
+}
+td.col-xl-2,
+th.col-xl-2 {
+  width: 16.66667%;
+}
+td.col-xl-3,
+th.col-xl-3 {
+  width: 25%;
+}
+td.col-xl-4,
+th.col-xl-4 {
+  width: 33.33333%;
+}
+td.col-xl-5,
+th.col-xl-5 {
+  width: 41.66667%;
+}
+td.col-xl-6,
+th.col-xl-6 {
+  width: 50%;
+}
+td.col-xl-7,
+th.col-xl-7 {
+  width: 58.33333%;
+}
+td.col-xl-8,
+th.col-xl-8 {
+  width: 66.66667%;
+}
+td.col-xl-9,
+th.col-xl-9 {
+  width: 75%;
+}
+td.col-xl-10,
+th.col-xl-10 {
+  width: 83.33333%;
+}
+td.col-xl-11,
+th.col-xl-11 {
+  width: 91.66667%;
+}
+td.col-xl-12,
+th.col-xl-12 {
+  width: 100%;
+}
+/* Make tabs into accordion panels for Bootstrap 4 and Bootstrap 3 */
+@media (min-width: 768px) {
+  .nav-tabs + .tab-content > .card {
+    border: none;
+  }
+  .nav-tabs + .tab-content > .card .collapse {
+    display: block !important;
+  }
+  .nav-tabs + .tab-content.panel-group .panel-heading + .panel-collapse > .list-group,
+  .nav-tabs + .tab-content.panel-group .panel-heading + .panel-collapse > .panel-body {
+    border-top: none;
+  }
+}
+@media (max-width: 767px) {
+  .nav-tabs + .tab-content > .tab-pane {
+    display: block !important;
+    opacity: 1;
+  }
+}
+/* Nested table inherit stripes. Add class to allow unstriped */
+.table-unstriped > tbody > tr,
+.dnnGridPager tr {
+  background-color: transparent !important;
+}
+/* Nested pager table inherits border */
+.dnnGridPager td,
+.dnnGridPager table td {
+  border: none;
+}
+/* Bootstrap 4 doesn't add bottom space when buttons are stacked in mobile */
+@media (max-width: 767px) {
+  .btn {
+    margin-bottom: 5px;
+  }
+}
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  .collapse-lg.show {
+    display: block;
+  }
+  .collapse-lg {
+    display: none;
+  }
+}
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .collapse-md.show {
+    display: block;
+  }
+  .collapse-md {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .collapse-sm.show {
+    display: block;
+  }
+  .collapse-sm {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .collapse-xs.show {
+    display: block;
+  }
+  .collapse-xs {
+    display: none;
+  }
+  ul.columns.columns-2,
+  ul.columns.columns-3,
+  ul.columns.columns-4 {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+}
+/* Small devices */
+@media (min-width: 768px) {
+  .text-sm-left {
+    text-align: center;
+  }
+  .text-sm-center {
+    text-align: left;
+  }
+  .text-sm-right {
+    text-align: right;
+  }
+  div.checkbox-sm-inline,
+  div.radio-sm-inline {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-weight: 400;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+}
+/******************
+General
+******************/
+/* Change cursor to pointer for table row if clickable */
+.rvdsf-module-container tr[onclick] {
+  cursor: pointer;
+}
+div.ekko-lightbox.modal .close {
+  font-size: 50px;
+}
+div.ekko-lightbox-nav-overlay a {
+  font-size: 50px;
+  text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
+}
+.ekko-lightbox .glyphicon,
+.ekko-lightbox .fas {
+  font-family: 'Glyphicons Halflings';
+}
+a.btn-primary:visited {
+  color: white;
+}
+a.btn-default:visited {
+  color: #333;
+}
+a.rvdsf-btn-register:visited,
+a.rvdsf-btn-login:visited {
+  color: white;
+}
+.rvdsf-label-promotionprice {
+  color: #cc0000;
+}
+.rvdsf-label-price > s {
+  color: #666;
+  font-weight: normal;
+  margin-right: 10px;
+}
+.rvdsf-label-savings {
+  background-color: #cc0000;
+  color: white;
+  font-size: 11px;
+  height: 20px;
+  min-width: 70px;
+  padding: 2px 4px;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  top: 0;
+  z-index: 10;
+}
+.rvdsf-label-balancedue,
+.rvdsf-label-rewardspoint,
+.rvdsf-label-subtotalamount,
+.rvdsf-label-totalbalancedue,
+.rvdsf-label-totalhandlingamount,
+.rvdsf-label-totalrewardspoint,
+.rvdsf-label-totalpaymentreceived,
+.rvdsf-label-totalquantity,
+.rvdsf-label-totalsalesorderdetaildiscountamount,
+.rvdsf-label-totalsavingsamount,
+.rvdsf-label-totalshippingamount,
+.rvdsf-label-totaltaxamount {
+  font-weight: bold;
+}
+.rvdsf-label-totalamount {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.rvdsfBalanceDueAmount {
+  font-weight: bold;
+}
+.rvdsf-bookingdates,
+.rvdsfBookingDates {
+  font-size: 0.8em;
+  margin-bottom: 50px;
+  margin-top: 5px;
+}
+.rvdsf-bookingdates dd,
+.rvdsfBookingDates dd {
+  float: left;
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.rvdsf-bookingdates dt,
+.rvdsfBookingDates dt {
+  clear: left;
+  float: left;
+  font-weight: bold;
+  margin-right: 3px;
+}
+.table table.rvdsf-bookingdates {
+  background-color: transparent;
+}
+.rvdsf-dynamicformresult,
+.rvdsfDynamicFormResults {
+  font-size: 0.8em;
+  margin-bottom: 50px;
+  margin-top: 20px;
+}
+.rvdsf-dynamicformresult dd,
+.rvdsfDynamicFormResults dd {
+  float: left;
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.rvdsf-dynamicformresult dt:after,
+.rvdsfDynamicFormResults dt:after {
+  content: ": ";
+  margin-right: 3px;
+}
+.rvdsf-dynamicformresult dt,
+.rvdsfDynamicFormResults dt {
+  clear: left;
+  float: left;
+  font-weight: bold;
+}
+.table table.rvdsf-dynamicformresult {
+  background-color: transparent;
+}
+.rvdsf-productparts {
+  font-size: 0.8em;
+  margin-bottom: 50px;
+  margin-top: 5px;
+}
+.rvdsf-productparts dd {
+  float: left;
+  margin-left: 0px;
+  margin-right: 5px;
+  margin-bottom: 8px;
+}
+.rvdsf-productparts dd .btn {
+  line-height: 1;
+}
+.rvdsf-productparts dt:after {
+  content: ": ";
+  margin-right: 3px;
+}
+.rvdsf-productparts dt {
+  clear: left;
+  float: left;
+  font-weight: bold;
+  margin-right: 3px;
+  margin-bottom: 8px;
+}
+.table table.rvdsf-productparts {
+  background-color: transparent;
+}
+.rvdsfFeaturesContainer {
+  background-color: #eaeaea;
+}
+.dnnFormItem .rvdFormListBox {
+  float: left;
+  width: 45%;
+  min-height: 200px;
+}
+.dnnFormItem > .rvdFormSubContainer > .rvdFormListBox {
+  width: 100%;
+}
+.rvdFormListBox .RadListBox {
+  width: 100%;
+}
+.dnnFormItem .rvdsfFormCodeEditor,
+.dnnFormItem .rvdsfFormDynamicFormCodeEditor,
+.dnnFormItem .rvdsfFormDynamicFormResultEditor,
+.dnnFormItem .rvdsfFormFormulaEditor,
+.dnnFormItem .rvdsfFormXmlEditor {
+  float: left;
+  width: 100%;
+}
+.dnnFormItem .rvdsfFormCodeEditor textarea,
+.dnnFormItem .rvdsfFormDynamicFormCodeEditor textarea,
+.dnnFormItem .rvdsfFormDynamicFormResultEditor textarea,
+.dnnFormItem .rvdsfFormFormulaEditor textarea,
+.dnnFormItem .rvdsfFormXmlEditor textarea {
+  /* Use border box sizing so that width is calculated as total including padding to avoid hiding scrollbar */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-style: none;
+  font-size: 12px;
+  max-width: inherit;
+}
+.rvdsfMSRPPriceAmount {
+  font-weight: normal;
+}
+.rvdsfPriceAmount {
+  font-weight: bold;
+}
+.rvdsfProductParts {
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.rvdsfProductParts dd {
+  float: left;
+  margin-left: 0px;
+  margin-right: 5px;
+}
+.rvdsfProductParts dt:after {
+  content: ": ";
+  margin-right: 3px;
+}
+.rvdsfProductParts dt {
+  clear: left;
+  float: left;
+  font-weight: bold;
+}
+.rvdsf-productvariant-name {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-top: 5px;
+}
+ul.rvdsf-socialshare-list {
+  list-style-type: none;
+  margin: 20px 0 0 0;
+}
+ul.rvdsfSocialShareActions {
+  list-style-type: none;
+}
+ul.rvdsf-socialshare-list li,
+ul.rvdsfSocialShareActions li {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 0;
+}
+ul.rvdsfSocialShareActions li span {
+  vertical-align: baseline !important;
+}
+ul.rvdsf-socialshare-list a.rvdsf-socialshare-email,
+ul.rvdsfSocialShareActions a.rvdsfSocialShareEmailAction {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-image: url("Media/EmailIcon32.png");
+  border: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE 8 to 9 */
+}
+ul.rvdsf-socialshare-list a.rvdsf-socialshare-facebook,
+ul.rvdsfSocialShareActions a.rvdsfSocialShareFacebookAction {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-image: url("Media/FacebookIcon32.png");
+  border: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE 8 to 9 */
+}
+ul.rvdsf-socialshare-list a.rvdsf-socialshare-google,
+ul.rvdsfSocialShareActions a.rvdsfSocialShareGoogleAction {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-image: url("Media/GooglePlusIcon32.png");
+  border: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE 8 to 9 */
+}
+ul.rvdsf-socialshare-list a.rvdsf-socialshare-linkedin,
+ul.rvdsfSocialShareActions a.rvdsfSocialShareLinkedInAction {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-image: url("Media/LinkedInIcon32.png");
+  border: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE 8 to 9 */
+}
+ul.rvdsf-socialshare-list a.rvdsf-socialshare-twitter,
+ul.rvdsfSocialShareActions a.rvdsfSocialShareTwitterAction {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  background-image: url("Media/TwitterIcon32.png");
+  border: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE 8 to 9 */
+}
+.rvdsfRiskScoreHigh {
+  -moz-border-radius: 3px;
+  background-color: red;
+  border: 3px solid red;
+  border-radius: 3px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+.rvdsfRiskScoreLow {
+  -moz-border-radius: 3px;
+  background-color: yellowgreen;
+  border: 3px solid yellowgreen;
+  border-radius: 3px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+.rvdsfRiskScoreModerate {
+  -moz-border-radius: 3px;
+  background-color: gold;
+  border: 3px solid gold;
+  border-radius: 3px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+.dnnGrid .rvdsfRiskScoreLow,
+.dnnGrid .rvdsfRiskScoreModerate,
+.dnnGrid .rvdsfRiskScoreHigh {
+  border: 0;
+  border-radius: initial;
+  font-size: 1.1em;
+}
+.rvdsfRegularPriceAmount > span {
+  text-decoration: line-through;
+  font-weight: bold;
+}
+.rvdsfRegularPriceText > span {
+  color: #ff6a00;
+  font-weight: bold;
+}
+.rvdsfSalesOrderDetailCount {
+  font-weight: bold;
+}
+span.rvdsfSalePriceAmount,
+.rvdsfSalePriceAmount > span {
+  color: Red;
+  font-weight: bold;
+}
+span.rvdsfSavingsAmount,
+.rvdsfSavingsAmount > span {
+  color: Red;
+  font-weight: bold;
+}
+.rvdsfSubTotalAmount {
+  font-weight: bold;
+}
+.rvdsfTotalAmount {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+.rvdsfTotalDiscountAmount {
+  color: Red;
+  font-weight: bold;
+}
+.rvdsfTotalHandlingAmount {
+  font-weight: bold;
+}
+.rvdsfTotalPaymentAmount {
+  font-weight: bold;
+}
+.rvdsfTotalSalesOrderDetailDiscountAmount {
+  font-weight: bold;
+}
+.rvdsfTotalShippingAmount {
+  font-weight: bold;
+}
+.rvdsfTotalTaxesAmount {
+  font-weight: bold;
+}
+.dnnFormItem input.rvdsfCreditCardVerificationNumberInput,
+input.rvdsfCreditCardVerificationNumberInput {
+  width: 50px !important;
+  min-width: 0px;
+}
+.rvdsfCheckoutContainer .rvdsfCheckoutPaymentContainer .dnnFormItem select.rvdsfCreditCardExpiryMonthInput,
+.dnnFormItem select.rvdsfCreditCardExpiryMonthInput {
+  min-width: 0;
+  width: auto;
+}
+.dnnFormItem select.rvdsfCreditCardExpiryYearInput,
+.rvdsfCheckoutContainer .rvdsfCheckoutPaymentContainer .dnnFormItem select.rvdsfCreditCardExpiryYearInput,
+.dnnFormItem input[type="text"].rvdsfCreditCardExpiryYearInput {
+  min-width: 0;
+  width: auto;
+}
+.rvdsfCheckoutContainer .rvdsfCheckoutPaymentContainer span.aspNetDisabled {
+  display: none;
+}
+.rvdsf .k-calendar .k-calendar-view {
+  width: 100%;
+}
+.rvdsf .k-grid {
+  border: 0;
+}
+.rvdsf .k-grid .k-filter-row th,
+.rvdsf .k-grid .k-grid-header th.k-header {
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+}
+.rvdsf .k-grid .k-filter-row th,
+.rvdsf .k-grid .k-grid-header th.k-header,
+.rvdsf .k-grid tr td {
+  border-left: none;
+  border-right: none;
+  padding: 8px;
+}
+.rvdsf .k-grid tbody tr {
+  cursor: move;
+}
+.rvdsf .k-grid tr.placeholder {
+  outline-style: dashed;
+  outline-width: 1px;
+  outline-color: #808080;
+}
+.rvdsf .k-treelist.k-grid {
+  border: 0;
+}
+.rvdsf .k-treelist .k-grid-norecords {
+  display: none;
+}
+.rvdsf .k-treelist .k-filter-row th,
+.rvdsf .k-treelist .k-grid-header th.k-header,
+.rvdsf .k-treelist.k-grid tr td {
+  border-left: none;
+  border-right: none;
+  padding: 8px;
+}
+.rvdsf .k-treelist .k-filter-row th,
+.rvdsf .k-treelist .k-grid-header th.k-header {
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+}
+.rating-symbol .glyphicon-star,
+.rating-symbol .fas.fa-star {
+  color: orange;
+  font-size: 16px;
+}
+.rvdsf .rating-symbol .glyphicon-star-empty,
+.rvdsf .rating-symbol .far.fa-star {
+  color: #ccc;
+  font-size: 16px;
+}
+.rvdsf .rating .k-rating-item.k-state-selected,
+.rvdsf .rating .k-rating-item.k-state-hover,
+.rvdsf .rating .k-rating-item:hover {
+  color: orange;
+}
+.rvdsf .rating .k-rating-container .k-rating-item .k-icon {
+  font-size: 18px;
+}
+.rvdsf .k-rating-container .k-rating-item {
+  padding: 2px 2px;
+}
+.rvdsf .k-rating-container .k-rating-item .k-rating-precision-complement,
+.rvdsf .k-rating-container .k-rating-item .k-rating-precision-part {
+  top: 0;
+  left: 2px;
+}
+ul.rvdsf-useraddress-container {
+  height: auto;
+  max-height: 300px;
+  overflow-x: hidden;
+}
+.rvdsf-useraddress-container li {
+  font-size: 12px;
+}
+/* Make jQuery Unobtrusive Validation use DNN styles */
+.dnnFormItem span.field-validation-error {
+  display: block;
+  position: absolute;
+  overflow: visible;
+  bottom: 95%;
+  right: 12%;
+  width: 200px;
+  margin-bottom: 0;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(255, 0, 0, 0.75);
+  font-size: 12px;
+  color: #fff;
+  text-align: left;
+}
+.dnnFormItem span.field-validation-error:after {
+  position: absolute;
+  bottom: -7px;
+  left: 15px;
+  content: "";
+  width: 0;
+  height: 0;
+  opacity: 0.75;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid red;
+}
+div.rvdsf-actionbar-container {
+  margin-bottom: 20px;
+}
+div.rvdsf-footerbar-container {
+  margin-bottom: 20px;
+  /* Make footer sticky */
+  position: sticky;
+  bottom: 0px;
+  background-color: white;
+  padding: 20px 0 30px 0;
+  border-top: solid 1px #eee;
+  z-index: 9;
+}
+/* Labels */
+.rvdsf-badge,
+.rvdsf-label {
+  text-transform: uppercase;
+}
+/* Order status */
+.rvdsf-salesorder-status-1 {
+  background-color: hotpink !important;
+}
+.rvdsf-salesorder-status-2 {
+  background-color: gold !important;
+}
+.rvdsf-salesorder-status-3 {
+  background-color: skyblue !important;
+}
+.rvdsf-salesorder-status-4 {
+  background-color: yellowgreen !important;
+}
+.rvdsf-salesorder-status-5 {
+  background-color: khaki !important;
+}
+.rvdsf-salesorder-status-6 {
+  background-color: red !important;
+}
+.rvdsf-salesorder-status-7 {
+  background-color: silver !important;
+}
+.rvdsf-salesorder-status-8 {
+  background-color: yellow !important;
+}
+.rvdsf-salesorder-status-9 {
+  background-color: deeppink !important;
+}
+/* Payment status */
+.rvdsf-salesorder-salespaymentstatus-1 {
+  background-color: hotpink !important;
+}
+.rvdsf-salesorder-salespaymentstatus-2 {
+  background-color: yellowgreen !important;
+}
+.rvdsf-salesorder-salespaymentstatus-3 {
+  background-color: khaki !important;
+}
+.rvdsf-salesorder-salespaymentstatus-4 {
+  background-color: darkkhaki !important;
+}
+.rvdsf-salesorder-salespaymentstatus-5 {
+  background-color: red !important;
+}
+.rvdsf-salesorder-salespaymentstatus-6 {
+  background-color: silver !important;
+}
+/* Shipping status */
+.rvdsf-salesorder-shippingstatus-1 {
+  background-color: lightgreen !important;
+}
+.rvdsf-salesorder-shippingstatus-2 {
+  background-color: gold !important;
+}
+.rvdsf-salesorder-shippingstatus-3 {
+  background-color: yellowgreen !important;
+}
+.rvdsf-salesorder-shippingstatus-4 {
+  background-color: red !important;
+}
+.rvdsf-salesorder-shippingstatus-5 {
+  background-color: lightblue !important;
+}
+.rvdsf-salesorder-shippingstatus-6 {
+  background-color: skyblue !important;
+}
+.rvdsf-salesorder-shippingstatus-7 {
+  background-color: steelblue !important;
+}
+/* Recurring Sales Order status */
+.rvdsf-recurringsalesorder-status-1 {
+  background-color: skyblue !important;
+}
+.rvdsf-recurringsalesorder-status-2 {
+  background-color: hotpink !important;
+}
+.rvdsf-recurringsalesorder-status-3 {
+  background-color: red !important;
+}
+.rvdsf-recurringsalesorder-status-4 {
+  background-color: khaki !important;
+}
+/* Order detail status */
+.rvdsf-salesorderdetail-status-1 {
+  background-color: hotpink !important;
+}
+.rvdsf-salesorderdetail-status-2 {
+  background-color: gold !important;
+}
+.rvdsf-salesorderdetail-status-3 {
+  background-color: skyblue !important;
+}
+.rvdsf-salesorderdetail-status-4 {
+  background-color: yellowgreen !important;
+}
+.rvdsf-salesorderdetail-status-9 {
+  background-color: deeppink !important;
+}
+/* Order detail shipping status */
+.rvdsf-salesorderdetail-shippingstatus-1 {
+  background-color: lightgreen !important;
+}
+.rvdsf-salesorderdetail-shippingstatus-2 {
+  background-color: gold !important;
+}
+.rvdsf-salesorderdetail-shippingstatus-3 {
+  background-color: yellowgreen !important;
+}
+.rvdsf-salesorderdetail-shippingstatus-4 {
+  background-color: red !important;
+}
+.rvdsf-salesorderdetail-shippingstatus-5 {
+  background-color: lightblue !important;
+}
+.rvdsf-salesorderdetail-shippingstatus-6 {
+  background-color: skyblue !important;
+}
+.rvdsf-salesorderdetail-shippingstatus-7 {
+  background-color: steelblue !important;
+}
+.dnnFormItem > span.k-widget.k-combobox {
+  width: 45%;
+  max-width: 445px;
+  margin-top: 0;
+}
+.dnnFormItem span.k-dropdown-wrap {
+  background-color: white;
+}
+.dnnFormItem select {
+  width: 45%;
+}
+/* Handle creation of fullscreen using modal */
+.modal-fullscreen.modal.fade.show,
+.modal-fullscreen.modal.fade.in {
+  display: block !important;
+}
+.modal-fullscreen.modal.fade:not(.show):not(.in) {
+  display: block !important;
+  opacity: 1;
+  position: relative;
+  overflow: unset;
+  z-index: unset;
+}
+.modal-fullscreen.modal.fade.show > .modal-dialog,
+.modal-fullscreen.modal.fade.in > .modal-dialog {
+  background-color: white;
+}
+.modal-fullscreen.modal.fade:not(.show):not(.in) > .modal-dialog {
+  transform: unset;
+}
+.modal-fullscreen > .modal-dialog {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+.modal-fullscreen > .modal-dialog > .modal-content {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+.modal-fullscreen.modal.fade:not(.show):not(.in) > .modal-dialog > .modal-content > .modal-body {
+  padding: 0;
+}
+/******************
+Admin
+*******************/
+.rvdsf-fullscreen {
+  background-color: white;
+  padding: 30px 30px;
+}
+.rvdsf-startup-container {
+  margin: 60px 60px;
+  text-align: center;
+}
+.rvdsf-btn-back,
+.rvdsfBackAction {
+  background-image: url(../../Images/arrow-left.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  height: 34px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+  width: 34px;
+  border-radius: 34px;
+  border: #666 solid 1px;
+}
+.rvdsf-btn-back:hover,
+.rvdsfBackAction:hover {
+  opacity: 0.5;
+}
+.rvdsf-btn-back + h2,
+.rvdsfBackAction + h2 {
+  display: inline-block;
+}
+.rvdsfContentContainer {
+  padding-top: 40px;
+}
+.rvdsfContentContainer .dnnFormItem > .RadPicker_Default {
+  width: 47% !important;
+}
+/* Add spacing for grid pager */
+.rvdsf-module-container .dnnGridPager td {
+  padding: 2px 2px;
+}
+.rvdsf-module-container .dnnGridPager a,
+.rvdsf-module-container .dnnGridPager span {
+  font-size: 1.2em;
+  margin: 5px 5px;
+}
+/* Make disabled dropdown and combobox more readable */
+.rvdsfContentContainer input[disabled='disabled'],
+.rvdsfContentContainer select[disabled='disabled'],
+.rvdsfContentContainer .RadComboBox .rcbDisabled {
+  opacity: 1;
+}
+/* Needed to fix Chrome rendering issue with CodeMirror inside a fieldset */
+.rvdsfContentContainer .dnnForm fieldset {
+  /*display: table-cell;*/
+  min-width: 0;
+}
+.rvdsfContentContainer .CodeMirror,
+.rvdsfContentContainer .CodeMirror-merge,
+.rvdsfContentContainer .CodeMirror-merge .CodeMirror,
+.rvdsfContentContainer .CodeMirror-scroll {
+  height: 600px;
+  border-left: solid 1px #eee;
+  border-right: solid 1px #eee;
+  border-bottom: solid 1px #eee;
+}
+.rvdsfDashboardLeftAsideContainer {
+  float: left;
+  padding-right: 20px;
+  width: 65%;
+}
+.rvdsfDashboardRightAsideContainer {
+  float: left;
+  padding-left: 20px;
+  width: 30%;
+}
+.rvdsfDashboardOrderStatusContainer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.rvdsfDashboardOrderStatusContainer .dnnForm {
+  min-width: 0;
+}
+.rvdsfDashboardOrderStatusGrid {
+  border-collapse: separate;
+  border-spacing: 5px;
+  width: 100%;
+}
+.rvdsfDashboardOrderStatusGrid td {
+  color: #333333;
+  border-radius: 5px;
+}
+.rvdsfDashboardOrderStatusGrid th span {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.rvdsfDashboardOrderStatusGrid td a {
+  color: black;
+  text-decoration: none;
+}
+.rvdsfDashboardOrderStatusGrid td,
+.rvdsfDashboardOrderStatusGrid th {
+  font-weight: normal;
+  height: 10%;
+  padding: 5px;
+  text-align: center;
+  width: 25%;
+}
+.rvdsfDashboardRecentSalesActivityContainer {
+  clear: both;
+}
+.rvdsfDashboardRecentSalesActivityChart {
+  width: 100%;
+  height: 300px;
+  margin: 10px auto;
+  border: 1px solid #cccccc;
+}
+.rvdsfDashboardSalesSnapshotContainer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.rvdsfDashboardSalesSnapshotContainer .dnnForm,
+.rvdsfDashboardSalesSnapshotContainer td > .dnnTooltip {
+  min-width: 0;
+}
+.rvdsfDashboardSalesSnapshotContainer td > .dnnFormLabel {
+  margin-right: 0;
+  padding-right: 0;
+  width: 160px;
+}
+.rvdsfDashboardSalesSnapshotGrid {
+  border-collapse: collapse;
+  width: 100%;
+}
+.rvdsfDashboardSalesSnapshotGrid td > .dnnLabel {
+  width: 100px;
+}
+.rvdsfDashboardSalesSnapshotGrid td:first-child {
+  font-weight: bold;
+}
+.rvdsfDashboardVersionContainer {
+  margin-top: 20px;
+  font-weight: bold;
+  clear: both;
+}
+.rvdsfGalleryPreviewContainer {
+  margin-bottom: 20px;
+  max-height: 400px;
+  max-width: 445px;
+  overflow: auto;
+}
+.rvdsfSearchContainer .dnnFormItem > .RadComboBox_Default {
+  margin-bottom: -12px;
+}
+/* DNN 7.1 renders the RadNumericTextBox with a fixed width on the span tag */
+.rvdsfSearchContainer span.RadInput {
+  width: 45% !important;
+  margin-bottom: 18px;
+}
+.rvdsfMenu {
+  width: 100%;
+  z-index: 9 !important;
+}
+.rvdsfMenu .rmGroupColumn {
+  /* BUG: Require the following style such that the Configuration menu won't show two black dots. */
+  list-style-type: none;
+}
+/* Indent child row */
+.rvdsfSalesOrderDetailGrid .rvdGridChildItem td:nth-child(2) {
+  padding-left: 40px;
+}
+/* Make RadMenu look more flat */
+.ModRevindexDnnRevindexStorefrontC .RadMenu_Default .rmRootGroup {
+  background-color: #dfdfdf;
+  border: none;
+  border-bottom: 1px solid #828282;
+}
+/* Make RadMenu look more flat */
+.ModRevindexDnnRevindexStorefrontC .RadMenu_Default a.rmLink,
+.ModRevindexDnnRevindexStorefrontC .RadMenu_Default .rmRootGroup {
+  background-image: none;
+}
+/* Make RadPanelBar look more flat */
+.ModRevindexDnnRevindexStorefrontC .RadPanelBar_Default .rpLink {
+  background-color: #dfdfdf;
+}
+/* Make RadMenu and RadPanelBar icons grayscale to look more flat */
+.ModRevindexDnnRevindexStorefrontC .rmLink img,
+.ModRevindexDnnRevindexStorefrontC .rpLink img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+  /* IE 8 to 9 */
+}
+/* On hover, remove grayscale effect */
+.ModRevindexDnnRevindexStorefrontC .rmLink:hover img,
+.ModRevindexDnnRevindexStorefrontC .rpLink:hover img {
+  -webkit-filter: inherit;
+  filter: inherit;
+}
+/* User address book dropdown */
+.dnnFormItem select.rvdsf-btn-select {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  background-color: #eee;
+  box-shadow: none;
+  border-radius: 0;
+  width: 140px;
+}
+/* Main menu */
+.rvdsf-navbar .nav.navbar-nav > li > a {
+  font-size: 14px;
+  font-family: pb_semibold, Arial;
+  font-weight: 500;
+  color: #ADADAD;
+  padding: 16px 15px 16px 15px;
+}
+.rvdsf-navbar.navbar.navbar-dark,
+.rvdsf-navbar.navbar.navbar-inverse {
+  background-color: #0e2936;
+  border-radius: 0;
+  padding: 0 0;
+}
+.rvdsf-navbar .navbar-toggler span {
+  color: #ADADAD;
+}
+.rvdsf-navbar.navbar .nav.navbar-nav > li > a:hover,
+.rvdsf-navbar.navbar .nav.navbar-nav > li.open > a {
+  background-color: #0b1c24;
+}
+.rvdsf-navbar .navbar-nav > li > .dropdown-menu {
+  background-color: #0b1c24;
+  border: none;
+  top: 100%;
+  border-radius: 0;
+  padding: 10px 10px;
+}
+.rvdsf-navbar .navbar-nav > li > .dropdown-menu a {
+  font-size: 14px;
+  font-family: pb_semibold, Arial;
+  font-weight: 500;
+  color: #ADADAD;
+  height: 30px;
+}
+.rvdsf-navbar .navbar-nav > li > .dropdown-menu a:hover {
+  color: #fff;
+  background-color: transparent;
+}
+/* User payment set max width so Square form fits */
+.rvdsfContentContainer .rvdFormSubContainer.sq-card-base {
+  max-width: 445px;
+}
+/* Make ID labels smaller */
+.rvdsf-badge-small {
+  font-size: 10px !important;
+}
+.rvdsf-label-localamount {
+  font-size: 11px;
+  font-style: italic;
+  color: #999;
+  display: block;
+}
+/* Prevent breadcrumb from overflowing */
+.rvdsf-administration-container ul.rvdBreadcrumb li {
+  display: inline-block;
+  max-width: 360px;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.rvdsf-dropfileupload-container span.dnnInputFileWrapper {
+  opacity: 0.8;
+  box-shadow: none;
+  color: #333;
+  border-color: inherit;
+  border-style: dashed;
+  border-width: 1px;
+  background: #f5f5f5;
+}
+.rvdsf-dropfileupload-container.drag-over span.dnnInputFileWrapper {
+  border-color: red;
+  background: white;
+  color: red;
+}
+.rvdsf-salesregister-productsearch-container .thumbnail {
+  height: 140px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.rvdsf-salesregister-productsearch-container .thumbnail img {
+  height: 60px;
+}
+.rvdsf-salesregister-productsearch-container .thumbnail .caption {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: auto;
+}
+@media (min-width: 768px) {
+  /* Make main menu fixed to page */
+  .rvd-standard-admin nav.rvdsf-navbar .navbar-nav > li > a {
+    padding-top: 4px;
+    padding-bottom: 10px;
+  }
+  .rvd-standard-admin nav.rvdsf-navbar {
+    position: fixed;
+    top: 70px;
+    border: none;
+    z-index: 10;
+    left: 0;
+    width: 100%;
+    min-height: 34px;
+  }
+  .rvd-standard-admin.dnn8.authenticated nav.rvdsf-navbar {
+    top: 120px;
+  }
+  .rvd-standard-admin #RvdsfContentAnchor {
+    margin-top: -60px;
+  }
+}
+/******************
+Cart
+*******************/
+.rvdsf-cart-container .rvdsf-salesorderdetail-table .rvdsf-field-qty input,
+.rvdsf-cart-container .rvdsf-salesorderdetail-table .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-cart-container .rvdsf-salesorderdetail-table .table {
+  margin-bottom: 5px;
+}
+.rvdsf-cart-container .rvdsf-salesorderdetail-table img {
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-cart-container .rvdsf-salesorderdetail-table .rvdsf-field-qty .rvdsf-label-amount {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.rvdsf-cart-container .rvdsf-salesorderdetail-table .rvdsf-label-amount {
+  font-weight: bold;
+}
+.rvdsf-cart-amount-container {
+  font-size: 14px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.rvdsf-cart-container .rvdsf-coupon-list li {
+  float: left;
+  list-style-type: none;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.rvdsfCartActions {
+  clear: both;
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.rvdsfCartActions .rvdsfCheckoutAction {
+  float: right;
+}
+.rvdsfCartGalleryThumbnail > img {
+  float: left;
+  margin: 5px 10px 5px 5px;
+}
+.rvdsfCartModifiedMessage {
+  background-color: #FFFF66;
+  font-weight: bold;
+  padding: 10px;
+  display: block;
+  position: relative;
+  z-index: 1000;
+}
+.rvdsfCartProduct {
+  float: left;
+}
+.rvdsfCartContainer .rvdsfSalesOrderDetailGrid {
+  border-collapse: inherit !important;
+  width: 100%;
+}
+.rvdsfCartTotalAmountContainer {
+  margin: 10px 10px 20px auto;
+  max-width: 320px;
+}
+.rvdsfCartTotalAmountContainer span {
+  float: right;
+}
+.rvdsfShippingMethodSelectionContainer .rvdFormSubContainer div {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+@media (max-width: 575px) {
+  /* Make buttons block size */
+  .rvdsf-cart-container .btn-toolbar a.btn,
+  .rvdsf-cart-container .btn-toolbar .btn,
+  .rvdsf-cart-container .btn-toolbar > div {
+    width: 100% !important;
+    display: block;
+    margin: 4px 0 0 0 !important;
+  }
+}
+/******************
+CartSummary
+*******************/
+.rvdsf-cartsummary-header-container .rvdsf-label-amount {
+  font-weight: bold;
+  margin-left: 8px;
+}
+.rvdsfCartSummaryActions {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+}
+div.rvdsf-cartsummary-detail-container {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 20px 20px;
+}
+.rvdsfCartSummaryDetailContainer {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.rvdsfCartSummaryDetailItem .dnnTooltip {
+  float: left;
+  font-weight: bold;
+  display: block;
+  margin-right: 16px;
+  margin-top: 3px;
+  text-align: right;
+  width: 30%;
+}
+.rvdsfCartSummaryDetailItem > span {
+  float: left;
+  display: block;
+  margin-top: 3px;
+  text-align: left;
+}
+.rvdsfCartSummaryDetailContainer .rvdsfCartSummaryDetailItem:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+.rvdsfCartSummaryPaymentAcceptanceContainer {
+  padding: 5px;
+  text-align: center;
+}
+.rvdsfCartSummaryContainer .rvdsfCartTotalAmountContainer span {
+  float: none;
+}
+.rvdsf-cartsummary-container .rvdsf-btn-viewcart span {
+  color: #666;
+}
+.rvdsfCartSummaryAbstractContainer a.rvdsfViewCartAction {
+  background-image: url("../../Icons/Sigma/CatalogCart_32X32_Standard.png");
+  width: 32px;
+  height: 32px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: lightgrey;
+  border-radius: 30px;
+  display: inline-block;
+  padding: 10px 10px;
+  vertical-align: middle;
+}
+.rvdsf-cartsummary-detail-container,
+.rvdsfCartSummaryAbstractContainer a.rvdsfViewCartAction:hover {
+  background-color: white;
+  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.75);
+}
+.rvdsfCartSummaryAbstractContainer .rvdsfCartSummaryDetailItem {
+  display: inline-block;
+}
+.rvdsfCartSummaryAbstractContainer .rvdsfCartSummaryDetailItem > span {
+  float: none;
+}
+.rvdsfCartSummaryAbstractContainer .rvdsfCartSummaryDetailItem .dnnLabel {
+  display: none;
+}
+.rvdsfCartSummaryAbstractContainer .rvdsfSalesOrderDetailCount {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-top: 16px;
+}
+.rvdsf-cartsummary-detail-container,
+.dnnFormPopup.rvdsfCartSummaryDetailContainer {
+  display: none;
+  min-width: 320px;
+  position: absolute;
+  text-align: center;
+  z-index: 1000;
+}
+.rvdsfCartSummaryDetailContainer .dnnFormItem.rvdsfSubTotalAmount {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.rvdsf-cartsummary-container .rvdsf-salesorderdetail-table img,
+.rvdsfCartSummaryDetailContainer .rvdsfSalesOrderDetailGrid img {
+  width: 32px;
+}
+.rvdsf-cartsummary-amount-container {
+  font-size: 14px;
+}
+/* Hide price column */
+.rvdsfCartSummaryDetailContainer .rvdsfSalesOrderDetailGrid th:nth-child(2),
+.rvdsfCartSummaryDetailContainer .rvdsfSalesOrderDetailGrid td:nth-child(2) {
+  display: none;
+}
+/******************
+Category
+*******************/
+/* Fix left margin */
+.rvdsf-category-container ul.list-group {
+  margin-left: 0;
+}
+/* Fix category long text should wrap correctly */
+.rvdsf-category-container .treeview li.list-group-item > a {
+  display: inline-block;
+}
+.rvdsf-category-container .treeview li.list-group-item > span.icon.glyphicon {
+  display: inline;
+}
+/* Node */
+.rvdsfCategoryTreeView.RadTreeView .rtIn {
+  padding: 4px 3px 3px;
+  white-space: normal;
+}
+/* Hover on node */
+.rvdsfCategoryTreeView.RadTreeView .rtHover .rtIn {
+  border-style: none;
+  border-width: 0px;
+  padding: 4px 3px 3px;
+}
+/* Selected node */
+.rvdsfCategoryTreeView.RadTreeView .rtSelected .rtIn {
+  border-style: none;
+  border-width: 0px;
+  padding: 4px 3px 3px;
+}
+/* Space between expand icon and link */
+/* Collapse icon */
+.rvdsfCategoryTreeView.RadTreeView .rtMinus {
+  background-image: url(../../Icons/Sigma/Min_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 2px;
+}
+/* Expand icon */
+.rvdsfCategoryTreeView.RadTreeView .rtPlus {
+  background-image: url(../../Icons/Sigma/Max_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 2px;
+}
+/******************
+Checkout
+*******************/
+.rvdsf-checkout-container .rvdsf-salesorderdetail-table img {
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-checkout-container .rvdsf-salesorderdetail-table .rvdsf-field-qty input,
+.rvdsf-checkout-container .rvdsf-salesorderdetail-table .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-checkout-container .rvdsf-salesorderdetail-table .table {
+  margin-bottom: 5px;
+}
+.rvdsf-checkout-container .rvdsf-salesorderdetail-table .rvdsf-field-qty .rvdsf-label-amount {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.rvdsf-checkout-container .rvdsf-salesorderdetail-table .rvdsf-label-amount {
+  font-weight: bold;
+}
+.rvdsf-checkout-amount-container {
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+.rvdsf-checkout-container .rvdsf-coupon-list li,
+.rvdsf-checkout-container .rvdsf-rewardspoint-list li,
+.rvdsf-checkout-container .rvdsf-voucher-list li {
+  float: left;
+  list-style-type: none;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.rvdsfCheckoutActions {
+  clear: both;
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.rvdsfCheckoutActions .rvdsfReviewOrderAction,
+.rvdsfCheckoutActions .rvdsfPlaceOrderAction {
+  float: right;
+}
+.rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutActions .rvdsfPlaceOrderAction {
+  float: none;
+}
+.rvdsfCheckoutAccountActions {
+  margin-top: 10px;
+  display: block;
+  padding-top: 10px;
+}
+.rvdsf-checkout-breadcrumb,
+.rvdsfCheckoutBreadcrumb {
+  -moz-border-radius: 10px;
+  background: #EEEEEE;
+  border-radius: 10px;
+  margin: 0 0 20px;
+  padding: 5px 20px;
+  text-align: center;
+}
+.rvdsf-checkout-breadcrumb a,
+.rvdsfCheckoutBreadcrumb a {
+  vertical-align: middle;
+}
+.rvdsf-checkout-breadcrumb a[disabled],
+.rvdsfCheckoutBreadcrumb a[disabled],
+.rvdsfCheckoutBreadcrumb .aspNetDisabled {
+  color: #333333;
+  text-decoration: none;
+}
+.rvdsf-checkout-breadcrumb-separator,
+.rvdsfCheckoutBreadcrumbSeparator {
+  background: url("Media/StepSeparatorIcon.gif");
+  background-repeat: no-repeat;
+  background-position: left center;
+  display: inline-block;
+  height: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 16px;
+}
+a.rvdsf-checkout-breadcrumb-selected,
+a.rvdsfCheckoutBreadcrumbSelected {
+  color: inherit;
+  font-weight: bold;
+}
+.rvdsfCheckoutContainer select {
+  max-width: 300px;
+}
+.rvdsfCheckoutContainer .rvdsfSalesOrderDetailGrid {
+  border-collapse: inherit !important;
+  width: 100%;
+}
+.rvdsfCheckoutCouponList {
+  clear: both;
+  display: block;
+  margin: 15px;
+  text-align: center;
+  width: 100%;
+}
+.rvdsfCheckoutRewardsPointList {
+  clear: both;
+  display: block;
+  margin: 15px;
+  text-align: center;
+  width: 100%;
+}
+.rvdsfCheckoutVoucherList {
+  clear: both;
+  display: block;
+  margin: 15px;
+  text-align: center;
+  width: 100%;
+}
+/* Hide breadcrumb in single page checkout mode */
+.rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutBreadcrumb {
+  display: none;
+}
+.rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutBillingAndShippingContainer,
+.rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutPaymentContainer {
+  float: left;
+  width: 60%;
+}
+.rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutReviewOrderContainer {
+  float: right;
+  width: 39%;
+  position: relative;
+}
+.rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutReviewOrderContainer img {
+  width: 15%;
+}
+/* Hide price column */
+.rvdsfCheckoutPageViewModeSingle .rvdsfSalesOrderDetailGrid th:nth-child(2),
+.rvdsfCheckoutPageViewModeSingle .rvdsfSalesOrderDetailGrid td:nth-child(2) {
+  display: none;
+}
+/* Fix Square payment display */
+.rvdsf-checkout-container div.form-control.sq-card-base {
+  height: unset;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-radius: unset;
+  padding: 0 0;
+}
+/******************
+Confirmation
+*******************/
+.rvdsfConfirmationActions {
+  clear: both;
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.rvdsfConfirmationContainer .rvdsfSalesOrderDetailGrid {
+  border-collapse: inherit !important;
+  width: 100%;
+}
+.rvdsfConfirmationContainer .rvdsfPaymentMethods {
+  display: inline-block;
+}
+.rvdsfConfirmationContainer .rvdsfPaymentMethods dd {
+  float: left;
+}
+.rvdsfConfirmationContainer .rvdsfPaymentMethods dt {
+  clear: left;
+  float: left;
+  min-width: 190px;
+}
+.rvdsfConfirmationBillingInformationContainer {
+  clear: left;
+  float: left;
+  width: 50%;
+  margin-bottom: 40px;
+}
+.rvdsfConfirmationOrderInformationContainer {
+  float: left;
+  width: 50%;
+  margin-bottom: 40px;
+}
+.rvdsfConfirmationOrderNumber {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.rvdsfConfirmationOrderInformationContainer .dnnFormItem .dnnTooltip {
+  width: 50%;
+}
+.rvdsfConfirmationPaymentInformationContainer {
+  float: left;
+  width: 50%;
+  margin-bottom: 40px;
+}
+.rvdsfConfirmationShippingInformationContainer {
+  float: left;
+  width: 50%;
+  margin-bottom: 40px;
+}
+.rvdsfConfirmationShippingInformationContainer:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  visibility: hidden;
+}
+.rvdsf-confirmation-container table.rvdsf-salesorderdetail-table {
+  margin-top: 60px;
+}
+.rvdsf-confirmation-container .rvdsf-salesorderdetail-table .table {
+  margin-bottom: 5px;
+}
+.rvdsf-confirmation-container .rvdsf-salesorderdetail-table img {
+  width: 100%;
+  object-fit: contain;
+}
+/******************
+Crosssell product
+*******************/
+.rvdsfCrosssellProductContainer {
+  margin-top: 20px;
+}
+.rvdsfCrosssellProductContainer .rvdsfProductDisplayName {
+  font-size: 1em;
+}
+.rvdsfCrosssellProductContainer ul.dnnActions {
+  float: right;
+}
+.rvdsfCrosssellProductList {
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+}
+.rvdsfCrosssellProductItemInfoContainer .dnnFormItem {
+  min-height: 0;
+}
+.rvdsfCrosssellProductItemInfoContainer .rvdsfProductDisplayRating {
+  margin: 0 auto;
+}
+.rvdsfCrosssellProductGroup {
+  display: inline-block;
+}
+.rvdsfCrosssellProductItem {
+  margin: 10px 10px 10px 10px;
+}
+.rvdsfCrosssellProductItemAbstractContainer {
+  float: left;
+  width: 30%;
+}
+.rvdsfCrosssellProductItemInfoContainer {
+  display: inline-block;
+  margin-left: 10px;
+  width: 60%;
+}
+.rvdsfCrosssellProductProductGroup {
+  margin-bottom: 40px;
+}
+.rvdsfCrosssellProductProductList {
+  width: 480px;
+}
+.rvdsf-crosssellproduct-container .rvdsf-crosssellproduct-header {
+  margin-bottom: 10px;
+  min-height: 60px;
+}
+.rvdsf-crosssellproduct-container .rvdsf-product-container {
+  padding: 0 0 60px 0;
+  text-align: center;
+}
+.rvdsf-crosssellproduct-container div.rvdsf-product-info-container {
+  min-height: 100px;
+}
+.rvdsf-crosssellproduct-container .rvdsf-product-gallery-container {
+  height: 160px;
+}
+.rvdsf-crosssellproduct-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-crosssellproduct-container .btn-toolbar .btn {
+  float: none;
+  width: 100%;
+  margin: 3px;
+}
+.rvdsf-crosssellproduct-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-crosssellproduct-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-crosssellproduct-container div.rvdsf-field-price {
+  margin: 5px auto;
+}
+.rvdsf-crosssellproduct-container .rvdsf-field-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rvdsf-crosssellproduct-container .rvdsf-field-qty input,
+.rvdsf-crosssellproduct-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-crosssellproduct-container div.rvdsf-field-rating {
+  margin: 5px auto;
+}
+.rvdsf-crosssellproduct-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+/******************
+Currency
+*******************/
+div.rvdsf-currency-container {
+  margin-top: 5px;
+}
+/******************
+Distributor
+*******************/
+/* Fix left margin */
+.rvdsf-distributor-container ul.list-group {
+  margin-left: 0;
+}
+/* Node */
+.rvdsfDistributorTreeView.RadTreeView .rtIn {
+  padding: 4px 3px 3px;
+  white-space: normal;
+}
+/* Hover on node */
+.rvdsfDistributorTreeView.RadTreeView .rtHover .rtIn {
+  border-style: none;
+  border-width: 0px;
+  padding: 4px 3px 3px;
+}
+/* Selected node */
+.rvdsfDistributorTreeView.RadTreeView .rtSelected .rtIn {
+  border-style: none;
+  border-width: 0px;
+  padding: 4px 3px 3px;
+}
+/* Space between expand icon and link */
+/* Collapse icon */
+.rvdsfDistributorTreeView.RadTreeView .rtMinus {
+  background-image: url(../../Icons/Sigma/Min_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 2px;
+}
+/* Expand icon */
+.rvdsfDistributorTreeView.RadTreeView .rtPlus {
+  background-image: url(../../Icons/Sigma/Max_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 2px;
+}
+/*****************
+ManageFavorite
+******************/
+.rvdsf-managefavorite-grid .btn-toolbar {
+  justify-content: center;
+}
+/* Push newline after 3rd column */
+.rvdsf-managefavorite-grid div.col-sm-4:nth-child(3n+1) {
+  clear: left;
+}
+.rvdsf-managefavorite-grid .rvdsf-product-container {
+  padding: 0 0 60px 0;
+  text-align: center;
+}
+.rvdsf-managefavorite-grid div.rvdsf-product-info-container {
+  min-height: 100px;
+}
+.rvdsf-managefavorite-container .rvdsf-product-gallery-container {
+  height: 240px;
+}
+.rvdsf-managefavorite-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-managefavorite-list .rvdsf-product-container {
+  border-bottom: 1px #ddd solid;
+  padding: 20px 0;
+}
+.rvdsf-managefavorite-container .rvdsf-btn-addtofavorite {
+  border-radius: 20px;
+  border: solid 1px #ccc;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  margin-left: -20px;
+  margin-right: 5px;
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+.rvdsf-managefavorite-container .rvdsf-btn-addtofavorite:hover {
+  text-shadow: 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red;
+}
+.rvdsf-managefavorite-container .rvdsf-btn-addtofavorite.active {
+  color: lightcoral;
+  text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+}
+.rvdsf-managefavorite-container .rvdsf-btn-addtofavorite.active:hover {
+  text-shadow: 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red;
+}
+.rvdsf-managefavorite-list .rvdsf-label-savings {
+  left: 20px;
+  right: inherit;
+  top: 20px;
+}
+.rvdsf-managefavorite-list .rvdsf-product-gallery-container {
+  display: inline-flex;
+  margin-right: 10px;
+  width: 200px;
+}
+.rvdsf-managefavorite-list .rvdsf-product-info-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+.rvdsf-managefavorite-list .rvdsf-product-form-container {
+  display: inline-block;
+  max-width: 5%;
+  vertical-align: top;
+}
+.rvdsf-managefavorite-list .rvdsf-product-form-container .rvdsf-field-qty label {
+  display: none;
+}
+.rvdsf-managefavorite-list .btn-toolbar {
+  float: right;
+  width: 20%;
+}
+.rvdsf-managefavorite-container .btn-toolbar .btn {
+  float: none;
+  width: 100%;
+  /*margin: 3px;*/
+}
+.rvdsf-managefavorite-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-managefavorite-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-managefavorite-container div.rvdsf-field-price {
+  margin: 5px auto;
+}
+.rvdsf-managefavorite-container .rvdsf-field-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rvdsf-managefavorite-container .rvdsf-field-qty input,
+.rvdsf-managefavorite-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-managefavorite-container div.rvdsf-field-rating {
+  margin: 5px auto;
+}
+.rvdsf-managefavorite-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+/******************
+ManageOrder
+******************/
+.rvdsfManageOrderVoucherList {
+  clear: both;
+  display: block;
+  margin: 15px;
+  text-align: center;
+  width: 100%;
+}
+.rvdsf-manageorder-container .rvdsf-salesorderdetail-table .table {
+  margin-bottom: 5px;
+}
+.rvdsf-manageorder-container .rvdsf-salesorderdetail-table img {
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-manageorder-container .rvdsf-voucher-list li {
+  float: left;
+  list-style-type: none;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+/* Fix Square payment display */
+.rvdsf-manageorder-container div.form-control.sq-card-base {
+  height: unset;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-radius: unset;
+  padding: 0 0;
+}
+/******************
+ManagePayment
+******************/
+/* User payment set max width so Square form fits */
+.rvdsfManagePaymentContainer .rvdFormSubContainer.sq-card-base {
+  max-width: 445px;
+}
+/* Fix Square payment display */
+.rvdsf-managepayment-container div.form-control.sq-card-base {
+  height: unset;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-radius: unset;
+  padding: 0 0;
+}
+/******************
+ManageRegister
+*******************/
+.rvdsf-manageregister-container .rvdsf-salesorderdetail-table .table {
+  margin-bottom: 5px;
+}
+.rvdsf-manageregister-container .rvdsf-salesorderdetail-table img {
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-manageregister-amount-container {
+  font-size: 16px;
+}
+.rvdsf-manageregister-amount-container .row.rvdsf-label-totalamount {
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #ccc;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+/******************
+ManageReturn
+******************/
+div.rvdsf-managereturn-productsearch-container {
+  background-color: #ddd;
+  margin: 0 0;
+  padding: 40px 0;
+}
+.rvdsf-managereturn-container .rvdsf-salesreturndetail-table img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-managereturn-container .rvdsf-product-gallery-container {
+  height: 160px;
+}
+.rvdsf-managereturn-container .rvdsf-product-info-container div.rvdsf-field-name {
+  margin: 5px auto 20px auto;
+}
+.rvdsf-managereturn-container .rvdsf-product-info-container .rvdsf-label-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.rvdsf-managereturn-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-managereturn-container .rvdsf-product-form-container .rvdsf-field-qty input {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-managereturn-productpart-container {
+  display: inline-block;
+  margin: 10px 10px;
+  padding: 10px 10px;
+  width: 150px;
+  height: 150px;
+}
+/******************
+ManageVoucher
+*******************/
+.rvdsf-managevoucher-cardbackground {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-image: url(/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/VoucherBackground.png);
+  width: 100%;
+  height: 160px;
+  max-width: 280px;
+  max-height: 160px;
+}
+.rvdsf-managevoucher-cardcontent {
+  padding-top: 85px;
+  text-align: center;
+  font-size: 18px;
+}
+/*****************
+ManageWishList
+******************/
+.rvdsf-managewishlist-container .rvdsf-product-gallery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+}
+.rvdsf-managewishlist-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-managewishlist-container .rvdsf-product-container {
+  padding: 20px 0;
+}
+.rvdsf-managewishlist-container .rvdsf-label-savings {
+  left: 20px;
+  right: inherit;
+}
+.rvdsf-managewishlist-container .rvdsf-product-gallery-container {
+  display: inline-flex;
+  margin-right: 10px;
+  width: 160px;
+}
+.rvdsf-managewishlist-container .rvdsf-product-info-container {
+  display: inline-block;
+  vertical-align: top;
+  padding-bottom: 20px;
+}
+.rvdsf-managewishlist-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-managewishlist-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-managewishlist-container div.rvdsf-field-price {
+  margin: 5px auto;
+}
+.rvdsf-managewishlist-container .rvdsf-field-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rvdsf-managewishlist-container .rvdsf-field-qty input,
+.rvdsf-managewishlist-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-managewishlist-container div.rvdsf-field-rating {
+  margin: 5px auto;
+}
+.rvdsf-managewishlist-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+/******************
+Manufacturer
+*******************/
+/* Fix left margin */
+.rvdsf-manufacturer-container ul.list-group {
+  margin-left: 0;
+}
+/* Node */
+.rvdsfManufacturerTreeView.RadTreeView .rtIn {
+  padding: 4px 3px 3px;
+  white-space: normal;
+}
+/* Hover on node */
+.rvdsfManufacturerTreeView.RadTreeView .rtHover .rtIn {
+  border-style: none;
+  border-width: 0px;
+  padding: 4px 3px 3px;
+}
+/* Selected node */
+.rvdsfManufacturerTreeView.RadTreeView .rtSelected .rtIn {
+  border-style: none;
+  border-width: 0px;
+  padding: 4px 3px 3px;
+}
+/* Space between expand icon and link */
+/* Collapse icon */
+.rvdsfManufacturerTreeView.RadTreeView .rtMinus {
+  background-image: url(../../Icons/Sigma/Min_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 2px;
+}
+/* Expand icon */
+.rvdsfManufacturerTreeView.RadTreeView .rtPlus {
+  background-image: url(../../Icons/Sigma/Max_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 2px;
+}
+/******************
+Product display
+******************/
+.rvdsf-product-container ul.rvdsf-form-colorpicker {
+  margin-left: 0;
+}
+.rvdsf-product-container .rvdsf-form-colorpicker li {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  list-style-type: none;
+  margin: 3px;
+  vertical-align: middle;
+  width: 32px;
+}
+.rvdsf-product-container .rvdsf-form-colorpicker a {
+  display: none;
+}
+.rvdsf-product-container li.rvdsf-form-colorpicker-selected {
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #cccccc;
+  cursor: default;
+}
+.rvdsf-product-container ul.rvdsf-form-imageswatch {
+  margin-left: 0;
+}
+.rvdsf-product-container .rvdsf-form-imageswatch li {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  list-style-type: none;
+  margin: 3px;
+  vertical-align: middle;
+  width: 32px;
+}
+.rvdsf-product-container .rvdsf-form-imageswatch a {
+  display: none;
+}
+.rvdsf-product-container li.rvdsf-form-imageswatch-selected {
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #cccccc;
+  cursor: default;
+}
+a.rvdsfProductDisplayGalleryDisplay {
+  /* Needed to force height otherwise zoom effect floats the child elements and tiles underneath is not aligned */
+  display: inline-block;
+}
+.rvdsfProductDisplayGalleryThumbnail > img {
+  max-width: 100%;
+  margin: 5px;
+}
+.rvdsfProductDisplayAbstractContainer {
+  float: left;
+  min-height: 1px;
+  min-width: 20%;
+  text-align: center;
+  width: 30%;
+}
+.rvdsfProductDisplayActions {
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+.rvdsfProductDisplayContainer .rvdFormColorPickerList li {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  cursor: pointer;
+  display: inline-block;
+  height: 16px;
+  list-style-type: none;
+  margin: 3px;
+  vertical-align: middle;
+  width: 16px;
+}
+.rvdsfProductDisplayContainer .rvdFormColorPickerList a {
+  display: none;
+}
+.rvdsfProductDisplayContainer li.rvdsfFormColorPickerItemSelected {
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #cccccc;
+  cursor: default;
+}
+.rvdsfProductDisplayContainer .rvdFormImageSwatchList li {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #cccccc;
+  cursor: pointer;
+  display: inline-block;
+  height: 32px;
+  list-style-type: none;
+  margin: 3px;
+  vertical-align: middle;
+  width: 32px;
+}
+.rvdsfProductDisplayContainer .rvdFormImageSwatchList a {
+  display: none;
+}
+.rvdsfProductDisplayContainer li.rvdsfFormImageSwatchItemSelected {
+  outline-style: solid;
+  outline-width: 3px;
+  outline-color: #cccccc;
+  cursor: default;
+}
+.rvdsfProductDisplayDetailContainer {
+  clear: both;
+  padding-top: 20px;
+}
+.rvdsfProductDisplayGalleryDetailed {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+.rvdsfProductDisplayGalleryTileGroup {
+  margin-bottom: 3px;
+  margin-left: 5px;
+  margin-top: 3px;
+  text-align: center;
+}
+.rvdsfProductDisplayGalleryTileList {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.rvdsfProductDisplayGalleryTile {
+  border: solid 1px #999999 !important;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.rvdsfProductDisplayInfoContainer {
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 60%;
+  width: 60%;
+}
+.rvdsfProductDisplayInfoContainer .dnnFormItem {
+  min-height: 0px;
+  padding: 0px;
+}
+.rvdsfProductDisplayInfoContainer .dnnFormItem label,
+.rvdsfProductDisplayInfoContainer .dnnFormItem .dnnFormLabel,
+.rvdsfProductDisplayInfoContainer .dnnFormItem .dnnTooltip {
+  min-width: 100px;
+}
+.rvdsfProductDisplayName {
+  display: block;
+}
+.rvdsfProductDisplayRating {
+  display: block;
+  width: auto !important;
+}
+div.rvdsfProductDisplayProductComponentItem {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.rvdsfProductDisplayProductComponentItem span {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.rvdsfProductDisplayProductPartItem img {
+  max-width: 40px;
+  margin: 0 8px 0 8px;
+}
+.rvdsfProductDisplayProductPartList {
+  font-size: 0.9em;
+}
+span.rvdsfProductPartPrice {
+  margin-left: 10px;
+  font-weight: bold;
+}
+.rvdsfProductDisplayProductPartItem .rvdQuantityInput {
+  float: right;
+}
+.rvdsfProductDisplayRequiredProductContainer {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.rvdsfProductDisplayRequiredProductList {
+  padding: 30px 0;
+}
+.rvdsfProductDisplayRequiredProductItem.dnnFormItem {
+  font-weight: bold;
+  padding: 5px 0;
+}
+.rvdsfProductDisplayBuyingGuide,
+.rvdsfProductDisplayFAQ,
+.rvdsfProductDisplayOverview,
+.rvdsfProductDisplayReviews,
+.rvdsfProductDisplaySpecifications,
+.rvdsfProductDisplaySummary,
+.rvdsfProductDisplayTerms {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.rvdsfProductDisplayProductAttributeList {
+  margin-top: 10px;
+}
+.rvdsfProductDisplayProductAttributeList h4 {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.rvdsfProductDisplayProductAttributeList ul {
+  overflow: hidden;
+}
+.rvdsfProductDisplayProductAttributeList li {
+  list-style-type: none;
+}
+.rvdsfProductDisplayProductAttributeList .dnnFormItem {
+  border-bottom: solid 1px #cccccc;
+  padding-bottom: 20px;
+}
+.rvdsfProductDisplayRating.RadRating a,
+.rvdsfProductDisplayRating.RadRating a span {
+  background-image: url(Media/RatingEmptyStarIcon.gif);
+  background-position: 0 0;
+}
+.rvdsfProductDisplayRating.RadRating .rrtOver a,
+.rvdsfProductDisplayRating.RadRating .rrtOver a span {
+  background-image: url(Media/RatingHoverStarIcon.gif);
+  background-position: 0 0;
+}
+.rvdsfProductDisplayRating.RadRating .rrtSelected.rrtOver a span {
+  background-image: url(Media/RatingHoverStarIcon.gif);
+  background-position: 0 0;
+}
+.rvdsfProductDisplayRating.RadRating .rrtSelected a span {
+  background-image: url(Media/RatingFilledStarIcon.gif);
+  background-position: 0 0;
+}
+.rvdsfProductDisplayRating.RadRating .rrtHover a span {
+  background-image: url(Media/RatingHoverStarIcon.gif);
+  background-position: 0 0;
+}
+.rvdsfProductDisplaySummary {
+  display: block;
+}
+/******************
+ProductComparison
+*******************/
+.rvdsf-productcomparison-table th,
+.rvdsf-productcomparison-table td {
+  text-align: center;
+}
+.rvdsf-productcomparison-table th:first-child,
+.rvdsf-productcomparison-table td:first-child {
+  background-color: #efefef;
+  font-weight: bold;
+  text-align: left;
+  width: 120px;
+}
+.rvdsf-productcomparison-table .rvdsf-product-gallery-container {
+  height: 160px;
+}
+.rvdsf-productcomparison-table .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-productcomparison-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-productcomparison-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-productcomparison-container .rvdsf-field-price {
+  font-weight: bold;
+}
+.rvdsf-productcomparison-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+.rvdsfProductComparisonGrid td > .dnnTooltip label,
+.rvdsfProductComparisonGrid td > .dnnTooltip {
+  font-weight: bold;
+  text-align: right;
+  min-width: 0px;
+}
+.rvdsfProductComparisonGrid table {
+  width: 100%;
+}
+.rvdsfProductComparisonGrid .rgGroupHeader {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.rvdsfProductComparisonGrid .rgGroupHeader td {
+  border-bottom: solid 1px #cccccc;
+  padding: 8px 0 8px 0 !important;
+}
+.rvdsfProductComparisonGrid td > .dnnFormLabel {
+  width: auto;
+}
+.rvdsfProductComparisonGrid .rgCollapse {
+  background-image: url(../../Icons/Sigma/Min_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 0px;
+}
+.rvdsfProductComparisonGrid .rgExpand {
+  background-image: url(../../Icons/Sigma/Max_12x12_Standard.png);
+  background-position: 0 0;
+  width: 12px;
+  height: 16px;
+  margin-top: 0px;
+}
+/******************
+ProductDetail
+*******************/
+.rvdsf-productdetail-container .btn-toolbar .btn,
+.rvdsf-productdetail-container .btn-toolbar .btn-group {
+  min-width: 140px;
+  /*margin: 3px;*/
+}
+.rvdsf-productdetail-container .rvdsf-label-savings {
+  font-size: 14px;
+  height: 22px;
+  min-width: 100px;
+  position: static;
+  float: right;
+}
+.rvdsf-productdetail-container .rvdsf-product-gallery-container {
+  height: 320px;
+}
+.rvdsf-productdetail-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-productdetail-container .rvdsf-product-gallery-container .zoomWrapperImage img {
+  max-height: none;
+}
+.rvdsf-productdetail-container .rvdsf-product-gallery-tile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0 20px 0;
+  width: 100%;
+}
+.rvdsf-productdetail-container img.rvdsf-product-gallery-tile {
+  cursor: pointer;
+  margin: 2px 2px;
+  padding: 2px 2px;
+  height: 64px;
+  width: 64px;
+  object-fit: contain;
+}
+.rvdsf-productdetail-container .rvdsf-field-compare {
+  margin: 10px 0;
+  text-align: center;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-btn-addtofavorite {
+  border-radius: 20px;
+  border: solid 1px #ccc;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 10px;
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-btn-addtofavorite:hover {
+  text-shadow: 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-btn-addtofavorite.active {
+  color: lightcoral;
+  text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-btn-addtofavorite.active:hover {
+  text-shadow: 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container div.rvdsf-field-name {
+  margin: 20px auto;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-label-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-label-savings {
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  min-width: 100px;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-field-part .rvdsf-label-savings {
+  font-size: 9px;
+  height: 20px;
+  line-height: 20px;
+  min-width: 60px;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container div.rvdsf-field-price {
+  margin: 5px auto 20px auto;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container .rvdsf-field-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-label-componentname {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-field-part .rvdsf-field-gallery {
+  height: 60px;
+}
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-field-part .rvdsf-field-gallery img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-field-part .rvdsf-label-name {
+  font-size: 12px;
+  font-weight: bold;
+}
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-field-part .rvdsf-label-price {
+  font-size: 12px;
+  font-weight: bold;
+}
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-field-qty input,
+.rvdsf-productdetail-container .rvdsf-product-form-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-productdetail-container .rvdsf-product-info-container div.rvdsf-field-rating {
+  margin: 10px auto;
+}
+.rvdsf-productdetail-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+.rvdsf-productdetail-container div.rvdsf-field-description-container {
+  clear: both;
+  padding-top: 40px;
+}
+.rvdsf-productdetail-container .rvdsf-field-description-container div.tab-content {
+  margin: 20px 0;
+}
+.rvdsf-productdetail-table th,
+.rvdsf-productdetail-table td {
+  text-align: left;
+}
+.rvdsf-productdetail-table th:first-child,
+.rvdsf-productdetail-table td:first-child {
+  background-color: #efefef;
+  font-weight: bold;
+  text-align: left;
+  width: 30%;
+}
+.rvdsf-productdetail-container .rvdsf-requiredproduct-container h6 {
+  font-size: 16px;
+}
+.rvdsf-productdetail-container .rvdsf-requiredproduct-container .rvdsf-label-name {
+  font-size: 14px;
+}
+.rvdsf-productdetail-container .rvdsf-requiredproduct-container .rvdsf-productvariant-name {
+  font-size: 12px;
+}
+.rvdsf-productdetail-container .carousel .carousel-control {
+  visibility: hidden;
+}
+.rvdsf-productdetail-container .carousel:hover .carousel-control {
+  visibility: visible;
+}
+.rvdsf-product-review-item {
+  margin: 40px 0;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+.rvdsf-product-review-item .rvdsf-field-comment {
+  white-space: pre-wrap;
+}
+.rvdsf-product-review-item .rvdsf-field-date {
+  color: #666;
+  font-weight: bold;
+}
+.rvdsf-product-review-item .rvdsf-field-name {
+  color: #999;
+  font-style: italic;
+  font-weight: bold;
+}
+.rvdsf-product-review-container .rvdsf-input-comment {
+  height: 100px;
+}
+.rvdsf-product-review-container .rvdsf-input-captcha {
+  width: 100%;
+  text-align: center;
+  border: 1px solid #ddd;
+  padding: 10px 10px;
+  margin-bottom: 5px;
+}
+.rvdsf-product-review-container .rvdsf-input-captcha img {
+  display: inline-block;
+  height: 40px;
+  width: 180px;
+}
+.rvdsf-product-review-container .rvdsf-input-captcha button {
+  display: inline-block;
+  height: 40px;
+}
+.rvdsfProductDetailContainer .rvdsfProductDisplayName {
+  font-size: 1.5em;
+}
+.rvdsfProductDetailContainer .rvdsfProductComparisonInput {
+  display: inherit;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.rvdsfProductReviewItemAbstractContainer {
+  border-top: solid 1px #cccccc;
+  float: left;
+  min-height: 100px;
+  margin-right: 30px;
+  padding: 3px 3px 10px 3px;
+  width: 25%;
+}
+.rvdsfProductReviewItem {
+  width: 100%;
+}
+.rvdsfProductReviewItemInfoContainer {
+  border-top: solid 1px #cccccc;
+  padding: 3px;
+}
+.rvdsfProductReviewList {
+  overflow: hidden;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.rvdsfProductReviewGroup {
+  clear: both;
+}
+.rvdsfProductReviewDate {
+  display: block;
+  margin-top: 10px;
+}
+.rvdsfProductReviewTitle {
+  font-weight: bold;
+}
+.rvdsfProductReviewUser {
+  font-style: italic;
+}
+/******************
+ProductFilter
+******************/
+.rvdsf-productfilter-container .btn-toolbar {
+  background-color: #eee;
+  padding: 10px 10px;
+  margin: 0 0 20px 0;
+}
+.rvdsf-productfilter-container div.rvdsf-field-definition {
+  margin: 20px 20px;
+}
+.rvdsf-productfilter-container .rvdsf-field-definition label.control-label {
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.rvdsf-productfilter-container .slider.slider-horizontal {
+  margin: 30px 15px 10px 15px;
+  width: 90%;
+}
+.rvdsfProductFilterActions {
+  text-align: center;
+}
+.rvdsfProductFilterContainer .dnnForm {
+  min-width: 0;
+}
+.rvdsfProductFilterContainer .dnnFormItem label,
+.rvdsfProductFilterContainer .dnnFormItem .dnnFormLabel,
+.rvdsfProductFilterContainer .dnnFormItem .dnnTooltip {
+  float: none;
+  text-align: left;
+  width: 100px;
+}
+.rvdsfProductFilterList ul {
+  overflow: hidden;
+}
+.rvdsfProductFilterList li {
+  list-style-type: none;
+}
+.rvdsfProductFilterSliderInput {
+  float: left;
+  width: 80px;
+}
+/* DNN 7.1 causes the slider to take one extra line */
+span.rvdsfProductFilterSliderInput {
+  white-space: normal;
+}
+/******************
+ProductList
+******************/
+.rvdsf-productlist-subcategories .list-group-item {
+  border: 0;
+}
+.rvdsf-productlist-subcategories .rvdsf-field-name {
+  margin-top: 5px;
+  text-align: center;
+}
+.rvdsf-productlist-navbar {
+  background-color: #eee;
+  min-height: 52px;
+  padding: 10px;
+}
+.rvdsf-productlist-navbar .btn-group.bootstrap-select {
+  width: auto !important;
+}
+.rvdsf-productlist-navbar .bootstrap-select .btn-default,
+.rvdsf-productlist-navbar .bootstrap-select .btn-default:hover,
+.rvdsf-productlist-navbar .bootstrap-select .btn-default:active,
+.rvdsf-productlist-navbar .bootstrap-select .btn-default:visited,
+.rvdsf-productlist-navbar .bootstrap-select .btn-default:focus {
+  background-color: #eee;
+  border-color: #eee;
+  font-weight: bold;
+}
+.rvdsf-productlist-navbar .bootstrap-select .btn-default:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+.rvdsf-productlist-navbar .rvdsf-field-pageviewmode a {
+  color: #888;
+  font-size: 28px;
+}
+/* Search popup should wrap to avoid overflow mobile browser */
+#rvdsfProductListSearchQueryInput-list.k-popup {
+  white-space: normal !important;
+}
+.rvdsf-productlistfilter-container {
+  padding: 20px 20px;
+}
+.rvdsf-productlistfilter-container div.rvdsf-field-definition {
+  margin: 20px 20px;
+}
+.rvdsf-productlistfilter-container .rvdsf-field-definition label.control-label {
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.rvdsf-productlistfilter-container .slider.slider-horizontal {
+  margin: 30px 15px 10px 15px;
+  width: 90%;
+}
+.rvdsf-productlist-container .rvdsf-productlistfilter-container .btn-toolbar .btn {
+  float: unset;
+  width: inherit;
+  margin: unset;
+}
+.rvdsf-productlist-container .rvdsf-field-pageviewmode a.active {
+  color: #333;
+}
+.rvdsf-productlist-grid,
+.rvdsf-productlist-list {
+  padding: 20px;
+}
+.rvdsf-productlist-grid .btn-toolbar {
+  justify-content: center;
+}
+/* Push newline after 3rd column */
+.rvdsf-productlist-grid div.col-sm-4:nth-child(3n+1) {
+  clear: left;
+}
+.rvdsf-productlist-grid .rvdsf-product-container {
+  padding: 0 0 60px 0;
+  text-align: center;
+}
+.rvdsf-productlist-grid div.rvdsf-product-info-container {
+  min-height: 100px;
+}
+.rvdsf-productlist-container .rvdsf-product-gallery-container {
+  height: 240px;
+}
+.rvdsf-productlist-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-productlist-list .rvdsf-product-container {
+  border-bottom: 1px #ddd solid;
+  padding: 20px 0;
+}
+.rvdsf-productlist-container .rvdsf-btn-addtofavorite {
+  border-radius: 20px;
+  border: solid 1px #ccc;
+  padding: 5px;
+  color: white;
+  cursor: pointer;
+  margin-left: -20px;
+  margin-right: 5px;
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+.rvdsf-productlist-container .rvdsf-btn-addtofavorite:hover {
+  text-shadow: 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red;
+}
+.rvdsf-productlist-container .rvdsf-btn-addtofavorite.active {
+  color: lightcoral;
+  text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+}
+.rvdsf-productlist-container .rvdsf-btn-addtofavorite.active:hover {
+  text-shadow: 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red, 0 0 2px red;
+}
+.rvdsf-productlist-list .rvdsf-label-savings {
+  left: 20px;
+  right: inherit;
+  top: 20px;
+}
+.rvdsf-productlist-list .rvdsf-product-gallery-container {
+  display: inline-flex;
+  margin-right: 20px;
+  width: 200px;
+}
+.rvdsf-productlist-list .rvdsf-product-info-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+}
+.rvdsf-productlist-list .rvdsf-product-form-container {
+  display: inline-block;
+  max-width: 5%;
+  vertical-align: top;
+}
+.rvdsf-productlist-list .rvdsf-product-form-container .rvdsf-field-qty label {
+  display: none;
+}
+.rvdsf-productlist-list .btn-toolbar {
+  float: right;
+  width: 20%;
+}
+.rvdsf-productlist-container .btn-toolbar .btn {
+  float: none;
+  width: 100%;
+  margin: 3px;
+}
+.rvdsf-productlist-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-productlist-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-productlist-container div.rvdsf-field-price {
+  margin: 5px auto;
+}
+.rvdsf-productlist-container .rvdsf-field-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rvdsf-productlist-container .rvdsf-field-qty input,
+.rvdsf-productlist-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-productlist-container div.rvdsf-field-rating {
+  margin: 5px auto;
+}
+.rvdsf-productlist-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+.rvdsf-productlist-pager {
+  background-color: #eee;
+  padding: 10px 5px;
+  text-align: center;
+}
+.rvdsfProductListSubCategoryGroup {
+  display: inline-block;
+}
+.rvdsfProductListSubCategoryList {
+  text-align: center;
+}
+.rvdsfProductListSubCategoryItem {
+  margin: 10px 10px 10px 10px;
+}
+.rvdsfProductListSubCategoryGalleryThumbnail > img {
+  display: block;
+  max-width: 100%;
+  margin: 5px;
+}
+.rvdsfProductListToolbar {
+  border-top: solid 1px #cccccc;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.rvdsfProductListToolbar .dnnFormItem,
+.rvdsfProductListToolbar .dnnFormItem label,
+.rvdsfProductListToolbar .dnnFormItem .dnnTooltip {
+  display: inline-block;
+  float: none;
+  margin-right: 5px;
+  white-space: nowrap;
+  width: auto;
+}
+.rvdsfProductListToolbar .rvdsfPageViewModeInput select,
+.rvdsfProductListToolbar .rvdsfPageViewDisplayOrderInput select,
+.rvdsfProductListToolbar .rvdsfPageViewSizeInput select {
+  width: auto;
+}
+.rvdsfProductListToolbar .dnnFormLabel,
+.rvdsfProductListToolbar .dnnLabel {
+  margin-right: 5px;
+  padding-right: 0px;
+  width: auto;
+}
+.rvdsfProductListProductList .rvdsfProductDisplayInfoContainer .dnnFormItem label,
+.rvdsfProductListProductList .rvdsfProductDisplayInfoContainer .dnnFormItem .dnnFormLabel,
+.rvdsfProductListProductList .rvdsfProductDisplayInfoContainer .dnnFormItem .dnnTooltip {
+  min-width: 0;
+}
+.rvdsfProductListProductList .rvdsfProductComparisonInput {
+  display: inherit;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.rvdsfProductListProductItem {
+  display: inline-block;
+  margin-top: 10px;
+  vertical-align: top;
+  width: 49%;
+}
+.rvdsfPageViewModeList .rvdsfProductListProductItem {
+  width: 100%;
+}
+/******************
+ProductSearch
+******************/
+/* Search popup should wrap to avoid overflow mobile browser */
+#rvdsfProductSearchQueryInput-list.k-popup {
+  white-space: normal !important;
+}
+.rvdsfProductSearchContainer {
+  text-align: center;
+}
+.rvdsfProductSearchQueryTextBox {
+  width: 40%;
+}
+/******************
+ProductShowcase
+******************/
+.rvdsf-productshowcase-container .carousel .item {
+  height: 520px;
+}
+.rvdsf-productshowcase-container a.carousel-control {
+  background-image: none;
+  width: 20px;
+}
+.rvdsf-productshowcase-container .carousel-control .glyphicon,
+.rvdsf-productshowcase-container .carousel-control .fas {
+  color: black;
+}
+.rvdsf-productshowcase-container .rvdsf-product-container {
+  text-align: center;
+}
+.rvdsf-productshowcase-container .rvdsf-product-gallery-container {
+  height: 240px;
+}
+.rvdsf-productshowcase-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-productshowcase-container div.rvdsf-product-info-container {
+  min-height: 100px;
+}
+.rvdsf-productshowcase-container .btn-toolbar .btn {
+  width: 100%;
+  margin: 3px;
+}
+.rvdsf-productshowcase-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-productshowcase-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-productshowcase-container div.rvdsf-field-price {
+  margin: 5px auto;
+}
+.rvdsf-productshowcase-container .rvdsf-field-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rvdsf-productshowcase-container .rvdsf-field-qty input,
+.rvdsf-productshowcase-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-productshowcase-container div.rvdsf-field-rating {
+  margin: 5px auto;
+}
+.rvdsf-productshowcase-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+/* BUG: RadRotator shows a dot between images. We need to hide the bullet list item point. */
+.rvdsfProductShowcaseContainer .rrItem {
+  list-style-type: none;
+}
+.rvdsfProductShowcaseRotator {
+  margin: 0 auto;
+}
+.rvdsfProductShowcaseRotator div.rrClipRegion {
+  border: solid 1px #cccccc;
+}
+.rvdsfProductShowcaseRotator .rrButton.rrButtonDown,
+.rvdsfProductShowcaseRotator .rrButton.rrButtonDown:hover {
+  background-image: url(../../Icons/Sigma/Dn_16x16_Standard.png);
+  background-position: center bottom;
+}
+.rvdsfProductShowcaseRotator .rrButton.rrButtonLeft,
+.rvdsfProductShowcaseRotator .rrButton.rrButtonLeft:hover {
+  background-image: url(../../Icons/Sigma/Lt_16x16_Standard.png);
+  background-position: left center;
+}
+.rvdsfProductShowcaseRotator .rrButton.rrButtonRight,
+.rvdsfProductShowcaseRotator .rrButton.rrButtonRight:hover {
+  background-image: url(../../Icons/Sigma/Rt_16x16_Standard.png);
+  background-position: right center;
+}
+.rvdsfProductShowcaseRotator .rrButton.rrButtonUp,
+.rvdsfProductShowcaseRotator .rrButton.rrButtonUp:hover {
+  background-image: url(../../Icons/Sigma/Up_16x16_Standard.png);
+  background-position: center top;
+}
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayInfoContainer .dnnFormItem label,
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayInfoContainer .dnnFormItem .dnnFormLabel,
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayInfoContainer .dnnFormItem .dnnTooltip {
+  min-width: 0;
+}
+.rvdsfProductShowcaseRotatorContainer .dnnLabel {
+  padding-right: 0;
+}
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayContainer {
+  display: inline-block;
+  margin: 10px 10px 10px 10px;
+  min-width: 0;
+}
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayAbstractContainer {
+  float: none;
+  width: 100%;
+}
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayInfoContainer {
+  text-align: center;
+  width: 100%;
+}
+/*** Center rating ***/
+.rvdsfProductShowcaseRotator .rvdsfProductDisplayRating {
+  margin: 0 auto;
+  text-align: center;
+}
+.rvdsfProductShowcaseRotator .RadRating li {
+  float: none;
+  display: inline-block;
+}
+.rvdsfProductShowcaseRotator .RadRating a,
+.rvdsfProductShowcaseRotator .RadRating a span {
+  line-height: inherit;
+}
+/*** End center rating ***/
+.rvdsfProductShowcaseRotatorContainer {
+  padding: 0 50px 0 50px;
+}
+.rvdsfProductShowcaseRotatorContainer .caroufredsel_wrapper {
+  margin: 0 auto !important;
+}
+.rvdsfProductShowcaseRotatorContainer.rvdsfProductShowcaseRotatorScrollVertical {
+  padding: 20px 0 20px 0;
+}
+ul.rvdsfProductShowcaseRotator > li {
+  float: left;
+  list-style: none outside none;
+}
+.rvdsfProductShowcasePagination.rvdPreviousAction {
+  background-image: url(../../Icons/Sigma/Lt_16x16_Standard.png);
+  background-position: left center;
+  display: none;
+  height: 16px;
+  left: 10px;
+  position: absolute;
+  top: 50%;
+  width: 16px;
+}
+.rvdsfProductShowcaseRotatorScrollVertical .rvdsfProductShowcasePagination.rvdPreviousAction {
+  background-image: url(../../Icons/Sigma/Up_16x16_Standard.png);
+  left: 50%;
+  top: 30px;
+}
+.rvdsfProductShowcasePagination.rvdNextAction {
+  background-image: url(../../Icons/Sigma/Rt_16x16_Standard.png);
+  background-position: right center;
+  display: none;
+  height: 16px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 16px;
+}
+.rvdsfProductShowcaseRotatorScrollVertical .rvdsfProductShowcasePagination.rvdNextAction {
+  background-image: url(../../Icons/Sigma/Dn_16x16_Standard.png);
+  bottom: -14px;
+  left: 50%;
+  top: inherit;
+}
+.rvdsfProductShowcasePagination.rvdNumericAction {
+  display: none;
+  text-align: center;
+}
+.rvdsfProductShowcasePagination.rvdNumericAction a {
+  margin: 0 3px;
+  text-decoration: none;
+}
+.rvdsfProductShowcasePagination.rvdNumericAction a.selected {
+  text-decoration: underline;
+}
+/******************
+QuickOrder
+******************/
+.rvdsf-quickorder-container .rvdsf-salesorderdetail-table img {
+  width: 100%;
+  object-fit: contain;
+}
+.rvdsf-quickorder-container .rvdsf-field-qty input,
+.rvdsf-quickorder-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-quickorder-container .rvdsf-salesorderdetail-table .rvdsf-field-qty input,
+.rvdsf-quickorder-container .rvdsf-salesorderdetail-table .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-quickorder-container .rvdsf-salesorderdetail-table .rvdsf-field-qty .rvdsf-label-amount {
+  margin-top: 20px;
+  font-size: 14px;
+}
+.rvdsf-quickorder-container .rvdsf-salesorderdetail-table .rvdsf-label-amount {
+  font-weight: bold;
+}
+.rvdsf-quickorder-amount-container {
+  font-size: 14px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.rvdsf-quickorder-container .rvdsf-coupon-list li {
+  float: left;
+  list-style-type: none;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.rvdsfQuickOrderContainer .rvdsfSalesOrderDetailGrid {
+  border-collapse: inherit !important;
+  width: 100%;
+}
+/******************
+Related product
+*******************/
+.rvdsfRelatedProductContainer {
+  margin-top: 20px;
+}
+.rvdsfRelatedProductContainer .rvdsfProductDisplayName {
+  font-size: 1em;
+}
+.rvdsfRelatedProductList {
+  margin: 10px 10px 10px 10px;
+  text-align: center;
+}
+.rvdsfRelatedProductItemInfoContainer .dnnFormItem {
+  min-height: 0;
+  text-align: center;
+}
+/*** Center rating ***/
+.rvdsfRelatedProductItemInfoContainer .rvdsfProductDisplayRating {
+  margin: 0 auto;
+  text-align: center;
+}
+.rvdsfRelatedProductItemInfoContainer .RadRating li {
+  float: none;
+  display: inline-block;
+}
+.rvdsfRelatedProductItemInfoContainer .RadRating a,
+.rvdsfRelatedProductItemInfoContainer .RadRating a span {
+  line-height: inherit;
+}
+/*** End center rating ***/
+.rvdsfRelatedProductGroup {
+  display: inline-block;
+  vertical-align: top;
+}
+.rvdsfRelatedProductItem {
+  margin: 10px 10px 10px 10px;
+}
+/******************
+Seller
+*******************/
+/* Fix left margin */
+.rvdsf-seller-container ul.list-group {
+  margin-left: 0;
+}
+/******************
+WishList
+*******************/
+.rvdsf-wishlist-grid,
+.rvdsf-wishlist-list {
+  padding: 20px;
+}
+/* Push newline after 3rd column */
+.rvdsf-wishlist-grid div.col-sm-4:nth-child(3n+1) {
+  clear: left;
+}
+.rvdsf-wishlist-grid .rvdsf-product-container {
+  padding: 0 0 60px 0;
+  text-align: center;
+}
+.rvdsf-wishlist-grid div.rvdsf-product-info-container {
+  min-height: 100px;
+}
+.rvdsf-wishlist-container .rvdsf-product-gallery-container {
+  height: 160px;
+}
+.rvdsf-wishlist-container .rvdsf-product-gallery-container img {
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+.rvdsf-wishlist-container .btn-toolbar .btn {
+  float: none;
+  width: 100%;
+  margin: 3px;
+}
+.rvdsf-wishlist-container div.rvdsf-field-name {
+  margin: 5px auto;
+}
+.rvdsf-wishlist-container .rvdsf-field-name a {
+  color: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+.rvdsf-wishlist-container div.rvdsf-field-price {
+  margin: 5px auto;
+}
+.rvdsf-wishlist-container .rvdsf-field-price {
+  font-size: 14px;
+  font-weight: bold;
+}
+.rvdsf-wishlist-container .rvdsf-field-qty input,
+.rvdsf-wishlist-container .rvdsf-field-qty select {
+  background-color: #eee;
+  border: 0;
+  padding: 8px;
+  width: 60px;
+}
+.rvdsf-wishlist-container div.rvdsf-field-rating {
+  margin: 5px auto;
+}
+.rvdsf-wishlist-container div.rvdsf-field-rating span.badge {
+  background-color: #eee;
+  color: #999;
+  font-size: 10px;
+  vertical-align: top;
+}
+.rvdsfWishListContributors {
+  display: none;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.rvdsfWishListGrid {
+  width: 100%;
+}
+.rvdsfWishListDetailGrid {
+  width: 100%;
+}
+/******************
+Welcome
+******************/
+.rvdsfWelcomeSteps {
+  display: inline-block;
+  margin: 0 0 10px;
+}
+.rvdsfWelcomeSteps .icon {
+  font-size: 14px;
+}
+.rvdsfWelcomeSteps li {
+  list-style: none;
+  float: left;
+}
+.rvdsfWelcomeSteps li a {
+  color: #FFF;
+  display: block;
+  background: #999999;
+  font-size: 12px;
+  text-decoration: none;
+  position: relative;
+  height: 32px;
+  line-height: 30px;
+  padding: 0 10px 0 5px;
+  text-align: center;
+  margin-right: 23px;
+}
+.rvdsfWelcomeSteps li:nth-child(even) a {
+  background-color: #999999;
+}
+.rvdsfWelcomeSteps li:nth-child(even) a:before {
+  border-color: #999999;
+  border-left-color: transparent;
+}
+.rvdsfWelcomeSteps li:nth-child(even) a:after {
+  border-left-color: #999999;
+}
+.rvdsfWelcomeSteps li:first-child a {
+  padding-left: 15px;
+  -moz-border-radius: 4px 0 0 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px 0 0 4px;
+}
+.rvdsfWelcomeSteps li:first-child a:before {
+  border: none;
+}
+.rvdsfWelcomeSteps li:last-child a {
+  padding-right: 15px;
+  -moz-border-radius: 0 4px 4px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 4px 4px 0;
+  background-color: #666666;
+  background-color: black;
+}
+.rvdsfWelcomeSteps li:last-child a:before {
+  border-color: black;
+  border-left-color: transparent;
+}
+.rvdsfWelcomeSteps li:last-child a:after {
+  border: none;
+}
+.rvdsfWelcomeSteps li a:before,
+.rvdsfWelcomeSteps li a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  border: 0 solid #999999;
+  border-width: 16px 11px;
+  width: 0;
+  height: 32px;
+}
+.rvdsfWelcomeSteps li a:before {
+  left: -20px;
+  border-left-color: transparent;
+}
+.rvdsfWelcomeSteps li a:after {
+  left: 100%;
+  border-color: transparent;
+  border-left-color: #999999;
+}
+.rvdsfWelcomeSteps li a:hover {
+  background-color: YellowGreen;
+}
+.rvdsfWelcomeSteps li a:hover:before {
+  border-color: YellowGreen;
+  border-left-color: transparent;
+}
+.rvdsfWelcomeSteps li a:hover:after {
+  border-left-color: YellowGreen;
+}
+.rvdsfWelcomeSteps li a:active {
+  background-color: DarkGreen;
+}
+.rvdsfWelcomeSteps li a:active:before {
+  border-color: DarkGreen;
+  border-left-color: transparent;
+}
+.rvdsfWelcomeSteps li a:active:after {
+  border-left-color: DarkGreen;
+}
+/******************
+Deprecated
+These CSS classes will remain available for a period of time
+before being permanently removed on a major releases (x.0.0).
+*******************/
+.rvdsfGridViewDataRow:hover {
+  background-color: #FFFF66;
+}
+/*****************
+Responsive
+******************/
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+  .dnnLabel {
+    width: 20%;
+  }
+  .rvdSplit2 > div.dnnFormGroup,
+  .rvdSplit3 > div.dnnFormGroup,
+  .rvdSplit4 > div.dnnFormGroup,
+  .rvdSplit2 > div.dnnFormItem,
+  .rvdSplit3 > div.dnnFormItem,
+  .rvdSplit4 > div.dnnFormItem {
+    display: block;
+    width: 100%;
+  }
+  .rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutBillingAndShippingContainer,
+  .rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutPaymentContainer {
+    float: none;
+    width: auto;
+  }
+  .rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutReviewOrderContainer {
+    float: none;
+    margin-bottom: inherit !important;
+    position: inherit;
+    top: inherit !important;
+    width: auto;
+  }
+  .rvdsfCheckoutPageViewModeSingle .rvdsfCheckoutReviewOrderContainer img {
+    width: auto;
+  }
+  .rvdsfCartGalleryThumbnail > img {
+    display: none;
+  }
+  .rvdsf-checkout-breadcrumb a,
+  .rvdsf-checkout-breadcrumb a[disabled],
+  .rvdsfCheckoutBreadcrumb a,
+  .rvdsfCheckoutBreadcrumb a[disabled] {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .rvdsf-checkout-breadcrumb-separator,
+  .rvdsfCheckoutBreadcrumbSeparator {
+    display: none;
+  }
+  .rvdsfConfirmationBillingInformationContainer {
+    float: none;
+  }
+  .rvdsfConfirmationOrderInformationContainer {
+    float: none;
+  }
+  .rvdsfConfirmationPaymentInformationContainer {
+    float: none;
+  }
+  .rvdsfConfirmationShippingInformationContainer {
+    float: none;
+  }
+  .rvdsfCrosssellProductProductList {
+    width: auto;
+  }
+  .rvdsfDashboardLeftAsideContainer {
+    float: none;
+    padding-right: inherit;
+    width: 100%;
+  }
+  .rvdsfDashboardRightAsideContainer {
+    float: none;
+    padding-left: inherit;
+    width: 100%;
+  }
+  .rvdsf-productdetail-container .rvdsf-label-savings {
+    float: none;
+  }
+  .rvdsf-productdetail-container .btn-toolbar .btn,
+  .rvdsf-productdetail-container .btn-toolbar .btn-group {
+    width: 100%;
+  }
+  .rvdsfProductDisplayAbstractContainer {
+    float: none;
+    min-width: 0;
+    width: auto;
+  }
+  .rvdsfProductDisplayInfoContainer {
+    float: none;
+    min-width: 0;
+    width: auto;
+  }
+  .rvdsfProductListToolbar .rvdsfPageViewModeInput {
+    display: none;
+  }
+  .rvdsfProductListProductList {
+    text-align: center;
+  }
+  .rvdsfProductListProductList .rvdsfProductComparisonInput {
+    display: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .rvdsfProductListProductItem {
+    display: inline-block;
+    margin-top: 10px;
+    vertical-align: top;
+    width: auto;
+  }
+  .rvdsfProductShowcaseRotator {
+    width: 95% !important;
+  }
+  /* Hide date, origin column, payment, shipping status, fraud score */
+  .rvdsfSalesOrderSalesOrderGrid th:nth-child(3),
+  .rvdsfSalesOrderSalesOrderGrid td:nth-child(3),
+  .rvdsfSalesOrderSalesOrderGrid th:nth-child(4),
+  .rvdsfSalesOrderSalesOrderGrid td:nth-child(4),
+  .rvdsfSalesOrderSalesOrderGrid th:nth-child(6),
+  .rvdsfSalesOrderSalesOrderGrid td:nth-child(6),
+  .rvdsfSalesOrderSalesOrderGrid th:nth-child(7),
+  .rvdsfSalesOrderSalesOrderGrid td:nth-child(7),
+  .rvdsfSalesOrderSalesOrderGrid th:nth-child(8),
+  .rvdsfSalesOrderSalesOrderGrid td:nth-child(8) {
+    display: none;
+  }
+  /* Hide image, SKU, status, shipping status */
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid th:nth-child(1),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid td:nth-child(1),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid th:nth-child(3),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid td:nth-child(3),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid th:nth-child(4),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid td:nth-child(4),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid th:nth-child(5),
+  .rvdsfContentContainer .rvdsfSalesOrderDetailGrid td:nth-child(5) {
+    display: none;
+  }
+  .rvdsfSearchContainer div.dnnFormItem {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: block;
+    width: auto;
+  }
+}

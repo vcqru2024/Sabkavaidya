@@ -1,0 +1,15 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AboutClinic.Models.Settings>
+
+@using DotNetNuke.Web.Mvc.Helpers
+
+<h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead">
+    <a href="" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+</h2>
+<fieldset>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => m.ClinicId, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.DropDownListFor(m => m.ClinicId, new SelectList(Model.ClinicList, "ClinicId", "ClinicName"), "Choose...", new { @class = "form-control" })
+    </div>
+</fieldset>

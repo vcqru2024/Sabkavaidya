@@ -1,0 +1,1521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblGeneral.Text" xml:space="preserve">
+    <value>General Settings</value>
+  </data>
+  <data name="wsGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Product slideshow settings wizard</value>
+  </data>
+  <data name="wsFinish.Text" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="plFlow_ImageFocus.Help" xml:space="preserve">
+    <value>Sets the numbers of images on each side of the focussed one</value>
+  </data>
+  <data name="lblFinish.Text" xml:space="preserve">
+    <value>Click "Finish" button to save data</value>
+  </data>
+  <data name="lblSlideshowSettings.Text" xml:space="preserve">
+    <value>Specify slideshow options here.</value>
+  </data>
+  <data name="plSlideshowMode.Text" xml:space="preserve">
+    <value>Choose Slideshow Effect</value>
+  </data>
+  <data name="plFlow_ImageFocus.Text" xml:space="preserve">
+    <value>Image Focus</value>
+  </data>
+  <data name="plFlow_GalleryStyle.Help" xml:space="preserve">
+    <value>Enter gallery style. You can change property like background-color/text-align/margin as your wish. But don't change "position:relative;" property.</value>
+  </data>
+  <data name="plFlow_HeightReflection.Text" xml:space="preserve">
+    <value>Height Reflection</value>
+  </data>
+  <data name="plSlideshowMode.Help" xml:space="preserve">
+    <value>Choose a slideshow effect</value>
+  </data>
+  <data name="lblItem.Text" xml:space="preserve">
+    <value>Specify listings which will be displayed in slideshow</value>
+  </data>
+  <data name="plFlow_SliderWidth.Text" xml:space="preserve">
+    <value>Slider Width</value>
+  </data>
+  <data name="plFlow_GalleryStyle.Text" xml:space="preserve">
+    <value>Gallery Style</value>
+  </data>
+  <data name="wsSlideshowSettings.Text" xml:space="preserve">
+    <value>Slideshow Settings</value>
+  </data>
+  <data name="plFlow_ImagesCursor.Help" xml:space="preserve">
+    <value>Sets the cursor type for all images default is 'default'</value>
+  </data>
+  <data name="plFlow_SliderCursor.Text" xml:space="preserve">
+    <value>Slider Cursor</value>
+  </data>
+  <data name="plFlow_ImagesCursor.Text" xml:space="preserve">
+    <value>Image Cursor</value>
+  </data>
+  <data name="plFlow_HeightReflection.Help" xml:space="preserve">
+    <value>Sets the height of the reflection in % of the source image </value>
+  </data>
+  <data name="plFlow_SliderCursor.Help" xml:space="preserve">
+    <value>Sets the slider cursor type: try "e-resize" default is 'default'</value>
+  </data>
+  <data name="plFlow_SliderWidth.Help" xml:space="preserve">
+    <value>Sets the px width of the slider div</value>
+  </data>
+  <data name="wsItem.Text" xml:space="preserve">
+    <value>Listing Source</value>
+  </data>
+  <data name="plFlow_ImageWidth.Help" xml:space="preserve">
+    <value>Enter image width you want display. Module will generate a new image with reflection effect based this value.</value>
+  </data>
+  <data name="plFlow_ImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="Tip_Category.Text" xml:space="preserve">
+    <value>Specifies the categories from which products are displayed. Uncheck all of them will display products from all categories</value>
+  </data>
+  <data name="plFlow_HighSlideEffect.Help" xml:space="preserve">
+    <value>If this option is checked. You can single click the centered image or double click any image in the gallery and it will highslide. The highslided image can be arranged by drag 'n drop anywhere on the website. Note, it will override image link property.</value>
+  </data>
+  <data name="plFlow_HighSlideEffect.Text" xml:space="preserve">
+    <value>High slide focus effect</value>
+  </data>
+  <data name="plFlow_Captions.Help" xml:space="preserve">
+    <value>disables / enables the captions</value>
+  </data>
+  <data name="plFlow_Captions.Text" xml:space="preserve">
+    <value>Show Captions</value>
+  </data>
+  <data name="plFlow_ImageFocusM.Help" xml:space="preserve">
+    <value>multiplicator for the focussed image size in percent.</value>
+  </data>
+  <data name="plFlow_ImageFocusM.Text" xml:space="preserve">
+    <value>Focus Multiplicator</value>
+  </data>
+  <data name="plLinkTarget.Help" xml:space="preserve">
+    <value>Choose how to open image link.</value>
+  </data>
+  <data name="plLinkTarget.Text" xml:space="preserve">
+    <value>Link Target</value>
+  </data>
+  <data name="plFlow_PreloadImages.Help" xml:space="preserve">
+    <value>disables / enables the loading bar and image preloading</value>
+  </data>
+  <data name="plFlow_PreloadImages.Text" xml:space="preserve">
+    <value>Preload Images</value>
+  </data>
+  <data name="plFlow_Slider.Help" xml:space="preserve">
+    <value>disables / enables the scrollbar</value>
+  </data>
+  <data name="plFlow_Slider.Text" xml:space="preserve">
+    <value>Show Scrollbar</value>
+  </data>
+  <data name="plFlow_StartAnimation.Help" xml:space="preserve">
+    <value>Animate images moving in from the right on startup</value>
+  </data>
+  <data name="plFlow_StartAnimation.Text" xml:space="preserve">
+    <value>Right Animation</value>
+  </data>
+  <data name="plFlow_StartId.Help" xml:space="preserve">
+    <value>Glide to this image number on startup. Note, you should enter a value which lower than image count.</value>
+  </data>
+  <data name="plFlow_StartId.Text" xml:space="preserve">
+    <value>Start ID</value>
+  </data>
+  <data name="plFlow_XStep.Help" xml:space="preserve">
+    <value>step width on the x-axis in px</value>
+  </data>
+  <data name="plFlow_XStep.Text" xml:space="preserve">
+    <value>X Step</value>
+  </data>
+  <data name="plTemplate.Help" xml:space="preserve">
+    <value>Template locates under DesktopModules/CrossClassified/Template/Product/Slideshow, you can customize your own templates.</value>
+  </data>
+  <data name="plTemplate.Text" xml:space="preserve">
+    <value>View Template</value>
+  </data>
+  <data name="plFlow_AspectRatio.Help" xml:space="preserve">
+    <value>Aspect ratio of the Carrousel Flow container (width divided by height), default value is 1.964.</value>
+  </data>
+  <data name="plFlow_AspectRatio.Text" xml:space="preserve">
+    <value>Aspect Ratio</value>
+  </data>
+  <data name="plFlow_ImagesHeight.Help" xml:space="preserve">
+    <value>Height of the images div container in percent. Default value is 0.67.</value>
+  </data>
+  <data name="plFlow_ImagesHeight.Text" xml:space="preserve">
+    <value>Images height percent</value>
+  </data>
+  <data name="plFlow_ImagesM.Help" xml:space="preserve">
+    <value>Multiplicator for all images in percent. Default value is 1.0</value>
+  </data>
+  <data name="plFlow_ImagesM.Text" xml:space="preserve">
+    <value>Images Multiplicator</value>
+  </data>
+  <data name="plFlow_PercentLandscape.Help" xml:space="preserve">
+    <value>Scale landscape format, default value is 118.</value>
+  </data>
+  <data name="plFlow_PercentLandscape.Text" xml:space="preserve">
+    <value>Percent Landscape</value>
+  </data>
+  <data name="plFlow_PercentOther.Help" xml:space="preserve">
+    <value>Scale portrait and square format. Default value is 100.</value>
+  </data>
+  <data name="plFlow_PercentOther.Text" xml:space="preserve">
+    <value>Percent Other</value>
+  </data>
+  <data name="plFlow_ScrollbarP.Help" xml:space="preserve">
+    <value>Width of the scrollbar in percent.Default value is 0.6.</value>
+  </data>
+  <data name="plFlow_ScrollbarP.Text" xml:space="preserve">
+    <value>Scrollbar Percent</value>
+  </data>
+  <data name="plFlow_Buttons.Help" xml:space="preserve">
+    <value>Toggles previous and next buttons</value>
+  </data>
+  <data name="plFlow_Buttons.Text" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="plFlow_BackgroundBlack.Help" xml:space="preserve">
+    <value>Enter black value of background color (0-255).</value>
+  </data>
+  <data name="plFlow_BackgroundBlack.Text" xml:space="preserve">
+    <value>Reflection background RGB value (Black)</value>
+  </data>
+  <data name="plFlow_BackgroundGreen.Help" xml:space="preserve">
+    <value>Enter green value of background color (0-255).</value>
+  </data>
+  <data name="plFlow_BackgroundGreen.Text" xml:space="preserve">
+    <value>Reflection background RGB value (Green)</value>
+  </data>
+  <data name="plFlow_BackgroundRed.Help" xml:space="preserve">
+    <value>Enter red value of background color (0-255).</value>
+  </data>
+  <data name="plFlow_BackgroundRed.Text" xml:space="preserve">
+    <value>Reflection background RGB value(Red)</value>
+  </data>
+  <data name="secFlow.Text" xml:space="preserve">
+    <value>Carrousel Flow Gallery Settings</value>
+  </data>
+  <data name="secGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="plFlow_AnimationSpeed.Help" xml:space="preserve">
+    <value>Animation speed in ms, default value is 50</value>
+  </data>
+  <data name="plFlow_AnimationSpeed.Text" xml:space="preserve">
+    <value>Animation Speed</value>
+  </data>
+  <data name="plFlow_Circular.Help" xml:space="preserve">
+    <value>Toggle circular rotation</value>
+  </data>
+  <data name="plFlow_Circular.Text" xml:space="preserve">
+    <value>Circular</value>
+  </data>
+  <data name="plFlow_Slideshow.Help" xml:space="preserve">
+    <value>Toggle slideshow</value>
+  </data>
+  <data name="plFlow_Slideshow.Text" xml:space="preserve">
+    <value>Slideshow</value>
+  </data>
+  <data name="plFlow_SlideshowAutoplay.Help" xml:space="preserve">
+    <value>Toggle automatic slideshow play on startup,works when "Slideshow" option is checked.</value>
+  </data>
+  <data name="plFlow_SlideshowAutoplay.Text" xml:space="preserve">
+    <value>Slideshow auto play</value>
+  </data>
+  <data name="plFlow_SlideshowSpeed.Help" xml:space="preserve">
+    <value>Time between slides in ms.Works when "Slideshow" option is checked, default value is 1500</value>
+  </data>
+  <data name="plFlow_SlideshowSpeed.Text" xml:space="preserve">
+    <value>Slideshow Speed</value>
+  </data>
+  <data name="plFlow_EnableReflection.Help" xml:space="preserve">
+    <value>Check to enable create a reflection based slide image. Note, module can only create reflection for site images.</value>
+  </data>
+  <data name="plFlow_EnableReflection.Text" xml:space="preserve">
+    <value>Enable Reflection</value>
+  </data>
+  <data name="Tip_Flow_EnableReflection.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Check to enable create a reflection based slide image. Note, module can only create reflection for site images.&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_Flow_GalleryStyle.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Enter gallery style. You can change property like background-color/text-align/margin as your wish. But don't change "position:relative;" property.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Note, the carrousel flow gallery will automatic resize based skin pane size (where it is put into). You can manually add "width" property in "Gallery Style" to limit its width. For example, append "width:600px" in gallery style will limit its width to 600px.</value>
+  </data>
+  <data name="Tip_Flow_HighSlideEffect.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;If this option is checked, you can single click the centered image or double click any image in the gallery and it will high slide. The highslided image can be arranged by drag 'n drop anywhere on the website. Note, it will override image link property.</value>
+  </data>
+  <data name="plRandomDisplay.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Check "random display" option to sort slides random. Note, if this option is checked, module will ignore other sort settings like "Sort by Product Name".&lt;/p&gt;</value>
+  </data>
+  <data name="plRandomDisplay.Text" xml:space="preserve">
+    <value>Random Display</value>
+  </data>
+  <data name="Tip_RandomDisplay.Text" xml:space="preserve">
+    <value>Check "random display" option to sort slides random (show different slide sequence when page loads). Note, if this option is checked, module will ignore other sort settings like "Sort by Product Name".</value>
+  </data>
+  <data name="li_SlideshowMode_Flow.Text" xml:space="preserve">
+    <value>Carrousel Flow Gallery</value>
+  </data>
+  <data name="li_SlideshowMode_Unslider.Text" xml:space="preserve">
+    <value>Unslider</value>
+  </data>
+  <data name="plCategory.Help" xml:space="preserve">
+    <value>Specifies the categories from which products are displayed. Uncheck all of them will display products from all categories</value>
+  </data>
+  <data name="plCategory.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="plDetailTab.Help" xml:space="preserve">
+    <value>Select which page to display product detail, that page should have a Cp_Product_Detail module instance on it. If you don't specify it, module will use the default detail tab specify for selectd product department.</value>
+  </data>
+  <data name="plDetailTab.Text" xml:space="preserve">
+    <value>Cp_Product_Detail module page</value>
+  </data>
+  <data name="plFeatured.Help" xml:space="preserve">
+    <value>Check to display only products for which the featured checkbox has been checked</value>
+  </data>
+  <data name="plFeatured.Text" xml:space="preserve">
+    <value>Featured products only</value>
+  </data>
+  <data name="plRows.Help" xml:space="preserve">
+    <value>Enter product rows that will display in slideshow.</value>
+  </data>
+  <data name="plRows.Text" xml:space="preserve">
+    <value>Product Rows</value>
+  </data>
+  <data name="plSortField.Help" xml:space="preserve">
+    <value>Sort Fields</value>
+  </data>
+  <data name="plSortField.Text" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="plType.Help" xml:space="preserve">
+    <value>Select department which products belongs.</value>
+  </data>
+  <data name="plType.Text" xml:space="preserve">
+    <value>Select Department</value>
+  </data>
+  <data name="secSlideshowModeTip.Text" xml:space="preserve">
+    <value>Slideshow selection tips</value>
+  </data>
+  <data name="Tip_DetailTab.Text" xml:space="preserve">
+    <value>Select which page to display product detail, that page should have a Cp_Product_Detail module instance on it. If you don't specify it, module will use the default detail page for selected department (which specified in "Cp_Admin sub module - Admin Control Panel - Departments") to display.</value>
+  </data>
+  <data name="Tip_SlideshowMode.Text" xml:space="preserve">
+    <value>Expand "Slideshow effect selection tips" section to view detail explanation for each slideshow effect, also visit &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt; to watch online demos for each slideshow.&lt;br/&gt;&lt;br/&gt;
+You can also create classicial banners (slideshow) with this sub module, expand "How to create classical banners (slideshow)" section for more detail.
+&lt;br/&gt;&lt;br/&gt;
+Note, all slideshow effect requires at least &lt;font color="red"&gt;2 products (with image provide)&lt;/font&gt; to work properly.</value>
+  </data>
+  <data name="Tip_SlideshowMode_Flow.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Carrousel Flow Gallery is a Ready-to-Use-and-Deploy ajax image Gallery application which allows an intuitive image handling.  The basic idea is to digitally animate the thumbing through a physical image stack. The intuitive handling is automatically caused by the metaphorical use of the well known process of thumbing through.</value>
+  </data>
+  <data name="Tip_SlideshowMode_Unslider.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Unslider is a super-tiny JQuery slider. It is a Cross-browser campatible, Keyboard support, and responsive slider.</value>
+  </data>
+  <data name="plUnslider_Delay.Help" xml:space="preserve">
+    <value>The delay between slide animations (in milliseconds)</value>
+  </data>
+  <data name="plUnslider_Delay.Text" xml:space="preserve">
+    <value>Animation Delay (in milliseconds)</value>
+  </data>
+  <data name="plUnslider_Dots.Help" xml:space="preserve">
+    <value>Display dot navigation</value>
+  </data>
+  <data name="plUnslider_Dots.Text" xml:space="preserve">
+    <value>Display dot navigation</value>
+  </data>
+  <data name="plUnslider_Fluid.Help" xml:space="preserve">
+    <value>Support responsive design. May break non-responsive designs.</value>
+  </data>
+  <data name="plUnslider_Fluid.Text" xml:space="preserve">
+    <value>Support responsive design</value>
+  </data>
+  <data name="plUnslider_Keys.Help" xml:space="preserve">
+    <value>Enable keyboard (left, right) arrow shortcuts</value>
+  </data>
+  <data name="plUnslider_Keys.Text" xml:space="preserve">
+    <value>Support Keyboard</value>
+  </data>
+  <data name="plUnslider_Speed.Help" xml:space="preserve">
+    <value>The speed to animate each slide (in milliseconds)</value>
+  </data>
+  <data name="plUnslider_Speed.Text" xml:space="preserve">
+    <value>Animation Speed (in milliseconds)</value>
+  </data>
+  <data name="secUnslider.Text" xml:space="preserve">
+    <value>Unslider Settings</value>
+  </data>
+  <data name="plUnslider_ImageWidth.Help" xml:space="preserve">
+    <value>Specify product image width if "Show product image as background" option is unchecked.</value>
+  </data>
+  <data name="plUnslider_ImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="plUnslider_ShowImageAsBackground.Help" xml:space="preserve">
+    <value>Show product image as background</value>
+  </data>
+  <data name="plUnslider_ShowImageAsBackground.Text" xml:space="preserve">
+    <value>Show product image as background</value>
+  </data>
+  <data name="Tip_ModifyUnsliderCss.Text" xml:space="preserve">
+    <value>Try modify DesktopModules\CrossClassified\Slideshow\UnSlider\unslider.css if you want to customize it.</value>
+  </data>
+  <data name="Tip_Unslider_ImageWidth.Text" xml:space="preserve">
+    <value>Specify product image width if "Show product image as background" option is unchecked.</value>
+  </data>
+  <data name="Tip_Unslider_ShowImageAsBackground.Text" xml:space="preserve">
+    <value>By default, module will show product image as slider background. Uncheck this option if it doesn't look well while displaying your product images.</value>
+  </data>
+  <data name="plUnslider_ShowSummary.Help" xml:space="preserve">
+    <value>Check to show product summary in slideshow</value>
+  </data>
+  <data name="plUnslider_ShowSummary.Text" xml:space="preserve">
+    <value>Show Summary</value>
+  </data>
+  <data name="li_LiteAccordion_ActivateOn_click.Text" xml:space="preserve">
+    <value>Click</value>
+  </data>
+  <data name="li_LiteAccordion_ActivateOn_mouseover.Text" xml:space="preserve">
+    <value>Mouse Over</value>
+  </data>
+  <data name="li_LiteAccordion_Theme_basic.Text" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="li_LiteAccordion_Theme_colorful.Text" xml:space="preserve">
+    <value>Colorful</value>
+  </data>
+  <data name="li_LiteAccordion_Theme_dark.Text" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="li_LiteAccordion_Theme_light.Text" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="li_LiteAccordion_Theme_stitch.Text" xml:space="preserve">
+    <value>Stitch</value>
+  </data>
+  <data name="li_SlideshowMode_BootstrapCarousel.Text" xml:space="preserve">
+    <value>Bootstrap Carousel</value>
+  </data>
+  <data name="li_SlideshowMode_Galleria.Text" xml:space="preserve">
+    <value>Galleria</value>
+  </data>
+  <data name="li_SlideshowMode_LiteAccordion.Text" xml:space="preserve">
+    <value>Lite Accordion</value>
+  </data>
+  <data name="li_SlideshowMode_NumericRotator.Text" xml:space="preserve">
+    <value>Numeric Rotator</value>
+  </data>
+  <data name="li_SlideshowMode_Slidorion.Text" xml:space="preserve">
+    <value>Slidorion</value>
+  </data>
+  <data name="li_Slidorion_Effect_fade.Text" xml:space="preserve">
+    <value>Fade</value>
+  </data>
+  <data name="li_Slidorion_Effect_overDown.Text" xml:space="preserve">
+    <value>Over Down</value>
+  </data>
+  <data name="li_Slidorion_Effect_overLeft.Text" xml:space="preserve">
+    <value>Over Left</value>
+  </data>
+  <data name="li_Slidorion_Effect_overRight.Text" xml:space="preserve">
+    <value>Over Right</value>
+  </data>
+  <data name="li_Slidorion_Effect_overUp.Text" xml:space="preserve">
+    <value>Over Up</value>
+  </data>
+  <data name="li_Slidorion_Effect_random.Text" xml:space="preserve">
+    <value>Random</value>
+  </data>
+  <data name="li_Slidorion_Effect_slideDown.Text" xml:space="preserve">
+    <value>Slide Down</value>
+  </data>
+  <data name="li_Slidorion_Effect_slideLeft.Text" xml:space="preserve">
+    <value>Slide Left</value>
+  </data>
+  <data name="li_Slidorion_Effect_slideRight.Text" xml:space="preserve">
+    <value>Slide Right</value>
+  </data>
+  <data name="li_Slidorion_Effect_slideUp.Text" xml:space="preserve">
+    <value>Slide Up</value>
+  </data>
+  <data name="plBootstrapCarousel_Interval.Help" xml:space="preserve">
+    <value>The amount of time to delay between automatically cycling an item. Default value is 5000</value>
+  </data>
+  <data name="plBootstrapCarousel_Interval.Text" xml:space="preserve">
+    <value>Rotator Interval</value>
+  </data>
+  <data name="plBootstrapCarousel_RefLibrary.Help" xml:space="preserve">
+    <value>Uncheck this option if your skin file already includes Bootstrap javascript library. For example, if you use DNN built-in "Gravity" skin, just uncheck this option to avoid duplicate reference.</value>
+  </data>
+  <data name="plBootstrapCarousel_RefLibrary.Text" xml:space="preserve">
+    <value>Reference Bootstrap Library</value>
+  </data>
+  <data name="plBootstrapCarousel_ShowSummary.Help" xml:space="preserve">
+    <value>Check to show summary in slideshow</value>
+  </data>
+  <data name="plBootstrapCarousel_ShowSummary.Text" xml:space="preserve">
+    <value>Show Summary</value>
+  </data>
+  <data name="plBootstrapCarousel_ShowTitle.Help" xml:space="preserve">
+    <value>Check to show title in slideshow</value>
+  </data>
+  <data name="plBootstrapCarousel_ShowTitle.Text" xml:space="preserve">
+    <value>Show Title</value>
+  </data>
+  <data name="plGalleria_Autoplay.Help" xml:space="preserve">
+    <value>type: Boolean or Number, default: 5000. If true, this will start playing the slideshow with 5 seconds interval (default). If you set this to any number, f.ex 4000, it will start playing with that interval (in milliseconds)</value>
+  </data>
+  <data name="plGalleria_Autoplay.Text" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plGalleria_Height.Help" xml:space="preserve">
+    <value>type: Number, default: 0. Galleria need a height to work properly. You can set the height using this option to make sure it has the correct height. If no height is set, Galleria will try to find the height of the parent container.
+&lt;br/&gt;&lt;br/&gt;
+You can set an exact value, f.ex 200, and it will apply this exact height in pixels. You can also set a relative ratio (e.g, 0.5625) value which is anything below 2. If you set a relative ratio value, the gallery height will be calculated by multiplying this value with the width at any given scaling process.
+
+This is very useful when programming responsive layouts.</value>
+  </data>
+  <data name="plGalleria_Height.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="plGalleria_Lightbox.Help" xml:space="preserve">
+    <value>type: Boolean, default: false. This option acts as a helper for attaching a lightbox when the user clicks on an image.</value>
+  </data>
+  <data name="plGalleria_Lightbox.Text" xml:space="preserve">
+    <value>Lightbox Popup</value>
+  </data>
+  <data name="plGalleria_Responsive.Help" xml:space="preserve">
+    <value>type: Boolean, default: true. This option sets thew Gallery in responsive mode. That means that it will resize the entire container if your CSS is dynamic. In other words, you can add media queries or dynamic proportions in your CSS and the gallery will follow these proportions as the window resizes.</value>
+  </data>
+  <data name="plGalleria_Responsive.Text" xml:space="preserve">
+    <value>Responsive Support</value>
+  </data>
+  <data name="plGalleria_ShowSummary.Help" xml:space="preserve">
+    <value>Show photo/album summary</value>
+  </data>
+  <data name="plGalleria_ShowSummary.Text" xml:space="preserve">
+    <value>Show Summary</value>
+  </data>
+  <data name="plGalleria_ShowTitle.Help" xml:space="preserve">
+    <value>Show photo/album title</value>
+  </data>
+  <data name="plGalleria_ShowTitle.Text" xml:space="preserve">
+    <value>Show Title</value>
+  </data>
+  <data name="plGalleria_Width.Help" xml:space="preserve">
+    <value>Number or String, default value is "auto". By default, Galleria fetches the width from the containing element. Bu you can use this option to set a gallery width manually.</value>
+  </data>
+  <data name="plGalleria_Width.Text" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="plImageHeight.Help" xml:space="preserve">
+    <value>Image Height</value>
+  </data>
+  <data name="plImageHeight.Text" xml:space="preserve">
+    <value>Image Height</value>
+  </data>
+  <data name="plImageWidth.Help" xml:space="preserve">
+    <value>Image Height</value>
+  </data>
+  <data name="plImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="plLiteAccordion_ActivateOn.Help" xml:space="preserve">
+    <value>Activate On, click or mouseover</value>
+  </data>
+  <data name="plLiteAccordion_ActivateOn.Text" xml:space="preserve">
+    <value>Activate On</value>
+  </data>
+  <data name="plLiteAccordion_AutoPlay.Help" xml:space="preserve">
+    <value>automatically cycle through slides</value>
+  </data>
+  <data name="plLiteAccordion_AutoPlay.Text" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plLiteAccordion_ContainerHeight.Help" xml:space="preserve">
+    <value>Container Height (px) : default value is 320.</value>
+  </data>
+  <data name="plLiteAccordion_ContainerHeight.Text" xml:space="preserve">
+    <value>Container Height (px)</value>
+  </data>
+  <data name="plLiteAccordion_ContainerWidth.Help" xml:space="preserve">
+    <value>Container Width (px) : default value is 960.</value>
+  </data>
+  <data name="plLiteAccordion_ContainerWidth.Text" xml:space="preserve">
+    <value>Container Width (px)</value>
+  </data>
+  <data name="plLiteAccordion_CycleSpeed.Help" xml:space="preserve">
+    <value>time between slide cycles</value>
+  </data>
+  <data name="plLiteAccordion_CycleSpeed.Text" xml:space="preserve">
+    <value>Cycle Speed (milliseconds)</value>
+  </data>
+  <data name="plLiteAccordion_Easing.Help" xml:space="preserve">
+    <value>custom easing function</value>
+  </data>
+  <data name="plLiteAccordion_Easing.Text" xml:space="preserve">
+    <value>Easing</value>
+  </data>
+  <data name="plLiteAccordion_EnumerateSlides.Help" xml:space="preserve">
+    <value>put numbers on slides</value>
+  </data>
+  <data name="plLiteAccordion_EnumerateSlides.Text" xml:space="preserve">
+    <value>Enumerate Slides</value>
+  </data>
+  <data name="plLiteAccordion_FirstSlide.Help" xml:space="preserve">
+    <value>displays slide (n) on page load</value>
+  </data>
+  <data name="plLiteAccordion_FirstSlide.Text" xml:space="preserve">
+    <value>First Slide</value>
+  </data>
+  <data name="plLiteAccordion_HeaderWidth.Help" xml:space="preserve">
+    <value>Header Width (px) : default value is 48.</value>
+  </data>
+  <data name="plLiteAccordion_HeaderWidth.Text" xml:space="preserve">
+    <value>Header Width (px)</value>
+  </data>
+  <data name="plLiteAccordion_ImageWidth.Help" xml:space="preserve">
+    <value>Specify image width if necessary. Leave it as blank will show image with its original width.</value>
+  </data>
+  <data name="plLiteAccordion_ImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="plLiteAccordion_PauseOnHover.Help" xml:space="preserve">
+    <value>pause on hover</value>
+  </data>
+  <data name="plLiteAccordion_PauseOnHover.Text" xml:space="preserve">
+    <value>Pause On Hover</value>
+  </data>
+  <data name="plLiteAccordion_Rounded.Help" xml:space="preserve">
+    <value>square or rounded corners</value>
+  </data>
+  <data name="plLiteAccordion_Rounded.Text" xml:space="preserve">
+    <value>Rounded Conors</value>
+  </data>
+  <data name="plLiteAccordion_ShowSummary.Help" xml:space="preserve">
+    <value>Check to show summary in slideshow</value>
+  </data>
+  <data name="plLiteAccordion_ShowSummary.Text" xml:space="preserve">
+    <value>Show Photo Summary</value>
+  </data>
+  <data name="plLiteAccordion_SlideSpeed.Help" xml:space="preserve">
+    <value>slide animation speed</value>
+  </data>
+  <data name="plLiteAccordion_SlideSpeed.Text" xml:space="preserve">
+    <value>Slide Speed (milliseconds)</value>
+  </data>
+  <data name="plLiteAccordion_Theme.Help" xml:space="preserve">
+    <value>basic, dark, light, colorful, or stitch</value>
+  </data>
+  <data name="plLiteAccordion_Theme.Text" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="plNumericRotator_Height.Help" xml:space="preserve">
+    <value>Enter Container Height</value>
+  </data>
+  <data name="plNumericRotator_Height.Text" xml:space="preserve">
+    <value>Container Height</value>
+  </data>
+  <data name="plNumericRotator_TimeOut.Help" xml:space="preserve">
+    <value>Enter time out to rotator (millisecond)</value>
+  </data>
+  <data name="plNumericRotator_TimeOut.Text" xml:space="preserve">
+    <value>Time Out (millisecond)</value>
+  </data>
+  <data name="plNumericRotator_TitleHeight.Help" xml:space="preserve">
+    <value>Enter title height</value>
+  </data>
+  <data name="plNumericRotator_TitleHeight.Text" xml:space="preserve">
+    <value>Title Height</value>
+  </data>
+  <data name="plNumericRotator_Width.Help" xml:space="preserve">
+    <value>Enter Container Width</value>
+  </data>
+  <data name="plNumericRotator_Width.Text" xml:space="preserve">
+    <value>Container Width</value>
+  </data>
+  <data name="plSlidorion_AutoPlay.Help" xml:space="preserve">
+    <value>Automatically plays the slidorion (boolean)</value>
+  </data>
+  <data name="plSlidorion_AutoPlay.Text" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plSlidorion_ContainerHeight.Help" xml:space="preserve">
+    <value>Container Height, defaut value is 400</value>
+  </data>
+  <data name="plSlidorion_ContainerHeight.Text" xml:space="preserve">
+    <value>Container Height (px)</value>
+  </data>
+  <data name="plSlidorion_ContainerWidth.Help" xml:space="preserve">
+    <value>Container Width, defaut value is 870</value>
+  </data>
+  <data name="plSlidorion_ContainerWidth.Text" xml:space="preserve">
+    <value>Container Width (px)</value>
+  </data>
+  <data name="plSlidorion_ControlNav.Help" xml:space="preserve">
+    <value>Show navigation buttons (boolean)</value>
+  </data>
+  <data name="plSlidorion_ControlNav.Text" xml:space="preserve">
+    <value>Show navigation buttons</value>
+  </data>
+  <data name="plSlidorion_Easing.Help" xml:space="preserve">
+    <value>Choose easing</value>
+  </data>
+  <data name="plSlidorion_Easing.Text" xml:space="preserve">
+    <value>Easing</value>
+  </data>
+  <data name="plSlidorion_Effect.Help" xml:space="preserve">
+    <value>The effect of the animation (string)</value>
+  </data>
+  <data name="plSlidorion_Effect.Text" xml:space="preserve">
+    <value>Effect</value>
+  </data>
+  <data name="plSlidorion_First.Help" xml:space="preserve">
+    <value>The first slide to show</value>
+  </data>
+  <data name="plSlidorion_First.Text" xml:space="preserve">
+    <value>First Slide</value>
+  </data>
+  <data name="plSlidorion_HoverPause.Help" xml:space="preserve">
+    <value>The slidorion pauses when hovered over (boolean)</value>
+  </data>
+  <data name="plSlidorion_HoverPause.Text" xml:space="preserve">
+    <value>Hover Pause</value>
+  </data>
+  <data name="plSlidorion_ImageWidth.Help" xml:space="preserve">
+    <value>Specify image width if necessary. Leave it as blank will show image with its original width.</value>
+  </data>
+  <data name="plSlidorion_ImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="plSlidorion_Interval.Help" xml:space="preserve">
+    <value>The time between each slide (number)</value>
+  </data>
+  <data name="plSlidorion_Interval.Text" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="plSlidorion_Speed.Help" xml:space="preserve">
+    <value>The speed of the animation (number)</value>
+  </data>
+  <data name="plSlidorion_Speed.Text" xml:space="preserve">
+    <value>Animation Speed</value>
+  </data>
+  <data name="plSummaryLength.Help" xml:space="preserve">
+    <value>Enter maximun summary length, enter 0 to not limit it.</value>
+  </data>
+  <data name="plSummaryLength.Text" xml:space="preserve">
+    <value>Summary Length</value>
+  </data>
+  <data name="plTitleLength.Help" xml:space="preserve">
+    <value>Enter maximun title length, enter 0 to not limit it.</value>
+  </data>
+  <data name="plTitleLength.Text" xml:space="preserve">
+    <value>Title Length</value>
+  </data>
+  <data name="plUnslider_BackgroundRepeat.Help" xml:space="preserve">
+    <value>If show image as background, specify its "background-repeat" property here.</value>
+  </data>
+  <data name="plUnslider_BackgroundRepeat.Text" xml:space="preserve">
+    <value>Background Repeat</value>
+  </data>
+  <data name="secBootstrapCarousel.Text" xml:space="preserve">
+    <value>"Bootstrap Carousel" Settings</value>
+  </data>
+  <data name="secGalleria.Text" xml:space="preserve">
+    <value>"Galleria" Settings</value>
+  </data>
+  <data name="secLiteAccordion.Text" xml:space="preserve">
+    <value>"Lite Accordion" Settings</value>
+  </data>
+  <data name="secNumericRotator.Text" xml:space="preserve">
+    <value>"Numeric Rotator" Settings</value>
+  </data>
+  <data name="secSlidorion.Text" xml:space="preserve">
+    <value>"Slidorion" Settings</value>
+  </data>
+  <data name="Tip_BootstrapCarousel_RefLibrary.Text" xml:space="preserve">
+    <value>Uncheck this option if your skin file already includes Bootstrap javascript library. For example, if you use DNN built-in "Gravity" skin, just uncheck this option to avoid duplicate reference.</value>
+  </data>
+  <data name="Tip_Easing.Text" xml:space="preserve">
+    <value>Visit &lt;a href="http://jqueryui.com/resources/demos/effect/easing.html" target="_blank"&gt;http://jqueryui.com/resources/demos/effect/easing.html&lt;/a&gt; for easing live demos.</value>
+  </data>
+  <data name="Tip_Galleria_Lightbox.Text" xml:space="preserve">
+    <value>This option acts as a helper for attaching a lightbox when the user clicks on an image.</value>
+  </data>
+  <data name="Tip_ImageSize.Text" xml:space="preserve">
+    <value>Specify image size (widht/height) while displaying in slideshow, this is useful in some situations.</value>
+  </data>
+  <data name="Tip_LiteAccordion_ShowSummary.Text" xml:space="preserve">
+    <value>If checked, module will show photo title/image and summary in slideshow. Uncheck it to show photo title/image only.</value>
+  </data>
+  <data name="Tip_SlideshowMode_BootstrapCarousel.Text" xml:space="preserve">
+    <value>"Bootstrap Carousel" is the most popular photo slideshow style. It shows image, title and summary, also shows navigate button to let visitors to switch slides.</value>
+  </data>
+  <data name="Tip_SlideshowMode_Galleria.Text" xml:space="preserve">
+    <value>"Galleria" is a JavaScript image gallery framework that simplifies the process of creating beautiful image galleries for the web and mobile devices.</value>
+  </data>
+  <data name="Tip_SlideshowMode_LiteAccordion.Text" xml:space="preserve">
+    <value>"Lite Accordion" is a horizontal accordion plugin for jQuery. It works better when all photo images are in same size (width and height)</value>
+  </data>
+  <data name="Tip_SlideshowMode_NumericRotator.Text" xml:space="preserve">
+    <value>"Numeric Rotator" works very similar as the "CrossPhoto_ListDashboard" sub module. But unlike "CrossPhoto_ListDashboard" sub module (which is Flash based), the "Numeric Rotator" slideshow is fully javascript based.</value>
+  </data>
+  <data name="Tip_SlideshowMode_Slidorion.Text" xml:space="preserve">
+    <value>A combination of an image slider and an accordion, the "Slidorion" displays beautiful images along with a variable length description. It works better when all photo images are in same size (width and height).</value>
+  </data>
+  <data name="plUnslider_ShowImageOnly.Help" xml:space="preserve">
+    <value>Check to only show images in slideshow</value>
+  </data>
+  <data name="plUnslider_ShowImageOnly.Text" xml:space="preserve">
+    <value>Show Image Only</value>
+  </data>
+  <data name="li_PgwSlider_listPosition_left.Text" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="li_PgwSlider_listPosition_right.Text" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="li_PgwSlider_selectionMode_click.Text" xml:space="preserve">
+    <value>Mouse Click</value>
+  </data>
+  <data name="li_PgwSlider_selectionMode_mouseOver.Text" xml:space="preserve">
+    <value>Mouse Over</value>
+  </data>
+  <data name="li_PgwSlider_transitionEffect_fading.Text" xml:space="preserve">
+    <value>Fading</value>
+  </data>
+  <data name="li_PgwSlider_transitionEffect_sliding.Text" xml:space="preserve">
+    <value>Sliding</value>
+  </data>
+  <data name="li_SlideshowMode_PgwGallery.Text" xml:space="preserve">
+    <value>Pgw Gallery</value>
+  </data>
+  <data name="li_SlideshowMode_PgwSlider.Text" xml:space="preserve">
+    <value>Pgw Slider</value>
+  </data>
+  <data name="plPgwGallery_adaptiveDuration.Help" xml:space="preserve">
+    <value>This duration is the period in milliseconds, during the adjustment of the previous option runs (if it is activated).</value>
+  </data>
+  <data name="plPgwGallery_adaptiveDuration.Text" xml:space="preserve">
+    <value>Adaptive Duration</value>
+  </data>
+  <data name="plPgwGallery_autoSlide.Help" xml:space="preserve">
+    <value>Enable or disable the automatic transition between the images of the gallery.</value>
+  </data>
+  <data name="plPgwGallery_autoSlide.Text" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plPgwGallery_displayControls.Help" xml:space="preserve">
+    <value>On the main container, this option sets a button on each side to display the previous or next image.</value>
+  </data>
+  <data name="plPgwGallery_displayControls.Text" xml:space="preserve">
+    <value>Show Controls</value>
+  </data>
+  <data name="plPgwGallery_displayList.Help" xml:space="preserve">
+    <value>This option displays or not the thumbnail list of the gallery elements.</value>
+  </data>
+  <data name="plPgwGallery_displayList.Text" xml:space="preserve">
+    <value>Show thumbnail list</value>
+  </data>
+  <data name="plPgwGallery_intervalDuration.Help" xml:space="preserve">
+    <value>Interval in milliseconds before displaying of the next image. This option requires "autoSlide" option activated.</value>
+  </data>
+  <data name="plPgwGallery_intervalDuration.Text" xml:space="preserve">
+    <value>Interval Duration</value>
+  </data>
+  <data name="plPgwGallery_limitMaxHeight.Help" xml:space="preserve">
+    <value>Limit max height</value>
+  </data>
+  <data name="plPgwGallery_limitMaxHeight.Text" xml:space="preserve">
+    <value>Limit max height</value>
+  </data>
+  <data name="plPgwGallery_mainClassName.Help" xml:space="preserve">
+    <value>This option overrides the default CSS class of the Gallery.</value>
+  </data>
+  <data name="plPgwGallery_mainClassName.Text" xml:space="preserve">
+    <value>Main Class Name</value>
+  </data>
+  <data name="plPgwGallery_maxHeight.Help" xml:space="preserve">
+    <value>Enter max height of your gallery.</value>
+  </data>
+  <data name="plPgwGallery_maxHeight.Text" xml:space="preserve">
+    <value>Max Height</value>
+  </data>
+  <data name="plPgwGallery_touchControls.Help" xml:space="preserve">
+    <value>If this parameter is activated, the main container binds the touch movements and displays the previous or next slide. (Only the mobile devices send these events)</value>
+  </data>
+  <data name="plPgwGallery_touchControls.Text" xml:space="preserve">
+    <value>Support mobile touch</value>
+  </data>
+  <data name="plPgwGallery_transitionDuration.Help" xml:space="preserve">
+    <value>Period of animation in milliseconds between 2 images.</value>
+  </data>
+  <data name="plPgwGallery_transitionDuration.Text" xml:space="preserve">
+    <value>Transition Duration</value>
+  </data>
+  <data name="plPgwGallery_transitionEffect.Help" xml:space="preserve">
+    <value>You can choose between 2 different transition effects: "fading" or "sliding".</value>
+  </data>
+  <data name="plPgwGallery_transitionEffect.Text" xml:space="preserve">
+    <value>Transition Effect</value>
+  </data>
+  <data name="plPgwSlider_adaptiveDuration.Help" xml:space="preserve">
+    <value>This duration is the period in milliseconds, during the adjustment of the previous option runs (if it is activated).</value>
+  </data>
+  <data name="plPgwSlider_adaptiveDuration.Text" xml:space="preserve">
+    <value>Adaptive Duration</value>
+  </data>
+  <data name="plPgwSlider_adaptiveHeight.Help" xml:space="preserve">
+    <value>If your images have a different height, this option adjusts automatically the global height of the slider.</value>
+  </data>
+  <data name="plPgwSlider_adaptiveHeight.Text" xml:space="preserve">
+    <value>Adaptive Height</value>
+  </data>
+  <data name="plPgwSlider_autoSlide.Help" xml:space="preserve">
+    <value>Enable or disable the automatic transition between the images of the slider.</value>
+  </data>
+  <data name="plPgwSlider_autoSlide.Text" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plPgwSlider_displayControls.Help" xml:space="preserve">
+    <value>On the main container, this option sets a button on each side to display the previous or next image.</value>
+  </data>
+  <data name="plPgwSlider_displayControls.Text" xml:space="preserve">
+    <value>Show Controls</value>
+  </data>
+  <data name="plPgwSlider_displayList.Help" xml:space="preserve">
+    <value>This option displays or not the list of the slider elements. To choose the position, see the option "listPosition".</value>
+  </data>
+  <data name="plPgwSlider_displayList.Text" xml:space="preserve">
+    <value>Show thumbnail list</value>
+  </data>
+  <data name="plPgwSlider_intervalDuration.Help" xml:space="preserve">
+    <value>Interval in milliseconds before displaying of the next image. This option requires "autoSlide" option activated.</value>
+  </data>
+  <data name="plPgwSlider_intervalDuration.Text" xml:space="preserve">
+    <value>Interval Duration</value>
+  </data>
+  <data name="plPgwSlider_limitMaxHeight.Help" xml:space="preserve">
+    <value>Limit max height</value>
+  </data>
+  <data name="plPgwSlider_limitMaxHeight.Text" xml:space="preserve">
+    <value>Limit max height</value>
+  </data>
+  <data name="plPgwSlider_listPosition.Help" xml:space="preserve">
+    <value>To choose the position of the list, you can set this option to "left" or "right". If you want to disable the displaying of the list, see the option "displayList".</value>
+  </data>
+  <data name="plPgwSlider_listPosition.Text" xml:space="preserve">
+    <value>Thumbnail list postion</value>
+  </data>
+  <data name="plPgwSlider_mainClassName.Help" xml:space="preserve">
+    <value>This option overrides the default CSS class of the slider.</value>
+  </data>
+  <data name="plPgwSlider_mainClassName.Text" xml:space="preserve">
+    <value>Main Class Name</value>
+  </data>
+  <data name="plPgwSlider_maxHeight.Help" xml:space="preserve">
+    <value>Enter max height of your slider.</value>
+  </data>
+  <data name="plPgwSlider_maxHeight.Text" xml:space="preserve">
+    <value>Max Height</value>
+  </data>
+  <data name="plPgwSlider_selectionMode.Help" xml:space="preserve">
+    <value>This option sets the selection mode of the current element, it can be set to "click" or "mouseOver". "mouseOver" is only active with the transition effect "fading"</value>
+  </data>
+  <data name="plPgwSlider_selectionMode.Text" xml:space="preserve">
+    <value>Selection Mode</value>
+  </data>
+  <data name="plPgwSlider_touchControls.Help" xml:space="preserve">
+    <value>If this parameter is activated, the main container binds the touch movements and displays the previous or next slide. (Only the mobile devices send these events)</value>
+  </data>
+  <data name="plPgwSlider_touchControls.Text" xml:space="preserve">
+    <value>Support mobile touch</value>
+  </data>
+  <data name="plPgwSlider_transitionDuration.Help" xml:space="preserve">
+    <value>Period of animation in milliseconds between 2 images.</value>
+  </data>
+  <data name="plPgwSlider_transitionDuration.Text" xml:space="preserve">
+    <value>Transition Duration</value>
+  </data>
+  <data name="plPgwSlider_transitionEffect.Help" xml:space="preserve">
+    <value>You can choose between 2 different transition effects: "fading" or "sliding".</value>
+  </data>
+  <data name="plPgwSlider_transitionEffect.Text" xml:space="preserve">
+    <value>Transition Effect</value>
+  </data>
+  <data name="plPgwSlider_verticalCentering.Help" xml:space="preserve">
+    <value>If the height of the list or the main container is smaller than the height of the image, this option can vertically center the element. To activate, this option must be set to "true".</value>
+  </data>
+  <data name="plPgwSlider_verticalCentering.Text" xml:space="preserve">
+    <value>Vertical Centering</value>
+  </data>
+  <data name="secPgwGallery.Text" xml:space="preserve">
+    <value>"Pgw Gallery" Settings</value>
+  </data>
+  <data name="secPgwSlider.Text" xml:space="preserve">
+    <value>"Pgw Slider" Settings</value>
+  </data>
+  <data name="Tip_PgwGallery_LimitHeight.Text" xml:space="preserve">
+    <value>If you want to set a maximum height to your gallery, you can check on "Limit max height" option, and enter a integer value as "Max Height".</value>
+  </data>
+  <data name="Tip_PgwSlider_LimitHeight.Text" xml:space="preserve">
+    <value>If you want to set a maximum height to your slider, you can check on "Limit max height" option, and enter a integer value as "Max Height".</value>
+  </data>
+  <data name="Tip_SlideshowMode_PgwGallery.Text" xml:space="preserve">
+    <value>"Pgw Gallery" is a responsive slideshow / gallery / carousel for jQuery. It is all browsers supported (desktop and mobile devices) and also SEO compliant.</value>
+  </data>
+  <data name="Tip_SlideshowMode_PgwSlider.Text" xml:space="preserve">
+    <value>"Pgw Slider" is a responsive slider for jQuery. It is all browsers supported (desktop and mobile devices) and also SEO compliant.</value>
+  </data>
+  <data name="plShowSummary.Help" xml:space="preserve">
+    <value>Check to show product summary</value>
+  </data>
+  <data name="plShowSummary.Text" xml:space="preserve">
+    <value>Show Product Summary</value>
+  </data>
+  <data name="plShowTitle.Help" xml:space="preserve">
+    <value>Check to show product title</value>
+  </data>
+  <data name="plShowTitle.Text" xml:space="preserve">
+    <value>Show Product Title</value>
+  </data>
+  <data name="li_OwlCarousel_imageSource_original.Text" xml:space="preserve">
+    <value>Show Original Image</value>
+  </data>
+  <data name="li_OwlCarousel_imageSource_thumbnail.Text" xml:space="preserve">
+    <value>Show Thumbnail</value>
+  </data>
+  <data name="li_OwlCarousel_theme_default.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="li_OwlCarousel_theme_green.Text" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="li_SlideshowMode_OwlCarousel.Text" xml:space="preserve">
+    <value>Owl Carousel (supports multiple items per slide)</value>
+  </data>
+  <data name="li_SlideshowMode_RevolutionSlider.Text" xml:space="preserve">
+    <value>Revolution Slider</value>
+  </data>
+  <data name="li_SlideshowMode_TransBanner.Text" xml:space="preserve">
+    <value>Trans Banner</value>
+  </data>
+  <data name="plOwlCarousel_autoplay.Help" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plOwlCarousel_autoplay.Text" xml:space="preserve">
+    <value>Auto Play</value>
+  </data>
+  <data name="plOwlCarousel_autoplayHoverPause.Help" xml:space="preserve">
+    <value>Pause on mouse hover.</value>
+  </data>
+  <data name="plOwlCarousel_autoplayHoverPause.Text" xml:space="preserve">
+    <value>Mouse Hover Pause</value>
+  </data>
+  <data name="plOwlCarousel_autoplayTimeout.Help" xml:space="preserve">
+    <value>Auto Play Timeout, default value is 5000</value>
+  </data>
+  <data name="plOwlCarousel_autoplayTimeout.Text" xml:space="preserve">
+    <value>Auto Play Timeout</value>
+  </data>
+  <data name="plOwlCarousel_autoWidth.Help" xml:space="preserve">
+    <value>Set non grid content. Try using width style on divs.</value>
+  </data>
+  <data name="plOwlCarousel_autoWidth.Text" xml:space="preserve">
+    <value>Auto Width</value>
+  </data>
+  <data name="plOwlCarousel_center.Help" xml:space="preserve">
+    <value>Center item. Works well with even an odd number of items.</value>
+  </data>
+  <data name="plOwlCarousel_center.Text" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="plOwlCarousel_dots.Help" xml:space="preserve">
+    <value>Show Dots Navigation button</value>
+  </data>
+  <data name="plOwlCarousel_dots.Text" xml:space="preserve">
+    <value>Show Dots Navigation</value>
+  </data>
+  <data name="plOwlCarousel_freeDrag.Help" xml:space="preserve">
+    <value>Item pull to edge.</value>
+  </data>
+  <data name="plOwlCarousel_freeDrag.Text" xml:space="preserve">
+    <value>Free Drag</value>
+  </data>
+  <data name="plOwlCarousel_imageSource.Help" xml:space="preserve">
+    <value>Choose image source</value>
+  </data>
+  <data name="plOwlCarousel_imageSource.Text" xml:space="preserve">
+    <value>Image Source</value>
+  </data>
+  <data name="plOwlCarousel_items.Help" xml:space="preserve">
+    <value>How many items will be shown per slide</value>
+  </data>
+  <data name="plOwlCarousel_items.Text" xml:space="preserve">
+    <value>Items per slide</value>
+  </data>
+  <data name="plOwlCarousel_items_1200.Help" xml:space="preserve">
+    <value>When screen width is between 980 - 1200, how many items to show per slide</value>
+  </data>
+  <data name="plOwlCarousel_items_1200.Text" xml:space="preserve">
+    <value>Width Between 980 - 1200</value>
+  </data>
+  <data name="plOwlCarousel_items_480.Help" xml:space="preserve">
+    <value>When screen width is lower than 480, how many items to show per slide</value>
+  </data>
+  <data name="plOwlCarousel_items_480.Text" xml:space="preserve">
+    <value>Screen Width &lt; 480</value>
+  </data>
+  <data name="plOwlCarousel_items_768.Help" xml:space="preserve">
+    <value>When screen width is between 480 - 768, how many items to show per slide</value>
+  </data>
+  <data name="plOwlCarousel_items_768.Text" xml:space="preserve">
+    <value>Width Between 480 - 768</value>
+  </data>
+  <data name="plOwlCarousel_items_980.Help" xml:space="preserve">
+    <value>When screen width is between 768 - 980, how many items to show per slide</value>
+  </data>
+  <data name="plOwlCarousel_items_980.Text" xml:space="preserve">
+    <value>Width Between 768 - 980</value>
+  </data>
+  <data name="plOwlCarousel_items_than1200.Help" xml:space="preserve">
+    <value>When screen width &gt; 1200, how many items to show per slide</value>
+  </data>
+  <data name="plOwlCarousel_items_than1200.Text" xml:space="preserve">
+    <value>Screen Width &gt; 1200</value>
+  </data>
+  <data name="plOwlCarousel_loop.Help" xml:space="preserve">
+    <value>Inifnity loop. Duplicate last and first items to get loop illusion.</value>
+  </data>
+  <data name="plOwlCarousel_loop.Text" xml:space="preserve">
+    <value>Loop</value>
+  </data>
+  <data name="plOwlCarousel_margin.Help" xml:space="preserve">
+    <value>margin-right(px) on item.</value>
+  </data>
+  <data name="plOwlCarousel_margin.Text" xml:space="preserve">
+    <value>Margin</value>
+  </data>
+  <data name="plOwlCarousel_mouseDrag.Help" xml:space="preserve">
+    <value>Mouse drag enabled.</value>
+  </data>
+  <data name="plOwlCarousel_mouseDrag.Text" xml:space="preserve">
+    <value>Mouse Drag</value>
+  </data>
+  <data name="plOwlCarousel_nav.Help" xml:space="preserve">
+    <value>Show next/prev buttons.</value>
+  </data>
+  <data name="plOwlCarousel_nav.Text" xml:space="preserve">
+    <value>Show Next/Prev Buttons.</value>
+  </data>
+  <data name="plOwlCarousel_navRewind.Help" xml:space="preserve">
+    <value>Go to first/last.</value>
+  </data>
+  <data name="plOwlCarousel_navRewind.Text" xml:space="preserve">
+    <value>Go to First/Last.</value>
+  </data>
+  <data name="plOwlCarousel_navText.Help" xml:space="preserve">
+    <value>Next/Prev Buttons Text</value>
+  </data>
+  <data name="plOwlCarousel_navText.Text" xml:space="preserve">
+    <value>Next/Prev Buttons Text</value>
+  </data>
+  <data name="plOwlCarousel_pullDrag.Help" xml:space="preserve">
+    <value>Stage pull to edge.</value>
+  </data>
+  <data name="plOwlCarousel_pullDrag.Text" xml:space="preserve">
+    <value>Pull Drag</value>
+  </data>
+  <data name="plOwlCarousel_responsive.Help" xml:space="preserve">
+    <value>Check on "Responsive Support" option to support respinsive layout.</value>
+  </data>
+  <data name="plOwlCarousel_responsive.Text" xml:space="preserve">
+    <value>Responsive Support</value>
+  </data>
+  <data name="plOwlCarousel_stagePadding.Help" xml:space="preserve">
+    <value>Padding left and right on stage (can see neighbours).</value>
+  </data>
+  <data name="plOwlCarousel_stagePadding.Text" xml:space="preserve">
+    <value>Stage Padding</value>
+  </data>
+  <data name="plOwlCarousel_theme.Help" xml:space="preserve">
+    <value>Choose theme</value>
+  </data>
+  <data name="plOwlCarousel_theme.Text" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="plOwlCarousel_touchDrag.Help" xml:space="preserve">
+    <value>Touch drag enabled.</value>
+  </data>
+  <data name="plOwlCarousel_touchDrag.Text" xml:space="preserve">
+    <value>Touch Drag</value>
+  </data>
+  <data name="secOwlCarousel.Text" xml:space="preserve">
+    <value>"Owl Carousel" slideshow settings</value>
+  </data>
+  <data name="Tip_OwlCarousel_ImageSize.Text" xml:space="preserve">
+    <value>Specify the image size below (width, height). Note, besides integer values, you can also specify other valid values like &lt;font color="red"&gt;100%&lt;/font&gt;,&lt;font color="red"&gt;auto&lt;/font&gt;, etc.&lt;br/&gt;By default, module will show image thumbnail in slide, choose "Show Original Image" option if you want to show original image (for example, you want to show 1 item only in slide, and you need a big image size).</value>
+  </data>
+  <data name="Tip_OwlCarousel_Responsive.Text" xml:space="preserve">
+    <value>"Owl Carousel" is Responsive layout based. To support responsive, 1. Check on "Responsive Support" option. 2. Specify how many items to show under different screen width, for example, if you enter "6" in "Screen Width &gt; 1200", then it will show 6 items per slide when visitor device width is bigger than 1200px. Note, check on the "Responsive Support" will ignore the "Items per slide" value. </value>
+  </data>
+  <data name="Tip_SlideshowMode_OwlCarousel.Text" xml:space="preserve">
+    <value>"Owl Carousel", a Touch enabled jQuery plugin that lets you create beautiful responsive carousel slider. It supports multiple items per slide.</value>
+  </data>
+  <data name="li_bottom.Text" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="li_center.Text" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="li_left.Text" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="li_none.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationArrows_nexttobullets.Text" xml:space="preserve">
+    <value>Next To Bullets</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationArrows_solo.Text" xml:space="preserve">
+    <value>Solo</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationStyle_navbar.Text" xml:space="preserve">
+    <value>Navigation Bar</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationStyle_round.Text" xml:space="preserve">
+    <value>Round</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationStyle_square.Text" xml:space="preserve">
+    <value>Square</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationType_bullet.Text" xml:space="preserve">
+    <value>Bullet</value>
+  </data>
+  <data name="li_RevolutionSlider_navigationType_thumb.Text" xml:space="preserve">
+    <value>Thumbnail</value>
+  </data>
+  <data name="li_right.Text" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="li_top.Text" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="plRevolutionSlider_Delay.Help" xml:space="preserve">
+    <value>The speed to animate each slide (in milliseconds)</value>
+  </data>
+  <data name="plRevolutionSlider_Delay.Text" xml:space="preserve">
+    <value>Animation Speed (in milliseconds)</value>
+  </data>
+  <data name="plRevolutionSlider_fullWidth.Help" xml:space="preserve">
+    <value>Full Width</value>
+  </data>
+  <data name="plRevolutionSlider_fullWidth.Text" xml:space="preserve">
+    <value>Full Width</value>
+  </data>
+  <data name="plRevolutionSlider_hideAllCaptionAtLilmit.Help" xml:space="preserve">
+    <value>Hide all The Captions if Width of Browser is less then this value</value>
+  </data>
+  <data name="plRevolutionSlider_hideAllCaptionAtLilmit.Text" xml:space="preserve">
+    <value>Hide All Captions At Limit</value>
+  </data>
+  <data name="plRevolutionSlider_hideCaptionAtLimit.Help" xml:space="preserve">
+    <value>It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)</value>
+  </data>
+  <data name="plRevolutionSlider_hideCaptionAtLimit.Text" xml:space="preserve">
+    <value>Hide Caption At Limit</value>
+  </data>
+  <data name="plRevolutionSlider_hideSliderAtLimit.Help" xml:space="preserve">
+    <value>Hide the whole slider, and stop also functions if Width of Browser is less than this value</value>
+  </data>
+  <data name="plRevolutionSlider_hideSliderAtLimit.Text" xml:space="preserve">
+    <value>Hide Slider At Limit</value>
+  </data>
+  <data name="plRevolutionSlider_navigationArrows.Help" xml:space="preserve">
+    <value>nexttobullets, solo (old name verticalcentered), none</value>
+  </data>
+  <data name="plRevolutionSlider_navigationArrows.Text" xml:space="preserve">
+    <value>Navigation Arrows</value>
+  </data>
+  <data name="plRevolutionSlider_navigationHAlign.Help" xml:space="preserve">
+    <value>Horizontal Align left,center,right</value>
+  </data>
+  <data name="plRevolutionSlider_navigationHAlign.Text" xml:space="preserve">
+    <value>Navigation Horizontal Align</value>
+  </data>
+  <data name="plRevolutionSlider_navigationHOffset.Help" xml:space="preserve">
+    <value>Enter Navigation Horizontal Offset</value>
+  </data>
+  <data name="plRevolutionSlider_navigationHOffset.Text" xml:space="preserve">
+    <value>Navigation Horizontal Offset</value>
+  </data>
+  <data name="plRevolutionSlider_navigationStyle.Help" xml:space="preserve">
+    <value>round,square,navbar,round-old,square-old,navbar-old, or any from the list in the docu (choose between 50+ different item), custom</value>
+  </data>
+  <data name="plRevolutionSlider_navigationStyle.Text" xml:space="preserve">
+    <value>Navigation Style</value>
+  </data>
+  <data name="plRevolutionSlider_navigationType.Help" xml:space="preserve">
+    <value>Choose from bullet, thumb, none</value>
+  </data>
+  <data name="plRevolutionSlider_navigationType.Text" xml:space="preserve">
+    <value>Navigation Type</value>
+  </data>
+  <data name="plRevolutionSlider_navigationVAlign.Help" xml:space="preserve">
+    <value>Vertical Align top,center,bottom</value>
+  </data>
+  <data name="plRevolutionSlider_navigationVAlign.Text" xml:space="preserve">
+    <value>Navigation Vertical Align</value>
+  </data>
+  <data name="plRevolutionSlider_navigationVOffset.Help" xml:space="preserve">
+    <value>Enter Navigation Vertical Offset</value>
+  </data>
+  <data name="plRevolutionSlider_navigationVOffset.Text" xml:space="preserve">
+    <value>Navigation Vertical Offset</value>
+  </data>
+  <data name="plRevolutionSlider_onHoverStop.Help" xml:space="preserve">
+    <value>Stop Banner Timet at Hover on Slide</value>
+  </data>
+  <data name="plRevolutionSlider_onHoverStop.Text" xml:space="preserve">
+    <value>Stop when hover</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftHAlign.Help" xml:space="preserve">
+    <value>Horizontal Align left,center,right</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftHAlign.Text" xml:space="preserve">
+    <value>Solo Arrow Left Horizontal Align</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftHOffset.Help" xml:space="preserve">
+    <value>Enter soloArrowLeft Horizontal Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftHOffset.Text" xml:space="preserve">
+    <value>Solo Arrow Left Horizontal Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftVAlign.Help" xml:space="preserve">
+    <value>Vertical Align top,center,bottom</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftVAlign.Text" xml:space="preserve">
+    <value>Solo Arrow Left Vertical Align</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftVOffset.Help" xml:space="preserve">
+    <value>Enter soloArrowLeft Vertical Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowLeftVOffset.Text" xml:space="preserve">
+    <value>Solo Arrow Left Vertical Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightHAlign.Help" xml:space="preserve">
+    <value>Horizontal Align Right,center,right</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightHAlign.Text" xml:space="preserve">
+    <value>Solo Arrow Right Horizontal Align</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightHOffset.Help" xml:space="preserve">
+    <value>Enter soloArrowRight Horizontal Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightHOffset.Text" xml:space="preserve">
+    <value>Solo Arrow Right Horizontal Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightVAlign.Help" xml:space="preserve">
+    <value>Vertical Align top,center,bottom</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightVAlign.Text" xml:space="preserve">
+    <value>Solo Arrow Right Vertical Align</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightVOffset.Help" xml:space="preserve">
+    <value>Enter soloArrowRight Vertical Offset</value>
+  </data>
+  <data name="plRevolutionSlider_soloArrowRightVOffset.Text" xml:space="preserve">
+    <value>Solo Arrow Right Vertical Offset</value>
+  </data>
+  <data name="plRevolutionSlider_startHeight.Help" xml:space="preserve">
+    <value>Enter start height</value>
+  </data>
+  <data name="plRevolutionSlider_startHeight.Text" xml:space="preserve">
+    <value>Start Height</value>
+  </data>
+  <data name="plRevolutionSlider_startWidth.Help" xml:space="preserve">
+    <value>Enter start width</value>
+  </data>
+  <data name="plRevolutionSlider_startWidth.Text" xml:space="preserve">
+    <value>Start Width</value>
+  </data>
+  <data name="plRevolutionSlider_stopAfterLoops.Help" xml:space="preserve">
+    <value>Stop Timer if All slides has been played "x" times. IT will stop at THe slide which is defined via stopAtSlide:x, if set to -1 slide never stop automatic.</value>
+  </data>
+  <data name="plRevolutionSlider_stopAfterLoops.Text" xml:space="preserve">
+    <value>Stop After Loops</value>
+  </data>
+  <data name="plRevolutionSlider_stopAtSlide.Help" xml:space="preserve">
+    <value>Stop Timer if Slide "x" has been Reached. If stopAfterLoops set to 0, then it stops already in the first Loop at slide X which defined. -1 means do not stop at any slide. stopAfterLoops has no sinn in this case.</value>
+  </data>
+  <data name="plRevolutionSlider_stopAtSlide.Text" xml:space="preserve">
+    <value>Stop At Slide</value>
+  </data>
+  <data name="plRevolutionSlider_thumbAmount.Help" xml:space="preserve">
+    <value>Enter thumbnail amount</value>
+  </data>
+  <data name="plRevolutionSlider_thumbAmount.Text" xml:space="preserve">
+    <value>Thumbnail Amount</value>
+  </data>
+  <data name="plRevolutionSlider_thumbHeight.Help" xml:space="preserve">
+    <value>Enter thumbnail height</value>
+  </data>
+  <data name="plRevolutionSlider_thumbHeight.Text" xml:space="preserve">
+    <value>Thumbnail Height</value>
+  </data>
+  <data name="plRevolutionSlider_thumbWidth.Help" xml:space="preserve">
+    <value>Enter thumbnail width</value>
+  </data>
+  <data name="plRevolutionSlider_thumbWidth.Text" xml:space="preserve">
+    <value>Thumbnail Width</value>
+  </data>
+  <data name="plRevolutionSlider_touchEnabled.Help" xml:space="preserve">
+    <value>Touch Enabled</value>
+  </data>
+  <data name="plRevolutionSlider_touchEnabled.Text" xml:space="preserve">
+    <value>Touch Enabled</value>
+  </data>
+  <data name="secRevolutionSlider.Text" xml:space="preserve">
+    <value>"Revolution Slider" Settings</value>
+  </data>
+  <data name="Tip_RevolutionSlider_Thumb.Text" xml:space="preserve">
+    <value>Thumbnail Width/Height/Amount works only if navigation type set to "Thumbnail"</value>
+  </data>
+  <data name="Tip_SlideshowMode_RevolutionSlider.Text" xml:space="preserve">
+    <value>"Revolution Slider" is a a responsive(mobile friendly) or fullwidth slider with must-see-effects and meanwhile keep or build your SEO optimization (all content always readable for search engines).</value>
+  </data>
+  <data name="secAbout.Text" xml:space="preserve">
+    <value>About Cp_Product_Slideshow sub module</value>
+  </data>
+  <data name="Tip_About.Text" xml:space="preserve">
+    <value>Classified Pro is an enterprise-class DNN module which helps you to create an online store, auction website and also publish classified ads. It contains 16 sub modules and 1 skin object. 
+Cp_Product_Slideshow is one of these 16 sub modules, it is used to show products (listings) with JavaScript slideshow. When click a slide, module will navigate to Cp_Product_Detail sub module page to show product (listing) detail. Since it is JavaScript based, it can also be run under mobile and tablet pc.&lt;br/&gt;&lt;br/&gt;
+
+You can add multiple instances of Cp_Product_Slideshow sub module to different pages (or on same page), and configure them to show different slideshows.&lt;br/&gt;&lt;br/&gt;
+If current site enables content localization, Cp_Product_Slideshow sub module will show content according to page culture. For example, if current page culture is "en-US (English)", it will show English content of products; if current page culture is "zh-CN (Simple Chinese)", it will show Simple Chinese content of products; if page culture is neutral, it will show content according to current context culture.</value>
+  </data>
+</root>

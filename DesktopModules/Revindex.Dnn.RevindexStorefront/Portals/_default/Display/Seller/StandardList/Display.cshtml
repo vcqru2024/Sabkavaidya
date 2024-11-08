@@ -1,0 +1,28 @@
+﻿@* Template name: StandardList *@
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.SellerWebViewPage<SellerViewModel>
+
+<div class="rvdsf rvdsf-seller-container">
+    <nav class="navbar navbar-default navbar-light visible-xs d-block d-sm-none">
+        <div class="navbar-header">
+            <button class="navbar-toggle navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#rvdsfSellerList">
+                <i class="glyphicon glyphicon-align-justify fa fas fa-reorder navbar-toggler-icon"></i>
+            </button>
+            <a class="navbar-brand">@Html.LocalizeString("Header")</a>
+        </div>
+    </nav>
+    <div id="rvdsfSellerList" class="collapse-xs">
+        <ul class="list-group">
+            @foreach (var s in Model.AvailableSellers)
+			{
+				if (s.ProductCount > 0)
+				{
+					<li class="list-group-item @(s.SellerID == Model.SellerID ? "node-selected active" : "node-" )">
+						<a href="@s.ProductList.TabUrl" style="color: inherit">@s.Name</a>
+					</li>
+				}
+			}
+        </ul>
+    </div>
+</div>

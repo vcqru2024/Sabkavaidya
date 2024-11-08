@@ -1,0 +1,28 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Support Cardlink Payments
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysCardlinkRedirectMerchantID')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysCardlinkRedirectMerchantID varchar(255) NULL,
+		PaymentGatewaysCardlinkRedirectSharedSecret varchar(255) NULL,
+		PaymentGatewaysCardlinkRedirectGatewayUrl varchar(255) NULL,
+		PaymentGatewaysCardlinkRedirectCssUrl varchar(255) NULL
+
+END 
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentMethodsCardlinkRedirectActive')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsCardlinkRedirectActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsCardlinkRedirectActive DEFAULT 0,
+		PaymentMethodsCardlinkRedirectAvailabilityRule xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsCardlinkRedirectActive
+END 
+GO

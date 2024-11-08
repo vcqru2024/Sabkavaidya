@@ -1,0 +1,254 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+	-- Update Sales by manufacturer report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Sales by manufacturer',
+		[Description] = 'This report gives you an idea how much of your sales are coming from which product manufacturer.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT 
+        m.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ManufacturerName, 
+	t.TotalQuantity, 
+	t.SubTotalAmount,
+	t.TotalTaxAmount,
+	t.TotalAmount,
+	FORMAT(t.SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+	FORMAT(t.TotalTaxAmount, ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+	FORMAT(t.TotalAmount, ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Manufacturer m
+JOIN
+(
+	SELECT 
+		pv.ManufacturerID, 
+		SUM(sod.Quantity) AS TotalQuantity, 
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) AS SubTotalAmount,
+		SUM(sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalTaxAmount,
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount + sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = sod.SalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+	ON pv.ProductVariantID = sod.ProductVariantID
+	WHERE (so.Status = @Status OR @Status = 0)
+		AND so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+		AND pv.ManufacturerID IS NOT NULL
+	GROUP BY pv.ManufacturerID
+) AS t
+ON t.ManufacturerID = m.ManufacturerID
+ORDER BY ManufacturerName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 40%"&amp;gt;Manufacturer&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ManufacturerName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Manufacturer","Quantity","Sub-total","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(ManufacturerName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '1F098732-5DEC-47C6-868F-609693425F16'
+		
+
+
+
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

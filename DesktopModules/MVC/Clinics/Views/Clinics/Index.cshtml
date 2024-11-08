@@ -1,0 +1,56 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Vcqru.Modules.AddClinic.Models.Clinic>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Entities.Users
+@using DotNetNuke.Entities.Modules
+
+
+<section class="our-clinic">
+    <div id="Items-@Dnn.ModuleContext.ModuleId" class="container">
+        @if (!Model.Any())
+        {
+            <p>No Clinics available</p>
+        }
+        else
+        {
+            <div class="text-center web-heading">
+                <h1>Our clinic</h1>
+            </div>
+            <div class="g-3 row row-cols-1 row-cols-lg-3 row-cols-md-2 row-cols-xl-3 row-cols-xxl-3">
+                @foreach (var clinic in Model)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <img alt="img" class="card-img-top" src="@Url.Content(clinic.ClinicImage)" />
+                            <div class="card-body">
+                                <span class="badge">@clinic.Speciality</span>
+                                <h5><i class='bx bxs-home-heart'></i>@clinic.ClinicName</h5>
+                                <ul class="clinic-chips">
+                                    <li><span><i class="fas fa-star"></i>@clinic.Reviews Reviews</span></li>
+                                    <li><span><i class='bx bxs-briefcase-alt-2'></i>@clinic.YearsOfExperience Yrs</span></li>
+                                    <li><span><i class='bx bxs-location-plus'></i>@clinic.ClinicLocation</span></li>
+                                    <li><span><i class='bx bxs-notepad'></i>@clinic.Department1</span></li>
+                                    <li><span><i class='bx bxs-notepad'></i>@clinic.Department2</span></li>
+                                    <li><span><i class='bx bxs-notepad'></i>@clinic.Department3</span></li>
+                                    <a class="btn btn-sm px-3" href="@clinic.ClinicUrl">View more</a>
+                                </ul>
+                                @if (Dnn.ModuleContext.IsEditable)
+                                {
+                                    <div class="card-footer">
+                                        <div>
+                                            <a href="@Url.Action("Edit", "Clinics", new { ctl = "Edit", clinicId = clinic.ClinicId })" class="btn btn-primary">Edit</a>
+                                            <a href="@Url.Action("Delete", "Clinics", new { clinicId = clinic.ClinicId })" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        }
+    </div>
+</section>
+

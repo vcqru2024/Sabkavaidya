@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_uservendor_fileupload.Text" xml:space="preserve">
+    <value>Upload Files For Client's Order (or Help Ticket)</value>
+  </data>
+  <data name="btnSynchronize.Text" xml:space="preserve">
+    <value>Synchronize To Server</value>
+  </data>
+  <data name="lblStepSynchronize.Text" xml:space="preserve">
+    <value>Step 2: Click "Synchronize To Server" button to synchronize uploaded files from temporary directory to the server.</value>
+  </data>
+  <data name="lblStepUpload.Text" xml:space="preserve">
+    <value>Step 1: Click "Upload Files" button below, drag files (or browser computer to select) to upload on the popup window. These uploaded files will be stored to a temporary directory. Note, you can select multiple files to upload by press Ctrl key.</value>
+  </data>
+  <data name="errExceedQuota.Text" xml:space="preserve">
+    <value>Module detects that your current upload files will exceed the upload limit. Please check the file size and click "Upload Files" to reupload.</value>
+  </data>
+  <data name="lblUploadTip.Text" xml:space="preserve">
+    <value>Here you can upload files to client's order (or client's help ticket). For example, you are selling picture processing service, a client can paid for this service, and upload related pictures to you, you then processes them and upload back to the client. Current site allows you to upload multiple files for a order (or a help ticket), but the total upload file size can't exceed &lt;font color="red"&gt;{0}&lt;/font&gt; mb.&lt;br/&gt;&lt;br/&gt;After file uploaded and synchronized, click "Close Page" link to close this window. Note, module will create a "SellerUpload" folder (under each seller's root directory) to store these files (if site uses Amazon S3, then will store on Amazon S3), please don't delete this folder.&lt;br/&gt;&lt;br/&gt;The upload file extension must in site allowable extensions (which is defined at DNN built-in menu "Host - Host Settings - Other Settings - Allowable File Extensions"). Currently allowable extensions are  "{1}".</value>
+  </data>
+  <data name="UploadSuccess.Text" xml:space="preserve">
+    <value>Congratulation! Your files have been uploaded to server successfully.</value>
+  </data>
+  <data name="UserRootPath.Text" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="errNoFileUpload.Text" xml:space="preserve">
+    <value>No file upload, please check if you provide valid files and click "Upload Files" to reupload. Note, the upload file extension must in site allowable extensions, otherwise they will be ignored.</value>
+  </data>
+  <data name="lbtnUploadFiles.Text" xml:space="preserve">
+    <value>Upload Files</value>
+  </data>
+</root>

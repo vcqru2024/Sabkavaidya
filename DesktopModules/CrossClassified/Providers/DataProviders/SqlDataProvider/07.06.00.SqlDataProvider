@@ -1,0 +1,62 @@
+
+
+/******   drop legacy procedure CP_Product_Cart_GetByVendor ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]    ScriptDate: 08/15/2010 21:56:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]
+	@VendorId int,
+    @ProductId int,
+    @ClientId int,
+    @PageSize int, 
+    @PageIndex int
+AS
+  Declare @PageLowerBound int
+  DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	ItemId	int
+     )
+----Insert into temptable
+    insert into #PageIndex(ItemId)
+    SELECT
+	[id]
+    FROM {databaseOwner}{objectQualifier}CP_Product_Cart
+    WHERE (@VendorId=-1 or [VendorId]=@VendorId)
+    and(@ProductId=-1 or [ProductId]=@ProductId)
+    and(@ClientId=-1 or [ClientId]=@ClientId)
+    order by [id] desc
+
+---Get needs rows
+   SELECT
+	b.*
+    FROM #PageIndex a, {databaseOwner}{objectQualifier}CP_Product_Cart b
+    where b.[id]=a.[ItemId] 
+    and  a.[IndexId]> @PageLowerBound	
+    and	 a.[IndexId]< @PageUpperBound	  
+    ORDER BY a.IndexId
+	
+	 --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+' 
+END
+GO
+

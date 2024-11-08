@@ -1,0 +1,27 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+
+@{
+  // 2. Include Bootstrap4 if the framework isn't known
+  @Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
+  
+  var swiper = MyModel.Item("Swiper");
+  var swiperSettings = AsStack(MyModel.Get("SwiperSettings"));
+
+  var data = new {
+    moduleId = swiper.Id,
+    options = new {
+      autoplay = swiperSettings.Bool("Autoplay"),
+      speed = swiperSettings.Int("AnimationDuration"),
+      // The following two values are JSON strings, so we must turn them into an object
+      effectDefaults = Kit.Json.ToTyped(swiperSettings.String("Effect.Configuration")),
+      fallback = Kit.Json.ToTyped(App.Settings.String("EffectFallback"))
+    },
+  };
+}
+
+<link rel="stylesheet" href="@MyView.Folder.Url/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
+<script src="@MyView.Folder.Url/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
+
+@* Activation uses turnOn https://r.2sxc.org/turnon *@
+@Kit.Page.TurnOn("window.appSwiper2.init()", data: data)

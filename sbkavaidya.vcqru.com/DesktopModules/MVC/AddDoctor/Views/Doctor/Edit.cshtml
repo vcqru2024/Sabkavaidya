@@ -1,0 +1,93 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddDoctor.Models.Doctor>
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Collections.Generic
+
+
+
+
+<div id="Doctor-@Model.ModuleId">
+
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight ">
+            <a href="#">@Dnn.LocalizeString("ExpandAll")</a>
+        </div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="doctorName">@Dnn.LocalizeString("lblName")</label>
+                </div>
+                @Html.TextBoxFor(m => m.Name)
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="file">@Dnn.LocalizeString("lblImageUrl")</label>
+                </div>
+                <input type="file" name="file" id="file" />
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="doctorRating">@Dnn.LocalizeString("lblRating")</label>
+                </div>
+                @Html.TextBoxFor(m => m.Rating)
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="doctorDegree">@Dnn.LocalizeString("lblDegree")</label>
+                </div>
+                @Html.TextBoxFor(m => m.Degree)
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="doctorExperience">@Dnn.LocalizeString("lblExperience")</label>
+                </div>
+                @Html.TextBoxFor(m => m.Experience)
+            </div>
+
+            <div class="dnnFormItem">
+                <div>
+                    <label for="doctorLocation">@Dnn.LocalizeString("lblLocation")</label>
+                </div>
+                @Html.TextBoxFor(m => m.Location)
+            </div>
+
+            <!-- Add other properties of the Doctor model as needed -->
+
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+
+    <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+    <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+</div>
+
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function ($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({
+                expandText: '@Dnn.LocalizeString("ExpandAll")',
+                collapseText: '@Dnn.LocalizeString("CollapseAll")',
+                targetArea: '#dnnEditBasicSettings'
+            });
+        }
+
+        $(function () {
+            $('#cancelEdit').click(function () { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+</script>

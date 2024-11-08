@@ -1,0 +1,19 @@
+﻿<data method="BasicCartAbandonEmail" version="1.0">
+  <mailFrom></mailFrom>
+  <mailTo></mailTo>
+  <subject>Thank you for visiting {xsl:value-of select="in/configuration/generalStoreName" /} [Order #{xsl:value-of select="in/salesOrder/salesOrderNumber" /}]</subject>
+  <htmlBody>
+<![CDATA[
+Hi {xsl:value-of select="concat(in/user/firstName, ' ', in/user/lastName)" /}
+<br />
+<br />
+We notice that you left something in your shopping cart. We hope you didn't experience any problems when trying to place an order with us. Just in case, we've kept your recent selections for a limited time so you don't have to start all over again. Simply click the link below to resume your shopping.
+<br />
+<br />
+<a href="{xsl:value-of select='in/cart/tabUrl' /}">Click here to resume shopping</a>
+<br />
+<br />
+If you have any questions or need assistance, please do not hesitate to contact us.
+]]>
+  </htmlBody>
+</data>

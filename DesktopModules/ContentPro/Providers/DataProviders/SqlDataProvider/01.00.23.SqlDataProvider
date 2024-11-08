@@ -1,0 +1,69 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='RelatedContent'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[RelatedContent] [bit] NULL
+GO
+if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='NumRelatedContent'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[NumRelatedContent] [int] NULL
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetRelatedContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetRelatedContent
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetRelatedContent]
+	-- Add the parameters for the stored procedure here
+	@CatIDs {databaseOwner}{objectQualifier}ContentProCategoryList READONLY,
+	@FieldSetID INTEGER,
+	@NumberOfArticles int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	   select top (@NumberOfArticles) ContentID,ContentXML,StartDT,EndDT,Url,Title from {databaseOwner}[{objectQualifier}ContentPro_Content] Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}[{objectQualifier}ContentPro_Content] AS [content]
+       WHERE
+          EXISTS (SELECT * FROM {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (StartDT IS NULL AND EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by StartDT desc
+	   
+END
+
+GO
+
+
+
+
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

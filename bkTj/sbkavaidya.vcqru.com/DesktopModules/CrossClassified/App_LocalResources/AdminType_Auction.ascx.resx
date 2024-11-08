@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnAddType.Text" xml:space="preserve">
+    <value>Add Department</value>
+  </data>
+  <data name="ControlTitle_admintype_auction.Text" xml:space="preserve">
+    <value>Auction Departments</value>
+  </data>
+  <data name="plName.Help" xml:space="preserve">
+    <value>Product department name</value>
+  </data>
+  <data name="plDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblSellType.Text" xml:space="preserve">
+    <value>Sell Property</value>
+  </data>
+  <data name="lblSellable.Text" xml:space="preserve">
+    <value>Sellable</value>
+  </data>
+  <data name="plDescription.Help" xml:space="preserve">
+    <value>Product department description</value>
+  </data>
+  <data name="lblEnableTax.Text" xml:space="preserve">
+    <value>Enable Tax</value>
+  </data>
+  <data name="plSellType.Text" xml:space="preserve">
+    <value>Sell Property</value>
+  </data>
+  <data name="plSellType.Help" xml:space="preserve">
+    <value>Choose action after user order products which belong this department. Note, you &lt;font color="Red"&gt;can't change&lt;/font&gt; this value after add department. Value can be one of  the following:&lt;br/&gt;
+0 Physical Goods - shipping user with specific physical goods, choose this item if you want to sell normal product online.&lt;br/&gt;
+1 Software/Digital Files - give user rights to download specific files, choose this item if you want to sell software (or digital files) online.&lt;br/&gt;
+2 Portal Roles - add user to a specific role, choose this item if you want charge money based site roles. You can also offer download files for this role. User can view these download files before their role expired. You can use this department as file subscriber or something similar.&lt;br/&gt;
+3 Others - Other services which don't handle on this site. For example, if you sell virtual goods (like online game account).</value>
+  </data>
+  <data name="plName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblOrder.Text" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="lblTaxRate.Text" xml:space="preserve">
+    <value>Tax Rate</value>
+  </data>
+  <data name="li_SellType_Goods.Text" xml:space="preserve">
+    <value>0 - Physical Goods</value>
+  </data>
+  <data name="li_SellType_Software.Text" xml:space="preserve">
+    <value>1 - Software/Digital Files</value>
+  </data>
+  <data name="plDetailPage.Help" xml:space="preserve">
+    <value>Select which page to dispaly product detail which belong to this department. You should put a Cp_Product_Detail sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_Detail sub module instance on page first time.</value>
+  </data>
+  <data name="plDetailPage.Text" xml:space="preserve">
+    <value>Cp_Product_Detail Sub Module Page</value>
+  </data>
+  <data name="plEnableTax.Help" xml:space="preserve">
+    <value>Check this option to charge tax based product price. For example, if product price is $100 and tax rate is 1.00, then user need to pay $101 to get it.</value>
+  </data>
+  <data name="plEnableTax.Text" xml:space="preserve">
+    <value>Enable Tax</value>
+  </data>
+  <data name="plImage.Help" xml:space="preserve">
+    <value>Specify a image for this department (optional)</value>
+  </data>
+  <data name="plImage.Text" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="plListPage.Help" xml:space="preserve">
+    <value>Select which page to dispaly product list which belong to this department when user search product or click product category. You should put a Cp_Product_List sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_List sub module instance on page first time.</value>
+  </data>
+  <data name="plListPage.Text" xml:space="preserve">
+    <value>Cp_Product_List Sub Module Page</value>
+  </data>
+  <data name="plOrder.Help" xml:space="preserve">
+    <value>Specify item index for sorting.</value>
+  </data>
+  <data name="plOrder.Text" xml:space="preserve">
+    <value>Sort Index</value>
+  </data>
+  <data name="plTaxRate.Help" xml:space="preserve">
+    <value>Specify tax rete for this department of product. For example, if product price is $100 and tax rate is 1.00, then user need to pay $101 to get it.</value>
+  </data>
+  <data name="plTaxRate.Text" xml:space="preserve">
+    <value>Tax Rate</value>
+  </data>
+  <data name="li_SellType_Other.Text" xml:space="preserve">
+    <value>3 - Others</value>
+  </data>
+  <data name="btnDetailWizard.Text" xml:space="preserve">
+    <value>Run Detail Page Setting Wizard</value>
+  </data>
+  <data name="lblChargePercent.Text" xml:space="preserve">
+    <value>Charge Percent</value>
+  </data>
+  <data name="plChargePercent.Help" xml:space="preserve">
+    <value>Enter a percent which will charge from sellers. For example, if enter 30, then when a seller sell $100, he will keep $70 and site will get $30.</value>
+  </data>
+  <data name="plChargePercent.Text" xml:space="preserve">
+    <value>Charge Percent(0 - 100)</value>
+  </data>
+  <data name="btnAddTax.Text" xml:space="preserve">
+    <value>Add Tax</value>
+  </data>
+  <data name="btnBackToList.Text" xml:space="preserve">
+    <value>Back To Department List</value>
+  </data>
+  <data name="imgTax.Text" xml:space="preserve">
+    <value>View/Edit tax rate for this department</value>
+  </data>
+  <data name="lblAllState.Text" xml:space="preserve">
+    <value>All State (*)</value>
+  </data>
+  <data name="lblCountryName.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="lblStateName.Text" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="lblTax.Text" xml:space="preserve">
+    <value>Tax Rate</value>
+  </data>
+  <data name="lblTaxList.Text" xml:space="preserve">
+    <value>Tax rate list for "{0}". Note: 1. Tax charges based client billing country and state. 2. Each product can specify a fixed tax rate to overide these rules.</value>
+  </data>
+  <data name="plCountry.Help" xml:space="preserve">
+    <value>Select country which you want to add tax rate</value>
+  </data>
+  <data name="plCountry.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="plEnableField.Help" xml:space="preserve">
+    <value>Specifications are detail description of products which belong to this department. Module has some built-in fields, like "Description/After Service/Special Offer" for all departments. And it also supports "Delivery" property for physical goods and "License" for software/digital files.&lt;br/&gt;
+    Besides that, module also support up 5 additional specification fields which you can customize. You can enable them and specify their title and default value.&lt;br/&gt;
+    For example, if you sell notebook, besides "Detail Description", you may want add "Technical Details"  specification for it (check http://www.amazon.com/Toshiba-Satellite-L645D-S4036-TruBrite-14-Inch/dp/B003M5GVJY/ref=sr_1_2?m=ATVPDKIKX0DER&amp;s=pc&amp;ie=UTF8&amp;qid=1285333024&amp;sr=1-2 for live demo).&lt;br/&gt;
+    Note, use these specification fields for long content (html or text based ). If you want to customize short specific content, use  "Product Attributes" feature in CP_Admin sub module instead.&lt;br/&gt;</value>
+  </data>
+  <data name="plEnableField.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="plFieldTitle.Help" xml:space="preserve">
+    <value>Enter title for this specification, like "Technical Details"</value>
+  </data>
+  <data name="plFieldTitle.Text" xml:space="preserve">
+    <value>Specification Title</value>
+  </data>
+  <data name="plState.Help" xml:space="preserve">
+    <value>Select state which you want to add tax rate, select "All State (*)" to applied to all states.</value>
+  </data>
+  <data name="plState.Text" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="divSpecification_1.Text" xml:space="preserve">
+    <value>Specification 1</value>
+  </data>
+  <data name="divSpecification_2.Text" xml:space="preserve">
+    <value>Specification 2</value>
+  </data>
+  <data name="divSpecification_3.Text" xml:space="preserve">
+    <value>Specification 3</value>
+  </data>
+  <data name="divSpecification_4.Text" xml:space="preserve">
+    <value>Specification 4</value>
+  </data>
+  <data name="divSpecification_5.Text" xml:space="preserve">
+    <value>Specification 5</value>
+  </data>
+  <data name="divBasic.Text" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="divFieldEnable.Text" xml:space="preserve">
+    <value>Fields Enable</value>
+  </data>
+  <data name="Tip_FieldEnable.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Module has some built-in fields for product information. Like "Summary/Support/Sku/Weight/Image.......". You can control whether to use them for each deparment. For example, if you uncheck "Enable Sku Field" option for current department, then when post products which belong to this deparment, the "Sku" field will be hidden. It also will be hidden when display in Cp_Product_List and Cp_Product_Detail sub modules.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, some fields will be hidden automatically for specific department. For example, if current department sell type is "Digital files", then the "Weight" will be hidden automatically.&lt;/p&gt;</value>
+  </data>
+  <data name="plFieldEnable_Delivery.Help" xml:space="preserve">
+    <value>Check to enable "Delivery" field</value>
+  </data>
+  <data name="plFieldEnable_Delivery.Text" xml:space="preserve">
+    <value>Enable "Delivery" Field</value>
+  </data>
+  <data name="plFieldEnable_Description.Help" xml:space="preserve">
+    <value>Check to enable "Description" field</value>
+  </data>
+  <data name="plFieldEnable_Description.Text" xml:space="preserve">
+    <value>Enable "Description" Field</value>
+  </data>
+  <data name="plFieldEnable_License.Help" xml:space="preserve">
+    <value>Check to enable "License" field</value>
+  </data>
+  <data name="plFieldEnable_License.Text" xml:space="preserve">
+    <value>Enable "License" Field</value>
+  </data>
+  <data name="plFieldEnable_LinkUrl.Help" xml:space="preserve">
+    <value>Check to enable "Link Url" field</value>
+  </data>
+  <data name="plFieldEnable_LinkUrl.Text" xml:space="preserve">
+    <value>Enable "Link Url" Field</value>
+  </data>
+  <data name="plFieldEnable_PackageFee.Help" xml:space="preserve">
+    <value>Check to enable "Package Fee" field</value>
+  </data>
+  <data name="plFieldEnable_PackageFee.Text" xml:space="preserve">
+    <value>Enable "Package Fee" Field</value>
+  </data>
+  <data name="plFieldEnable_PreviousVersion.Help" xml:space="preserve">
+    <value>Check to enable "Previous Version" field</value>
+  </data>
+  <data name="plFieldEnable_PreviousVersion.Text" xml:space="preserve">
+    <value>Enable "Previous Version" Field</value>
+  </data>
+  <data name="plFieldEnable_Sku.Help" xml:space="preserve">
+    <value>Check to enable "Sku" field</value>
+  </data>
+  <data name="plFieldEnable_Sku.Text" xml:space="preserve">
+    <value>Enable "Sku" Field</value>
+  </data>
+  <data name="plFieldEnable_SpecialOffer.Help" xml:space="preserve">
+    <value>Check to enable "Special Offer" field</value>
+  </data>
+  <data name="plFieldEnable_SpecialOffer.Text" xml:space="preserve">
+    <value>Enable "Special Offer" Field</value>
+  </data>
+  <data name="plFieldEnable_StockQuantity.Help" xml:space="preserve">
+    <value>Check to enable "Stock Quantity" field</value>
+  </data>
+  <data name="plFieldEnable_StockQuantity.Text" xml:space="preserve">
+    <value>Enable "Stock Quantity" Field</value>
+  </data>
+  <data name="plFieldEnable_Summary.Help" xml:space="preserve">
+    <value>Check to enable "Summary" field</value>
+  </data>
+  <data name="plFieldEnable_Summary.Text" xml:space="preserve">
+    <value>Enable "Summary" Field</value>
+  </data>
+  <data name="plFieldEnable_Support.Help" xml:space="preserve">
+    <value>Check to enable "Support" field</value>
+  </data>
+  <data name="plFieldEnable_Support.Text" xml:space="preserve">
+    <value>Enable "Support" Field</value>
+  </data>
+  <data name="plFieldEnable_Weight.Help" xml:space="preserve">
+    <value>Check to enable "Weight" field</value>
+  </data>
+  <data name="plFieldEnable_Weight.Text" xml:space="preserve">
+    <value>Enable "Weight" Field</value>
+  </data>
+  <data name="plRequireAddress.Help" xml:space="preserve">
+    <value>Check this option to require client enter their address information while ordering products which belong to current department. Note, if "sell property" of current department is "physical goods", then module will require client enter their address information even this option is unchecked.</value>
+  </data>
+  <data name="plRequireAddress.Text" xml:space="preserve">
+    <value>Require Address</value>
+  </data>
+  <data name="lblFieldDefault.Text" xml:space="preserve">
+    <value>Default value for this specification. Seller can modify it to fit his/her products.</value>
+  </data>
+  <data name="Tip_ChargePercent.Text" xml:space="preserve">
+    <value>Enter a percent (0 - 100) which will charge from seller sales. For example, if enter 30, then when a seller sell $100, he will get $70 and site will keep $30. Check "Cp_Admin sub module - Help - How to charge commision from seller sales?" and also "How to sell portal roles (seller roles)" section for more details.</value>
+  </data>
+  <data name="Tip_DetailPage.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Select which page to dispaly product detail which belong to this department. You should put a Cp_Product_Detail sub module instance on that page and select its department to this item.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp; Note, module will automatic fill this value when you put Cp_Product_Detail sub module instance on page first time. You can also click "Run detail page setting wizard" button to configure it at any time.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;This setting is also vital to integrate with DNN built-in search mechanism. If you can't search your products with DNN built-in search, please check this setting.</value>
+  </data>
+  <data name="Tip_EnableTax.Text" xml:space="preserve">
+    <value>Check this option to charge tax based product price. For example, if product price is $100 and tax rate is 1.00, then user needs to pay $101 to get it.</value>
+  </data>
+  <data name="Tip_ExtendField.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Specifications are detail description of products which belong to this department. Module already has a built-in fields - "Detail" for all departments.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Besides that, module also supports up 5 additional specification fields which you can customize. You can enable them and specify their title and default value.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp; For example, if you publish notebook products, besides "Product Detail", you may also want add a "Technical Detail" specification for it. To do it, you can check on "Enable" option for "Specification 1", input "Technical Detail" as its title. Then seller will see a "Technical Detail" field while editing products which belong to current department. You can also specify "Default value" for it so seller can simply modify this default value while editing his products.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Note, use these specification fields for long content (html based ). If you want to customize short specific content, use  "Cp_Admin sub module - Admin Control Panel - System Data - Attributes" feature instead.</value>
+  </data>
+  <data name="Tip_ListPage.Text" xml:space="preserve">
+    <value>Select which page to dispaly product list which belong to this department when user search product or click product category. You should put a Cp_Product_List sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_List sub module instance on page first time.</value>
+  </data>
+  <data name="Tip_RequireAddress.Text" xml:space="preserve">
+    <value>Check this option to require client enter their address information while ordering products which belong to current department. Note, if "sell property" of current department is "physical goods", then module will require client enter their address information even this option is unchecked.</value>
+  </data>
+  <data name="Tip_SellType.Text" xml:space="preserve">
+    <value>Choose product content which belong this department. Note, you &lt;font color="Red"&gt;can't change&lt;/font&gt; this value after update department. Value can be one of the following:&lt;br/&gt;
+0 Physical Goods - ship user with specific physical goods, choose this item if you want to sell normal product online.&lt;br/&gt;
+1 Software/Digital Files - give user rights to download specific files, choose this item if you want to sell software (or digital files, videos, audio) online.&lt;br/&gt;
+3 Others - Other services which don't handle on this site. For example, if you sell virtual goods (like online game account).</value>
+  </data>
+  <data name="plAllowGoogleMap.Help" xml:space="preserve">
+    <value>Check this option to integrate with Google Maps. Products which belong to this department can provide its longitude and latitude and show in Google Maps.</value>
+  </data>
+  <data name="plAllowGoogleMap.Text" xml:space="preserve">
+    <value>Integrate with Google Maps</value>
+  </data>
+  <data name="plAllowRecursiveBill.Help" xml:space="preserve">
+    <value>If this option is checked, products which belong to this departments can charge recursive. Note, if "sell property" of current department is "Portal Roles", then it will support recursive billing even this option is unchecked.</value>
+  </data>
+  <data name="plAllowRecursiveBill.Text" xml:space="preserve">
+    <value>Allow recursive charge</value>
+  </data>
+  <data name="Tip_AllowGoogleMap.Text" xml:space="preserve">
+    <value>Check this option to integrate with Google Maps. Listings which belong to this department can provide its longitude/latitude and show in Google Maps. This is useful when you publish map related listings (e.g. park, city, hotel...etc).</value>
+  </data>
+  <data name="Tip_AllowRecursiveBill.Text" xml:space="preserve">
+    <value>If this option is checked, products which belong to this departments can charge recursive. Note, you must enable "PayPal" payment gateway to charge recursive.</value>
+  </data>
+  <data name="divAuction.Text" xml:space="preserve">
+    <value>Auction Type Explanation</value>
+  </data>
+  <data name="li_ActionType_English.Text" xml:space="preserve">
+    <value>English auction (open ascending price auction)</value>
+  </data>
+  <data name="li_ActionType_Sealed_first_price.Text" xml:space="preserve">
+    <value>Sealed first-price auction</value>
+  </data>
+  <data name="li_ActionType_Second_item.Text" xml:space="preserve">
+    <value>Second item (supports more than 1 identical product)</value>
+  </data>
+  <data name="li_ActionType_Vickrey.Text" xml:space="preserve">
+    <value>Vickrey auction (sealed-bid second-price auction)</value>
+  </data>
+  <data name="plAllowProxyBidding.Help" xml:space="preserve">
+    <value>Check on "Enable Proxy Bidding" option to let module automatic bidding for customer based his desired price, read the "Proxy Bidding" explanation below for more details.</value>
+  </data>
+  <data name="plAllowProxyBidding.Text" xml:space="preserve">
+    <value>Enable Proxy Bidding</value>
+  </data>
+  <data name="plAuctionType.Help" xml:space="preserve">
+    <value>Note, the "Auction Type"
+&lt;font color="red"&gt;can't be changed&lt;/font&gt; after updated, please read the "Auction Type" explanation below before select this value.</value>
+  </data>
+  <data name="plAuctionType.Text" xml:space="preserve">
+    <value>Auction Type</value>
+  </data>
+  <data name="plMaxAuctionDays.Help" xml:space="preserve">
+    <value>Enter the maximum days before auction expire. Seller can only enter a lower days than this value for his auction products.</value>
+  </data>
+  <data name="plMaxAuctionDays.Text" xml:space="preserve">
+    <value>Max Auction Days</value>
+  </data>
+  <data name="Tip_Auction.Text" xml:space="preserve">
+    <value>The "Auction Type" &lt;font color="red"&gt;can't be changed&lt;/font&gt; after update, please click the "Auction Type Explanation" tab for more details before select this value.</value>
+  </data>
+  <data name="Tip_AuctionType.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Module supports 4 types of auctions, as follows: &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;1. &lt;font color="Red"&gt;English Auction&lt;/font&gt;, also known as an open ascending price auction. This type of auction is arguably the most common form of auction in use today. 
+Participants bid openly against one another, with each subsequent bid higher than the previous bid. 
+The auction ends when no participant is willing to bid further, at which point the highest bidder pays their bid. 
+Alternatively, if the seller has set a minimum sale price in advance (the 'reserve' price) and the final bid does not reach that price the item remains unsold. 
+Sometimes the auctioneer sets a minimum amount by which the next bid must exceed the current highest bid. &lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The most significant distinguishing factor of this auction type is that the current highest bid is always available to potential bidders. 
+The English auction is commonly used for selling goods, most prominently antiques and artwork, but also secondhand goods and real estate.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;2. &lt;font color="Red"&gt;Sealed first-price auction&lt;/font&gt;, also known as a first-price sealed-bid auction (FPSB). 
+In this type of auction all bidders simultaneously submit sealed bids so that no bidder knows the bid of any other participant. 
+The highest bidder pays the price they submitted. &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;This type of auction is distinct from the English auction, in that bidders can only submit one bid each. 
+Furthermore, as bidders cannot see the bids of other participants they cannot adjust their own bids accordingly. 
+Sealed first-price auctions are commonly used in tendering, particularly for government contracts and auctions for mining leases. &lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;3. &lt;font color="Red"&gt;Vickrey auction&lt;/font&gt;, also known as a sealed-bid second-price auction. 
+This is identical to the sealed first-price auction except that the winning bidder pays the second highest bid rather than their own. 
+This is very similar to the proxy bidding system used by eBay, where the winner pays the second highest bid plus a bidding increment (e.g. 10%).&lt;br/&gt;&lt;br/&gt;
+
+
+
+&amp;nbsp;&amp;nbsp;4. &lt;font color="Red"&gt;Second item auction&lt;/font&gt; is the only one which supports more than 1 quantity of product. In a second item auction, 
+the seller offers more than one identical item for sale, so that there may be more than one winning bidder. 
+Each bidder can bid for all the items or only some of them, and publicly indicates the price that he/she is willing to pay for each item. 
+However, all winning bidders need to pay only the lowest qualifying (successful) bid. If there are more successful bids than items available,
+priority goes to the bidders who submitted their bids first.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;In order to beat a competing bidder, one must bid a higher price per item than that competitor, 
+regardless of the number of items that are being bid for. Here is an example of how this might work:&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The seller auctions 5 identical items.&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Bidder "A" bids for 2 items at $20 each.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Bidder "B" bids for 4 items at $21 each.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Bidder "C" bids for 3 items at $18 each.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The outcome of this auction would be:&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Bidder "B" wins 4 items at $20 each....&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Bidder "A" wins 1 item at $20 each.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The price is $20 because that was the lowest successful bid (hence the second price). &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Since Bidder "A" was only awarded 1 item, and his original bid was for 2 items, he has the right to refuse the purchase of that partial amount. &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;As a winning bidder, you have the right to refuse paying if you are only awarded less than the number of the items you were bidding on..&lt;br/&gt;&lt;br/&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_ProxyBidding.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Check on "Enable Proxy Bidding" option to let module automatic bidding for customer based his desired price. For example, an auction start price is $10, the minimum increment for each bidding is $5, if user "A" is willing to get this product with up to $80, he can enter 80 as his desired price. When another user (e.g. user "B") enter $40 to bid this product, module will automatic create a bidding for user "A" with $45(40+5) to help user "A" win this product. The proxy bidding will stop when the bidding price exceed user disired price, for example, if user "B" enter $79 to bid product again, module will not create a bidding for user "A" because 84(79 + 5) is bigger than 80.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, the proxy bidding mechanism &lt;font color="Red"&gt;can only be used with "English" &lt;/font&gt; auction type.&lt;/p&gt;</value>
+  </data>
+  <data name="divGoogleMap.Text" xml:space="preserve">
+    <value>Location &amp; Google Maps</value>
+  </data>
+  <data name="plBidIncrement.Help" xml:space="preserve">
+    <value>Enter the default minimum increment for each bidding, seller can modify this value according his auction listings.</value>
+  </data>
+  <data name="plBidIncrement.Text" xml:space="preserve">
+    <value>Minimum Bidding Increment</value>
+  </data>
+  <data name="plAllowLocation.Help" xml:space="preserve">
+    <value>Check to enable location</value>
+  </data>
+  <data name="plAllowLocation.Text" xml:space="preserve">
+    <value>Enable Location</value>
+  </data>
+  <data name="Tip_AllowLocation.Text" xml:space="preserve">
+    <value>If checked, listings which belong to this department can specify its location(country, province, city, and town). This is useful when you publish location related listings. For example, when publish ads for restaurant, seller can specify a restaurant location to country = USA, state/province = California, city = Los Angeles, town = Bell.</value>
+  </data>
+  <data name="divFileUpload.Text" xml:space="preserve">
+    <value>Client File Upload</value>
+  </data>
+  <data name="lblUploadExtension.Text" xml:space="preserve">
+    <value>File Extension</value>
+  </data>
+  <data name="lblUploadRequire.Text" xml:space="preserve">
+    <value>Require</value>
+  </data>
+  <data name="lblUploadRuleTitle1.Text" xml:space="preserve">
+    <value>File Title 1</value>
+  </data>
+  <data name="lblUploadRuleTitle10.Text" xml:space="preserve">
+    <value>File Title 10</value>
+  </data>
+  <data name="lblUploadRuleTitle2.Text" xml:space="preserve">
+    <value>File Title 2</value>
+  </data>
+  <data name="lblUploadRuleTitle3.Text" xml:space="preserve">
+    <value>File Title 3</value>
+  </data>
+  <data name="lblUploadRuleTitle4.Text" xml:space="preserve">
+    <value>File Title 4</value>
+  </data>
+  <data name="lblUploadRuleTitle5.Text" xml:space="preserve">
+    <value>File Title 5</value>
+  </data>
+  <data name="lblUploadRuleTitle6.Text" xml:space="preserve">
+    <value>File Title 6</value>
+  </data>
+  <data name="lblUploadRuleTitle7.Text" xml:space="preserve">
+    <value>File Title 7</value>
+  </data>
+  <data name="lblUploadRuleTitle8.Text" xml:space="preserve">
+    <value>File Title 8</value>
+  </data>
+  <data name="lblUploadRuleTitle9.Text" xml:space="preserve">
+    <value>File Title 9</value>
+  </data>
+  <data name="lblUploadSize.Text" xml:space="preserve">
+    <value>Size Limit</value>
+  </data>
+  <data name="li_UploadLimit_Unlimited.Text" xml:space="preserve">
+    <value>Unlimited</value>
+  </data>
+  <data name="plAllowUploadForOrder.Help" xml:space="preserve">
+    <value>Allow client to upload files while ordering products which belong to this department.</value>
+  </data>
+  <data name="plAllowUploadForOrder.Text" xml:space="preserve">
+    <value>Allow Upload For Order</value>
+  </data>
+  <data name="plAllowUploadForTicket.Help" xml:space="preserve">
+    <value>Allow client to upload files while submiting help ticket to products which belong to this department.</value>
+  </data>
+  <data name="plAllowUploadForTicket.Text" xml:space="preserve">
+    <value>Allow Upload For Ticket</value>
+  </data>
+  <data name="plUploadExtension.Help" xml:space="preserve">
+    <value>Enter the file extension which user can upload. For example, enter "zip,jpg,png", then client can only upload winzip files (.zip) and pictures (.jpg .png).</value>
+  </data>
+  <data name="plUploadExtension.Text" xml:space="preserve">
+    <value>File Extension</value>
+  </data>
+  <data name="plUploadLimit.Help" xml:space="preserve">
+    <value>How many files user can upload</value>
+  </data>
+  <data name="plUploadLimit.Text" xml:space="preserve">
+    <value>Upload File Count</value>
+  </data>
+  <data name="plUploadSize.Help" xml:space="preserve">
+    <value>Specify the file size which user can upload</value>
+  </data>
+  <data name="plUploadSize.Text" xml:space="preserve">
+    <value>Upload Limit</value>
+  </data>
+  <data name="Tip_FileUpload.Text" xml:space="preserve">
+    <value>You can allow client to upload files while ordering a product (suppose client wins the auction) which belong to this auction department (or submit help ticket) here. For example, you are auctioning the picture printing service, a client can paid for this service, and upload related pictures to you, then you print them and send back to the cilent.&lt;br/&gt;&lt;br/&gt;
+
+By default, module allows client uploading unlimited files for a order (or for a help ticket), you can limit the total file size and the file extension. For example, if you enter "Upload Limit" as 10, and "File Extension" as "zip,jpg,png", then client can upload up to 10mb files for a order (or for a help ticket), and can only upload winzip files (.zip) and pictures (.jpg .png). Note, the "File Extension" must also exist in DNN Persona Bar "Settings - Security  - More - More Security Settings - Allowable File Extensions". For example, if you enter ".psd" at "File Extennsion" to allow client uploading photoshop files (.psd) here, but if .psd doesn't exist in "Allowable File Extensions", then client still can't upload .psd files.&lt;br/&gt;&lt;br/&gt;
+
+You can also specify the upload file count and extension (size). For example, you can select "Upload File Count" as 2 to allow client uploading 2 files only. And for file 1, enter "File Title" as "Resume", "File Extension" as "doc,docx", "File Size" as "5", then client knows that he needs to upload a MS Word resume (doc, docx), and its size is less than 5mb. For file 2, enter "File Title" as "Personal Photo", "File Extension" as "jpg,png,bmp,jpe,jpeg", "File Size" as "3", then client knows that he needs to upload 1 personal picture.</value>
+  </data>
+  <data name="divFileUpload_Vendor.Text" xml:space="preserve">
+    <value>Seller File Upload</value>
+  </data>
+  <data name="plAllowUploadForOrder_Vendor.Help" xml:space="preserve">
+    <value>Allow Seller Upload files For Order</value>
+  </data>
+  <data name="plAllowUploadForOrder_Vendor.Text" xml:space="preserve">
+    <value>Allow Seller Upload For Order</value>
+  </data>
+  <data name="plAllowUploadForTicket_Vendor.Help" xml:space="preserve">
+    <value>Allow seller upload files For help ticket</value>
+  </data>
+  <data name="plAllowUploadForTicket_Vendor.Text" xml:space="preserve">
+    <value>Allow Seller Upload For Ticket</value>
+  </data>
+  <data name="plUploadSize_Vendor.Help" xml:space="preserve">
+    <value>The total file size which seller can upload for a order (or a help ticket).</value>
+  </data>
+  <data name="plUploadSize_Vendor.Text" xml:space="preserve">
+    <value>Seller Upload Limit</value>
+  </data>
+  <data name="Tip_FileUpload_Vendor.Text" xml:space="preserve">
+    <value>Besides client, you can also allow seller to upload files for order (or help ticket) which belongs to this department here. For example, you are auctioning the picture processing service, a client can paid for this service, and upload related pictures to you, then you modfiy these files and upload back to the cilent.&lt;br/&gt;&lt;br/&gt;
+
+You can limit the total file size which seller can upload for a order (a help ticket). But unlike the client file upload, module allows seller uploading unlimited files for a order (or for a help ticket), and doesn't limit the file extension. Of course, the upload file extension must exist in DNN Persona Bar "Settings - Security  - More - More Security Settings - Allowable File Extensions"</value>
+  </data>
+  <data name="plVendorProfilePage.Help" xml:space="preserve">
+    <value>Choose the Cp_Product_VendorProfile sub module page for this department.</value>
+  </data>
+  <data name="plVendorProfilePage.Text" xml:space="preserve">
+    <value>Cp_Product_VendorProfile Sub Module Page</value>
+  </data>
+  <data name="Tip_VendorProfilePage.Text" xml:space="preserve">
+    <value>Select which page to dispaly vendor profile (and his auctions) which belong to this department when user click vendor item at Cp_Product_Vendor sub module. You should put a Cp_Product_VendorProfile sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_VendorProfile sub module instance on page first time.&lt;br/&gt;&lt;br/&gt;
+If you have a lot of vendors/sellers who have posted auctions on this site, then the Cp_Product_VendorProfile sub module maybe useful. If not, just ignore it (and the Vendor Profile page option).</value>
+  </data>
+</root>

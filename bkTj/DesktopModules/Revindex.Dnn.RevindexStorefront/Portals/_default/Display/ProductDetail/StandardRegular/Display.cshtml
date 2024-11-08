@@ -1,0 +1,1626 @@
+﻿@* Template name: StandardRegular *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ProductDetailWebViewPage<ProductDetailViewModel>
+
+<div class="rvdsf rvdsf-productdetail-container">
+	@if (Model.ProductVariant == null)
+	{
+		<div class="alert alert-info">@Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile)</div>
+	}
+	else
+	{
+		<div class="rvdsf-product-container row">
+			<div class="col-sm-4">
+				<div class="rvdsf-product-gallery-container" style="background-repeat: no-repeat; " onmousemove="this.style.backgroundPositionX = (-event.offsetX * 3) + 'px'; this.style.backgroundPositionY = (-event.offsetY * 3) + 'px';" onmouseover="if ($(this).find('a').data('detailed')) { this.style.backgroundImage = 'url(\'' + $(this).find('a').data('detailed') + '\')'; this.style.backgroundSize = (this.offsetWidth * 3) + 'px auto'; $(this).find('img').css('opacity', 0); }" onmouseout="$(this).find('img').css('opacity', 1); this.style.backgroundImage = ''">
+					@if (Model.ProductVariant.MainDisplayGallery != null)
+					{
+						var detailedGallery = Model.ProductVariant.MainDetailedGalleries.Where(g => g.Family == Model.ProductVariant.MainDisplayGallery.Family && g.MediaType.StartsWith("image/")).FirstOrDefault();
+						<a id="rvdsfProductDetailGalleryDisplay" class="rvdsf-product-gallery-display" href="#" onclick="@(Model.ProductVariant.MainDetailedGalleries.Count > 0 ? " rvdsfProductDetail.showLightbox(this);" : "") return false;" data-family="@Model.ProductVariant.MainDisplayGallery.Family" data-detailed="@(detailedGallery == null ? "" : detailedGallery.MediaUrl)"><img id="rvdsfProductDetailGalleryImage" class="img-responsive img-fluid center-block d-block mx-auto" src="@Model.ProductVariant.MainDisplayGallery.MediaUrl" alt="@Model.ProductVariant.MainDisplayGallery.AlternateText" /></a>
+					}
+				</div>
+				@if (Model.ProductVariant.MainDisplayGalleries.Count > 1)
+				{
+					<div class="rvdsf-product-gallery-tile-container">
+						@foreach (var displayGallery in Model.ProductVariant.MainDisplayGalleries)
+						{
+							var detailedGallery = Model.ProductVariant.MainDetailedGalleries.Where(g => g.Family == displayGallery.Family && g.MediaType.StartsWith("image/")).FirstOrDefault();
+							<a href="#" onclick="$('#rvdsfProductDetailGalleryDisplay').data('family', @displayGallery.Family).data('detailed', '@(detailedGallery == null ? "" : detailedGallery.MediaUrl)').find('img').attr('src', '@displayGallery.MediaUrl'); return false;"><img class="rvdsf-product-gallery-tile" src="@displayGallery.MediaUrl" alt="@displayGallery.AlternateText" /></a>
+						}
+					</div>
+				}
+				<div id="rvdsfDetailedGalleryModal" class="modal fade" tabindex="-1" role="dialog">
+					<div class="modal-dialog modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title"></h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div id="rvdsfDetailedGalleryCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+									<div class="carousel-inner">
+										@for (int i = 0; i < Model.ProductVariant.MainDetailedGalleries.Count; i++)
+										{
+											var detailedGallery = Model.ProductVariant.MainDetailedGalleries[i];
+											<div class="carousel-item item @(i == 0 ? "active" : "")" data-type="@detailedGallery.MediaType.Substring(0, detailedGallery.MediaType.IndexOf("/"))" data-family="@detailedGallery.Family">
+												@if (detailedGallery.MediaType.Contains("video"))
+												{
+													<video preload="metadata" style="width: 100%" controls>
+													  <source src="@detailedGallery.MediaUrl" type="@detailedGallery.MediaType">
+													</video>
+												}
+												else
+												{
+													<img class="d-block w-100 img-responsive" style="width:100%" data-src="@detailedGallery.MediaUrl" alt="@detailedGallery.AlternateText">
+												}
+											</div>
+										}
+									</div>
+									@if (Model.ProductVariant.MainDetailedGalleries.Count > 1)
+									{
+										<a class="left carousel-control carousel-control-prev" href="#rvdsfDetailedGalleryCarousel" role="button" data-slide="prev" style="margin: 100px 0; background-image: none; background-color: transparent;">
+											<span class="glyphicon glyphicon-chevron-left carousel-control-prev-icon" aria-hidden="true"></span>
+											<span class="sr-only">Previous</span>
+										</a>
+										<a class="right carousel-control carousel-control-next" href="#rvdsfDetailedGalleryCarousel" role="button" data-slide="next" style="margin: 100px 0; background-image: none; background-color: transparent;">
+											<span class="glyphicon glyphicon-chevron-right carousel-control-next-icon" aria-hidden="true"></span>
+											<span class="sr-only">Next</span>
+										</a>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				@if (Model.ProductVariant.AllowProductComparison)
+				{
+					<div class="rvdsf-field-compare">
+						<label><input type="checkbox" @(Model.ProductVariant.IsCompared ? "checked" : "") onchange="if (this.checked) rvdsfProductDetail.addProductComparison(); else rvdsfProductDetail.removeProductComparison();" /> <a href="@Model.ProductComparison.TabUrl">@Html.LocalizeString("CompareLink")</a></label>
+					</div>
+				}
+			</div>
+			<div class="col-sm-8">
+				<div class="rvdsf-product-info-container" id="rvdsfProductInfoContainer">
+					@if (Model.Product.ShowPrice && Model.Product.ShowSavings)
+					{
+						<div data-bind="visible: ProductVariant.CombinedSavings() > 0" style="@(Model.ProductVariant.CombinedSavings > 0 ? "" : "display:none")" class="rvdsf-label-savings">@Html.LocalizeString("SavingsLabel")<span> <span data-bind="text: ProductVariant.FormattedCombinedPercentSavings">@Model.ProductVariant.FormattedCombinedPercentSavings</span></span></div>
+					}
+					<div class="rvdsf-field-name">
+						@if (Model.ShowAddToFavorite)
+						{
+							<i class="glyphicon glyphicon-heart fas fa-heart rvdsf-btn-addtofavorite @(Model.Product.IsFavorite ? "active" : "")" onclick="if (this.classList.contains('active')) { rvdsfProductDetail.removeFavorite(); this.classList.remove('active'); } else { rvdsfProductDetail.addFavorite(); this.classList.add('active'); }" title="@Html.LocalizeString("AddToFavoriteLink")"></i>
+						}
+						<span class="rvdsf-label-name">@Model.Product.Name</span>
+					</div>
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainSummary))
+					{
+						<div class="rvdsf-field-summary">
+							@Html.Raw(Model.ProductVariant.MainSummary)
+						</div>
+					}
+					@if (Model.Product.ShowProductReviews)
+					{
+						<div class="rvdsf-field-rating">
+							<input type="hidden" class="rating" readonly value="@(Model.Product.AverageOverallRating == 0 ? "" : Model.Product.AverageOverallRating.ToString(System.Globalization.CultureInfo.InvariantCulture))" />
+							@if (Model.Product.RatingCount > 0)
+							{
+								<span class="badge">@Model.Product.RatingCount</span>
+							}
+						</div>
+					}
+					@if (Model.Product.ShowPrice)
+					{
+						if (String.IsNullOrEmpty(Model.ProductVariant.PriceText) && Model.ProductVariant.SalesType != SalesType.Quote)
+						{
+							<div data-bind="visible: ProductVariant.CombinedPromotionPrice() != null" style="@(Model.ProductVariant.CombinedPromotionPrice.HasValue ? "" : "display:none")" class="rvdsf-field-price">
+								<span class="rvdsf-label-price"><s data-bind="text: ProductVariant.FormattedCombinedPrice">@Model.ProductVariant.FormattedCombinedPrice</s></span>
+								<span data-bind="text: ProductVariant.FormattedCombinedPromotionPrice" class="rvdsf-label-promotionprice">@Model.ProductVariant.FormattedCombinedPromotionPrice</span>
+							</div>
+							<div data-bind="visible: ProductVariant.CombinedPromotionPrice() == null" style="@(Model.ProductVariant.CombinedPromotionPrice.HasValue ? "display:none" : "")" class="rvdsf-field-price">
+								<span data-bind="text: ProductVariant.FormattedCombinedPrice" class="rvdsf-label-price">@Model.ProductVariant.FormattedCombinedPrice</span>
+							</div>
+
+							if (Model.ProductVariant.PriceRanges.Count > 0 && Model.ProductVariant.ProductComponents.Count == 0)
+							{
+								<table class="table">
+									<tr>
+										<th>@Html.LocalizeString("QuantityRangeLabel")</th>
+										<th>@Html.LocalizeString("PriceRangeLabel")</th>
+									</tr>
+									@foreach (var priceRange in Model.ProductVariant.PriceRanges)
+									{
+										<tr>
+											<td>@(priceRange.QuantityBegin)+</td>
+											<td>
+												@if (priceRange.PromotionPrice.HasValue)
+												{
+													<span><s>@priceRange.FormattedPrice</s></span>
+													<span class="rvdsf-label-promotionprice">@priceRange.FormattedPromotionPrice</span>
+												}
+												else
+												{
+													<span>@priceRange.FormattedPrice</span>
+												}
+											</td>
+										</tr>
+									}
+								</table>
+							}
+						}
+						else if (!String.IsNullOrEmpty(Model.ProductVariant.PriceText))
+						{
+							<div class="rvdsf-field-price">
+								<span class="rvdsf-label-pricetext">@Model.ProductVariant.PriceText</span>
+							</div>
+						}
+					}
+					<div class="rvdsf-product-form-container">
+						@if (Model.Product.ShowMSRP && !String.IsNullOrEmpty(Model.ProductVariant.FormattedMSRP))
+						{
+							<div class="rvdsf-field-msrp row">
+								<label class="col-xs-4 col-4 col-sm-3">@Html.LocalizeString("MSRPLabel")</label>
+								<div class="col-xs-8 col-8 col-sm-9">
+									<span class="rvdsf-label-msrp">@Model.ProductVariant.FormattedMSRP</span>
+								</div>
+							</div>
+						}
+						@if (Model.Product.ShowRewardPoints)
+						{
+							<div class="rvdsf-field-rewardspoint row">
+								<label class="col-xs-4 col-4 col-sm-3">@Html.LocalizeString("RewardsPointRewardLabel")</label>
+								<div class="col-xs-8 col-8 col-sm-9">
+									<span data-bind="text: ProductVariant.CombinedRewardsPointsQualified">@Model.ProductVariant.CombinedRewardsPointsQualified</span>
+								</div>
+							</div>
+						}
+						@if (Model.Product.Seller != null)
+						{
+							<div class="rvdsf-field-seller row">
+								<label class="col-xs-4 col-4 col-sm-3">@Html.LocalizeString("SellerLabel")</label>
+								<div class="col-xs-8 col-8 col-sm-9">
+									<a href="@Model.Product.Seller.ProductList.TabUrl" class="rvdsf-label-seller">@Model.Product.Seller.Name</a>
+								</div>
+							</div>
+						}
+						@if (Model.Product.ShowSKU && !String.IsNullOrEmpty(Model.ProductVariant.SKU))
+						{
+							<div class="rvdsf-field-sku row">
+								<label class="col-xs-4 col-4 col-sm-3">@Html.LocalizeString("SKULabel")</label>
+								<div class="col-xs-8 col-8 col-sm-9">
+									<span class="rvdsf-label-sku">@Model.ProductVariant.SKU</span>
+								</div>
+							</div>
+						}
+						@if (Model.Product.ShowInventory && @Model.ProductVariant.Inventory != null)
+						{
+							<div class="rvdsf-field-inventory row">
+								<label class="col-xs-4 col-4 col-sm-3">@Html.LocalizeString("InventoryLabel")</label>
+								<div class="col-xs-8 col-8 col-sm-9">
+									<span class="rvdsf-label-inventory" data-bind="text: ProductVariant.Inventory">@Model.ProductVariant.Inventory</span>
+								</div>
+							</div>
+						}
+						@if (Model.ProductVariant.RequiredProducts.Count > 0)
+						{
+							<div class="rvdsf-requiredproduct-container">
+								<h6>@Html.LocalizeString("RequiredProductLabel")</h6>
+								<table class="table table-striped">
+									@foreach (var requiredProduct in Model.ProductVariant.RequiredProducts)
+									{
+										<tr>
+											<td>
+												<a class="rvdsf-label-name" href="@requiredProduct.ProductVariant.ProductDetail.TabUrl">@requiredProduct.ProductVariant.Product.Name</a>
+												<div class="rvdsf-productvariant-name">@requiredProduct.ProductVariant.Name</div>
+											</td>
+											@if (String.IsNullOrEmpty(requiredProduct.ProductVariant.PriceText) && requiredProduct.ProductVariant.SalesType != SalesType.Quote)
+											{
+												<td class="rvdsf-label-price">@requiredProduct.ProductVariant.FormattedCombinedSellingPrice</td>
+											}
+											else
+											{
+												<td class="rvdsf-label-pricetext">@requiredProduct.ProductVariant.PriceText</td>
+											}
+										</tr>
+									}
+								</table>
+							</div>
+						}
+						@if (Model.Product.ProductVariants.Count > 1)
+						{
+							if (Model.Product.HasVariantGroupAssociation)
+							{
+								<div class="rvdsf-field-groupoptions">
+									@foreach (var productVariantGroup in Model.Product.ProductVariantGroups)
+									{
+										// When the option is selected and the name is blank indicates this is a conditional group that should be hidden from view
+										if (productVariantGroup.ProductVariantGroupOptions.Exists(pvgo => pvgo.Selected && String.IsNullOrEmpty(pvgo.Name)))
+										{
+											continue;
+										}
+										<div class="form-group">
+											<label>
+												@productVariantGroup.Name @if (!string.IsNullOrEmpty(productVariantGroup.HelpText))
+												{<span class="glyphicon glyphicon-info-sign fa fas fa-info-circle" data-toggle="tooltip" title="@productVariantGroup.HelpText"></span>}
+											</label>
+											<div>
+												@if (productVariantGroup.FieldType == ProductVariantGroupFieldType.ColorPicker)
+												{
+													<ul class="rvdsf-form-colorpicker">
+														@foreach (var productVariantGroupOption in productVariantGroup.ProductVariantGroupOptions.Where(pvgo => !String.IsNullOrEmpty(pvgo.Name)))
+														{
+															<li class="@(productVariantGroupOption.Selected ? "rvdsf-form-colorpicker-selected" : "")" title="@productVariantGroupOption.Name" style="background-color: @productVariantGroupOption.ColorCode" onclick="window.location.replace('@productVariantGroupOption.ProductDetail.TabUrl')"><a href="">@productVariantGroupOption.Name</a></li>
+														}
+													</ul>
+												}
+												else if (productVariantGroup.FieldType == ProductVariantGroupFieldType.DropDownList)
+												{
+													<select class="form-control" onchange="window.location.replace(this.value)">
+														@foreach (var productVariantGroupOption in productVariantGroup.ProductVariantGroupOptions.Where(pvgo => !String.IsNullOrEmpty(pvgo.Name)))
+														{
+															<option @(productVariantGroupOption.Selected ? "selected" : "") value="@productVariantGroupOption.ProductDetail.TabUrl">@productVariantGroupOption.Name</option>
+														}
+													</select>
+												}
+												else if (productVariantGroup.FieldType == ProductVariantGroupFieldType.ImageSwatch)
+												{
+													<ul class="rvdsf-form-imageswatch">
+														@foreach (var productVariantGroupOption in productVariantGroup.ProductVariantGroupOptions.Where(pvgo => !String.IsNullOrEmpty(pvgo.Name)))
+														{
+															<li class="@(productVariantGroupOption.Selected ? "rvdsf-form-imageswatch-selected" : "")" title="@productVariantGroupOption.Name" style="background: url('@productVariantGroupOption.ImageUrl') center center no-repeat" onclick="window.location.replace('@productVariantGroupOption.ProductDetail.TabUrl')"><a href="">@productVariantGroupOption.Name</a></li>
+														}
+													</ul>
+												}
+												else if (productVariantGroup.FieldType == ProductVariantGroupFieldType.RadioButtonList)
+												{
+													foreach (var productVariantGroupOption in productVariantGroup.ProductVariantGroupOptions.Where(pvgo => !String.IsNullOrEmpty(pvgo.Name)))
+													{
+														<div class="radio-inline form-check form-check-inline">
+															<input type="radio" class="form-check-input" id="rvdsfProductVariantGroup@(productVariantGroup.ProductVariantGroupID)_@(productVariantGroupOption.ProductVariantGroupOptionID)" name="rvdsfProductVariantGroup@(productVariantGroup.ProductVariantGroupID)" @(productVariantGroupOption.Selected ? "checked" : "") onclick="window.location.replace('@productVariantGroupOption.ProductDetail.TabUrl')">
+															<label class="form-check-label" for="rvdsfProductVariantGroup@(productVariantGroup.ProductVariantGroupID)_@(productVariantGroupOption.ProductVariantGroupOptionID)">@productVariantGroupOption.Name</label>
+														</div>
+													}
+												}
+											</div>
+										</div>
+									}
+								</div>
+							}
+							else
+							{
+								<div class="form-group rvdsf-field-options">
+									<label>@Html.LocalizeString("OptionLabel")</label>
+									<select class="form-control" onchange="window.location.replace(this.value)">
+										@foreach (var productVariant in Model.Product.ProductVariants)
+										{
+											<option value="@productVariant.ProductDetail.TabUrl" @(productVariant == Model.ProductVariant ? "selected" : "")>@productVariant.Name</option>
+										}
+										@* IOS mobile does not wrap for long text unless there is an optgroup element *@
+										@if (Request.UserAgent.ToLower().Contains("safari"))
+										{
+											<optgroup label=""></optgroup>
+										}
+									</select>
+								</div>
+							}
+						}
+						@if (Model.ProductVariant.InventoryUnitType != InventoryUnitType.Constant)
+						{
+							<div class="form-group">
+								<label class="required" for="rvdsfProductDetailBookingStartDateInput">@Html.LocalizeString("BookingStartDateLabel")</label>
+								<input id="rvdsfProductDetailBookingStartDateInput" type="text" style="width: 100%" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" placeholder="@(Model.ProductVariant.InventoryUnitType == InventoryUnitType.Hour ? "YYYY-MM-DD HH:00" : "YYYY-MM-DD")" />
+							</div>
+							<div class="form-group">
+								<label class="required" for="rvdsfProductDetailBookingStopDateInput">@Html.LocalizeString("BookingStopDateLabel")</label>
+								<input id="rvdsfProductDetailBookingStopDateInput" type="text" style="width: 100%" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" placeholder="@(Model.ProductVariant.InventoryUnitType == InventoryUnitType.Hour ? "YYYY-MM-DD HH:00" : "YYYY-MM-DD")" />
+							</div>
+							<script type="text/javascript">
+                                $(function () {
+                                    // Initialize datetimepicker
+                                    var minDate = @Html.Raw(Model.ProductVariant.MinBookingDate.HasValue ? "moment('" + Model.ProductVariant.MinBookingDate.Value.ToString("u") + "').tz('" + Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName) + "').toDate()" : "moment.utc().toDate()")
+                                    var maxDate = @Html.Raw(Model.ProductVariant.MaxBookingDate.HasValue ? "moment('" + Model.ProductVariant.MaxBookingDate.Value.ToString("u") + "').tz('" + Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName) + "').toDate()" : "moment(minDate).add(3, 'years').toDate()")
+                                    var excludeDates = [@foreach (var excludeDate in Model.ProductVariant.ExcludeBookingDates)
+                                    {
+                                        <text>@Html.Raw("moment('" + excludeDate.ToString("u") + "').tz('" + Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName) + "').toDate(),")</text>
+                                    }]
+
+									$("#rvdsfProductDetailBookingStartDateInput").kendoDateTimePicker({
+										culture: "@Dnn.Portal.CultureCode",
+										format: @Html.Raw(Model.ProductVariant.InventoryUnitType == InventoryUnitType.Hour ? "'yyyy-MM-dd HH:00'" : "'yyyy-MM-dd'"),
+										min: minDate,
+										max: maxDate,
+										interval: 60,
+										disableDates: function (date) {
+											if (date && excludeDates.some(function (a) { return a.toDateString() == date.toDateString(); })) {
+												return true;
+											} else {
+												return false;
+											}
+										},
+										open: function(e){
+        									if(e.view === "time"){
+												e.sender.timeView.setOptions({
+													min: new Date(1900, 1, 1, @(Model.ProductVariant.MinBookingTime.HasValue ? Model.ProductVariant.MinBookingTime.Value.Hours.ToString() : "0"), @(Model.ProductVariant.MinBookingTime.HasValue ? Model.ProductVariant.MinBookingTime.Value.Minutes.ToString() : "0"), 0),
+													max: new Date(1900, 1, 1, @(Model.ProductVariant.MaxBookingTime.HasValue ? Model.ProductVariant.MaxBookingTime.Value.Hours.ToString() : "0"), @(Model.ProductVariant.MaxBookingTime.HasValue ? Model.ProductVariant.MaxBookingTime.Value.Minutes.ToString() : "0"), 0)
+												});
+											}
+										},
+										change: function () {
+											// Clear stop value
+											var stopKendoDateTimePicker = $('#rvdsfProductDetailBookingStopDateInput').data('kendoDateTimePicker')
+											stopKendoDateTimePicker.value(null)
+
+											// Set stop date one period larger than start date
+											var minDate = moment(this.value()).add(1, @Html.Raw(Model.ProductVariant.InventoryUnitType == InventoryUnitType.Hour ? "'hours'" : "'days'")).toDate()
+											stopKendoDateTimePicker.min(minDate);
+
+											rvdsfProductDetail.databindViewModel()
+										}
+									})
+
+									$("#rvdsfProductDetailBookingStopDateInput").kendoDateTimePicker({
+										culture: "@Dnn.Portal.CultureCode",
+										format: @Html.Raw(Model.ProductVariant.InventoryUnitType == InventoryUnitType.Hour ? "'yyyy-MM-dd HH:00'" : "'yyyy-MM-dd'"),
+										min: minDate,
+										max: maxDate,
+										interval: 60,
+										disableDates: function (date) {
+											if (date && excludeDates.some(function (a) { return a.toDateString() == date.toDateString(); })) {
+												return true;
+											} else {
+												return false;
+											}
+										},
+										open: function(e){
+        									if(e.view === "time"){
+												e.sender.timeView.setOptions({
+													min: new Date(1900, 1, 1, @(Model.ProductVariant.MinBookingTime.HasValue ? Model.ProductVariant.MinBookingTime.Value.Hours.ToString() : "0"), @(Model.ProductVariant.MinBookingTime.HasValue ? Model.ProductVariant.MinBookingTime.Value.Minutes.ToString() : "0"), 0),
+													max: new Date(1900, 1, 1, @(Model.ProductVariant.MaxBookingTime.HasValue ? Model.ProductVariant.MaxBookingTime.Value.Hours.ToString() : "0"), @(Model.ProductVariant.MaxBookingTime.HasValue ? Model.ProductVariant.MaxBookingTime.Value.Minutes.ToString() : "0"), 0)
+												});
+											}
+										},
+										change: function () { rvdsfProductDetail.databindViewModel() }
+									})
+                                });
+							</script>
+						}
+						@if (Model.ProductVariant.ProductComponents.Count > 0)
+						{
+							foreach (var productComponent in Model.ProductVariant.ProductComponents.Where(pc => pc.ComponentType != ProductComponentType.Implicit).OrderBy(pc => pc.DisplayOrder).ThenBy(pc => pc.Name))
+							{
+								<div class="rvdsf-label-componentname">@productComponent.Name</div>
+								foreach (var productPart in productComponent.ProductParts.OrderBy(pp => pp.DisplayOrder).ThenBy(pp => pp.ProductVariant.Product.Name))
+								{
+									<div class="form-group rvdsf-field-part">
+										<div class="row">
+											<div class="col-xs-1 col-1">
+												@if (productComponent.ComponentType == ProductComponentType.Explicit)
+												{
+													<input type="hidden" name="rvdsfProductDetailProductPart_@(productComponent.ProductComponentID)" value="@productPart.ProductPartID" data-variant="@productPart.ProductVariantID" />
+												}
+												else if (productComponent.ComponentType == ProductComponentType.Multiple)
+												{
+													<input type="checkbox" name="rvdsfProductDetailProductPart_@(productComponent.ProductComponentID)" @(productPart.Selected ? "checked" : "") onclick="rvdsfProductDetail.databindViewModel()" value="@productPart.ProductPartID" data-variant="@productPart.ProductVariantID" />
+												}
+												else if (productComponent.ComponentType == ProductComponentType.Single)
+												{
+													<input type="radio" name="rvdsfProductDetailProductPart_@(productComponent.ProductComponentID)" @(productPart.Selected ? "checked" : "") onclick="rvdsfProductDetail.databindViewModel()" value="@productPart.ProductPartID" data-variant="@productPart.ProductVariantID" />
+												}
+											</div>
+											<div class="col-xs-2 col-2 hidden-xs d-none d-sm-block rvdsf-field-gallery">
+												@if (productPart.ProductVariant.Product.DefaultThumbnailGallery != null)
+												{
+													<img src="@productPart.ProductVariant.Product.DefaultThumbnailGallery.MediaUrl" class="img-responsive img-fluid center-block d-block mx-auto" />
+												}
+											</div>
+											<div class="col-xs-5 col-5 rvdsf-label-name">@productPart.ProductVariant.Product.Name</div>
+											<div class="col-xs-2 col-2 rvdsf-label-price">
+												@if (productPart.ShowPrice)
+												{
+													if (productPart.ProductVariant.Savings > 0)
+													{
+														<div style="@(productPart.ProductVariant.Savings > 0 ? "" : "display:none")" class="rvdsf-label-savings">@Html.LocalizeString("SavingsLabel")<span> <span>@productPart.ProductVariant.FormattedPercentSavings</span></span></div>
+													}
+													<span>@productPart.ProductVariant.FormattedSellingPrice</span>
+												}
+											</div>
+											<div class="col-xs-2 col-2 rvdsf-field-qty text-right">
+												<input id="rvdsfProductPartQuantityInput_@(productPart.ProductPartID)" name="rvdsfProductPartQuantityInput_@(productPart.ProductPartID)" type="number" class="form-control" required step="1" min="@(productPart.MinOrderQuantity.HasValue ? productPart.MinOrderQuantity : Model.ProductVariant.DefaultQuantity)" max="@(productPart.MaxOrderQuantity.HasValue ? productPart.MaxOrderQuantity : 9999 )" value="@productPart.DefaultQuantity" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min; rvdsfProductDetail.databindViewModel()" onkeypress="return event.charCode >= 48 && event.charCode <= 57" style="@(productPart.ShowQuantity ? "" : "visibility:hidden")" />
+											</div>
+										</div>
+									</div>
+								}
+							}
+						}
+						@if (Model.ProductVariant.MainDynamicFormCode.DynamicForm != null)
+						{
+							foreach (var field in Model.ProductVariant.MainDynamicFormCode.DynamicForm.Fields)
+							{
+								<div class="form-group rvdsf-field-dynamic">
+									@if (field is DynamicFormInputFieldModel)
+									{
+										<label class="@(((DynamicFormInputFieldModel)field).Required ? "required" : "")">@Html.Raw(((DynamicFormInputFieldModel)field).Label)</label>
+										if (field is DynamicFormCalendarFieldModel)
+										{
+											var calendarField = (DynamicFormCalendarFieldModel)field;
+											<div>
+												<div id="rvdsfDynamicFormField_@(calendarField.ID)" style="@(String.IsNullOrEmpty(calendarField.InputControlHeight) ? "" : "height: " + calendarField.InputControlHeight); @(String.IsNullOrEmpty(calendarField.InputControlWidth) ? "width: 100%" : "width: " + calendarField.InputControlWidth)"></div>
+												@if (!calendarField.Required) 
+												{
+													<button type="button" class="btn btn-light btn-block" onclick="var calendar = $('#rvdsfDynamicFormField_@(calendarField.ID)').data('kendoCalendar'); calendar.value(null); calendar.trigger('change');"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></button>
+												}
+												<input id="rvdsfDynamicFormField_Input_@(calendarField.ID)" name="@calendarField.ID" type="datetime" @(calendarField.Required ? "required" : "") data-msg="@calendarField.ValidatorText" style="visibility:hidden; width: 0; height: 0" value="@(calendarField.SelectedDates.Count > 0 ? calendarField.SelectedDates[0].ToString("yyyy-MM-dd") : "")" />
+												<script type="text/javascript">
+													$(document).ready(function () {
+														$('#rvdsfDynamicFormField_@(calendarField.ID)').kendoCalendar({
+															culture: "@Dnn.Portal.CultureCode",
+															value: @Html.Raw(calendarField.SelectedDates.Count > 0 ? "new Date('" + calendarField.SelectedDates[0].ToString("yyyy-MM-dd 00:00:00") + "')" : (calendarField.Required ? "new Date()" : "null")),
+															change: function () { $("#rvdsfDynamicFormField_Input_@(calendarField.ID)").val(kendo.toString(this.value(), "yyyy-MM-dd")).focus().blur() }
+														})
+														$('#rvdsfDynamicFormField_@(calendarField.ID)').data('kendoCalendar').trigger('change')
+                                                    })
+												</script>
+											</div>
+										}
+										else if (field is DynamicFormCheckBoxFieldModel)
+										{
+											var checkBoxField = (DynamicFormCheckBoxFieldModel)field;
+											<div>
+												<div class="checkbox form-check">
+													<input class="form-check-input" type="checkbox" id="@(checkBoxField.ID)" name="@(checkBoxField.ID)" value="true" @(checkBoxField.Required ? "required" : "") data-msg="@checkBoxField.ValidatorText" @(checkBoxField.Checked ? "checked" : "") style="@(String.IsNullOrEmpty(checkBoxField.InputControlHeight) ? "" : "height: " + checkBoxField.InputControlHeight); @(String.IsNullOrEmpty(checkBoxField.InputControlWidth) ? "" : "width: " + checkBoxField.InputControlWidth)" onclick="@(checkBoxField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + checkBoxField.CausesValidation.ToString().ToLower() + ")" : (checkBoxField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))" />
+													<label class="form-check-label" for="@(checkBoxField.ID)">
+														<span>@Html.Raw(checkBoxField.Text)</span>
+													</label>
+												</div>
+											</div>
+										}
+										else if (field is DynamicFormCheckBoxListFieldModel)
+										{
+											var checkBoxListField = (DynamicFormCheckBoxListFieldModel)field;
+											<div>
+												@for (int i = 0; i < checkBoxListField.ListItems.Count; i++)
+												{
+													var listItem = checkBoxListField.ListItems[i];
+													<div class="checkbox form-check">
+														<input class="form-check-input" type="checkbox" id="@(checkBoxListField.ID)_@i" name="@(checkBoxListField.ID)" value="@listItem.Value" @(listItem.Selected ? "checked" : "") data-rule-requiredGroup="@(checkBoxListField.Required ? checkBoxListField.ID : "")" data-msg="@checkBoxListField.ValidatorText" style="@(String.IsNullOrEmpty(checkBoxListField.InputControlHeight) ? "" : "height: " + checkBoxListField.InputControlHeight); @(String.IsNullOrEmpty(checkBoxListField.InputControlWidth) ? "" : "width: " + checkBoxListField.InputControlWidth)" onclick="@(checkBoxListField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + checkBoxListField.CausesValidation.ToString().ToLower() + ")" : (checkBoxListField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))" />
+														<label class="form-check-label" for="@(checkBoxListField.ID)_@i">@listItem.Name</label>
+													</div>
+												}
+											</div>
+										}
+										else if (field is DynamicFormDatePickerFieldModel)
+										{
+											var datePickerField = (DynamicFormDatePickerFieldModel)field;
+											<div>
+												<input id="rvdsfDynamicFormField_Input_@(datePickerField.ID)" name="@(datePickerField.ID)" type="datetime" value="@(datePickerField.SelectedDates.Count > 0 ? datePickerField.SelectedDates[0].ToString("yyyy-MM-dd") : "")" @(datePickerField.Required ? "required" : "") data-msg="@(datePickerField.ValidatorText)" placeholder="YYYY-MM-DD" style="@(String.IsNullOrEmpty(datePickerField.InputControlHeight) ? "" : "height: " + datePickerField.InputControlHeight); @(String.IsNullOrEmpty(datePickerField.InputControlWidth) ? "width: 100%" : "width: " + datePickerField.InputControlWidth)" />
+												<script type="text/javascript">
+                                                    $(document).ready(function () {
+														$('#rvdsfDynamicFormField_Input_@(datePickerField.ID)').kendoDatePicker({
+															culture: "@Dnn.Portal.CultureCode",
+															format: "yyyy-MM-dd",
+															@if (datePickerField.AutoPostBack)
+															{
+																<text>change: function () { rvdsfProductDetail.databindViewModel() }</text>
+															}
+                                                        })
+                                                    })
+												</script>
+											</div>
+										}
+										else if (field is DynamicFormDropDownListFieldModel)
+										{
+											var dropDownListField = (DynamicFormDropDownListFieldModel)field;
+											<div>
+												<select class="form-control" name="@(dropDownListField.ID)" @(dropDownListField.Required ? "required" : "") data-msg="@(dropDownListField.ValidatorText)" style="@(String.IsNullOrEmpty(dropDownListField.InputControlHeight) ? "" : "height: " + dropDownListField.InputControlHeight); @(String.IsNullOrEmpty(dropDownListField.InputControlWidth) ? "" : "width: " + dropDownListField.InputControlWidth)" onclick="@(dropDownListField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + dropDownListField.CausesValidation.ToString().ToLower() + ")" : (dropDownListField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))">
+													@foreach (var listItem in dropDownListField.ListItems)
+													{
+														<option value="@listItem.Value" @(listItem.Selected ? "selected" : "")>@listItem.Name</option>
+													}
+												</select>
+											</div>
+										}
+										else if (field is DynamicFormFileUploadFieldModel)
+										{
+											var fileUploadField = (DynamicFormFileUploadFieldModel)field;
+											<div>
+												<label class="btn btn-default btn-light" style="@(String.IsNullOrEmpty(fileUploadField.InputControlHeight) ? "" : "height: " + fileUploadField.InputControlHeight); @(String.IsNullOrEmpty(fileUploadField.InputControlWidth) ? "" : "width: " + fileUploadField.InputControlWidth)">
+													<span class="glyphicon glyphicon-folder-open fa fas fa-folder-open" style="margin-right: 5px"></span> @Html.GetLocalizedString("BrowseLink")
+													<input id="@(fileUploadField.ID)" @(fileUploadField.Required ? "required" : "") data-msg="@fileUploadField.ValidatorText" name="@(fileUploadField.ID)" type="file" style="position:absolute; opacity: 0" accept="@(fileUploadField.FileExtension == null ? "" : fileUploadField.FileExtension.Replace("|", ","))" />
+												</label>
+												<div id="rdvsfFilePreviewContainer_@(fileUploadField.ID)" class="row well" style="display:none; margin-top: 20px">
+													<div class="col-xs-9 col-9">
+														<img class="img-responsive img-fluid m-2" id="rdvsfFilePreviewImage_@(fileUploadField.ID)" /><br />
+														<small id="rdvsfFilePreviewName_@(fileUploadField.ID)"></small>
+													</div>
+													<div class="col-xs-3 col-3">
+														<button class="btn btn-light" onclick="$('#@(fileUploadField.ID)').val(null);  $('#rdvsfFilePreview_@(fileUploadField.ID)').attr('src', null); $('#rdvsfFilePreviewContainer_@(fileUploadField.ID)').hide()"><span class="glyphicon glyphicon-remove fa fas fa-trash"></span></button>
+													</div>
+												</div>
+											</div>
+											<script type="text/javascript">
+                                                $(document).ready(function() {
+                                                    $("#@(fileUploadField.ID)").change(function(){
+                                                        if (this.files && this.files[0]) {
+                                                            $('#rdvsfFilePreviewContainer_@(fileUploadField.ID)').show()
+                                                            $('#rdvsfFilePreviewName_@(fileUploadField.ID)').text(this.files[0].name + " (" + (this.files[0].size/1024).toFixed(0) + " KB)")
+
+                                                            if (this.files[0].type.indexOf("image/") >= 0)
+                                                                $('#rdvsfFilePreviewImage_@(fileUploadField.ID)').show()
+															else
+																$('#rdvsfFilePreviewImage_@(fileUploadField.ID)').hide()
+
+                                                            var reader = new FileReader()
+                                                            reader.onload = function (e) {
+                                                                $('#@(fileUploadField.ID)').data('blob', e.target.result.split(',')[1])
+                                                                $('#rdvsfFilePreviewImage_@(fileUploadField.ID)').attr('src', e.target.result)
+                                                            }
+
+                                                            reader.readAsDataURL(this.files[0])
+                                                        }
+                                                    });
+                                                })
+											</script>
+										}
+										else if (field is DynamicFormListBoxFieldModel)
+										{
+											var listBoxField = (DynamicFormListBoxFieldModel)field;
+											<div>
+												<select class="form-control" id="@(listBoxField.ID)" name="@(listBoxField.ID)" size="6" @(listBoxField.SelectionMode == "Multiple" ? "multiple" : "") @(listBoxField.Required ? "required" : "") data-msg="@(listBoxField.ValidatorText)" style="@(String.IsNullOrEmpty(listBoxField.InputControlHeight) ? "" : "height: " + listBoxField.InputControlHeight); @(String.IsNullOrEmpty(listBoxField.InputControlWidth) ? "" : "width: " + listBoxField.InputControlWidth)" onclick="@(listBoxField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + listBoxField.CausesValidation.ToString().ToLower() + ")" : (listBoxField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))">
+													@foreach (var listItem in listBoxField.ListItems)
+													{
+														<option value="@listItem.Value" @(listItem.Selected ? "selected" : "")>@listItem.Name</option>
+													}
+												</select>
+											</div>
+										}
+										else if (field is DynamicFormRadioButtonListFieldModel)
+										{
+											var radioButtonListField = (DynamicFormRadioButtonListFieldModel)field;
+											<div>
+												@for (int i = 0; i < radioButtonListField.ListItems.Count; i++)
+												{
+													var listItem = radioButtonListField.ListItems[i];
+													<div class="radio form-check">
+														<input class="form-check-input" type="radio" id="@(radioButtonListField.ID)_@i" name="@(radioButtonListField.ID)" value="@listItem.Value" @(listItem.Selected ? "checked" : "") data-rule-requiredGroup="@(radioButtonListField.Required ? radioButtonListField.ID : "")" data-msg="@radioButtonListField.ValidatorText" style="@(String.IsNullOrEmpty(radioButtonListField.InputControlHeight) ? "" : "height: " + radioButtonListField.InputControlHeight); @(String.IsNullOrEmpty(radioButtonListField.InputControlWidth) ? "" : "width: " + radioButtonListField.InputControlWidth)" onclick="@(radioButtonListField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + radioButtonListField.CausesValidation.ToString().ToLower() + ")" : (radioButtonListField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))" />
+														<label class="form-check-label" for="@(radioButtonListField.ID)_@i">@listItem.Name</label>
+													</div>
+												}
+											</div>
+										}
+										else if (field is DynamicFormTextBoxFieldModel)
+										{
+											var textBoxField = (DynamicFormTextBoxFieldModel)field;
+											<div>
+												@if (textBoxField.TextMode == "SingleLine")
+												{
+													<input type="text" class="form-control" name="@(textBoxField.ID)" @(textBoxField.Required ? "required" : "") data-msg="@(textBoxField.ValidatorText)" style="@(String.IsNullOrEmpty(textBoxField.InputControlHeight) ? "" : "height: " + textBoxField.InputControlHeight); @(String.IsNullOrEmpty(textBoxField.InputControlWidth) ? "" : "width: " + textBoxField.InputControlWidth)" value="@textBoxField.Text" onchange="@(textBoxField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + textBoxField.CausesValidation.ToString().ToLower() + ")" : (textBoxField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))" @(textBoxField.DataType == "Date" ? "data-rule-date=true" : "") @(textBoxField.DataType == "Decimal" ? "data-rule-number=true" : "") @(textBoxField.DataType == "Integer" ? "data-rule-digits=true" : "") @(String.IsNullOrEmpty(textBoxField.MinValue) ? "" : "data-rule-min=" + textBoxField.MinValue) @(String.IsNullOrEmpty(textBoxField.MaxValue) ? "" : "data-rule-max=" + textBoxField.MaxValue) @(textBoxField.MaxLength.HasValue ? "maxlength=" + textBoxField.MaxLength : "")>
+												}
+												else
+												{
+													<textarea class="form-control" name="@(textBoxField.ID)" @(textBoxField.Required ? "required" : "") data-msg="@(textBoxField.ValidatorText)" style="@(String.IsNullOrEmpty(textBoxField.InputControlHeight) ? "" : "height: " + textBoxField.InputControlHeight); @(String.IsNullOrEmpty(textBoxField.InputControlWidth) ? "" : "width: " + textBoxField.InputControlWidth)" onchange="@(textBoxField.AutoPostBack ? "rvdsfProductDetail.databindViewModel(" + textBoxField.CausesValidation.ToString().ToLower() + ")" : (textBoxField.CausesValidation ? "rvdsfProductDetail.validate()" : ""))" @(textBoxField.DataType == "Date" ? "data-rule-date=true" : "") @(textBoxField.DataType == "Decimal" ? "data-rule-number=true" : "") @(textBoxField.DataType == "Integer" ? "data-rule-digits=true" : "") @(String.IsNullOrEmpty(textBoxField.MinValue) ? "" : "data-rule-min=" + textBoxField.MinValue) @(String.IsNullOrEmpty(textBoxField.MaxValue) ? "" : "data-rule-max=" + textBoxField.MaxValue) wrap="@(textBoxField.Wrap ? "soft" : "off")" @(textBoxField.MaxLength.HasValue ? "maxlength=" + textBoxField.MaxLength : "")>@textBoxField.Text</textarea>
+												}
+											</div>
+										}
+									}
+									else if (field is DynamicFormHiddenFieldModel)
+									{
+										<input name="@(field.ID)" type="hidden" value="@(((DynamicFormHiddenFieldModel)field).Value)" />
+									}
+									else if (field is DynamicFormLiteralFieldModel)
+									{
+										<text>@Html.Raw(((DynamicFormLiteralFieldModel)field).Text)</text>
+									}
+								</div>
+							}
+						}
+						@if (Model.Product.ShowQuantity && Model.Product.AllowInternetOrder)
+						{
+							<div class="form-group rvdsf-field-qty">
+								<label for="rvdsfProductDetailQuantityInput">@Html.LocalizeString("QuantityLabel")</label>
+								@if (Model.ProductVariant.AllowableOrderQuantityList.Count == 0)
+								{
+									<input id="rvdsfProductDetailQuantityInput" name="rvdsfProductDetailQuantityInput" type="number" class="form-control" required step="1" min="@(Model.ProductVariant.MinOrderQuantity.HasValue ? Model.ProductVariant.MinOrderQuantity : Model.ProductVariant.DefaultQuantity)" max="@(Model.ProductVariant.MaxOrderQuantity.HasValue ? Model.ProductVariant.MaxOrderQuantity : 9999 )" value="@Model.ProductVariant.DefaultQuantity" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+								}
+								else
+								{
+									<select id="rvdsfProductDetailQuantityInput" name="rvdsfProductDetailQuantityInput" class="form-control">
+										@foreach (var qty in Model.ProductVariant.AllowableOrderQuantityList)
+										{
+											<option value="@qty">@qty</option>
+										}
+									</select>
+								}
+							</div>
+						}
+					</div>
+				</div>
+				@if (!Model.ProductVariant.HasAcceptableInventory)
+				{
+					<div class="alert alert-info rvdsf-label-soldout">@Html.LocalizeString("SoldOutLabel")</div>
+				}
+				<div class="btn-toolbar">
+					@if (Model.Product.AllowInternetOrder && Model.ProductVariant.HasAcceptableInventory)
+					{
+						if (Model.Product.ShowAddToCart)
+						{
+							<button type="button" class="rvdsf-btn-addtocart btn btn-primary" onclick="rvdsfProductDetail.addProductToCart()">@(Model.ProductVariant.SalesType == SalesType.Quote ? Html.LocalizeString("AddToQuoteLink") : Html.LocalizeString("AddToCartLink"))</button>
+						}
+
+						if (Model.Product.ShowBuyNow)
+						{
+							<button type="button" class="rvdsf-btn-buynow btn btn-primary" onclick="rvdsfProductDetail.addProductToCart('@Model.Checkout.TabUrl')">@(Model.ProductVariant.SalesType == SalesType.Quote ? Html.LocalizeString("QuoteNowLink") : Html.LocalizeString("BuyNowLink"))</button>
+						}
+					}
+					@if (Model.ShowAddToWishList)
+					{
+						<div class="btn-group">
+							<button class="rvdsf-btn-addtowishlist btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">@Html.LocalizeString("AddToWishListLink") <span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								@foreach (var wishList in Model.WishLists)
+								{
+									<li class="dropdown-item"><a href="#" onclick="rvdsfProductDetail.addWishListDetail(@wishList.WishListID); return false;">@wishList.Name</a></li>
+								}
+								<li class="divider dropdown-divider"></li>
+								<li class="dropdown-item"><a href="#" onclick="rvdsfProductDetail.addWishListDetail(0); return false;">@Html.LocalizeString("NewWishListLabel")</a></li>
+							</ul>
+						</div>
+					}
+					@if (Model.Product.ShowUpdate)
+					{
+						<button type="button" class="rvdsf-btn-update btn btn-default btn-light" onclick="rvdsfProductDetail.databindViewModel()">@Html.LocalizeString("UpdateLink")</button>
+					}
+					@if (Model.ShowViewCart)
+					{
+						<button type="button" class="rvdsf-btn-viewcart btn btn-default btn-light" onclick="location.href='@Model.Cart.TabUrl'">@Html.LocalizeString("ViewCartLink")</button>
+					}
+					@if (Model.ShowContinueShopping)
+					{
+						<button type="button" class="rvdsf-btn-continueshopping btn btn-default btn-light" onclick="location.href='@Model.Shopping.TabUrl'">@Html.LocalizeString("ContinueShoppingLink")</button>
+					}
+				</div>
+				<div id="rvdsfProductDetailMessage" style="display:none"></div>
+				@if (Model.ShowSocialShare)
+				{
+					<ul class="rvdsf-socialshare-list">
+						<li><a class="rvdsf-socialshare-email" href="javascript: void(0)" onclick="window.open('mailto:?&subject=' + escape(document.title) + '&body=' + escape(location.href))"></a></li>
+						<li><a class="rvdsf-socialshare-facebook" href="javascript: void(0)" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + escape(location.href))"></a></li>
+						<li><a class="rvdsf-socialshare-linkedin" href="javascript: void(0)" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=' + escape(location.href))"></a></li>
+						<li><a class="rvdsf-socialshare-twitter" href="javascript: void(0)" onclick="window.open('https://twitter.com/share?text=' + escape(document.title) + '&url=' + escape(location.href))"></a></li>
+					</ul>
+				}
+			</div>
+			<div class="rvdsf-field-description-container col-sm-12">
+				<ul id="rvdsfProductDetailDescriptionTabs" class="nav nav-tabs hidden-xs d-none d-sm-flex">
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainOverview))
+					{
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rvdsfProductDetailDescriptionOverview">@(String.IsNullOrEmpty(Model.ProductVariant.MainOverviewName) ? Html.LocalizeString("OverviewLabel") : Model.ProductVariant.MainOverviewName)</a></li>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainSpecifications) || Model.ProductAttributeDefinitions.Count > 0)
+					{
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rvdsfProductDetailDescriptionSpecifications">@(String.IsNullOrEmpty(Model.ProductVariant.MainSpecificationsName) ? Html.LocalizeString("SpecificationsLabel") : Model.ProductVariant.MainSpecificationsName)</a></li>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainTerms))
+					{
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rvdsfProductDetailDescriptionTerms">@(String.IsNullOrEmpty(Model.ProductVariant.MainTermsName) ? Html.LocalizeString("TermsLabel") : Model.ProductVariant.MainTermsName)</a></li>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainFAQ))
+					{
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rvdsfProductDetailDescriptionFAQ">@(String.IsNullOrEmpty(Model.ProductVariant.MainFAQName) ? Html.LocalizeString("FAQLabel") : Model.ProductVariant.MainFAQName)</a></li>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainBuyingGuide))
+					{
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#rvdsfProductDetailDescriptionBuyingGuide">@(String.IsNullOrEmpty(Model.ProductVariant.MainBuyingGuideName) ? Html.LocalizeString("BuyingGuideLabel") : Model.ProductVariant.MainBuyingGuideName)</a></li>
+					}
+					@if (Model.Product.ShowProductReviews)
+					{
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#rvdsfProductDetailReviews">
+								@Html.LocalizeString("ReviewsLabel")
+								@if (Model.Product.RatingCount > 0)
+								{
+									<span>(@Model.Product.RatingCount)</span>
+								}
+							</a>
+						</li>
+					}
+				</ul>
+				<div id="rvdsfProductDetailDescriptionContent" class="tab-content panel-group">
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainOverview))
+					{
+						<div id="rvdsfProductDetailDescriptionOverview" class="card tab-pane rvdsf-product-description-overview">
+							<div class="card-header panel-heading d-sm-none visible-xs" id="rvdsfProductDetailOverviewHeader">
+								<h6 class="mb-0">
+									<a class="collapsed" data-toggle="collapse" href="#rvdsfProductDetailOverviewPanel" data-parent="#rvdsfProductDetailDescriptionContent">
+										@(String.IsNullOrEmpty(Model.ProductVariant.MainOverviewName) ? Html.LocalizeString("OverviewLabel") : Model.ProductVariant.MainOverviewName)
+										<em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em>
+									</a>
+								</h6>
+							</div>
+							<div id="rvdsfProductDetailOverviewPanel" class="collapse panel-collapse" data-parent="#rvdsfProductDetailDescriptionContent">
+								<div class="card-body panel-body">
+									@Html.Raw(Model.ProductVariant.MainOverview)
+								</div>
+							</div>
+						</div>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainSpecifications) || Model.ProductAttributeDefinitions.Count > 0)
+					{
+						<div id="rvdsfProductDetailDescriptionSpecifications" class="card tab-pane rvdsf-product-description-specifications">
+							<div class="card-header panel-heading d-sm-none visible-xs" id="rvdsfProductDetailSpecificationsHeader">
+								<h6 class="mb-0">
+									<a class="collapsed" data-toggle="collapse" href="#rvdsfProductDetailSpecificationsPanel" data-parent="#rvdsfProductDetailDescriptionContent">
+										@(String.IsNullOrEmpty(Model.ProductVariant.MainSpecificationsName) ? Html.LocalizeString("SpecificationsLabel") : Model.ProductVariant.MainSpecificationsName)
+										<em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em>
+									</a>
+								</h6>
+							</div>
+							<div id="rvdsfProductDetailSpecificationsPanel" class="collapse panel-collapse" data-parent="#rvdsfProductDetailDescriptionContent">
+								<div class="card-body panel-body">
+									@Html.Raw(Model.ProductVariant.MainSpecifications)
+
+									@if (Model.ProductAttributeDefinitions.Count > 0)
+									{
+										<table class="table table-striped rvdsf-productdetail-table">
+											@foreach (var productAttributeGroup in Model.ProductAttributeGroups)
+											{
+												if (productAttributeGroup != null)
+												{
+													<tr class="h4" style="cursor: pointer">
+														<td colspan="2"><span class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down"></span> @productAttributeGroup.Name</td>
+													</tr>
+												}
+												foreach (var productAttributeDefinition in Model.ProductAttributeDefinitions.Where(pad => pad.ProductAttributeGroup == productAttributeGroup))
+												{
+													<tr>
+														<td>@productAttributeDefinition.Name</td>
+														<td>
+															@if (Model.ProductVariant.MainProductAttributes.Where(pa => pa.ProductAttributeDefinitionID == productAttributeDefinition.ProductAttributeDefinitionID).FirstOrDefault() != null)
+															{
+																var productAttribute = Model.ProductVariant.MainProductAttributes.Where(pa => pa.ProductAttributeDefinitionID == productAttributeDefinition.ProductAttributeDefinitionID).FirstOrDefault();
+																if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Boolean && productAttribute.BooleanValue.HasValue)
+																{
+																	if (productAttribute.BooleanValue == true)
+																	{
+																		<span class="glyphicon glyphicon-ok fa fas fa-check"></span>
+																	}
+																	else
+																	{
+																		<span class="glyphicon glyphicon-remove fa fas fa-times"></span>
+																	}
+																}
+																else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Decimal && productAttribute.DecimalValue.HasValue)
+																{
+																	<text>@productAttribute.DecimalValue.Value.ToString("#.##")</text>
+																}
+																else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Integer && productAttribute.IntegerValue.HasValue)
+																{
+																	<text>@productAttribute.IntegerValue.Value.ToString()</text>
+																}
+																else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Selection)
+																{
+																	<span>@String.Join(", ", productAttribute.SelectionValue.Select(sel => sel.Text).ToArray())</span>
+																}
+																else
+																{
+																	<text>@Html.Raw(productAttribute.StringValue)</text>
+																}
+															}
+														</td>
+													</tr>
+												}
+											}
+										</table>
+									}
+								</div>
+							</div>
+						</div>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainTerms))
+					{
+						<div id="rvdsfProductDetailDescriptionTerms" class="card tab-pane rvdsf-product-description-terms">
+							<div class="card-header panel-heading d-sm-none visible-xs" id="rvdsfProductDetailTermsHeader">
+								<h6 class="mb-0">
+									<a class="collapsed" data-toggle="collapse" href="#rvdsfProductDetailTermsPanel" data-parent="#rvdsfProductDetailDescriptionContent">
+										@(String.IsNullOrEmpty(Model.ProductVariant.MainTermsName) ? Html.LocalizeString("TermsLabel") : Model.ProductVariant.MainTermsName)
+										<em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em>
+									</a>
+								</h6>
+							</div>
+							<div id="rvdsfProductDetailTermsPanel" class="collapse panel-collapse" data-parent="#rvdsfProductDetailDescriptionContent">
+								<div class="card-body panel-body">
+									@Html.Raw(Model.ProductVariant.MainTerms)
+								</div>
+							</div>
+						</div>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainFAQ))
+					{
+						<div id="rvdsfProductDetailDescriptionFAQ" class="card tab-pane rvdsf-product-description-faq">
+							<div class="card-header panel-heading d-sm-none visible-xs" id="rvdsfProductDetailFAQHeader">
+								<h6 class="mb-0">
+									<a class="collapsed" data-toggle="collapse" href="#rvdsfProductDetailFAQPanel" data-parent="#rvdsfProductDetailDescriptionContent">
+										@(String.IsNullOrEmpty(Model.ProductVariant.MainFAQName) ? Html.LocalizeString("FAQLabel") : Model.ProductVariant.MainFAQName)
+										<em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em>
+									</a>
+								</h6>
+							</div>
+							<div id="rvdsfProductDetailFAQPanel" class="collapse panel-collapse" data-parent="#rvdsfProductDetailDescriptionContent">
+								<div class="card-body panel-body">
+									@Html.Raw(Model.ProductVariant.MainFAQ)
+								</div>
+							</div>
+						</div>
+					}
+					@if (!String.IsNullOrEmpty(Model.ProductVariant.MainBuyingGuide))
+					{
+						<div id="rvdsfProductDetailDescriptionBuyingGuide" class="card tab-pane rvdsf-product-description-buyingguide">
+							<div class="card-header panel-heading d-sm-none visible-xs" id="rvdsfProductDetailBuyingGuideHeader">
+								<h6 class="mb-0">
+									<a class="collapsed" data-toggle="collapse" href="#rvdsfProductDetailBuyingGuidePanel" data-parent="#rvdsfProductDetailDescriptionContent">
+										@(String.IsNullOrEmpty(Model.ProductVariant.MainBuyingGuideName) ? Html.LocalizeString("BuyingGuideLabel") : Model.ProductVariant.MainBuyingGuideName)
+										<em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em>
+									</a>
+								</h6>
+							</div>
+							<div id="rvdsfProductDetailBuyingGuidePanel" class="collapse panel-collapse" data-parent="#rvdsfProductDetailDescriptionContent">
+								<div class="card-body panel-body">
+									@Html.Raw(Model.ProductVariant.MainBuyingGuide)
+								</div>
+							</div>
+						</div>
+					}
+					@if (Model.Product.ShowProductReviews)
+					{
+						<div id="rvdsfProductDetailReviews" class="card tab-pane rvdsf-productdetail-reviews">
+							<div class="card-header panel-heading d-sm-none visible-xs" id="rvdsfProductDetailReviewsHeader">
+								<h6 class="mb-0">
+									<a class="collapsed" data-toggle="collapse" href="#rvdsfProductDetailReviewsPanel" data-parent="#rvdsfProductDetailDescriptionContent">
+										@Html.LocalizeString("ReviewsLabel")
+										<em class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down pull-right float-right"></em>
+									</a>
+								</h6>
+							</div>
+							<div id="rvdsfProductDetailReviewsPanel" class="collapse panel-collapse" data-parent="#rvdsfProductDetailDescriptionContent">
+								<div class="card-body panel-body">
+									@if (Model.Product.AllowProductReview)
+									{
+										<div id="rvdsfProductReviewContainer" class="rvdsf-product-review-container">
+											<div data-bind="visible: Pager.TotalItems() == 0" class="alert alert-info">@Html.LocalizeString("AddProductReviewEmptyLabel")</div>
+											<button type="button" class="btn btn-primary" data-bind="visible: showAddReviewButton, click: addReviewClick">@Html.LocalizeString("AddProductReviewAddLink")</button>
+											<div data-bind="visible: showAddReviewPanel" class="form well">
+												<h6>@Html.LocalizeString("AddProductReviewLabel")</h6>
+												<div class="row">
+													<div class="col-sm-6">
+														<div class="form-group rvdsf-field-rating">
+															<label>@Html.LocalizeString("AddProductReviewRateLabel")</label>
+															<div class="form-control">
+																<input id="rvdsfProductReviewRate" type="hidden" class="rating" value="5" />
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="required">@Html.LocalizeString("AddProductReviewTitleLabel")</label>
+															<input id="rvdsfProductReviewTitle" name="rvdsfProductReviewTitle" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" data-bind="value: newReviewTitle" />
+														</div>
+														<div class="form-group">
+															<label>@Html.LocalizeString("AddProductReviewCommentLabel")</label>
+															<textarea id="rvdsfProductReviewComment" name="rvdsfProductReviewComment" class="form-control rvdsf-input-comment" data-bind="value: newReviewComment"></textarea>
+														</div>
+													</div>
+													<!-- ko if: User.UserID() <= 0 -->
+													<div class="col-sm-6">
+														<div class="form-group">
+															<label class="required">@Html.LocalizeString("AddProductReviewNameLabel")</label>
+															<input id="rvdsfProductReviewName" name="rvdsfProductReviewName" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" data-bind="value: newReviewName" />
+														</div>
+														<div class="form-group">
+															<label class="required">@Html.LocalizeString("AddProductReviewEmailLabel")</label>
+															<input id="rvdsfProductReviewEmail" name="rvdsfProductReviewEmail" class="form-control" type="email" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" data-bind="value: newReviewEmail" />
+														</div>
+														<div class="form-group">
+															<label class="required">@Html.LocalizeString("AddProductReviewCaptchaLabel")</label>
+															<div class="rvdsf-input-captcha">
+																<img id="rvdsfProductReviewCaptchImage" class="img-responsive img-fluid" src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/CaptchaHandler.ashx" />
+																<button type="button" class="btn btn-default btn-light" onclick="$('#rvdsfProductReviewCaptchImage').attr('src', '@Url.Content("~/DesktopModules/Revindex.Dnn.RevindexStorefront/CaptchaHandler.ashx")?date=' + new Date().getTime())"><span class="glyphicon glyphicon-refresh fa fas fa-sync"></span></button>
+															</div>
+															<input id="rvdsfProductReviewCaptchaText" name="rvdsfProductReviewCaptchaText" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+														</div>
+													</div>
+													<!-- /ko -->
+													<div class="col-sm-12">
+														<button class="btn btn-primary rvdsf-btn-addreview" type="button" data-bind="click: addProductReview">@Html.LocalizeString("AddProductReviewSubmitLink")</button>
+														<div class="alert alert-danger" data-bind="visible: addReviewError, text: addReviewError"></div>
+													</div>
+												</div>
+											</div>
+											<div data-bind="visible: showReviewAddedPanel" class="alert alert-info">@Html.LocalizeString(Global.LocalizedStrings.Message_ProductReviewAdded, Global.FilePaths.LocalSharedResourceFile)</div>
+											<div class="rvdsf-product-review-list" data-bind="foreach: { data: PagedProductReviews, afterRender: productReviewsAfterRender }">
+												<div class="rvdsf-product-review-item row">
+													<div class="col-sm-3">
+														<span class="rvdsf-field-rating">
+															<input type="hidden" class="rating-latebind k-hidden" readonly data-bind="value: $data.OverallRating" />
+														</span>
+														<div class="rvdsf-field-date" data-bind="text: new Date($data.CreateDate()).toLocaleDateString()"></div>
+														<div class="rvdsf-field-name" data-bind="text: ($data.UserID() ? $data.User.DisplayName() : $data.DisplayName())"></div>
+													</div>
+													<div class="col-sm-9">
+														<blockquote>
+															<h6 class="rvdsf-field-title" data-bind="text: $data.Title"></h6>
+															<div class="rvdsf-field-comment" data-bind="text: $data.Comment"></div>
+														</blockquote>
+													</div>
+												</div>
+											</div>
+											<div class="col-xs-12 col-12 text-center"><button type="button" data-bind="visible: showLoadMoreReviews, click: loadMoreReviews" class="btn btn-default btn-light btn-lg rvdsf-btn-loadmore">@Html.LocalizeString("LoadMoreLink")</button></div>
+										</div>
+									}
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+		@* Uses KnockoutJS. See http://knockoutjs.com *@
+		DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+		DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+
+		@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+		<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+		
+		@* Uses Moment library. See https://momentjs.com/ *@
+		<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment/min/moment-with-locales.min.js" defer></script>
+		<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment-timezone/moment-timezone-with-data.min.js" defer></script>
+
+		@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+		<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+		<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.userevents.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.selectable.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.calendar.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.popup.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.datepicker.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.timepicker.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.datetimepicker.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+		<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+		@* Uses JSON-cycle to resolve references *@
+		<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+		<script type="text/javascript">
+        var rvdsfProductDetail = rvdsfProductDetail || {}
+
+        // Handle anti-forgery error when user is logged out
+        $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+        	if (jqxhr.status == 401)
+        		window.location.reload(true)
+        })
+
+        rvdsfProductDetail.validate = function () {
+            var $inputs = $('#Form .rvdsf-product-form-container input, #Form .rvdsf-product-form-container textarea, #Form .rvdsf-product-form-container select')
+            if ($inputs.length == 0)
+                return true;
+            else
+                return $inputs.valid()
+        }
+
+        rvdsfProductDetail.addProductToCart = function (redirect) {
+
+            if (rvdsfProductDetail.validate()) {
+
+                // Custom fields
+                var dynamicFormResultXmlDoc = $.parseXML("<fields />")
+                var $dynamicFormResultFields = $(dynamicFormResultXmlDoc).find("fields")
+
+                $(".rvdsf-field-dynamic input[type='hidden'], .rvdsf-field-dynamic input[type='text']:not(input[data-role='datepicker']), .rvdsf-field-dynamic textarea").each(function(index) {
+                    var value = $(this).val() == null ? "" : $(this).val()
+
+                    $dynamicFormResultField = $("<field />").attr("id", $(this).attr("name")).text(value)
+                    $dynamicFormResultFields.append($dynamicFormResultField)
+                })
+
+                $(".rvdsf-field-dynamic input[data-role='datepicker'], .rvdsf-field-dynamic input[type='datetime'], .rvdsf-field-dynamic input[type='radio']:checked, .rvdsf-field-dynamic select").each(function(index) {
+
+                    $dynamicFormResultField = $("<field />").attr("id", $(this).attr("name"))
+                    if ($(this).val()) {
+                        if (typeof($(this).val()) == "string")
+                            $dynamicFormResultField.append($("<selected />").text($(this).val()))
+                        else {
+                            for (var i = 0; i < $(this).val().length; i++)
+                                $dynamicFormResultField.append($("<selected />").text($(this).val()[i]))
+                        }
+                    }
+
+                    $dynamicFormResultFields.append($dynamicFormResultField)
+                })
+
+                var checkBoxes = []
+                $(".rvdsf-field-dynamic input[type='checkbox']").each(function (index) {
+                	if (!checkBoxes[$(this).attr("name")])
+                		checkBoxes[$(this).attr("name")] = []
+
+                	if ($(this).is(':checked'))
+                		checkBoxes[$(this).attr("name")].push($(this).val())
+                })
+
+                Object.keys(checkBoxes).map(function (key) {
+                	$dynamicFormResultField = $("<field />").attr("id", key)
+                	checkBoxes[key].map(function (item) {
+                		$dynamicFormResultField.append($("<selected />").text(item))
+                	})
+
+                	$dynamicFormResultFields.append($dynamicFormResultField)
+                })
+
+                $(".rvdsf-field-dynamic input[type='file']").each(function(index) {
+
+                    $dynamicFormResultField = $("<field />").attr("id", $(this).attr("name"))
+                    if (this.files && this.files[0]) {
+
+                        // We need to use $.parseXML to create case-sensitive XML elements
+                        var $postedFile = $($.parseXML("<postedFile />").documentElement)
+                        $postedFile.append($($.parseXML("<fileName />").documentElement).text(this.files[0].name))
+                        $postedFile.append($($.parseXML("<contentLength />").documentElement).text(this.files[0].size))
+                        $postedFile.append($($.parseXML("<contentType />").documentElement).text(this.files[0].type))
+                        $postedFile.append($("<data />").text($(this).data("blob")))
+                        $dynamicFormResultField.append($postedFile)
+                    }
+                    $dynamicFormResultFields.append($dynamicFormResultField)
+                })
+
+                // Quantity
+                var quantity = $('#rvdsfProductDetailQuantityInput').length ? $('#rvdsfProductDetailQuantityInput').val() : @Model.ProductVariant.DefaultQuantity
+					
+                var salesOrderDetailData = {
+                    ProductVariantID: @Model.ProductVariant.ProductVariantID,
+                    Quantity: quantity,
+                    BookingStartDate: $('#rvdsfProductDetailBookingStartDateInput').length ? moment.tz($('#rvdsfProductDetailBookingStartDateInput').val(), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss") : "",
+                    BookingStopDate: $('#rvdsfProductDetailBookingStopDateInput').length ? moment.tz($('#rvdsfProductDetailBookingStopDateInput').val(), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss") : "",
+                    DynamicFormResult: $dynamicFormResultFields.children().length ? $('<div />').append($dynamicFormResultFields).html() : null
+                }
+
+                // BUG: Replace lowercase XML names that get generated by IE11 only.
+                if (salesOrderDetailData.DynamicFormResult)
+                    salesOrderDetailData.DynamicFormResult = salesOrderDetailData.DynamicFormResult.replace(/postedfile>/g, 'postedFile>').replace(/contentlength>/g, 'contentLength>').replace(/contenttype>/g, 'contentType>').replace(/filename>/g, 'fileName>')
+
+                var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID)
+
+                $.ajax({
+                    type: "POST",
+                    beforeSend: servicesFramework.setModuleHeaders,
+                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                    data: salesOrderDetailData
+                })
+                .done(function (data, textStatus, jqXHR) {
+
+                    // Add selected bundled products
+                    var deferreds = []
+                    $(".rvdsf-field-part input[type='hidden'], .rvdsf-field-part input[type='checkbox']:checked, .rvdsf-field-part input[type='radio']:checked").each(function(index) {
+
+                        salesOrderDetailData = {
+                            ProductPartID: $(this).val(),
+                            ProductVariantID: $(this).data("variant"),
+                            Quantity: $("#rvdsfProductPartQuantityInput_" + $(this).val()).val() * quantity,
+                            ParentSalesOrderDetailID: data.SalesOrderDetailID,
+                        }
+
+                        deferreds.push(
+                        $.ajax({
+                            type: "POST",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                            data: salesOrderDetailData
+                        })
+                        )
+                    })
+
+                    $.when.apply($, deferreds).done(function() {
+                        // Notify all Cart Summary modules to rebind
+                        $(".rvdsf-cartsummary-container").each(function () {
+                            this.databind()
+                        })
+
+                        $("#rvdsfProductDetailMessage").attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToCart, Global.FilePaths.LocalSharedResourceFile)) <a class='btn btn-link' href='@Model.Cart.TabUrl'>@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("CartLink"))</a>").show().fadeOut(10000)
+
+                        if (redirect)
+                            location.href = redirect
+                    })
+                    .fail(function() {
+                        $("#rvdsfProductDetailMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))").show().fadeOut(10000)
+                    });
+                })
+					.fail(function (data, textStatus, errorThrown) {
+						$("#rvdsfProductDetailMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+                })
+            }
+        }
+
+        rvdsfProductDetail.databindViewModel = function (validate) {
+
+            if (validate)
+                rvdsfProductDetail.validate()
+
+            // Booking data
+            var bookingStartDate = $('#rvdsfProductDetailBookingStartDateInput').length ? moment.tz($('#rvdsfProductDetailBookingStartDateInput').val(), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss") : ""
+            var bookingStopDate = $('#rvdsfProductDetailBookingStopDateInput').length ? moment.tz($('#rvdsfProductDetailBookingStopDateInput').val(), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss") : ""
+
+            // Bundled products
+            var productPartIDQuery = "&productpartid="
+            var productPartSelectionQuery = "&productpartselection="
+            var productPartQuantityQuery = "&productpartquantity="
+            $(".rvdsf-field-part input[type='hidden'], .rvdsf-field-part input[type='checkbox'], .rvdsf-field-part input[type='radio']").each(function(index) {
+
+                productPartIDQuery += $(this).val() + "|"
+
+                if ($(this).attr("type") == "checkbox" || $(this).attr("type") == "radio")
+                    productPartSelectionQuery += ($(this).is(':checked') ? "1" : "0") + "|"
+                else
+                    productPartSelectionQuery += "1" + "|"
+
+                productPartQuantityQuery += $("#rvdsfProductPartQuantityInput_" + $(this).val()).val() + "|"
+            })
+
+            // Custom fields
+            var dynamicFormResultQuery = "&dynamicformresult="
+            $(".rvdsf-field-dynamic input[type='hidden'], .rvdsf-field-dynamic input[type='datetime'], .rvdsf-field-dynamic input[type='text'], .rvdsf-field-dynamic textarea, .rvdsf-field-dynamic input[type='checkbox']:checked, .rvdsf-field-dynamic input[type='radio']:checked, .rvdsf-field-dynamic select").each(function(index) {
+
+                var value = $(this).val() == null ? "" : $(this).val()
+                dynamicFormResultQuery += encodeURIComponent(encodeURIComponent($(this).attr("name")) + "=" + encodeURIComponent(value) + "&")
+            })
+
+            // Quantity
+            var quantity = $('#rvdsfProductDetailQuantityInput').length ? $('#rvdsfProductDetailQuantityInput').val() : @Model.ProductVariant.DefaultQuantity
+
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID)
+
+            $.ajax({
+                type: "GET",
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductDetail/ViewModel?productid=@(Model.Product.ProductID)&productvariantid=@(Model.ProductVariant.ProductVariantID)&quantity=" + quantity + "&bookingstartdate=" + bookingStartDate + "&bookingstopdate=" + bookingStopDate + productPartIDQuery + productPartSelectionQuery + productPartQuantityQuery + dynamicFormResultQuery,
+            })
+            .done(function (data, textStatus, jqXHR) {
+
+                // Bind KnockoutJS product review view model
+                var productInfoContainer = document.getElementById("rvdsfProductInfoContainer")
+                if (productInfoContainer != null)
+                {
+                    if (productInfoContainer.viewModel) {
+                        ko.mapping.fromJS(data, productInfoContainer.viewModel)
+                    }
+                    else {
+                        // We need to set the key for the observable array
+                        // otherwise the mapping will replace array entries instead of updating
+                        // causing views not to update correctly
+                        // http://knockoutjs.com/documentation/plugins-mapping.html
+                        var mapping = {
+                            'ProductVariants': {
+                                key: function(data) {
+                                    return ko.utils.unwrapObservable(data.ProductVariantID);
+                                }
+                            }
+                        }
+                        productInfoContainer.viewModel = ko.mapping.fromJS(data, mapping)
+                        ko.applyBindings(productInfoContainer.viewModel, productInfoContainer)
+                    }
+                }
+            })
+            .fail(function (data, textStatus, errorThrown) {
+                $("#rvdsfProductDetailMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))").show()
+            })
+        }
+
+		rvdsfProductDetail.addFavorite = function () {
+
+            if (@Dnn.User.UserID <= 0)
+                location.href = "@(Model.Login.TabUrl)?returnurl=" + escape(window.location.href)
+            else
+            {
+                var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+                var favoriteData = {
+                    ProductID: @Model.Product.ProductID,
+                }
+
+                $.ajax({
+                    type: "POST",
+                    beforeSend: servicesFramework.setModuleHeaders,
+                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Favorite/Product",
+                    data: favoriteData
+                })
+            }
+        }
+
+        rvdsfProductDetail.addProductComparison = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+            var productVariantData = {
+                ProductVariantID: @Model.ProductVariant.ProductVariantID
+            }
+
+            $.ajax({
+                type: "POST",
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductComparison/ProductVariant",
+                data: productVariantData
+            })
+            .done(function (data, textStatus, jqXHR) {
+
+            })
+        }
+
+		rvdsfProductDetail.addWishListDetail = function (wishListID) {
+
+            if (@Dnn.User.UserID <= 0)
+                location.href = "@(Model.Login.TabUrl)?returnurl=" + escape(window.location.href)
+            else
+            {
+                var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+                var wishListDetailData = {
+                    ProductVariantID: @Model.ProductVariant.ProductVariantID,
+                    DesiredQuantity: $('#rvdsfProductDetailQuantityInput').length ? $('#rvdsfProductDetailQuantityInput').val() : @Model.ProductVariant.DefaultQuantity,
+                    WishListID: wishListID
+                }
+
+                $.ajax({
+                    type: "POST",
+                    beforeSend: servicesFramework.setModuleHeaders,
+                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "WishListDetail/WishListDetail",
+                    data: wishListDetailData
+                })
+                .done(function (data, textStatus, jqXHR) {
+                    $("#rvdsfProductDetailMessage").attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToWishList, Global.FilePaths.LocalSharedResourceFile)) <a class='btn btn-link' href='@Model.ManageWishList.TabUrl'>@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("ManageWishListLink"))</a>").show()
+                })
+                .fail(function (data, textStatus, errorThrown) {
+                    $("#rvdsfProductDetailMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_UnknownErrorOccured, Global.FilePaths.LocalSharedResourceFile))")).show()
+                })
+            }
+        }
+
+		rvdsfProductDetail.removeFavorite = function () {
+
+            if (@Dnn.User.UserID <= 0)
+                location.href = "@(Model.Login.TabUrl)?returnurl=" + escape(window.location.href)
+            else
+            {
+                var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+                var favoriteData = {
+                    ProductID: @Model.Product.ProductID,
+                }
+
+                $.ajax({
+                    type: "DELETE",
+                    beforeSend: servicesFramework.setModuleHeaders,
+                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Favorite/Product",
+                    data: favoriteData
+                })
+            }
+        }
+
+        rvdsfProductDetail.removeProductComparison = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+            $.ajax({
+                type: "DELETE",
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductComparison/ProductVariant?productVariantID=@(Model.ProductVariant.ProductVariantID)"
+            })
+        }
+
+		rvdsfProductDetail.showLightbox = function (obj) {
+			// Lazy load images before modal is shown
+			$("#rvdsfDetailedGalleryModal .carousel-item img").each(function() {
+				$(this).attr("src", $(this).data("src"))
+			})
+
+			$("#rvdsfDetailedGalleryModal").appendTo("body").modal()
+			if ($('#rvdsfDetailedGalleryModal').draggable) {
+				$('#rvdsfDetailedGalleryModal').draggable({
+					handle: ".modal-header"
+				})
+			}
+
+			// Find matching gallery family to show
+			var carouselIndex = 0
+			var family = $(obj).data('family')
+			$("#rvdsfDetailedGalleryModal .carousel-item").each(function(index) {
+				if ($(this).data("family") == family)
+					carouselIndex = index
+			})
+
+			$('#rvdsfDetailedGalleryModal .carousel').carousel(carouselIndex)
+
+			// Make carousel swipe on touch
+			$('#rvdsfDetailedGalleryModal .carousel').on('touchstart', function(event){
+				const xClick = event.originalEvent.touches[0].pageX;
+				$(this).one('touchmove', function(event){
+					const xMove = event.originalEvent.touches[0].pageX;
+					const sensitivityInPx = 5;
+
+					if( Math.floor(xClick - xMove) > sensitivityInPx ){
+						$(this).carousel('next');
+					}
+					else if( Math.floor(xClick - xMove) < -sensitivityInPx ){
+						$(this).carousel('prev');
+					}
+				});
+				$(this).on('touchend', function() {
+					$(this).off('touchmove');
+				});
+			});
+        }
+
+        $(document).ready(function () {
+
+            // Initialize progress loading
+            $(document).ajaxStart(function(){
+                // Only show loading if it exceeds 1 sec
+                $("#rvdsfLoading").data("timer",setTimeout(function() { $("#rvdsfLoading").show(); }, 1000))
+            }).ajaxStop(function(){
+                if ($("#rvdsfLoading").data("timer"))
+                    clearTimeout($("#rvdsfLoading").data("timer"))
+
+                $("#rvdsfLoading").hide();
+            })
+
+            // Initialize jQuery Validation with Bootstrap default styles
+            $('#Form').validate({
+                highlight: function(element) {
+					$(element).closest('.form-group').addClass('has-error');
+					$(element).addClass('is-invalid');
+                },
+                unhighlight: function(element) {
+					$(element).closest('.form-group').removeClass('has-error');
+					$(element).removeClass('is-invalid');
+                },
+                errorElement: 'div',
+                errorClass: 'help-block invalid-feedback',
+                errorPlacement: function(error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else if(element.prop('type') === 'checkbox') {
+                        error.appendTo(element.parent().parent());
+                    } else if(element.prop('type') === 'radio') {
+                        error.appendTo(element.parent().parent());
+                    } else {
+                        error.insertAfter(element);
+					}
+				},
+				onsubmit: false
+            })
+
+            // Add custom method to validate at least one checkbox in group is selected
+            $.validator.addMethod("requiredGroup", function(value, element, params) {
+                if (params)
+                    return ($("input[name='" + params + "']:checked").length > 0)
+                else
+                    return true
+            }, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+            // Change module title
+            var moduleTitle = "@(Model.Product == null ? "" : Model.Product.Name)";
+
+            if (moduleTitle)
+				$("#dnn_ctr@(Dnn.Module.ModuleID)_dnnTITLE_titleLabel").html(moduleTitle)
+
+			$('#rvdsfProductReviewRate').not('.k-hidden').kendoRating({ label: false })
+			$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+
+            // Set first description tab active
+			$(".rvdsf-field-description-container .nav-tabs li:first-child a").tab("show")
+			$(".rvdsf-field-description-container div.collapse").first().collapse("show")
+
+            // Make table groups collapsible
+            $('.rvdsf-productdetail-table tr.h4').click(function () {
+                $(this).nextUntil('tr.h4').slideToggle(100)
+                $(this).find("span.glyphicon").toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down')
+            })
+
+            // Bind KnockoutJS product review view model
+            var productReviewContainer = document.getElementById("rvdsfProductReviewContainer")
+            if (productReviewContainer != null)
+            {
+                productReviewContainer.databind = function () {
+                    var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+                    $.ajax({
+                        beforeSend: servicesFramework.setModuleHeaders,
+                        url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductReview/ViewModel?pageNumber=1&pageSize=10&productID=" + @Model.Product.ProductID
+                        })
+                    .done(function (data, status) {
+                        if (productReviewContainer.viewModel) {
+                            ko.mapping.fromJS(data, productReviewContainer.viewModel)
+                        }
+                        else {
+                            productReviewContainer.viewModel = ko.mapping.fromJS(data)
+                            productReviewContainer.viewModel.showAddReviewButton = ko.observable(true)
+                            productReviewContainer.viewModel.showAddReviewPanel = ko.observable(false)
+                            productReviewContainer.viewModel.showReviewAddedPanel = ko.observable(false)
+                            productReviewContainer.viewModel.showLoadMoreReviews = ko.observable(false)
+                            productReviewContainer.viewModel.addReviewError = ko.observable(null)
+                            productReviewContainer.viewModel.newReviewTitle = ko.observable(null)
+                            productReviewContainer.viewModel.newReviewName = ko.observable(null)
+                            productReviewContainer.viewModel.newReviewFirstName = ko.computed(function() { if (productReviewContainer.viewModel.newReviewName() != null) { var parts = productReviewContainer.viewModel.newReviewName().split(' ', 2); return parts.shift(); } else return null;})
+                            productReviewContainer.viewModel.newReviewLastName = ko.computed(function() { if (productReviewContainer.viewModel.newReviewName() != null) { var parts = productReviewContainer.viewModel.newReviewName().split(' ', 2); parts.shift(); return parts.shift() || ''; } else return null;})
+                            productReviewContainer.viewModel.newReviewComment = ko.observable(null)
+                            productReviewContainer.viewModel.newReviewEmail = ko.observable(null)
+                            productReviewContainer.viewModel.currentPage = ko.observable(1)
+                            productReviewContainer.viewModel.showLoadMoreReviews = ko.observable(productReviewContainer.viewModel.Pager.CurrentPageNumber() < productReviewContainer.viewModel.Pager.TotalPages())
+
+                            productReviewContainer.viewModel.loadMoreReviews = function() {
+                                productReviewContainer.viewModel.currentPage(productReviewContainer.viewModel.currentPage() + 1)
+                                productReviewContainer.viewModel.showLoadMoreReviews(productReviewContainer.viewModel.currentPage() < productReviewContainer.viewModel.Pager.TotalPages())
+
+                                $.ajax({
+                                    beforeSend: servicesFramework.setModuleHeaders,
+                                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductReview/ViewModel?pageNumber=1&pageSize=" + (productReviewContainer.viewModel.currentPage() * productReviewContainer.viewModel.Pager.PageSize()) + "&productID=" + @Model.Product.ProductID
+                                    })
+                                .done(function (data, status) {
+                                    ko.mapping.fromJS(data, productReviewContainer.viewModel)
+                                })
+                            }
+
+                            productReviewContainer.viewModel.addReviewClick = function() {
+                                if (productReviewContainer.viewModel.User.UserID() <= 0 && !productReviewContainer.viewModel.AllowAnonymousAccount())
+                                    location.href = productReviewContainer.viewModel.Login.TabUrl() + "?returnurl=" + escape(window.location.href)
+                                else
+                                {
+                                    this.showAddReviewButton(false)
+                                    this.showAddReviewPanel(true)
+                                }
+                            }
+
+                            productReviewContainer.viewModel.productReviewsAfterRender = function() {
+
+                                // Initialize rating stars
+								$('input.rating-latebind').removeClass('rating-latebind').addClass('rating').kendoRating({ label: false, precision: 'half' })
+                            }
+
+                            productReviewContainer.viewModel.addProductReview = function() {
+                                // Validate errors only inputs in container ignoring others
+                                if ($('#Form .rvdsf-product-review-container input').valid()) {
+
+                                    // Reset
+                                    productReviewContainer.viewModel.addReviewError(null)
+
+                                    var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+                                    var productReviewData = {
+                                        Comment: productReviewContainer.viewModel.newReviewComment(),
+                                        FirstName: productReviewContainer.viewModel.newReviewFirstName(),
+                                        Email: productReviewContainer.viewModel.newReviewEmail(),
+                                        LastName: productReviewContainer.viewModel.newReviewLastName(),
+                                        OverallRating: parseInt($('#rvdsfProductReviewRate').val()),
+                                        ProductID: "@Model.Product.ProductID",
+                                        Title: productReviewContainer.viewModel.newReviewTitle()
+                                    }
+
+                                    $.ajax({
+                                        type: "POST",
+                                        headers: { "Accept-Language": "@Dnn.Portal.CultureCode",
+                                            "X-Captcha": $('#rvdsfProductReviewCaptchaText').val(),
+                                        },
+                                        beforeSend: servicesFramework.setModuleHeaders,
+                                        url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductReview/ProductReview",
+                                        data: productReviewData
+                                    })
+                                    .done(function (data, textStatus, jqXHR) {
+                                        productReviewContainer.viewModel.showAddReviewButton(false)
+                                        productReviewContainer.viewModel.showAddReviewPanel(false)
+                                        productReviewContainer.viewModel.showReviewAddedPanel(true)
+                                    })
+                                    .fail(function (jqXHR, textStatus, errorThrown) {
+                                        if (jqXHR.responseText)
+                                            productReviewContainer.viewModel.addReviewError(JSON.parse(jqXHR.responseText).Message)
+                                        else
+                                            productReviewContainer.viewModel.addReviewError("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_UnknownErrorOccured, Global.FilePaths.LocalSharedResourceFile))")
+                                    })
+                                }
+                            }
+
+
+                            ko.applyBindings(productReviewContainer.viewModel, productReviewContainer)
+                        }
+                    })
+                }
+
+                productReviewContainer.databind()
+            }
+        })
+		</script>
+		<!-- SEO structured data -->
+		<script type="application/ld+json">
+			{
+			"@@context": "http://schema.org",
+			"@@type": "Product",
+			@if (Model.Product.RatingCount > 0)
+			{
+				<text>
+					"aggregateRating": {
+					"@@type": "AggregateRating",
+					"ratingValue": "@Model.Product.AverageOverallRating.ToString(System.Globalization.CultureInfo.InvariantCulture)",
+					"ratingCount": "@Model.Product.RatingCount"
+					},
+				</text>
+			}
+			"name": "@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.Product.Name))",
+			"url": "@Model.Product.ProductDetail.TabUrl",
+			@if (!String.IsNullOrEmpty(Model.ProductVariant.MainSummary))
+			{
+				<text>
+					"description": "@Html.Raw(HttpUtility.JavaScriptStringEncode(System.Text.RegularExpressions.Regex.Replace((Model.ProductVariant.MainSummary ?? ""), @" <.+?> ", " ", System.Text.RegularExpressions.RegexOptions.Singleline)))",
+				</text>
+			}
+			"image": ["@Html.Raw(String.Join("\", \"", Model.ProductVariant.MainDisplayGalleries.Select(g => g.MediaUrl)))"],
+			"offers": [
+			@{ var productVariantCounter = 0; }
+			@foreach (var productVariant in Model.Product.ProductVariants)
+			{
+				if (Model.Product.ShowPrice && String.IsNullOrEmpty(productVariant.PriceText) && productVariant.SalesType != SalesType.Quote)
+				{
+					if (productVariantCounter > 0)
+					{
+						<text>,</text>
+					}
+					<text>
+						{
+						"@@type": "Offer",
+						"name": "@Html.Raw(HttpUtility.JavaScriptStringEncode(productVariant.Name))",
+						"url": "@productVariant.ProductDetail.TabUrl",
+						"description": "@Html.Raw(HttpUtility.JavaScriptStringEncode(System.Text.RegularExpressions.Regex.Replace((productVariant.MainSummary ?? ""), @" <.+?> ", " ", System.Text.RegularExpressions.RegexOptions.Singleline)))",
+						@if (productVariant.Inventory > 0 || productVariant.Inventory == null)
+						{
+							<text>
+								"availability": "http://schema.org/InStock",
+							</text>
+						}
+						else if (productVariant.Inventory == 0 && productVariant.InventoryEmptyBehavior.ToString() == "AllowBackorder")
+						{
+							<text>
+								"availability": "http://schema.org/OutOfStock",
+							</text>
+						}
+						else if (productVariant.Inventory == 0 && productVariant.InventoryEmptyBehavior.ToString() == "DisallowOrder")
+						{
+							<text>
+								"availability": "http://schema.org/SoldOut",
+							</text>
+						}
+						"priceCurrency": "@Model.Currency.CurrencyCode",
+						"price": "@System.Text.RegularExpressions.Regex.Match(productVariant.FormattedCombinedSellingPrice, @"\d+.+\d+").Value.Replace(System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator, "").Replace(System.Threading.Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator, ".")",
+						"priceValidUntil": "@DateTime.UtcNow.AddYears(1).ToString("o")",
+						@if (!String.IsNullOrEmpty(productVariant.UniversalProductCode))
+						{
+							<text>
+								"gtin@(productVariant.UniversalProductCode.Length)": "@productVariant.UniversalProductCode",
+							</text>
+						}
+						"sku": "@Html.Raw(HttpUtility.JavaScriptStringEncode(productVariant.SKU))"
+						}
+					</text>
+
+					productVariantCounter++;
+				}
+			}
+			],
+			@if (Model.ProductVariant.Manufacturer != null)
+			{
+				<text>
+					"brand": {
+					"@@type": "Organization",
+					"name": "@Model.ProductVariant.Manufacturer.Name"
+					},
+				</text>
+			}
+			@if (!String.IsNullOrEmpty(Model.ProductVariant.UniversalProductCode))
+			{
+				<text>
+					"gtin@(Model.ProductVariant.UniversalProductCode.Length)": "@Model.ProductVariant.UniversalProductCode",
+				</text>
+			}
+			"sku": "@Html.Raw(HttpUtility.JavaScriptStringEncode(Model.ProductVariant.SKU))"
+			}
+		</script>
+	}
+</div>
+<div id="rvdsfLoading" class="rvd-loading" style="display: none"><img src="~/Images/Loading.gif" /></div>

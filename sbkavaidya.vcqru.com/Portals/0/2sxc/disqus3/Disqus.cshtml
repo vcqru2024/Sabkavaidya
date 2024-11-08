@@ -1,0 +1,34 @@
+@inherits Custom.Hybrid.RazorTyped
+@{  
+  var disqus = MyItem;
+  var configSuccess = App.Settings.String("DomainKey") != "2sxc-org.disqus.com";
+  // required for disqus
+  var dataTimestamp = DateTimeOffset.Now.ToUnixTimeSeconds();
+}
+
+<div class="app-disqus2-toolbar" @Kit.Toolbar.Default(disqus)>
+</div>
+
+<style>
+  .app-disqus2-toolbar {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+</style>
+
+@if (!configSuccess) {
+  <div class="app-disqus2-warning">@Html.Raw(App.Resources.String("ConfigurationWarning"))</div>
+  <style>
+    .app-disqus2-warning {
+      color: #856404;
+      background-color: #fff3cd;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border-radius: .25rem;
+    }
+  </style>
+  return;
+}
+
+<div id="disqus_thread"></div>
+<script src='https://@App.Settings.String("DomainKey")/embed.js' @Kit.Page.AssetAttributes(position: "bottom") data-timestamp="@dataTimestamp"></script>

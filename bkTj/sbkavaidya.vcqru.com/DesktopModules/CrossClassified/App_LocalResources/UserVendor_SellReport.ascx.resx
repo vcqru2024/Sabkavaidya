@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblProductName.Text" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="ControlTitle_uservendor_sellreport.Text" xml:space="preserve">
+    <value>My Sales Report</value>
+  </data>
+  <data name="lblPostalCode.Text" xml:space="preserve">
+    <value>Post Code:</value>
+  </data>
+  <data name="lblItemSum.Text" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="lblQuantity.Text" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="lblEnd.Text" xml:space="preserve">
+    <value>End:</value>
+  </data>
+  <data name="lblUnitPrice.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="lblOptionName.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="lblShipFee.Text" xml:space="preserve">
+    <value>Shipping Fee</value>
+  </data>
+  <data name="lblCreatedDate.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="lblPhone1.Text" xml:space="preserve">
+    <value>Phone1:</value>
+  </data>
+  <data name="lblAddress2.Text" xml:space="preserve">
+    <value>Address2:</value>
+  </data>
+  <data name="lblTaxFee.Text" xml:space="preserve">
+    <value>Tax Fee</value>
+  </data>
+  <data name="lblAddress1.Text" xml:space="preserve">
+    <value>Address1:</value>
+  </data>
+  <data name="lblShipAddressOption.Text" xml:space="preserve">
+    <value>Ship Address:</value>
+  </data>
+  <data name="lblDiscountRequest.Text" xml:space="preserve">
+    <value>Client Request</value>
+  </data>
+  <data name="lblDiscountResponse.Text" xml:space="preserve">
+    <value>My Response</value>
+  </data>
+  <data name="secBillAddress.Text" xml:space="preserve">
+    <value>Bill Address</value>
+  </data>
+  <data name="lblFirstName.Text" xml:space="preserve">
+    <value>First Name:</value>
+  </data>
+  <data name="lblLastName.Text" xml:space="preserve">
+    <value>Last Name:</value>
+  </data>
+  <data name="lblCountryCode.Text" xml:space="preserve">
+    <value>Country:</value>
+  </data>
+  <data name="lblPhone2.Text" xml:space="preserve">
+    <value>Phone2:</value>
+  </data>
+  <data name="lblSummary.Text" xml:space="preserve">
+    <value>Sum:</value>
+  </data>
+  <data name="lblStart.Text" xml:space="preserve">
+    <value>Start:</value>
+  </data>
+  <data name="lblRegionCode.Text" xml:space="preserve">
+    <value>Region:</value>
+  </data>
+  <data name="lblCity.Text" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="OrderDetail.Text" xml:space="preserve">
+    <value>"{0}" order detail</value>
+  </data>
+  <data name="lblOrderNo.Text" xml:space="preserve">
+    <value>Order No</value>
+  </data>
+  <data name="lblOrderDate.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="imgViewOrderDetail.Text" xml:space="preserve">
+    <value>View order detail and shipping address, also update shipping status of this order.</value>
+  </data>
+  <data name="lblItemSummary.Text" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="chkShipAddressOption_Same.Text" xml:space="preserve">
+    <value>Same as bill address</value>
+  </data>
+  <data name="lblSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="lblClientName.Text" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="secShipAddress.Text" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="lblInvoiceNo.Text" xml:space="preserve">
+    <value>Invoice Id</value>
+  </data>
+  <data name="lblInvoiceId.Text" xml:space="preserve">
+    <value>Invoice Id:</value>
+  </data>
+  <data name="lblProduct.Text" xml:space="preserve">
+    <value>Product Name:</value>
+  </data>
+  <data name="lblProductInOrder.Text" xml:space="preserve">
+    <value>Products in this transaction</value>
+  </data>
+  <data name="OrderDate.Text" xml:space="preserve">
+    <value>Order Date: {0}</value>
+  </data>
+  <data name="OrderNo.Text" xml:space="preserve">
+    <value>Order No: {0}</value>
+  </data>
+  <data name="lblAverage.Text" xml:space="preserve">
+    <value>Average Rating:</value>
+  </data>
+  <data name="btnChangeOrderStatus.Text" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="lblChangeOrderStatus.Text" xml:space="preserve">
+    <value>Change selected items order status as </value>
+  </data>
+  <data name="lblOrderMemo.Text" xml:space="preserve">
+    <value>Memo</value>
+  </data>
+  <data name="lblOrderStatus.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lblShipMethod.Text" xml:space="preserve">
+    <value>Ship Method</value>
+  </data>
+  <data name="lblNextBillDate.Text" xml:space="preserve">
+    <value>Next Bill Date</value>
+  </data>
+  <data name="lblRecursiveCharge.Text" xml:space="preserve">
+    <value>Recursive Charge</value>
+  </data>
+  <data name="btnUpdateShipping.Text" xml:space="preserve">
+    <value>Update Shipping</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Return Back</value>
+  </data>
+  <data name="lblShippingStatusHead.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="lblShippingTip.Text" xml:space="preserve">
+    <value>Update current product's shipping status here. For example, if you already delivery the product to "FedEx (the Federal Express)" to dispatch, you can enter "FedEx" as "Shipping Method", and also enter the shipping tracking no (e.g, "No20151022456"), change "Shipping Status" as "Dispatching", and click "Update Shipping" button. Client can view these shipping information at "Cp_Admin sub module - Buyer Center - My Products".&lt;br/&gt;&lt;br/&gt;
+Note, the "Client Sign For Date" is read only here. When client receive the product, and sign for the delivery at "Cp_Admin sub module - Buyer Center - My Ordered Products", this value will be automatic filled.</value>
+  </data>
+  <data name="plClientSignDate.Help" xml:space="preserve">
+    <value>Client sign for express delivery date</value>
+  </data>
+  <data name="plClientSignDate.Text" xml:space="preserve">
+    <value>Client Sign For Date</value>
+  </data>
+  <data name="plShippingMethod.Help" xml:space="preserve">
+    <value>Enter shipping method</value>
+  </data>
+  <data name="plShippingMethod.Text" xml:space="preserve">
+    <value>Shipping Method</value>
+  </data>
+  <data name="plShippingNo.Help" xml:space="preserve">
+    <value>Enter shipping tracking no</value>
+  </data>
+  <data name="plShippingNo.Text" xml:space="preserve">
+    <value>Shipping Tracking No</value>
+  </data>
+  <data name="plShippingStatus.Help" xml:space="preserve">
+    <value>Choose shipping status here</value>
+  </data>
+  <data name="plShippingStatus.Text" xml:space="preserve">
+    <value>Shipping Status</value>
+  </data>
+  <data name="secShipping.Text" xml:space="preserve">
+    <value>Shipping Status</value>
+  </data>
+  <data name="btnRefeshUpload.Text" xml:space="preserve">
+    <value>Refresh Upload Files</value>
+  </data>
+  <data name="hlUpload_Unlimited.Text" xml:space="preserve">
+    <value>Upload New Files</value>
+  </data>
+  <data name="imgViewUpload_Client.Text" xml:space="preserve">
+    <value>View files which upload by client for this item (if have). For example, you are selling a picture processing service, client can upload original pictures to you (to process).</value>
+  </data>
+  <data name="imgViewUpload_Vendor.Text" xml:space="preserve">
+    <value>Upload related files for this item (if site allows). For example, you are selling a picture processing service, client can upload original pictures to you, you processe them and upload the new files back to the client.</value>
+  </data>
+  <data name="lblDownload.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="lblFileName.Text" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="lblSize.Text1" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="lblUploadSummary.Text" xml:space="preserve">
+    <value>Already upload {0} files, totally {1}.</value>
+  </data>
+  <data name="lblUploadTitle.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblUpload_Client.Text" xml:space="preserve">
+    <value>Here you can view files which upload by client for this order.  For example, you are selling a picture processing service, client can upload original pictures to you (to process).</value>
+  </data>
+  <data name="lblUpload_Vendor.Text" xml:space="preserve">
+    <value>Here you can upload files to client's order. For example, you are selling a picture processing service, a client can paid for this service, and upload related pictures to you, you then processes them and upload back to the client. Current site allows you to upload multiple files for a order, but the total upload file size can't exceed &lt;font color="red"&gt;{0}&lt;/font&gt; mb. And the extension must in site allowable extensions (which is defined at DNN built-in menu "Host - Host Settings - Other Settings - Allowable File Extensions").&lt;br/&gt;&lt;br/&gt;After upload files on the popup window, click the "Refresh Upload Files" link to show them.</value>
+  </data>
+</root>

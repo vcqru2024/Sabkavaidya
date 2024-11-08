@@ -1,0 +1,35 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Support Facebook Commerce feed
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ChannelSalesFacebookActive')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ChannelSalesFacebookActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ChannelSalesFacebookActive DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ChannelSalesFacebookActive
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_ProductChannel' AND COLUMN_NAME = 'ExternalData')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductChannel ADD ExternalData xml NULL
+
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_ProductVariant' AND COLUMN_NAME = 'ConditionType')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant ADD ConditionType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_ConditionType DEFAULT 1
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_ConditionType
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Product' AND COLUMN_NAME = 'AllowSalesChannel')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Product ADD	AllowSalesChannel bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Product_AllowSalesChannel DEFAULT 1
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Product	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Product_AllowSalesChannel
+END
+GO

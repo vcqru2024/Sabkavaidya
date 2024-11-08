@@ -1,0 +1,27 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****              Install Script                      *****/
+/*****                                                  *****/
+/************************************************************/
+
+-- Create the Treatments table
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.Treatments_Treatments') AND type in (N'U'))
+CREATE TABLE dbo.Treatments_Treatments
+(
+    TreatmentId int NOT NULL IDENTITY (1, 1),
+    TreatmentName nvarchar(MAX) NOT NULL,
+    TreatmentDescription nvarchar(MAX) NOT NULL,
+    ModuleId int NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedByUserId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    LastModifiedOnDate datetime NOT NULL,
+    CONSTRAINT PK_Treatments_Treatments PRIMARY KEY CLUSTERED 
+    (
+        TreatmentId
+    ) WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+

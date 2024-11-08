@@ -1,0 +1,48 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@* --- This is the Bootstrap5 Edition of the Files --- *@
+@{
+  var isTextFirst = AllSettings.Bool("TextFirst");
+  var colsText = isTextFirst ? AllSettings.Int("ColsElement") : 12 - AllSettings.Int("ColsElement");
+  var colsImg = 12 - colsText;
+  
+  var ctaMain = MyItem;
+  var ctaPres = ctaMain.Presentation;
+  
+  // Toolbar for the Button, when is not a Demo Item you can Edit 
+  var btnToolbar = Kit.Toolbar.Empty().DetectDemo(ctaMain).Edit();
+}
+
+<div class='app-cta3-wrapper mb-4' @Kit.Toolbar.Default(ctaPres)> 
+  <div class="row">
+    <div class='col-md-@colsText order-md-@(isTextFirst ? "first" : "last") app-cta3 app-cta3-text-image text-dark @ctaPres.String("TextAlignment") @ctaPres.String("TextVAlignment")'>
+      @* Optionally show title *@
+      @if (ctaPres.String("HeadingType") != "hide") {
+        @ctaMain.Html("Title", container: ctaPres.String("HeadingType"))
+      }
+
+      @* Optionally show text inside a div *@
+      @if (Text.Has(ctaMain.String("Text"))) {
+        @ctaMain.Html("Text", container: Kit.HtmlTags.Div().Class("app-cta3-text"))
+      }
+
+      @* Show all buttons *@
+      <div class="app-cta3-buttons">
+        @foreach (var btn in ctaMain.Children("Buttons")) {
+          <a href='@btn.Url("ButtonLink")' class="btn app-cta3-btn" target='@btn.String("ButtonTarget")' @btnToolbar.For(btn)>
+            @btn.String("ButtonText")
+          </a>
+        }
+      </div>
+    </div>
+    @* If the image has it's own column, it's here *@
+    @if (colsImg != 0) {
+      <div class='col-md-@colsImg order-md-@(!isTextFirst ? "first" : "last")'>
+        @* call sub-template to show the image with all possible options *@
+            @Html.Partial("CTA Split.Part Image.cshtml", new { ctaMain, colsImg })
+      </div>
+    }
+  </div>
+</div>
+
+@Html.Partial("Assets.cshtml")

@@ -1,0 +1,773 @@
+
+
+/****** drop legacy stored procedures ******/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]
+GO
+
+
+
+/****** create new stored procedures ******/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]    Script Date: 01/22/2014 17:02:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE  PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]
+   @TypeId   int,
+   @UserId		int,
+   @Categories varchar(100),
+   @RecordCount	int, 
+   @Featured	bit,
+   @SortField	varchar(100)
+AS
+   set rowcount @RecordCount
+SELECT
+	a.*  ,
+     ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE a.TypeId = @TypeId--TypeId
+    AND ((@UserId=-2) or  a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @UserId))
+        ))--UserId
+   AND ( @Categories = '''' OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId IN (SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Categories)))
+            ))--Categories    
+    AND ( a.Authed = 1)  
+     AND ( a.Active = 1)        
+     and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      AND (@Featured = 0 OR a.Featured = 1)
+      and ((a.[Image] is not null) and (a.[Image]<>''''))
+        ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]    Script Date: 01/22/2014 17:02:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]
+   @TypeId   int,
+   @CurrentUserId	int,
+   @CategoryId int,
+   @TagId	int,
+   @UserId int,
+   @ManufacturerId int,
+   @SearchTerm nvarchar(100),
+   @SortField	nvarchar(100),
+   @MaxNumber	int,
+   @ShowPage	bit,
+   @PageSize int, 
+   @PageIndex int
+AS
+if (@ShowPage=0) --if donn''t paging ,direct get record 
+BEGIN
+    set rowcount @MaxNumber
+
+    SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+    and    (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @CurrentUserId))
+        ))--Current user Id
+    AND ( @CategoryId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@CategoryId )
+            )--CategoryId
+      AND ( @TagId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToTag 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToTag.TagId=@TagId )
+            )--TagId
+     and (@UserId=-1 or a.UserId=@UserId) -- UserId
+     and (@ManufacturerId = -1 or a.[ManufacturerId] = @ManufacturerId)
+     and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      AND ( a.Authed = 1) -- Authorized
+      AND ( a.Active = 1)  -- Active
+       
+      ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+end 
+
+else--paging
+begin
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	RowId	int
+     )
+
+-----------Insert into temp table
+   insert into #PageIndex(RowId)
+   SELECT
+	[id]
+   FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+    and    (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @CurrentUserId))
+        ))--current User Id
+    AND ( @CategoryId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@CategoryId )
+            )--CategoryId
+      AND ( @TagId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToTag 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToTag.TagId=@TagId )
+            )--TagId
+     and (@UserId=-1 or a.UserId=@UserId) -- UserId
+     and (@ManufacturerId = -1 or a.[ManufacturerId] = @ManufacturerId)
+     and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      AND ( a.Authed = 1) -- Authorized
+      AND ( a.Active = 1)  -- Active
+        ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+
+SELECT
+		a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+       FROM {databaseOwner}{objectQualifier}CP_Product_Product a,#PageIndex c
+       where c.RowId=a.Id 
+       and  c.IndexId> @PageLowerBound	
+       and  c.IndexId< @PageUpperBound	
+       ORDER BY c.IndexId
+	   --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+end 
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]    Script Date: 01/22/2014 17:02:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]
+   @TypeId   int,
+   @CurrentUserId int,
+   @MonthDate datetime = null,
+   @SortField	nvarchar(100),
+   @MaxNumber	int,
+   @ShowPage	bit,
+   @PageSize int, 
+   @PageIndex int
+AS
+
+If @MonthDate IS NULL SET @MonthDate = GetUTCDate()
+
+if (@ShowPage=0) --if donn''t paging ,direct get record 
+BEGIN
+    set rowcount @MaxNumber
+SELECT
+		a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+     and    (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserID = @CurrentUserId))
+        ))--UserId
+     and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+     and(a.CreatedDate BETWEEN DATEADD(month, DATEDIFF(month, 0, @MonthDate), 0)  AND @MonthDate )--Product date
+      AND ( a.Authed = 1) -- Authorized
+      AND ( a.Active = 1)  -- Active
+    
+      ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+end 
+
+else--paging
+begin
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexID		int IDENTITY (1, 1) NOT NULL,
+	RowId	int
+     )
+
+-----------Insert into temp table
+   insert into #PageIndex(RowId)
+   SELECT
+	[id]
+   FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+ WHERE (a.TypeId = @TypeId)--TypeId
+     and    (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserID = @CurrentUserId))
+        ))--UserId
+    and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+     and(a.CreatedDate BETWEEN DATEADD(month, DATEDIFF(month, 0, @MonthDate), 0)  AND @MonthDate )--Product date
+      AND ( a.Authed = 1) -- Authorized
+      AND ( a.Active = 1)  -- Active
+    
+      ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+
+SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+       FROM {databaseOwner}{objectQualifier}CP_Product_Product a,#PageIndex c
+       where c.RowId=a.Id 
+       and  c.IndexID> @PageLowerBound	
+       and  c.IndexID< @PageUpperBound	
+       ORDER BY c.IndexID
+	   --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexID) FROM #PageIndex
+
+end 
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]    Script Date: 01/22/2014 17:02:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE   PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]
+   @TypeId   int,
+   @CurrentUserId	int,
+   @Categories nvarchar(100),
+   @Authors nvarchar(100),
+   @ShowFeaturedOnly bit,
+   @ShowPromoOnly	bit,
+   @ShowImageOnly bit,
+   @SearchTerm nvarchar(100),
+   @SortField	nvarchar(100),
+   @MaxNumber	int,
+   @ShowPage	bit,
+   @PageSize int, 
+   @PageIndex int
+AS
+if (@ShowPage=0) --if donn''t paging ,direct get record 
+BEGIN
+    set rowcount @MaxNumber
+SELECT
+	a.*,
+     ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+     and (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @CurrentUserId))
+        ))--UserId
+     and ( @Categories = '''' OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId IN (SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Categories)))
+            ))--Categories    
+      and ( @Authors = '''' OR a.UserId in (
+             SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Authors))) --Authors     
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+      and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+      and (@ShowFeaturedOnly = 0 OR a.Featured = 1)
+      and (@ShowPromoOnly = 0 OR a.EnablePromoPrice = 1)--promo
+      and (@ShowImageOnly=0 or ((a.[Image] is not null) and (a.[Image]<>'''')))
+      and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+        ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+end 
+
+else--paging
+begin
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	RowId	int
+     )
+
+-----------Insert into temp table
+   insert into #PageIndex(RowId)
+   SELECT
+	[id]
+   FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+   WHERE (a.TypeId = @TypeId)--TypeId
+     and (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @CurrentUserId))
+        ))--UserId
+     and ( @Categories = '''' OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId IN (SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Categories)))
+            ))--Categories    
+      and ( @Authors = '''' OR a.UserId in (
+             SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Authors))) --Authors          
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+      and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+      and (@ShowFeaturedOnly = 0 OR a.Featured = 1)
+      and (@ShowPromoOnly = 0 OR a.EnablePromoPrice = 1)--promo
+      and (@ShowImageOnly=0 or ((a.[Image] is not null) and (a.[Image]<>'''')))
+      and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+        ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+
+SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+       FROM {databaseOwner}{objectQualifier}CP_Product_Product a,#PageIndex c
+       where c.RowId=a.Id 
+       and  c.IndexId> @PageLowerBound	
+       and  c.IndexId< @PageUpperBound	
+       ORDER BY c.IndexId
+
+	   --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+end 
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]    Script Date: 01/22/2014 17:02:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]
+   @TypeId   int,
+   @CurrentUserId int,
+   @ProductDate datetime = null,
+   @SortField	nvarchar(100),
+   @MaxNumber	int,
+   @ShowPage	bit,
+   @PageSize int, 
+   @PageIndex int
+AS
+
+If @ProductDate IS NULL SET @ProductDate = GetUTCDate()
+
+if (@ShowPage=0) --if donn''t paging ,direct get record 
+BEGIN
+    set rowcount @MaxNumber
+SELECT
+		a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+    
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+      and    (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserID = @CurrentUserId))
+        ))--UserId
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+     and(a.CreatedDate BETWEEN @ProductDate AND DateAdd( dd, 1, @ProductDate ) )--Product date
+      AND ( a.Authed = 1) -- Authorized
+      AND ( a.Active = 1)  -- Active
+    
+      ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+end 
+
+else--paging
+begin
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexID		int IDENTITY (1, 1) NOT NULL,
+	RowId	int
+     )
+
+-----------Insert into temp table
+   insert into #PageIndex(RowId)
+   SELECT
+	[id]
+   FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+  WHERE (a.TypeId = @TypeId)--TypeId
+     and    (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserID = @CurrentUserId))
+        ))--UserId
+       and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+     and(a.CreatedDate BETWEEN @ProductDate AND DateAdd( dd, 1, @ProductDate ) )--Product date
+      AND ( a.Authed = 1) -- Authorized
+      AND ( a.Active = 1)  -- Active
+    
+      ORDER BY a.[Order] asc,
+          case @SortField
+          when ''NameAsc'' then a.[Name]
+          end asc,
+          
+          case @SortField
+          when ''CreationDateAsc'' THEN a.[CreatedDate]
+          when ''PublishDateAsc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateAsc'' THEN a.[LastModifiedDate]
+          when ''ViewsAsc'' then a.[Views]
+          when ''PurchasePriceAsc'' then a.[PurchasePrice]
+          when ''StartPriceAsc'' then a.[StartPrice]
+          end asc,
+          
+	      case @SortField
+          when ''NameDesc'' then a.[Name]
+          end desc,
+          
+          case @SortField
+          when ''CreationDateDesc'' THEN a.[CreatedDate]
+          when ''PublishDateDesc'' THEN a.[PublishDate] 
+		  when ''LastModifiedDateDesc'' THEN a.[LastModifiedDate]
+          when ''ViewsDesc'' then a.[Views]
+          when ''PurchasePriceDesc'' then a.[PurchasePrice]
+          when ''StartPriceDesc'' then a.[StartPrice]
+          end desc
+
+SELECT
+		a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+       FROM {databaseOwner}{objectQualifier}CP_Product_Product a,#PageIndex c
+       where c.RowId=a.Id 
+       and  c.IndexID> @PageLowerBound	
+       and  c.IndexID< @PageUpperBound	
+       ORDER BY c.IndexID
+	   --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexID) FROM #PageIndex
+
+end 
+
+' 
+END
+GO
+
+
+
+
+

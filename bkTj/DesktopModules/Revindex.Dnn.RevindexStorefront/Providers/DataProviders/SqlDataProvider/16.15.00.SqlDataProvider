@@ -1,0 +1,9 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Increase PaymentNumber to accomodate longer values from SagePay Direct. This was not done correctly in the 16.00.00.SqlDataProvider
+ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment ALTER COLUMN PaymentGatewayPaymentNumber VARCHAR(1000)

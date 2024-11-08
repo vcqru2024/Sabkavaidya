@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblProductName.Text" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="ControlTitle_userbuyer_product.Text" xml:space="preserve">
+    <value>My Ordered Products</value>
+  </data>
+  <data name="lblPostalCode.Text" xml:space="preserve">
+    <value>Post Code:</value>
+  </data>
+  <data name="lblItemSum.Text" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="lblQuantity.Text" xml:space="preserve">
+    <value>Qty</value>
+  </data>
+  <data name="lblEnd.Text" xml:space="preserve">
+    <value>End:</value>
+  </data>
+  <data name="lblUnitPrice.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="lblOptionName.Text" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="lblShipFee.Text" xml:space="preserve">
+    <value>Shipping Fee</value>
+  </data>
+  <data name="lblCreatedDate.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="lblPhone1.Text" xml:space="preserve">
+    <value>Phone1:</value>
+  </data>
+  <data name="lblAddress2.Text" xml:space="preserve">
+    <value>Address2:</value>
+  </data>
+  <data name="lblTaxFee.Text" xml:space="preserve">
+    <value>Tax Fee</value>
+  </data>
+  <data name="lblAddress1.Text" xml:space="preserve">
+    <value>Address1:</value>
+  </data>
+  <data name="lblShipAddressOption.Text" xml:space="preserve">
+    <value>Ship Address:</value>
+  </data>
+  <data name="lblDiscountRequest.Text" xml:space="preserve">
+    <value>My Request</value>
+  </data>
+  <data name="lblDiscountResponse.Text" xml:space="preserve">
+    <value>Seller Response</value>
+  </data>
+  <data name="secBillAddress.Text" xml:space="preserve">
+    <value>Bill Address</value>
+  </data>
+  <data name="lblFirstName.Text" xml:space="preserve">
+    <value>First Name:</value>
+  </data>
+  <data name="lblLastName.Text" xml:space="preserve">
+    <value>Last Name:</value>
+  </data>
+  <data name="lblCountryCode.Text" xml:space="preserve">
+    <value>Country:</value>
+  </data>
+  <data name="lblPhone2.Text" xml:space="preserve">
+    <value>Phone2:</value>
+  </data>
+  <data name="lblSummary.Text" xml:space="preserve">
+    <value>Sum:</value>
+  </data>
+  <data name="lblStart.Text" xml:space="preserve">
+    <value>Start:</value>
+  </data>
+  <data name="lblRegionCode.Text" xml:space="preserve">
+    <value>Region:</value>
+  </data>
+  <data name="lblCity.Text" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="lblPageSize.Text" xml:space="preserve">
+    <value>Page Size:</value>
+  </data>
+  <data name="OrderDetail.Text" xml:space="preserve">
+    <value>"{0}" order detail  &amp;nbsp;&amp;nbsp; </value>
+  </data>
+  <data name="lblOrderNo.Text" xml:space="preserve">
+    <value>Order No</value>
+  </data>
+  <data name="lblOrderDate.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="imgViewOrderDetail.Text" xml:space="preserve">
+    <value>view order detail and shipping address</value>
+  </data>
+  <data name="lblItemSummary.Text" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="chkShipAddressOption_Same.Text" xml:space="preserve">
+    <value>Same as bill address</value>
+  </data>
+  <data name="Download.Text" xml:space="preserve">
+    <value>Download files for "{0}"</value>
+  </data>
+  <data name="imgDownload.Text" xml:space="preserve">
+    <value>Download this file</value>
+  </data>
+  <data name="imgViewDownload.Text" xml:space="preserve">
+    <value>View download files for this item (if have). For example, you buy a software or digital files (picture, music), you can click to download related files.</value>
+  </data>
+  <data name="lblFileName.Text" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="lblOrderDetail.Text" xml:space="preserve">
+    <value>Products in this order</value>
+  </data>
+  <data name="lblSize.Text" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="lblVendorName.Text" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="secShipAddress.Text" xml:space="preserve">
+    <value>Ship Address</value>
+  </data>
+  <data name="lblInvoiceNo.Text" xml:space="preserve">
+    <value>Invoice Id</value>
+  </data>
+  <data name="lblInvoiceId.Text" xml:space="preserve">
+    <value>Invoice Id:</value>
+  </data>
+  <data name="lblProduct.Text" xml:space="preserve">
+    <value>Product Name:</value>
+  </data>
+  <data name="lblProductInOrder.Text" xml:space="preserve">
+    <value>Products in same order</value>
+  </data>
+  <data name="OrderDate.Text" xml:space="preserve">
+    <value>Order Date:{0}</value>
+  </data>
+  <data name="OrderNo.Text" xml:space="preserve">
+    <value>Order No:{0}</value>
+  </data>
+  <data name="OrderSummary.Text" xml:space="preserve">
+    <value>Order Sum:{0}</value>
+  </data>
+  <data name="btnCreateTicket.Text" xml:space="preserve">
+    <value>Create Help Ticket</value>
+  </data>
+  <data name="btnPostRating.Text" xml:space="preserve">
+    <value>Post Rating</value>
+  </data>
+  <data name="imgAddTicket.Text" xml:space="preserve">
+    <value>Create help ticket.</value>
+  </data>
+  <data name="imgRating.Text" xml:space="preserve">
+    <value>Submit rating</value>
+  </data>
+  <data name="lblAverage.Text" xml:space="preserve">
+    <value>Average Rating:</value>
+  </data>
+  <data name="lblRatingVotes.Text" xml:space="preserve">
+    <value>Rating People:</value>
+  </data>
+  <data name="Mail_Ticket_Description.Text" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="Mail_Ticket_Subject.Text" xml:space="preserve">
+    <value>{0} help ticket submit notification</value>
+  </data>
+  <data name="Mail_Ticket_Thanks.Text" xml:space="preserve">
+    <value>Please login to {0} for more detail. Thanks for your support.</value>
+  </data>
+  <data name="Mail_Ticket_Tip.Text" xml:space="preserve">
+    <value>{0} has created a help ticket for your product {1}</value>
+  </data>
+  <data name="Mail_Ticket_Title.Text" xml:space="preserve">
+    <value>Title:{0}</value>
+  </data>
+  <data name="plRatingInfo.Help" xml:space="preserve">
+    <value>Your opinion to this product</value>
+  </data>
+  <data name="plRatingInfo.Text" xml:space="preserve">
+    <value>Your Opinion</value>
+  </data>
+  <data name="plRatingReply.Help" xml:space="preserve">
+    <value>Seller reply to your rating</value>
+  </data>
+  <data name="plRatingReply.Text" xml:space="preserve">
+    <value>Seller Reply</value>
+  </data>
+  <data name="plTicketDescription.Help" xml:space="preserve">
+    <value>Enter ticket detail, can't be null</value>
+  </data>
+  <data name="plTicketDescription.Text" xml:space="preserve">
+    <value>Ticket Detail</value>
+  </data>
+  <data name="plTicketTitle.Help" xml:space="preserve">
+    <value>Enter ticket title, can't be null</value>
+  </data>
+  <data name="plTicketTitle.Text" xml:space="preserve">
+    <value>Ticket Title</value>
+  </data>
+  <data name="plYourRating.Help" xml:space="preserve">
+    <value>Submit your rating below</value>
+  </data>
+  <data name="plYourRating.Text" xml:space="preserve">
+    <value>Your Rating</value>
+  </data>
+  <data name="Rating.Text" xml:space="preserve">
+    <value>Rating for "{0}"</value>
+  </data>
+  <data name="RatingSuccess.Text" xml:space="preserve">
+    <value>Your rating was posted success, thanks for your support.</value>
+  </data>
+  <data name="Ticket.Text" xml:space="preserve">
+    <value>Create help ticket for "{0}"</value>
+  </data>
+  <data name="TicketAdded.Text" xml:space="preserve">
+    <value>Help ticket added successfullly, you can view seller response in "My help ticket" in Cp_Admin module.</value>
+  </data>
+  <data name="Mail_Rating_Description.Text" xml:space="preserve">
+    <value>Rating Description:</value>
+  </data>
+  <data name="Mail_Rating_Rating.Text" xml:space="preserve">
+    <value>Rating:{0}</value>
+  </data>
+  <data name="Mail_Rating_Subject.Text" xml:space="preserve">
+    <value>{0} rating submit notification</value>
+  </data>
+  <data name="Mail_Rating_Thanks.Text" xml:space="preserve">
+    <value>Please login to {0} for more detail. Thanks for your support.</value>
+  </data>
+  <data name="Mail_Rating_Tip.Text" xml:space="preserve">
+    <value>{0} has create/update rating for your product {1}</value>
+  </data>
+  <data name="lblOrderMemo.Text" xml:space="preserve">
+    <value>Memo</value>
+  </data>
+  <data name="lblOrderStatus.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lblShipMethod.Text" xml:space="preserve">
+    <value>Ship Method:</value>
+  </data>
+  <data name="hlDownload.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="lblNextBillDate.Text" xml:space="preserve">
+    <value>Next Bill Date</value>
+  </data>
+  <data name="lblRecursiveCharge.Text" xml:space="preserve">
+    <value>Recursive Charge</value>
+  </data>
+  <data name="cmdCancel.Text" xml:space="preserve">
+    <value>Return Back</value>
+  </data>
+  <data name="imgSignFor.Text" xml:space="preserve">
+    <value>Sign for express delivery after receive product (if necessary)</value>
+  </data>
+  <data name="lblClientSignDateHead.Text" xml:space="preserve">
+    <value>Sign For Date</value>
+  </data>
+  <data name="lblShippingMethodHead.Text" xml:space="preserve">
+    <value>Shipping Method</value>
+  </data>
+  <data name="lblShippingNoHead.Text" xml:space="preserve">
+    <value>Shipping Tracking No</value>
+  </data>
+  <data name="lblShippingStatusHead.Text" xml:space="preserve">
+    <value>Shipping Status</value>
+  </data>
+  <data name="SignFor.Text" xml:space="preserve">
+    <value>Are you sure that you have received this product?</value>
+  </data>
+  <data name="btnRefeshUpload.Text" xml:space="preserve">
+    <value>Refresh Upload Files</value>
+  </data>
+  <data name="hlUpload.Text" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="hlUpload_Unlimited.Text" xml:space="preserve">
+    <value>Upload New Files</value>
+  </data>
+  <data name="imgViewUpload_Client.Text" xml:space="preserve">
+    <value>Upload related files for this item (if site allows). For example, you buy a picture processing service, you can click to upload original pictures to the seller.</value>
+  </data>
+  <data name="lblAlreadyUpload.Text" xml:space="preserve">
+    <value>Already Upload</value>
+  </data>
+  <data name="lblNotUpload.Text" xml:space="preserve">
+    <value>Not Upload</value>
+  </data>
+  <data name="lblUploadExtension.Text" xml:space="preserve">
+    <value>Allowable Upload Extension</value>
+  </data>
+  <data name="lblUploadRuleTitle1.Text" xml:space="preserve">
+    <value>File Title 1</value>
+  </data>
+  <data name="lblUploadRuleTitle10.Text" xml:space="preserve">
+    <value>File Title 10</value>
+  </data>
+  <data name="lblUploadRuleTitle2.Text" xml:space="preserve">
+    <value>File Title 2</value>
+  </data>
+  <data name="lblUploadRuleTitle3.Text" xml:space="preserve">
+    <value>File Title 3</value>
+  </data>
+  <data name="lblUploadRuleTitle4.Text" xml:space="preserve">
+    <value>File Title 4</value>
+  </data>
+  <data name="lblUploadRuleTitle5.Text" xml:space="preserve">
+    <value>File Title 5</value>
+  </data>
+  <data name="lblUploadRuleTitle6.Text" xml:space="preserve">
+    <value>File Title 6</value>
+  </data>
+  <data name="lblUploadRuleTitle7.Text" xml:space="preserve">
+    <value>File Title 7</value>
+  </data>
+  <data name="lblUploadRuleTitle8.Text" xml:space="preserve">
+    <value>File Title 8</value>
+  </data>
+  <data name="lblUploadRuleTitle9.Text" xml:space="preserve">
+    <value>File Title 9</value>
+  </data>
+  <data name="lblUploadSize.Text" xml:space="preserve">
+    <value>Max Size</value>
+  </data>
+  <data name="lblUploadStatus.Text" xml:space="preserve">
+    <value>Upload Status</value>
+  </data>
+  <data name="lblUploadTitle.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblUpload_Rule.Text" xml:space="preserve">
+    <value>Upload files for "{0}". Currently site allows you to upload &lt;font color="red"&gt;{1}&lt;/font&gt; files, each file has its description / require upload or optional / file extension / size limitation (see below list). If you already uploaded some files and want to change them as new files, you need to delete the uploaded files first, then can continue to upload new files.&lt;br/&gt;&lt;br/&gt;After upload files on the popup window, click the "Refresh Upload Files" link to show them.</value>
+  </data>
+  <data name="lblUpload_Unlimited.Text" xml:space="preserve">
+    <value>Upload files for "{0}", you can continue to upload more files, or delete previous upload files. Note, the upload files has quota limitation (&lt;font color="red"&gt;{1}&lt;/font&gt; MB), if you already reach the quota, you need to delete some existing files first, then can continue to upload other files.&lt;br/&gt;&lt;br/&gt;After upload files on the popup window, click the "Refresh Upload Files" link to show them.</value>
+  </data>
+  <data name="imgViewUpload_Vendor.Text" xml:space="preserve">
+    <value>View files which upload by seller for this item (if have). For example, you buy a picture processing service, you upload original pictures to the seller, seller processes pictures and upload the new files back to you.</value>
+  </data>
+  <data name="lblDownload.Text" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="lblUploadSummary.Text" xml:space="preserve">
+    <value>Already upload {0} files, totally {1}.</value>
+  </data>
+  <data name="lblUpload_Vendor.Text" xml:space="preserve">
+    <value>View files which upload by seller for this order. For example, you buy a picture processing service, you can upload original files to the seller, seller processes them and then upload the new files to you.</value>
+  </data>
+  <data name="Optional.Text" xml:space="preserve">
+    <value>(Optional)</value>
+  </data>
+  <data name="Required.Text" xml:space="preserve">
+    <value>(Required)</value>
+  </data>
+  <data name="lblUploadRequire.Text" xml:space="preserve">
+    <value>Requrie Upload</value>
+  </data>
+</root>

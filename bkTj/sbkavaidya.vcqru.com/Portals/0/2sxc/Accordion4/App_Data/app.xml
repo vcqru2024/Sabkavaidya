@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.06.00" ExportDate="2023-09-21T09:12:41.1494479+02:00">
+  <Header>
+    <App Guid="8b110476-8fda-4d76-9252-e70e2fee6315" />
+    <Language Default="en-us" />
+    <Dimensions>
+      <Dimension DimensionID="42" Name="English (United States)" SystemKey="" ExternalKey="en-US" Active="true" />
+      <Dimension DimensionID="43" Name="Deutsch (Deutschland)" SystemKey="" ExternalKey="de-DE" Active="true" />
+    </Dimensions>
+  </Header>
+  <AttributeSets>
+    <AttributeSet StaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" Name="Accordion" Scope="Default" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="Title" Type="String" IsTitle="true">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="efa399ae-1451-47f6-ab8b-d2c2ce6e8478" Json="True" KeyNumber="988">
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-default" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Title" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Titel" Type="String">
+              <Dimension DimensionID="43" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="69659c1a-7ef5-4000-b70c-cd2c4d6c7fd6" Json="True" KeyNumber="988" />
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="2aaf4e9a-3ed0-47cb-91d6-8d7c38c56110" Json="True" KeyNumber="988">
+            <Value Key="RowCount" Value="" Type="Number">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Icon" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="f685c5a3-ebcd-40e4-9a80-5d03e67b5895" Json="True" KeyNumber="989">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-font-icon-picker" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Symbol (optional)" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Symbol (optional)" Type="String">
+              <Dimension DimensionID="43" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;The symbol is not required.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Das Symbol ist nicht vorausgesetzt.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="43" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="da97204d-fbae-4f6c-a9d4-5a74e14f61b4" Json="True" KeyNumber="989">
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-font-icon-picker" AttributeSetName="@string-font-icon-picker" EntityGUID="c388f144-05ec-4711-a8ac-1a83ed48d905" Json="True" KeyNumber="989">
+            <Value Key="CssPrefix" Value=".fa-" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Files" Value="[App:Path]/Icons/fontawesome/css/fontawesome-nobrands.min.css" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="PreviewCss" Value="fas" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="DesignedContent" Type="Entity" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="fc0ea3df-b4a4-44a1-9ce9-3dc5851d336f" Json="True" KeyNumber="990">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="HelpLink" Value="" Type="Hyperlink">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Information" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="entity-content-blocks" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Contents" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Inhalte" Type="String">
+              <Dimension DimensionID="43" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Tooltip" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Entity" AttributeSetName="@Entity" EntityGUID="5846d679-b6b8-4582-95c3-a8f6e887964e" Json="True" KeyNumber="990">
+            <Value Key="AllowMultiValue" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableAddExisting" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableCreate" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableDelete" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableEdit" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="EnableRemove" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="EntityType" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Label" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="MoreFields" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Prefill" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="InitiallyExpanded" Type="Boolean" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="27de0339-c7af-4a0c-955f-d6cac7e4e735" Json="True" KeyNumber="1002">
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-default" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Initially expanded" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Geöffnet" Type="String">
+              <Dimension DimensionID="43" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;this section of the accordion is openend by default&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;diesen Abschnitt standardm&amp;auml;ssig &amp;ouml;ffnen&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="43" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="c7a17a24-3dd1-4450-9c24-3b76ae8a6e28" Json="True" KeyNumber="1002" />
+        </Attribute>
+      </Attributes>
+    </AttributeSet>
+    <AttributeSet StaticName="App-Resources" Name="App-Resources" Scope="System.App" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="DemoItemMessage" Type="String" IsTitle="true">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="cda4fc9e-806f-4ff7-9df1-c3dfd8cda879" Json="True" KeyNumber="1053">
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-wysiwyg" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Demo Item Message" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="&lt;p&gt;Show this when previewing the accordion&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="7f4f1d48-deb8-4843-bf1a-ec0d4d7acead" Json="True" KeyNumber="1053" />
+        </Attribute>
+        <Attribute StaticName="NoContentMessage" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="4708c9c6-ee2e-4590-a626-42d854a84800" Json="True" KeyNumber="5791">
+            <Value Key="InputType" Value="string-wysiwyg" Type="String" />
+            <Value Key="Name" Value="NoContentMessage" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+      </Attributes>
+    </AttributeSet>
+    <AttributeSet StaticName="App-Settings" Name="App-Settings" Scope="System.App" AlwaysShareConfiguration="false">
+      <Attributes />
+    </AttributeSet>
+    <AttributeSet StaticName="22a1ccf5-57cc-4c33-bb82-40db4572a17e" Name="TestContent" Scope="TestData" AlwaysShareConfiguration="false">
+      <Attributes>
+        <Attribute StaticName="Title" Type="String" IsTitle="true">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="d0365251-4d5a-4218-9987-1ade47bf7710" Json="True" KeyNumber="4861">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="Title" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="Message" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="084041a6-c037-4aa7-bdef-7aba77953cc5" Json="True" KeyNumber="4862">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-wysiwyg" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Message" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="415d08bb-b1e8-43c3-ab7c-d746cc6115a2" Json="True" KeyNumber="4862">
+            <Value Key="DropdownValues" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-wysiwyg" AttributeSetName="@string-wysiwyg" EntityGUID="7ceeebbf-665b-4823-9039-324c650184f5" Json="True" KeyNumber="4862">
+            <Value Key="ButtonAdvanced" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ButtonSource" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="ContentCss" Value="" Type="Hyperlink">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+            <Value Key="Dialog" Value="" Type="String">
+              <Dimension DimensionID="42" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+      </Attributes>
+    </AttributeSet>
+  </AttributeSets>
+  <Entities>
+    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="2SexyContent-App" AttributeSetName="2SexyContent-App" EntityGUID="41a79a08-f461-4b47-9bc6-a5717b7bc0c2" Json="True" KeyNumber="49">
+      <Value Key="AllowRazorTemplates" Value="True" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="AllowTokenTemplates" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DisplayName" Value="Accordion" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DisplayName" Value="Akkordeon" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+      <Value Key="Folder" Value="Accordion4" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Hidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="OriginalId" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredDnnVersion" Value="09.06.01" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredOqtaneVersion" Value="03.04.00" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="RequiredVersion" Value="16.02.00" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Version" Value="04.06.00 " Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="1bdd64e8-da9f-43be-a87f-4da1ffe29ab5" KeyNumber="49" />
+    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="3d1d5c74-2154-46cb-b4f1-d84fdeb7fea4" KeyNumber="49">
+      <Value Key="DemoItemMessage" Value="&lt;p&gt;You are seeing the demo content. Once you edit this accordion, this text will disappear and you will be able to add your own content inside this accordion.&amp;nbsp;&lt;em&gt;Only editors see this message.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Take a look at &lt;a href=&quot;https://azing.org/2sxc/l/0SdD61V7/app-accordion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;these azing checklists&lt;/a&gt;, if you need help.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DemoItemMessage" Value="&lt;p&gt;Du siehst Demodaten. Sobald du diesen Akkordeon-Abschnitt bearbeitest, verschwindet dieser Text und du kannst weitere Inhalte in diesem Abschnitt einf&amp;uuml;gen.&amp;nbsp;&lt;em&gt;Nur Redakteure sehen diese Meldung.&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Schauen Sie sich&amp;nbsp;&lt;a href=&quot;https://azing.org/2sxc/l/0SdD61V7/app-accordion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;diese azing checklists&lt;/a&gt;&amp;nbsp;an, wenn Sie hilfe ben&amp;ouml;tigen.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+      <Value Key="NoContentMessage" Value="&lt;p&gt;This section is now ready for content. Add it by moving the mouse below this area to see the toolbar.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="NoContentMessage" Value="&lt;p&gt;Dieser Abschnitt is bereit f&amp;uuml;r Inhalt. Beweg die Maus unterhalb dieses Texts, dann erscheinen die Kn&amp;ouml;pfe dazu.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="e90752f1-29d5-46a3-984c-408d97feae91">
+      <Value Key="DesignedContent" Value="fba253bd-ecd6-4999-8b01-916f6b758118" Type="Entity" />
+      <Value Key="Icon" Value="fa-bullseye" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo Accordion" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo Akkordeon" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="14f785f2-a337-4ac3-ac42-3d19313b0423" Json="True">
+      <Value Key="ContentDemoEntity" Value="e90752f1-29d5-46a3-984c-408d97feae91" Type="Entity" />
+      <Value Key="ContentTypeStaticName" Value="884e65b4-8f1c-4bc9-897f-147dcabeb941" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="Hyperlink">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Identifier" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="IsHidden" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ListContentTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Location" Value="Site" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Name" Value="Content Accordion" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Name" Value="Akkordeon" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+      <Value Key="Path" Value="bs5/Accordion.cshtml" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="PresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="PublishData" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingStreams" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="StreamsToPublish" Value="Default,ListContent" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Type" Value="C# Razor" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="UseForList" Value="True" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewController" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewNameInUrl" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="fba253bd-ecd6-4999-8b01-916f6b758118" Json="True">
+      <Value Key="App" Value="Default" Type="String" />
+      <Value Key="ShowTemplateChooser" Value="False" Type="Boolean" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="3937fa17-ef2d-40a7-b089-64164eb10bab" AttributeSetName="2sxcPolymorphismConfiguration" EntityGUID="a5b0c8f6-3ae5-4db9-af97-fe8067a2c0bb" Json="True">
+      <Value Key="Mode" Value="Koi?cssFramework" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="70e4e39f-e5ba-48cf-879d-7dac1e159442">
+      <Value Key="DesignedContent" Value="ed1c4a6a-e880-455c-be42-ecc44d7e4a98" Type="Entity" />
+      <Value Key="Icon" Value="fa-align-justify" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo Accordion with long Content" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo Accordeon mit langem Inhalt" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="1c19fdf7-ff8a-454b-a77f-a289055142b4">
+      <Value Key="Icon" Value=" fa-adjust" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="True" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Example with initially expanded" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="5" AssignmentObjectType="ContentType" AttributeSetStaticName="ContentType" AttributeSetName="ContentType" EntityGUID="80223a8e-d00d-479c-ad67-e0e39c209f4b" Json="True" KeyString="22a1ccf5-57cc-4c33-bb82-40db4572a17e">
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DynamicChildrenField" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="EditInstructions" Value="&lt;h2&gt;Important&lt;/h2&gt;&#xA;&lt;p&gt;This is just testing content, to verify the Accordion works. It's not meant for use in real-live sites, which is also why the view for this is hidden in the configuration.&amp;nbsp;&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="Hyperlink">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Label" Value="TestContent" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="" Type="Hyperlink">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ListInstructions" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Notes" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="22a1ccf5-57cc-4c33-bb82-40db4572a17e" AttributeSetName="TestContent" EntityGUID="ae29ae6f-0f30-49db-95a0-268c48cb95e0">
+      <Value Key="Message" Value="&lt;p&gt;This is just some test/demo content.&lt;/p&gt;&#xA;&lt;p&gt;It's only used to develop the app.&lt;/p&gt;&#xA;&lt;p&gt;Which is why the content-type is in a hidden scope.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Message" Value="&lt;p&gt;Sie sehen zur Zeit Demodaten. Sobald Sie diesen Akkordeon-Abschnitt&amp;nbsp;bearbeiten, verschwindet dieser Text und Sie k&amp;ouml;nnen dann weitere Inhalte in diesem Abschnitt einf&amp;uuml;gen.&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Schauen Sie sich&amp;nbsp;&lt;a href=&quot;https://azing.org/2sxc/l/0SdD61V7/app-accordion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;diese azing checklists&lt;/a&gt;&amp;nbsp;an, wenn Sie hilfe ben&amp;ouml;tigen.&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo Content in the Accordion" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demoinhalt im Accordeon" Type="String">
+        <Dimension DimensionID="43" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="ce1617bc-5c2b-4d71-9a01-d300bfb008c9" Json="True">
+      <Value Key="ContentDemoEntity" Value="ae29ae6f-0f30-49db-95a0-268c48cb95e0" Type="Entity" />
+      <Value Key="ContentTypeStaticName" Value="22a1ccf5-57cc-4c33-bb82-40db4572a17e" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Icon" Value="" Type="Hyperlink">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Identifier" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="IsHidden" Value="True" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ListContentTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ListPresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Location" Value="Site" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Name" Value="Content Preview" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Path" Value="shared/Content-Preview.cshtml" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="PresentationTypeStaticName" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="PublishData" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingStreams" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="StreamsToPublish" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Type" Value="C# Razor" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="UseForList" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewController" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewNameInUrl" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="3a0605aa-a9ec-4a34-b7ca-be5d3520696c" Json="True">
+      <Value Key="App" Value="8b110476-8fda-4d76-9252-e70e2fee6315" Type="String" />
+      <Value Key="ContentGroup" Value="b2fc8df4-e7de-4fdd-848b-9f082728ef02" Type="String" />
+      <Value Key="Template" Value="ce1617bc-5c2b-4d71-9a01-d300bfb008c9" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="ed1c4a6a-e880-455c-be42-ecc44d7e4a98" Json="True">
+      <Value Key="App" Value="8b110476-8fda-4d76-9252-e70e2fee6315" Type="String" />
+      <Value Key="ContentGroup" Value="879e5f01-09d3-4b1e-b51c-e2967e79caa0" Type="String" />
+      <Value Key="Template" Value="ce1617bc-5c2b-4d71-9a01-d300bfb008c9" Type="String" />
+      <Value Key="Title" Value="Demo long content" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="22a1ccf5-57cc-4c33-bb82-40db4572a17e" AttributeSetName="TestContent" EntityGUID="51b8330f-0754-401d-a43a-e96319dd71c2">
+      <Value Key="Message" Value="&lt;h2&gt;Demo&lt;/h2&gt;&#xA;&lt;div class=&quot;co-text&quot;&gt;&#xA;&lt;p&gt;Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. &amp;nbsp;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. &amp;nbsp;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. &amp;nbsp;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. &amp;nbsp;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. &amp;nbsp;&amp;nbsp;&lt;/p&gt;&#xA;&lt;p&gt;At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur&lt;/p&gt;&#xA;&lt;/div&gt;" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo long content" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="e38df87b-3c62-421e-b0c4-43bfa397389f">
+      <Value Key="Icon" Value="fa-battery-empty" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Example which is still empty" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="5e0f7e4a-7761-495d-9443-aa897f785f7e" Json="True">
+      <Value Key="App" Value="8b110476-8fda-4d76-9252-e70e2fee6315" Type="String" />
+      <Value Key="ContentGroup" Value="7601bafb-f4ad-46d5-ab04-4da43b97ca44" Type="String" />
+      <Value Key="Template" Value="ce1617bc-5c2b-4d71-9a01-d300bfb008c9" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="4" AssignmentObjectType="Entity" AttributeSetStaticName="529ba3a2-d7d4-4f40-a81b-ff819de03a9e" AttributeSetName="IsDefaultDecorator" EntityGUID="a46e66cd-2fde-4b3e-8756-d0a7a8565040" Json="True" KeyGuid="14f785f2-a337-4ac3-ac42-3d19313b0423" />
+    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="be34f64b-7d1f-4ad0-b488-dabbbb01a186" AttributeSetName="LightSpeedOutputDecorator" EntityGUID="fb62a4d3-5f06-4e6f-9cf8-c2c976316a48" Json="True" KeyNumber="49">
+      <Value Key="Advanced" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="ByUrlParameters" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Duration" Value="-1" Type="Number">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationEditors" Value="300" Type="Number">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationSystemAdmin" Value="60" Type="Number">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="DurationUsers" Value="-1" Type="Number">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="🚫" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="bc79f37b-8820-4ee9-a60f-cbd8c3eb1332">
+      <Value Key="DesignedContent" Value="1e56592f-4c99-462f-b211-c83bf25ca9a4,d8343082-8650-42f8-9b8f-4808db73d4c4" Type="Entity" />
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo with Test user" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="d8343082-8650-42f8-9b8f-4808db73d4c4" Json="True">
+      <Value Key="App" Value="Default" Type="String" />
+      <Value Key="ContentGroup" Value="535bca52-6f2f-47a5-9c9c-40b5470516b9" Type="String" />
+      <Value Key="Template" Value="f7045144-1f69-4cad-bea1-a3fb5cb5a1e9" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="1e56592f-4c99-462f-b211-c83bf25ca9a4" Json="True">
+      <Value Key="App" Value="Default" Type="String" />
+      <Value Key="ContentGroup" Value="31f1c378-cc2b-4cb8-af21-cbf67159e342" Type="String" />
+      <Value Key="Template" Value="40151c49-88b1-4275-ac06-9b7f73fd8862" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="d7d0ab02-22b8-4e37-a911-a5cfc5ff5b7b">
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo 2" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="1edc67e5-90f2-48db-be16-4109de14ec3e">
+      <Value Key="DesignedContent" Value="14e2d653-a311-46e1-84fa-79a935faa981" Type="Entity" />
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo from Tester" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="14e2d653-a311-46e1-84fa-79a935faa981" Json="True">
+      <Value Key="App" Value="Default" Type="String" />
+      <Value Key="ContentGroup" Value="0b91b2f3-4c35-4d6e-8692-383a4ad66526" Type="String" />
+      <Value Key="Template" Value="6e2b17f1-502b-4484-bdf0-99b64735f0a8" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="884e65b4-8f1c-4bc9-897f-147dcabeb941" AttributeSetName="Accordion" EntityGUID="2ed3e049-e9e9-4d0a-a75e-d96fadef1bc1">
+      <Value Key="DesignedContent" Value="aef8abeb-89ff-4e5e-8832-0733eafff7be" Type="Entity" />
+      <Value Key="Icon" Value="" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="InitiallyExpanded" Value="False" Type="Boolean">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Test" Type="String">
+        <Dimension DimensionID="42" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="76a79e80-8adf-4cae-af43-9d4206f365a1" Json="True">
+      <Value Key="App" Value="Default" Type="String" />
+      <Value Key="Template" Value="c7af4d82-6ec3-4507-95bd-c8c7962b7925" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="ContentGroupReference" AttributeSetName="ContentGroupReference" EntityGUID="aef8abeb-89ff-4e5e-8832-0733eafff7be" Json="True">
+      <Value Key="App" Value="Default" Type="String" />
+      <Value Key="ContentGroup" Value="c526a8da-a3c5-465e-91a5-dc1e9607dfda" Type="String" />
+      <Value Key="Template" Value="f7045144-1f69-4cad-bea1-a3fb5cb5a1e9" Type="String" />
+      <Value Key="Title" Value="" Type="String" />
+    </Entity>
+  </Entities>
+  <PortalFiles />
+  <PortalFolders>
+    <Folder Id="13415" RelativePath="adam/Accordion4/" />
+  </PortalFolders>
+</SexyContent>

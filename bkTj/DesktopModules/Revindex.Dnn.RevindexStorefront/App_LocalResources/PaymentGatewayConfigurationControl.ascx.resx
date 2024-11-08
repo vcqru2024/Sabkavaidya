@@ -1,0 +1,949 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PaymentGatewayHeader.Text" xml:space="preserve">
+    <value>Payment gateway</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAcceptLoginLabelControl.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAcceptTranKeyLabelControl.Text" xml:space="preserve">
+    <value>TranKey</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAcceptPublicKeyLabelControl.Text" xml:space="preserve">
+    <value>Public key</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAcceptTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAcceptTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Gateway Url</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMGatewayUrlLabelControl.Help" xml:space="preserve">
+    <value>Enter a non-standard gateway URL if you're using a different payment gateway under Authorize.Net compatibility mode otherwise leave blank.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMLoginLabelControl.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMTranKeyLabelControl.Text" xml:space="preserve">
+    <value>TranKey</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMDuplicateWindowLabelControl.Text" xml:space="preserve">
+    <value>Duplicate window</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMDuplicateWindowLabelControl.Help" xml:space="preserve">
+    <value>The number of seconds must have elapsed before allowing to process another identical transactions with the same amount and credit card information.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetAIMTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetCIMLoginLabelControl.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetCIMTranKeyLabelControl.Text" xml:space="preserve">
+    <value>TranKey</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetCIMDuplicateWindowLabelControl.Text" xml:space="preserve">
+    <value>Duplicate window</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetCIMDuplicateWindowLabelControl.Help" xml:space="preserve">
+    <value>The number of seconds must have elapsed before allowing to process another identical transactions with the same amount and credit card information.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetCIMTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetCIMTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Gateway Url</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMGatewayUrlLabelControl.Help" xml:space="preserve">
+    <value>Enter a non-standard gateway URL if you're using a different payment gateway under Authorize.Net compatibility mode otherwise leave blank.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMLoginLabelControl.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMTranKeyLabelControl.Text" xml:space="preserve">
+    <value>TranKey</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMSignatureKeyLabelControl.Text" xml:space="preserve">
+    <value>Signature Key</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMDuplicateWindowLabelControl.Text" xml:space="preserve">
+    <value>Duplicate window</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMDuplicateWindowLabelControl.Help" xml:space="preserve">
+    <value>The number of seconds must have elapsed before allowing to process another identical transactions with the same amount and credit card information.</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysAuthorizeNetSIMTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysBarclaycardPSPIDLabelControl.Text" xml:space="preserve">
+    <value>PSP ID</value>
+  </data>
+  <data name="PaymentGatewaysBarclaycardUserIDLabelControl.Text" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="PaymentGatewaysBarclaycardPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysBarclaycardShaInLabelControl.Text" xml:space="preserve">
+    <value>SHA In</value>
+  </data>
+  <data name="PaymentGatewaysBarclaycardTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysBarclaycardTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysBluePayAccountIDLabelControl.Text" xml:space="preserve">
+    <value>Account ID</value>
+  </data>
+  <data name="PaymentGatewaysBluePaySecretKeyLabelControl.Text" xml:space="preserve">
+    <value>Secret Key</value>
+  </data>
+  <data name="PaymentGatewaysBluePayTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysBluePayTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysCardstreamDirectMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysCardstreamDirectSharedKeyLabelControl.Text" xml:space="preserve">
+    <value>Shared key</value>
+  </data>
+  <data name="PaymentGatewaysCashFlowsRemoteAPIProfileIDLabelControl.Text" xml:space="preserve">
+    <value>Profile ID</value>
+  </data>
+  <data name="PaymentGatewaysCashFlowsRemoteAPIPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysCashFlowsRemoteAPITestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysCashFlowsRemoteAPITestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGUsernameLabelControl.Help" xml:space="preserve">
+    <value>The credentials for the Tampa version of Chase Paymentech Orbital Gateway.</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGTerminalIDLabelControl.Text" xml:space="preserve">
+    <value>Terminal ID</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGBinLabelControl.Text" xml:space="preserve">
+    <value>Bin</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysChasePaymentechOGTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysClearMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysClearPublicKeyLabelControl.Text" xml:space="preserve">
+    <value>Public key</value>
+  </data>
+  <data name="PaymentGatewaysClearPrivateKeyLabelControl.Text" xml:space="preserve">
+    <value>Private key</value>
+  </data>
+  <data name="PaymentGatewaysClearTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysClearTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysCorduroClientNumberLabelControl.Text" xml:space="preserve">
+    <value>Client number</value>
+  </data>
+  <data name="PaymentGatewaysCorduroUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysCorduroPasswordKeyLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysCorduroProcessAccountNumberLabelControl.Text" xml:space="preserve">
+    <value>Process account number</value>
+  </data>
+  <data name="PaymentGatewaysCorduroCertificateLabelControl.Text" xml:space="preserve">
+    <value>PEM certificate</value>
+  </data>
+  <data name="PaymentGatewaysCorduroTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysCorduroTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Gateway Url</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedGatewayUrlLabelControl.Help" xml:space="preserve">
+    <value>Enter the gateway URL that will be receiving the request transaction.</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedPassphraseLabelControl.Text" xml:space="preserve">
+    <value>Passphrase</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedPassphraseLabelControl.Help" xml:space="preserve">
+    <value>This should be a secret text that should match if your gateway will transmit the result by asynchronous notification.</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedRequestMethodLabelControl.Text" xml:space="preserve">
+    <value>Request method</value>
+  </data>
+  <data name="PaymentGatewaysCustomHostedRequestMethodLabelControl.Help" xml:space="preserve">
+    <value>Specify the HTTP method to use for submitting a request.</value>
+  </data>
+  <data name="PaymentGatewaysCyberSourceSoapMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysCyberSourceSoapTransactionKeyLabelControl.Text" xml:space="preserve">
+    <value>Transaction key</value>
+  </data>
+  <data name="PaymentGatewaysCyberSourceSoapTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysCyberSourceSoapTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysDotpayAccountIDLabelControl.Text" xml:space="preserve">
+    <value>Account ID</value>
+  </data>
+  <data name="PaymentGatewaysDotpayPinLabelControl.Text" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="PaymentGatewaysDotpayTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysDotpayTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysElavonVirtualMerchantAccountIDLabelControl.Text" xml:space="preserve">
+    <value>Account ID</value>
+  </data>
+  <data name="PaymentGatewaysElavonVirtualMerchantUserIDLabelControl.Text" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="PaymentGatewaysElavonVirtualMerchantPinLabelControl.Text" xml:space="preserve">
+    <value>Pin</value>
+  </data>
+  <data name="PaymentGatewaysElavonVirtualMerchantTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysElavonVirtualMerchantTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewayseProcessingNetworkAccountNumberLabelControl.Text" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="PaymentGatewayseProcessingNetworkRestrictKeyLabelControl.Text" xml:space="preserve">
+    <value>Restrict Key</value>
+  </data>
+  <data name="PaymentGatewayseProcessingNetworkTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewayseProcessingNetworkTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewayseWayDirectPaymentCustomerIDLabelControl.Text" xml:space="preserve">
+    <value>Customer ID</value>
+  </data>
+  <data name="PaymentGatewayseWayDirectPaymentRefundPasswordLabelControl.Text" xml:space="preserve">
+    <value>Refund password</value>
+  </data>
+  <data name="PaymentGatewayseWayDirectPaymentRefundPasswordLabelControl.Help" xml:space="preserve">
+    <value>Enter the password to allow refunds.</value>
+  </data>
+  <data name="PaymentGatewayseWayDirectPaymentTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewayseWayDirectPaymentTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysFirstDataGGWSUserLabelControl.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="PaymentGatewaysFirstDataGGWSPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysFirstDataGGWSCertificateLabelControl.Text" xml:space="preserve">
+    <value>PEM Certificate</value>
+  </data>
+  <data name="PaymentGatewaysFirstDataGGWSTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysFirstDataGGWSTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysFTNIUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysFTNIPasswordKeyLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysFTNISettlementKeyLabelControl.Text" xml:space="preserve">
+    <value>Settlement</value>
+  </data>
+  <data name="PaymentGatewaysFTNITestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysFTNITestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysFTNIACHUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysFTNIACHPasswordKeyLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysFTNIACHSettlementKeyLabelControl.Text" xml:space="preserve">
+    <value>Settlement</value>
+  </data>
+  <data name="PaymentGatewaysFTNIACHTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysFTNIACHTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBMSAppIDLabelControl.Text" xml:space="preserve">
+    <value>App ID</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBMSAppLoginLabelControl.Text" xml:space="preserve">
+    <value>App login</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBMSConnectionTicketLabelControl.Text" xml:space="preserve">
+    <value>Connection ticket</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBMSTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBMSTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysMasterCardIGSHostedMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysMasterCardIGSHostedAccessCodeLabelControl.Text" xml:space="preserve">
+    <value>Access code</value>
+  </data>
+  <data name="PaymentGatewaysMasterCardIGSHostedSecureHashSecretLabelControl.Text" xml:space="preserve">
+    <value>Secure hash secret</value>
+  </data>
+  <data name="PaymentGatewaysMasterCardIGSHostedTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysMasterCardIGSHostedTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysMerchanteSolutionsProfileIDLabelControl.Text" xml:space="preserve">
+    <value>Profile ID</value>
+  </data>
+  <data name="PaymentGatewaysMerchanteSolutionsProfileKeyLabelControl.Text" xml:space="preserve">
+    <value>Profile Key</value>
+  </data>
+  <data name="PaymentGatewaysMerchanteSolutionsTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysMerchanteSolutionsTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysMolliePartnerIDLabelControl.Text" xml:space="preserve">
+    <value>API key</value>
+  </data>
+  <data name="PaymentGatewaysMonerisESPCAStoreIDLabelControl.Text" xml:space="preserve">
+    <value>Store ID</value>
+  </data>
+  <data name="PaymentGatewaysMonerisESPCAAPITokenLabelControl.Text" xml:space="preserve">
+    <value>API token</value>
+  </data>
+  <data name="PaymentGatewaysMonerisESPCATestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysMonerisESPCATestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysNMIKeyIDLabelControl.Text" xml:space="preserve">
+    <value>Key ID</value>
+  </data>
+  <data name="PaymentGatewaysNMIKeyLabelControl.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="PaymentGatewaysNMIUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysNMIPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysNMIGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Gateway URL</value>
+  </data>
+  <data name="PaymentGatewaysNMIGatewayUrlLabelControl.Help" xml:space="preserve">
+    <value>Enter a non-standard gateway URL if you're using a different payment gateway under NMI compatibility mode otherwise leave blank.</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPayUserIDLabelControl.Text" xml:space="preserve">
+    <value>User ID</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPayKeyLabelControl.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPayTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPayTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPostUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPostPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPostTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPaymentExpressPXPostTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayFastWPMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysPayFastWPMerchantKeyLabelControl.Text" xml:space="preserve">
+    <value>Merchant Key</value>
+  </data>
+  <data name="PaymentGatewaysPayFastWPPDTKeyLabelControl.Text" xml:space="preserve">
+    <value>PDT Key</value>
+  </data>
+  <data name="PaymentGatewaysPayFastWPTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayFastWPTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECSignatureLabelControl.Text" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECShippingFormActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable shipping form</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECShippingFormActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow PayPal to collect shipping information to make use of PayPal's shipping and packing slip features.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayPalECTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalPPUserLabelControl.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="PaymentGatewaysPayPalPPVendorLabelControl2.Text" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
+  <data name="PaymentGatewaysPayPalPPPartnerLabelControl3.Text" xml:space="preserve">
+    <value>Partner</value>
+  </data>
+  <data name="PaymentGatewaysPayPalPPPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayPalPPTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayPalPPTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPPUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPPPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPPSignatureLabelControl.Text" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPPTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPPTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSEmailLabelControl.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSSignatureLabelControl.Text" xml:space="preserve">
+    <value>Signature</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSShippingFormActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable shipping form</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSShippingFormActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow PayPal to collect shipping information to make use of PayPal's shipping and packing slip features.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayPalWPSTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPaystation3PartyGatewayIDLabelControl.Text" xml:space="preserve">
+    <value>Gateway ID</value>
+  </data>
+  <data name="PaymentGatewaysPaystation3PartyPaystationIDLabelControl.Text" xml:space="preserve">
+    <value>Paystation ID</value>
+  </data>
+  <data name="PaymentGatewaysPaystation3PartyTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPaystation3PartyTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayTraceUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPayTracePasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayTraceTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayTraceTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayUBusinessUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPayUBusinessPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayUBusinessSafekeyLabelControl.Text" xml:space="preserve">
+    <value>Safekey</value>
+  </data>
+  <data name="PaymentGatewaysPayUBusinessPaymentMethodsLabelControl.Text" xml:space="preserve">
+    <value>Payment methods</value>
+  </data>
+  <data name="PaymentGatewaysPayUBusinessTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayUBusinessTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayUEnterpriseUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPayUEnterprisePasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPayUEnterpriseSafekeyLabelControl.Text" xml:space="preserve">
+    <value>Safekey</value>
+  </data>
+  <data name="PaymentGatewaysPayUEnterpriseTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayUEnterpriseTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayULatamWebCheckoutMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysPayULatamWebCheckoutAccountIDLabelControl.Text" xml:space="preserve">
+    <value>Account ID</value>
+  </data>
+  <data name="PaymentGatewaysPayULatamWebCheckoutApiKeyLabelControl.Text" xml:space="preserve">
+    <value>API Key</value>
+  </data>
+  <data name="PaymentGatewaysPayULatamWebCheckoutTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPayULatamWebCheckoutTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorSenderLabelControl.Text" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorLoginLabelControl.Text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorRegistrationChannelLabelControl.Text" xml:space="preserve">
+    <value>Registration channel</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorPaymentChannelLabelControl.Text" xml:space="preserve">
+    <value>Payment channel</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPeachXmlIntegratorTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPrincetonCardConnectMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysPrincetonCardConnectUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysPrincetonCardConnectPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPrincetonCardConnectGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Web service Url</value>
+  </data>
+  <data name="PaymentGatewaysPrincetonCardConnectTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPrincetonCardConnectTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPSiGateXmlMessengerStoreIDLabelControl.Text" xml:space="preserve">
+    <value>Store ID</value>
+  </data>
+  <data name="PaymentGatewaysPSiGateXmlMessengerPassphraseLabelControl.Text" xml:space="preserve">
+    <value>Passphrase</value>
+  </data>
+  <data name="PaymentGatewaysPSiGateXmlMessengerTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPSiGateXmlMessengerTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysSageDirectMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysSageDirectMerchantKeyLabelControl.Text" xml:space="preserve">
+    <value>Merchant key</value>
+  </data>
+  <data name="PaymentGatewaysSagePayDirectVendorNameLabelControl.Text" xml:space="preserve">
+    <value>Vendor name</value>
+  </data>
+  <data name="PaymentGatewaysSagePayDirectTestModeLabelControl3.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysSagePayDirectTestModeLabelControl3.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysSagePayFormVendorNameLabelControl.Text" xml:space="preserve">
+    <value>Vendor name</value>
+  </data>
+  <data name="PaymentGatewaysSagePayFormEncryptionPasswordLabelControl.Text" xml:space="preserve">
+    <value>Encryption password</value>
+  </data>
+  <data name="PaymentGatewaysSagePayFormTestModeLabelControl3.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysSagePayFormTestModeLabelControl3.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysSquareAccessTokenLabelControl.Text" xml:space="preserve">
+    <value>Access token</value>
+  </data>
+  <data name="PaymentGatewaysSquareApplicationIDLabelControl.Text" xml:space="preserve">
+    <value>Application ID</value>
+  </data>
+  <data name="PaymentGatewaysSquareLocationIDLabelControl.Text" xml:space="preserve">
+    <value>Location ID</value>
+  </data>
+  <data name="PaymentGatewaysSquareTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysSquareTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysStripeSecretKeyLabelControl.Text" xml:space="preserve">
+    <value>Secret key</value>
+  </data>
+  <data name="PaymentGatewaysStripePublishableKeyLabelControl.Text" xml:space="preserve">
+    <value>Publishable key</value>
+  </data>
+  <data name="PaymentGatewaysTotalAppsDirectPostUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysTotalAppsDirectPostPasswordKeyLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysUSAePaySourceKeyLabelControl.Text" xml:space="preserve">
+    <value>Source Key</value>
+  </data>
+  <data name="PaymentGatewaysUSAePayTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysUSAePayTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysVirtualCardServicesPayTerminalIDLabelControl.Text" xml:space="preserve">
+    <value>Terminal ID</value>
+  </data>
+  <data name="PaymentGatewaysVirtualCardServicesPayMD5KeyLabelControl.Text" xml:space="preserve">
+    <value>MD5 Key</value>
+  </data>
+  <data name="PaymentGatewaysVirtualCardServicesPayUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysVirtualCardServicesPayPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysWorldPayCorporateXmlDirectMerchantCodeLabelControl.Text" xml:space="preserve">
+    <value>Merchant code</value>
+  </data>
+  <data name="PaymentGatewaysWorldPayCorporateXmlDirectXmlPasswordLabelControl.Text" xml:space="preserve">
+    <value>XML password</value>
+  </data>
+  <data name="PaymentGatewaysWorldPayCorporateXmlDirectTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysWorldPayCorporateXmlDirectTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="BackControl.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SaveLinkButton.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save ||file||</comment>
+  </data>
+  <data name="SaveAndBackLinkButton.Text" xml:space="preserve">
+    <value>Save &amp; return</value>
+  </data>
+  <data name="PaymentGatewaysPayPalCheckoutClientIDLabelControl.Text" xml:space="preserve">
+    <value>Client ID</value>
+  </data>
+  <data name="PaymentGatewaysPayPalCheckoutSecretLabelControl.Text" xml:space="preserve">
+    <value>Secret</value>
+  </data>
+  <data name="PaymentGatewaysPayPalCheckoutTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysPayPalCheckoutTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysPineappleTransaxPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysPineappleTransaxUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="AuthenticateLinkButton.Text" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBPaymentsClientIDLabelControl.Text" xml:space="preserve">
+    <value>Client ID</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBPaymentsClientSecretLabelControl.Text" xml:space="preserve">
+    <value>Client secret</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBPaymentsTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBPaymentsTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysIntuitQBPaymentsAuthenticatedLabel.Text" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="PaymentGatewaysCardlinkRedirectCssUrlLabelControl.Text" xml:space="preserve">
+    <value>Stylesheet URL</value>
+  </data>
+  <data name="PaymentGatewaysCardlinkRedirectGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Gateway URL</value>
+  </data>
+  <data name="PaymentGatewaysCardlinkRedirectMerchantIDLabelControl.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="PaymentGatewaysCardlinkRedirectSharedSecretLabelControl.Text" xml:space="preserve">
+    <value>Shared secret</value>
+  </data>
+  <data name="PaymentGatewaysFlutterwaveStandardSecretKeyLabelControl.Text" xml:space="preserve">
+    <value>Secret key</value>
+  </data>
+  <data name="PaymentGatewaysIPayAfricaWebSecretKeyLabelControl.Text" xml:space="preserve">
+    <value>Secret key</value>
+  </data>
+  <data name="PaymentGatewaysIPayAfricaWebTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysIPayAfricaWebTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+  <data name="PaymentGatewaysIPayAfricaWebVendorIDLabelControl.Text" xml:space="preserve">
+    <value>Vendor ID</value>
+  </data>
+  <data name="PaymentGatewaysKlarnaPaymentsGatewayUrlLabelControl.Text" xml:space="preserve">
+    <value>Gateway URL</value>
+  </data>
+  <data name="PaymentGatewaysKlarnaPaymentsPasswordLabelControl.Text" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PaymentGatewaysKlarnaPaymentsUsernameLabelControl.Text" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="PaymentGatewaysStripeSigningSecretLabelControl.Text" xml:space="preserve">
+    <value>Signing secret</value>
+  </data>
+  <data name="PaymentGatewaysBraintreePrivateKeyLabelControl.Text" xml:space="preserve">
+    <value>Private key</value>
+  </data>
+  <data name="PaymentGatewaysBraintreePublicKeyLabelControl.Text" xml:space="preserve">
+    <value>Public key</value>
+  </data>
+  <data name="PaymentGatewaysBraintreeTestModeLabelControl.Help" xml:space="preserve">
+    <value>Only run in test mode if your gateway provided you with a separate test account. Under test mode, the system will attempt to transact with the gateway's sandbox server.</value>
+  </data>
+  <data name="PaymentGatewaysBraintreeTestModeLabelControl.Text" xml:space="preserve">
+    <value>Test mode</value>
+  </data>
+</root>

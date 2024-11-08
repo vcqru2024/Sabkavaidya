@@ -1,0 +1,31 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+
+-- Add UniversalProductCode index to ProductVariant table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_ProductVariant_7' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_ProductVariant_7 ON {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant (UniversalProductCode)
+END 
+GO
+
+-- Add ProductSearchUniversalProductCodeSearchable column to Configuration table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductSearchUniversalProductCodeSearchable')
+BEGIN
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ProductSearchUniversalProductCodeSearchable bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductSearchUniversalProductCodeSearchable DEFAULT 1
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductSearchUniversalProductCodeSearchable
+
+END 
+GO
+
+
+
+
+
+
+	

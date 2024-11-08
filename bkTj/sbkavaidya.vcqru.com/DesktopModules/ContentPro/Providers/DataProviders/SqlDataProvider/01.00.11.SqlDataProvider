@@ -1,0 +1,103 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContent
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterCategoryContent]
+	@CatIDs {databaseOwner}{objectQualifier}ContentProCategoryList READONLY,
+	@FieldSetID INTEGER,
+	@Field nvarchar(max),
+	@SortDirection nvarchar(max),
+	@NumberOfArticles int
+AS
+BEGIN
+       -- SET NOCOUNT ON added to prevent extra result sets from
+       -- interfering with SELECT statements.
+       SET NOCOUNT ON;
+
+	IF (@NumberOfArticles = 0)
+	BEGIN
+	   select * from {databaseOwner}[{objectQualifier}ContentPro_Content] Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}[{objectQualifier}ContentPro_Content] AS [content]
+       WHERE
+          EXISTS (SELECT * FROM {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		CASE WHEN @SortDirection = 'asc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END ASC,
+		CASE WHEN @SortDirection = 'desc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END DESC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Sort' then Content.Sort END DESC
+	END
+	ELSE
+	BEGIN
+	   select top (@NumberOfArticles) * from {databaseOwner}[{objectQualifier}ContentPro_Content] Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}[{objectQualifier}ContentPro_Content] AS [content]
+       WHERE
+          EXISTS (SELECT * FROM {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		CASE WHEN @SortDirection = 'asc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END ASC,
+		CASE WHEN @SortDirection = 'desc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END DESC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Sort' then Content.Sort END DESC
+	END
+
+END
+GO
+
+
+INSERT INTO {databaseOwner}[{objectQualifier}ContentPro_Types]
+           ([TypeID]
+           ,[TypeName])
+     VALUES
+          (7,'DNN Page/URL')
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

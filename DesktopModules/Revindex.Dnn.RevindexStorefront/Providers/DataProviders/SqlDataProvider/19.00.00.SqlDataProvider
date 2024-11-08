@@ -1,0 +1,30 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add PortalID index to ProductCategory table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_ProductCategory_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_ProductCategory'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_ProductCategory_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_ProductCategory (PortalID)
+END 
+GO
+
+-- Add Machine support
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'MachineActive')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+	MachineActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_MachineActive DEFAULT 0,
+	MachineProvidersOpenAIAPIKey varchar(255) NULL,
+	MachineProvider varchar(50) NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_MachineProvider DEFAULT 'OpenAI'
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_MachineActive
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_MachineProvider
+END 
+GO
+
+
+
+	

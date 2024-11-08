@@ -1,0 +1,309 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+	if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='ArchiveFSet'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[ArchiveFSet] [int] NULL
+GO
+
+	if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Categories') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Categories') and name='IsPublic'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories] ADD
+[IsPublic] [bit] NULL
+GO
+
+	if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='CategoryTag'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[CategoryTag] [bit] NULL
+GO
+
+	if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Comments') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Comments') and name='IsDeleted'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Comments] ADD
+[IsDeleted] [bit] NULL
+GO
+	if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='AllowCommentsLogin'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[AllowCommentsLogin] [int] NULL
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetCommentsForContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetCommentsForContent
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetCommentsForContent]
+	-- Add the parameters for the stored procedure here
+	@ContentID int = 0
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+   with Replies as (
+  -- Start with the base comments.
+  select CommentID, ParentId, Author, Comment,LastModifiedByUser,LastModifiedOnDate,IsDeleted,CreatedByUser,
+    Cast( Right( '0000' + Cast( Row_Number() over ( order by {databaseOwner}{objectQualifier}ContentPro_Comments.CommentID ) as VarChar(4) ), 5 ) as VarChar(1000) ) as OrderPath
+    from {databaseOwner}{objectQualifier}ContentPro_Comments 
+    where ParentId = -1 AND ContentID = @ContentID AND Approved = 1
+  union all
+  -- Add replies on layer at a time.
+  select CT.CommentId, CT.ParentId,CT.Author,CT.Comment,CT.LastModifiedByUser, CT.LastModifiedOnDate,CT.IsDeleted,CT.CreatedByUser,
+    Cast(  C.OrderPath + Right( '0000' + Cast( Row_Number() over ( order by CT.CommentID ) as VarChar(4) ), 5 ) as VarChar(1000) )
+    from {databaseOwner}{objectQualifier}ContentPro_Comments as CT inner join
+      Replies as C on C.CommentId = CT.ParentId
+	  
+  )
+  select *
+    from Replies
+    order by OrderPath
+
+END
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetArchive') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetArchive
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetArchive]
+	-- Add the parameters for the stored procedure here
+	@FSet int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+SELECT YEAR(StartDT) as ArchiveYear, DATENAME(month,StartDT) as ArchiveMonth,  COUNT(ContentID) as Count, MONTH(StartDT) as monthnumber
+FROM {databaseOwner}{objectQualifier}ContentPro_Content
+WHERE FieldSetID = @FSet and Active = 1
+GROUP BY YEAR(StartDT), DATENAME(month, StartDT),MONTH(StartDT)
+order by ArchiveYear desc,monthnumber asc;
+
+END
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDate
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterCategoryContentDate]
+	-- Add the parameters for the stored procedure here
+	@FieldSetID INTEGER,
+	@Field nvarchar(max),
+	@SortDirection nvarchar(max),
+	@Month integer,
+	@Year integer
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+     select * from {databaseOwner}{objectQualifier}ContentPro_Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}{objectQualifier}ContentPro_Content AS [content]
+       
+       GROUP BY
+          [content].ContentID)
+       
+       AND (YEAR(StartDT)=@Year AND MONTH(StartDT)=@Month)
+	   
+       AND @FieldSetID = FieldSetID AND Active = 1
+
+       order by 
+	   
+		CASE WHEN @SortDirection = 'asc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END ASC,
+		CASE WHEN @SortDirection = 'desc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END DESC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'StartDT' then StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'StartDT' then StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'EndDT' then EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'EndDT' then EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Title' then Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Title' then Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Sort' then Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Sort' then Sort END DESC
+END
+
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Content_GetUrls') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_Content_GetUrls
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_Content_GetUrls]
+	@portalId int
+AS
+BEGIN
+	SELECT C.ContentID as ItemId, -1 as ParentId, 'content' as ItemType, C.Url as UrlFragment1, C.[Title] as UrlFragment2
+	FROM {databaseOwner}[{objectQualifier}ContentPro_Content] C
+	WHERE C.PortalId = @portalId
+END
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Content_GetUrl') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_Content_GetUrl
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_Content_GetUrl]
+	@portalId int,
+	@itemId int, 
+	@itemType nvarchar(20)
+AS
+BEGIN
+	if (@itemType = 'content')
+	begin
+		  SELECT C.ContentID as ItemId, -1 as ParentId, 'content' as ItemType,  C.Url as UrlFragment1, C.[Title] as UrlFragment2
+			FROM {databaseOwner}[{objectQualifier}ContentPro_Content] C
+		  WHERE C.PortalId = @portalId 
+			AND C.ContentID = @itemId
+	end	
+END
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_DeleteField') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_DeleteField
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_DeleteField] 
+	-- Add the parameters for the stored procedure here
+	@NewFieldID int ,
+	@FieldSetID int 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+   UPDATE {databaseOwner}{objectQualifier}ContentPro_Content
+SET ContentXML.modify('delete (/Article/Field[@FieldID=sql:variable("@NewFieldID")])[1]')
+WHERE FieldSetID = @FieldSetID
+
+END
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_AddField') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_AddField
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_AddField] 
+	-- Add the parameters for the stored procedure here
+	@NewFieldID int ,
+	@NewFieldName varchar(max),
+	@NewTypeID int,
+	@NewValue varchar(max),
+	@FieldSetID int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+UPDATE {databaseOwner}{objectQualifier}ContentPro_Content
+SET ContentXML.modify('insert <Field FieldID="{sql:variable("@NewFieldID")}" FieldName ="{sql:variable("@NewFieldName")}" TypeID="{sql:variable("@NewTypeID")}" >{sql:variable("@NewValue")}</Field> into 
+    (/Article)[1]')
+WHERE FieldSetID = @FieldSetID
+
+END
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_EditField') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_EditField
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_EditField] 
+	-- Add the parameters for the stored procedure here
+	@NewFieldID int ,
+	@NewFieldName nvarchar(max),
+	@NewTypeID int,
+	@FieldSetID int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+if @NewFieldName != ''
+UPDATE {databaseOwner}{objectQualifier}ContentPro_Content
+SET ContentXML.modify('replace value of (/Article/Field[@FieldID=sql:variable("@NewFieldID")]/@FieldName)[1] with sql:variable("@NewFieldName")')
+WHERE FieldSetID = @FieldSetID;
+if @NewTypeID != ''
+UPDATE {databaseOwner}{objectQualifier}ContentPro_Content
+SET ContentXML.modify('replace value of (/Article/Field[@FieldID=sql:variable("@NewFieldID")]/@TypeID)[1] with sql:variable("@NewTypeID")')
+WHERE FieldSetID = @FieldSetID;
+END
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterComments') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterComments
+GO
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterComments]
+	-- Add the parameters for the stored procedure here
+	@FieldSetID int = 0,
+	@Filter int = 0,
+	@Text nvarchar(max)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+if @Filter = 0 
+if @Text = ''
+Select c.*
+From {databaseOwner}{objectQualifier}ContentPro_Comments c
+inner join {databaseOwner}{objectQualifier}ContentPro_Content cont on cont.ContentID=c.ContentID
+Where cont.FieldSetID = @FieldSetID 
+order by c.LastModifiedOnDate desc
+else
+	Select c.*
+From {databaseOwner}{objectQualifier}ContentPro_Comments c
+inner join {databaseOwner}{objectQualifier}ContentPro_Content cont on cont.ContentID=c.ContentID
+Where cont.FieldSetID = @FieldSetID AND c.Author like '%'+@Text+'%'
+order by c.LastModifiedOnDate desc
+if @Filter = 1 
+if @Text = ''
+	Select c.*
+From {databaseOwner}{objectQualifier}ContentPro_Comments c
+inner join {databaseOwner}{objectQualifier}ContentPro_Content cont on cont.ContentID=c.ContentID
+Where cont.FieldSetID = @FieldSetID 
+order by c.LastModifiedOnDate desc
+else
+	Select c.*
+From {databaseOwner}{objectQualifier}ContentPro_Comments c
+inner join {databaseOwner}{objectQualifier}ContentPro_Content cont on cont.ContentID=c.ContentID
+Where cont.FieldSetID = @FieldSetID AND c.Title like '%'+@Text+'%'
+order by c.LastModifiedOnDate desc
+if @Filter = 2 
+if @Text = ''
+	Select c.*
+From {databaseOwner}{objectQualifier}ContentPro_Comments c
+inner join {databaseOwner}{objectQualifier}ContentPro_Content cont on cont.ContentID=c.ContentID
+Where cont.FieldSetID = @FieldSetID 
+order by c.LastModifiedOnDate desc
+else
+	Select c.*
+From {databaseOwner}{objectQualifier}ContentPro_Comments c
+inner join {databaseOwner}{objectQualifier}ContentPro_Content cont on cont.ContentID=c.ContentID
+Where cont.FieldSetID = @FieldSetID AND c.Comment like '%'+@Text+'%'
+order by c.LastModifiedOnDate desc
+
+END
+
+GO
+
+
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

@@ -1,0 +1,178 @@
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<puresystems.Modules.ContentPro.Components.RazorModel>
+
+    <div id="top" class="Normal post" itemscope itemtype="http://schema.org/BlogPosting">
+        <div>
+            <div class="blogDate">
+                <div>@Convert.ToDateTime(Model.Content.StartDate).Day</div><span>@Convert.ToDateTime(Model.Content.StartDate).ToString("MMM")</span>
+                <div class="clearfix"></div>
+            </div>
+            <div class="blogListHeader DetailTitlePadding">
+                <h1 class="post-title" itemprop="name headline">@Model.Content.Title</h1>
+                <div class="post-meta">		 
+                   By @Model.Content.User.FirstName @Model.Content.User.LastName Posted on <span>@Convert.ToDateTime(Model.Content.StartDate).ToString("ddd dd MMMM yyyy")</span>				
+                </div>
+            </div>
+        </div>
+        <div class="ContentMargin post-content" itemprop="articleBody">
+			<img class="img-responsive" src="@Model.Content.Image" alt="@Model.Content.Title" />
+			@Model.Content.Body
+        </div>
+        <div class="tagsCon">         
+			<div class="tagName tagNameBottom">
+				@{
+					string tags = "No tags";
+				}
+				@if (Model.Content.TagsList != null)
+				{
+					foreach (var tag in Model.Content.TagsList)
+					{
+						<a href="@tag.TagUrl">@tag.CatName</a>
+					}
+				}
+				else
+				{ 
+					@tags
+				}				
+			</div>
+			<div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="post-toolbar">
+			<a href="#top" class="entry_gototop" >Return top</a>
+        </div>
+		@if (Model.Content.User != null)
+		{
+		<div class="authorCon">
+            <div style="float: left;">
+				<img src="/profilepic.ashx?userId=@Model.Content.User.UserID&amp;w=75" alt="@Model.Content.User.FirstName @Model.Content.User.LastName">
+            </div>
+            <div style="float:left;">
+                <div>Author: @Model.Content.User.FirstName @Model.Content.User.LastName</div>
+                <div style="float:left;">@Model.Content.User.Bio</div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+		}      
+</div>
+
+
+<style>
+/* 
+  ================================
+	CSS STYLES FOR Default Theme
+   ================================
+*/
+/* POST VIEW */
+.post{margin-bottom:0px;clear:both;}
+	.post-readmore a{font-weight:bold;padding:2px;} 
+	.post-readmore a:hover{color:#fff;background-color:#6daa03;}
+	.post-footer{clear:both;width:100%;text-align:right;}
+	.post-views{background-position:0 -614px;}
+	.post-comments{background-position:0 -108px;}
+	.post-header{background:url('@Model.Content.ModulePath/DefaultTemplates/Blog1/images/dateicon.gif') no-repeat left top;padding-left:55px;margin-bottom:5px;}
+	.post-title{margin:0;padding:0;font-size:30px;}
+	h1.post-title{font-size:40px;text-align:left;}
+	.post-title a:link, .post-title a.visited, .post-title a.active{margin:5px 0;display:inline;font-size:35px;}
+	.post-title a:hover{color:#C00;}
+	.post-meta{margin:0px;font-size:95%;}
+	.post-content{clear:both;margin:20px 0 30px 0;display:block;padding-top:15px;} 
+	.post-content img{max-width:100%;padding:20px 0;}
+	
+	/**Image Floats**/
+	.List_Padding{margin:25px 0 10px 0; !important;clear:both;display:inline-block;}
+		.List_FloatText{float:none; width:100%;} 
+		.List_FloatImage{width:100%;float:none;margin-top:7px;text-align:center;padding:0 0 20px 0;} 
+			.List_FloatImage img{width:150px;} 
+			
+	.DetailTitlePadding{padding-top:10px;}
+	.Detail_ImageFloat{float:none;margin-top:30px;max-width:100%;}	
+	.post-tags{clear:both;background-position:0 -540px;min-height:18px;}    
+	.publishbox{margin:5px 0px;}
+	.post-publish{background-position:0 0;margin-left:2px;}
+	.post h2{line-height:1.2em;}
+.blogList{margin-bottom:30px;display:block;}
+#commentForm{font-size:130%;}
+.blogListHeader{float:left;width:100%;text-align:center;}
+
+.BlogDateCon{width:100%;display:inline-block;text-align:center;margin-bottom:25px;}
+
+.blogDate {
+	width: 93px; height:93px; 
+	background:url('@Model.Content.ModulePath/DefaultTemplates/Blog1/images/blog_Date.gif') no-repeat top left;
+	font-family:arial;
+	text-transform:uppercase;
+	text-align:center;
+	margin:0 auto;
+	padding:15px 0 0 0;
+}
+
+.CommentDiv{
+   background-color: whitesmoke;
+   padding:10px;
+   margin-bottom: 10px;
+}
+.CommentAvatarDiv, .CommentTextDiv{float:left;}
+.CommentText{margin-top:10px;}
+.CommentUserSaidOn{font-size:11px;}
+.ReplyDiv{
+	 margin-left:50px;
+	 background-color: #e3e2e2;
+	 padding:10px;
+	 margin-bottom: 10px;
+}
+.commentCompose{margin-top:10px;}
+.CommentReplyPhoto{
+    width: 50px;
+    padding:10px;
+    position: absolute;
+}
+
+
+/* Blog styles */
+.blogListItem h2{}
+.tagsCon{float:left;background:url('@Model.Content.ModulePath/DefaultTemplates/Blog1/images/tags2.gif') no-repeat left center;padding:0 0 0 40px;}
+.commCon{float:right;}
+.tagName{margin-right:5px;}
+.tagNameBottom{margin-left:12px;}
+.tagName a{background:#E4E4E4;padding:4px 8px 5px 8px;text-transform:lowercase;bottom:auto;margin:2px 2px 6px 0;text-shadow:1px 1px 1px #f1f1f1;margin-bottom:5px;display:inline-block;color: black;}
+.blogListItemFoot{margin-top:20px;}
+.authorCon{background:#E7E7E7;border-top: #999 1px dashed;border-bottom: #999 1px dashed;padding:20px;margin-top:20px;}
+.authorCon div a img{width:64px;height:64px;}
+.authorCon img{max-width:60px;}
+.CommentProfilePhoto{max-width:60px;margin-right:10px;}
+.Blog_Detail_Image img{max-width:100% !important;}
+
+/* Custom, iPhone Retina */ 
+@@media only screen and (min-width : 320px) {
+}
+/* Extra Small Devices, Phones */ 
+@@media only screen and (min-width : 480px) {
+	.Detail_ImageFloat{float:right;margin-top:30px;padding:0 0 20px 30px;}
+}
+/* Large Devices, Wide Screens */
+@@media (min-width: 768px) {	
+	.BlogDateCon{width:auto;display:inline;float:left;text-align:center;margin-bottom:0;}
+	.blogDate {
+		width: 93px; height:93px; 
+		background:url('@Model.Content.ModulePath/DefaultTemplates/Blog1/images/blog_Date.gif') no-repeat top left;
+		font-family:Arial;
+		text-transform:uppercase;
+		text-align:center;
+		font-size:22px;
+		float:left;
+		margin:0 20px 0 0;
+		padding:18px 0 0 0;
+		line-height:25px;
+	}
+	.blogListHeader{float:left;width:80%;text-align:left;}
+	.List_FloatText{float:right !important; width:75% !important;} 
+		.List_FloatImage{float:left !important;margin-top:7px;text-align:left !important;width:auto !important;} 
+			.List_FloatImage img{width:150px;} 
+			
+	.CommentAvatarDiv{width:10%;}
+	.CommentTextDiv{width:90%;}
+
+}
+@@media (min-width: 992px) {
+}
+</style>

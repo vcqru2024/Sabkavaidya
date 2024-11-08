@@ -1,0 +1,155 @@
+
+
+/******   drop legacy procedure CP_Product_Product_Update ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Product_UpdateViews ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_UpdateViews]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_UpdateViews]
+GO
+
+/******   drop legacy procedure CP_Product_Product_UpdateActive ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_UpdateActive]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_UpdateActive]
+GO
+
+/******   drop legacy procedure CP_Product_Product_UpdateAuthed ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_UpdateAuthed]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_UpdateAuthed]
+GO
+
+/******   drop legacy procedure CP_Product_Product_UpdateFeatured ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_UpdateFeatured]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_UpdateFeatured]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+	@Id int, 
+	@PortalId int, 
+	@TypeId int, 
+	@UserId int, 
+	@CreatedDate datetime, 
+	@Name nvarchar(200),
+    @PreviousVersion int, 
+	@Authed bit, 
+	@Featured bit, 
+	@Active bit, 
+	@Summary nvarchar(1000), 
+	@LinkUrl nvarchar(200), 
+	@Description ntext, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@Support ntext, 
+	@License ntext, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@PurchasePrice decimal(18, 2), 
+	@PromoPrice decimal(18, 2), 
+    @EnablePromoPrice bit,
+	@PromoStart datetime, 
+	@PromoEnd datetime, 
+	@StockQuantity int, 
+	@LowThreshold int, 
+	@Delivery ntext, 
+	@SpecialOffer ntext, 
+	@Views int, 
+	@PublishDate datetime, 
+	@ExpireDate datetime, 
+	@LastModifiedDate datetime, 
+	@AllowComment bit, 
+	@AllowRating bit, 
+	@CommentRoles nvarchar(200), 
+	@RatingRoles nvarchar(200), 
+	@DownloadRoles nvarchar(200), 
+	@AutoAuthComment bit, 
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @ViewRoles nvarchar(200), 
+    @Categories nvarchar(200),
+    @Tags nvarchar(200),
+    @RefreshRelation bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Product SET
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[UserId] = @UserId,
+	[CreatedDate] = @CreatedDate,
+	[Name] = @Name,
+    [PreviousVersion]=@PreviousVersion,
+	[Authed] = @Authed,
+	[Featured] = @Featured,
+	[Active] = @Active,
+	[Summary] = @Summary,
+	[LinkUrl] = @LinkUrl,
+	[Description] = @Description,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[Support] = @Support,
+	[License] = @License,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[PurchasePrice] = @PurchasePrice,
+	[PromoPrice] = @PromoPrice,
+    [EnablePromoPrice]=@EnablePromoPrice,
+	[PromoStart] = @PromoStart,
+	[PromoEnd] = @PromoEnd,
+	[StockQuantity] = @StockQuantity,
+	[LowThreshold] = @LowThreshold,
+	[Delivery] = @Delivery,
+	[SpecialOffer] = @SpecialOffer,
+	[Views] = @Views,
+	[PublishDate] = @PublishDate,
+	[ExpireDate] = @ExpireDate,
+	[LastModifiedDate] = GetDate(),
+	[AllowComment] = @AllowComment,
+	[AllowRating] = @AllowRating,
+	[CommentRoles] = @CommentRoles,
+	[RatingRoles] = @RatingRoles,
+	[DownloadRoles] = @DownloadRoles,
+	[AutoAuthComment] = @AutoAuthComment,
+	[Order] = @Order,
+    [Weight]=@Weight,
+    [PackageFee]=@PackageFee,
+    [Sku]=@Sku,
+    [Field1]=@Field1,
+    [Field2]=@Field2,
+    [Field3]=@Field3,
+    [Field4]=@Field4,
+    [Field5]=@Field5
+WHERE
+	[Id] = @Id
+
+If (@RefreshRelation=1)
+Begin
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @Id, intValue FROM {databaseOwner}CP_csvToInt(@Categories)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToTag WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @Id, intValue FROM {databaseOwner}CP_csvToInt(@Tags)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToRole WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @Id, intValue FROM {databaseOwner}CP_csvToInt(@ViewRoles)
+end 
+
+' 
+END
+GO
+

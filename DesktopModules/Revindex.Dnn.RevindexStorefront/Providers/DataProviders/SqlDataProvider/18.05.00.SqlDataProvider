@@ -1,0 +1,52 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add SalesOrderDetailID to Fund table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_FundHistory' AND COLUMN_NAME = 'SalesOrderDetailID')
+BEGIN
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory ADD
+	SalesOrderDetailID int NULL
+
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_FundHistory_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory (SalesOrderDetailID)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory ADD CONSTRAINT
+		FK_{objectQualifier}Revindex_Storefront_FundHistory_Revindex_Storefront_SalesOrderDetail FOREIGN KEY
+		(SalesOrderDetailID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail
+		(SalesOrderDetailID) ON UPDATE  NO ACTION ON DELETE  NO ACTION 
+
+END
+GO
+
+-- Add Fund active configuration
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentMethodsFundActive')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsFundActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsFundActive DEFAULT 0,
+		PaymentMethodsFundAvailabilityRule xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsFundActive
+END 
+GO
+
+
+-- Make AllowableOrderQuantity larger
+ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant ALTER COLUMN AllowableOrderQuantity VARCHAR (1000)
+
+
+-- Make ManageOrder module templatable
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ManageOrderDisplayTemplate')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		ManageOrderDisplayTemplate varchar(255) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageOrderDisplayTemplate DEFAULT 'StandardPanel',
+		ManageOrderActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageOrderActive DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageOrderDisplayTemplate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageOrderActive
+
+END 
+GO

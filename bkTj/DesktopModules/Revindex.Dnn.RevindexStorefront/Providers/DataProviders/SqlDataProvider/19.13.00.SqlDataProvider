@@ -1,0 +1,23 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add default subdivision to configuration
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ManageRegisterDisplayTemplate')
+BEGIN
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+	ManageRegisterDisplayTemplate varchar(255) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageRegisterDisplayTemplate DEFAULT 'StandardPanel',
+	ManageRegisterActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageRegisterActive DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageRegisterDisplayTemplate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageRegisterActive
+
+END
+GO
+
+
+	

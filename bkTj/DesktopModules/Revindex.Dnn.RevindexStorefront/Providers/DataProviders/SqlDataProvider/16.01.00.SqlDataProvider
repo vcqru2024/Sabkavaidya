@@ -1,0 +1,3965 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support Manufacturer and Distributor sync to tab menu
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		ManufacturerSyncTabsActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManufacturerSyncTabsActive DEFAULT 0,
+		ManufacturerSyncTabsRoot int NULL,
+		DistributorSyncTabsActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_DistributorSyncTabsActive DEFAULT 0,
+		DistributorSyncTabsRoot int NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManufacturerSyncTabsActive
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_DistributorSyncTabsActive
+
+	-- Support seller pages
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Seller ADD
+		PageTitle xml NULL,
+		MetaKeywords xml NULL,
+		MetaDescription xml NULL,
+		DisplayTemplate varchar(255) NULL,
+		UrlName xml NULL,
+		Published bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Seller_Published DEFAULT 1,
+		AdminNotes nvarchar(MAX) NULL,
+		DisplayOrder int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Seller_DisplayOrder DEFAULT 1000,
+		SellerKey nvarchar(100) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Seller_SellerKey DEFAULT (lower(newid())),
+		Extension xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Seller DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Seller_Published
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Seller DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Seller_DisplayOrder
+
+	CREATE UNIQUE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Seller_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Seller (SellerKey)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD SellerDisplayTemplate varchar(255) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerDisplayTemplate DEFAULT 'StandardList'
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerDisplayTemplate
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		SellerSyncTabsActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerSyncTabsActive DEFAULT 0,
+		SellerSyncTabsRoot int NULL,
+		SellerExtensionActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerExtensionActive DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerSyncTabsActive
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerExtensionActive
+
+	-- Support seller commission calculation
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		SellerCommissionOrderAmountRate decimal(19, 4) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionOrderAmountRate DEFAULT 0,
+		SellerCommissionOrderQuantityRate decimal(19, 4) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionOrderQuantityRate DEFAULT 0,
+		SellerCommissionProductListingRate decimal(19, 4) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionProductListingRate DEFAULT 0,
+		SellerCommissionBaseFee decimal(19, 4) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionBaseFee DEFAULT 0,
+		SellerCommissionMinFee decimal(19, 4) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionMinFee DEFAULT 0,
+		SellerCommissionOrderCountRate decimal(19, 4) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionOrderCountRate DEFAULT 0
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionOrderAmountRate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionOrderQuantityRate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionProductListingRate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionBaseFee
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionMinFee
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SellerCommissionOrderCountRate
+
+
+	-- Support CustomHosted payment gateway
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysCustomHostedUsername varchar(255) NULL,
+		PaymentGatewaysCustomHostedPassword varchar(255) NULL,
+		PaymentGatewaysCustomHostedGatewayUrl varchar(255) NULL,
+		PaymentGatewaysCustomHostedRequestMethod varchar(10) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysCustomHostedRequestMethod DEFAULT 'POST',
+		PaymentGatewaysCustomHostedPassphrase varchar(255) NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysCustomHostedRequestMethod
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsCustomHostedActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsCustomHostedActive DEFAULT 0,
+		PaymentMethodsCustomHostedAvailabilityRule xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsCustomHostedActive
+
+	-- Support Clear payment gateway
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsClearActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsClearActive DEFAULT 0,
+		PaymentMethodsClearAvailabilityRule xml NULL,
+		PaymentGatewaysClearMerchantID varchar(255) NULL,
+		PaymentGatewaysClearPrivateKey varchar(8000) NULL,
+		PaymentGatewaysClearPublicKey varchar(8000) NULL,
+		PaymentGatewaysClearTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysClearTestMode DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsClearActive
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysClearTestMode
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+
+	-- Update Affiliate Performance report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT 
+	v.VendorName AS VendorName, 
+	COUNT(*) AS TotalOrders, 
+	SUM(so.SubTotalAmount) AS TotalOrderAmount,
+	FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalOrderAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+JOIN {databaseOwner}{objectQualifier}Affiliates a
+ON a.AffiliateId = so.AffiliateID
+JOIN {databaseOwner}{objectQualifier}Vendors v
+ON v.VendorId = a.VendorId
+WHERE so.PortalID = @PortalID 
+AND (so.Status = 2 OR so.Status = 4)
+AND so.OrderDate BETWEEN @StartDate AND @StopDate 
+GROUP BY v.VendorId, v.VendorName
+ORDER BY v.VendorName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th width="20%"&amp;gt;Vendor&amp;lt;/th&amp;gt;
+				&amp;lt;th width="40%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th width="40%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="VendorName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalOrderAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Vendor","Orders","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(VendorName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="TotalOrderAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = 'A096534C-0578-49CF-BC68-E27CC0809821'
+
+
+
+
+
+
+-- Update Average order value by time report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Average order value by time',
+		[Description] = 'This report gives you an idea the average size of each order you are doing over time.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+IF @Period = ''day'' BEGIN
+	SELECT 
+		DATEADD(day, 0, DATEDIFF(day, 0, so.OrderDate)) AS OrderDate, 
+		COUNT(*) AS TotalOrders, 
+		SUM(so.TotalAmount) AS TotalAmount,
+		CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END AS AverageAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+		FORMAT(CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END, ''C'', @PrimaryCurrency) AS FormattedAverageAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = 2 OR so.Status = 4) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(day, 0, DATEDIFF(day, 0, so.OrderDate))
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''week'' BEGIN
+	SELECT 
+		DATEADD(week, DATEDIFF(week, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.TotalAmount) AS TotalAmount,
+		CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END AS AverageAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+		FORMAT(CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END, ''C'', @PrimaryCurrency) AS FormattedAverageAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = 2 OR so.Status = 4)  AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(week, DATEDIFF(week, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''month'' BEGIN
+	SELECT 
+		DATEADD(month, DATEDIFF(month, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.TotalAmount) AS TotalAmount,
+		CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END AS AverageAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+		FORMAT(CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END, ''C'', @PrimaryCurrency) AS FormattedAverageAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = 2 OR so.Status = 4)  AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(month, DATEDIFF(month, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''quarter'' BEGIN
+	SELECT 
+		DATEADD(quarter, DATEDIFF(quarter, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.TotalAmount) AS TotalAmount,
+		CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END AS AverageAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+		FORMAT(CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END, ''C'', @PrimaryCurrency) AS FormattedAverageAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = 2 OR so.Status = 4)  AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(quarter, DATEDIFF(quarter, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''year'' BEGIN
+	SELECT 
+		DATEADD(year, DATEDIFF(year, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.TotalAmount) AS TotalAmount,
+		CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END AS AverageAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+		FORMAT(CASE WHEN COUNT(*) &amp;gt; 0 THEN SUM(so.TotalAmount)/COUNT(*) ELSE 0 END, ''C'', @PrimaryCurrency) AS FormattedAverageAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = 2 OR so.Status = 4)  AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(year, DATEDIFF(year, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Period&lt;/name&gt;
+          &lt;dataType&gt;16&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;PeriodDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Period" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Day" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;day&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Week" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;week&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Month" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;month&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quarter" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;quarter&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Year" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;year&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;canvas id="rvdsfSalesOrderChart"&amp;gt;&amp;lt;/canvas&amp;gt;
+&amp;lt;script&amp;gt;
+	{xsl:if test="/in/dataSet/dataTable/dataRow" }
+	$(document).ready(function() {
+		var ctx = document.getElementById(''rvdsfSalesOrderChart'')
+		new Chart(ctx.getContext(''2d''), {
+			type: ''bar'',
+			data: {
+				datasets: [{
+					label: ''Average amount'',
+					data: [
+						{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+						{x: new Date(''{xsl:value-of select="substring(OrderDate, 1, 10)" /}''), y: {xsl:value-of select="format-number(AverageAmount, ''0.00'')" /} },
+						{/xsl:for-each}
+					],
+					backgroundColor: ''rgba(54, 162, 235, 0.2)'',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						type: ''time''
+					}]
+				},
+				legend: {
+					display: false
+				},
+			}
+		});
+	})
+	{/xsl:if}
+&amp;lt;/script&amp;gt;
+&amp;lt;hr /&amp;gt;
+&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Date&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Average&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="substring(OrderDate, 1, 10)" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedAverageAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Date","Orders","Total","Average"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="substring(OrderDate, 1, 10)" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="TotalAmount" /}","{xsl:value-of select="AverageAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '179BDD8D-BD30-416F-8C55-CCC2F6CD94C9'
+
+
+
+
+
+
+
+
+	-- Update Cart abandonment report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @AbandonTimeout INT = 86400
+SELECT @AbandonTimeout = CartAbandonTimeout FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration WHERE PortalID = @PortalID
+
+DECLARE @TotalOrdersCount INT
+DECLARE @AbandonedOrdersCount INT
+DECLARE @RecoveredOrdersCount INT
+
+SELECT @TotalOrdersCount = COUNT(*)
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+WHERE so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+
+SELECT @AbandonedOrdersCount = COUNT(*)
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+WHERE so.PortalID = @PortalID AND so.Status = 7 
+AND so.OrderDate BETWEEN @StartDate AND @StopDate
+
+SELECT @RecoveredOrdersCount = COUNT(*)
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+WHERE so.PortalID = @PortalID AND (so.Status = 1 OR so.Status = 2 OR so.Status = 3 OR so.Status = 4)
+AND so.OrderDate BETWEEN @StartDate AND @StopDate
+AND DATEDIFF(second, so.CreateDate, so.OrderDate) &amp;gt; @AbandonTimeout
+
+SELECT @TotalOrdersCount AS ''TotalOrdersCount'', @TotalOrdersCount - @AbandonedOrdersCount - @RecoveredOrdersCount AS ''OtherOrdersCount'', @AbandonedOrdersCount AS ''AbandonedOrdersCount'', @RecoveredOrdersCount AS ''RecoveredOrdersCount''
+&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDate&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDate&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Stop date is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+	$(document).ready(function () {
+		var data = {
+			datasets: [{
+				data: [
+					 {xsl:value-of select="/in/dataSet/dataTable/dataRow/AbandonedOrdersCount" /},
+					 {xsl:value-of select="/in/dataSet/dataTable/dataRow/RecoveredOrdersCount" /},
+					 {xsl:value-of select="/in/dataSet/dataTable/dataRow/OtherOrdersCount" /},
+					],
+					backgroundColor: [
+					''Red'',
+					''LightGreen'',
+					''Gold'',
+				],
+			}],
+			labels: [
+				''Abandoned orders'',
+				''Recovered orders'',
+				''Other orders'',
+			],
+		}
+
+		new Chart(document.getElementById(''rvdsfCartAbandonmentChart'').getContext(''2d''), {
+			type: ''pie'',
+			data: data,
+			options: {
+				legend: {
+					display: true
+				},
+				tooltips: {
+					enabled: true
+				}
+			}
+		});
+	})
+&amp;lt;/script&amp;gt;
+&amp;lt;div class="col-sm-6"&amp;gt;
+	&amp;lt;canvas id="rvdsfCartAbandonmentChart"&amp;gt;&amp;lt;/canvas&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class="col-sm-6"&amp;gt;
+&amp;lt;table class="table table-striped table-hover"&amp;gt;
+	&amp;lt;tbody&amp;gt;
+		&amp;lt;tr&amp;gt;
+			&amp;lt;th&amp;gt;Total orders&amp;lt;/th&amp;gt;
+			&amp;lt;td&amp;gt;{xsl:value-of select="/in/dataSet/dataTable/dataRow/TotalOrdersCount" /}&amp;lt;/td&amp;gt;
+		&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;
+			&amp;lt;th&amp;gt;Abandoned orders&amp;lt;/th&amp;gt;
+			&amp;lt;td&amp;gt;{xsl:value-of select="/in/dataSet/dataTable/dataRow/AbandonedOrdersCount" /}&amp;lt;/td&amp;gt;
+		&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;
+			&amp;lt;th&amp;gt;Abandoned rate&amp;lt;/th&amp;gt;
+			&amp;lt;td&amp;gt;{xsl:value-of select="format-number((/in/dataSet/dataTable/dataRow/AbandonedOrdersCount div /in/dataSet/dataTable/dataRow/TotalOrdersCount) * 100, &amp;amp;#39;0.0&amp;amp;#39;)" /}%&amp;lt;/td&amp;gt;
+		&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;
+			&amp;lt;th&amp;gt;Recovered orders&amp;lt;/th&amp;gt;
+			&amp;lt;td&amp;gt;{xsl:value-of select="/in/dataSet/dataTable/dataRow/RecoveredOrdersCount" /}&amp;lt;/td&amp;gt;
+		&amp;lt;/tr&amp;gt;
+		&amp;lt;tr&amp;gt;
+			&amp;lt;th&amp;gt;Recovery rate&amp;lt;/th&amp;gt;
+			&amp;lt;td&amp;gt;{xsl:value-of select="format-number((/in/dataSet/dataTable/dataRow/RecoveredOrdersCount div (/in/dataSet/dataTable/dataRow/AbandonedOrdersCount + /in/dataSet/dataTable/dataRow/RecoveredOrdersCount)) * 100, &amp;amp;#39;0.0&amp;amp;#39;)" /}%&amp;lt;/td&amp;gt;
+		&amp;lt;/tr&amp;gt;
+	&amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Total orders","Abandoned orders","Abandoned rate","Recovered orders","Recovery rate"
+"{xsl:value-of select="/in/dataSet/dataTable/dataRow/TotalOrdersCount" /}","{xsl:value-of select="/in/dataSet/dataTable/dataRow/AbandonedOrdersCount" /}","{xsl:value-of select="/in/dataSet/dataTable/dataRow/AbandonedOrdersCount div /in/dataSet/dataTable/dataRow/TotalOrdersCount" /}","{xsl:value-of select="/in/dataSet/dataTable/dataRow/RecoveredOrdersCount" /}","{xsl:value-of select="/in/dataSet/dataTable/dataRow/RecoveredOrdersCount div (/in/dataSet/dataTable/dataRow/AbandonedOrdersCount + /in/dataSet/dataTable/dataRow/RecoveredOrdersCount)" /}"&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '028BA176-EC2B-4A97-9A66-8FF1D00C483B'
+
+
+
+
+
+
+
+
+
+	-- Update Low product inventory report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;SELECT p.ProductID,
+   pv.ProductVariantID,
+   pv.SKU AS SKU,
+   COALESCE(p.Name.value(N''(/locale/@en-US)[1]'', ''nvarchar(MAX)''), '''') AS ProductName,
+   COALESCE(pv.Name.value(N''(/locale/@en-US)[1]'', ''nvarchar(MAX)''), '''') AS ProductVariantName,
+   pv.Inventory,
+   pv.MinInventory,
+   pv.MaxInventory,
+   pv.MaxInventory - pv.Inventory AS ''Reorder''
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+ON pv.ProductID = p.ProductID
+WHERE p.PortalID = @PortalID 
+	AND p.Deleted = 0
+	AND pv.Deleted = 0
+	AND pv.Inventory IS NOT NULL
+	AND ((pv.Inventory &amp;lt;= 0 AND pv.MinInventory IS NULL) OR (pv.Inventory &amp;lt; pv.MinInventory))
+ORDER BY ProductName, ProductVariantName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th width="20%"&amp;gt;Product&amp;lt;/th&amp;gt;
+				&amp;lt;th width="20%"&amp;gt;Variant&amp;lt;/th&amp;gt;
+				&amp;lt;th width="20%"&amp;gt;SKU&amp;lt;/th&amp;gt;
+				&amp;lt;th width="10%"&amp;gt;Inventory&amp;lt;/th&amp;gt;
+				&amp;lt;th width="5%"&amp;gt;Min&amp;lt;/th&amp;gt;
+				&amp;lt;th width="5%"&amp;gt;Max&amp;lt;/th&amp;gt;
+				&amp;lt;th width="10%"&amp;gt;Reorder&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductVariantName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="SKU" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="Inventory" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="MinInventory" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="MaxInventory" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="Reorder" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Product","Variant","SKU","Inventory","Min","Max","Reorder"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(ProductName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(ProductVariantName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(SKU, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="Inventory" /}","{xsl:value-of select="MinInventory" /}","{xsl:value-of select="MaxInventory" /}","{xsl:value-of select="Reorder" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '8F140306-176C-4867-BD4B-1233BF26BD2A'
+
+
+
+
+
+
+
+	-- Update Payments by gateway report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Payments by gateway',
+		[Description] = 'This report helps you to reconcile payments by gateway.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+
+SELECT sp.PaymentGateway,
+	COALESCE(SUM(Amount), 0) AS TotalAmount,
+	FORMAT(COALESCE(SUM(Amount), 0), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment sp
+JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so 
+ON sp.SalesOrderID = so.SalesOrderID
+WHERE 
+	so.PortalID = @PortalID
+	AND sp.CreateDate BETWEEN @StartDate AND @StopDate
+	AND sp.TransactionType = @TransactionType
+	AND sp.PaymentGatewayResponseCode = 1
+GROUP BY sp.PaymentGateway
+ORDER BY sp.PaymentGateway&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@TransactionType&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;TransactionTypeDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Transaction type" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Authorize" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Capture" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Invoice" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Purchase" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Refund" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Void" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 60%"&amp;gt;Gateway&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 40%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="PaymentGateway" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;
+
+&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Gateway","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(PaymentGateway, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = 'E9186684-51F4-4B99-AC49-27B43B286B0B'
+
+
+
+
+
+
+
+
+
+	-- Insert Payments by order report
+	INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'A7C90B9B-07B3-4E66-90D6-A88CE8ECE1AE', NULL, N'Payments by order', N'This report helps you to reconcile payments by sales order.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT *,
+	t.TotalAmount - t.TotalPaymentAmount AS TotalDifferenceAmount,
+	FORMAT(t.TotalAmount, ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+	FORMAT(t.TotalPaymentAmount, ''C'', @PrimaryCurrency) AS FormattedTotalPaymentAmount,
+	FORMAT(t.TotalAmount - t.TotalPaymentAmount, ''C'', @PrimaryCurrency) AS FormattedTotalDifferenceAmount
+FROM (
+	SELECT 
+		so.SalesOrderNumber,
+		so.TotalAmount,
+		COALESCE(
+			SUM(
+				CASE sp.TransactionType 
+				
+					-- PURCHASE
+					WHEN 2 THEN Amount
+					
+					-- CAPTURE
+					WHEN 6 THEN Amount
+					
+					-- REFUND
+					WHEN 4 THEN -1 * Amount	
+				END
+			)
+			, 0) AS TotalPaymentAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	LEFT JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment sp
+	ON sp.SalesOrderID = so.SalesOrderID
+	WHERE 
+		so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+		AND (so.Status = @Status OR @Status = 0)
+		AND sp.TransactionType IN (2, 6, 4)
+		AND sp.PaymentGatewayResponseCode = 1
+	GROUP BY so.SalesOrderNumber, so.TotalAmount
+	) AS t
+ORDER BY t.SalesOrderNumber&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 40%"&amp;gt;Order&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Payment&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Difference&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="SalesOrderNumber" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalPaymentAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalDifferenceAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+&amp;lt;/table&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Order","Total","Payment","Difference"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(SalesOrderNumber, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalAmount" /}","{xsl:value-of select="TotalPaymentAmount" /}","{xsl:value-of select="TotalDifferenceAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 2, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+	-- Update Profit by product report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET 
+		[Name] = 'Profit by product',
+		[Description] = 'This report gives you an idea of the profit you make from each product sold. The reported profit is only accurate for products with cost information available at the moment of sale. If no cost information is provided, the system will assume the product has a zero cost.',
+		[ReportGroup] = 2,
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT
+    p.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ProductName, 
+	t.TotalQuantity, 
+	t.TotalCostAmount,
+	t.TotalProfitAmount,
+	t.TotalProfitMargin,
+	t.SubTotalAmount,
+	FORMAT(t.TotalCostAmount, ''C'', @PrimaryCurrency) AS FormattedTotalCostAmount,
+	FORMAT(t.SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+	FORMAT(t.TotalProfitAmount, ''C'', @PrimaryCurrency) AS FormattedTotalProfitAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+JOIN
+(
+	SELECT 
+		p.ProductID, 
+		SUM(sod.Quantity) AS TotalQuantity, 
+		SUM(COALESCE(sod.ProductCost, 0) * sod.Quantity) AS TotalCostAmount,
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) AS SubTotalAmount,
+		SUM(((sod.Price * sod.Quantity) + sod.DiscountAmount) - (COALESCE(sod.ProductCost, 0) * sod.Quantity)) As TotalProfitAmount,
+		CASE WHEN SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) &amp;gt; 0
+			THEN SUM(((sod.Price * sod.Quantity) + sod.DiscountAmount) - (COALESCE(sod.ProductCost, 0) * sod.Quantity)) / SUM((sod.Price * sod.Quantity) + sod.DiscountAmount)
+			ELSE 0
+		END AS TotalProfitMargin
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = sod.SalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+	ON pv.ProductVariantID = sod.ProductVariantID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+	ON p.ProductID = pv.ProductID
+	WHERE (so.Status = @Status OR @Status = 0)
+		AND so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY p.ProductID
+) AS t
+ON t.ProductID = p.ProductID
+ORDER BY ProductName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 45%"&amp;gt;Product&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Cost&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Profit&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Margin&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalCostAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalProfitAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="format-number(TotalProfitMargin * 100, ''#,##0.0'')" /}%&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Product","Quantity","Cost","Sub-total","Profit","Margin"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(ProductName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="TotalCostAmount" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalProfitAmount" /}","{xsl:value-of select="TotalProfitMargin" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = 'BA9C15D6-E5A5-470F-96B9-29B0DE7BCF09'
+
+
+
+
+
+
+
+
+	-- Insert Profit by product variant report
+		INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'55F62C04-1AD2-4067-9788-11089A36449A', NULL, N'Profit by product variant', N'This report gives you an idea of the profit you make from each product variant sold. The reported profit is only accurate for products with cost information available at the moment of sale. If no cost information is provided, the system will assume the product has a zero cost.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT
+    p.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ProductName, 
+	pv.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ProductVariantName, 
+	pv.SKU,
+	t.TotalQuantity, 
+	t.TotalCostAmount,
+	t.TotalProfitAmount,
+	t.TotalProfitMargin,
+	t.SubTotalAmount,
+	FORMAT(t.TotalCostAmount, ''C'', @PrimaryCurrency) AS FormattedTotalCostAmount,
+	FORMAT(t.SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+	FORMAT(t.TotalProfitAmount, ''C'', @PrimaryCurrency) AS FormattedTotalProfitAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+ON p.ProductID = pv.ProductID
+JOIN
+(
+	SELECT 
+		pv.ProductVariantID, 
+		SUM(sod.Quantity) AS TotalQuantity, 
+		SUM(COALESCE(sod.ProductCost, 0) * sod.Quantity) AS TotalCostAmount,
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) AS SubTotalAmount,
+		SUM(((sod.Price * sod.Quantity) + sod.DiscountAmount) - (COALESCE(sod.ProductCost, 0) * sod.Quantity)) As TotalProfitAmount,
+		CASE WHEN SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) &amp;gt; 0
+			THEN SUM(((sod.Price * sod.Quantity) + sod.DiscountAmount) - (COALESCE(sod.ProductCost, 0) * sod.Quantity)) / SUM((sod.Price * sod.Quantity) + sod.DiscountAmount)
+			ELSE 0
+		END AS TotalProfitMargin
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = sod.SalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+	ON pv.ProductVariantID = sod.ProductVariantID
+	WHERE (so.Status = @Status OR @Status = 0)
+		AND so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY pv.ProductVariantID
+) AS t
+ON t.ProductVariantID = pv.ProductVariantID
+ORDER BY ProductName, ProductVariantName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Product&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Variant&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;SKU&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 9%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 9%"&amp;gt;Cost&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 9%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 9%"&amp;gt;Profit&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 9%"&amp;gt;Margin&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductVariantName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="SKU" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalCostAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalProfitAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="format-number(TotalProfitMargin * 100, ''#,##0.0'')" /}%&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Product","Variant","SKU","Quantity","Cost","Sub-total","Profit","Margin"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(ProductName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(ProductVariantName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(SKU, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="TotalCostAmount" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalProfitAmount" /}","{xsl:value-of select="TotalProfitMargin" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 2, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+
+
+	-- Update Sales by billing location report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Sales by billing location',
+		[Description] = 'This report shows you where your customers are buying from.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT so.BillingCountryCode, so.BillingSubdivisionCode, 
+	COUNT(*) as TotalOrders, 
+	SUM(so.SubTotalAmount) AS SubTotalAmount, 
+	SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+	SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+	SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+	SUM(so.TotalAmount) AS TotalAmount,
+	FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+	FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+	FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+	FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+	FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+WHERE so.PortalID = @PortalID 
+	AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	AND (so.Status = @Status OR @Status = 0)
+GROUP BY so.BillingCountryCode, so.BillingSubdivisionCode
+ORDER BY so.BillingCountryCode, so.BillingSubdivisionCode&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 5%"&amp;gt;Country&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Region&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Handling&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Shipping&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="BillingCountryCode" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="substring(BillingSubdivisionCode, 4)" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalHandlingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalShippingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Country","Region","Orders","Sub-total","Handling","Shipping","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="BillingCountryCode" /}","{xsl:value-of select="substring(BillingSubdivisionCode, 4)" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalHandlingAmount" /}","{xsl:value-of select="TotalShippingAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = 'F0BE969E-3700-4273-8226-DDBC9481DBA3'
+
+
+
+
+
+
+
+
+
+	-- Insert Sales by category report
+	INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'DF0A71C0-3F68-4E2A-A2ED-F5525F17BD52', NULL, N'Sales by category', N'This report gives you an idea how much of your sales are coming from which category.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT 
+	c.CategoryID,
+    c.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS CategoryName, 
+	t.TotalQuantity, 
+	t.SubTotalAmount,
+	t.TotalTaxAmount,
+	t.TotalAmount,
+	FORMAT(t.SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+	FORMAT(t.TotalTaxAmount, ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+	FORMAT(t.TotalAmount, ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Category c
+JOIN
+(
+	SELECT 
+		pc.CategoryID, 
+		SUM(sod.Quantity) AS TotalQuantity, 
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) AS SubTotalAmount,
+		SUM(sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalTaxAmount,
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount + sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = sod.SalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+	ON pv.ProductVariantID = sod.ProductVariantID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+	ON p.ProductID = pv.ProductID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductCategory pc
+	ON pc.ProductID = p.ProductID
+	WHERE (so.Status = @Status OR @Status = 0)
+		AND so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+		AND pc.DefaultCategory = 1
+	GROUP BY pc.CategoryID
+) AS t
+ON t.CategoryID = c.CategoryID
+ORDER BY CategoryName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Category ID&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Category&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="CategoryID" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="CategoryName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Category ID","Category","Quantity","Sub-total","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="CategoryID" /}","{xsl:value-of select="replace(CategoryName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 2, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+
+	-- Insert Sales by customer report
+	INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'D8324107-8221-4478-A541-AFDA11380E21', NULL, N'Sales by customer', N'This report gives you an idea how much of your sales are coming from which customer.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT 
+		u.Username,
+		u.FirstName,
+		u.LastName,
+		COUNT(*) AS TotalOrders, 
+		SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+		SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+		SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+		SUM(so.TotalAmount) AS TotalAmount,
+		FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+		FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+		FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+		FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	JOIN {databaseOwner}{objectQualifier}Users u
+		ON u.UserID = so.UserID
+	WHERE (so.Status = @Status OR @Status = 0) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY u.Username, u.FirstName, u.LastName, u.Email
+	ORDER BY u.Username&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Username&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 12%"&amp;gt;First name&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 13%"&amp;gt;Last name&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Handling&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Shipping&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="Username" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FirstName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="LastName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalHandlingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalShippingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Username","First name","Last name","Orders","Sub-total","Handling","Shipping","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(Username, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(FirstName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(LastName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalHandlingAmount" /}","{xsl:value-of select="TotalShippingAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 2, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+
+
+
+
+
+	-- Update Sales by product report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Sales by product',
+		[Description] = 'This report gives you an idea how much of your sales are coming from which product.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT 
+    p.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ProductName, 
+	t.TotalQuantity, 
+	t.SubTotalAmount,
+	t.TotalTaxAmount,
+	t.TotalAmount,
+	FORMAT(t.SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+	FORMAT(t.TotalTaxAmount, ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+	FORMAT(t.TotalAmount, ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+JOIN
+(
+	SELECT 
+		p.ProductID, 
+		SUM(sod.Quantity) AS TotalQuantity, 
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) AS SubTotalAmount,
+		SUM(sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalTaxAmount,
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount + sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = sod.SalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+	ON pv.ProductVariantID = sod.ProductVariantID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+	ON p.ProductID = pv.ProductID
+	WHERE (so.Status = @Status OR @Status = 0)
+		AND so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY p.ProductID
+) AS t
+ON t.ProductID = p.ProductID
+ORDER BY ProductName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 40%"&amp;gt;Product&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Product","Quantity","Sub-total","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(ProductName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '476BC7CB-7A24-4875-8C0F-C812CBB10566'
+
+
+
+
+
+
+
+
+
+
+
+	-- Insert Sales by product variant report
+	INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'103EB27A-B136-46DB-A8C1-94E56C710190', NULL, N'Sales by product variant', N'This report gives you an idea how much of your sales are coming from which product variant.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT 
+	p.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ProductName, 
+	pv.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS ProductVariantName, 
+	pv.SKU,
+	t.TotalQuantity, 
+	t.SubTotalAmount,
+	t.TotalTaxAmount,
+	t.TotalAmount,
+	FORMAT(t.SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+	FORMAT(t.TotalTaxAmount, ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+	FORMAT(t.TotalAmount, ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+ON p.ProductID = pv.ProductID
+JOIN
+(
+	SELECT 
+		pv.ProductVariantID, 
+		SUM(sod.Quantity) AS TotalQuantity, 
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount) AS SubTotalAmount,
+		SUM(sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalTaxAmount,
+		SUM((sod.Price * sod.Quantity) + sod.DiscountAmount + sod.TaxAmount1 + sod.TaxAmount2 + sod.TaxAmount3 + sod.TaxAmount4 + sod.TaxAmount5) AS TotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = sod.SalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+	ON pv.ProductVariantID = sod.ProductVariantID
+	WHERE (so.Status = @Status OR @Status = 0)
+		AND so.PortalID = @PortalID 
+		AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY pv.ProductVariantID
+) AS t
+ON t.ProductVariantID = pv.ProductVariantID
+ORDER BY ProductName, ProductVariantName&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Product&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Variant&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;SKU&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductVariantName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="SKU" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Product","Variant","SKU","Quantity","Sub-total","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(ProductName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(ProductVariantName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="replace(SKU, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 2, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+
+	-- Insert Sales by shipping location report
+	INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'28163E9D-86C7-425D-8013-AAF33AC838C4', NULL, N'Sales by shipping location', N'This report shows you where your customers are shipping to.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT so.ShippingCountryCode, so.ShippingSubdivisionCode, 
+	COUNT(*) as TotalOrders, 
+	SUM(so.SubTotalAmount) AS SubTotalAmount, 
+	SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+	SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+	SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+	SUM(so.TotalAmount) AS TotalAmount,
+	FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+	FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+	FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+	FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+	FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+WHERE so.PortalID = @PortalID 
+	AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	AND (so.Status = @Status OR @Status = 0)
+GROUP BY so.ShippingCountryCode, so.ShippingSubdivisionCode
+ORDER BY so.ShippingCountryCode, so.ShippingSubdivisionCode&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 5%"&amp;gt;Country&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Region&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Handling&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Shipping&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ShippingCountryCode" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="substring(ShippingSubdivisionCode, 4)" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalHandlingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalShippingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Country","Region","Orders","Sub-total","Handling","Shipping","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="ShippingCountryCode" /}","{xsl:value-of select="substring(ShippingSubdivisionCode, 4)" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalHandlingAmount" /}","{xsl:value-of select="TotalShippingAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 2, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+
+
+
+	-- Update Sales by time report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Sales by time',
+		[Description] = 'This report gives you an idea the amount of orders and sales you are doing over time.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+IF @Period = ''day'' BEGIN
+	SELECT 
+		DATEADD(day, 0, DATEDIFF(day, 0, so.OrderDate)) AS OrderDate, 
+		COUNT(*) AS TotalOrders, 
+		SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+		SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+		SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+		SUM(so.TotalAmount) AS TotalAmount,
+		FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+		FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+		FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+		FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = @Status OR @Status = 0) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(day, 0, DATEDIFF(day, 0, so.OrderDate))
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''week'' BEGIN
+	SELECT 
+		DATEADD(week, DATEDIFF(week, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+		SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+		SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+		SUM(so.TotalAmount) AS TotalAmount,
+		FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+		FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+		FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+		FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = @Status OR @Status = 0) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(week, DATEDIFF(week, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''month'' BEGIN
+	SELECT 
+		DATEADD(month, DATEDIFF(month, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+		SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+		SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+		SUM(so.TotalAmount) AS TotalAmount,
+		FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+		FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+		FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+		FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = @Status OR @Status = 0) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(month, DATEDIFF(month, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''quarter'' BEGIN
+	SELECT 
+		DATEADD(quarter, DATEDIFF(quarter, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+		SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+		SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+		SUM(so.TotalAmount) AS TotalAmount,
+		FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+		FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+		FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+		FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = @Status OR @Status = 0) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(quarter, DATEDIFF(quarter, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END
+ELSE IF @Period = ''year'' BEGIN
+	SELECT 
+		DATEADD(year, DATEDIFF(year, 0, so.OrderDate), 0) AS OrderDate, 
+		COUNT(*) AS TotalOrders, SUM(so.SubTotalAmount) AS SubTotalAmount, 
+		SUM(so.HandlingAmount + so.HandlingDiscountAmount) As TotalHandlingAmount,
+		SUM(so.ShippingAmount + so.ShippingDiscountAmount) As TotalShippingAmount,
+		SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount) As TotalTaxAmount,
+		SUM(so.TotalAmount) AS TotalAmount,
+		FORMAT(SUM(so.SubTotalAmount), ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount, 
+		FORMAT(SUM(so.HandlingAmount + so.HandlingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalHandlingAmount,
+		FORMAT(SUM(so.ShippingAmount + so.ShippingDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalShippingAmount,
+		FORMAT(SUM(so.TaxAmount1 + so.TaxAmount2 + so.TaxAmount3 + so.TaxAmount4 + so.TaxAmount5 + so.HandlingTaxAmount1 + so.HandlingTaxAmount2 + so.HandlingTaxAmount3 + so.HandlingTaxAmount4 + so.HandlingTaxAmount5 + so.ShippingTaxAmount1 + so.ShippingTaxAmount2 + so.ShippingTaxAmount3 + so.ShippingTaxAmount4 + so.ShippingTaxAmount5 + so.TaxDiscountAmount), ''C'', @PrimaryCurrency) AS FormattedTotalTaxAmount,
+		FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	WHERE (so.Status = @Status OR @Status = 0) AND so.PortalID = @PortalID AND so.OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY DATEADD(year, DATEDIFF(year, 0, so.OrderDate), 0)
+	ORDER BY OrderDate
+END&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Status&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;StatusDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Order status" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Any" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;0&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Incomplete" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;7&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Pending" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quoted" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;9&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Preordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;8&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Ordered" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;2&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Processing" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;3&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Completed" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;4&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Cancelled" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;5&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Declined" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;6&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;False&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Period&lt;/name&gt;
+          &lt;dataType&gt;16&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;PeriodDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Period" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Day" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;day&lt;/value&gt;
+                  &lt;selected&gt;True&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Week" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;week&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Month" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;month&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Quarter" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;quarter&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="Year" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;year&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required" /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;canvas id="rvdsfSalesOrderChart"&amp;gt;&amp;lt;/canvas&amp;gt;
+&amp;lt;script&amp;gt;
+	{xsl:if test="/in/dataSet/dataTable/dataRow" }
+	$(document).ready(function() {
+		var ctx = document.getElementById(''rvdsfSalesOrderChart'')
+		new Chart(ctx.getContext(''2d''), {
+			type: ''bar'',
+			data: {
+				datasets: [{
+					label: ''Total amount'',
+					data: [
+						{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+						{x: new Date(''{xsl:value-of select="substring(OrderDate, 1, 10)" /}''), y: {xsl:value-of select="format-number(TotalAmount, ''0.00'')" /} },
+						{/xsl:for-each}
+					],
+					backgroundColor: ''rgba(54, 162, 235, 0.2)'',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					xAxes: [{
+						type: ''time''
+					}]
+				},
+				legend: {
+					display: false
+				},
+			}
+		});
+	})
+	{/xsl:if}
+&amp;lt;/script&amp;gt;
+&amp;lt;hr /&amp;gt;
+&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Date&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Handling&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Shipping&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Tax&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 15%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="substring(OrderDate, 1, 10)" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalHandlingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalShippingAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalTaxAmount" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Date","Orders","Sub-total","Handling","Shipping","Tax","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="substring(OrderDate, 1, 10)" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalHandlingAmount" /}","{xsl:value-of select="TotalShippingAmount" /}","{xsl:value-of select="TotalTaxAmount" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '8ACDA957-4621-4A72-9F06-D434ECE87412'
+
+
+
+
+
+
+
+	-- Insert Seller commission report
+		INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'7D124703-761D-4B3F-88F4-CBE54B4689C1', NULL, N'Seller commission', N'This report allows you to calculate the net payment from sales owing to sellers less any commission due by date.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+DECLARE @BaseFee decimal(19,4) = 0
+DECLARE @MinFee decimal(19,4) = 0
+DECLARE @OrderAmountRate decimal(19,4) = 0
+DECLARE @OrderCountRate decimal(19,4) = 0
+DECLARE @OrderQuantityRate decimal(19,4) = 0
+DECLARE @ProductListingRate decimal(19,4) = 0
+
+DECLARE @SellerFees TABLE 
+(
+	SellerID int,
+	SellerName nvarchar(MAX),
+	TotalProducts int DEFAULT 0,
+	TotalAmount decimal(19, 4) DEFAULT 0,
+	SubTotalAmount decimal(19, 4) DEFAULT 0,
+	TotalOrders int DEFAULT 0,
+	TotalQuantity int DEFAULT 0,
+	TotalFees decimal(19, 4) DEFAULT 0
+)
+
+SELECT 
+	@BaseFee = SellerCommissionBaseFee,
+	@MinFee = SellerCommissionMinFee,
+	@OrderAmountRate = SellerCommissionOrderAmountRate,
+	@OrderCountRate = SellerCommissionOrderCountRate,
+	@OrderQuantityRate = SellerCommissionOrderQuantityRate,
+	@ProductListingRate = SellerCommissionProductListingRate
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+WHERE PortalID = @PortalID
+
+-- Calculate Total and SubTotal amounts due
+INSERT INTO @SellerFees (SellerID, SellerName, TotalAmount, SubTotalAmount, TotalOrders)
+SELECT t.SellerID, t.SellerName, SUM(t.TotalAmount) AS TotalAmount, SUM(t.SubTotalAmount) AS SubTotalAmount, COUNT(*) AS TotalOrders
+FROM (
+	SELECT s.SellerID, s.Name.value(''(/locale/@en-US)[1]'', ''nvarchar(max)'') AS SellerName, so.TotalAmount, so.SubTotalAmount
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Seller s
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON s.SellerID = so.SellerID
+	WHERE so.PortalID = @PortalID AND so.Status = 4 
+	AND OrderDate BETWEEN @StartDate AND @StopDate
+) AS t
+GROUP BY t.SellerID, t.SellerName
+
+-- Calculate order quantities
+UPDATE ss
+SET ss.TotalQuantity = t.TotalQuantity
+FROM @SellerFees AS ss
+JOIN (
+	SELECT so.SellerID, SUM(sod.Quantity) AS TotalQuantity
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	ON sod.SalesOrderID = so.SalesOrderID
+	WHERE so.PortalID = @PortalID AND so.Status = 4 AND OrderDate BETWEEN @StartDate AND @StopDate
+	GROUP BY so.SellerID
+	) AS t
+ON t.SellerID = ss.SellerID
+
+
+-- Calculate number of listed products
+UPDATE ss
+SET ss.TotalProducts = t.TotalProducts
+FROM @SellerFees AS ss
+JOIN (
+	SELECT p.SellerID, COUNT(*) AS TotalProducts
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+	WHERE p.PortalID = @PortalID AND p.Deleted = 0 AND p.Published = 1 AND (p.StartDate IS NULL OR p.StartDate &amp;lt;= @StartDate) AND (p.StopDate IS NULL OR p.StopDate &amp;gt;= @StopDate)
+	GROUP BY p.SellerID
+	) AS t
+ON t.SellerID = ss.SellerID
+
+
+-- Calculate fees
+-- Max((TotalAmount * Rate) + (QuantitySold * Rate) + (NumOrders * Rate) + (ItemsForSale * Rate) + BaseFee, MinFee)
+UPDATE @SellerFees
+SET TotalFees = CASE 
+					WHEN (SubTotalAmount * @OrderAmountRate) + (TotalQuantity * @OrderQuantityRate) + (TotalOrders * @OrderCountRate) + (TotalProducts * @ProductListingRate) + @BaseFee &amp;gt; @MinFee
+					THEN -1 * ((SubTotalAmount * @OrderAmountRate) + (TotalQuantity * @OrderQuantityRate) + (TotalOrders * @OrderCountRate) + (TotalProducts * @ProductListingRate) + @BaseFee)
+					ELSE -1 * @MinFee
+				END
+
+
+-- Total is amount due less fees
+SELECT *, 
+    TotalAmount + TotalFees AS TotalPayableAmount,
+    FORMAT(TotalProducts, ''C'', @PrimaryCurrency) AS FormattedTotalProducts,
+    FORMAT(TotalAmount, ''C'', @PrimaryCurrency) AS FormattedTotalAmount,
+    FORMAT(SubTotalAmount, ''C'', @PrimaryCurrency) AS FormattedSubTotalAmount,
+    FORMAT(TotalFees, ''C'', @PrimaryCurrency) AS FormattedTotalFees,
+    FORMAT(TotalAmount + TotalFees, ''C'', @PrimaryCurrency) AS FormattedTotalPayableAmount
+FROM @SellerFees 
+ORDER BY SellerName
+&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Seller ID&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Name&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Products&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Sub-total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Total&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Commission&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Payable&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+		{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+			&amp;lt;tr&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="SellerID" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="SellerName" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="TotalProducts" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="FormattedSubTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalFees" /}&amp;lt;/td&amp;gt;
+				&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalPayableAmount" /}&amp;lt;/td&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Seller ID","Name","Products","Orders","Quantity","Sub-total","Total","Commission","Payable"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="SellerID" /}","{xsl:value-of select="replace(SellerName, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalProducts" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="SubTotalAmount" /}","{xsl:value-of select="TotalAmount" /}","{xsl:value-of select="TotalFees" /}","{xsl:value-of select="TotalPayableAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 4, GETDATE(), GETDATE())
+
+
+
+
+
+
+
+	-- Update Top coupon usage report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;SELECT
+   c.Code AS Code, 
+   COUNT(*) AS TotalOrders 
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Coupon c
+JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+ON so.CouponCodes LIKE ''%'' + c.Code + ''%''
+WHERE so.PortalID = @PortalID 
+    AND (so.Status = 2 OR so.Status = 4) AND
+    so.OrderDate BETWEEN @StartDate AND @StopDate
+GROUP BY c.Code
+ORDER BY COUNT(*) DESC&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 70%"&amp;gt;Code&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="Code" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Code","Orders"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="replace(Code, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalOrders" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = 'F8E08995-F083-4E9F-8D55-CE9A257A6718'
+
+
+
+
+
+
+
+
+
+
+	-- Update Top paying customer report
+	UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] 
+	SET [Name] = 'Top paying customers',
+	    [Description] = 'This report gives you an idea of who are your best customers by sales.',
+		[DefinitionRule] = N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT TOP (@Top)
+    u.UserID, 
+    u.Username, 
+    u.FirstName, 
+    u.LastName, 
+    COUNT(*) AS TotalOrders, 
+    SUM(so.TotalAmount) AS TotalAmount,
+    FORMAT(SUM(so.TotalAmount), ''C'', @PrimaryCurrency) AS FormattedTotalAmount
+FROM {databaseOwner}{objectQualifier}Users u
+JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+    ON so.UserID = u.UserID
+WHERE (so.Status = 2 OR so.Status = 4) AND so.PortalID = @PortalID
+    AND so.OrderDate BETWEEN @StartDate AND @StopDate
+GROUP BY u.UserID, u.Username, u.FirstName, u.LastName
+ORDER BY SUM(so.TotalAmount) DESC&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Top&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;TopParamDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Max records" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="10" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;10&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="50" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;50&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="100" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;100&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="500" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;500&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="1000" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1000&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;User ID&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Username&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;First name&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 20%"&amp;gt;Last name&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Orders&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Total&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="UserID" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="Username" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FirstName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="LastName" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalOrders" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedTotalAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"User ID","Username","First name","Last name","Orders","Total"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="UserID" /}","{xsl:value-of select="Username" /}","{xsl:value-of select="FirstName" /}","{xsl:value-of select="LastName" /}","{xsl:value-of select="TotalOrders" /}","{xsl:value-of select="TotalAmount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>'
+	WHERE [ReportDefinitionGUID] = '78D2D6CB-738C-4BB9-8C8E-962F47965549'
+
+
+
+
+
+	-- Insert Top selling products report
+	INSERT {databaseOwner}[{objectQualifier}Revindex_Storefront_ReportDefinition] ([ReportDefinitionGUID], [PortalID], [Name], [Description], [Active], [DefinitionRule], [Standard], [ReportGroup], [CreateDate], [UpdateDate]) VALUES (N'9832ED0D-BC6D-43FF-B0A4-2C6AFA6AC230', NULL, N'Top selling products', N'This report gives you an idea of the most popular products by sales.', 1, N'<rule version="1.0" type="data">&lt;data method="ReportDefinition" version="1.0"&gt;
+  &lt;dataSources&gt;
+    &lt;sqlDataSource&gt;
+      &lt;query&gt;DECLARE @PrimaryCurrency VARCHAR(7) = ''en-US''
+SELECT @PrimaryCurrency = CultureCode FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Currency WHERE PortalID = @PortalID AND PrimaryCurrency = 1
+
+SELECT TOP (@Top) 
+    agg.ProductID, 
+    p2.Name.value(N''(/locale/@en-US)[1]'', ''nvarchar(MAX)'') AS Name, 
+    agg.TotalQuantity, 
+    agg.Amount,
+    FORMAT(agg.Amount, ''C'', @PrimaryCurrency) AS FormattedAmount
+FROM {databaseOwner}{objectQualifier}Revindex_Storefront_Product p2
+JOIN
+(
+    SELECT p.ProductID, SUM(sod.Quantity) AS TotalQuantity, SUM(sod.Price * sod.Quantity) AS Amount
+    FROM {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+        ON sod.SalesOrderID = so.SalesOrderID
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant pv
+        ON pv.ProductVariantID = sod.ProductVariantID
+    JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_Product p
+        ON p.ProductID = pv.ProductID
+    WHERE (so.Status = 2 OR so.Status = 4) AND p.PortalID = @PortalID
+         AND so.OrderDate BETWEEN @StartDate AND @StopDate
+    GROUP BY p.ProductID
+) AS agg
+    ON agg.ProductID = p2.ProductID
+ORDER BY agg.TotalQuantity DESC&lt;/query&gt;
+      &lt;parameters&gt;
+        &lt;variableParameter&gt;
+          &lt;name&gt;@PortalID&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;variableName&gt;Portal:PortalID&lt;/variableName&gt;
+        &lt;/variableParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StartDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StartDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="From" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@StopDate&lt;/name&gt;
+          &lt;dataType&gt;6&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;datePicker&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;id&gt;StopDateDatePicker&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Until" /&gt;
+              &lt;/label&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;selectedDates /&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/datePicker&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+        &lt;controlParameter&gt;
+          &lt;name&gt;@Top&lt;/name&gt;
+          &lt;dataType&gt;11&lt;/dataType&gt;
+          &lt;field&gt;
+            &lt;dropDownList&gt;
+              &lt;autoPostBack&gt;False&lt;/autoPostBack&gt;
+              &lt;causesValidation&gt;False&lt;/causesValidation&gt;
+              &lt;id&gt;TopParamDropDownList&lt;/id&gt;
+              &lt;inputControlHeight&gt;&lt;/inputControlHeight&gt;
+              &lt;inputControlWidth&gt;&lt;/inputControlWidth&gt;
+              &lt;label&gt;
+                &lt;locale en-US="Max records" /&gt;
+              &lt;/label&gt;
+              &lt;listItems&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="10" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;10&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="50" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;50&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="100" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;100&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="500" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;500&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+                &lt;listItem&gt;
+                  &lt;name&gt;
+                    &lt;locale en-US="1000" /&gt;
+                  &lt;/name&gt;
+                  &lt;value&gt;1000&lt;/value&gt;
+                  &lt;selected&gt;False&lt;/selected&gt;
+                &lt;/listItem&gt;
+              &lt;/listItems&gt;
+              &lt;required&gt;True&lt;/required&gt;
+              &lt;validatorText&gt;
+                &lt;locale en-US="Field is required." /&gt;
+              &lt;/validatorText&gt;
+            &lt;/dropDownList&gt;
+          &lt;/field&gt;
+        &lt;/controlParameter&gt;
+      &lt;/parameters&gt;
+    &lt;/sqlDataSource&gt;
+  &lt;/dataSources&gt;
+  &lt;visualizers&gt;
+    &lt;htmlVisualizer&gt;
+      &lt;html&gt;&amp;lt;div class="table-responsive"&amp;gt;
+	&amp;lt;table class="table table-striped table-hover"&amp;gt;
+		&amp;lt;thead&amp;gt;
+			&amp;lt;tr&amp;gt;
+				&amp;lt;th style="width: 10%"&amp;gt;Product ID&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Name&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Quantity&amp;lt;/th&amp;gt;
+				&amp;lt;th style="width: 30%"&amp;gt;Amount&amp;lt;/th&amp;gt;
+			&amp;lt;/tr&amp;gt;
+		&amp;lt;/thead&amp;gt;
+		&amp;lt;tbody&amp;gt;
+			{xsl:for-each select="/in/dataSet/dataTable/dataRow" }
+				&amp;lt;tr&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="ProductID" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="Name" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="TotalQuantity" /}&amp;lt;/td&amp;gt;
+					&amp;lt;td&amp;gt;{xsl:value-of select="FormattedAmount" /}&amp;lt;/td&amp;gt;
+				&amp;lt;/tr&amp;gt;
+			{/xsl:for-each}
+		&amp;lt;/tbody&amp;gt;
+	&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/html&gt;
+    &lt;/htmlVisualizer&gt;
+    &lt;csvVisualizer&gt;
+      &lt;text&gt;"Product ID","Name","Quantity","Amount"
+{xsl:for-each select="/in/dataSet/dataTable/dataRow" }"{xsl:value-of select="ProductID" /}","{xsl:value-of select="replace(Name, ''&amp;amp;quot;'', ''&amp;amp;quot;&amp;amp;quot;'')" /}","{xsl:value-of select="TotalQuantity" /}","{xsl:value-of select="Amount" /}"
+{/xsl:for-each}&lt;/text&gt;
+    &lt;/csvVisualizer&gt;
+  &lt;/visualizers&gt;
+&lt;/data&gt;</rule>', 1, 1, GETDATE(), GETDATE())
+
+
+
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

@@ -1,0 +1,1721 @@
+
+
+
+/******   alter table CP_Product_Product ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add IsAuction bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add StartPrice decimal(18,2) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add ReservePrice decimal(18,2) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add BuyNowPrice decimal(18,2) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add AuctionDays int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add TaxRateType int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add FixedTaxRate decimal(18,2) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add ShippingFeeType int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add FixedShippingFee decimal(18,2) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add BidIncrement decimal(18,2) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add AuctionCheck bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add AuctionCheckResult int NULL
+
+Go
+
+/******   alter table CP_Product_Type ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AuctionType int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowProxyBidding bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add MaxAuctionDays int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add WinnerType int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add ListingType int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add BidIncrement decimal(18,2) NULL
+
+Go
+
+/******   alter table CP_Common_Role ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Common_Role add Types nvarchar(200) NULL
+
+go
+
+
+
+/******   create new tables ******/
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Discount_Role]    Script Date: 09/13/2013 23:33:45 ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Discount_Role](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[OptionId] [int] NULL,
+	[OptionName] [nvarchar](200) NULL,
+	[RoleId] [int] NULL,
+	[RoleName] [nvarchar](200) NULL,
+	[Discount] [int] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](2000) NULL,
+	[Active] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Discount_Role] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Auction_Proxy]    Script Date: 09/13/2013 23:33:45 ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Proxy]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Auction_Proxy](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[ProductName] [nvarchar](200) NULL,
+	[BidderId] [int] NULL,
+	[BidderName] [nvarchar](200) NULL,
+	[VendorId] [int] NULL,
+	[VendorName] [nvarchar](200) NULL,
+	[Proxy] [decimal](18, 2) NULL,
+	[UpdateDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Auction_Proxy] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Auction_Bid]    Script Date: 09/13/2013 23:33:45 ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Bid]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Auction_Bid](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[ProductName] [nvarchar](200) NULL,
+	[BidderId] [int] NULL,
+	[BidderName] [nvarchar](200) NULL,
+	[VendorId] [int] NULL,
+	[VendorName] [nvarchar](200) NULL,
+	[Bid] [decimal](18, 2) NULL,
+	[Quantity] [int] NULL,
+	[CreatedDate] [datetime] NULL,
+	[Status] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Auction_Bid] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]    Script Date: 09/13/2013 23:33:45 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Bid]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Bid]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product] FOREIGN KEY([ProductId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Product] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Bid]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Bid] CHECK CONSTRAINT [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]    Script Date: 09/13/2013 23:33:45 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Proxy]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Proxy]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product] FOREIGN KEY([ProductId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Product] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Proxy]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Proxy] CHECK CONSTRAINT [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]    Script Date: 09/13/2013 23:33:45 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Role]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product] FOREIGN KEY([ProductId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Product] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Role] CHECK CONSTRAINT [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]
+GO
+
+
+/****** drop legacy stored procedures ******/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Add]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Update]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Add]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Update]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Add]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Update]    Script Date: 09/14/2013 10:47:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+
+
+/****** create new stored procedures ******/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Update]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Update]
+	@RoleId int, 
+	@PortalId int, 
+	@DiskQuote int, 
+	@ProductCount int, 
+	@ArticleCount int, 
+	@ImageCount int, 
+	@VideoCount int, 
+	@AudioCount int, 
+	@DocumentCount int, 
+	@FriendCount int,
+	@Types nvarchar(200) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Common_Role SET
+	[PortalId] = @PortalId,
+	[DiskQuote] = @DiskQuote,
+	[ProductCount] = @ProductCount,
+	[ArticleCount] = @ArticleCount,
+	[ImageCount] = @ImageCount,
+	[VideoCount] = @VideoCount,
+	[AudioCount] = @AudioCount,
+	[DocumentCount] = @DocumentCount,
+	[FriendCount] = @FriendCount,
+	[Types] = @Types
+WHERE
+	[RoleId] = @RoleId
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Add]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Add]
+    @RoleId int,
+	@PortalId int,
+	@DiskQuote int,
+	@ProductCount int,
+	@ArticleCount int,
+	@ImageCount int,
+	@VideoCount int,
+	@AudioCount int,
+	@DocumentCount int,
+	@FriendCount int,
+	@Types nvarchar(200) 
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Common_Role (
+    [RoleId],
+	[PortalId],
+	[DiskQuote],
+	[ProductCount],
+	[ArticleCount],
+	[ImageCount],
+	[VideoCount],
+	[AudioCount],
+	[DocumentCount],
+	[FriendCount],
+	[Types]
+) VALUES (
+    @RoleId,
+	@PortalId,
+	@DiskQuote,
+	@ProductCount,
+	@ArticleCount,
+	@ImageCount,
+	@VideoCount,
+	@AudioCount,
+	@DocumentCount,
+	@FriendCount,
+	@Types
+)
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Update]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(80), 
+	@ParentId int, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@TypePath nvarchar(255), 
+	@ListPage int, 
+	@DetailPage int, 
+	@SellType int, 
+	@Sellable bit, 
+	@Order int, 
+	@Level int, 
+	@Description nvarchar(1000), 
+	@EnableTax bit, 
+	@ChargePercent decimal(10, 2), 
+	@EnableField1 bit, 
+	@Field1Title nvarchar(50), 
+	@Field1Default ntext, 
+	@EnableField2 bit, 
+	@Field2Title nvarchar(50), 
+	@Field2Default ntext, 
+	@EnableField3 bit, 
+	@Field3Title nvarchar(50), 
+	@Field3Default ntext, 
+	@EnableField4 bit, 
+	@Field4Title nvarchar(50), 
+	@Field4Default ntext, 
+	@EnableField5 bit, 
+	@Field5Title nvarchar(50), 
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit, 
+	@FieldEnable_Summary bit, 
+	@FieldEnable_LinkUrl bit, 
+	@FieldEnable_Description bit, 
+	@FieldEnable_Image bit, 
+	@FieldEnable_Support bit, 
+	@FieldEnable_License bit, 
+	@FieldEnable_Price bit, 
+	@FieldEnable_StockQuantity bit, 
+	@FieldEnable_Delivery bit, 
+	@FieldEnable_SpecialOffer bit, 
+	@FieldEnable_Weight bit, 
+	@FieldEnable_PackageFee bit, 
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit,
+    @AuctionType int,
+    @AllowProxyBidding bit,
+    @MaxAuctionDays int,
+    @WinnerType int,
+    @ListingType int,
+    @BidIncrement decimal(18,2)    
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Type SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[ParentId] = @ParentId,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[TypePath] = @TypePath,
+	[ListPage] = @ListPage,
+	[DetailPage] = @DetailPage,
+	[SellType] = @SellType,
+	[Sellable] = @Sellable,
+	[Order] = @Order,
+	[Level] = @Level,
+	[Description] = @Description,
+	[EnableTax] = @EnableTax,
+	[ChargePercent] = @ChargePercent,
+	[EnableField1] = @EnableField1,
+	[Field1Title] = @Field1Title,
+	[Field1Default] = @Field1Default,
+	[EnableField2] = @EnableField2,
+	[Field2Title] = @Field2Title,
+	[Field2Default] = @Field2Default,
+	[EnableField3] = @EnableField3,
+	[Field3Title] = @Field3Title,
+	[Field3Default] = @Field3Default,
+	[EnableField4] = @EnableField4,
+	[Field4Title] = @Field4Title,
+	[Field4Default] = @Field4Default,
+	[EnableField5] = @EnableField5,
+	[Field5Title] = @Field5Title,
+	[Field5Default] = @Field5Default,
+    [FieldEnable_PreviousVersion] = @FieldEnable_PreviousVersion,
+	[FieldEnable_Summary] = @FieldEnable_Summary,
+	[FieldEnable_LinkUrl] = @FieldEnable_LinkUrl,
+	[FieldEnable_Description] = @FieldEnable_Description,
+	[FieldEnable_Image] = @FieldEnable_Image,
+	[FieldEnable_Support] = @FieldEnable_Support,
+	[FieldEnable_License] = @FieldEnable_License,
+	[FieldEnable_Price] = @FieldEnable_Price,
+	[FieldEnable_StockQuantity] = @FieldEnable_StockQuantity,
+	[FieldEnable_Delivery] = @FieldEnable_Delivery,
+	[FieldEnable_SpecialOffer] = @FieldEnable_SpecialOffer,
+	[FieldEnable_Weight] = @FieldEnable_Weight,
+	[FieldEnable_PackageFee] = @FieldEnable_PackageFee,
+	[FieldEnable_Sku] = @FieldEnable_Sku,
+	[RequireAddress] = @RequireAddress,
+    [AllowGoogleMap] = @AllowGoogleMap,
+    [AllowRecursiveBill] = @AllowRecursiveBill,
+    [AuctionType] = @AuctionType,
+    [AllowProxyBidding] = @AllowProxyBidding,
+    [MaxAuctionDays] = @MaxAuctionDays,
+    [WinnerType] = @WinnerType,
+    [ListingType] = @ListingType,
+    [BidIncrement] = @BidIncrement
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Add]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+	@PortalId int,
+    @Name nvarchar(80),
+	@ParentId int,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@TypePath nvarchar(255),
+	@ListPage int,
+	@DetailPage int,
+	@SellType int,
+	@Sellable bit,
+	@Order int,
+	@Level int,
+	@Description nvarchar(1000),
+	@EnableTax bit,
+    @ChargePercent decimal(10, 2),
+    @EnableField1 bit,
+	@Field1Title nvarchar(50),
+	@Field1Default ntext,
+	@EnableField2 bit,
+	@Field2Title nvarchar(50),
+	@Field2Default ntext,
+	@EnableField3 bit,
+	@Field3Title nvarchar(50),
+	@Field3Default ntext,
+	@EnableField4 bit,
+	@Field4Title nvarchar(50),
+	@Field4Default ntext,
+	@EnableField5 bit,
+	@Field5Title nvarchar(50),
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit,
+	@FieldEnable_Summary bit,
+	@FieldEnable_LinkUrl bit,
+	@FieldEnable_Description bit,
+	@FieldEnable_Image bit,
+	@FieldEnable_Support bit,
+	@FieldEnable_License bit,
+	@FieldEnable_Price bit,
+	@FieldEnable_StockQuantity bit,
+	@FieldEnable_Delivery bit,
+	@FieldEnable_SpecialOffer bit,
+	@FieldEnable_Weight bit,
+	@FieldEnable_PackageFee bit,
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit,
+    @AuctionType int,
+    @AllowProxyBidding bit,
+    @MaxAuctionDays int,
+    @WinnerType int,
+    @ListingType int,
+    @BidIncrement decimal(18,2) 
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Type (
+	[PortalId],
+    [Name],
+	[ParentId],
+	[Thumbnail],
+	[Image],
+	[TypePath],
+	[ListPage],
+	[DetailPage],
+	[SellType],
+	[Sellable],
+	[Order],
+	[Level],
+	[Description],
+	[EnableTax],
+    [ChargePercent],
+    [EnableField1],
+	[Field1Title],
+	[Field1Default],
+	[EnableField2],
+	[Field2Title],
+	[Field2Default],
+	[EnableField3],
+	[Field3Title],
+	[Field3Default],
+	[EnableField4],
+	[Field4Title],
+	[Field4Default],
+	[EnableField5],
+	[Field5Title],
+	[Field5Default],
+    [FieldEnable_PreviousVersion],
+	[FieldEnable_Summary],
+	[FieldEnable_LinkUrl],
+	[FieldEnable_Description],
+	[FieldEnable_Image],
+	[FieldEnable_Support],
+	[FieldEnable_License],
+	[FieldEnable_Price],
+	[FieldEnable_StockQuantity],
+	[FieldEnable_Delivery],
+	[FieldEnable_SpecialOffer],
+	[FieldEnable_Weight],
+	[FieldEnable_PackageFee],
+	[FieldEnable_Sku],
+	[RequireAddress],
+    [AllowGoogleMap],
+    [AllowRecursiveBill],
+    [AuctionType],
+    [AllowProxyBidding],
+    [MaxAuctionDays],
+    [WinnerType],
+    [ListingType],
+    [BidIncrement]
+) VALUES (
+	@PortalId,
+	@Name,
+	@ParentId,
+	@Thumbnail,
+	@Image,
+	@TypePath,
+	@ListPage,
+	@DetailPage,
+	@SellType,
+	@Sellable,
+	@Order,
+	@Level,
+	@Description,
+	@EnableTax,
+	@ChargePercent,
+	@EnableField1,
+	@Field1Title,
+	@Field1Default,
+	@EnableField2,
+	@Field2Title,
+	@Field2Default,
+	@EnableField3,
+	@Field3Title,
+	@Field3Default,
+	@EnableField4,
+	@Field4Title,
+	@Field4Default,
+	@EnableField5,
+	@Field5Title,
+	@Field5Default,
+    @FieldEnable_PreviousVersion,
+	@FieldEnable_Summary,
+	@FieldEnable_LinkUrl,
+	@FieldEnable_Description,
+	@FieldEnable_Image,
+	@FieldEnable_Support,
+	@FieldEnable_License,
+	@FieldEnable_Price,
+	@FieldEnable_StockQuantity,
+	@FieldEnable_Delivery,
+	@FieldEnable_SpecialOffer,
+	@FieldEnable_Weight,
+	@FieldEnable_PackageFee,
+	@FieldEnable_Sku,
+	@RequireAddress,
+    @AllowGoogleMap,
+    @AllowRecursiveBill,
+    @AuctionType,
+    @AllowProxyBidding,
+    @MaxAuctionDays,
+    @WinnerType,
+    @ListingType,
+    @BidIncrement
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_GetAverageForVendor]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_GetAverageForVendor]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE  PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_GetAverageForVendor]
+        @VendorId int
+AS
+   
+    DECLARE @totalReview INT
+    DECLARE @reviewCount INT
+    declare @averageReview decimal(4,2)
+    
+     set @averageReview = 0
+    
+     SET @totalReview = (SELECT SUM([Rating]) FROM {databaseOwner}{objectQualifier}CP_Product_Rating WHERE [VendorId] = @VendorId)
+     SET @reviewCount = (SELECT count([Id]) FROM {databaseOwner}{objectQualifier}CP_Product_Rating WHERE [VendorId] = @VendorId)
+     
+     if	@totalReview > 0 and @reviewCount > 0
+     begin
+        set  @averageReview = @totalReview / @reviewCount
+     end
+       
+        
+     select @averageReview
+  
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Update]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Update]
+	@Id int, 
+	@ProductId int, 
+	@OptionId int, 
+    @OptionName nvarchar(200),
+	@RoleId int, 
+	@RoleName nvarchar(100), 
+	@Discount int, 
+	@StartDate datetime, 
+	@EndDate datetime, 
+	@Description nvarchar(2000), 
+	@Active bit, 
+	@CreatedDate datetime 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Discount_Role SET
+	[ProductId] = @ProductId,
+	[OptionId] = @OptionId,
+    [OptionName] = @OptionName,
+	[RoleId] = @RoleId,
+	[RoleName] = @RoleName,
+	[Discount] = @Discount,
+	[StartDate] = @StartDate,
+	[EndDate] = @EndDate,
+	[Description] = @Description,
+	[Active] = @Active,
+	[CreatedDate] = @CreatedDate
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_GetByProduct]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_GetByProduct]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_GetByProduct]
+	@ProductId int
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Discount_Role
+WHERE
+	[ProductId]=@ProductId
+
+ order by [Id] desc
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Get]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Get]
+	@Id int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Discount_Role
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Delete]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Delete]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Delete]
+	@Id int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Discount_Role
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Add]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Add]
+	@ProductId int,
+	@OptionId int,
+    @OptionName nvarchar(200),
+	@RoleId int,
+	@RoleName nvarchar(100),
+	@Discount int,
+	@StartDate datetime,
+	@EndDate datetime,
+	@Description nvarchar(2000),
+	@Active bit,
+	@CreatedDate datetime
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Discount_Role (
+	[ProductId],
+	[OptionId],
+    [OptionName],
+	[RoleId],
+	[RoleName],
+	[Discount],
+	[StartDate],
+	[EndDate],
+	[Description],
+	[Active],
+	[CreatedDate]
+) VALUES (
+	@ProductId,
+	@OptionId,
+    @OptionName,
+	@RoleId,
+	@RoleName,
+	@Discount,
+	@StartDate,
+	@EndDate,
+	@Description,
+	@Active,
+	@CreatedDate
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Update]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+	@Id int, 
+	@PortalId int, 
+	@TypeId int, 
+	@UserId int, 
+	@CreatedDate datetime, 
+	@Name nvarchar(200),
+    @PreviousVersion int, 
+	@Authed bit, 
+	@Featured bit, 
+	@Active bit, 
+	@Summary nvarchar(1000), 
+	@LinkUrl nvarchar(200), 
+	@Description ntext, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@Support ntext, 
+	@License ntext, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@PurchasePrice decimal(18, 2), 
+	@PromoPrice decimal(18, 2), 
+    @EnablePromoPrice bit,
+	@PromoStart datetime, 
+	@PromoEnd datetime, 
+	@StockQuantity int, 
+	@LowThreshold int, 
+	@Delivery ntext, 
+	@SpecialOffer ntext, 
+	@Views int, 
+	@PublishDate datetime, 
+	@ExpireDate datetime, 
+	@LastModifiedDate datetime, 
+	@AllowComment bit, 
+	@AllowRating bit, 
+	@CommentRoles nvarchar(200), 
+	@RatingRoles nvarchar(200), 
+	@DownloadRoles nvarchar(200), 
+	@AutoAuthComment bit, 
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @MapTitle nvarchar(2000),
+    @ManufacturerId int,
+    @IsAuction bit,
+    @StartPrice decimal(18, 2), 
+    @ReservePrice decimal(18, 2), 
+    @BuyNowPrice decimal(18, 2), 
+    @AuctionDays int,
+    @TaxRateType int,
+    @FixedTaxRate decimal(18, 2),
+    @ShippingFeeType int,
+    @FixedShippingFee decimal(18, 2),
+    @BidIncrement decimal(18, 2),
+    @AuctionCheck bit,
+    @AuctionCheckResult int, 
+    @ViewRoles nvarchar(200), 
+    @Categories nvarchar(200),
+    @Tags nvarchar(200),
+    @RefreshRelation bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Product SET
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[UserId] = @UserId,
+	[CreatedDate] = @CreatedDate,
+	[Name] = @Name,
+    [PreviousVersion]=@PreviousVersion,
+	[Authed] = @Authed,
+	[Featured] = @Featured,
+	[Active] = @Active,
+	[Summary] = @Summary,
+	[LinkUrl] = @LinkUrl,
+	[Description] = @Description,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[Support] = @Support,
+	[License] = @License,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[PurchasePrice] = @PurchasePrice,
+	[PromoPrice] = @PromoPrice,
+    [EnablePromoPrice]=@EnablePromoPrice,
+	[PromoStart] = @PromoStart,
+	[PromoEnd] = @PromoEnd,
+	[StockQuantity] = @StockQuantity,
+	[LowThreshold] = @LowThreshold,
+	[Delivery] = @Delivery,
+	[SpecialOffer] = @SpecialOffer,
+	[Views] = @Views,
+	[PublishDate] = @PublishDate,
+	[ExpireDate] = @ExpireDate,
+	[LastModifiedDate] = GetDate(),
+	[AllowComment] = @AllowComment,
+	[AllowRating] = @AllowRating,
+	[CommentRoles] = @CommentRoles,
+	[RatingRoles] = @RatingRoles,
+	[DownloadRoles] = @DownloadRoles,
+	[AutoAuthComment] = @AutoAuthComment,
+	[Order] = @Order,
+    [Weight]=@Weight,
+    [PackageFee]=@PackageFee,
+    [Sku]=@Sku,
+    [Field1]=@Field1,
+    [Field2]=@Field2,
+    [Field3]=@Field3,
+    [Field4]=@Field4,
+    [Field5]=@Field5,
+    [Longitude] = @Longitude,
+    [Latitude] = @Latitude,
+    [RecursiveBill] = @RecursiveBill,
+    [BillPeriod] = @BillPeriod,
+    [BillFrequency] = @BillFrequency,
+    [MapTitle] = @MapTitle,
+    [ManufacturerId] = @ManufacturerId,
+    [IsAuction] = @IsAuction,
+    [StartPrice] = @StartPrice,
+    [ReservePrice] = @ReservePrice,
+    [BuyNowPrice] = @BuyNowPrice,
+    [AuctionDays] = @AuctionDays,
+    [TaxRateType] = @TaxRateType,
+    [FixedTaxRate] = @FixedTaxRate,
+    [ShippingFeeType] = @ShippingFeeType,
+    [FixedShippingFee] = @FixedShippingFee,
+    [BidIncrement] = @BidIncrement,
+    [AuctionCheck] = @AuctionCheck,
+    [AuctionCheckResult] = @AuctionCheckResult
+WHERE
+	[Id] = @Id
+
+If (@RefreshRelation=1)
+Begin
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToTag WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToRole WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+end 
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]
+   @TypeId   int,
+   @CategoryId int,
+   @TagId	int,
+   @UserId int,
+   @ManufacturerId int,
+   @SearchTerm nvarchar(100),
+   @ProductDate datetime = null,
+   @DateType nvarchar(10)=''month'',
+   @ItemCount int
+AS
+set rowcount @ItemCount
+
+If (@ProductDate IS NULL) SET @ProductDate = GetUTCDate()
+if	(@DateType=''day'') 
+begin 
+    SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+     and   (a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 )))--only display view roles=-1
+    and ( @CategoryId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@CategoryId )
+            )--CategoryId
+      and ( @TagId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToTag 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToTag.TagId=@TagId )
+            )--TagId
+     and (@UserId=-1 or a.UserId=@UserId) -- UserId
+     and (@ManufacturerId = -1 or a.[ManufacturerId] = @ManufacturerId) 
+     and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+     and ( (a.[PublishDate] is null) or (a.PublishDate <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()))
+     and(a.publishDate BETWEEN @ProductDate and DateAdd( dd, 1, @ProductDate ) )--Product date
+      and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+      ORDER BY a.PublishDate  desc
+end
+else 
+  if	(@DateType=''month'') 
+  begin 
+    SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+     and   (a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 )))--only display view roles=-1
+     and ( @CategoryId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@CategoryId )
+            )--CategoryId
+      and ( @TagId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToTag 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToTag.TagId=@TagId )
+            )--TagId
+     and (@UserId=-1 or a.UserId=@UserId) -- UserId
+     and (@ManufacturerId = -1 or a.[ManufacturerId] = @ManufacturerId) 
+     and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+     and ( (a.[PublishDate] is null) or (a.PublishDate <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()))
+     and(a.publishDate BETWEEN DATEADD(month, DATEDIFF(month, 0, @ProductDate), 0)  AND @ProductDate )--Product date
+      and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+       ORDER BY a.PublishDate  desc
+   end
+ else
+    begin 
+      SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+    and   (a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 )))--only display view roles=-1
+     and ( @CategoryId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@CategoryId )
+            )--CategoryId
+      and ( @TagId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToTag 
+    WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToTag.TagId=@TagId )
+            )--TagId
+     and (@UserId=-1 or a.UserId=@UserId) -- UserId
+     and (@ManufacturerId = -1 or a.[ManufacturerId] = @ManufacturerId) 
+     and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+      and ( (a.[PublishDate] is null) or (a.PublishDate <= GETDATE()))     
+     and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()))
+     and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+       ORDER BY a.PublishDate  desc
+ end
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE  PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]
+   @TypeId   int,
+   @UserId     int,
+   @Id         int,
+   @RecordCount  int
+
+ AS
+    set rowcount @RecordCount
+  
+declare @categoryId int
+set @categoryId=(SELECT top 1 CategoryId
+from  {databaseOwner}{objectQualifier}CP_Product_ProductToCategory
+where {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.ProductId=@Id order by {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId desc)
+
+    select 
+        a.*,
+        ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+    WHERE (a.TypeId = @TypeId)
+    and(a.Authed=1)
+    and (a.Active=1)
+    and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+    and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+    and (a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @UserId))
+        ))--UserId
+    and( a.Id <>@Id)
+    and ( a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@categoryId))
+            )--by first category id
+      ORDER BY 
+	  CreatedDate desc 
+       
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]
+	 @TypeId   int,
+     @CategoryId   int,
+     @UserId int,
+     @UnAuthed bit=0,
+     @Featured bit=0,
+     @UnActive bit=0,
+     @Expired bit=0,
+     @LowStockQuantity bit=0,
+     @AuctionCheckResult int,
+     @SearchTerm nvarchar(100),
+     @PageSize int, 
+     @PageIndex int
+AS
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexID		int IDENTITY (1, 1) NOT NULL,
+	RowId	int
+     )
+
+-----------Insert into temp table
+   insert into #PageIndex(RowId)
+   SELECT
+	[id]
+   FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+   WHERE  (a.TypeId = @TypeId) --TypeId   
+     and (@CategoryId = -1 OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId=@CategoryId
+)) --CategoryId
+     and (@UserId= -1 or a.UserId=@UserId) -- UserId
+     and (@UnAuthed=0 or a.Authed=0) --UnAuthed
+     and (@Featured =0 or a.Featured = 1)-- featured
+     and (@UnActive=0 or a.Active=0) --UnActive
+     and (@Expired=0 or (a.[ExpireDate] is not null and a.[ExpireDate] < GETDATE()))  -- Expired
+     and (@LowStockQuantity=0 or a.[StockQuantity]<a.[LowThreshold]) --low stock quantity
+     and (@AuctionCheckResult = -1 or a.[AuctionCheckResult] = @AuctionCheckResult) -- auction check result
+     and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm 
+    ORDER BY a.[Order] asc,
+	          a.CreatedDate desc
+
+SELECT
+     a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+       FROM {databaseOwner}{objectQualifier}CP_Product_Product a,#PageIndex c
+       where c.RowId=a.Id 
+       and  c.IndexID> @PageLowerBound	
+       and  c.IndexID< @PageUpperBound	
+       ORDER BY c.IndexID
+	
+	     --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexID) FROM #PageIndex
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE   PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]
+   @TypeId   int,
+   @CurrentUserId	int,
+   @Categories nvarchar(100),
+   @Authors nvarchar(100),
+   @ShowFeaturedOnly bit,
+   @ShowPromoOnly	bit,
+   @ShowImageOnly bit,
+   @SearchTerm nvarchar(100),
+   @SortField	nvarchar(100),
+   @MaxNumber	int,
+   @ShowPage	bit,
+   @PageSize int, 
+   @PageIndex int
+AS
+if (@ShowPage=0) --if donn''t paging ,direct get record 
+BEGIN
+    set rowcount @MaxNumber
+SELECT
+	a.*,
+     ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+     and (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @CurrentUserId))
+        ))--UserId
+     and ( @Categories = '''' OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId IN (SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Categories)))
+            ))--Categories    
+      and ( @Authors = '''' OR a.UserId in (
+             SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Authors))) --Authors     
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+      and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+      and (@ShowFeaturedOnly = 0 OR a.Featured = 1)
+      and (@ShowPromoOnly = 0 OR a.EnablePromoPrice = 1)--promo
+      and (@ShowImageOnly=0 or ((a.[Image] is not null) and (a.[Image]<>'''')))
+      and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+      ORDER BY a.[Order] asc,
+	   CASE @SortField 
+		WHEN ''PublishDate'' THEN a.PublishDate 
+		WHEN ''LastModifiedDate'' THEN a.LastModifiedDate
+        when ''Views'' then a.Views
+        ELSE a.CreatedDate 
+	END DESC
+end 
+
+else--paging
+begin
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	RowId	int
+     )
+
+-----------Insert into temp table
+   insert into #PageIndex(RowId)
+   SELECT
+	[id]
+   FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+   WHERE (a.TypeId = @TypeId)--TypeId
+     and (@CurrentUserId = -2 or a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 OR {databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId IN (SELECT RoleId FROM {databaseOwner}{objectQualifier}UserRoles WHERE UserId = @CurrentUserId))
+        ))--UserId
+     and ( @Categories = '''' OR a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToCategory.CategoryId IN (SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Categories)))
+            ))--Categories    
+      and ( @Authors = '''' OR a.UserId in (
+             SELECT intValue FROM {databaseOwner}CP_CsvToInt(@Authors))) --Authors          
+      and ( (a.[PublishDate] is null) or (a.[PublishDate] <= GETDATE()))     
+      and ( (a.[ExpireDate] is null) or (a.[ExpireDate] > GETDATE()) )
+      and ( a.Authed = 1) -- Authorized
+      and ( a.Active = 1)  -- Active
+      and (@ShowFeaturedOnly = 0 OR a.Featured = 1)
+      and (@ShowPromoOnly = 0 OR a.EnablePromoPrice = 1)--promo
+      and (@ShowImageOnly=0 or ((a.[Image] is not null) and (a.[Image]<>'''')))
+      and (@searchTerm='''' or a.[Name] like ''%''+@searchTerm+''%'') -- Searchterm
+      ORDER BY a.[Order] asc,
+	   CASE @SortField 
+		WHEN ''PublishDate'' THEN a.PublishDate 
+		WHEN ''LastModifiedDate'' THEN a.LastModifiedDate
+        when ''Views'' then a.Views
+        ELSE a.CreatedDate 
+	END DESC
+
+SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+       FROM {databaseOwner}{objectQualifier}CP_Product_Product a,#PageIndex c
+       where c.RowId=a.Id 
+       and  c.IndexId> @PageLowerBound	
+       and  c.IndexId< @PageUpperBound	
+       ORDER BY c.IndexId
+
+	   --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+end 
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByAuction]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByAuction]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByAuction]
+AS
+    SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.[IsAuction] = 1)
+    and ( a.[AuctionCheck] = 0)
+    and ( a.[Active] = 1 )
+    and ( a.[Authed] = 1 )
+    and ( a.[ExpireDate] is not null)
+    and ( a.[ExpireDate] < GETDATE())
+    and ( a.[StockQuantity] > 0)
+    and ( a.[AuctionCheckResult] = 0)
+    ORDER BY a.[Id]  asc
+
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Add]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+	@PortalId int,
+	@TypeId int,
+	@UserId int,
+	@CreatedDate datetime,
+	@Name nvarchar(200),
+    @PreviousVersion int,
+	@Authed bit,
+	@Featured bit,
+	@Active bit,
+	@Summary nvarchar(1000),
+	@LinkUrl nvarchar(200),
+	@Description ntext,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@Support ntext,
+	@License ntext,
+	@RoleAfterOrder int,
+	@RoleAddDay int,
+	@PurchasePrice decimal(18, 2),
+	@PromoPrice decimal(18, 2),
+    @EnablePromoPrice bit,
+	@PromoStart datetime,
+	@PromoEnd datetime,
+	@StockQuantity int,
+	@LowThreshold int,
+	@Delivery ntext,
+	@SpecialOffer ntext,
+	@Views int,
+	@PublishDate datetime,
+	@ExpireDate datetime,
+	@LastModifiedDate datetime,
+	@AllowComment bit,
+	@AllowRating bit,
+	@CommentRoles nvarchar(200),
+	@RatingRoles nvarchar(200),
+	@DownloadRoles nvarchar(200),
+	@AutoAuthComment bit,
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @MapTitle nvarchar(2000),
+    @ManufacturerId int,
+    @IsAuction bit,
+    @StartPrice decimal(18, 2), 
+    @ReservePrice decimal(18, 2), 
+    @BuyNowPrice decimal(18, 2), 
+    @AuctionDays int,
+    @TaxRateType int,
+    @FixedTaxRate decimal(18, 2),
+    @ShippingFeeType int,
+    @FixedShippingFee decimal(18, 2), 
+    @BidIncrement decimal(18, 2), 
+    @AuctionCheck bit,
+    @AuctionCheckResult int,
+    @ViewRoles nvarchar(200),
+    @Categories nvarchar(200),
+    @Tags nvarchar(200)   
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Product (
+	[PortalId],
+	[TypeId],
+	[UserId],
+	[CreatedDate],
+	[Name],
+    [PreviousVersion],
+	[Authed],
+	[Featured],
+	[Active],
+	[Summary],
+	[LinkUrl],
+	[Description],
+	[Thumbnail],
+	[Image],
+	[Support],
+	[License],
+	[RoleAfterOrder],
+	[RoleAddDay],
+	[PurchasePrice],
+	[PromoPrice],
+    [EnablePromoPrice],
+	[PromoStart],
+	[PromoEnd],
+	[StockQuantity],
+	[LowThreshold],
+	[Delivery],
+	[SpecialOffer],
+	[Views],
+	[PublishDate],
+	[ExpireDate],
+	[LastModifiedDate],
+	[AllowComment],
+	[AllowRating],
+	[CommentRoles],
+	[RatingRoles],
+	[DownloadRoles],
+	[AutoAuthComment],
+	[Order],
+    [Weight],
+    [PackageFee],
+    [Sku],
+    [Field1],
+    [Field2],
+    [Field3],
+    [Field4],
+    [Field5],
+    [Longitude],
+    [Latitude],
+    [RecursiveBill],
+    [BillPeriod],
+    [BillFrequency],
+    [MapTitle],
+    [ManufacturerId],
+    [IsAuction],
+    [StartPrice],
+    [ReservePrice],
+    [BuyNowPrice],
+    [AuctionDays],
+    [TaxRateType],
+    [FixedTaxRate],
+    [ShippingFeeType],
+    [FixedShippingFee],
+    [BidIncrement],
+    [AuctionCheck],
+    [AuctionCheckResult]
+ ) VALUES (
+	@PortalId,
+	@TypeId,
+	@UserId,
+	GetDate(),
+	@Name,
+    @PreviousVersion,
+	@Authed,
+	@Featured,
+	@Active,
+	@Summary,
+	@LinkUrl,
+	@Description,
+	@Thumbnail,
+	@Image,
+	@Support,
+	@License,
+	@RoleAfterOrder,
+	@RoleAddDay,
+	@PurchasePrice,
+	@PromoPrice,
+    @EnablePromoPrice,
+	@PromoStart,
+	@PromoEnd,
+	@StockQuantity,
+	@LowThreshold,
+	@Delivery,
+	@SpecialOffer,
+	@Views,
+	@PublishDate,
+	@ExpireDate,
+	GetDate(),
+	@AllowComment,
+	@AllowRating,
+	@CommentRoles,
+	@RatingRoles,
+	@DownloadRoles,
+	@AutoAuthComment,
+	@Order,
+    @Weight,
+    @PackageFee,
+    @Sku,
+    @Field1,
+    @Field2,
+    @Field3,
+    @Field4,
+    @Field5,
+    @Longitude,
+    @Latitude,
+    @RecursiveBill,
+    @BillPeriod,
+    @BillFrequency,
+    @MapTitle,
+    @ManufacturerId,
+    @IsAuction,
+    @StartPrice,
+    @ReservePrice,
+    @BuyNowPrice,
+    @AuctionDays,
+    @TaxRateType,
+    @FixedTaxRate,
+    @ShippingFeeType,
+    @FixedShippingFee,
+    @BidIncrement,
+    @AuctionCheck,
+    @AuctionCheckResult
+)
+
+DECLARE @ProductId INT	
+SET @ProductId = @@IDENTITY
+	
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+
+select @ProductId
+
+' 
+END
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByProduct]    Script Date: 09/14/2013 10:58:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByProduct]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+Create PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByProduct]
+	@ProductId int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_Cart
+WHERE
+	[ProductId] = @ProductId
+' 
+END
+GO
+
+
+/****** update existing data ******/
+
+Update  {databaseOwner}{objectQualifier}CP_Product_Type
+Set [ListingType] = 0
+where [Sellable] = 1
+
+Go
+
+Update  {databaseOwner}{objectQualifier}CP_Product_Type
+Set [ListingType] = 2
+where [Sellable] = 0
+
+Go
+
+Update  {databaseOwner}{objectQualifier}CP_Product_Product
+Set [ShippingFeeType] = 0,
+    [TaxRateType] = 0,
+	[IsAuction] = 0
+
+Go
+
+/******   Insert schedule item ******/
+
+Insert into {databaseOwner}[{objectQualifier}Schedule]
+(TypeFullName,TimeLapse,TimeLapseMeasurement,RetryTimeLapse,RetryTimeLapseMeasurement,RetainHistoryNum,AttachToEvent,CatchUpEnabled,Enabled,ObjectDependencies,FriendlyName)
+values
+('Cross.Modules.CP_Product.Business.Schedule,Cross.Dnn.Modules.ClassifiedPro',10,'m',2,'m',50,'',0,1,'','Classified Pro')
+GO
+
+/******   Insert schedule item   end ******/
+
+
+

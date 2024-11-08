@@ -1,0 +1,127 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddDoctor.Models.DoctorList>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Security.Permissions
+
+@*<div id="Doctors-@Dnn.ModuleContext.ModuleId">
+        @if (Model.Doctors.Count() == 0)
+        {
+            <p>@Dnn.LocalizeString("NoDoctors")</p>
+        }
+        else
+        {
+            if (Model.Doctors.Any())
+            {
+                <div class="row">
+                    @foreach (var doctor in Model.Doctors.Skip((Model.PageNumber - 1) * Model.PageSize).Take(Model.PageSize))
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h3 class="card-title">@doctor.Name</h3>
+                                </div>
+                                <div class="card-body">
+                                    @if (!string.IsNullOrEmpty(doctor.ImageUrl))
+                                    {
+                                        <img src="@Url.Content(doctor.ImageUrl)" alt="@Dnn.LocalizeString("DoctorImage")" class="card-img-top img-fluid" style="max-height: 200px;">
+                                    }
+                                    else
+                                    {
+                                        <span>No Image Available</span>
+                                    }
+                                    <p><span class="bi bi-star"></span>Rating: @doctor.Rating</p>
+                                    <p><span class="bi bi-award"></span>Degree: @doctor.Degree</p>
+                                    <p><span class="bi bi-clock"></span>Experience: @doctor.Experience years</p>
+                                    <p><span class="bi bi-geo-alt"></span>Location: @doctor.Location</p>
+                                </div>
+                                <div class="card-footer">
+                                    @if (Dnn.ModuleContext.IsEditable)
+                                    {
+                                        <div>
+                                            <a href="@Url.Action("Edit", "Doctor", new { ctl = "Edit", doctorId = doctor.DoctorId })" class="btn btn-primary">Edit</a>
+                                            <a href="@Url.Action("Delete", "Doctor", new { doctorId = doctor.DoctorId })" class="btn btn-danger">Delete</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="text-center">
+                    @if (Model.TotalPages > 1)
+                    {
+                        <ul class="pagination">
+                            @for (int i = 1; i <= Model.TotalPages; i++)
+                            {
+                                <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            }
+        }
+    </div>*@
+
+<div class="col-lg-12">
+    <div class="dr-experts">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Here are the experts</h5>
+                <p class="card-text">
+                    No two individuals are alike. Saatvik follows
+                    “Ayunique”.
+                </p>
+                <ul class="list-group list-group-flush">
+                    @foreach (var doctor in Model.Doctors)
+                    {
+                        <li class="list-group-item">
+                            <a href="#">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="doctor-profile">
+                                            <img src="@Url.Content(doctor.ImageUrl)"
+                                                 alt="Doctor Profile">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <p>@doctor.Rating</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <h6>@doctor.Location</h6>
+                                        <h6>@doctor.Name</h6>
+                                        <h6>@doctor.Degree</h6>
+                                        <p>Specialises in Endorine & Skin</p>
+                                        <p>Experience:@doctor.Experience +years</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                            <div class="card-footer">
+                                @if (Dnn.ModuleContext.IsEditable)
+                                {
+                                    <div>
+                                        <a href="@Url.Action("Edit", "Doctor", new { ctl = "Edit", doctorId = doctor.DoctorId })" class="btn btn-primary">Edit</a>
+                                        <a href="@Url.Action("Delete", "Doctor", new { doctorId = doctor.DoctorId })" class="btn btn-danger">Delete</a>
+                                    </div>
+                                }
+                            </div>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Dnn.ModuleContext.PortalSettings.UserInfo.IsInRole("Administrators"))
+{
+    <div>
+        <a href="@Url.Action("Edit", "Doctor")" class="btn btn-success">Add Doctor</a>
+    </div>
+}

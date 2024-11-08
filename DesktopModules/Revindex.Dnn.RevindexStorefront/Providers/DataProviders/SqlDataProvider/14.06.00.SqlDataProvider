@@ -1,0 +1,79 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support DHL Express shipping provider
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider ADD
+		DHLExpressSiteID varchar(255) NULL,
+		DHLExpressPassword varchar(255) NULL,
+		DHLExpressPaymentAccountNumber varchar(255) NULL,
+		DHLExpressTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingProvider_DHLExpressTestMode DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingProvider_DHLExpressTestMode
+
+	-- Support Similar products
+	CREATE TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct
+	(
+		SimilarProductID int NOT NULL IDENTITY (1, 1),
+		ProductID int NOT NULL,
+		SimilarityProductID int NOT NULL,
+		CreateDate datetime NOT NULL,
+		RowVersion timestamp NOT NULL
+	)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct ADD CONSTRAINT
+	PK_{objectQualifier}Revindex_Storefront_SimilarProduct PRIMARY KEY CLUSTERED (SimilarProductID)
+
+
+	CREATE UNIQUE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_SimilarProduct ON {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct (ProductID, SimilarityProductID)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct ADD CONSTRAINT
+	FK_{objectQualifier}Revindex_Storefront_SimilarProduct_Revindex_Storefront_Product FOREIGN KEY
+	(ProductID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_Product
+	(ProductID) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+	
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct ADD CONSTRAINT
+	FK_{objectQualifier}Revindex_Storefront_SimilarProduct_Revindex_Storefront_Product1 FOREIGN KEY
+	(SimilarityProductID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_Product
+	(ProductID) ON UPDATE  NO ACTION 
+	 ON DELETE  NO ACTION 
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD SimilarProductActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SimilarProductActive DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SimilarProductActive
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		-- Remove obsolete Yahoo and FareBookings currency providers
+		UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_Currency] SET Provider = 'ECB' WHERE Provider = 'Yahoo' OR Provider = 'FareBookings'
+		
+		-- Upgrade default WishList template to "StandardPanel"
+		UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_Configuration] SET WishListDisplayTemplate = 'StandardPanel' WHERE WishListDisplayTemplate LIKE 'Standard%'
+
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

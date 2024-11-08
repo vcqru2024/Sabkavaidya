@@ -1,0 +1,32 @@
+@inherits Custom.Hybrid.Razor14
+@using ToSic.Razor.Blade;
+@{
+  var viewEdition = CmsContext.View.Edition;
+
+  // 2. Include the framework if it isn't known
+  if (Kit.Css.IsUnknown)
+  {
+    var cssFramework = "Bootstrap4";
+
+    switch (viewEdition)
+    {
+      case "bs4": cssFramework = "Bootstrap4"; break;
+      case "bs5": cssFramework = "Bootstrap5"; break;
+    };
+
+    Kit.Page.Activate(cssFramework);
+  }
+
+  // 3. Show warning for admin if koi.json is missing
+  if (Kit.Css.IsUnknown && CmsContext.User.IsSiteAdmin)
+  {
+    <div class='dnnFormMessage dnnFormWarning'>
+      @Html.Raw(Connect.Koi.Messages.CssInformationMissing) <br>
+      @Html.Raw(Connect.Koi.Messages.OnlyAdminsSeeThis)
+    </div>
+  }
+
+  Kit.Page.Activate("FontAwesome5"); // see https://r.2sxc.org/turnon
+}
+
+<link rel="stylesheet" href="@App.Path/@viewEdition/dist/@(viewEdition).min.css" @Kit.Page.AssetAttributes()>

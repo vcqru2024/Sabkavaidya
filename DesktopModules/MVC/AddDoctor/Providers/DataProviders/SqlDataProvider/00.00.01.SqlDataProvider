@@ -1,0 +1,38 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}SaatvikDoctorModule_Doctors]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE {databaseOwner}{objectQualifier}SaatvikDoctorModule_Doctors
+    (
+        DoctorId int NOT NULL IDENTITY (1, 1),
+        Name nvarchar(MAX) NOT NULL,
+        ImageUrl nvarchar(MAX) NULL,
+        Rating decimal NOT NULL,
+        Degree nvarchar(MAX) NOT NULL,
+        Experience int NOT NULL,
+        Location nvarchar(MAX) NOT NULL,
+        ModuleId int NOT NULL,
+        CreatedByUserId int NOT NULL,
+        LastModifiedByUserId int NOT NULL,
+        CreatedOnDate datetime NOT NULL,
+        LastModifiedOnDate datetime NOT NULL
+    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+    ALTER TABLE {databaseOwner}{objectQualifier}SaatvikDoctorModule_Doctors 
+    ADD CONSTRAINT PK_{objectQualifier}SaatvikDoctorModule_Doctors 
+    PRIMARY KEY CLUSTERED (DoctorId) 
+    WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+END
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

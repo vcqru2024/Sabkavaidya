@@ -1,0 +1,34 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@{
+  /* This is used in two views */
+  var isRound = MyView.Identifier == "round";
+
+  var aspectRatio = isRound ? "1" : "1:1.25";
+  var photoSettings = Kit.Image.Settings("PersonPhoto", aspectRatio: aspectRatio);
+
+  var mbClass = isRound ? "mb-2" : "";
+  var imgClass = isRound ? "rounded-circle" : "";
+
+  var placeholderStyle = "padding-bottom: " + (isRound ? "100%;" : "125%");
+  
+}
+<div class="row">
+  @foreach (var person in MyItems) {
+    <div class="col-md-6 mb-4 mb-md-5 row" @Kit.Toolbar.Default(person)>
+      <div class="col-4 @mbClass">
+        @if (person.IsNotEmpty("Photo")) {
+          @person.Picture("Photo" , settings: photoSettings, imgClass:"img-fluid " + imgClass, imgAltFallback: person.String("FullName"))        
+        } else {
+          <div class="bg-primary placeholder @imgClass" style="@placeholderStyle"></div>
+        }
+      </div>
+
+      <div class="col-8" itemscope itemtype="http://schema.org/Person">
+        @Html.Partial("Part Properties.cshtml", new { data = person })
+      </div>
+    </div>
+  }
+</div>
+
+@Html.Partial("../shared/Assets.cshtml", new { parts = "scripts,icons"})

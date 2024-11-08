@@ -1,0 +1,196 @@
+﻿
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_View]') AND type in (N'U'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] DROP CONSTRAINT [FK{objectQualifier}ContentPro_View_ContentPro_Template]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Template]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Template] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Template_ContentPro_FieldSet]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_ContentCategories]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] DROP CONSTRAINT [FK{objectQualifier}ContentPro_ContentCategories_ContentPro_Categories]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_ContentCategories]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] DROP CONSTRAINT [FK{objectQualifier}ContentPro_ContentCategories_ContentPro_Content]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Field]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Field] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Field_ContentPro_Types]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Field]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Field] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Field_ContentPro_FieldSet]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Categories]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Categories_ContentPro_FieldSet]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Content]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Content] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Content_ContentPro_FieldSet]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Comments]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Comments] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Comments_ContentPro_Content]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_MetadataFields]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_MetadataFields] DROP CONSTRAINT [FK{objectQualifier}ContentPro_MetadataFields_ContentPro_Field]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_MetadataFields]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_MetadataFields] DROP CONSTRAINT [FK{objectQualifier}ContentPro_MetadataFields_ContentPro_Metadatas]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_FieldOptions]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_FieldOptions] DROP CONSTRAINT [FK{objectQualifier}ContentPro_FieldOptions_ContentPro_Field]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Versions]') AND type in (N'U'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Versions] DROP CONSTRAINT [FK{objectQualifier}ContentPro_Versions_ContentPro_Content]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Types]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Types]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Template]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Template]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_ContentCategories]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Items]') AND type in (N'U'))
+	DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Items]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_FieldSet]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_FieldSet]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Field]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Field]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Categories]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_ContentSocialGroup]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentSocialGroup]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Versions]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Versions]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Content]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Content]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_ViewCategories]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_ViewCategories]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_FieldSetTypes]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_FieldSetTypes]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Metadatas]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Metadatas]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_MetadataFields]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_MetadataFields]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_Comments]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_Comments]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_ViewSettings]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_ViewSettings]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_FieldOptions]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_FieldOptions]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_View]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_View]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}ContentPro_TemplateTypes]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}ContentPro_TemplateTypes]
+GO
+
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Content_GetUrls') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_Content_GetUrls
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Content_GetUrl') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_Content_GetUrl
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_AddField') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_AddField
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_DeleteField') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_DeleteField
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_EditField') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_EditField
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetArchive') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetArchive
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetCommentsForContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetCommentsForContent
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDate
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterComments') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterComments
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetContent
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContent
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterContent
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterContentGroupID') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterContentGroupID
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentGroupID') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentGroupID
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDateGroupID') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDateGroupID
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_CategoryTree') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_CategoryTree
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_CountCategoriesContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_CountCategoriesContent
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetArticlesDelSort') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetArticlesDelSort
+GO
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetRelatedContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetRelatedContent
+GO
+
+DROP TYPE {databaseOwner}[{objectQualifier}ContentProCategoryList]
+GO
+
+

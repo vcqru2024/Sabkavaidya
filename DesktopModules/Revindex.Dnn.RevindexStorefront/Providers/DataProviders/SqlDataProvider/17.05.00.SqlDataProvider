@@ -1,0 +1,75 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Support QuickBooks Payments
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysIntuitQBPaymentsClientID')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysIntuitQBPaymentsClientID varchar(255) NULL,
+		PaymentGatewaysIntuitQBPaymentsClientSecret varchar(255) NULL,
+		PaymentGatewaysIntuitQBPaymentsAccessToken varchar(8000) NULL,
+		PaymentGatewaysIntuitQBPaymentsRefreshToken varchar(8000) NULL,
+		PaymentGatewaysIntuitQBPaymentsTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysIntuitQBPaymentsTestMode DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysIntuitQBPaymentsTestMode
+END 
+GO
+
+
+-- Fix missing update address from v17.04.00
+-- Update Street second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserAddress' AND COLUMN_NAME = 'Unit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_UserAddress
+	SET 
+		Street = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, 0, CHARINDEX(CHAR(10), Street)), CHAR(13), ''))),
+		Unit = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, CHARINDEX(CHAR(10), Street) + 1, 10000), CHAR(13), '')))
+	WHERE Street LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Fix incorrect columns added in v17.04.00
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserAddress' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	ALTER TABLE {objectQualifier}Revindex_Storefront_UserAddress DROP COLUMN ShippingUnit
+END
+GO
+
+-- Fix incorrect columns added in v17.04.00
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserAddress' AND COLUMN_NAME = 'ShippingDistrict')
+BEGIN
+	ALTER TABLE {objectQualifier}Revindex_Storefront_UserAddress DROP COLUMN ShippingDistrict
+END
+GO
+
+
+-- Fix missing update address from v17.04.00
+-- Update Street second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserPayment' AND COLUMN_NAME = 'Unit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment
+	SET 
+		Street = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, 0, CHARINDEX(CHAR(10), Street)), CHAR(13), ''))),
+		Unit = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, CHARINDEX(CHAR(10), Street) + 1, 10000), CHAR(13), '')))
+	WHERE Street LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+
+-- Fix incorrect columns added in v17.04.00
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserPayment' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	ALTER TABLE {objectQualifier}Revindex_Storefront_UserPayment DROP COLUMN ShippingUnit
+END
+GO
+
+-- Fix remove incorrect columns added in v17.04.00
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserPayment' AND COLUMN_NAME = 'ShippingDistrict')
+BEGIN
+	ALTER TABLE {objectQualifier}Revindex_Storefront_UserPayment DROP COLUMN ShippingDistrict
+END
+GO

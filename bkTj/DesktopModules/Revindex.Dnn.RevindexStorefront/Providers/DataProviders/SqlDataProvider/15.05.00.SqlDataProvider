@@ -1,0 +1,211 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support RMA
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD SalesReturnSalesReturnNumberFormat nvarchar(100) NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD SalesReturnActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnActive DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnActive
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		SalesReturnCreditInterval int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnCreditInterval DEFAULT 0,
+		SalesReturnCreditIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnCreditIntervalType DEFAULT 1,
+		SalesReturnExchangeInterval int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnExchangeInterval DEFAULT 0,
+		SalesReturnExchangeIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnExchangeIntervalType DEFAULT 1,
+		SalesReturnRepairInterval int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRepairInterval DEFAULT 0,
+		SalesReturnRepairIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRepairIntervalType DEFAULT 1,
+		SalesReturnRefundInterval int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRefundInterval DEFAULT 0,
+		SalesReturnRefundIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRefundIntervalType DEFAULT 1
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnCreditInterval
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnCreditIntervalType
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnExchangeInterval
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnExchangeIntervalType
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRepairInterval
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRepairIntervalType
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRefundInterval
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_SalesReturnRefundIntervalType
+
+	CREATE TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn](
+		[SalesReturnID] [int] IDENTITY(1,1) NOT NULL,
+		[SalesReturnGUID] [uniqueidentifier] NOT NULL,
+		[SalesReturnNumber] [nvarchar](200) NOT NULL,
+		[UserID] [int] NOT NULL,
+		[PortalID] [int] NOT NULL,
+		[ShippingFirstName] [nvarchar](50) NULL,
+		[ShippingLastName] [nvarchar](50) NULL,
+		[ShippingCompany] [nvarchar](100) NULL,
+		[ShippingStreet] [nvarchar](200) NULL,
+		[ShippingCity] [nvarchar](50) NULL,
+		[ShippingSubdivisionCode] [varchar](6) NULL,
+		[ShippingPostalCode] [varchar](10) NULL,
+		[ShippingCountryCode] [varchar](2) NULL,
+		[ShippingPhone] [varchar](50) NULL,
+		[ShippingEmail] [nvarchar](256) NULL,
+		[Status] [int] NOT NULL,
+		[ReturnDate] [datetime] NOT NULL,
+		[RowVersion] [timestamp] NOT NULL,
+		[CreateDate] [datetime] NOT NULL,
+		[UpdateDate] [datetime] NOT NULL,
+		[Comment] [nvarchar](4000) NULL,
+		[CustomerNotes] [nvarchar](4000) NULL,
+		[CultureCode] [varchar](20) NOT NULL,
+		[AdminNotes] [nvarchar](4000) NULL,
+		[Extension] [xml] NULL,
+		[SellerID] int NULL,
+		[WarehouseID] int NULL
+	CONSTRAINT [PK_{objectQualifier}Revindex_Storefront_SalesReturn] PRIMARY KEY CLUSTERED ([SalesReturnID] ASC))
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Portals] FOREIGN KEY([PortalID])
+	REFERENCES {databaseOwner}[{objectQualifier}Portals] ([PortalID])
+	ON DELETE CASCADE
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Portals]
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Users] FOREIGN KEY([UserID])
+	REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserID])
+	ON DELETE CASCADE
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Users]
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Seller] FOREIGN KEY([SellerID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_Seller] ([SellerID])
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Seller]
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Warehouse] FOREIGN KEY([WarehouseID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_Warehouse] ([WarehouseID])
+	ON UPDATE NO ACTION ON DELETE NO ACTION
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturn_Warehouse]
+
+	CREATE UNIQUE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturn] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([SalesReturnGUID] ASC)
+	CREATE UNIQUE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturn_1] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([SalesReturnNumber] ASC, [PortalID] ASC)
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturn_2] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([PortalID] ASC)
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturn_3] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([ReturnDate] ASC)
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturn_4] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([UserID] ASC)
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturn_5] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([SellerID] ASC)
+
+	CREATE TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail](
+		[SalesReturnDetailID] [int] IDENTITY(1,1) NOT NULL,
+		[SalesReturnID] [int] NOT NULL,
+		[SalesOrderDetailID] [int] NULL,
+		[RequestType] [int] NOT NULL,
+		[ReasonType] [int] NOT NULL,
+		[ReasonCode] [varchar](100) NULL,
+		[Comment] [nvarchar](4000) NULL,
+		[CustomerNotes] [nvarchar](4000) NULL,
+		[AdminNotes] [nvarchar](4000) NULL,
+		[Quantity] [int] NOT NULL,
+		[SerialNumber] [varchar](100) NULL,
+		[CreateDate] [datetime] NOT NULL,
+		[UpdateDate] [datetime] NOT NULL,
+		[RowVersion] [timestamp] NOT NULL,
+		[Extension] [xml] NULL,
+		[ParentSalesReturnDetailID] [int] NULL,
+		[ProductVariantID] [int] NOT NULL,
+	CONSTRAINT [PK_{objectQualifier}Revindex_Storefront_SalesReturnDetail] PRIMARY KEY CLUSTERED ([SalesReturnDetailID] ASC))
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_ProductVariant] FOREIGN KEY([ProductVariantID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductVariant] ([ProductVariantID])
+	ON DELETE CASCADE
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_ProductVariant]
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_SalesOrderDetail] FOREIGN KEY([SalesOrderDetailID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesOrderDetail] ([SalesOrderDetailID])
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_SalesOrderDetail]
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_SalesReturn] FOREIGN KEY([SalesReturnID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturn] ([SalesReturnID])
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_SalesReturn]
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_SalesReturnDetail1] FOREIGN KEY([ParentSalesReturnDetailID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] ([SalesReturnDetailID])
+
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_SalesReturnDetail_Revindex_Storefront_SalesReturnDetail1]
+
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturnDetail] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] ([SalesReturnID] ASC)
+
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_SalesReturnDetail_1] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_SalesReturnDetail] ([ParentSalesReturnDetailID] ASC)
+
+	-- Update ProductVariant to handle returns
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant ADD
+		RefundInterval int NULL,
+		RefundIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_RefundIntervalType DEFAULT 1,
+		ExchangeInterval int NULL,
+		ExchangeIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_ExchangeIntervalType DEFAULT 1,
+		CreditInterval int NULL,
+		CreditIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_CreditIntervalType DEFAULT 1,
+		RepairInterval int NULL,
+		RepairIntervalType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_RepairIntervalType DEFAULT 1,
+		HasSerialNumber bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_HasSerialNumber DEFAULT 0,
+		AllowPartialReturn bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_AllowPartialReturn DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_RefundIntervalType
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_ExchangeIntervalType
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_CreditIntervalType
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_RepairIntervalType
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_HasSerialNumber
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant
+	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_AllowPartialReturn
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration SET SalesReturnSalesReturnNumberFormat = '{0}'
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

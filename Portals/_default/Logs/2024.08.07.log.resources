@@ -1,0 +1,1158 @@
+2024-08-07 13:08:20.065+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-08-07 13:08:29.155+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Framework.Reflection - Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductDetailAdvancedUrlProvider
+System.Web.HttpException (0x80004005): Could not load type 'Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductDetailAdvancedUrlProvider'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:08:29.168+05:30 [Naincygarg][D:2][T:10][ERROR] DotNetNuke.Framework.Reflection - Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductListAdvancedUrlProvider
+System.Web.HttpException (0x80004005): Could not load type 'Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductListAdvancedUrlProvider'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:08:35.900+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:08:35.904+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.DNNModule3.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.DNNModule3.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:08:35.913+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Revindex.Dnn.RevindexStorefront.RevindexStorefrontController, Revindex.Dnn.RevindexStorefront
+System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Dnn.RevindexStorefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Dnn.RevindexStorefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Dnn.RevindexStorefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Dnn.RevindexStorefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Dnn.RevindexStorefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Dnn.RevindexStorefront/Revindex.Dnn.RevindexStorefront.EXE.
+
+2024-08-07 13:08:39.906+05:30 [Naincygarg][D:2][T:13][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:08:45.390+05:30 [Naincygarg][D:2][T:12][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:08:49.247+05:30 [Naincygarg][D:2][T:11][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:09:21.781+05:30 [Naincygarg][D:2][T:6][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.DLL.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///C:/Windows/Microsoft.NET/Framework64/v4.0.30319/Temporary ASP.NET Files/root/98f2e762/6ec24927/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/HttpModules/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Providers/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Modules/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/bin/Support/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+LOG: Attempting download of new URL file:///D:/sbkavaidya.vcqru.com/Revindex.Business.Revindex.Revindex.Storefront/Revindex.Business.Revindex.Revindex.Storefront.EXE.
+
+2024-08-07 13:09:25.356+05:30 [Naincygarg][D:2][T:8][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:09:25.358+05:30 [Naincygarg][D:2][T:8][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:09:25.360+05:30 [Naincygarg][D:2][T:8][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:09:53.944+05:30 [Naincygarg][D:2][T:9][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 13:10:27.212+05:30 [Naincygarg][D:2][T:11][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:10:27.213+05:30 [Naincygarg][D:2][T:11][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:10:27.217+05:30 [Naincygarg][D:2][T:11][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:10:46.160+05:30 [Naincygarg][D:2][T:11][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:11:30.577+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:11:30.578+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:11:30.584+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:11:34.938+05:30 [Naincygarg][D:2][T:8][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:11:41.212+05:30 [Naincygarg][D:2][T:10][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:11:41.315+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 13:11:51.770+05:30 [Naincygarg][D:2][T:11][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:12:08.309+05:30 [Naincygarg][D:2][T:11][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:12:34.756+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:12:34.762+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:12:34.763+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:13:48.715+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:13:48.716+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:13:48.718+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:14:51.858+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:14:51.860+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:14:51.861+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:15:07.248+05:30 [Naincygarg][D:2][T:44][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:15:13.068+05:30 [Naincygarg][D:2][T:44][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:15:54.954+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 13:15:54.956+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 13:15:54.961+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 13:15:57.106+05:30 [Naincygarg][D:2][T:41][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:16:03.019+05:30 [Naincygarg][D:2][T:59][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:16:07.210+05:30 [Naincygarg][D:2][T:44][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 13:16:11.101+05:30 [Naincygarg][D:2][T:44][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): A potentially dangerous Request.Path value was detected from the client (:).
+   at System.Web.HttpRequest.ValidateInputIfRequiredByConfig()
+   at System.Web.HttpApplication.PipelineStepManager.ValidateHelper(HttpContext context)
+2024-08-07 14:28:49.442+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:28:50.323+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:28:51.126+05:30 [Naincygarg][D:2][T:8][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:28:52.141+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:28:57.201+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:28:58.180+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:28:59.507+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:28:59.509+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:28:59.510+05:30 [Naincygarg][D:2][T:62][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:29:19.333+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:29:20.336+05:30 [Naincygarg][D:2][T:49][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:29:21.358+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:29:22.363+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:29:23.372+05:30 [Naincygarg][D:2][T:7][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:29:24.384+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:29:57.794+05:30 [Naincygarg][D:2][T:53][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:29:57.796+05:30 [Naincygarg][D:2][T:53][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:29:57.798+05:30 [Naincygarg][D:2][T:53][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:31:01.136+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:31:01.139+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:31:01.141+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:32:04.107+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:32:04.109+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:32:04.110+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:33:07.724+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:33:07.726+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:33:07.727+05:30 [Naincygarg][D:2][T:42][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:34:10.914+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:34:10.916+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:34:10.918+05:30 [Naincygarg][D:2][T:41][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:35:18.572+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:35:18.576+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:35:18.579+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:35:46.605+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:36:19.985+05:30 [Naincygarg][D:2][T:16][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:36:19.988+05:30 [Naincygarg][D:2][T:16][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:36:19.991+05:30 [Naincygarg][D:2][T:16][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:37:23.345+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:37:23.347+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:37:23.348+05:30 [Naincygarg][D:2][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:38:26.506+05:30 [Naincygarg][D:2][T:70][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:38:26.511+05:30 [Naincygarg][D:2][T:70][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:38:26.526+05:30 [Naincygarg][D:2][T:70][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:53:08.943+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:53:08.945+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:53:08.947+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:53:09.619+05:30 [Naincygarg][D:2][T:71][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:54:13.508+05:30 [Naincygarg][D:2][T:75][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:54:13.512+05:30 [Naincygarg][D:2][T:75][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:54:13.515+05:30 [Naincygarg][D:2][T:75][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:55:21.829+05:30 [Naincygarg][D:2][T:103][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:55:21.831+05:30 [Naincygarg][D:2][T:103][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:55:21.832+05:30 [Naincygarg][D:2][T:103][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:55:37.132+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:56:21.079+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:56:21.080+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:56:21.083+05:30 [Naincygarg][D:2][T:94][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:56:42.821+05:30 [Naincygarg][D:2][T:103][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:57:28.035+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:57:28.038+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:57:28.040+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:57:46.517+05:30 [Naincygarg][D:2][T:103][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Business.Revindex.Revindex.Storefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Business.Revindex.Revindex.Storefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.GetSchedulerClient(IServiceProvider services, String strProcess, ScheduleHistoryItem objScheduleHistoryItem)
+   at DotNetNuke.Services.Scheduling.ProcessGroup.Run(ScheduleHistoryItem objScheduleHistoryItem)
+
+=== Pre-bind state information ===
+LOG: DisplayName = Revindex.Business.Revindex.Revindex.Storefront
+ (Partial)
+WRN: Partial binding information was supplied for an assembly:
+WRN: Assembly Name: Revindex.Business.Revindex.Revindex.Storefront | Domain ID: 2
+WRN: A partial bind occurs when only part of the assembly display name is provided.
+WRN: This might result in the binder loading an incorrect assembly.
+WRN: It is recommended to provide a fully specified textual identity for the assembly,
+WRN: that consists of the simple name, version, culture, and public key token.
+WRN: See whitepaper http://go.microsoft.com/fwlink/?LinkId=109270 for more information and common solutions to this issue.
+LOG: Appbase = file:///D:/sbkavaidya.vcqru.com/
+LOG: Initial PrivatePath = D:\sbkavaidya.vcqru.com\bin
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: D:\sbkavaidya.vcqru.com\web.config
+LOG: Using host configuration file: C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet.config
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework64\v4.0.30319\config\machine.config.
+LOG: Policy not being applied to reference at this time (private, custom, partial, or location-based assembly bind).
+LOG: The same bind was seen before, and was failed with hr = 0x80070002.
+
+2024-08-07 14:58:30.746+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:58:30.748+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:58:30.750+05:30 [Naincygarg][D:2][T:35][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 14:59:33.250+05:30 [Naincygarg][D:2][T:68][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 14:59:33.253+05:30 [Naincygarg][D:2][T:68][ERROR] DotNetNuke.Services.Search.ModuleIndexer - System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+2024-08-07 14:59:33.256+05:30 [Naincygarg][D:2][T:68][ERROR] DotNetNuke.Services.Exceptions.Exceptions - System.Exception: Error Creating BusinessControllerClass 'Christoc.Modules.addproductAddproduct.Components.FeatureController' of module(Addproduct) id=(2734) in tab(1110) and portal(0) ---> System.ArgumentNullException: Value cannot be null.
+Parameter name: type
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at DotNetNuke.Services.Search.ModuleIndexer.GetModulesForIndex(Int32 portalId)
+   --- End of inner exception stack trace ---
+   at DotNetNuke.Services.Search.ModuleIndexer.ThrowLogError(ModuleInfo module, Exception ex)
+2024-08-07 16:02:58.194+05:30 [Naincygarg][D:2][T:1][ERROR] DotNetNuke.ComponentModel.ProviderInstaller - System.Configuration.ConfigurationErrorsException: Could not load provider Christoc.Modules.dnnsimplearticle.Providers.Sitemap.Sitemap, DNNSimpleArticle
+2024-08-07 16:03:09.958+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductDetailAdvancedUrlProvider
+System.Web.HttpException (0x80004005): Could not load type 'Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductDetailAdvancedUrlProvider'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 16:03:10.008+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductListAdvancedUrlProvider
+System.Web.HttpException (0x80004005): Could not load type 'Revindex.Dnn.RevindexStorefront.Providers.UrlProviders.AdvancedUrlProvider.ProductListAdvancedUrlProvider'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 16:03:15.919+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.addproductAddproduct.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.addproductAddproduct.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 16:03:15.924+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Christoc.Modules.DNNModule3.Components.FeatureController
+System.Web.HttpException (0x80004005): Could not load type 'Christoc.Modules.DNNModule3.Components.FeatureController'.
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+2024-08-07 16:03:15.932+05:30 [Naincygarg][D:2][T:12][ERROR] DotNetNuke.Framework.Reflection - Revindex.Dnn.RevindexStorefront.RevindexStorefrontController, Revindex.Dnn.RevindexStorefront
+System.IO.FileNotFoundException: Could not load file or assembly 'Revindex.Dnn.RevindexStorefront' or one of its dependencies. The system cannot find the file specified.
+File name: 'Revindex.Dnn.RevindexStorefront'
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMarkHandle stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName, ObjectHandleOnStack type)
+   at System.RuntimeTypeHandle.GetTypeByName(String name, Boolean throwOnError, Boolean ignoreCase, Boolean reflectionOnly, StackCrawlMark& stackMark, IntPtr pPrivHostBinder, Boolean loadTypeFromPartialName)
+   at System.Type.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at System.Web.Compilation.BuildManager.GetType(String typeName, Boolean throwOnError, Boolean ignoreCase)
+   at DotNetNuke.Framework.Reflection.CreateType(String TypeName, String CacheKey, Boolean UseCache, Boolean IgnoreErrors)
+
+WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+

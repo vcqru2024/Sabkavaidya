@@ -1,0 +1,67 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<VCQRU.Modules.TreatmentsTreatments.Models.Treatment>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Web.Mvc
+
+<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
+<div id="Treatment-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight">
+            <a href="#">@Dnn.LocalizeString("ExpandAll")</a>
+        </div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div><label for="treatmentName">@Dnn.LocalizeString("lblName")</label></div>
+                @Html.TextBoxFor(m => m.TreatmentName)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="treatmentDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                <textarea id="treatmentDescription" name="TreatmentDescription">@Model.TreatmentDescription</textarea>
+                <!-- CKEditor initialization -->
+                <script>
+                    CKEDITOR.replace('treatmentDescription');
+                </script>
+            </div>
+            @*<div class="dnnFormItem">
+                <div><label for="treatmentDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                @Html.TextAreaFor(m => m.TreatmentDescription, new { @id = "treatmentDescription" })
+            </div>*@
+            @Html.HiddenFor(m => m.ModuleId)
+            @Html.HiddenFor(m => m.CreatedByUserId)
+            @Html.HiddenFor(m => m.CreatedOnDate)
+            @Html.HiddenFor(m => m.LastModifiedByUserId)
+            @Html.HiddenFor(m => m.LastModifiedOnDate)
+        </fieldset>
+        <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+        <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+    </div>
+
+    <script type="text/javascript">
+        /*globals jQuery, window, Sys */
+        (function($, Sys) {
+            function dnnEditBasicSettings() {
+                $('#dnnEditBasicSettings').dnnPanels();
+                $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({ expandText: '@Dnn.LocalizeString("ExpandAll")', collapseText: '@Dnn.LocalizeString("CollapseAll")', targetArea: '#dnnEditBasicSettings' });
+            }
+
+            $(function() {
+                // Initialize CKEditor for treatment description
+                CKEDITOR.replace('treatmentDescription');
+
+                $('#cancelEdit').click(function() { dnnModal.closePopUp(false); });
+                dnnEditBasicSettings();
+                Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+                    dnnEditBasicSettings();
+                });
+            });
+
+        }(jQuery, window.Sys));
+    </script>
+</div>
+
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script> <!-- Reference CKEditor library -->

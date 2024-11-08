@@ -1,0 +1,85 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+
+-- Add ProductID index to BoughtProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_BoughtProduct_1' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_BoughtProduct_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct (ProductID)
+END 
+GO
+
+-- Add PurchasedProductID index to BoughtProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_BoughtProduct_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_BoughtProduct_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_BoughtProduct (PurchasedProductID)
+END 
+GO
+
+-- Add OfferProductID index to CrosssellProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_CrosssellProduct_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_CrosssellProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_CrosssellProduct_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_CrosssellProduct (OfferProductID)
+END 
+GO
+
+-- Add ProductID index to CrosssellProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_CrosssellProduct_3' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_CrosssellProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_CrosssellProduct_3 ON {databaseOwner}{objectQualifier}Revindex_Storefront_CrosssellProduct (ProductID)
+END 
+GO
+
+
+-- Add ProductID index to RelatedProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_RelatedProduct_1' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_RelatedProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_RelatedProduct_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_RelatedProduct (ProductID)
+END 
+GO
+
+-- Add RelationProductID index to RelatedProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_RelatedProduct_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_RelatedProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_RelatedProduct_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_RelatedProduct (RelationProductID)
+END 
+GO
+
+-- Add ProductVariantID index to RequiredProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_RequiredProduct_1' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_RequiredProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_RequiredProduct_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_RequiredProduct (ProductVariantID)
+END 
+GO
+
+
+-- Add ProductVariantID index to RequiredProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_RequiredProduct_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_RequiredProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_RequiredProduct_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_RequiredProduct (RequiredProductVariantID) 
+END 
+GO
+
+-- Add ProductID index to SimilarProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_SimilarProduct_1' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_SimilarProduct_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct (ProductID)
+END 
+GO
+
+-- Add SimilarityProductID index to SimilarProduct table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_SimilarProduct_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_SimilarProduct_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_SimilarProduct (SimilarityProductID)
+END 
+GO
+
+
+
+
+
+	

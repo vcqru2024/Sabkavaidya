@@ -1,0 +1,130 @@
+2024-01-23 14:32:49.244+05:30 [DESKTOP-TU3857L][D:2][T:8][ERROR] DotNetNuke.Services.FileSystem.FileManager - System.ArgumentException: Parameter is not valid.
+   at System.Drawing.Image.FromStream(Stream stream, Boolean useEmbeddedColorManagement, Boolean validateImageData)
+   at DotNetNuke.Services.FileSystem.FileManager.GetImageFromStream(Stream stream)
+   at DotNetNuke.Services.FileSystem.FileManager.RotateFlipImage(Stream& content)
+2024-01-23 14:34:24.498+05:30 [DESKTOP-TU3857L][D:2][T:21][ERROR] DotNetNuke.Services.FileSystem.FileManager - System.ArgumentException: Parameter is not valid.
+   at System.Drawing.Image.FromStream(Stream stream, Boolean useEmbeddedColorManagement, Boolean validateImageData)
+   at DotNetNuke.Services.FileSystem.FileManager.GetImageFromStream(Stream stream)
+   at DotNetNuke.Services.FileSystem.FileManager.RotateFlipImage(Stream& content)
+2024-01-23 14:49:31.799+05:30 [DESKTOP-TU3857L][D:2][T:32][FATAL] DotNetNuke.Framework.PageBase - An error has occurred while loading page.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Users.UserController.IsValidUserName(String userName)
+   at DotNetNuke.Modules.Admin.Users.Register.Validate()
+   at DotNetNuke.Modules.Admin.Users.Register.registerButton_Click(Object sender, EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-01-23 14:49:31.817+05:30 [DESKTOP-TU3857L][D:2][T:32][ERROR] DotNetNuke.Services.Exceptions.Exceptions - ~/Default.aspx?tabid=35&error=Object+reference+not+set+to+an+instance+of+an+object.&content=0
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Users.UserController.IsValidUserName(String userName)
+   at DotNetNuke.Modules.Admin.Users.Register.Validate()
+   at DotNetNuke.Modules.Admin.Users.Register.registerButton_Click(Object sender, EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-01-23 14:49:48.664+05:30 [DESKTOP-TU3857L][D:2][T:33][FATAL] DotNetNuke.Framework.PageBase - An error has occurred while loading page.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Users.UserController.IsValidUserName(String userName)
+   at DotNetNuke.Modules.Admin.Users.Register.Validate()
+   at DotNetNuke.Modules.Admin.Users.Register.registerButton_Click(Object sender, EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-01-23 14:49:48.676+05:30 [DESKTOP-TU3857L][D:2][T:33][ERROR] DotNetNuke.Services.Exceptions.Exceptions - ~/Default.aspx?tabid=35&error=Object+reference+not+set+to+an+instance+of+an+object.&content=0
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Users.UserController.IsValidUserName(String userName)
+   at DotNetNuke.Modules.Admin.Users.Register.Validate()
+   at DotNetNuke.Modules.Admin.Users.Register.registerButton_Click(Object sender, EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-01-23 14:49:57.611+05:30 [DESKTOP-TU3857L][D:2][T:5][FATAL] DotNetNuke.Framework.PageBase - An error has occurred while loading page.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Users.UserController.IsValidUserName(String userName)
+   at DotNetNuke.Modules.Admin.Users.Register.Validate()
+   at DotNetNuke.Modules.Admin.Users.Register.registerButton_Click(Object sender, EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-01-23 14:49:57.611+05:30 [DESKTOP-TU3857L][D:2][T:5][ERROR] DotNetNuke.Services.Exceptions.Exceptions - ~/Default.aspx?tabid=35&error=Object+reference+not+set+to+an+instance+of+an+object.&content=0
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Entities.Users.UserController.IsValidUserName(String userName)
+   at DotNetNuke.Modules.Admin.Users.Register.Validate()
+   at DotNetNuke.Modules.Admin.Users.Register.registerButton_Click(Object sender, EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.OnClick(EventArgs e)
+   at System.Web.UI.WebControls.LinkButton.RaisePostBackEvent(String eventArgument)
+   at System.Web.UI.Page.<ProcessRequestMainAsync>d__523.MoveNext()
+2024-01-23 15:15:41.775+05:30 [DESKTOP-TU3857L][D:2][T:57][FATAL] DotNetNuke.Framework.PageBase - An error has occurred while loading page.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DNNConnect.CKEditorProvider.Browser.Browser.GetJsUploadCode(String fileName, String fileUrl)
+   at DNNConnect.CKEditorProvider.Browser.Browser.UploadFile(HttpPostedFile file, String command)
+   at DNNConnect.CKEditorProvider.Browser.Browser.Page_Load(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2024-01-23 15:15:41.775+05:30 [DESKTOP-TU3857L][D:2][T:57][ERROR] DotNetNuke.Services.Exceptions.Exceptions - ~/Default.aspx?tabid=35&error=Value+cannot+be+null.%0d%0aParameter+name%3a+input
+System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DNNConnect.CKEditorProvider.Browser.Browser.GetJsUploadCode(String fileName, String fileUrl)
+   at DNNConnect.CKEditorProvider.Browser.Browser.UploadFile(HttpPostedFile file, String command)
+   at DNNConnect.CKEditorProvider.Browser.Browser.Page_Load(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2024-01-23 15:15:50.052+05:30 [DESKTOP-TU3857L][D:2][T:44][FATAL] DotNetNuke.Framework.PageBase - An error has occurred while loading page.
+System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DNNConnect.CKEditorProvider.Browser.Browser.GetJsUploadCode(String fileName, String fileUrl)
+   at DNNConnect.CKEditorProvider.Browser.Browser.UploadFile(HttpPostedFile file, String command)
+   at DNNConnect.CKEditorProvider.Browser.Browser.Page_Load(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2024-01-23 15:15:50.052+05:30 [DESKTOP-TU3857L][D:2][T:44][ERROR] DotNetNuke.Services.Exceptions.Exceptions - ~/Default.aspx?tabid=35&error=Value+cannot+be+null.%0d%0aParameter+name%3a+input
+System.ArgumentNullException: Value cannot be null.
+Parameter name: input
+   at System.Text.RegularExpressions.Regex.Replace(String input, String replacement)
+   at System.Text.RegularExpressions.Regex.Replace(String input, String pattern, String replacement, RegexOptions options)
+   at DNNConnect.CKEditorProvider.Browser.Browser.GetJsUploadCode(String fileName, String fileUrl)
+   at DNNConnect.CKEditorProvider.Browser.Browser.UploadFile(HttpPostedFile file, String command)
+   at DNNConnect.CKEditorProvider.Browser.Browser.Page_Load(Object sender, EventArgs e)
+   at System.Web.UI.Control.OnLoad(EventArgs e)
+   at System.Web.UI.Control.LoadRecursive()
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+2024-01-23 15:37:47.681+05:30 [DESKTOP-TU3857L][D:2][T:38][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-01-23 16:27:18.453+05:30 [DESKTOP-TU3857L][D:2][T:77][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2024-01-23 17:50:09.450+05:30 [DESKTOP-TU3857L][D:2][T:76][FATAL] DotNetNuke.Web.Common.Internal.DotNetNukeHttpApplication - System.Web.HttpException (0x80004005): An error occurred while communicating with the remote host. The error code is 0x80070006. ---> System.Runtime.InteropServices.COMException (0x80070006): The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))
+   at System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCore(Boolean keepConnected, Int32 numBodyFragments, IntPtr[] bodyFragments, Int32[] bodyFragmentLengths, Int32[] bodyFragmentTypes)
+   at System.Web.Hosting.IIS7WorkerRequest.FlushCachedResponse(Boolean isFinal)
+   at System.Web.HttpResponse.UpdateNativeResponse(Boolean sendHeaders)
+   at System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   at DotNetNuke.Services.GeneratedImage.ImageHandlerInternal.HandleImageRequest(HttpContextBase context, Func`2 imageGenCallback, String uniqueIdStringSeed)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

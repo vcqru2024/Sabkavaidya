@@ -1,0 +1,72 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add ProductListSearchShow and ProductListFilterShow columns
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductListSearchShow')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		ProductListSearchShow bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductListSearchShow DEFAULT 0,
+		ProductListFilterShow bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductListFilterShow DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductListSearchShow
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductListFilterShow
+END 
+GO
+
+
+-- Add Fund table
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Fund]') AND type in (N'U'))
+BEGIN
+	CREATE TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Fund
+		(
+		FundID int NOT NULL IDENTITY (1, 1),
+		PortalID int NOT NULL,
+		UserID int NOT NULL,
+		Deleted bit NOT NULL,
+		Amount decimal(19, 4) NOT NULL,
+		Status int NOT NULL,
+		CreateDate datetime NOT NULL,
+		UpdateDate datetime NOT NULL,
+		RowVersion timestamp NOT NULL,
+		AdminNotes nvarchar(4000) NULL
+		)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Fund ADD CONSTRAINT PK_{objectQualifier}Revindex_Storefront_Fund PRIMARY KEY CLUSTERED (FundID)
+
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Fund ON {databaseOwner}{objectQualifier}Revindex_Storefront_Fund (UserID)
+
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Fund_1 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Fund (PortalID)
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Fund ADD CONSTRAINT FK_{objectQualifier}Revindex_Storefront_Fund_Portals FOREIGN KEY (PortalID) REFERENCES {databaseOwner}{objectQualifier}Portals (PortalID) ON UPDATE  NO ACTION ON DELETE CASCADE 
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Fund ADD CONSTRAINT FK_{objectQualifier}Revindex_Storefront_Fund_Users FOREIGN KEY (UserID) REFERENCES {databaseOwner}{objectQualifier}Users (UserID) ON UPDATE  NO ACTION ON DELETE CASCADE 
+END
+GO
+
+-- Add FundHistory table
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_FundHistory]') AND type in (N'U'))
+BEGIN
+	CREATE TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory
+		(
+		FundHistoryID int NOT NULL IDENTITY (1, 1),
+		FundID int NOT NULL,
+		HistoryDate datetime NOT NULL,
+		AmountAdjustment decimal(19, 4) NOT NULL,
+		Operation int NOT NULL,
+		CreateDate datetime NOT NULL,
+		UpdateDate datetime NOT NULL,
+		RowVersion timestamp NOT NULL
+		) 
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory ADD CONSTRAINT PK_{objectQualifier}Revindex_Storefront_FundHistory PRIMARY KEY CLUSTERED (FundHistoryID)
+
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_FundHistory ON {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory (FundID)
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory ADD CONSTRAINT FK_{objectQualifier}Revindex_Storefront_FundHistory_Revindex_Storefront_Fund FOREIGN KEY (FundID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_Fund (FundID) ON UPDATE  NO ACTION ON DELETE  CASCADE 
+
+END
+GO

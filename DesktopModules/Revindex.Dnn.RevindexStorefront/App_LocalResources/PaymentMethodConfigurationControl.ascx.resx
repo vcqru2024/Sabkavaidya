@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PaymentMethodsHeader.Text" xml:space="preserve">
+    <value>Payment methods</value>
+  </data>
+  <data name="PaymentMethodsNoneActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsNoneActiveLabelControl.Help" xml:space="preserve">
+    <value>This payment method allows a user to bypass payment and is useful for allowing a customer to checkout zero dollar amounts such as free trials.</value>
+  </data>
+  <data name="PaymentMethodsACHActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsACHPaymentGatewayLabelControl.Text" xml:space="preserve">
+    <value>Payment gateway</value>
+  </data>
+  <data name="EditLink.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="PaymentMethodsAuthorizeNetCIMActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsAuthorizeNetCIMTransactionTypeLabelControl.Text" xml:space="preserve">
+    <value>Transaction type</value>
+  </data>
+  <data name="PaymentMethodsAuthorizeNetCIMTransactionTypeLabelControl.Help" xml:space="preserve">
+    <value>Authorize reserves the money and needs to be captured at a later time to complete the transaction. Purchase transaction immediately deducts the money from the customer and begins the transfer of money to your account.</value>
+  </data>
+  <data name="PaymentMethodsAuthorizeNetSIMActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsCashActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsCheckActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsClearActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsCreditCardActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsCreditCardPaymentGatewayLabelControl.Text" xml:space="preserve">
+    <value>Payment gateway</value>
+  </data>
+  <data name="PaymentMethodsCreditCardTransactionTypeLabelControl.Text" xml:space="preserve">
+    <value>Transaction type</value>
+  </data>
+  <data name="PaymentMethodsCreditCardTransactionTypeLabelControl.Help" xml:space="preserve">
+    <value>Authorize reserves the money and needs to be captured at a later time to complete the transaction. Purchase transaction immediately deducts the money from the customer and begins the transfer of money to your account.</value>
+  </data>
+  <data name="PaymentMethodsCreditCardAuthenticateIdentityLabelControl.Text" xml:space="preserve">
+    <value>Authenticate identity (3D Secure)</value>
+  </data>
+  <data name="PaymentMethodsCreditCardAuthenticateIdentityLabelControl.Help" xml:space="preserve">
+    <value>Enable 3D Secure authentication (Verified by Visa, MasterCard SecureCode, Amex SafeKey, etc.) when possible to shift chargeback liability to the issuing bank in case of fraudulent payments. Please verify your payment gateway supports 3D Secure before enabling this feature.</value>
+  </data>
+  <data name="PaymentMethodsCreditCardTokenActiveLabelControl.Text" xml:space="preserve">
+    <value>Tokenize data</value>
+  </data>
+  <data name="PaymentMethodsCreditCardTokenActiveLabelControl.Help" xml:space="preserve">
+    <value>When possible, tokenization substitutes sensitive data with a token that has no exploitable value. It reduces your PCI footprint because the sensitive data is only stored at your payment gateway's secure facility. The token can be used to repeat a recurring payment without needing the sensitive data. Please verify your payment gateway supports tokenization before enabling this feature.</value>
+  </data>
+  <data name="PaymentMethodsCustomHostedActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsDotpayActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsMasterCardIGSHostedActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsMollieActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsMoneyOrderActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsPaymentExpressActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsPayFastActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsPayPalActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsPayPalPaymentGatewayLabelControl.Text" xml:space="preserve">
+    <value>Payment gateway</value>
+  </data>
+  <data name="PaymentMethodsPaystation3PartyActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsPayUBusinessActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsPayULatamWebCheckoutActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsRewardsPointActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsSagePayFormActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsVirtualCardServicesPayActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsVoucherActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsWireTransferActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="SaveLinkButton.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save ||file||</comment>
+  </data>
+  <data name="NonePaymentMethodDescriptionLabel.Text" xml:space="preserve">
+    <value>This payment method allows a user to bypass payment and is useful for allowing a customer to checkout zero dollar amounts such as free trials. It should normally be used with an availability rule to allow it only when the amount due is zero.</value>
+  </data>
+  <data name="VoucherPaymentMethodDescriptionLabel.Text" xml:space="preserve">
+    <value>Voucher, also known as gift card or gift certificate, allows a customer to pay for their purchase by entering the voucher code.</value>
+  </data>
+  <data name="PaymentMethodsCardlinkRedirectActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsFlutterwaveStandardActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsIPayAfricaWebActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsKlarnaPaymentsActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsFundActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsVenmoActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="PaymentMethodsVenmoPaymentGatewayLabelControl.Text" xml:space="preserve">
+    <value>Payment gateway</value>
+  </data>
+</root>

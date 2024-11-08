@@ -1,0 +1,44 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Speed up queries that involve bundled products
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_SalesOrderDetail_3 ON {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail
+	(
+		ParentSalesOrderDetailID
+	)
+	
+	-- Allow locking sales order detail price
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail ADD PriceLocked bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_SalesOrderDetail_PriceLocked DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_SalesOrderDetail_PriceLocked
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

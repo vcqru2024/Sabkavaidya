@@ -1,0 +1,60 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support Authorize.net Accept.js
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysAuthorizeNetAcceptLogin varchar(255) NULL,
+		PaymentGatewaysAuthorizeNetAcceptTranKey varchar(255) NULL,
+		PaymentGatewaysAuthorizeNetAcceptPublicKey varchar(255) NULL,
+		PaymentGatewaysAuthorizeNetAcceptTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysAuthorizeNetAcceptTestMode DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysAuthorizeNetAcceptTestMode
+
+	-- Increase ProfileNumber and PaymentNumber to accomodate longer values from Authorize.Net Accept
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment ALTER COLUMN ProfileNumber VARCHAR(1000)
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment ALTER COLUMN PaymentNumber VARCHAR(1000)
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment ALTER COLUMN PaymentGatewayProfileNumber VARCHAR(1000)
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment ALTER COLUMN ProfileNumber VARCHAR(1000)
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment ALTER COLUMN PaymentNumber VARCHAR(1000)
+
+	-- Drop SimulationMode in SagePay Direct payment gateway
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN PaymentGatewaysSagePayDirectSimulationMode
+
+	-- Support syncing categories to tabs
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		CategorySyncTabsActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_CategorySyncTabsActive DEFAULT 0,
+		CategorySyncTabsRoot int NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_CategorySyncTabsActive
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

@@ -1,0 +1,7 @@
+﻿@using Revindex.Web.UI.WebUserControls.Dnn.Pages.Shared;
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<BackViewModel>
+
+@if (Model.Visible)
+{
+	<a href="@Model.NavigateUrl" class="@Model.CssClass" resourcekey="@Model.ResourceKey" @(Model.Enabled ? "" : "disabled")>@Model.Text</a>
+}

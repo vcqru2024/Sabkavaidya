@@ -1,0 +1,33 @@
+@inherits Custom.Hybrid.RazorTyped
+@using System.Collections.Generic;
+@using System.Linq;
+@using ToSic.Razor.Blade;
+@using ToSic.Sxc.Data;
+@{
+  // helper with some shared logic
+  var logic = GetCode("../shared/Logic.cs");
+
+  // Get the Terms (grouped) from the MyModel (parameter passed to this partial Razor)
+  // We specify the type for the compiler, since `MyModel` doesn't know the type
+  var termGroups = MyModel.Get("TermGroups") as List<IGrouping<string, ITypedItem>>;
+
+  // Toolbar without Layout Button but with Delete Button
+  var termToolbar = Kit.Toolbar.Default().Layout("-").Delete();
+}
+
+@* Loop through each group (starting character) and then all terms inside *@
+@foreach (var grp in termGroups) {
+  <div class="mb-5">
+    @* Show the character *@
+    <h2 id="@grp.Key" class="mt-3">@grp.Key</h2>
+
+    @* Show each term and summary definition *@
+    @foreach (var term in grp) {
+      <div class="mb-2" @termToolbar.For(term)>
+        <strong>@logic.TitleWithAbbreviation(term)</strong>
+        <p class="mb-0">@term.String("Summary")</p>
+        <small><a href='@Link.To(parameters: "term=" + term.String("UrlKey"))'>@App.Resources.String("MoreText")</a></small>
+      </div>
+    }
+  </div>
+}

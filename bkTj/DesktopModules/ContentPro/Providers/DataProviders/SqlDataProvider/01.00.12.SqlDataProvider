@@ -1,0 +1,39 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_CountCategoriesContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_CountCategoriesContent
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_CountCategoriesContent] 
+	-- Add the parameters for the stored procedure here
+	@CatTag int,
+	@FSet int
+
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+SELECT cc.CatID,c.CatName,c.CatUrl,COUNT(cc.ContentID) as Count
+FROM {databaseOwner}{objectQualifier}ContentPro_ContentCategories cc
+inner join {databaseOwner}{objectQualifier}ContentPro_Categories c on cc.CatId = c.CatID
+inner join {databaseOwner}{objectQualifier}ContentPro_Content content on content.ContentID = cc.ContentID
+WHERE c.IsTag = @CatTag and c.IsPublic = 1 ANd content.FieldSetID = @FSet
+GROUP BY cc.CatID,c.CatName,c.CatUrl
+order by c.CatName asc;
+
+END
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

@@ -1,0 +1,18 @@
+﻿@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<puresystems.Modules.ContentPro.Components.RazorModel>
+<script src="@Model.Content.ModulePath/DefaultTemplates/SimpleSlider/main.js"></script>
+<link href="@Model.Content.ModulePath/DefaultTemplates/SimpleSlider/style.css" rel="stylesheet" type="text/css" />
+<section class="cd-hero">
+    <ul class="cd-hero-slider autoplay">
+	@foreach (var Item in Model.Content.List)
+	{
+        <li class="selected">
+            <div class="cd-half-width">
+                <h2>@Item.Content.Title</h2>
+                <div class="extract">@Item.Content.Extract</div>
+                <a class="btn btn-primary btn-lg" href="@Item.Content.Url" style="font-size:20px;">Read More</a>
+            </div>
+            <div class="cd-half-width cd-img-container"><img alt="@Item.Content.Title" src="@Item.Content.Image" class="img-responsive" /></div>
+        </li>
+	}
+    </ul>
+</section>

@@ -1,0 +1,50 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support TaxJar
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_TaxProvider ADD
+		TaxJarToken varchar(255) NULL,
+		TaxJarTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_TaxProvider_TaxJarTestMode DEFAULT 0
+
+	-- Allow disabling cache
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD GeneralDataCacheActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_GeneralDataCacheActive DEFAULT 1
+
+	-- Support Barclaycard payment
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysBarclaycardPSPID varchar(255) NULL,
+		PaymentGatewaysBarclaycardUserID varchar(255) NULL,
+		PaymentGatewaysBarclaycardPassword varchar(255) NULL,
+		PaymentGatewaysBarclaycardTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysBarclaycardTestMode DEFAULT 0,
+		PaymentGatewaysBarclaycardShaIn varchar(255) NULL
+	
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

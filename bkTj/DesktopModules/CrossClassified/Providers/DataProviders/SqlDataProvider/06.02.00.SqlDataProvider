@@ -1,0 +1,2849 @@
+/******   drop table CP_Common_Dictionary ******/
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Common_Dictionary_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Common_Dictionary] DROP CONSTRAINT [FK_{objectQualifier}CP_Common_Dictionary_Portals]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Common_Dictionary]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Common_Dictionary]
+GO
+
+/******   drop procedure related to CP_Common_Dictionary ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Get]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Dictionary_GetByPortals]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Dictionary_GetByPortals]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Add]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Update]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Delete]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Dictionary_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Dictionary_GetByKey]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Dictionary_GetByKey]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Dictionary_GetByKey]
+GO
+
+/******   drop table CP_Product_Ship ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Ship_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Ship] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Ship_CP_Product_Product]
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Ship]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Ship]
+GO
+
+/******   drop procedure related to CP_Product_Ship ******/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ship_Get]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ship_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ship_GetByProduct]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ship_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ship_Add]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ship_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ship_Update]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ship_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ship_Delete]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ship_Delete]
+GO
+
+
+/******  Table CP_Product_Option  ******/
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Option add BonusWeight decimal(18, 2) NULL
+Go
+
+/************ end add columns ********/
+
+/******  Table CP_Product_Address  ******/
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Address add CountryId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Address add  StateId int NULL
+Go
+/************ end add columns ********/
+
+
+/******  Table CP_Product_Type  ******/
+
+/******   drop columns  ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Type drop column [TaxRate]
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type drop column [TaxDescription]
+Go
+
+/************ end drop columns ********/
+
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add EnableField1 bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field1Title nvarchar(50) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field1Default ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add EnableField2 bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field2Title nvarchar(50) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field2Default ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add EnableField3 bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field3Title nvarchar(50) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field3Default ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add EnableField4 bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field4Title nvarchar(50) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field4Default ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add EnableField5 bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field5Title nvarchar(50) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add Field5Default ntext NULL
+Go
+
+/******  Table CP_Product_Cart  ******/
+
+/******   drop columns  ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Cart drop column [ShipId]
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Cart drop column [ShipName]
+Go
+
+/************ end drop columns ********/
+
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Cart add OrderMemo nvarchar(1000) NULL
+Go
+
+/******  Table CP_Product_CartAddress  ******/
+
+/******   add columns  ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add B_CountryId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add B_StateId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add S_CountryId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add S_StateId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add ShipMethodId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add ShipMethodName nvarchar(200) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_CartAddress add NeedBillAddress bit NULL
+Go
+
+/******  Table CP_Product_Order  ******/
+
+/******   add columns  ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add B_CountryId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add B_StateId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add S_CountryId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add S_StateId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add ShipMethodId int NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add ShipMethodName nvarchar(200) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Order add NeedBillAddress bit NULL
+Go
+
+/******  Table CP_Product_OrderDetail  ******/
+
+/******   drop columns  ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail drop column [ShipId]
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail drop column [ShipName]
+Go
+
+/************ end drop columns ********/
+
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add OrderMemo nvarchar(1000) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add OrderStatus int NULL
+Go
+
+Update {databaseOwner}{objectQualifier}CP_Product_OrderDetail
+Set [OrderStatus]=0
+Go
+
+/******  Table CP_Product_Product  ******/
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Weight decimal(18,2) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add PackageFee decimal(18,2) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Sku nvarchar(200) NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Field1 ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Field2 ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Field3 ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Field4 ntext NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Field5 ntext NULL
+Go
+
+/******   drop legacy procedure CP_Product_Option ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Product ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Address ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Type ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Cart ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Update]
+GO
+
+/******   drop legacy procedure CP_Product_CartAddress ******/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Order ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_List]
+GO
+
+/******   drop legacy procedure CP_Product_OrderDetail ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]
+GO
+
+/******   create new procedure  ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Add]
+	@ProductId int,
+	@Name nvarchar(200),
+	@Description nvarchar(1000),
+	@BonusPrice decimal(18, 2),
+	@IsDefault bit,
+	@RoleAfterOrder int,
+	@RoleAddDay int,
+	@Active bit,
+    @BonusWeight decimal(18, 2)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Option (
+	[ProductId],
+	[Name],
+	[Description],
+	[BonusPrice],
+	[IsDefault],
+	[RoleAfterOrder],
+	[RoleAddDay],
+	[Active],
+	[BonusWeight]
+) VALUES (
+	@ProductId,
+	@Name,
+	@Description,
+	@BonusPrice,
+	@IsDefault,
+	@RoleAfterOrder,
+	@RoleAddDay,
+	@Active,
+    @BonusWeight
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Update]
+	@Id int, 
+	@ProductId int, 
+	@Name nvarchar(200), 
+	@Description nvarchar(1000), 
+	@BonusPrice decimal(18, 2), 
+	@IsDefault bit, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@Active bit,
+    @BonusWeight decimal(18, 2) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Option SET
+	[ProductId] = @ProductId,
+	[Name] = @Name,
+	[Description] = @Description,
+	[BonusPrice] = @BonusPrice,
+	[IsDefault] = @IsDefault,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[Active] = @Active,
+    [BonusWeight]=@BonusWeight
+WHERE
+	[Id] = @Id
+
+' 
+END
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Add]
+	@PortalId int,
+	@UserId int,
+    @CountryId int,
+    @StateId int,
+	@Name nvarchar(100),
+	@Address1 nvarchar(200),
+	@Address2 nvarchar(200),
+	@City nvarchar(200),
+	@RegionCode nvarchar(200),
+	@CountryCode nvarchar(200),
+	@PostalCode nvarchar(10),
+	@Phone1 nvarchar(20),
+	@Phone2 nvarchar(20),
+	@IsPrimary bit,
+	@CreatedDate datetime,
+	@FirstName nvarchar(50),
+	@LastName nvarchar(50)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Address (
+	[PortalId],
+	[UserId],
+    [CountryId],
+    [StateId],
+	[Name],
+	[Address1],
+	[Address2],
+	[City],
+	[RegionCode],
+	[CountryCode],
+	[PostalCode],
+	[Phone1],
+	[Phone2],
+	[IsPrimary],
+	[CreatedDate],
+	[FirstName],
+	[LastName]
+) VALUES (
+	@PortalId,
+	@UserId,
+    @CountryId,
+    @StateId,
+	@Name,
+	@Address1,
+	@Address2,
+	@City,
+	@RegionCode,
+	@CountryCode,
+	@PostalCode,
+	@Phone1,
+	@Phone2,
+	@IsPrimary,
+	getdate(),
+	@FirstName,
+	@LastName
+)
+
+select SCOPE_IDENTITY()
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Update]
+	@Id int, 
+	@PortalId int, 
+	@UserId int, 
+    @CountryId int,
+    @StateId int,
+	@Name nvarchar(100), 
+	@Address1 nvarchar(200), 
+	@Address2 nvarchar(200), 
+	@City nvarchar(200), 
+	@RegionCode nvarchar(200), 
+	@CountryCode nvarchar(200), 
+	@PostalCode nvarchar(10), 
+	@Phone1 nvarchar(20), 
+	@Phone2 nvarchar(20), 
+	@IsPrimary bit, 
+	@CreatedDate datetime, 
+	@FirstName nvarchar(50), 
+	@LastName nvarchar(50) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Address SET
+	[PortalId] = @PortalId,
+	[UserId] = @UserId,
+    [CountryId]=@CountryId,
+    [StateId]=@StateId,
+	[Name] = @Name,
+	[Address1] = @Address1,
+	[Address2] = @Address2,
+	[City] = @City,
+	[RegionCode] = @RegionCode,
+	[CountryCode] = @CountryCode,
+	[PostalCode] = @PostalCode,
+	[Phone1] = @Phone1,
+	[Phone2] = @Phone2,
+	[IsPrimary] = @IsPrimary,
+	[CreatedDate] = @CreatedDate,
+	[FirstName] = @FirstName,
+	[LastName] = @LastName
+WHERE
+	[Id] = @Id
+
+' 
+END
+
+
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]
+    @PortalId int,
+	@VendorId int,
+    @ClientId int,
+    @StartDate datetime,
+    @EndDate DateTime,
+    @SearchTerm nvarchar(100),
+    @InvoiceNo nvarchar(100),
+    @OrderStatus int,
+    @PageSize int, 
+    @PageIndex int
+AS
+  Declare @PageLowerBound int
+  DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	ItemId	int
+     )
+----Insert into temptable
+    insert into #PageIndex(ItemId)
+    SELECT
+	[id]
+    FROM {databaseOwner}{objectQualifier}CP_Product_OrderDetail a
+    WHERE (a.[PortalId]=@PortalId)
+    and(@VendorId=-1 or a.[VendorId]=@VendorId)
+    and(@ClientId=-1 or a.[ClientId]=@ClientId)
+    and(a.[CreatedDate] between @StartDate and DateAdd(d,1,@EndDate))
+    and (@SearchTerm='''' or a.[ProductName] like ''%''+@SearchTerm+''%'') -- SearchTerm
+    and (@InvoiceNo='''' or a.[InvoiceNo] like ''%''+@InvoiceNo+''%'') -- @InvoiceNo
+    and (@OrderStatus=-1 or a.[OrderStatus]=@OrderStatus)
+    order by [id] desc
+
+---Get needs rows
+   SELECT
+	b.*
+    FROM #PageIndex a, {databaseOwner}{objectQualifier}CP_Product_OrderDetail b
+    where b.[id]=a.[ItemId] 
+    and  a.[IndexId]> @PageLowerBound	
+    and	 a.[IndexId]< @PageUpperBound	  
+    ORDER BY a.IndexId
+	
+	 --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_List]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_List]
+	@PortalId int,
+    @UserId int,
+    @StartDate datetime,
+    @EndDate DateTime,
+    @OrderNo nvarchar(100),
+    @OrderStatus int,
+    @PageSize int, 
+    @PageIndex int
+AS
+  Declare @PageLowerBound int
+  DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	ItemId	int
+     )
+----Insert into temptable
+    insert into #PageIndex(ItemId)
+    SELECT
+	[id]
+    FROM {databaseOwner}{objectQualifier}CP_Product_Order a 
+    WHERE (a.[PortalId]=@PortalId)
+    and(@UserId=-1 or a.[UserId]=@UserId)
+    and(a.[OrderDate] between @StartDate and DateAdd(d,1,@EndDate))
+    and (@OrderNo='''' or a.[OrderNo] like ''%''+@OrderNo+''%'') -- @OrderNo
+    and (@OrderStatus=-1 or a.[OrderStatus]=@OrderStatus)
+    order by [id] desc
+
+---Get needs rows
+   SELECT
+	b.*
+    FROM #PageIndex a, {databaseOwner}{objectQualifier}CP_Product_Order b
+    where b.[id]=a.[ItemId] 
+    and  a.[IndexId]> @PageLowerBound	
+    and	 a.[IndexId]< @PageUpperBound	  
+    ORDER BY a.IndexId
+	
+	 --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]
+	@UserId int, 
+    @B_CountryId int,
+    @B_StateId int,
+	@B_FirstName nvarchar(50), 
+	@B_LastName nvarchar(50), 
+	@B_Address1 nvarchar(200), 
+	@B_Address2 nvarchar(200), 
+	@B_City nvarchar(200), 
+	@B_RegionCode nvarchar(200), 
+	@B_CountryCode nvarchar(200), 
+	@B_PostalCode nvarchar(50), 
+	@B_Phone1 nvarchar(20), 
+	@B_Phone2 nvarchar(20), 
+    @S_CountryId int,
+    @S_StateId int,
+	@S_FirstName nvarchar(50), 
+	@S_LastName nvarchar(50), 
+	@S_Address1 nvarchar(200), 
+	@S_Address2 nvarchar(200), 
+	@S_City nvarchar(200), 
+	@S_RegionCode nvarchar(200), 
+	@S_CountryCode nvarchar(200), 
+	@S_PostalCode nvarchar(50), 
+	@S_Phone1 nvarchar(20), 
+	@S_Phone2 nvarchar(20), 
+	@NeedAddress bit, 
+	@ShipSameAsBill bit,
+    @ShipMethodId int,
+    @ShipMethodName  nvarchar(200),
+    @NeedBillAddress bit
+AS
+Declare @RecordCount int
+
+Select @RecordCount=count(UserId) 
+from {databaseOwner}{objectQualifier}CP_Product_CartAddress
+where UserId=@UserId
+
+if (@RecordCount>0) 
+    begin
+    UPDATE {databaseOwner}{objectQualifier}CP_Product_CartAddress 
+    SET
+    [B_CountryId]=@B_CountryId,
+    [B_StateId]=@B_StateId,
+	[B_FirstName] = @B_FirstName,
+	[B_LastName] = @B_LastName,
+	[B_Address1] = @B_Address1,
+	[B_Address2] = @B_Address2,
+	[B_City] = @B_City,
+	[B_RegionCode] = @B_RegionCode,
+	[B_CountryCode] = @B_CountryCode,
+	[B_PostalCode] = @B_PostalCode,
+	[B_Phone1] = @B_Phone1,
+	[B_Phone2] = @B_Phone2,
+    [S_CountryId]=@S_CountryId,
+    [S_StateId]=@S_StateId,
+	[S_FirstName] = @S_FirstName,
+	[S_LastName] = @S_LastName,
+	[S_Address1] = @S_Address1,
+	[S_Address2] = @S_Address2,
+	[S_City] = @S_City,
+	[S_RegionCode] = @S_RegionCode,
+	[S_CountryCode] = @S_CountryCode,
+	[S_PostalCode] = @S_PostalCode,
+	[S_Phone1] = @S_Phone1,
+	[S_Phone2] = @S_Phone2,
+	[NeedAddress] = @NeedAddress,
+	[ShipSameAsBill] = @ShipSameAsBill,
+    [ShipMethodId]=@ShipMethodId,
+    [ShipMethodName]=@ShipMethodName,
+    [NeedBillAddress]=@NeedBillAddress
+    WHERE [UserId] = @UserId
+  end
+else
+    begin
+   INSERT INTO {databaseOwner}{objectQualifier}CP_Product_CartAddress (
+    [UserId],
+    [B_CountryId],
+    [B_StateId],
+	[B_FirstName],
+	[B_LastName],
+	[B_Address1],
+	[B_Address2],
+	[B_City],
+	[B_RegionCode],
+	[B_CountryCode],
+	[B_PostalCode],
+	[B_Phone1],
+	[B_Phone2],
+    [S_CountryId],
+    [S_StateId],
+	[S_FirstName],
+	[S_LastName],
+	[S_Address1],
+	[S_Address2],
+	[S_City],
+	[S_RegionCode],
+	[S_CountryCode],
+	[S_PostalCode],
+	[S_Phone1],
+	[S_Phone2],
+	[NeedAddress],
+	[ShipSameAsBill],
+    [ShipMethodId],
+    [ShipMethodName],
+    [NeedBillAddress]
+) VALUES (
+    @UserId,
+    @B_CountryId,
+    @B_StateId,
+	@B_FirstName,
+	@B_LastName,
+	@B_Address1,
+	@B_Address2,
+	@B_City,
+	@B_RegionCode,
+	@B_CountryCode,
+	@B_PostalCode,
+	@B_Phone1,
+	@B_Phone2,
+    @S_CountryId,
+    @S_StateId,
+	@S_FirstName,
+	@S_LastName,
+	@S_Address1,
+	@S_Address2,
+	@S_City,
+	@S_RegionCode,
+	@S_CountryCode,
+	@S_PostalCode,
+	@S_Phone1,
+	@S_Phone2,
+	@NeedAddress,
+	@ShipSameAsBill,
+    @ShipMethodId,
+    @ShipMethodName,
+    @NeedBillAddress
+    )
+end
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Add]
+	@UserId int,
+	@PortalId int,
+	@UserName nvarchar(50),
+	@OrderNo nvarchar(100),
+	@OrderDate datetime,
+    @B_CountryId int,
+	@B_StateId int,
+	@B_FirstName nvarchar(50),
+	@B_LastName nvarchar(50),
+	@B_Address1 nvarchar(200),
+	@B_Address2 nvarchar(200),
+	@B_City nvarchar(200),
+	@B_RegionCode nvarchar(200),
+	@B_CountryCode nvarchar(200),
+	@B_PostalCode nvarchar(50),
+	@B_Phone1 nvarchar(20),
+	@B_Phone2 nvarchar(20),
+    @S_CountryId int,
+	@S_StateId int,
+	@S_FirstName nvarchar(50),
+	@S_LastName nvarchar(50),
+	@S_Address1 nvarchar(200),
+	@S_Address2 nvarchar(200),
+	@S_City nvarchar(200),
+	@S_RegionCode nvarchar(200),
+	@S_CountryCode nvarchar(200),
+	@S_PostalCode nvarchar(50),
+	@S_Phone1 nvarchar(20),
+	@S_Phone2 nvarchar(20),
+	@ItemSummary decimal(18, 2),
+	@OrderIsPlaced bit,
+	@OrderStatus int,
+    @NeedAddress bit,
+    @ShipSameAsBill bit,
+    @ShipMethodId int,
+	@ShipMethodName nvarchar(200),
+	@NeedBillAddress bit
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Order (
+	[UserId],
+	[PortalId],
+	[UserName],
+	[OrderNo],
+	[OrderDate],
+    [B_CountryId],
+	[B_StateId],
+	[B_FirstName],
+	[B_LastName],
+	[B_Address1],
+	[B_Address2],
+	[B_City],
+	[B_RegionCode],
+	[B_CountryCode],
+	[B_PostalCode],
+	[B_Phone1],
+	[B_Phone2],
+    [S_CountryId],
+	[S_StateId],
+	[S_FirstName],
+	[S_LastName],
+	[S_Address1],
+	[S_Address2],
+	[S_City],
+	[S_RegionCode],
+	[S_CountryCode],
+	[S_PostalCode],
+	[S_Phone1],
+	[S_Phone2],
+	[ItemSummary],
+	[OrderIsPlaced],
+	[OrderStatus],
+    [NeedAddress],
+    [ShipSameAsBill],
+    [ShipMethodId],
+	[ShipMethodName],
+	[NeedBillAddress]
+) VALUES (
+	@UserId,
+	@PortalId,
+	@UserName,
+	@OrderNo,
+	GetDate(),
+    @B_CountryId,
+	@B_StateId,
+	@B_FirstName,
+	@B_LastName,
+	@B_Address1,
+	@B_Address2,
+	@B_City,
+	@B_RegionCode,
+	@B_CountryCode,
+	@B_PostalCode,
+	@B_Phone1,
+	@B_Phone2,
+    @S_CountryId,
+	@S_StateId,
+	@S_FirstName,
+	@S_LastName,
+	@S_Address1,
+	@S_Address2,
+	@S_City,
+	@S_RegionCode,
+	@S_CountryCode,
+	@S_PostalCode,
+	@S_Phone1,
+	@S_Phone2,
+	@ItemSummary,
+	@OrderIsPlaced,
+	@OrderStatus,
+    @NeedAddress,
+    @ShipSameAsBill,
+    @ShipMethodId,
+	@ShipMethodName,
+	@NeedBillAddress
+)
+
+select SCOPE_IDENTITY()
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Update]
+	@Id int, 
+	@UserId int, 
+	@PortalId int, 
+	@UserName nvarchar(50), 
+	@OrderNo nvarchar(100), 
+	@OrderDate datetime, 
+	@B_CountryId int, 
+	@B_StateId int, 
+	@B_FirstName nvarchar(50), 
+	@B_LastName nvarchar(50), 
+	@B_Address1 nvarchar(200), 
+	@B_Address2 nvarchar(200), 
+	@B_City nvarchar(200), 
+	@B_RegionCode nvarchar(200), 
+	@B_CountryCode nvarchar(200), 
+	@B_PostalCode nvarchar(50), 
+	@B_Phone1 nvarchar(20), 
+	@B_Phone2 nvarchar(20), 
+	@S_CountryId int, 
+	@S_StateId int, 
+	@S_FirstName nvarchar(50), 
+	@S_LastName nvarchar(50), 
+	@S_Address1 nvarchar(200), 
+	@S_Address2 nvarchar(200), 
+	@S_City nvarchar(200), 
+	@S_RegionCode nvarchar(200), 
+	@S_CountryCode nvarchar(200), 
+	@S_PostalCode nvarchar(50), 
+	@S_Phone1 nvarchar(20), 
+	@S_Phone2 nvarchar(20), 
+	@ItemSummary decimal(18, 2), 
+	@OrderIsPlaced bit, 
+	@OrderStatus int, 
+	@NeedAddress bit, 
+	@ShipSameAsBill bit, 
+	@ShipMethodId int, 
+	@ShipMethodName nvarchar(200), 
+	@NeedBillAddress bit
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Order SET
+	[UserId] = @UserId,
+	[PortalId] = @PortalId,
+	[UserName] = @UserName,
+	[OrderNo] = @OrderNo,
+	[OrderDate] = @OrderDate,
+	[B_CountryId] = @B_CountryId,
+	[B_StateId] = @B_StateId,
+	[B_FirstName] = @B_FirstName,
+	[B_LastName] = @B_LastName,
+	[B_Address1] = @B_Address1,
+	[B_Address2] = @B_Address2,
+	[B_City] = @B_City,
+	[B_RegionCode] = @B_RegionCode,
+	[B_CountryCode] = @B_CountryCode,
+	[B_PostalCode] = @B_PostalCode,
+	[B_Phone1] = @B_Phone1,
+	[B_Phone2] = @B_Phone2,
+	[S_CountryId] = @S_CountryId,
+	[S_StateId] = @S_StateId,
+	[S_FirstName] = @S_FirstName,
+	[S_LastName] = @S_LastName,
+	[S_Address1] = @S_Address1,
+	[S_Address2] = @S_Address2,
+	[S_City] = @S_City,
+	[S_RegionCode] = @S_RegionCode,
+	[S_CountryCode] = @S_CountryCode,
+	[S_PostalCode] = @S_PostalCode,
+	[S_Phone1] = @S_Phone1,
+	[S_Phone2] = @S_Phone2,
+	[ItemSummary] = @ItemSummary,
+	[OrderIsPlaced] = @OrderIsPlaced,
+	[OrderStatus] = @OrderStatus,
+	[NeedAddress] = @NeedAddress,
+	[ShipSameAsBill] = @ShipSameAsBill,
+	[ShipMethodId] = @ShipMethodId,
+	[ShipMethodName] = @ShipMethodName,
+	[NeedBillAddress] = @NeedBillAddress
+WHERE
+	[Id] = @Id
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+	@PortalId int,
+	@TypeId int,
+	@UserCategoryId int,
+	@UserId int,
+	@CreatedDate datetime,
+	@Name nvarchar(200),
+    @PreviousVersion int,
+	@Authed bit,
+	@Featured bit,
+	@Active bit,
+	@Summary nvarchar(1000),
+	@LinkUrl nvarchar(200),
+	@Description ntext,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@Support ntext,
+	@License ntext,
+	@RoleAfterOrder int,
+	@RoleAddDay int,
+	@PurchasePrice decimal(18, 2),
+	@PromoPrice decimal(18, 2),
+    @EnablePromoPrice bit,
+	@PromoStart datetime,
+	@PromoEnd datetime,
+	@StockQuantity int,
+	@LowThreshold int,
+	@Delivery ntext,
+	@SpecialOffer ntext,
+	@Views int,
+	@PublishDate datetime,
+	@ExpireDate datetime,
+	@LastModifiedDate datetime,
+	@AllowComment bit,
+	@AllowRating bit,
+	@CommentRoles nvarchar(200),
+	@RatingRoles nvarchar(200),
+	@DownloadRoles nvarchar(200),
+	@AutoAuthComment bit,
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @ViewRoles nvarchar(200),
+    @Categories nvarchar(200),
+    @Tags nvarchar(200)   
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Product (
+	[PortalId],
+	[TypeId],
+	[UserCategoryId],
+	[UserId],
+	[CreatedDate],
+	[Name],
+    [PreviousVersion],
+	[Authed],
+	[Featured],
+	[Active],
+	[Summary],
+	[LinkUrl],
+	[Description],
+	[Thumbnail],
+	[Image],
+	[Support],
+	[License],
+	[RoleAfterOrder],
+	[RoleAddDay],
+	[PurchasePrice],
+	[PromoPrice],
+    [EnablePromoPrice],
+	[PromoStart],
+	[PromoEnd],
+	[StockQuantity],
+	[LowThreshold],
+	[Delivery],
+	[SpecialOffer],
+	[Views],
+	[PublishDate],
+	[ExpireDate],
+	[LastModifiedDate],
+	[AllowComment],
+	[AllowRating],
+	[CommentRoles],
+	[RatingRoles],
+	[DownloadRoles],
+	[AutoAuthComment],
+	[Order],
+    [Weight],
+    [PackageFee],
+    [Sku],
+    [Field1],
+    [Field2],
+    [Field3],
+    [Field4],
+    [Field5]
+) VALUES (
+	@PortalId,
+	@TypeId,
+	@UserCategoryId,
+	@UserId,
+	GetDate(),
+	@Name,
+    @PreviousVersion,
+	@Authed,
+	@Featured,
+	@Active,
+	@Summary,
+	@LinkUrl,
+	@Description,
+	@Thumbnail,
+	@Image,
+	@Support,
+	@License,
+	@RoleAfterOrder,
+	@RoleAddDay,
+	@PurchasePrice,
+	@PromoPrice,
+    @EnablePromoPrice,
+	@PromoStart,
+	@PromoEnd,
+	@StockQuantity,
+	@LowThreshold,
+	@Delivery,
+	@SpecialOffer,
+	@Views,
+	@PublishDate,
+	@ExpireDate,
+	GetDate(),
+	@AllowComment,
+	@AllowRating,
+	@CommentRoles,
+	@RatingRoles,
+	@DownloadRoles,
+	@AutoAuthComment,
+	@Order,
+    @Weight,
+    @PackageFee,
+    @Sku,
+    @Field1,
+    @Field2,
+    @Field3,
+    @Field4,
+    @Field5
+)
+
+DECLARE @ProductId INT	
+SET @ProductId = @@IDENTITY
+	
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+
+select @ProductId
+
+
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+	@Id int, 
+	@PortalId int, 
+	@TypeId int, 
+	@UserCategoryId int, 
+	@UserId int, 
+	@CreatedDate datetime, 
+	@Name nvarchar(200),
+    @PreviousVersion int, 
+	@Authed bit, 
+	@Featured bit, 
+	@Active bit, 
+	@Summary nvarchar(1000), 
+	@LinkUrl nvarchar(200), 
+	@Description ntext, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@Support ntext, 
+	@License ntext, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@PurchasePrice decimal(18, 2), 
+	@PromoPrice decimal(18, 2), 
+    @EnablePromoPrice bit,
+	@PromoStart datetime, 
+	@PromoEnd datetime, 
+	@StockQuantity int, 
+	@LowThreshold int, 
+	@Delivery ntext, 
+	@SpecialOffer ntext, 
+	@Views int, 
+	@PublishDate datetime, 
+	@ExpireDate datetime, 
+	@LastModifiedDate datetime, 
+	@AllowComment bit, 
+	@AllowRating bit, 
+	@CommentRoles nvarchar(200), 
+	@RatingRoles nvarchar(200), 
+	@DownloadRoles nvarchar(200), 
+	@AutoAuthComment bit, 
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @ViewRoles nvarchar(200), 
+    @Categories nvarchar(200),
+    @Tags nvarchar(200) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Product SET
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[UserCategoryId] = @UserCategoryId,
+	[UserId] = @UserId,
+	[CreatedDate] = @CreatedDate,
+	[Name] = @Name,
+    [PreviousVersion]=@PreviousVersion,
+	[Authed] = @Authed,
+	[Featured] = @Featured,
+	[Active] = @Active,
+	[Summary] = @Summary,
+	[LinkUrl] = @LinkUrl,
+	[Description] = @Description,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[Support] = @Support,
+	[License] = @License,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[PurchasePrice] = @PurchasePrice,
+	[PromoPrice] = @PromoPrice,
+    [EnablePromoPrice]=@EnablePromoPrice,
+	[PromoStart] = @PromoStart,
+	[PromoEnd] = @PromoEnd,
+	[StockQuantity] = @StockQuantity,
+	[LowThreshold] = @LowThreshold,
+	[Delivery] = @Delivery,
+	[SpecialOffer] = @SpecialOffer,
+	[Views] = @Views,
+	[PublishDate] = @PublishDate,
+	[ExpireDate] = @ExpireDate,
+	[LastModifiedDate] = GetDate(),
+	[AllowComment] = @AllowComment,
+	[AllowRating] = @AllowRating,
+	[CommentRoles] = @CommentRoles,
+	[RatingRoles] = @RatingRoles,
+	[DownloadRoles] = @DownloadRoles,
+	[AutoAuthComment] = @AutoAuthComment,
+	[Order] = @Order,
+    [Weight]=@Weight,
+    [PackageFee]=@PackageFee,
+    [Sku]=@Sku,
+    [Field1]=@Field1,
+    [Field2]=@Field2,
+    [Field3]=@Field3,
+    [Field4]=@Field4,
+    [Field5]=@Field5
+WHERE
+	[Id] = @Id
+
+DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ProductId = @Id
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+
+DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToTag WHERE ProductId = @Id
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+
+DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToRole WHERE ProductId = @Id
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+
+
+
+
+
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]
+	@TypeId int,
+    @VendorId int,
+    @StartDate datetime,
+    @EndDate DateTime
+AS
+declare @ItemSum decimal(18,2)
+select @ItemSum=0
+
+SELECT @ItemSum=Sum([ItemSum])
+FROM {databaseOwner}{objectQualifier}CP_Product_OrderDetail a,{databaseOwner}{objectQualifier}CP_Product_Product b
+WHERE (a.[ProductId]=b.[Id])
+and   (b.[TypeId] = @TypeId)
+and   (a.[VendorId]=@VendorId)
+and   (a.[CreatedDate] between @StartDate and DateAdd(d,1,@EndDate))
+and   (a.[OrderStatus]=0)
+Select @ItemSum
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+	@OrderId int,
+	@PortalId int,
+	@TypeId int,
+	@OrderNo nvarchar(100),
+	@InvoiceNo nvarchar(100),
+	@ClientId int,
+	@ClientName nvarchar(50),
+	@VendorId int,
+	@VendorName nvarchar(50),
+	@ProductId int,
+	@ProductName nvarchar(200),
+	@OptionId int,
+	@OptionName nvarchar(200),
+	@Quantity int,
+	@UnitPrice decimal(18, 2),
+	@TaxFee decimal(18, 2),
+	@ShipFee decimal(18, 2),
+	@ItemSum decimal(18, 2),
+	@CreatedDate datetime,
+	@ShipDate datetime,
+	@ArriveDate datetime,
+	@DiscountRequest nvarchar(1000),
+	@DiscountResponse nvarchar(1000),
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_OrderDetail (
+	[OrderId],
+	[PortalId],
+	[TypeId],
+	[OrderNo],
+	[InvoiceNo],
+	[ClientId],
+	[ClientName],
+	[VendorId],
+	[VendorName],
+	[ProductId],
+	[ProductName],
+	[OptionId],
+	[OptionName],
+	[Quantity],
+	[UnitPrice],
+	[TaxFee],
+	[ShipFee],
+	[ItemSum],
+	[CreatedDate],
+	[ShipDate],
+	[ArriveDate],
+	[DiscountRequest],
+	[DiscountResponse],
+	[OrderMemo],
+    [OrderStatus]
+) VALUES (
+	@OrderId,
+	@PortalId,
+	@TypeId,
+	@OrderNo,
+	@InvoiceNo,
+	@ClientId,
+	@ClientName,
+	@VendorId,
+	@VendorName,
+	@ProductId,
+	@ProductName,
+	@OptionId,
+	@OptionName,
+	@Quantity,
+	@UnitPrice,
+	@TaxFee,
+	@ShipFee,
+	@ItemSum,
+	GetDate(),
+	@ShipDate,
+	@ArriveDate,
+	@DiscountRequest,
+	@DiscountResponse,
+	@OrderMemo,
+    @OrderStatus
+)
+
+select SCOPE_IDENTITY()
+
+
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+	@Id int, 
+	@OrderId int, 
+	@PortalId int, 
+	@TypeId int, 
+	@OrderNo nvarchar(100), 
+	@InvoiceNo nvarchar(100), 
+	@ClientId int, 
+	@ClientName nvarchar(50), 
+	@VendorId int, 
+	@VendorName nvarchar(50), 
+	@ProductId int, 
+	@ProductName nvarchar(200), 
+	@OptionId int, 
+	@OptionName nvarchar(200), 
+	@Quantity int, 
+	@UnitPrice decimal(18, 2), 
+	@TaxFee decimal(18, 2), 
+	@ShipFee decimal(18, 2), 
+	@ItemSum decimal(18, 2), 
+	@CreatedDate datetime, 
+	@ShipDate datetime, 
+	@ArriveDate datetime, 
+	@DiscountRequest nvarchar(1000), 
+	@DiscountResponse nvarchar(1000), 
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_OrderDetail SET
+	[OrderId] = @OrderId,
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[OrderNo] = @OrderNo,
+	[InvoiceNo] = @InvoiceNo,
+	[ClientId] = @ClientId,
+	[ClientName] = @ClientName,
+	[VendorId] = @VendorId,
+	[VendorName] = @VendorName,
+	[ProductId] = @ProductId,
+	[ProductName] = @ProductName,
+	[OptionId] = @OptionId,
+	[OptionName] = @OptionName,
+	[Quantity] = @Quantity,
+	[UnitPrice] = @UnitPrice,
+	[TaxFee] = @TaxFee,
+	[ShipFee] = @ShipFee,
+	[ItemSum] = @ItemSum,
+	[CreatedDate] = @CreatedDate,
+	[ShipDate] = @ShipDate,
+	[ArriveDate] = @ArriveDate,
+	[DiscountRequest] = @DiscountRequest,
+	[DiscountResponse] = @DiscountResponse,
+	[OrderMemo] = @OrderMemo,
+    [OrderStatus] = @OrderStatus
+WHERE
+	[Id] = @Id
+
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+	@PortalId int,
+    @Name nvarchar(80),
+	@ParentId int,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@TypePath nvarchar(255),
+	@ListPage int,
+	@DetailPage int,
+	@SellType int,
+	@Sellable bit,
+	@Order int,
+	@Level int,
+	@Description nvarchar(1000),
+	@EnableTax bit,
+    @ChargePercent decimal(10, 2),
+    @EnableField1 bit,
+	@Field1Title nvarchar(50),
+	@Field1Default ntext,
+	@EnableField2 bit,
+	@Field2Title nvarchar(50),
+	@Field2Default ntext,
+	@EnableField3 bit,
+	@Field3Title nvarchar(50),
+	@Field3Default ntext,
+	@EnableField4 bit,
+	@Field4Title nvarchar(50),
+	@Field4Default ntext,
+	@EnableField5 bit,
+	@Field5Title nvarchar(50),
+	@Field5Default ntext
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Type (
+	[PortalId],
+    [Name],
+	[ParentId],
+	[Thumbnail],
+	[Image],
+	[TypePath],
+	[ListPage],
+	[DetailPage],
+	[SellType],
+	[Sellable],
+	[Order],
+	[Level],
+	[Description],
+	[EnableTax],
+    [ChargePercent],
+    [EnableField1],
+	[Field1Title],
+	[Field1Default],
+	[EnableField2],
+	[Field2Title],
+	[Field2Default],
+	[EnableField3],
+	[Field3Title],
+	[Field3Default],
+	[EnableField4],
+	[Field4Title],
+	[Field4Default],
+	[EnableField5],
+	[Field5Title],
+	[Field5Default]
+) VALUES (
+	@PortalId,
+	@Name,
+	@ParentId,
+	@Thumbnail,
+	@Image,
+	@TypePath,
+	@ListPage,
+	@DetailPage,
+	@SellType,
+	@Sellable,
+	@Order,
+	@Level,
+	@Description,
+	@EnableTax,
+	@ChargePercent,
+	@EnableField1,
+	@Field1Title,
+	@Field1Default,
+	@EnableField2,
+	@Field2Title,
+	@Field2Default,
+	@EnableField3,
+	@Field3Title,
+	@Field3Default,
+	@EnableField4,
+	@Field4Title,
+	@Field4Default,
+	@EnableField5,
+	@Field5Title,
+	@Field5Default
+)
+
+select SCOPE_IDENTITY()
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(80), 
+	@ParentId int, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@TypePath nvarchar(255), 
+	@ListPage int, 
+	@DetailPage int, 
+	@SellType int, 
+	@Sellable bit, 
+	@Order int, 
+	@Level int, 
+	@Description nvarchar(1000), 
+	@EnableTax bit, 
+	@ChargePercent decimal(10, 2), 
+	@EnableField1 bit, 
+	@Field1Title nvarchar(50), 
+	@Field1Default ntext, 
+	@EnableField2 bit, 
+	@Field2Title nvarchar(50), 
+	@Field2Default ntext, 
+	@EnableField3 bit, 
+	@Field3Title nvarchar(50), 
+	@Field3Default ntext, 
+	@EnableField4 bit, 
+	@Field4Title nvarchar(50), 
+	@Field4Default ntext, 
+	@EnableField5 bit, 
+	@Field5Title nvarchar(50), 
+	@Field5Default ntext 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Type SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[ParentId] = @ParentId,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[TypePath] = @TypePath,
+	[ListPage] = @ListPage,
+	[DetailPage] = @DetailPage,
+	[SellType] = @SellType,
+	[Sellable] = @Sellable,
+	[Order] = @Order,
+	[Level] = @Level,
+	[Description] = @Description,
+	[EnableTax] = @EnableTax,
+	[ChargePercent] = @ChargePercent,
+	[EnableField1] = @EnableField1,
+	[Field1Title] = @Field1Title,
+	[Field1Default] = @Field1Default,
+	[EnableField2] = @EnableField2,
+	[Field2Title] = @Field2Title,
+	[Field2Default] = @Field2Default,
+	[EnableField3] = @EnableField3,
+	[Field3Title] = @Field3Title,
+	[Field3Default] = @Field3Default,
+	[EnableField4] = @EnableField4,
+	[Field4Title] = @Field4Title,
+	[Field4Default] = @Field4Default,
+	[EnableField5] = @EnableField5,
+	[Field5Title] = @Field5Title,
+	[Field5Default] = @Field5Default
+WHERE
+	[Id] = @Id
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Add]
+	@ProductId int,
+	@ProductName nvarchar(200),
+	@ClientId int,
+	@ClientName nvarchar(50),
+	@VendorId int,
+	@VendorName nvarchar(50),
+	@OptionId int,
+	@OptionName nvarchar(200),
+	@Quantity int,
+	@UnitPrice decimal(18, 2),
+	@TaxFee decimal(18, 2),
+	@ShipFee decimal(18, 2),
+	@CreatedDate datetime,
+	@ItemSum decimal(18, 2),
+    @DiscountRequest nvarchar(1000),
+    @DiscountResponse nvarchar(1000),
+    @OrderMemo nvarchar(1000)  
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Cart (
+	[ProductId],
+	[ProductName],
+	[ClientId],
+	[ClientName],
+	[VendorId],
+	[VendorName],
+	[OptionId],
+	[OptionName],
+	[Quantity],
+	[UnitPrice],
+	[TaxFee],
+	[ShipFee],
+	[CreatedDate],
+	[ItemSum],
+    [DiscountRequest],
+    [DiscountResponse],
+    [OrderMemo]
+) VALUES (
+	@ProductId,
+	@ProductName,
+	@ClientId,
+	@ClientName,
+	@VendorId,
+	@VendorName,
+	@OptionId,
+	@OptionName,
+	@Quantity,
+	@UnitPrice,
+	@TaxFee,
+	@ShipFee,
+	GetDate(),
+	@ItemSum,
+    @DiscountRequest,
+    @DiscountResponse,
+    @OrderMemo
+)
+
+select SCOPE_IDENTITY()
+
+
+
+
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Update]
+	@Id int, 
+	@ProductId int, 
+	@ProductName nvarchar(200), 
+	@ClientId int, 
+	@ClientName nvarchar(50), 
+	@VendorId int, 
+	@VendorName nvarchar(50), 
+	@OptionId int, 
+	@OptionName nvarchar(200), 
+	@Quantity int, 
+	@UnitPrice decimal(18, 2), 
+	@TaxFee decimal(18, 2), 
+	@ShipFee decimal(18, 2), 
+	@CreatedDate datetime, 
+	@ItemSum decimal(18, 2),
+    @DiscountRequest nvarchar(1000),
+    @DiscountResponse nvarchar(1000),
+    @OrderMemo nvarchar(1000)  
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Cart SET
+	[ProductId] = @ProductId,
+	[ProductName] = @ProductName,
+	[ClientId] = @ClientId,
+	[ClientName] = @ClientName,
+	[VendorId] = @VendorId,
+	[VendorName] = @VendorName,
+	[OptionId] = @OptionId,
+	[OptionName] = @OptionName,
+	[Quantity] = @Quantity,
+	[UnitPrice] = @UnitPrice,
+	[TaxFee] = @TaxFee,
+	[ShipFee] = @ShipFee,
+	[CreatedDate] = @CreatedDate,
+	[ItemSum] = @ItemSum,
+    [DiscountRequest]=@DiscountRequest,
+    [DiscountResponse]= @DiscountResponse,
+    [OrderMemo]=@OrderMemo
+WHERE
+	[Id] = @Id
+
+
+
+
+
+' 
+END
+
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_ShipMethod]    Date: 10/07/2010 22:28:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[Name] [nvarchar](200) NULL,
+	[DisplayOrder] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_ShipMethod] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_State]    Date: 10/07/2010 22:28:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_State](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CountryId] [int] NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[Abbreviation] [nvarchar](50) NULL,
+	[DisplayOrder] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_State] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]    Date: 10/07/2010 22:28:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ShipMethodId] [int] NOT NULL,
+	[CountryId] [int] NOT NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_ShipMethodToCountry] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Country]    Date: 10/07/2010 22:28:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_Country](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[TwoIsoCode] [char](10) NULL,
+	[ThreeIsoCode] [nchar](10) NULL,
+	[NumIsoCode] [nchar](10) NULL,
+	[SubjectToVat] [bit] NULL,
+	[DisplayOrder] [int] NULL,
+	[IsDefault] [bit] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_Country] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_TaxRate]    Date: 10/07/2010 22:28:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_TaxRate](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[CountryId] [int] NULL,
+	[StateId] [int] NULL,
+	[TaxRate] [decimal](10, 2) NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_TaxRate] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_ShipFee]    Date: 10/07/2010 22:28:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipFee](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ShipMethodId] [int] NOT NULL,
+	[CountryId] [int] NULL,
+	[StateId] [int] NULL,
+	[BasicWeight] [decimal](18, 2) NULL,
+	[BasicFee] [decimal](18, 2) NULL,
+	[ExtendWeight] [decimal](18, 2) NULL,
+	[ExtendFee] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_ShipFee] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_State_CP_Product_Country]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_State]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_State_CP_Product_Country] FOREIGN KEY([CountryId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Country] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_Country]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_Country] FOREIGN KEY([CountryId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Country] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_ShipMethod]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_ShipMethod] FOREIGN KEY([ShipMethodId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_ShipMethod] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Country_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Country]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_Country_Portals] FOREIGN KEY([PortalId])
+REFERENCES {databaseOwner}[{objectQualifier}Portals] ([PortalID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_TaxRate_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_TaxRate]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_TaxRate_CP_Product_Type] FOREIGN KEY([TypeId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Type] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ShipFee_CP_Product_ShipMethod]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipFee]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_ShipFee_CP_Product_ShipMethod] FOREIGN KEY([ShipMethodId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_ShipMethod] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Country_Delete]    Date: 10/07/2010 22:28:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Delete]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Delete]
+	@Id int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_Country
+WHERE
+	[Id] = @Id
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_Address
+WHERE
+	[CountryId] = @Id
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_TaxRate
+WHERE
+	[CountryId] = @Id
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_ShipFee
+WHERE
+	[CountryId] = @Id
+
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_State_Delete]    Date: 10/07/2010 22:28:37 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Delete]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Delete]
+	@Id int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_State
+WHERE
+	[Id] = @Id
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_Address
+WHERE
+	[StateId] = @Id
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_TaxRate
+WHERE
+	[StateId] = @Id
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_ShipFee
+WHERE
+	[StateId] = @Id
+
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Country_Get]    Date: 10/07/2010 22:28:38 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Get]
+	@Id int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_Country
+WHERE
+	[Id] = @Id
+	
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Country_GetByPortals]    Date: 10/07/2010 22:28:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_GetByPortals]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_GetByPortals]
+	@PortalId int
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_Country
+WHERE
+	[PortalId]=@PortalId
+order by [DisplayOrder] asc
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Country_Add]    Date: 10/07/2010 22:28:39 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Add]
+	@PortalId int,
+	@Name nvarchar(100),
+	@TwoIsoCode char(10),
+	@ThreeIsoCode nchar(10),
+	@NumIsoCode nchar(10),
+	@SubjectToVat bit,
+	@DisplayOrder int,
+	@IsDefault bit
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Country (
+	[PortalId],
+	[Name],
+	[TwoIsoCode],
+	[ThreeIsoCode],
+	[NumIsoCode],
+	[SubjectToVat],
+	[DisplayOrder],
+	[IsDefault]
+) VALUES (
+	@PortalId,
+	@Name,
+	@TwoIsoCode,
+	@ThreeIsoCode,
+	@NumIsoCode,
+	@SubjectToVat,
+	@DisplayOrder,
+	@IsDefault
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Country_Update]    Date: 10/07/2010 22:28:40 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(100), 
+	@TwoIsoCode char(10), 
+	@ThreeIsoCode nchar(10), 
+	@NumIsoCode nchar(10), 
+	@SubjectToVat bit, 
+	@DisplayOrder int, 
+	@IsDefault bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Country SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[TwoIsoCode] = @TwoIsoCode,
+	[ThreeIsoCode] = @ThreeIsoCode,
+	[NumIsoCode] = @NumIsoCode,
+	[SubjectToVat] = @SubjectToVat,
+	[DisplayOrder] = @DisplayOrder,
+	[IsDefault] = @IsDefault
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_Get]    Date: 10/07/2010 22:28:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_Get]
+	@Id int
+	
+AS
+
+SELECT a.*,
+       b.[Name] as ''Country'',
+       c.[Name] as ''ShipMethod''
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipMethodToCountry a,{databaseOwner}{objectQualifier}CP_Product_Country b, {databaseOwner}{objectQualifier}CP_Product_ShipMethod c
+WHERE
+	a.[Id] = @Id and
+    a.[CountryId]=b.[Id] and
+    a.[ShipMethodId]=c.[Id]
+	
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByCountry]    Date: 10/07/2010 22:28:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByCountry]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByCountry]
+	@CountryId int
+AS
+
+SELECT a.*,
+       b.[Name] as ''Country'',
+       c.[Name] as ''ShipMethod''
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipMethodToCountry a,{databaseOwner}{objectQualifier}CP_Product_Country b, {databaseOwner}{objectQualifier}CP_Product_ShipMethod c
+WHERE
+	a.[CountryId]=@CountryId and
+    a.[CountryId]=b.[Id] and
+    a.[ShipMethodId]=c.[Id]
+
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByShipMethod]    Date: 10/07/2010 22:28:41 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByShipMethod]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByShipMethod]
+	@ShipMethodId int
+AS
+
+SELECT a.*,
+       b.[Name] as ''Country'',
+       c.[Name] as ''ShipMethod''
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipMethodToCountry a,{databaseOwner}{objectQualifier}CP_Product_Country b, {databaseOwner}{objectQualifier}CP_Product_ShipMethod c
+where 
+	a.[ShipMethodId]=@ShipMethodId and
+    a.[CountryId]=b.[Id] and
+    a.[ShipMethodId]=c.[Id]
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_State_Get]    Date: 10/07/2010 22:28:42 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Get]
+	@Id int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_State
+WHERE
+	[Id] = @Id
+	
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_State_GetByCountry]    Date: 10/07/2010 22:28:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_GetByCountry]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_GetByCountry]
+	@CountryId int
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_State
+WHERE
+	[CountryId]=@CountryId
+order by [DisplayOrder] asc
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_State_Add]    Date: 10/07/2010 22:28:43 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Add]
+	@CountryId int,
+	@Name nvarchar(100),
+	@Abbreviation nvarchar(50),
+	@DisplayOrder int
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_State (
+	[CountryId],
+	[Name],
+	[Abbreviation],
+	[DisplayOrder]
+) VALUES (
+	@CountryId,
+	@Name,
+	@Abbreviation,
+	@DisplayOrder
+)
+
+select SCOPE_IDENTITY()
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_State_Update]    Date: 10/07/2010 22:28:44 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Update]
+	@Id int, 
+	@CountryId int, 
+	@Name nvarchar(100), 
+	@Abbreviation nvarchar(50), 
+	@DisplayOrder int 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_State SET
+	[CountryId] = @CountryId,
+	[Name] = @Name,
+	[Abbreviation] = @Abbreviation,
+	[DisplayOrder] = @DisplayOrder
+WHERE
+	[Id] = @Id
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Add]    Date: 10/07/2010 22:28:44 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Add]
+	@PortalId int,
+	@Name nvarchar(200),
+	@DisplayOrder int,
+    @Countries nvarchar(400)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ShipMethod (
+	[PortalId],
+	[Name],
+	[DisplayOrder]
+) VALUES (
+	@PortalId,
+	@Name,
+	@DisplayOrder
+)
+
+DECLARE @Id INT	
+SET @Id = @@IDENTITY
+	
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ShipMethodToCountry SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Countries)
+select @Id
+
+
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Update]    Date: 10/07/2010 22:28:45 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(200), 
+	@DisplayOrder int,
+    @Countries nvarchar(400)
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_ShipMethod SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[DisplayOrder] = @DisplayOrder
+WHERE
+	[Id] = @Id
+
+DELETE {databaseOwner}{objectQualifier}CP_Product_ShipMethodToCountry WHERE ShipMethodId = @Id
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ShipMethodToCountry SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Countries)
+
+
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Get]    Date: 10/07/2010 22:28:46 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Get]
+	@Id int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipMethod
+WHERE
+	[Id] = @Id
+	
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Delete]    Date: 10/07/2010 22:28:46 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Delete]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Delete]
+	@Id int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_ShipMethod
+WHERE
+	[Id] = @Id
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_GetByPortals]    Date: 10/07/2010 22:28:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_GetByPortals]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_GetByPortals]
+	@PortalId int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipMethod
+WHERE
+	[PortalId] = @PortalId
+order by [DisplayOrder]
+	
+
+
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Get]    Date: 10/07/2010 22:28:47 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Get]
+	@Id int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_TaxRate
+WHERE
+	[Id] = @Id
+	
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TaxRate_GetByType]    Date: 10/07/2010 22:28:48 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_GetByType]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_GetByType]
+	@TypeId int
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_TaxRate
+WHERE
+	[TypeId]=@TypeId
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Add]    Date: 10/07/2010 22:28:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Add]
+	@TypeId int,
+	@CountryId int,
+	@StateId int,
+	@TaxRate decimal(10, 2)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_TaxRate (
+	[TypeId],
+	[CountryId],
+	[StateId],
+	[TaxRate]
+) VALUES (
+	@TypeId,
+	@CountryId,
+	@StateId,
+	@TaxRate
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Update]    Date: 10/07/2010 22:28:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Update]
+	@Id int, 
+	@TypeId int, 
+	@CountryId int, 
+	@StateId int, 
+	@TaxRate decimal(10, 2) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_TaxRate SET
+	[TypeId] = @TypeId,
+	[CountryId] = @CountryId,
+	[StateId] = @StateId,
+	[TaxRate] = @TaxRate
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Delete]    Date: 10/07/2010 22:28:49 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Delete]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Delete]
+	@Id int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_TaxRate
+WHERE
+	[Id] = @Id
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Update]    Date: 10/07/2010 22:28:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Update]
+	@Id int, 
+	@ShipMethodId int, 
+	@CountryId int, 
+	@StateId int, 
+	@BasicWeight decimal(18, 2), 
+	@BasicFee decimal(18, 2), 
+	@ExtendWeight decimal(18, 2), 
+	@ExtendFee decimal(18, 2) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_ShipFee SET
+	[ShipMethodId] = @ShipMethodId,
+	[CountryId] = @CountryId,
+	[StateId] = @StateId,
+	[BasicWeight] = @BasicWeight,
+	[BasicFee] = @BasicFee,
+	[ExtendWeight] = @ExtendWeight,
+	[ExtendFee] = @ExtendFee
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Delete]    Date: 10/07/2010 22:28:51 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Delete]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Delete]
+	@Id int
+AS
+
+DELETE FROM {databaseOwner}{objectQualifier}CP_Product_ShipFee
+WHERE
+	[Id] = @Id
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Get]    Date: 10/07/2010 22:28:51 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Get]
+	@Id int
+	
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipFee
+WHERE
+	[Id] = @Id
+	
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipFee_GetByShipMethod]    Date: 10/07/2010 22:28:52 ******/
+SET ANSI_NULLS OFF
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_GetByShipMethod]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_GetByShipMethod]
+	@ShipMethodId int
+AS
+
+SELECT *
+FROM {databaseOwner}{objectQualifier}CP_Product_ShipFee
+WHERE
+	[ShipMethodId]=@ShipMethodId
+' 
+END
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Add]    Date: 10/07/2010 22:28:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Add]
+	@ShipMethodId int,
+	@CountryId int,
+	@StateId int,
+	@BasicWeight decimal(18, 2),
+	@BasicFee decimal(18, 2),
+	@ExtendWeight decimal(18, 2),
+	@ExtendFee decimal(18, 2)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ShipFee (
+	[ShipMethodId],
+	[CountryId],
+	[StateId],
+	[BasicWeight],
+	[BasicFee],
+	[ExtendWeight],
+	[ExtendFee]
+) VALUES (
+	@ShipMethodId,
+	@CountryId,
+	@StateId,
+	@BasicWeight,
+	@BasicFee,
+	@ExtendWeight,
+	@ExtendFee
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+

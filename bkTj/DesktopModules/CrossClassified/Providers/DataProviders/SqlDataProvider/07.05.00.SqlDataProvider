@@ -1,0 +1,831 @@
+/******   add columns in CP_Product_Type ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowGoogleMap bit NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowRecursiveBill bit NULL
+
+/******   add columns in CP_Product_Product ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Longitude nvarchar(40) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Latitude nvarchar(40) NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add RecursiveBill bit NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add BillPeriod int NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add BillFrequency int NULL
+
+/******   add columns in CP_Product_OrderDetail ******/
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add RecursiveBill bit NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add NextBillDate datetime NULL
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add Guid nvarchar(200) NULL
+
+
+/******   drop legacy procedure CP_Product_Type_Add ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Add]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+/******   drop legacy procedure CP_Product_Type_Update ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+
+/******   drop legacy procedure CP_Product_Product_Add ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Add]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+GO
+
+/******   drop legacy procedure CP_Product_Product_Update ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+
+/******   drop legacy procedure CP_Product_OrderDetail_Add ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+GO
+
+/******   drop legacy procedure CP_Product_OrderDetail_Update ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+GO
+
+
+/******   create new procedure  ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+	@PortalId int,
+    @Name nvarchar(80),
+	@ParentId int,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@TypePath nvarchar(255),
+	@ListPage int,
+	@DetailPage int,
+	@SellType int,
+	@Sellable bit,
+	@Order int,
+	@Level int,
+	@Description nvarchar(1000),
+	@EnableTax bit,
+    @ChargePercent decimal(10, 2),
+    @EnableField1 bit,
+	@Field1Title nvarchar(50),
+	@Field1Default ntext,
+	@EnableField2 bit,
+	@Field2Title nvarchar(50),
+	@Field2Default ntext,
+	@EnableField3 bit,
+	@Field3Title nvarchar(50),
+	@Field3Default ntext,
+	@EnableField4 bit,
+	@Field4Title nvarchar(50),
+	@Field4Default ntext,
+	@EnableField5 bit,
+	@Field5Title nvarchar(50),
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit,
+	@FieldEnable_Summary bit,
+	@FieldEnable_LinkUrl bit,
+	@FieldEnable_Description bit,
+	@FieldEnable_Image bit,
+	@FieldEnable_Support bit,
+	@FieldEnable_License bit,
+	@FieldEnable_Price bit,
+	@FieldEnable_StockQuantity bit,
+	@FieldEnable_Delivery bit,
+	@FieldEnable_SpecialOffer bit,
+	@FieldEnable_Weight bit,
+	@FieldEnable_PackageFee bit,
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit 
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Type (
+	[PortalId],
+    [Name],
+	[ParentId],
+	[Thumbnail],
+	[Image],
+	[TypePath],
+	[ListPage],
+	[DetailPage],
+	[SellType],
+	[Sellable],
+	[Order],
+	[Level],
+	[Description],
+	[EnableTax],
+    [ChargePercent],
+    [EnableField1],
+	[Field1Title],
+	[Field1Default],
+	[EnableField2],
+	[Field2Title],
+	[Field2Default],
+	[EnableField3],
+	[Field3Title],
+	[Field3Default],
+	[EnableField4],
+	[Field4Title],
+	[Field4Default],
+	[EnableField5],
+	[Field5Title],
+	[Field5Default],
+    [FieldEnable_PreviousVersion],
+	[FieldEnable_Summary],
+	[FieldEnable_LinkUrl],
+	[FieldEnable_Description],
+	[FieldEnable_Image],
+	[FieldEnable_Support],
+	[FieldEnable_License],
+	[FieldEnable_Price],
+	[FieldEnable_StockQuantity],
+	[FieldEnable_Delivery],
+	[FieldEnable_SpecialOffer],
+	[FieldEnable_Weight],
+	[FieldEnable_PackageFee],
+	[FieldEnable_Sku],
+	[RequireAddress],
+    [AllowGoogleMap],
+    [AllowRecursiveBill]
+) VALUES (
+	@PortalId,
+	@Name,
+	@ParentId,
+	@Thumbnail,
+	@Image,
+	@TypePath,
+	@ListPage,
+	@DetailPage,
+	@SellType,
+	@Sellable,
+	@Order,
+	@Level,
+	@Description,
+	@EnableTax,
+	@ChargePercent,
+	@EnableField1,
+	@Field1Title,
+	@Field1Default,
+	@EnableField2,
+	@Field2Title,
+	@Field2Default,
+	@EnableField3,
+	@Field3Title,
+	@Field3Default,
+	@EnableField4,
+	@Field4Title,
+	@Field4Default,
+	@EnableField5,
+	@Field5Title,
+	@Field5Default,
+    @FieldEnable_PreviousVersion,
+	@FieldEnable_Summary,
+	@FieldEnable_LinkUrl,
+	@FieldEnable_Description,
+	@FieldEnable_Image,
+	@FieldEnable_Support,
+	@FieldEnable_License,
+	@FieldEnable_Price,
+	@FieldEnable_StockQuantity,
+	@FieldEnable_Delivery,
+	@FieldEnable_SpecialOffer,
+	@FieldEnable_Weight,
+	@FieldEnable_PackageFee,
+	@FieldEnable_Sku,
+	@RequireAddress,
+    @AllowGoogleMap,
+    @AllowRecursiveBill
+)
+
+select SCOPE_IDENTITY()
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(80), 
+	@ParentId int, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@TypePath nvarchar(255), 
+	@ListPage int, 
+	@DetailPage int, 
+	@SellType int, 
+	@Sellable bit, 
+	@Order int, 
+	@Level int, 
+	@Description nvarchar(1000), 
+	@EnableTax bit, 
+	@ChargePercent decimal(10, 2), 
+	@EnableField1 bit, 
+	@Field1Title nvarchar(50), 
+	@Field1Default ntext, 
+	@EnableField2 bit, 
+	@Field2Title nvarchar(50), 
+	@Field2Default ntext, 
+	@EnableField3 bit, 
+	@Field3Title nvarchar(50), 
+	@Field3Default ntext, 
+	@EnableField4 bit, 
+	@Field4Title nvarchar(50), 
+	@Field4Default ntext, 
+	@EnableField5 bit, 
+	@Field5Title nvarchar(50), 
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit, 
+	@FieldEnable_Summary bit, 
+	@FieldEnable_LinkUrl bit, 
+	@FieldEnable_Description bit, 
+	@FieldEnable_Image bit, 
+	@FieldEnable_Support bit, 
+	@FieldEnable_License bit, 
+	@FieldEnable_Price bit, 
+	@FieldEnable_StockQuantity bit, 
+	@FieldEnable_Delivery bit, 
+	@FieldEnable_SpecialOffer bit, 
+	@FieldEnable_Weight bit, 
+	@FieldEnable_PackageFee bit, 
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Type SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[ParentId] = @ParentId,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[TypePath] = @TypePath,
+	[ListPage] = @ListPage,
+	[DetailPage] = @DetailPage,
+	[SellType] = @SellType,
+	[Sellable] = @Sellable,
+	[Order] = @Order,
+	[Level] = @Level,
+	[Description] = @Description,
+	[EnableTax] = @EnableTax,
+	[ChargePercent] = @ChargePercent,
+	[EnableField1] = @EnableField1,
+	[Field1Title] = @Field1Title,
+	[Field1Default] = @Field1Default,
+	[EnableField2] = @EnableField2,
+	[Field2Title] = @Field2Title,
+	[Field2Default] = @Field2Default,
+	[EnableField3] = @EnableField3,
+	[Field3Title] = @Field3Title,
+	[Field3Default] = @Field3Default,
+	[EnableField4] = @EnableField4,
+	[Field4Title] = @Field4Title,
+	[Field4Default] = @Field4Default,
+	[EnableField5] = @EnableField5,
+	[Field5Title] = @Field5Title,
+	[Field5Default] = @Field5Default,
+    [FieldEnable_PreviousVersion] = @FieldEnable_PreviousVersion,
+	[FieldEnable_Summary] = @FieldEnable_Summary,
+	[FieldEnable_LinkUrl] = @FieldEnable_LinkUrl,
+	[FieldEnable_Description] = @FieldEnable_Description,
+	[FieldEnable_Image] = @FieldEnable_Image,
+	[FieldEnable_Support] = @FieldEnable_Support,
+	[FieldEnable_License] = @FieldEnable_License,
+	[FieldEnable_Price] = @FieldEnable_Price,
+	[FieldEnable_StockQuantity] = @FieldEnable_StockQuantity,
+	[FieldEnable_Delivery] = @FieldEnable_Delivery,
+	[FieldEnable_SpecialOffer] = @FieldEnable_SpecialOffer,
+	[FieldEnable_Weight] = @FieldEnable_Weight,
+	[FieldEnable_PackageFee] = @FieldEnable_PackageFee,
+	[FieldEnable_Sku] = @FieldEnable_Sku,
+	[RequireAddress] = @RequireAddress,
+    [AllowGoogleMap] = @AllowGoogleMap,
+    [AllowRecursiveBill] = @AllowRecursiveBill
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+	@Id int, 
+	@PortalId int, 
+	@TypeId int, 
+	@UserId int, 
+	@CreatedDate datetime, 
+	@Name nvarchar(200),
+    @PreviousVersion int, 
+	@Authed bit, 
+	@Featured bit, 
+	@Active bit, 
+	@Summary nvarchar(1000), 
+	@LinkUrl nvarchar(200), 
+	@Description ntext, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@Support ntext, 
+	@License ntext, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@PurchasePrice decimal(18, 2), 
+	@PromoPrice decimal(18, 2), 
+    @EnablePromoPrice bit,
+	@PromoStart datetime, 
+	@PromoEnd datetime, 
+	@StockQuantity int, 
+	@LowThreshold int, 
+	@Delivery ntext, 
+	@SpecialOffer ntext, 
+	@Views int, 
+	@PublishDate datetime, 
+	@ExpireDate datetime, 
+	@LastModifiedDate datetime, 
+	@AllowComment bit, 
+	@AllowRating bit, 
+	@CommentRoles nvarchar(200), 
+	@RatingRoles nvarchar(200), 
+	@DownloadRoles nvarchar(200), 
+	@AutoAuthComment bit, 
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @ViewRoles nvarchar(200), 
+    @Categories nvarchar(200),
+    @Tags nvarchar(200),
+    @RefreshRelation bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Product SET
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[UserId] = @UserId,
+	[CreatedDate] = @CreatedDate,
+	[Name] = @Name,
+    [PreviousVersion]=@PreviousVersion,
+	[Authed] = @Authed,
+	[Featured] = @Featured,
+	[Active] = @Active,
+	[Summary] = @Summary,
+	[LinkUrl] = @LinkUrl,
+	[Description] = @Description,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[Support] = @Support,
+	[License] = @License,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[PurchasePrice] = @PurchasePrice,
+	[PromoPrice] = @PromoPrice,
+    [EnablePromoPrice]=@EnablePromoPrice,
+	[PromoStart] = @PromoStart,
+	[PromoEnd] = @PromoEnd,
+	[StockQuantity] = @StockQuantity,
+	[LowThreshold] = @LowThreshold,
+	[Delivery] = @Delivery,
+	[SpecialOffer] = @SpecialOffer,
+	[Views] = @Views,
+	[PublishDate] = @PublishDate,
+	[ExpireDate] = @ExpireDate,
+	[LastModifiedDate] = GetDate(),
+	[AllowComment] = @AllowComment,
+	[AllowRating] = @AllowRating,
+	[CommentRoles] = @CommentRoles,
+	[RatingRoles] = @RatingRoles,
+	[DownloadRoles] = @DownloadRoles,
+	[AutoAuthComment] = @AutoAuthComment,
+	[Order] = @Order,
+    [Weight]=@Weight,
+    [PackageFee]=@PackageFee,
+    [Sku]=@Sku,
+    [Field1]=@Field1,
+    [Field2]=@Field2,
+    [Field3]=@Field3,
+    [Field4]=@Field4,
+    [Field5]=@Field5,
+    [Longitude] = @Longitude,
+    [Latitude] = @Latitude,
+    [RecursiveBill] = @RecursiveBill,
+    [BillPeriod] = @BillPeriod,
+    [BillFrequency] = @BillFrequency
+WHERE
+	[Id] = @Id
+
+If (@RefreshRelation=1)
+Begin
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToTag WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToRole WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+end 
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+	@PortalId int,
+	@TypeId int,
+	@UserId int,
+	@CreatedDate datetime,
+	@Name nvarchar(200),
+    @PreviousVersion int,
+	@Authed bit,
+	@Featured bit,
+	@Active bit,
+	@Summary nvarchar(1000),
+	@LinkUrl nvarchar(200),
+	@Description ntext,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@Support ntext,
+	@License ntext,
+	@RoleAfterOrder int,
+	@RoleAddDay int,
+	@PurchasePrice decimal(18, 2),
+	@PromoPrice decimal(18, 2),
+    @EnablePromoPrice bit,
+	@PromoStart datetime,
+	@PromoEnd datetime,
+	@StockQuantity int,
+	@LowThreshold int,
+	@Delivery ntext,
+	@SpecialOffer ntext,
+	@Views int,
+	@PublishDate datetime,
+	@ExpireDate datetime,
+	@LastModifiedDate datetime,
+	@AllowComment bit,
+	@AllowRating bit,
+	@CommentRoles nvarchar(200),
+	@RatingRoles nvarchar(200),
+	@DownloadRoles nvarchar(200),
+	@AutoAuthComment bit,
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @ViewRoles nvarchar(200),
+    @Categories nvarchar(200),
+    @Tags nvarchar(200)   
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Product (
+	[PortalId],
+	[TypeId],
+	[UserId],
+	[CreatedDate],
+	[Name],
+    [PreviousVersion],
+	[Authed],
+	[Featured],
+	[Active],
+	[Summary],
+	[LinkUrl],
+	[Description],
+	[Thumbnail],
+	[Image],
+	[Support],
+	[License],
+	[RoleAfterOrder],
+	[RoleAddDay],
+	[PurchasePrice],
+	[PromoPrice],
+    [EnablePromoPrice],
+	[PromoStart],
+	[PromoEnd],
+	[StockQuantity],
+	[LowThreshold],
+	[Delivery],
+	[SpecialOffer],
+	[Views],
+	[PublishDate],
+	[ExpireDate],
+	[LastModifiedDate],
+	[AllowComment],
+	[AllowRating],
+	[CommentRoles],
+	[RatingRoles],
+	[DownloadRoles],
+	[AutoAuthComment],
+	[Order],
+    [Weight],
+    [PackageFee],
+    [Sku],
+    [Field1],
+    [Field2],
+    [Field3],
+    [Field4],
+    [Field5],
+    [Longitude],
+    [Latitude],
+    [RecursiveBill],
+    [BillPeriod],
+    [BillFrequency]
+) VALUES (
+	@PortalId,
+	@TypeId,
+	@UserId,
+	GetDate(),
+	@Name,
+    @PreviousVersion,
+	@Authed,
+	@Featured,
+	@Active,
+	@Summary,
+	@LinkUrl,
+	@Description,
+	@Thumbnail,
+	@Image,
+	@Support,
+	@License,
+	@RoleAfterOrder,
+	@RoleAddDay,
+	@PurchasePrice,
+	@PromoPrice,
+    @EnablePromoPrice,
+	@PromoStart,
+	@PromoEnd,
+	@StockQuantity,
+	@LowThreshold,
+	@Delivery,
+	@SpecialOffer,
+	@Views,
+	@PublishDate,
+	@ExpireDate,
+	GetDate(),
+	@AllowComment,
+	@AllowRating,
+	@CommentRoles,
+	@RatingRoles,
+	@DownloadRoles,
+	@AutoAuthComment,
+	@Order,
+    @Weight,
+    @PackageFee,
+    @Sku,
+    @Field1,
+    @Field2,
+    @Field3,
+    @Field4,
+    @Field5,
+    @Longitude,
+    @Latitude,
+    @RecursiveBill,
+    @BillPeriod,
+    @BillFrequency
+)
+
+DECLARE @ProductId INT	
+SET @ProductId = @@IDENTITY
+	
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+
+select @ProductId
+
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+	@OrderId int,
+	@PortalId int,
+	@TypeId int,
+	@OrderNo nvarchar(100),
+	@InvoiceNo nvarchar(100),
+	@ClientId int,
+	@ClientName nvarchar(50),
+	@VendorId int,
+	@VendorName nvarchar(50),
+	@ProductId int,
+	@ProductName nvarchar(200),
+	@OptionId int,
+	@OptionName nvarchar(200),
+	@Quantity int,
+	@UnitPrice decimal(18, 2),
+	@TaxFee decimal(18, 2),
+	@ShipFee decimal(18, 2),
+	@ItemSum decimal(18, 2),
+	@CreatedDate datetime,
+	@ShipDate datetime,
+	@ArriveDate datetime,
+	@DiscountRequest nvarchar(1000),
+	@DiscountResponse nvarchar(1000),
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int,
+    @RecursiveBill bit,
+    @NextBillDate datetime,
+    @Guid nvarchar(200)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_OrderDetail (
+	[OrderId],
+	[PortalId],
+	[TypeId],
+	[OrderNo],
+	[InvoiceNo],
+	[ClientId],
+	[ClientName],
+	[VendorId],
+	[VendorName],
+	[ProductId],
+	[ProductName],
+	[OptionId],
+	[OptionName],
+	[Quantity],
+	[UnitPrice],
+	[TaxFee],
+	[ShipFee],
+	[ItemSum],
+	[CreatedDate],
+	[ShipDate],
+	[ArriveDate],
+	[DiscountRequest],
+	[DiscountResponse],
+	[OrderMemo],
+    [OrderStatus],
+    [RecursiveBill],
+    [NextBillDate],
+    [Guid]
+) VALUES (
+	@OrderId,
+	@PortalId,
+	@TypeId,
+	@OrderNo,
+	@InvoiceNo,
+	@ClientId,
+	@ClientName,
+	@VendorId,
+	@VendorName,
+	@ProductId,
+	@ProductName,
+	@OptionId,
+	@OptionName,
+	@Quantity,
+	@UnitPrice,
+	@TaxFee,
+	@ShipFee,
+	@ItemSum,
+	GetDate(),
+	@ShipDate,
+	@ArriveDate,
+	@DiscountRequest,
+	@DiscountResponse,
+	@OrderMemo,
+    @OrderStatus,
+    @RecursiveBill,
+    @NextBillDate,
+    @Guid
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+	@Id int, 
+	@OrderId int, 
+	@PortalId int, 
+	@TypeId int, 
+	@OrderNo nvarchar(100), 
+	@InvoiceNo nvarchar(100), 
+	@ClientId int, 
+	@ClientName nvarchar(50), 
+	@VendorId int, 
+	@VendorName nvarchar(50), 
+	@ProductId int, 
+	@ProductName nvarchar(200), 
+	@OptionId int, 
+	@OptionName nvarchar(200), 
+	@Quantity int, 
+	@UnitPrice decimal(18, 2), 
+	@TaxFee decimal(18, 2), 
+	@ShipFee decimal(18, 2), 
+	@ItemSum decimal(18, 2), 
+	@CreatedDate datetime, 
+	@ShipDate datetime, 
+	@ArriveDate datetime, 
+	@DiscountRequest nvarchar(1000), 
+	@DiscountResponse nvarchar(1000), 
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int,
+    @RecursiveBill bit,
+    @NextBillDate datetime,
+    @Guid nvarchar(200)
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_OrderDetail SET
+	[OrderId] = @OrderId,
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[OrderNo] = @OrderNo,
+	[InvoiceNo] = @InvoiceNo,
+	[ClientId] = @ClientId,
+	[ClientName] = @ClientName,
+	[VendorId] = @VendorId,
+	[VendorName] = @VendorName,
+	[ProductId] = @ProductId,
+	[ProductName] = @ProductName,
+	[OptionId] = @OptionId,
+	[OptionName] = @OptionName,
+	[Quantity] = @Quantity,
+	[UnitPrice] = @UnitPrice,
+	[TaxFee] = @TaxFee,
+	[ShipFee] = @ShipFee,
+	[ItemSum] = @ItemSum,
+	[CreatedDate] = @CreatedDate,
+	[ShipDate] = @ShipDate,
+	[ArriveDate] = @ArriveDate,
+	[DiscountRequest] = @DiscountRequest,
+	[DiscountResponse] = @DiscountResponse,
+	[OrderMemo] = @OrderMemo,
+    [OrderStatus] = @OrderStatus,
+    [RecursiveBill] = @RecursiveBill,
+    [NextBillDate] = NextBillDate,
+    [Guid] = @Guid
+WHERE
+	[Id] = @Id
+
+' 
+END
+
+Go

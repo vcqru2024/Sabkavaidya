@@ -1,0 +1,20 @@
+﻿<data method="BasicVoucherReceiptEmail" version="1.0">
+  <mailFrom></mailFrom>
+  <mailTo></mailTo>
+  <subject>{xsl:value-of select="in/configuration/generalStoreName" /} Vouchers</subject>
+  <htmlBody>
+    <![CDATA[ 
+<p>Hi {xsl:value-of select="concat(in/user/firstName, ' ', in/user/lastName)" /}</p>
+<p>Here are your vouchers issued to you with the following codes:</p>
+<p>{xsl:for-each select="in/vouchers/voucher" } 
+	<strong>{xsl:value-of select="code" /}</strong> - {xsl:value-of select="formattedActiveAmount" /}
+	<br />
+    {/xsl:for-each}
+</p>
+<p>Remember, vouchers are like cash so keep the codes in a safe place and delete this email after reading. You can visit 
+	<a href="{xsl:value-of select='in/manageVoucher/tabUrl' /}">your account page</a> anytime to obtain more information about your vouchers.&nbsp;
+</p>
+<p>If you have any questions, please do not hesitate to contact customer support.</p>
+]]>
+  </htmlBody>
+</data>

@@ -1,0 +1,752 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<SalesReturnViewModel>
+
+<div class="rvd-module-container rvdsf-productreview-container">
+	@if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+	{
+		<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert]) rvd-alert-important">@Model.TempData[Global.TempDataKeys.Message]</div>
+	}
+	@if (Model.View == "SalesReturns")
+	{
+		<h2>@Html.LocalizeString("SalesReturnsHeader")</h2>
+		<div id="rvdsfSearchSalesReturnContainer" class="rvdsfSearchContainer">
+			<fieldset>
+				<div class="input-group">
+					<input name="QuerySearchSalesReturnField" type="search" value="@Model.QuerySearchSalesReturnField" class="form-control" placeholder="@Html.LocalizeString("QuerySearchPlaceholder")" onkeydown="if (event.keyCode == 13) Revindex.Web.FormPost(this, 'Search', false)" />
+					<div class="input-group-btn input-group-append" >
+						<button class="btn btn-default btn-outline-secondary" type="button" data-toggle="collapse" href="#rvdsfSalesReturnSearchContainer"><em class="glyphicon glyphicon-filter fa fas fa-filter"></em> @Html.LocalizeString("FilterLink")</button>
+						<button ID="rvdsfResetSalesReturnButton" type="button" onclick="Revindex.Web.FormPost(this, 'Reset', false)" class="btn btn-default btn-outline-secondary rvdResetAction">@Html.LocalizeString("ResetLink")</button>
+						<button ID="rvdsfSearchSalesReturnButton" type="button" onclick="Revindex.Web.FormPost(this, 'Search', false)" class="btn btn-primary rvdSearchAction">@Html.LocalizeString("SearchLink")</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<div id="rvdsfSalesReturnSearchContainer" class="collapse persist">
+				<fieldset class="rvdSplit2">
+					<div class="dnnFormItem">
+						<div class="dnnLabel">
+							<label>
+								<span>@Html.LocalizeString("StartDateLabel")</span>
+							</label>
+						</div>
+						<input name="StartDateSearchSalesReturnField" type="text" autocomplete="off" value="@(Model.StartDateSearchSalesReturnField.HasValue ? Model.StartDateSearchSalesReturnField.Value.ToString("yyyy-MM-dd") : "")" placeholder="YYYY-MM-DD" data-role="datepicker" data-format="yyyy-MM-dd"/>
+					</div>
+					<div class="dnnFormItem">
+						<div class="dnnLabel">
+							<label>
+								<span>@Html.LocalizeString("StopDateLabel")</span>
+							</label>
+						</div>
+						<input name="StopDateSearchSalesReturnField" type="text" autocomplete="off" value="@(Model.StopDateSearchSalesReturnField.HasValue ? Model.StopDateSearchSalesReturnField.Value.ToString("yyyy-MM-dd") : "")" placeholder="YYYY-MM-DD" data-role="datepicker" data-format="yyyy-MM-dd"/>
+					</div>
+					<div class="dnnFormItem">
+						<div class="dnnLabel">
+							<label>
+								<span>@Html.LocalizeString("StatusLabel")</span>
+							</label>
+						</div>
+						<select name="StatusSearchSalesReturnField">
+							<option value="-1" @(Model.StatusSearchSalesReturnField == -1 ? "selected" : "")>@Html.LocalizeString("AnyExceptIncompleteLabel")</option>
+							<option value="0" @(Model.StatusSearchSalesReturnField == 0 ? "selected" : "")>@Html.LocalizeString("AnyLabel")</option>
+							<option value="1" @(Model.StatusSearchSalesReturnField == 1 ? "selected" : "")>@Html.LocalizeString("1", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							<option value="2" @(Model.StatusSearchSalesReturnField == 2 ? "selected" : "")>@Html.LocalizeString("2", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							<option value="3" @(Model.StatusSearchSalesReturnField == 3 ? "selected" : "")>@Html.LocalizeString("3", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							<option value="4" @(Model.StatusSearchSalesReturnField == 4 ? "selected" : "")>@Html.LocalizeString("4", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							<option value="6" @(Model.StatusSearchSalesReturnField == 6 ? "selected" : "")>@Html.LocalizeString("6", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							<option value="5" @(Model.StatusSearchSalesReturnField == 5 ? "selected" : "")>@Html.LocalizeString("5", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							<option value="7" @(Model.StatusSearchSalesReturnField == 7 ? "selected" : "")>@Html.LocalizeString("7", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+						</select>
+					</div>
+					<div class="dnnFormItem">
+						<div class="dnnLabel">
+							<label>
+								<span>@Html.LocalizeString("SellerLabel")</span>
+							</label>
+						</div>
+						<input id="rvdsfSellerSearchSalesReturnComboBox" name="SellerIDSearchSalesReturnField" type="text" value="@Model.SellerIDSearchSalesReturnField" />
+						<input type="hidden" name="SellerNameSearchSalesReturnField" value="@Model.SellerNameSearchSalesReturnField" />
+					</div>
+					<div class="row rvdsf-actionbar-container">
+						<div class="col-sm-6">
+
+						</div>
+						<div class="col-sm-6 text-sm-right">
+						
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="rvdsfListContainer">
+			<table class="table table-striped table-hover" style="border-collapse:collapse;">
+				<tbody>
+					<tr>
+						<th>
+							<a href="@Global.RouteUrl(new NameValueCollection() {
+														{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+														{ Global.QueryStringKeys.SalesReturnPageViewIndex, "1" },
+														{ Global.QueryStringKeys.SalesReturnSortDirection, Request.QueryString[Global.QueryStringKeys.SalesReturnSortDirection] == "0" ? "1" : "0" },
+														{ Global.QueryStringKeys.SalesReturnSortExpression, "salesreturnnumber" }}, Request.QueryString)#@Dnn.Module.ModuleID">@Html.LocalizeString("SalesReturnNumberHeader")</a>
+						</th>
+						<th>
+							<a href="@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+													{ Global.QueryStringKeys.SalesReturnPageViewIndex, "1" },
+													{ Global.QueryStringKeys.SalesReturnSortDirection, Request.QueryString[Global.QueryStringKeys.SalesReturnSortDirection] == "0" ? "1" : "0" },
+													{ Global.QueryStringKeys.SalesReturnSortExpression, "returndate" }}, Request.QueryString)">@Html.LocalizeString("DateHeader")</a>
+						</th>
+						<th>
+							<a href="@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+													{ Global.QueryStringKeys.SalesReturnPageViewIndex, "1" },
+													{ Global.QueryStringKeys.SalesReturnSortDirection, Request.QueryString[Global.QueryStringKeys.SalesReturnSortDirection] == "0" ? "1" : "0" },
+													{ Global.QueryStringKeys.SalesReturnSortExpression, "status" }}, Request.QueryString)">@Html.LocalizeString("StatusHeader")</a>
+						</th>
+						<th style="width: 5%"></th>
+					</tr>
+					@foreach (var sr in Model.PagedSalesReturns)
+					{
+						<tr onclick="location.href = '@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+													{ Global.QueryStringKeys.SalesReturnID, sr.SalesReturnID.ToString() },
+													{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)'">
+							<td>
+								<a href="@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+													{ Global.QueryStringKeys.SalesReturnID, sr.SalesReturnID.ToString() },
+													{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)">@sr.SalesReturnNumber</a>
+							</td>
+							<td>@TimeZoneInfo.ConvertTimeFromUtc(sr.ReturnDate, Dnn.Portal.TimeZone).ToString("yyyy-MM-dd")</td>
+							<td>@Html.LocalizeString(((int)sr.Status).ToString(), Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</td>
+							<td>
+								@if (Model.ModuleSecurity.CanEditControl)
+								{
+									<a href="#" onclick="event.stopPropagation(); if (confirm('@Html.LocalizeString(Global.LocalizedStrings.Message_ConfirmDelete, Global.FilePaths.LocalSharedResourceFile)')) { Revindex.Web.FormPost(this, 'DeleteSalesReturn', false, { salesReturnID: @sr.SalesReturnID }) }"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></a>
+								}
+							</td>
+						</tr>
+					}
+					<tr class="dnnGridPager">
+						<td colspan="7">
+							<table>
+								<tr>
+									<td>
+										@for (int i = 1; i <= Model.PageViewCount; i++)
+										{
+											if (i == Model.PageViewIndex)
+											{
+												<span>@i</span>
+											}
+											else
+											{
+												var indexString = i.ToString();
+												int minRange = 1 + ((int)((Model.PageViewIndex - 1) / 10) * 10);
+												int maxRange = minRange + 9;
+
+												if (i == minRange - 1 || i == maxRange + 1)
+												{
+													indexString = "...";
+												}
+												else if (i < minRange || i > maxRange)
+												{
+													continue;
+												}
+
+												<a href="@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+													{ Global.QueryStringKeys.SalesReturnPageViewIndex, i.ToString() },
+													{ Global.QueryStringKeys.SalesReturnSortDirection, Request.QueryString[Global.QueryStringKeys.SalesReturnSortDirection] },
+													{ Global.QueryStringKeys.SalesReturnSortExpression, Request.QueryString[Global.QueryStringKeys.SalesReturnSortExpression] }}, Request.QueryString)">@indexString</a>
+												}
+											}
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<ul class="dnnActions dnnClear"></ul>
+		</div>
+	}
+	else if (Model.View == "SalesReturn")
+	{
+		<div class="rvd-form">
+			@Html.Partial("Shared/BackView", Model.BackView)
+			<h2>@Html.LocalizeString("SalesReturnHeader"): @Html.Partial("Shared/BreadcrumbView", Model.BreadcrumbView)<span class="badge badge-secondary rvdsf-badge-small">@Model.SalesReturnID</span></h2>
+			<div id="SalesReturnDetailsViewTabPanel">
+				<ul class="dnnAdminTabNav dnnClear">
+					<li>
+						<a href="#GeneralDetailsViewPanel">@Html.LocalizeString("GeneralHeader")</a>
+					</li>
+					@if (Model.SalesReturn.RequireShipping)
+					{
+						<li>
+							<a href="#ShippingDetailsViewPanel">@Html.LocalizeString("ShippingHeader")</a>
+						</li>
+					}
+				</ul>
+				<div id="GeneralDetailsViewPanel" class="dnnClear">
+					<fieldset>
+						<div class="dnnFormItem">
+							<div class="dnnLabel">
+								<label>
+									<span>@Html.LocalizeString("DateLabel")</span>
+								</label>
+							</div>
+							<input name="ReturnDateSalesReturnField" type="text" autocomplete="off" value="@TimeZoneInfo.ConvertTimeFromUtc(Model.ReturnDateSalesReturnField, Dnn.Portal.TimeZone).ToString("yyyy-MM-dd")" placeholder="YYYY-MM-DD" data-role="datepicker" data-format="yyyy-MM-dd"/>
+						</div>
+						<div class="dnnFormItem">
+							<div class="dnnLabel">
+								<label>
+									<span>@Html.LocalizeString("StatusLabel")</span>
+								</label>
+							</div>
+							<select name="StatusSalesReturnField">
+								<option value="1" @(Model.StatusSalesReturnField == SalesReturnStatusType.Incomplete ? "selected" : "")>@Html.LocalizeString("1", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+								<option value="2" @(Model.StatusSalesReturnField == SalesReturnStatusType.Submitted ? "selected" : "")>@Html.LocalizeString("2", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+								<option value="3" @(Model.StatusSalesReturnField == SalesReturnStatusType.Processing ? "selected" : "")>@Html.LocalizeString("3", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+								<option value="4" @(Model.StatusSalesReturnField == SalesReturnStatusType.Authorized ? "selected" : "")>@Html.LocalizeString("4", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+								<option value="6" @(Model.StatusSalesReturnField == SalesReturnStatusType.Completed ? "selected" : "")>@Html.LocalizeString("6", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+								<option value="5" @(Model.StatusSalesReturnField == SalesReturnStatusType.Cancelled ? "selected" : "")>@Html.LocalizeString("5", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+								<option value="7" @(Model.StatusSalesReturnField == SalesReturnStatusType.Declined ? "selected" : "")>@Html.LocalizeString("7", Global.FilePaths.LocalSalesReturnStatusTypeResourceFile)</option>
+							</select>
+						</div>
+						<div class="dnnFormItem">
+							<div class="dnnLabel">
+								<label>
+									<span class="dnnFormRequired">@Html.LocalizeString("UserLabel")</span>
+								</label>
+							</div>
+							<input id="UsernameProductReviewTextBox" name="UsernameSalesReturnField" type="text" value="@Model.UsernameSalesReturnField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+							<span data-valmsg-for="UsernameSalesReturnField" data-valmsg-replace="true"></span>
+						</div>
+						<h2 class="dnnFormSectionHead"><a>@Html.LocalizeString("SalesReturnDetailsHeader")</a></h2>
+						<table class="table table-striped table-hover" style="border-collapse:collapse;">
+							<tbody>
+								<tr>
+									<th></th>
+									<th>@Html.LocalizeString("ProductHeader")</th>
+									<th>@Html.LocalizeString("QuantityHeader")</th>
+									<th>@Html.LocalizeString("SalesOrderNumberHeader")</th>
+									<th>@Html.LocalizeString("RequestHeader")</th>
+									<th>@Html.LocalizeString("ReasonHeader")</th>
+								</tr>
+								@foreach (var srd in Model.SalesReturn.SalesReturnDetails)
+								{
+									<tr onclick="location.href = '@Global.RouteUrl(new NameValueCollection() {
+											{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+											{ Global.QueryStringKeys.SalesReturnID, Model.SalesReturn.SalesReturnID.ToString() },
+											{ Global.QueryStringKeys.SalesReturnDetailID, srd.SalesReturnDetailID.ToString() },
+											{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)'">
+										<td class="hidden-xs d-none d-sm-table-cell">
+											@if (srd.ProductVariant.MainThumbnailGallery != null)
+											{
+												<a href="@Global.RouteUrl(new NameValueCollection() {
+														{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+														{ Global.QueryStringKeys.SalesReturnID, Model.SalesReturn.SalesReturnID.ToString() },
+														{ Global.QueryStringKeys.SalesReturnDetailID, srd.SalesReturnDetailID.ToString() },
+														{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)"><img src="@srd.ProductVariant.MainThumbnailGallery.MediaUrl" style="max-width: 32px; max-height: 32px"/></a>
+											}
+										</td>
+										<td>
+											<a href="@Global.RouteUrl(new NameValueCollection() {
+											{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+											{ Global.QueryStringKeys.SalesReturnID, Model.SalesReturn.SalesReturnID.ToString() },
+											{ Global.QueryStringKeys.SalesReturnDetailID, srd.SalesReturnDetailID.ToString() },
+											{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)" onclick="event.stopPropagation()">@srd.ProductVariant.Product.Name</a>
+											@if (!String.IsNullOrEmpty(srd.ProductVariant.Name))
+											{
+												<div class="rvdsf-productvariant-name">@srd.ProductVariant.Name</div>
+											}
+											@if (Model.SalesReturn.SalesReturnDetails.Where(s => s.ParentSalesReturnDetailID == srd.SalesReturnDetailID).Count() > 0)
+											{
+												<table class="table table-condensed table-sm table-borderless rvdsf-productparts" style="width: auto">
+													@foreach (var csrd in Model.SalesReturn.SalesReturnDetails.Where(s => s.ParentSalesReturnDetailID == srd.SalesReturnDetailID))
+													{
+														<tr>
+															<td>
+																<strong>
+																	<a href="@Global.RouteUrl(new NameValueCollection() {
+												{ Global.QueryStringKeys.PageTarget, Request.QueryString[Global.QueryStringKeys.PageTarget] },
+												{ Global.QueryStringKeys.SalesReturnID, Model.SalesReturn.SalesReturnID.ToString() },
+												{ Global.QueryStringKeys.SalesReturnDetailID, csrd.SalesReturnDetailID.ToString() },
+												{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)">
+																		@csrd.ProductVariant.Product.Name
+																		@if (!String.IsNullOrEmpty(csrd.ProductVariant.Name))
+																		{
+																			<text> - @csrd.ProductVariant.Name</text>
+																		}
+																	</a>
+																</strong>
+															</td>
+															<td>
+																@csrd.PartQuantity
+															</td>
+														</tr>
+													}
+												</table>
+											}
+										</td>
+										<td>@srd.Quantity</td>
+										<td>
+											@if (srd.SalesOrderDetail != null)
+											{
+												<a href="@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, "Sales-SalesOrderDetailControl" },
+													{ Global.QueryStringKeys.SalesOrderID, srd.SalesOrderDetail.SalesOrder.SalesOrderID.ToString() },
+													{ Global.QueryStringKeys.SalesOrderDetailID, srd.SalesOrderDetailID.ToString() },
+													{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)">@srd.SalesOrderDetail.SalesOrder.SalesOrderNumber</a>
+											}
+										</td>
+										<td class="hidden-xs d-none d-sm-table-cell">@Html.LocalizeString(((int)srd.RequestType).ToString(), Global.FilePaths.LocalSalesReturnRequestTypeResourceFile)</td>
+										<td class="hidden-xs d-none d-sm-table-cell">@Html.LocalizeString(((int)srd.ReasonType).ToString(), Global.FilePaths.LocalSalesReturnReasonTypeResourceFile)</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</fieldset>
+				</div>
+				@if (Model.SalesReturn.RequireShipping)
+				{
+					<div id="ShippingDetailsViewPanel" class="dnnClear">
+						<fieldset>
+							<div class="dnnFormItem">
+								<div class="dnnLabel">
+									<label>
+										<span></span>
+									</label>
+								</div>
+								<div>
+									<label>
+										<input type="radio" id="rvdsfShippingPickupSalesReturnField_Ship" name="ShippingPickupSalesReturnField" value="false" onchange="Revindex.Web.FormPost(this, 'ShippingPickupChanged', false)" @(!Model.ShippingPickupSalesReturnField ? "checked" : "")> @Html.LocalizeString("ShipToLabel")
+									</label>
+									<label>
+										<input type="radio" id="rvdsfShippingPickupSalesReturnField_Pickup" name="ShippingPickupSalesReturnField" value="true" onchange="Revindex.Web.FormPost(this, 'ShippingPickupChanged', false)" @(Model.ShippingPickupSalesReturnField ? "checked" : "")> @Html.LocalizeString("PickupLabel")
+									</label>
+								</div>
+							</div>
+							@if (!Model.ShippingPickupSalesReturnField)
+							{
+							<div class="dnnFormItem">
+								<div class="dnnLabel">
+									<label>
+										<span class="dnnFormRequired">@Html.LocalizeString("FirstNameLabel")</span>
+									</label>
+								</div>
+								<input name="ShippingFirstNameSalesReturnField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" type="text" value="@Model.ShippingFirstNameSalesReturnField" />
+								<span data-valmsg-for="ShippingFirstNameSalesReturnField" data-valmsg-replace="true"></span>
+							</div>
+							<div class="dnnFormItem">
+								<div class="dnnLabel">
+									<label>
+										<span class="dnnFormRequired">@Html.LocalizeString("LastNameLabel")</span>
+									</label>
+								</div>
+								<input name="ShippingLastNameSalesReturnField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" type="text" value="@Model.ShippingLastNameSalesReturnField" />
+								<span data-valmsg-for="ShippingLastNameSalesReturnField" data-valmsg-replace="true"></span>
+							</div>
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span>@Html.LocalizeString("CompanyLabel")</span>
+										</label>
+									</div>
+									<input name="ShippingCompanySalesReturnField" type="text" value="@Model.ShippingCompanySalesReturnField" />
+								</div>
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span class="dnnFormRequired">@Html.LocalizeString("CountryLabel")</span>
+										</label>
+									</div>
+									<select id="rvdsfShippingCountryCodeSalesReturnField" name="ShippingCountryCodeSalesReturnField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" onchange="Revindex.Web.FormPost(this, 'ShippingCountryChanged', false, { countryCode: this.value })">
+										@foreach (var country in Model.ShippingCountries)
+										{
+											<option value="@country.IsoAlpha2Code" @(Model.ShippingCountryCodeSalesReturnField == country.IsoAlpha2Code ? "selected" : "")>@country.Name</option>
+										}
+									</select>
+									<span data-valmsg-for="ShippingCountryCodeSalesReturnField" data-valmsg-replace="true"></span>
+								</div>
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span class="dnnFormRequired">@Html.LocalizeString("StreetLabel")</span>
+										</label>
+									</div>
+									<input type="text" name="ShippingStreetSalesReturnField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" maxlength="200" value="@Model.ShippingStreetSalesReturnField" placeholder="@Html.LocalizeString("StreetPlaceHolder")" />
+									<span data-valmsg-for="ShippingStreetSalesReturnField" data-valmsg-replace="true"></span>
+								</div>
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span />
+										</label>
+									</div>
+									<input type="text" name="ShippingUnitSalesReturnField" value="@Model.ShippingUnitSalesReturnField" placeholder="@Html.LocalizeString("UnitPlaceHolder")" autocomplete="address-line2" />
+								</div>
+								if (Model.HasShippingDistrictSystem)
+								{
+									<div class="dnnFormItem">
+										<div class="dnnLabel">
+											<label><span>@Html.LocalizeString("ShippingDistrictLabel")</span></label>
+										</div>
+										<input type="text" name="ShippingDistrictSalesReturnField" class="form-control" value="@Model.ShippingDistrictSalesReturnField" autocomplete="address-level3" />
+									</div>
+								}
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span class="dnnFormRequired">@Html.LocalizeString("CityLabel")</span>
+										</label>
+									</div>
+									<input name="ShippingCitySalesReturnField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" type="text" value="@Model.ShippingCitySalesReturnField" />
+									<span data-valmsg-for="ShippingCitySalesReturnField" data-valmsg-replace="true"></span>
+								</div>
+								if (Model.ShippingSubdivisions.Count > 0)
+								{
+									<div class="dnnFormItem">
+										<div class="dnnLabel">
+											<label>
+												<span>@Html.LocalizeString("RegionLabel")</span>
+											</label>
+										</div>
+										<select name="ShippingSubdivisionCodeSalesReturnField" >
+											@foreach (var subdivision in Model.ShippingSubdivisions)
+											{
+												<option value="@subdivision.IsoCode" @(Model.ShippingSubdivisionCodeSalesReturnField == subdivision.IsoCode ? "selected" : "")>@subdivision.Name</option>
+											}
+										</select>
+									</div>
+								}
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span class="dnnFormRequired">@Html.LocalizeString("PostalCodeLabel")</span>
+										</label>
+									</div>
+									<input name="ShippingPostalCodeSalesReturnField" type="text" value="@Model.ShippingPostalCodeSalesReturnField" />
+								</div>
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span>@Html.LocalizeString("PhoneLabel")</span>
+										</label>
+									</div>
+									<input name="ShippingPhoneSalesReturnField" type="text" value="@Model.ShippingPhoneSalesReturnField" />
+								</div>
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span>@Html.LocalizeString("EmailLabel")</span>
+										</label>
+									</div>
+									<input id="EmailProductReviewTextBox" name="ShippingEmailSalesReturnField" type="text" value="@Model.ShippingEmailSalesReturnField" data-val="true" data-val-email="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+									<span data-valmsg-for="EmailProductReviewField" required data-valmsg-replace="true"></span>
+								</div>
+							}
+						</fieldset>
+					</div>
+				}
+			</div>
+		</div>
+		<div class="rvdsf-footerbar-container">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+
+				</div>
+				<div class="col-sm-6 text-sm-right">
+
+				</div>
+			</div>
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+					@if (Model.ModuleSecurity.CanEditControl && Model.SalesReturnID > 0)
+					{
+						<button id="DeleteSalesReturnButton" type="button" onclick="if (confirm('@Html.LocalizeString(Global.LocalizedStrings.Message_ConfirmDelete, Global.FilePaths.LocalSharedResourceFile)')) { Revindex.Web.FormPost(this, 'DeleteSalesReturn', false, { salesReturnID: @Model.SalesReturnID }) }" class="btn btn-default btn-light">@Html.LocalizeString("DeleteLink")</button>
+					}
+				</div>
+				<div class="col-sm-6 text-sm-right">
+					@if (!String.IsNullOrEmpty(Request.QueryString[Global.QueryStringKeys.ReturnUrl]))
+					{
+						<a href="@Request.QueryString[Global.QueryStringKeys.ReturnUrl]" class="btn btn-default btn-light">@Html.LocalizeString("CancelLink")</a>
+					}
+					@if (Model.ModuleSecurity.CanEditControl)
+					{
+						<button id="SaveSalesReturnButton" type="button" onclick="Revindex.Web.FormPost(this, 'SaveSalesReturn', true)" class="btn btn-primary rvdSaveAction">@Html.LocalizeString("SaveLink")</button>
+						<button id="SaveReturnSalesReturnButton" type="button" onclick="Revindex.Web.FormPost(this, 'SaveSalesReturn', true, { Return: true })" class="btn btn-primary rvdSaveAction">@Html.LocalizeString("SaveAndBackLink")</button>
+					}
+				</div>
+			</div>
+		</div>
+	}
+	else if (Model.View == "SalesReturnDetail")
+	{
+		<div class="rvd-form">
+			@Html.Partial("Shared/BackView", Model.BackView)
+			<h2>@Html.LocalizeString("SalesReturnDetailHeader"): @Html.Partial("Shared/BreadcrumbView", Model.BreadcrumbView)<span class="badge badge-secondary rvdsf-badge-small">@Model.SalesReturnDetailID</span></h2>
+			<hr/>
+			<div>
+				<fieldset>
+					<div>
+						@if (Model.SalesReturnDetail.ProductVariant != null)
+						{
+							<div class="dnnFormItem">
+								<div class="dnnLabel">
+									<label>
+										<span>@Html.LocalizeString("ProductLabel")</span>
+									</label>
+								</div>
+								<span>@Model.SalesReturnDetail.ProductVariant.Product.Name</span>
+								@if (!String.IsNullOrEmpty(Model.SalesReturnDetail.ProductVariant.Name))
+								{<span> - @Model.SalesReturnDetail.ProductVariant.Name</span>}
+							</div>
+							<div class="dnnFormItem">
+								<div class="dnnLabel">
+									<label>
+										<span>@Html.LocalizeString("SKULabel")</span>
+									</label>
+								</div>
+								<span>@Model.SalesReturnDetail.ProductVariant.SKU</span>
+							</div>
+							<div class="dnnFormItem">
+								<div class="dnnLabel">
+									<label>
+										<span>@Html.LocalizeString("StatusLabel")</span>
+									</label>
+								</div>
+								<select name="StatusSalesReturnDetailField">
+									<option value="1" @(Model.StatusSalesReturnDetailField == SalesReturnDetailStatusType.Submitted ? "selected" : "")>@Html.LocalizeString("1", Global.FilePaths.LocalSalesReturnDetailStatusTypeResourceFile)</option>
+									<option value="2" @(Model.StatusSalesReturnDetailField == SalesReturnDetailStatusType.Processing ? "selected" : "")>@Html.LocalizeString("2", Global.FilePaths.LocalSalesReturnDetailStatusTypeResourceFile)</option>
+									<option value="3" @(Model.StatusSalesReturnDetailField == SalesReturnDetailStatusType.Authorized ? "selected" : "")>@Html.LocalizeString("3", Global.FilePaths.LocalSalesReturnDetailStatusTypeResourceFile)</option>
+									<option value="5" @(Model.StatusSalesReturnDetailField == SalesReturnDetailStatusType.Completed ? "selected" : "")>@Html.LocalizeString("5", Global.FilePaths.LocalSalesReturnDetailStatusTypeResourceFile)</option>
+									<option value="4" @(Model.StatusSalesReturnDetailField == SalesReturnDetailStatusType.Cancelled ? "selected" : "")>@Html.LocalizeString("4", Global.FilePaths.LocalSalesReturnDetailStatusTypeResourceFile)</option>
+									<option value="6" @(Model.StatusSalesReturnDetailField == SalesReturnDetailStatusType.Declined ? "selected" : "")>@Html.LocalizeString("6", Global.FilePaths.LocalSalesReturnDetailStatusTypeResourceFile)</option>
+								</select>
+							</div>
+							if (Model.SalesReturnDetail.SalesOrderDetail != null)
+							{
+								<div class="dnnFormItem">
+									<div class="dnnLabel">
+										<label>
+											<span>@Html.LocalizeString("SalesOrderNumberLabel")</span>
+										</label>
+									</div>
+									<span>
+										<a href="@Global.RouteUrl(new NameValueCollection() {
+													{ Global.QueryStringKeys.PageTarget, "Sales-SalesOrderDetailControl" },
+													{ Global.QueryStringKeys.SalesOrderID, Model.SalesReturnDetail.SalesOrderDetail.SalesOrder.SalesOrderID.ToString() },
+													{ Global.QueryStringKeys.SalesOrderDetailID, Model.SalesReturnDetail.SalesOrderDetailID.ToString() },
+													{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)">@Model.SalesReturnDetail.SalesOrderDetail.SalesOrder.SalesOrderNumber</a>
+												</span>
+											</div>
+										}
+										<div class="dnnFormItem">
+											<div class="dnnLabel">
+												<label>
+													<span class="dnnFormRequired">@Html.LocalizeString("QuantityLabel")</span>
+												</label>
+											</div>
+											<input name="QuantitySalesReturnDetailField" data-val="true" data-val-required="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" type="text" value="@Model.QuantitySalesReturnDetailField" />
+											<span data-valmsg-for="QuantitySalesReturnDetailField" data-valmsg-replace="true"></span>
+										</div>
+										<div class="dnnFormItem">
+											<div class="dnnLabel">
+												<label>
+													<span>@Html.LocalizeString("RequestLabel")</span>
+												</label>
+											</div>
+											<select name="RequestTypeSalesReturnDetailField">
+												<option value="1" @(Model.RequestTypeSalesReturnDetailField == SalesReturnRequestType.Credit ? "selected" : "")>@Html.LocalizeString("1", Global.FilePaths.LocalSalesReturnRequestTypeResourceFile)</option>
+												<option value="2" @(Model.RequestTypeSalesReturnDetailField == SalesReturnRequestType.Exchange ? "selected" : "")>@Html.LocalizeString("2", Global.FilePaths.LocalSalesReturnRequestTypeResourceFile)</option>
+												<option value="3" @(Model.RequestTypeSalesReturnDetailField == SalesReturnRequestType.Refund ? "selected" : "")>@Html.LocalizeString("3", Global.FilePaths.LocalSalesReturnRequestTypeResourceFile)</option>
+												<option value="4" @(Model.RequestTypeSalesReturnDetailField == SalesReturnRequestType.Repair ? "selected" : "")>@Html.LocalizeString("4", Global.FilePaths.LocalSalesReturnRequestTypeResourceFile)</option>
+											</select>
+										</div>
+										<div class="dnnFormItem">
+											<div class="dnnLabel">
+												<label>
+													<span>@Html.LocalizeString("ReasonLabel")</span>
+												</label>
+											</div>
+											<select name="ReasonTypeSalesReturnDetailField">
+												@foreach (var reasonType in ((SalesReturnReasonType[])Enum.GetValues(typeof(SalesReturnReasonType))).OrderBy(r => Html.LocalizeString(((int)r).ToString(), Global.FilePaths.LocalSalesReturnReasonTypeResourceFile)))
+												{
+													<option value="@((int)reasonType)" @(Model.ReasonTypeSalesReturnDetailField == reasonType ? "selected" : "")>@Html.LocalizeString(((int)reasonType).ToString(), Global.FilePaths.LocalSalesReturnReasonTypeResourceFile)</option>
+												}
+											</select>
+										</div>
+										<div class="dnnFormItem">
+											<div class="dnnLabel">
+												<label>
+													<span>@Html.LocalizeString("ReasonCodeLabel")</span>
+												</label>
+											</div>
+											<input name="ReasonCodeSalesReturnDetailField" type="text" value="@Model.ReasonCodeSalesReturnDetailField" />
+										</div>
+										if (Model.SalesReturnDetail.ProductVariant.HasSerialNumber)
+										{
+											<div class="dnnFormItem">
+												<div class="dnnLabel">
+													<label>
+														<span>@Html.LocalizeString("SerialNumberLabel")</span>
+													</label>
+												</div>
+												<input type="text" name="SerialNumberSalesReturnDetailField" value="@Model.SerialNumberSalesReturnDetailField">
+											</div>
+										}
+										<div class="dnnFormItem">
+											<div class="dnnLabel">
+												<label>
+													<span>@Html.LocalizeString("CommentLabel")</span>
+												</label>
+											</div>
+											<textarea name="CommentSalesReturnDetailField" rows="10">@Model.CommentSalesReturnDetailField</textarea>
+										</div>
+										<div class="dnnFormItem">
+											<div class="dnnLabel">
+												<label>
+													<span>@Html.LocalizeString("CustomerNotesLabel")</span>
+												</label>
+											</div>
+											<textarea name="CustomerNotesSalesReturnDetailField" rows="10">@Model.CustomerNotesSalesReturnDetailField</textarea>
+										</div>
+									}
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		<div class="rvdsf-footerbar-container">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+					
+				</div>
+				<div class="col-sm-6 text-sm-right">
+					@if (!String.IsNullOrEmpty(Request.QueryString[Global.QueryStringKeys.ReturnUrl]))
+					{
+						<a href="@Request.QueryString[Global.QueryStringKeys.ReturnUrl]" class="btn btn-default btn-light">@Html.LocalizeString("CancelLink")</a>
+					}
+					@if (Model.ModuleSecurity.CanEditControl)
+					{
+						<button id="SaveSalesReturnDetailButton" type="button" onclick="Revindex.Web.FormPost(this, 'SaveSalesReturnDetail', true)" class="btn btn-primary rvdSaveAction">@Html.LocalizeString("SaveLink")</button>
+						<button id="SaveReturnSalesReturnDetailButton" type="button" onclick="Revindex.Web.FormPost(this, 'SaveSalesReturnDetail', true, { Return: true })" class="btn btn-primary rvdSaveAction">@Html.LocalizeString("SaveAndBackLink")</button>
+					}
+				</div>
+			</div>
+			<ul class="dnnActions">
+				
+				<li>
+					
+				</li>
+			</ul>
+		</div>
+	}
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+</div>
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses jQuery Unobtrusive Validation. See http://www.mobzystems.com/blog/setting-up-jquery-unobtrusive-validation/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validate-unobtrusive/jquery.validate.unobtrusive.min.js" defer></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+<script type="text/javascript">
+
+	Sys.Application.add_load(function pageLoad(sender, args) {
+
+		if ($("#rvdsfSearchSalesReturnContainer").length > 0)
+			$("#rvdsfSearchSalesReturnContainer").dnnPanels();
+
+		$('#SalesReturnDetailsViewTabPanel').dnnTabs();			
+
+		var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+		var sellerSearchSalesReturnComboBox = $("#rvdsfSellerSearchSalesReturnComboBox").kendoComboBox({
+                    		autoBind: false,
+							clearButton: true,
+							dataTextField: "Name",
+							dataValueField: "SellerID",
+							enforceMinLength: true,
+							minLength: 2,
+							select: function (e) {
+								if (e.dataItem)
+									$("input[name='SellerNameSearchSalesReturnField']").val(e.dataItem.Name)
+							},
+							dataSource: new kendo.data.DataSource({
+								serverFiltering: true,
+								serverPaging: true,
+								pageSize: 50,
+                        		transport: {
+                        			read: {
+                        				type: "POST",
+                        				url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Seller/Lookup",
+                        				beforeSend: servicesFramework.setModuleHeaders,
+                        				dataType: "json",
+                        				contentType: "application/json; charset=UTF-8"
+                        			},
+                        			parameterMap: function (data, type) {
+                        				return kendo.stringify({
+											Query: data.filter.filters.length > 0 ? data.filter.filters[0].value : '',
+											ItemIndex: 0,
+											MaxItems: data.pageSize
+										})
+                        			}
+                        		},
+								schema: {
+									data: function (response) {
+
+										// We need to decycle any circular references because Kendo UI can only support flat structure
+										return JSON.decycle(response)
+									}
+								},
+								sort: { field: "Name", dir: "asc" }
+							}),
+							filter: "contains",
+							suggest: false
+                    	}).data("kendoComboBox")
+
+		if (sellerSearchSalesReturnComboBox) {
+			// Restore first select item after page load
+			sellerSearchSalesReturnComboBox.dataSource.add({
+				SellerID: -1,
+				Name: '@Html.LocalizeString("AnyLabel")'
+			});
+			sellerSearchSalesReturnComboBox.dataSource.add({
+				SellerID: 0,
+				Name: ""
+			});
+
+			if ($("input[name='SellerIDSearchSalesReturnField']").val() > 0) {
+				sellerSearchSalesReturnComboBox.dataSource.add({
+					SellerID: $("input[name='SellerIDSearchSalesReturnField']").val(),
+					Name: $("input[name='SellerNameSearchSalesReturnField']").val()
+				});
+			}
+
+			sellerSearchSalesReturnComboBox.select(function (dataItem) {
+				return dataItem.SellerID == $("input[name='SellerIDSearchSalesReturnField']").val();
+			})
+		}
+
+		// Restore jQuery Unobstrusive Validation. Parse will not update unless we reset it first.
+		var form = $("#Form").removeData("validator").removeData("unobtrusiveValidation")
+		$.validator.unobtrusive.parse(form);
+
+
+		// Scroll to first error
+		if ($('.rvd-module-container div.dnnFormMessage.dnnFormError, .rvd-module-container div.dnnFormMessage.dnnFormSuccess').length > 0) {
+			$('html, body').animate({
+					scrollTop: $('.rvd-module-container div.dnnFormMessage.dnnFormError, .rvd-module-container div.dnnFormMessage.dnnFormSuccess').offset().top - 110
+			}, 0);
+		}
+
+		$.validator.setDefaults({ ignore: '' });
+	})
+</script>

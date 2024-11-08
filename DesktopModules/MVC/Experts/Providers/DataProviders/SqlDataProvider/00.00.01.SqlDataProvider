@@ -1,0 +1,42 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Experts_Experts]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Experts_Experts]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}Experts_Experts
+(
+    ExpertId int NOT NULL IDENTITY (1, 1),
+    Name nvarchar(MAX) NOT NULL,
+    Specialty nvarchar(MAX) NULL,
+    Qualifications nvarchar(MAX) NULL,
+    Experience int NULL,
+    Location nvarchar(MAX) NULL,
+    ImageUrl nvarchar(MAX) NULL,
+    ModuleId int NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedByUserId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    LastModifiedOnDate datetime NOT NULL
+) ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}Experts_Experts ADD CONSTRAINT
+    PK_{objectQualifier}Experts_Experts PRIMARY KEY CLUSTERED 
+    (
+        ExpertId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

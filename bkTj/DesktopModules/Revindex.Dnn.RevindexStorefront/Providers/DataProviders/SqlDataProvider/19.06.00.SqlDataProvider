@@ -1,0 +1,52 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+
+-- Add DisplayTemplate index to Category table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_Category_4' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_Category'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Category_4 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Category (DisplayTemplate)
+END 
+GO
+
+-- Add DisplayTemplate index to Distributor table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_Distributor_3' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_Distributor'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Distributor_3 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Distributor (DisplayTemplate)
+END 
+GO
+
+-- Add DisplayTemplate index to Manufacturer table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_Manufacturer_3' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_Manufacturer'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Manufacturer_3 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Manufacturer (DisplayTemplate)
+END 
+GO
+
+-- Add DisplayTemplate index to Product table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_Product_4' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_Product'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Product_4 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Product (DisplayTemplate)
+END 
+GO
+
+-- Add DisplayTemplate index to Seller table
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE NAME = 'IX_{objectQualifier}Revindex_Storefront_Seller_2' AND OBJECT_ID = OBJECT_ID('{databaseOwner}{objectQualifier}Revindex_Storefront_Seller'))
+BEGIN
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Seller_2 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Seller (DisplayTemplate)
+END 
+GO
+
+
+
+
+
+
+
+
+
+	

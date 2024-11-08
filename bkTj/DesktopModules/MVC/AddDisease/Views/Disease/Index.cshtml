@@ -1,0 +1,142 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Saatvik.Modules.AddDisease.Models.Disease>>
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Entities.Tabs
+@using DotNetNuke.Entities.Portals
+@{
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, Dnn.DnnPage.ResolveUrl("~/DesktopModules/MVC/AddDisease/custom.css"));
+
+    var portalSettings = PortalSettings.Current;
+    var tabController = new TabController();
+    var currentTab = tabController.GetTab(portalSettings.ActiveTab.TabID, portalSettings.PortalId);
+    var breadcrumbs = new List<TabInfo>();
+
+    while (currentTab != null)
+    {
+        breadcrumbs.Insert(0, currentTab);
+        currentTab = currentTab.ParentId > 0 ? tabController.GetTab(currentTab.ParentId, portalSettings.PortalId) : null;
+    }
+}
+
+<!-- Rest of your view content -->
+
+
+<div id="Diseases-@Dnn.ModuleContext.ModuleId">
+    @if (Model == null || !Model.Any())
+    {
+        <p>@Dnn.LocalizeString("NoItems")</p>
+    }
+    else
+    {
+        @*<section class="app-breadcrumb">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    @foreach (var breadcrumb in breadcrumbs)
+                    {
+                        <li class="breadcrumb-item"><a href="@breadcrumb.FullUrl">@breadcrumb.TabName</a></li>
+                    }
+                    <li class="breadcrumb-item active" aria-current="page">@portalSettings.ActiveTab.TabName</li>
+                </ol>
+            </nav>
+        </section>*@
+
+        <!-- Disease A-Z -->
+        <section class="all-diseases">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <ul>
+                            @for (char c = 'a'; c <= 'z'; c++)
+                            {
+                                <li><a href="#diseases-@c">@c</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                @foreach (var group in Model.GroupBy(d => d.DiseaseName.ToLower()[0]).OrderBy(g => g.Key))
+                {
+                    <div id="diseases-@group.Key">
+                        <div class="diseases-alphabetically">@group.Key</div>
+                        <div class="diseases-lisitng">
+                            <ul>
+                                @foreach (var disease in group.OrderBy(d => d.DiseaseName))
+                                {
+                                    <li>
+                                        <a href="@Url.Action("Descriptive", "Disease", new { diseaseId = disease.DiseaseId })">
+                                            <img src="assets/img/GraduationCap.svg" alt="">
+                                            @disease.DiseaseName
+                                        </a>
+                                        @if (Dnn.ModuleContext.IsEditable)
+                                        {
+                                            <div>
+                                                <a href="@Url.Action("Edit", "Disease", new { ctl = "Edit", diseaseId = disease.DiseaseId })" class="btn btn-primary">Edit</a>
+                                                <a href="@Url.Action("Delete", "Disease", new { diseaseId = disease.DiseaseId })" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        }
+                                    </li>
+
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    }
+</div>
+@if (Dnn.ModuleContext.PortalSettings.UserInfo.IsInRole("Administrators"))
+{
+    <div>
+        <a href="@Url.Action("Edit", "Disease")" class="btn btn-success">Add Disease</a>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        // Show all disease groups by default
+        $('.list-group-item').show();
+
+        // A-Z filter functionality
+        $('.filter-link').click(function (e) {
+            e.preventDefault();
+            var filterLetter = $(this).text().trim();
+            $('.list-group-item').hide();
+            $('#filter-' + filterLetter).show();
+            $('#disease-description').hide(); // Hide disease description
+        });
+
+        // View all button functionality
+        $('#view-all-btn').click(function (e) {
+            e.preventDefault();
+            $('.list-group-item').show();
+            $('#disease-description').hide(); // Hide disease description
+        });
+
+        $('.disease-pill').click(function (e) {
+            e.preventDefault();
+            var diseaseId = $(this).data('disease-id');
+            var disease = getModelById(diseaseId);
+            if (disease) {
+                // Update disease description
+                $('#description-content').html(disease.DiseaseDescription);
+                // Show disease description
+                $('#disease-description').show();
+            }
+        });
+
+        // Helper function to get disease model by ID
+        function getModelById(diseaseId) {
+            var model = @Html.Raw(Json.Encode(Model));
+            for (var i = 0; i < model.length; i++) {
+                if (model[i].DiseaseId === diseaseId) {
+                    return model[i];
+                }
+            }
+            return null;
+        }
+    });
+</script>

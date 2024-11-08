@@ -1,0 +1,75 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<ManageRewardsPointViewModel>
+
+<div class="rvd-module-container rvdsf rvdsf-managerewardspoint-container">
+	@if (Model.Visible)
+	{
+		if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+		{
+			<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert])">@Model.TempData[Global.TempDataKeys.Message]</div>
+		}
+		<div class="rvd-form">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+					
+				</div>
+			</div>
+			<hr />
+			<fieldset>
+				@if (Model.RewardsPoint != null)
+				{
+				<div class="col-sm-offset-3 offset-sm-3 col-sm-6">
+					<div class="form-group">
+						<label>@Html.LocalizeString("StatusLabel")</label>
+						<p class="form-control-static form-control-plaintext">@Html.LocalizeString(((int)Model.RewardsPoint.Status).ToString(), Global.FilePaths.LocalRewardsPointStatusTypeResourceFile)</p>
+					</div>
+					<div class="form-group">
+						<label>@Html.LocalizeString("PointsLabel")</label>
+						<p class="form-control-static form-control-plaintext">@Model.RewardsPoint.Points</p>
+					</div>
+					<div class="form-group">
+						<label>@Html.LocalizeString("QualifiedPointsLabel")</label>
+						<p class="form-control-static form-control-plaintext">@Model.RewardsPoint.QualifiedPoints</p>
+					</div>
+					@if (Model.RewardsPoint.StopDate.HasValue)
+					{
+						<div class="form-group">
+							<label>@Html.LocalizeString("StopDateLabel")</label>
+							<p class="form-control-static form-control-plaintext">@Model.RewardsPoint.StopDate.Value.ToString("yyyy-MM-dd")</p>
+						</div>
+					}
+				</div>
+				}
+			</fieldset>
+		</div>
+		<div class="rvdsf-list-container">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-sm-12">
+					@if (Model.RewardsPoint != null)
+					{
+
+					}
+				</div>
+			</div>
+		</div>
+	}
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+	<script type="text/plain" id="rvdsfStartupScriptManageOrder">
+		@foreach (var script in Model.StartupScripts)
+		{
+			<text>@Html.Raw(script)</text>
+		}
+	</script>
+</div>

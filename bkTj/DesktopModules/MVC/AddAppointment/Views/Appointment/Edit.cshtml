@@ -1,0 +1,107 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddAppointment.Models.AppointmentBooking>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+@using System.Web.Mvc
+@using DotNetNuke.Web.Client.ClientResourceManagement
+
+@{
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, Dnn.DnnPage.ResolveUrl("~/assets/css/style.css"));
+
+    bool isAdmin = DotNetNuke.Entities.Users.UserController.Instance.GetCurrentUserInfo().IsInRole("Administrators");
+}
+
+<div id="Appointment-@Dnn.ModuleContext.ModuleId" class="card-body">
+    @if (isAdmin)
+    {
+        <a href="@Url.Action("Index", "Appointment")">Appointments</a>
+    }
+    <h5 class="card-title">Need more help</h5>
+    <p class="card-text">
+        Simply enter your text and choose the case you want to
+        convert it to.
+    </p>
+    <form method="post" action="@Url.Action("Edit", "Appointment")" class="needs-validation">
+
+        <div class="row g-3">
+            <div class="col-lg-12">
+                <label for="patientName" class="form-label">
+                    Full
+                    Name<span>*</span>
+                </label>
+                @Html.TextBoxFor(m => m.PatientName, new { @class = "form-control" })
+            </div>
+            <div class="col-lg-12" >
+                <label for="patientPhone" class="form-label">
+                    Contact
+                    Number<span>*</span>
+                </label>
+                @Html.TextBoxFor(m => m.PatientPhone, new { @class = "form-control" })
+            </div>
+            <div class="col-lg-12">
+                <label for="doctorName" class="form-label">
+                    Doctor
+                    Name<span>*</span>
+                </label>
+                @Html.DropDownListFor(m => m.DoctorId, (IEnumerable<System.Web.Mvc.SelectListItem>)ViewBag.Doctors, "Choose...", new { @class = "form-select" })
+                @Html.HiddenFor(m => m.DoctorName) <!-- Hidden field for storing the text -->
+            </div>
+            <div class="col-lg-12">
+                <label for="appointmentDate" class="form-label">
+                    Appointment
+                    Date<span>*</span>
+                </label>
+                @Html.TextBoxFor(m => m.AppointmentDate, new { type = "text", @class = "datepicker" })
+            </div>
+            <div class="col-lg-12">
+                <label for="appointmentTime" class="form-label">
+                    Appointment
+                    Time<span>*</span>
+                </label>
+                @Html.TextBoxFor(m => m.AppointmentTime, new { type = "text", @class = "timepicker" })
+                @Html.HiddenFor(m => m.ModuleId)
+            </div>
+            @if (Dnn.ModuleContext.PortalSettings.UserInfo.IsInRole("Administrators"))
+            {
+                <div class="col-lg-12">
+                    <label for="isApproved" class="form-label">
+                        IsApproved
+                        <span>*</span>
+                    </label>
+                    @Html.CheckBoxFor(m => m.IsApproved)
+                </div>
+            }
+            <div class="col-lg-12 text-center">
+                <button type="submit" class="btn btn-primary">
+                    Book Free
+                    Appointment
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
+
+<script type="text/javascript">
+    $(function () {
+        // Update the hidden field when the dropdown selection changes
+        $('#DoctorId').change(function () {
+            $('#DoctorName').val($('#DoctorId option:selected').text());
+        });
+
+        // Initialize date picker
+        $('.datepicker').datepicker({
+            minDate: 0 // Restrict to today or later
+        });
+
+        $('.timepicker').timepicker({
+            interval: 15, // Set timepicker interval to 15 minutes
+            minTime: '9:00', // Set minimum time to 09:00 (24-hour format)
+            maxTime: '21:00', // Set maximum time to 21:00 (24-hour format)
+            timeFormat: 'H:i' // Display time in 24-hour format
+        });
+    });
+</script>

@@ -1,0 +1,46 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- We need this here because the last release v19.01.00 used the wrong check and did not remove the columns properly.
+-- Drop display order columns
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductFilterDistributorDisplayOrder')
+BEGIN
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductFilterDistributorDisplayOrder
+
+END 
+GO
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductFilterManufacturerDisplayOrder')
+BEGIN
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductFilterManufacturerDisplayOrder
+
+END 
+GO
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductFilterPriceDisplayOrder')
+BEGIN
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductFilterPriceDisplayOrder
+
+END 
+GO
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductFilterSellerDisplayOrder')
+BEGIN
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP COLUMN ProductFilterSellerDisplayOrder
+
+END 
+GO
+
+
+
+
+
+	

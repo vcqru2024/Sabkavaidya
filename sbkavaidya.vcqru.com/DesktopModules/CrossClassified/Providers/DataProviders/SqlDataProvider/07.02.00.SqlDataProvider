@@ -1,0 +1,47 @@
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Cp_Product_Tag_GetWithPaging]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+Create PROCEDURE {databaseOwner}[{objectQualifier}Cp_Product_Tag_GetWithPaging]
+	@TypeId int,
+    @Tag nvarchar(200),
+    @PageSize int, 
+    @PageIndex int  
+AS
+    Declare @PageLowerBound int
+    DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	ItemId	int
+     )
+     ----Insert into temptable
+    insert into #PageIndex(ItemId)
+    SELECT a.[id]
+    FROM {databaseOwner}{objectQualifier}Cp_Product_Tag a
+    where a.[TypeId]=@TypeId
+    and (@Tag='''' or a.[Tag] like ''%''+@Tag+''%'') -- Tag search
+
+---Get needs rows
+     SELECT b.*,
+       ''ProductCounts''=
+     (select count(Id) from {databaseOwner}{objectQualifier}Cp_Product_ProductToTag where {databaseOwner}{objectQualifier}Cp_Product_ProductToTag.TagId=b.[Id])
+     FROM #PageIndex a,{databaseOwner}{objectQualifier}Cp_Product_Tag  b
+     where b.[id]=a.[ItemId] 
+     and  a.[IndexId]> @PageLowerBound	
+     and	 a.[IndexId]< @PageUpperBound	  
+     ORDER BY a.IndexId
+	
+	 --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+' 
+END

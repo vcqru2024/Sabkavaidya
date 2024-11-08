@@ -1,0 +1,20 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@* This part shows album title and introduction *@
+@{
+  var album = MyModel.Item("Album");
+  var settings = album.Presentation;
+  var headingType = settings.String("HeadingType");
+}
+
+@* Show title unless configured as "hidden" *@
+@if (headingType != "hidden") {
+  @Tag.Custom(headingType, album.String("Title"))
+} else if (MyUser.IsContentAdmin) {
+  <h2>@App.Resources.String("TitleNotDisplayed")</h2>
+}
+
+@* Show description if desired *@
+@if (settings.Bool("ShowDescription")) {
+  @album.Html("Introduction").Class("mb-4")
+}

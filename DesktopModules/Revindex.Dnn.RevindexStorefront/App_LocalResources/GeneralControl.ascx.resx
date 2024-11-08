@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="StoreAddressHeader.Text" xml:space="preserve">
+    <value>Store address</value>
+  </data>
+  <data name="FeaturesHeader.Text" xml:space="preserve">
+    <value>Features</value>
+  </data>
+  <data name="StandardsHeader.Text" xml:space="preserve">
+    <value>Standards</value>
+  </data>
+  <data name="LocationHeader.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="MembershipHeader.Text" xml:space="preserve">
+    <value>Membership</value>
+  </data>
+  <data name="DiagnosticsHeader.Text" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data>
+  <data name="ClearCacheLink.Text" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
+  <data name="UpdateGeoIPFileLinkButton.Text" xml:space="preserve">
+    <value>Update GeoIP file</value>
+  </data>
+  <data name="SaveLinkButton.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save ||file||</comment>
+  </data>
+  <data name="GeneralStoreNameLabelControl.Text" xml:space="preserve">
+    <value>Business name</value>
+  </data>
+  <data name="GeneralStoreCountryCodeLabelControl.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="GeneralStoreStreetLabelControl.Text" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="GeneralStoreCityLabelControl.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="GeneralStoreSubdivisionCodeLabelControl.Text" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="GeneralStorePostalCodeLabelControl.Text" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="GeneralEmailRecipientLabelControl.Text" xml:space="preserve">
+    <value>Email recipient</value>
+  </data>
+  <data name="GeneralEmailRecipientLabelControl.Help" xml:space="preserve">
+    <value>The default email address used to receive various communications from the Storefront (e.g. order alerts, etc).</value>
+  </data>
+  <data name="GeneralEmailSenderLabelControl.Text" xml:space="preserve">
+    <value>Email sender</value>
+  </data>
+  <data name="GeneralEmailSenderLabelControl.Help" xml:space="preserve">
+    <value>The default email address used to send out various communications.</value>
+  </data>
+  <data name="FeaturesDescriptionLabel.Text" xml:space="preserve">
+    <value>The Storefront has many powerful features to help you sell more. Enable just the right features you need to keep your site fast and streamlined.</value>
+  </data>
+  <data name="AddressValidationActiveLabelControl.Text" xml:space="preserve">
+    <value>Address validation</value>
+  </data>
+  <data name="AddressValidationActiveLabelControl.Help" xml:space="preserve">
+    <value>Validate and normalize customer address.</value>
+  </data>
+  <data name="AnalyticsActiveLabelControl.Text" xml:space="preserve">
+    <value>Analytics</value>
+  </data>
+  <data name="AnalyticsActiveLabelControl.Help" xml:space="preserve">
+    <value>Track user browsing conversion and statistics.</value>
+  </data>
+  <data name="ApiActiveLabelControl.Text" xml:space="preserve">
+    <value>API</value>
+  </data>
+  <data name="ApiActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow external application to access the storefront data programmatically. For security reasons, it is recommended that you disable API access.</value>
+  </data>
+  <data name="CartActiveLabelControl.Text" xml:space="preserve">
+    <value>Cart</value>
+  </data>
+  <data name="CartActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the cart module.</value>
+  </data>
+  <data name="CartSummaryActiveLabelControl.Text" xml:space="preserve">
+    <value>Cart summary</value>
+  </data>
+  <data name="CartSummaryActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the cart summary module.</value>
+  </data>
+  <data name="ChannelActiveLabelControl.Text" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="ChannelActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow promoting products on other channels (e.g. eBay, Facebook).</value>
+  </data>
+  <data name="CheckoutActiveLabelControl.Text" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="CheckoutActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the checkout module.</value>
+  </data>
+  <data name="ConfirmationActiveLabelControl.Text" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="ConfirmationActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the confirmation module.</value>
+  </data>
+  <data name="CrosssellProductActiveLabelControl.Text" xml:space="preserve">
+    <value>Cross-sell products</value>
+  </data>
+  <data name="CrosssellProductActiveLabelControl.Help" xml:space="preserve">
+    <value>Cross-sell products to customers during checkout.</value>
+  </data>
+  <data name="DisplayTemplateActiveLabelControl.Text" xml:space="preserve">
+    <value>Display template</value>
+  </data>
+  <data name="DisplayTemplateActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow customizing the look-and-feel of modules.</value>
+  </data>
+  <data name="DistributorActiveLabelControl.Text" xml:space="preserve">
+    <value>Distributor</value>
+  </data>
+  <data name="DistributorActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow associating products to distributors.</value>
+  </data>
+  <data name="FulfillmentActiveLabelControl.Text" xml:space="preserve">
+    <value>Fulfillment</value>
+  </data>
+  <data name="FulfillmentActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow automatic fulfilling of orders.</value>
+  </data>
+  <data name="HandlingActiveLabelControl.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="HandlingActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow charging a handling fee on checkout.</value>
+  </data>
+  <data name="ManufacturerActiveLabelControl.Text" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="ManufacturerActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow associating products to manufacturers.</value>
+  </data>
+  <data name="SellerMarketplaceActiveLabelControl.Text" xml:space="preserve">
+    <value>Marketplace</value>
+  </data>
+  <data name="SellerMarketplaceActiveLabelControl.Help" xml:space="preserve">
+    <value>Markeplace allows 3rd party sellers (vendors) to list their products for sale on your site.</value>
+  </data>
+  <data name="PackingActiveLabelControl.Text" xml:space="preserve">
+    <value>Packing</value>
+  </data>
+  <data name="PackingActiveLabelControl.Help" xml:space="preserve">
+    <value>Optimize shipping rates calculation by packing efficiently.</value>
+  </data>
+  <data name="ProductComparisonActiveLabelControl.Text" xml:space="preserve">
+    <value>Product comparison</value>
+  </data>
+  <data name="ProductComparisonActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow comparing products side by side.</value>
+  </data>
+  <data name="ProductDetailActiveLabelControl.Text" xml:space="preserve">
+    <value>Product detail</value>
+  </data>
+  <data name="ProductDetailActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the product detail module.</value>
+  </data>
+  <data name="ProductFilterActiveLabelControl.Text" xml:space="preserve">
+    <value>Product filter</value>
+  </data>
+  <data name="ProductFilterActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the product filter module.</value>
+  </data>
+  <data name="ProductListActiveLabelControl.Text" xml:space="preserve">
+    <value>Product list</value>
+  </data>
+  <data name="ProductListActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the product list module.</value>
+  </data>
+  <data name="ProductSearchActiveLabelControl.Text" xml:space="preserve">
+    <value>Product search</value>
+  </data>
+  <data name="ProductSearchActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the product search module.</value>
+  </data>
+  <data name="ProductShowcaseActiveLabelControl.Text" xml:space="preserve">
+    <value>Product showcase</value>
+  </data>
+  <data name="ProductShowcaseActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the product showcase module.</value>
+  </data>
+  <data name="QuickOrderActiveLabelControl.Text" xml:space="preserve">
+    <value>Quick order</value>
+  </data>
+  <data name="QuickOrderActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the quick order module.</value>
+  </data>
+  <data name="RecurringSalesOrderActiveLabelControl.Text" xml:space="preserve">
+    <value>Recurring orders</value>
+  </data>
+  <data name="RecurringSalesOrderActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow recurring orders (subscriptions).</value>
+  </data>
+  <data name="SalesReturnActiveLabelControl.Text" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="SalesReturnActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow customer returns.</value>
+  </data>
+  <data name="RewardsPointActiveLabelControl.Text" xml:space="preserve">
+    <value>Rewards points</value>
+  </data>
+  <data name="RewardsPointActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow customers to earn rewards points for their purchases.</value>
+  </data>
+  <data name="RightActiveLabelControl.Text" xml:space="preserve">
+    <value>Rights</value>
+  </data>
+  <data name="RightActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow granting rights (license key, serial number, etc.) normally for authorizing software or the use of downloadable products.</value>
+  </data>
+  <data name="RiskActiveLabelControl.Text" xml:space="preserve">
+    <value>Risk</value>
+  </data>
+  <data name="RiskActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow fraud score risk assessment.</value>
+  </data>
+  <data name="SalesOrderActiveLabelControl.Text" xml:space="preserve">
+    <value>Sales order</value>
+  </data>
+  <data name="SalesOrderActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for sales orders.</value>
+  </data>
+  <data name="ShippingActiveLabelControl.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="ShippingActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow charging a shipping fee on checkout.</value>
+  </data>
+  <data name="UserPaymentActiveLabelControl.Text" xml:space="preserve">
+    <value>User payment</value>
+  </data>
+  <data name="UserPaymentActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for user payments.</value>
+  </data>
+  <data name="VoucherActiveLabelControl.Text" xml:space="preserve">
+    <value>Voucher</value>
+  </data>
+  <data name="VoucherActiveLabelControl.Help" xml:space="preserve">
+    <value>Offer vouchers (gift cards/certificates) to be used as money.</value>
+  </data>
+  <data name="WarehouseActiveLabelControl.Text" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="WarehouseActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow associating products to warehouses. This feature is useful for dropshipping or if you ship products out from a different location than your primary store address.</value>
+  </data>
+  <data name="WishListActiveLabelControl.Text" xml:space="preserve">
+    <value>Wish list</value>
+  </data>
+  <data name="WishListActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the wish list module.</value>
+  </data>
+  <data name="GeneralStringTokenizerActiveLabelControl.Text" xml:space="preserve">
+    <value>Replace tokens</value>
+  </data>
+  <data name="GeneralStringTokenizerActiveLabelControl.Help" xml:space="preserve">
+    <value>Automatically detect and replace known tokens using MyTokens or DNN tokens on common text areas such as description, rules, etc..</value>
+  </data>
+  <data name="GeneralObjectKeyShowLabelControl.Text" xml:space="preserve">
+    <value>Show object key</value>
+  </data>
+  <data name="GeneralObjectKeyShowLabelControl.Help" xml:space="preserve">
+    <value>The object's unique key makes it easy to reference associated objects in the import/export file.</value>
+  </data>
+  <data name="SelectAllLink.Text" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="DeselectAllLink.Text" xml:space="preserve">
+    <value>Deselect all</value>
+  </data>
+  <data name="GeneralPriceDisplayModeLabelControl.Text" xml:space="preserve">
+    <value>Price display mode</value>
+  </data>
+  <data name="GeneralPriceDisplayModeLabelControl.Help" xml:space="preserve">
+    <value>Configure how prices should be displayed with or without tax usually for VAT tax compliance.</value>
+  </data>
+  <data name="GeneralUnitsLengthLabelControl.Text" xml:space="preserve">
+    <value>Length unit</value>
+  </data>
+  <data name="GeneralUnitsLengthLabelControl.Help" xml:space="preserve">
+    <value>The default unit of measure.</value>
+  </data>
+  <data name="GeneralUnitsMassLabelControl.Text" xml:space="preserve">
+    <value>Weight unit</value>
+  </data>
+  <data name="GeneralUnitsMassLabelControl.Help" xml:space="preserve">
+    <value>The default unit of measure.</value>
+  </data>
+  <data name="GeneralProfileSubdivisionRequiredLabelControl.Text" xml:space="preserve">
+    <value>Require valid region</value>
+  </data>
+  <data name="GeneralProfileSubdivisionRequiredLabelControl.Help" xml:space="preserve">
+    <value>Require customer to enter a valid region. It is recommended to keep this a required field as certain payment gateways and real-time shipping providers may require the information.</value>
+  </data>
+  <data name="GeneralCountryAllowedLabelControl.Text" xml:space="preserve">
+    <value>Allowed countries</value>
+  </data>
+  <data name="GeneralCountryAllowedLabelControl.Help" xml:space="preserve">
+    <value>Select the countries that are allowed to purchase from your store.</value>
+  </data>
+  <data name="GeneralCountryDefaultLabelControl.Text" xml:space="preserve">
+    <value>Default country</value>
+  </data>
+  <data name="GeneralGeoIPActiveLabelControl.Text" xml:space="preserve">
+    <value>Enable GeoIP matching</value>
+  </data>
+  <data name="GeneralGeoIPActiveLabelControl.Help" xml:space="preserve">
+    <value>Lookup customer's physical location by matching with their IP address.</value>
+  </data>
+  <data name="GeneralNavigationLoginUrlLabelControl.Text" xml:space="preserve">
+    <value>Custom login page</value>
+  </data>
+  <data name="GeneralNavigationLoginUrlLabelControl.Help" xml:space="preserve">
+    <value>Specify a custom login page or use the system default if not specified.</value>
+  </data>
+  <data name="GeneralNavigationRegistrationUrlLabelControl.Text" xml:space="preserve">
+    <value>Custom registration page</value>
+  </data>
+  <data name="GeneralNavigationRegistrationUrlLabelControl.Help" xml:space="preserve">
+    <value>Specify a custom registration page or use the system default if not specified.</value>
+  </data>
+  <data name="GeneralLogLevelLabelControl.Text" xml:space="preserve">
+    <value>Log level</value>
+  </data>
+  <data name="GeneralLogLevelLabelControl.Help" xml:space="preserve">
+    <value>Select how much information to log to the system event viewer. Debug level log generates a lot of data useful for troubleshooting during development but may slow down performance. It is recommended to use Error log level during production.</value>
+  </data>
+  <data name="ErrorLabel.Text" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="DebugLabel.Text" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="ShowPriceLabel.Text" xml:space="preserve">
+    <value>Show Price</value>
+  </data>
+  <data name="ShowPriceTaxInclusiveLabel.Text" xml:space="preserve">
+    <value>Show Price Tax Inclusive</value>
+  </data>
+  <data name="CentimeterLabel.Text" xml:space="preserve">
+    <value>Centimeter</value>
+  </data>
+  <data name="FeetLabel.Text" xml:space="preserve">
+    <value>Feet</value>
+  </data>
+  <data name="InchLabel.Text" xml:space="preserve">
+    <value>Inch</value>
+  </data>
+  <data name="MeterLabel.Text" xml:space="preserve">
+    <value>Meter</value>
+  </data>
+  <data name="MillimeterLabel.Text" xml:space="preserve">
+    <value>Millimeter</value>
+  </data>
+  <data name="YardLabel.Text" xml:space="preserve">
+    <value>Yard</value>
+  </data>
+  <data name="GramLabel.Text" xml:space="preserve">
+    <value>Gram</value>
+  </data>
+  <data name="KilogramLabel.Text" xml:space="preserve">
+    <value>Kilogram</value>
+  </data>
+  <data name="MilligramLabel.Text" xml:space="preserve">
+    <value>Milligram</value>
+  </data>
+  <data name="PoundLabel.Text" xml:space="preserve">
+    <value>Pound</value>
+  </data>
+  <data name="OunceLabel.Text" xml:space="preserve">
+    <value>Ounce</value>
+  </data>
+  <data name="GeneralHeader.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="CacheClearedSuccessfulMessage.Text" xml:space="preserve">
+    <value>Cache cleared successfully.</value>
+  </data>
+  <data name="CountryRequiredMessage.Text" xml:space="preserve">
+    <value>At least one country must be selected.</value>
+  </data>
+  <data name="DefaultCountryMismatchMessage.Text" xml:space="preserve">
+    <value>Default country must be one of the allowed countries.</value>
+  </data>
+  <data name="GeneralStorePhoneLabelControl.Text" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="GeneralStoreDistrictLabelControl.Text" xml:space="preserve">
+    <value>District / Suburb</value>
+  </data>
+  <data name="StreetPlaceHolder.Text" xml:space="preserve">
+    <value>Street and number, P.O. box, c/o.</value>
+  </data>
+  <data name="UnitPlaceHolder.Text" xml:space="preserve">
+    <value>Apartment, suite, unit, building, floor, etc.</value>
+  </data>
+  <data name="ManageFavoriteActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the manage favorite module.</value>
+  </data>
+  <data name="ManageFavoriteActiveLabelControl.Text" xml:space="preserve">
+    <value>Manage favorite</value>
+  </data>
+  <data name="ManageFundActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the manage fund module.</value>
+  </data>
+  <data name="ManageFundActiveLabelControl.Text" xml:space="preserve">
+    <value>Manage fund</value>
+  </data>
+  <data name="ManageOrderActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the manage order module.</value>
+  </data>
+  <data name="ManageOrderActiveLabelControl.Text" xml:space="preserve">
+    <value>Manage order</value>
+  </data>
+  <data name="MachineActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow using artificial intelligence to help with various aspects of the store.</value>
+  </data>
+  <data name="MachineActiveLabelControl.Text" xml:space="preserve">
+    <value>Machine AI</value>
+  </data>
+  <data name="GeneralSubdivisionDefaultLabelControl.Text" xml:space="preserve">
+    <value>Default region</value>
+  </data>
+  <data name="ManageRegisterActiveLabelControl.Help" xml:space="preserve">
+    <value>Allow advanced configuration for the manage register module.</value>
+  </data>
+  <data name="ManageRegisterActiveLabelControl.Text" xml:space="preserve">
+    <value>Manage register</value>
+  </data>
+</root>

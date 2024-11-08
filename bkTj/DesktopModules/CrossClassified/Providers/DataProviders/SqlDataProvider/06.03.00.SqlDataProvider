@@ -1,0 +1,362 @@
+/******  Table CP_Product_Type  ******/
+
+/******   add columns  ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_PreviousVersion bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Summary bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_LinkUrl bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Description bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Image bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Support bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_License bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Price bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_StockQuantity bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Delivery bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_SpecialOffer bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Weight bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_PackageFee bit NULL
+Go
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add FieldEnable_Sku bit NULL
+Go
+
+/******   update existing data to default value  ******/
+Update {databaseOwner}{objectQualifier}CP_Product_Type
+Set [FieldEnable_PreviousVersion]=1,
+    [FieldEnable_Summary]=1,
+    [FieldEnable_LinkUrl]=1,
+    [FieldEnable_Description]=1,
+    [FieldEnable_Image]=1,
+    [FieldEnable_Support]=1,
+    [FieldEnable_License]=1,
+    [FieldEnable_Price]=1,
+    [FieldEnable_StockQuantity]=1,
+    [FieldEnable_Delivery]=1,
+    [FieldEnable_SpecialOffer]=1,
+    [FieldEnable_Weight]=1,
+    [FieldEnable_PackageFee]=1,
+    [FieldEnable_Sku]=1
+Go
+
+/******   drop legacy procedure CP_Product_Type ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+
+/******   create new procedure  ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByDnnSearch]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+Create PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDnnSearch]
+   @TypeId   int
+AS
+    SELECT
+	a.*,
+    ''UserName''=
+    (select UserName from {databaseOwner}{objectQualifier}Users where {databaseOwner}{objectQualifier}Users.UserId=a.UserId),
+    ''RatingTotal''=
+    (select sum(Rating) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''RatingVotes''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Rating where {databaseOwner}{objectQualifier}CP_Product_Rating.ProductId=a.Id),
+    ''Comments''=
+     (select count(Id) from {databaseOwner}{objectQualifier}CP_Product_Comment where {databaseOwner}{objectQualifier}CP_Product_Comment.ProductId=a.Id and {databaseOwner}{objectQualifier}CP_Product_Comment.IsPrivate=0)
+FROM {databaseOwner}{objectQualifier}CP_Product_Product a
+WHERE (a.TypeId = @TypeId)--TypeId
+    and   (a.Id in (
+	SELECT DISTINCT ProductId FROM {databaseOwner}{objectQualifier}CP_Product_ProductToRole
+	WHERE ({databaseOwner}{objectQualifier}CP_Product_ProductToRole.RoleId = -1 )))--only display view roles=-1
+    and ( a.Authed = 1) -- Authorized
+    and ( a.Active = 1)  -- Active
+    ORDER BY a.PublishDate  desc
+
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+	@PortalId int,
+    @Name nvarchar(80),
+	@ParentId int,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@TypePath nvarchar(255),
+	@ListPage int,
+	@DetailPage int,
+	@SellType int,
+	@Sellable bit,
+	@Order int,
+	@Level int,
+	@Description nvarchar(1000),
+	@EnableTax bit,
+    @ChargePercent decimal(10, 2),
+    @EnableField1 bit,
+	@Field1Title nvarchar(50),
+	@Field1Default ntext,
+	@EnableField2 bit,
+	@Field2Title nvarchar(50),
+	@Field2Default ntext,
+	@EnableField3 bit,
+	@Field3Title nvarchar(50),
+	@Field3Default ntext,
+	@EnableField4 bit,
+	@Field4Title nvarchar(50),
+	@Field4Default ntext,
+	@EnableField5 bit,
+	@Field5Title nvarchar(50),
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit,
+	@FieldEnable_Summary bit,
+	@FieldEnable_LinkUrl bit,
+	@FieldEnable_Description bit,
+	@FieldEnable_Image bit,
+	@FieldEnable_Support bit,
+	@FieldEnable_License bit,
+	@FieldEnable_Price bit,
+	@FieldEnable_StockQuantity bit,
+	@FieldEnable_Delivery bit,
+	@FieldEnable_SpecialOffer bit,
+	@FieldEnable_Weight bit,
+	@FieldEnable_PackageFee bit,
+	@FieldEnable_Sku bit
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Type (
+	[PortalId],
+    [Name],
+	[ParentId],
+	[Thumbnail],
+	[Image],
+	[TypePath],
+	[ListPage],
+	[DetailPage],
+	[SellType],
+	[Sellable],
+	[Order],
+	[Level],
+	[Description],
+	[EnableTax],
+    [ChargePercent],
+    [EnableField1],
+	[Field1Title],
+	[Field1Default],
+	[EnableField2],
+	[Field2Title],
+	[Field2Default],
+	[EnableField3],
+	[Field3Title],
+	[Field3Default],
+	[EnableField4],
+	[Field4Title],
+	[Field4Default],
+	[EnableField5],
+	[Field5Title],
+	[Field5Default],
+    [FieldEnable_PreviousVersion],
+	[FieldEnable_Summary],
+	[FieldEnable_LinkUrl],
+	[FieldEnable_Description],
+	[FieldEnable_Image],
+	[FieldEnable_Support],
+	[FieldEnable_License],
+	[FieldEnable_Price],
+	[FieldEnable_StockQuantity],
+	[FieldEnable_Delivery],
+	[FieldEnable_SpecialOffer],
+	[FieldEnable_Weight],
+	[FieldEnable_PackageFee],
+	[FieldEnable_Sku]
+) VALUES (
+	@PortalId,
+	@Name,
+	@ParentId,
+	@Thumbnail,
+	@Image,
+	@TypePath,
+	@ListPage,
+	@DetailPage,
+	@SellType,
+	@Sellable,
+	@Order,
+	@Level,
+	@Description,
+	@EnableTax,
+	@ChargePercent,
+	@EnableField1,
+	@Field1Title,
+	@Field1Default,
+	@EnableField2,
+	@Field2Title,
+	@Field2Default,
+	@EnableField3,
+	@Field3Title,
+	@Field3Default,
+	@EnableField4,
+	@Field4Title,
+	@Field4Default,
+	@EnableField5,
+	@Field5Title,
+	@Field5Default,
+    @FieldEnable_PreviousVersion,
+	@FieldEnable_Summary,
+	@FieldEnable_LinkUrl,
+	@FieldEnable_Description,
+	@FieldEnable_Image,
+	@FieldEnable_Support,
+	@FieldEnable_License,
+	@FieldEnable_Price,
+	@FieldEnable_StockQuantity,
+	@FieldEnable_Delivery,
+	@FieldEnable_SpecialOffer,
+	@FieldEnable_Weight,
+	@FieldEnable_PackageFee,
+	@FieldEnable_Sku
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(80), 
+	@ParentId int, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@TypePath nvarchar(255), 
+	@ListPage int, 
+	@DetailPage int, 
+	@SellType int, 
+	@Sellable bit, 
+	@Order int, 
+	@Level int, 
+	@Description nvarchar(1000), 
+	@EnableTax bit, 
+	@ChargePercent decimal(10, 2), 
+	@EnableField1 bit, 
+	@Field1Title nvarchar(50), 
+	@Field1Default ntext, 
+	@EnableField2 bit, 
+	@Field2Title nvarchar(50), 
+	@Field2Default ntext, 
+	@EnableField3 bit, 
+	@Field3Title nvarchar(50), 
+	@Field3Default ntext, 
+	@EnableField4 bit, 
+	@Field4Title nvarchar(50), 
+	@Field4Default ntext, 
+	@EnableField5 bit, 
+	@Field5Title nvarchar(50), 
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit, 
+	@FieldEnable_Summary bit, 
+	@FieldEnable_LinkUrl bit, 
+	@FieldEnable_Description bit, 
+	@FieldEnable_Image bit, 
+	@FieldEnable_Support bit, 
+	@FieldEnable_License bit, 
+	@FieldEnable_Price bit, 
+	@FieldEnable_StockQuantity bit, 
+	@FieldEnable_Delivery bit, 
+	@FieldEnable_SpecialOffer bit, 
+	@FieldEnable_Weight bit, 
+	@FieldEnable_PackageFee bit, 
+	@FieldEnable_Sku bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Type SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[ParentId] = @ParentId,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[TypePath] = @TypePath,
+	[ListPage] = @ListPage,
+	[DetailPage] = @DetailPage,
+	[SellType] = @SellType,
+	[Sellable] = @Sellable,
+	[Order] = @Order,
+	[Level] = @Level,
+	[Description] = @Description,
+	[EnableTax] = @EnableTax,
+	[ChargePercent] = @ChargePercent,
+	[EnableField1] = @EnableField1,
+	[Field1Title] = @Field1Title,
+	[Field1Default] = @Field1Default,
+	[EnableField2] = @EnableField2,
+	[Field2Title] = @Field2Title,
+	[Field2Default] = @Field2Default,
+	[EnableField3] = @EnableField3,
+	[Field3Title] = @Field3Title,
+	[Field3Default] = @Field3Default,
+	[EnableField4] = @EnableField4,
+	[Field4Title] = @Field4Title,
+	[Field4Default] = @Field4Default,
+	[EnableField5] = @EnableField5,
+	[Field5Title] = @Field5Title,
+	[Field5Default] = @Field5Default,
+    [FieldEnable_PreviousVersion] = @FieldEnable_PreviousVersion,
+	[FieldEnable_Summary] = @FieldEnable_Summary,
+	[FieldEnable_LinkUrl] = @FieldEnable_LinkUrl,
+	[FieldEnable_Description] = @FieldEnable_Description,
+	[FieldEnable_Image] = @FieldEnable_Image,
+	[FieldEnable_Support] = @FieldEnable_Support,
+	[FieldEnable_License] = @FieldEnable_License,
+	[FieldEnable_Price] = @FieldEnable_Price,
+	[FieldEnable_StockQuantity] = @FieldEnable_StockQuantity,
+	[FieldEnable_Delivery] = @FieldEnable_Delivery,
+	[FieldEnable_SpecialOffer] = @FieldEnable_SpecialOffer,
+	[FieldEnable_Weight] = @FieldEnable_Weight,
+	[FieldEnable_PackageFee] = @FieldEnable_PackageFee,
+	[FieldEnable_Sku] = @FieldEnable_Sku
+WHERE
+	[Id] = @Id
+
+
+' 
+END
+GO

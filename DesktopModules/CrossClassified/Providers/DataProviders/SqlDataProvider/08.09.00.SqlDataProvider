@@ -1,0 +1,461 @@
+
+
+/******   create new table ******/
+
+/****** Object:  Table [CP_Product_ClientUpload]    Script Date: 2016/9/1 11:14:36 ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_ClientUpload](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NULL,
+	[ClientId] [int] NULL,
+	[VendorId] [int] NULL,
+	[RuleId] [int] NULL,
+	[OrderDetailId] [int] NULL,
+	[TicketId] [int] NULL,
+	[Title] [nvarchar](500) NULL,
+	[FileName] [nvarchar](500) NULL,
+	[FileSize] [int] NULL,
+	[FileId] [int] NULL,
+	[A3Bucket] [nvarchar](200) NULL,
+	[A3Key] [nvarchar](200) NULL,
+	[Extension] [nvarchar](100) NULL,
+	[CreatedDate] [datetime] NULL,
+	[UploadFrom] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_ClientUpload] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+/****** Object:  Table [CP_Product_UploadRule]    Script Date: 2016/9/1 11:14:36 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_UploadRule](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[Title] [nvarchar](500) NULL,
+	[Extension] [nvarchar](500) NULL,
+	[MaxSize] [int] NULL,
+	[Require] [bit] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_UploadRule] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_UploadRule]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_UploadRule_CP_Product_Type] FOREIGN KEY([TypeId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Type] ([Id])
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_UploadRule] CHECK CONSTRAINT [FK_{objectQualifier}CP_Product_UploadRule_CP_Product_Type]
+GO
+
+
+
+
+/******   alter table CP_Product_Type ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowUploadForOrder bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowUploadForTicket bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add UploadLimit int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add UploadExtension nvarchar(500) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add UploadSize int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowUploadForOrder_Vendor bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowUploadForTicket_Vendor bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add UploadSize_Vendor int NULL
+
+go
+
+
+
+
+
+/****** drop legacy stored procedures ******/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+
+
+/****** create new stored procedures ******/
+
+/****** Object:  StoredProcedure [CP_Product_Type_Add]    Script Date: 2016/9/1 11:31:44 ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+	@PortalId int,
+    @Name nvarchar(80),
+	@ParentId int,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@TypePath nvarchar(255),
+	@ListPage int,
+	@DetailPage int,
+	@SellType int,
+	@Sellable bit,
+	@Order int,
+	@Level int,
+	@Description nvarchar(1000),
+	@EnableTax bit,
+    @ChargePercent decimal(10, 2),
+    @EnableField1 bit,
+	@Field1Title nvarchar(50),
+	@Field1Default ntext,
+	@EnableField2 bit,
+	@Field2Title nvarchar(50),
+	@Field2Default ntext,
+	@EnableField3 bit,
+	@Field3Title nvarchar(50),
+	@Field3Default ntext,
+	@EnableField4 bit,
+	@Field4Title nvarchar(50),
+	@Field4Default ntext,
+	@EnableField5 bit,
+	@Field5Title nvarchar(50),
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit,
+	@FieldEnable_Summary bit,
+	@FieldEnable_LinkUrl bit,
+	@FieldEnable_Description bit,
+	@FieldEnable_Image bit,
+	@FieldEnable_Support bit,
+	@FieldEnable_License bit,
+	@FieldEnable_Price bit,
+	@FieldEnable_StockQuantity bit,
+	@FieldEnable_Delivery bit,
+	@FieldEnable_SpecialOffer bit,
+	@FieldEnable_Weight bit,
+	@FieldEnable_PackageFee bit,
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit,
+    @AuctionType int,
+    @AllowProxyBidding bit,
+    @MaxAuctionDays int,
+    @WinnerType int,
+    @ListingType int,
+    @BidIncrement decimal(18,2),
+    @AllowLocation bit,
+	@AllowUploadForOrder bit,
+	@AllowUploadForTicket bit,
+	@UploadLimit int,
+	@UploadExtension nvarchar(500),
+	@UploadSize int,
+	@AllowUploadForOrder_Vendor bit,
+	@AllowUploadForTicket_Vendor bit,
+	@UploadSize_Vendor int
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Type (
+	[PortalId],
+    [Name],
+	[ParentId],
+	[Thumbnail],
+	[Image],
+	[TypePath],
+	[ListPage],
+	[DetailPage],
+	[SellType],
+	[Sellable],
+	[Order],
+	[Level],
+	[Description],
+	[EnableTax],
+    [ChargePercent],
+    [EnableField1],
+	[Field1Title],
+	[Field1Default],
+	[EnableField2],
+	[Field2Title],
+	[Field2Default],
+	[EnableField3],
+	[Field3Title],
+	[Field3Default],
+	[EnableField4],
+	[Field4Title],
+	[Field4Default],
+	[EnableField5],
+	[Field5Title],
+	[Field5Default],
+    [FieldEnable_PreviousVersion],
+	[FieldEnable_Summary],
+	[FieldEnable_LinkUrl],
+	[FieldEnable_Description],
+	[FieldEnable_Image],
+	[FieldEnable_Support],
+	[FieldEnable_License],
+	[FieldEnable_Price],
+	[FieldEnable_StockQuantity],
+	[FieldEnable_Delivery],
+	[FieldEnable_SpecialOffer],
+	[FieldEnable_Weight],
+	[FieldEnable_PackageFee],
+	[FieldEnable_Sku],
+	[RequireAddress],
+    [AllowGoogleMap],
+    [AllowRecursiveBill],
+    [AuctionType],
+    [AllowProxyBidding],
+    [MaxAuctionDays],
+    [WinnerType],
+    [ListingType],
+    [BidIncrement],
+    [AllowLocation],
+	[AllowUploadForOrder],
+	[AllowUploadForTicket],
+	[UploadLimit],
+	[UploadExtension],
+	[UploadSize],
+	[AllowUploadForOrder_Vendor],
+	[AllowUploadForTicket_Vendor],
+	[UploadSize_Vendor]
+) VALUES (
+	@PortalId,
+	@Name,
+	@ParentId,
+	@Thumbnail,
+	@Image,
+	@TypePath,
+	@ListPage,
+	@DetailPage,
+	@SellType,
+	@Sellable,
+	@Order,
+	@Level,
+	@Description,
+	@EnableTax,
+	@ChargePercent,
+	@EnableField1,
+	@Field1Title,
+	@Field1Default,
+	@EnableField2,
+	@Field2Title,
+	@Field2Default,
+	@EnableField3,
+	@Field3Title,
+	@Field3Default,
+	@EnableField4,
+	@Field4Title,
+	@Field4Default,
+	@EnableField5,
+	@Field5Title,
+	@Field5Default,
+    @FieldEnable_PreviousVersion,
+	@FieldEnable_Summary,
+	@FieldEnable_LinkUrl,
+	@FieldEnable_Description,
+	@FieldEnable_Image,
+	@FieldEnable_Support,
+	@FieldEnable_License,
+	@FieldEnable_Price,
+	@FieldEnable_StockQuantity,
+	@FieldEnable_Delivery,
+	@FieldEnable_SpecialOffer,
+	@FieldEnable_Weight,
+	@FieldEnable_PackageFee,
+	@FieldEnable_Sku,
+	@RequireAddress,
+    @AllowGoogleMap,
+    @AllowRecursiveBill,
+    @AuctionType,
+    @AllowProxyBidding,
+    @MaxAuctionDays,
+    @WinnerType,
+    @ListingType,
+    @BidIncrement,
+    @AllowLocation,
+	@AllowUploadForOrder,
+	@AllowUploadForTicket,
+	@UploadLimit,
+	@UploadExtension,
+	@UploadSize,
+	@AllowUploadForOrder_Vendor,
+	@AllowUploadForTicket_Vendor,
+	@UploadSize_Vendor
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+
+/****** Object:  StoredProcedure [CP_Product_Type_Update]    Script Date: 2016/9/1 11:31:44 ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(80), 
+	@ParentId int, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@TypePath nvarchar(255), 
+	@ListPage int, 
+	@DetailPage int, 
+	@SellType int, 
+	@Sellable bit, 
+	@Order int, 
+	@Level int, 
+	@Description nvarchar(1000), 
+	@EnableTax bit, 
+	@ChargePercent decimal(10, 2), 
+	@EnableField1 bit, 
+	@Field1Title nvarchar(50), 
+	@Field1Default ntext, 
+	@EnableField2 bit, 
+	@Field2Title nvarchar(50), 
+	@Field2Default ntext, 
+	@EnableField3 bit, 
+	@Field3Title nvarchar(50), 
+	@Field3Default ntext, 
+	@EnableField4 bit, 
+	@Field4Title nvarchar(50), 
+	@Field4Default ntext, 
+	@EnableField5 bit, 
+	@Field5Title nvarchar(50), 
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit, 
+	@FieldEnable_Summary bit, 
+	@FieldEnable_LinkUrl bit, 
+	@FieldEnable_Description bit, 
+	@FieldEnable_Image bit, 
+	@FieldEnable_Support bit, 
+	@FieldEnable_License bit, 
+	@FieldEnable_Price bit, 
+	@FieldEnable_StockQuantity bit, 
+	@FieldEnable_Delivery bit, 
+	@FieldEnable_SpecialOffer bit, 
+	@FieldEnable_Weight bit, 
+	@FieldEnable_PackageFee bit, 
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit,
+    @AuctionType int,
+    @AllowProxyBidding bit,
+    @MaxAuctionDays int,
+    @WinnerType int,
+    @ListingType int,
+    @BidIncrement decimal(18,2),
+    @AllowLocation bit,
+	@AllowUploadForOrder bit,
+	@AllowUploadForTicket bit,
+	@UploadLimit int,
+	@UploadExtension nvarchar(500),
+	@UploadSize int,
+	@AllowUploadForOrder_Vendor bit,
+	@AllowUploadForTicket_Vendor bit,
+	@UploadSize_Vendor int    
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Type SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[ParentId] = @ParentId,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[TypePath] = @TypePath,
+	[ListPage] = @ListPage,
+	[DetailPage] = @DetailPage,
+	[SellType] = @SellType,
+	[Sellable] = @Sellable,
+	[Order] = @Order,
+	[Level] = @Level,
+	[Description] = @Description,
+	[EnableTax] = @EnableTax,
+	[ChargePercent] = @ChargePercent,
+	[EnableField1] = @EnableField1,
+	[Field1Title] = @Field1Title,
+	[Field1Default] = @Field1Default,
+	[EnableField2] = @EnableField2,
+	[Field2Title] = @Field2Title,
+	[Field2Default] = @Field2Default,
+	[EnableField3] = @EnableField3,
+	[Field3Title] = @Field3Title,
+	[Field3Default] = @Field3Default,
+	[EnableField4] = @EnableField4,
+	[Field4Title] = @Field4Title,
+	[Field4Default] = @Field4Default,
+	[EnableField5] = @EnableField5,
+	[Field5Title] = @Field5Title,
+	[Field5Default] = @Field5Default,
+    [FieldEnable_PreviousVersion] = @FieldEnable_PreviousVersion,
+	[FieldEnable_Summary] = @FieldEnable_Summary,
+	[FieldEnable_LinkUrl] = @FieldEnable_LinkUrl,
+	[FieldEnable_Description] = @FieldEnable_Description,
+	[FieldEnable_Image] = @FieldEnable_Image,
+	[FieldEnable_Support] = @FieldEnable_Support,
+	[FieldEnable_License] = @FieldEnable_License,
+	[FieldEnable_Price] = @FieldEnable_Price,
+	[FieldEnable_StockQuantity] = @FieldEnable_StockQuantity,
+	[FieldEnable_Delivery] = @FieldEnable_Delivery,
+	[FieldEnable_SpecialOffer] = @FieldEnable_SpecialOffer,
+	[FieldEnable_Weight] = @FieldEnable_Weight,
+	[FieldEnable_PackageFee] = @FieldEnable_PackageFee,
+	[FieldEnable_Sku] = @FieldEnable_Sku,
+	[RequireAddress] = @RequireAddress,
+    [AllowGoogleMap] = @AllowGoogleMap,
+    [AllowRecursiveBill] = @AllowRecursiveBill,
+    [AuctionType] = @AuctionType,
+    [AllowProxyBidding] = @AllowProxyBidding,
+    [MaxAuctionDays] = @MaxAuctionDays,
+    [WinnerType] = @WinnerType,
+    [ListingType] = @ListingType,
+    [BidIncrement] = @BidIncrement,
+    [AllowLocation] = @AllowLocation,
+	[AllowUploadForOrder] = @AllowUploadForOrder,
+	[AllowUploadForTicket] = @AllowUploadForTicket,
+	[UploadLimit] = @UploadLimit,
+	[UploadExtension] = @UploadExtension,
+	[UploadSize] = @UploadSize,
+	[AllowUploadForOrder_Vendor] = @AllowUploadForOrder_Vendor,
+	[AllowUploadForTicket_Vendor] = @AllowUploadForTicket_Vendor,
+	[UploadSize_Vendor] = @UploadSize_Vendor
+WHERE
+	[Id] = @Id
+
+' 
+END
+
+GO
+

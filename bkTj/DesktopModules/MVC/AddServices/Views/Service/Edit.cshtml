@@ -1,0 +1,115 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddServices.Models.Service>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
+<div id="Service-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight"><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div><label for="serviceName">@Dnn.LocalizeString("lblName")</label></div>
+                @Html.TextBoxFor(m => m.ServiceName)
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="file">Service Image</label>
+                </div>
+                <input type="file" name="file" id="file" onchange="previewImage(event)" />
+                @if (!string.IsNullOrEmpty(Model.ServiceImage))
+                {
+                    <img id="preview" src="@Url.Content(Model.ServiceImage)" alt="Preview Image" style="max-width: 200px;" />
+                }
+                else
+                {
+                    <img id="preview" src="#" alt="Preview Image" style="max-width: 200px; display: none;" />
+                }
+                @Html.HiddenFor(m => m.ServiceImage, new { id = "existingImageUrl" })
+            </div>
+            <script>
+                window.onload = function () {
+                    var fileInput = document.getElementById('file');
+                    var previewImg = document.getElementById('preview');
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            previewImg.src = e.target.result;
+                            previewImg.style.display = 'block';
+                        }
+                        reader.readAsDataURL(fileInput.files[0]);
+                    }
+                };
+
+                function previewImage(event) {
+                    var input = event.target;
+                    var img = document.getElementById('preview');
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            img.src = e.target.result;
+                            img.style.display = 'block';
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    } else {
+                        img.src = "#";
+                        img.style.display = 'none';
+                    }
+                }
+            </script>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="DisplayOrder">Display Order</label>
+                </div>
+                @Html.TextBoxFor(m => m.DisplayOrder)
+            </div>
+            <div class="dnnFormItem">
+                <div>
+                    <label for="serviceUrl">About Service Url</label>
+                </div>
+                @Html.TextBoxFor(m => m.ServiceUrl)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="serviceDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                <textarea id="serviceDescription" name="ServiceDescription">@Model.ServiceDescription</textarea>
+                <!-- CKEditor initialization -->
+                <script>
+                    CKEDITOR.replace('serviceDescription');
+                </script>
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="isActive">IsActive</label></div>
+                @Html.CheckBoxFor(m => m.IsActive)
+            </div>
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+    <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+    <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+</div>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({
+                expandText: '@Dnn.LocalizeString("ExpandAll")',
+                collapseText: '@Dnn.LocalizeString("CollapseAll")',
+                targetArea: '#dnnEditBasicSettings'
+            });
+        }
+
+        $(function() {
+            $('#cancelEdit').click(function() { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+</script>

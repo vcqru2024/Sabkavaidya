@@ -1,0 +1,112 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add Extension column to RecurringSalesOrder table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'Extension')
+BEGIN
+   ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD Extension xml NULL
+END
+GO
+
+-- Add SalesOrderDetailID column to RecurringSalesOrder table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'SalesOrderDetailID')
+BEGIN
+   ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD SalesOrderDetailID int NULL
+   ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD CONSTRAINT FK_{objectQualifier}Revindex_Storefront_RecurringSalesOrder_Revindex_Storefront_SalesOrderDetail FOREIGN KEY (SalesOrderDetailID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail (SalesOrderDetailID) ON UPDATE  NO ACTION ON DELETE  NO ACTION 
+
+   CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_RecurringSalesOrder_6 ON {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder (SalesOrderDetailID)
+END
+GO
+
+
+-- Associate historical RecurringSalesOrder.OriginalSalesOrderID to new RecurringSalesOrder.SalesOrderDetailID
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'SalesOrderDetailID')
+BEGIN
+	UPDATE rso
+	SET rso.SalesOrderDetailID = sod.SalesOrderDetailID
+	FROM {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder rso 
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder so
+	ON so.SalesOrderID = rso.OriginalSalesOrderID
+	JOIN {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrderDetail sod
+	ON sod.SalesOrderID = so.SalesOrderID
+	WHERE sod.ProductVariantID = rso.ProductVariantID
+END
+GO
+
+
+
+-- Increase object keys to 300 characters
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Category] ALTER COLUMN [CategoryKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Distributor] ALTER COLUMN [DistributorKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Manufacturer] ALTER COLUMN [ManufacturerKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Product] ALTER COLUMN [ProductKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductAttributeDefinition] ALTER COLUMN [ProductAttributeDefinitionKey] NVARCHAR(300) NOT NULL
+
+-- ProductComponent.ProductComponentKey was incorrect created with NULL. We need to set it back properly by dropping index first and recreating index
+DROP INDEX [IX_{objectQualifier}Revindex_Storefront_ProductComponent_1] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductComponent]
+UPDATE {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductComponent] SET ProductComponentKey = NEWID() WHERE ProductComponentKey IS NULL
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductComponent] ALTER COLUMN [ProductComponentKey] NVARCHAR(300) NOT NULL
+CREATE UNIQUE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_ProductComponent_1] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductComponent] ([ProductComponentKey] ASC)
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductVariant] ALTER COLUMN [ProductVariantKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductVariantGroup] ALTER COLUMN [ProductVariantGroupKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_ProductVariantGroupOption] ALTER COLUMN [ProductVariantGroupOptionKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Seller] ALTER COLUMN [SellerKey] NVARCHAR(300) NOT NULL
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Warehouse] ALTER COLUMN [WarehouseKey] NVARCHAR(300) NOT NULL
+
+GO
+
+
+
+-- Support Spam risk check
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'RiskMethodsSpamActive')
+BEGIN
+   ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD RiskMethodsSpamActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_RiskMethodsSpamActive DEFAULT 0
+   ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_RiskMethodsSpamActive
+
+   ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		RiskProvidersGoogleRecaptchaSiteKey varchar(255) NULL,
+		RiskProvidersGoogleRecaptchaSecretKey varchar(255) NULL,
+		RiskMethodsSpamRiskProvider varchar(50) NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD RiskMethodsSpamApprovalScore int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_RiskMethodsSpamApprovalScore DEFAULT 50
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_RiskMethodsSpamApprovalScore
+END
+GO
+
+-- Rename RiskMethodsFraudRiskGateway to RiskMethodsFraudRiskProvider
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'RiskMethodsFraudRiskGateway')
+BEGIN
+	EXECUTE sp_rename N'{databaseOwner}{objectQualifier}Revindex_Storefront_Configuration.RiskMethodsFraudRiskGateway', N'RiskMethodsFraudRiskProvider', 'COLUMN'
+END
+GO
+
+
+-- Add ExternalID to Product
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Product' AND COLUMN_NAME = 'ExternalID')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Product ADD ExternalID varchar(100) NULL
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_Product_3 ON {databaseOwner}{objectQualifier}Revindex_Storefront_Product (ExternalID)
+END
+GO
+
+-- Add ExternalID to ProductVariant
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_ProductVariant' AND COLUMN_NAME = 'ExternalID')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant ADD ExternalID varchar(100) NULL
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_ProductVariant_6 ON {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant (ExternalID)
+END
+GO
+

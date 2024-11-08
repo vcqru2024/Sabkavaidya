@@ -1,0 +1,41 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Support Flutterwave Standard Payment
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysFlutterwaveStandardSecretKey')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysFlutterwaveStandardSecretKey varchar(255) NULL
+
+END 
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentMethodsFlutterwaveStandardActive')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsFlutterwaveStandardActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsFlutterwaveStandardActive DEFAULT 0,
+		PaymentMethodsFlutterwaveStandardAvailabilityRule xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsFlutterwaveStandardActive
+END 
+GO
+
+-- Support IPay Africa Web Payment
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentGatewaysIPayAfricaWebSecretKey')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentGatewaysIPayAfricaWebSecretKey varchar(255) NULL,
+		PaymentGatewaysIPayAfricaWebVendorID varchar(255) NULL,
+		PaymentGatewaysIPayAfricaWebTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysIPayAfricaWebTestMode DEFAULT ((0)),
+		PaymentMethodsIPayAfricaWebActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsIPayAfricaWebActive DEFAULT ((0)),
+		PaymentMethodsIPayAfricaWebAvailabilityRule xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysIPayAfricaWebTestMode
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsIPayAfricaWebActive
+END 
+GO
+

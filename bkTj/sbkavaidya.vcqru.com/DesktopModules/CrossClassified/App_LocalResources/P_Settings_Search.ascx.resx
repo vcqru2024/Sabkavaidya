@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="plTemplate.Text" xml:space="preserve">
+    <value>Template </value>
+  </data>
+  <data name="plTemplate.Help" xml:space="preserve">
+    <value>Search template locates under desktopmodules/crossclassified/template/product/search, you can customize your own.</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Product search settings</value>
+  </data>
+  <data name="plInputWidth.Text" xml:space="preserve">
+    <value>Input Width</value>
+  </data>
+  <data name="plInputWidth.Help" xml:space="preserve">
+    <value>Set search input width</value>
+  </data>
+  <data name="plShowCategory.Text" xml:space="preserve">
+    <value>Show Category</value>
+  </data>
+  <data name="plShowCategory.Help" xml:space="preserve">
+    <value>Check to show categories</value>
+  </data>
+  <data name="plCategoryWidth.Text" xml:space="preserve">
+    <value>Category Width</value>
+  </data>
+  <data name="plCategoryWidth.Help" xml:space="preserve">
+    <value>Set category width</value>
+  </data>
+  <data name="plProductListPage.Text" xml:space="preserve">
+    <value>Cp_Product_List Sub Module Page</value>
+  </data>
+  <data name="plProductListPage.Help" xml:space="preserve">
+    <value>Select when click search, which page will display  related product.That page should have a Cp_Product_List module instance on it.If don't specify, module will use product list page which specified for selected product department.</value>
+  </data>
+  <data name="plBreakOnCategory.Text" xml:space="preserve">
+    <value>Break between category and input</value>
+  </data>
+  <data name="plBreakOnCategory.Help" xml:space="preserve">
+    <value>Break between category and input</value>
+  </data>
+  <data name="plLinkTarget.Help" xml:space="preserve">
+    <value>Choose search result target window</value>
+  </data>
+  <data name="plLinkTarget.Text" xml:space="preserve">
+    <value>Result Target</value>
+  </data>
+  <data name="plAuthorListWidth.Help" xml:space="preserve">
+    <value>Set seller list width</value>
+  </data>
+  <data name="plAuthorListWidth.Text" xml:space="preserve">
+    <value>Seller list width</value>
+  </data>
+  <data name="plBreakOnAuthorList.Help" xml:space="preserve">
+    <value>Break between seller list and input</value>
+  </data>
+  <data name="plBreakOnAuthorList.Text" xml:space="preserve">
+    <value>Break between seller list and input</value>
+  </data>
+  <data name="plShowAuthorList.Help" xml:space="preserve">
+    <value>Check to show product seller list.</value>
+  </data>
+  <data name="plShowAuthorList.Text" xml:space="preserve">
+    <value>Show Seller List</value>
+  </data>
+  <data name="plType.Help" xml:space="preserve">
+    <value>Select department which product belongs</value>
+  </data>
+  <data name="plType.Text" xml:space="preserve">
+    <value>Select Department</value>
+  </data>
+  <data name="li_Mode_Advanced.Text" xml:space="preserve">
+    <value>Advanced Search</value>
+  </data>
+  <data name="li_Mode_Basic.Text" xml:space="preserve">
+    <value>Basic Search</value>
+  </data>
+  <data name="plBuiltInField_Author.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product creator</value>
+  </data>
+  <data name="plBuiltInField_Author.Text" xml:space="preserve">
+    <value>Creator</value>
+  </data>
+  <data name="plBuiltInField_Category.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product category</value>
+  </data>
+  <data name="plBuiltInField_Category.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="plBuiltInField_CreatedDate.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product created date</value>
+  </data>
+  <data name="plBuiltInField_CreatedDate.Text" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="plBuiltInField_ExpireDate.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product expire date</value>
+  </data>
+  <data name="plBuiltInField_ExpireDate.Text" xml:space="preserve">
+    <value>Expire Date</value>
+  </data>
+  <data name="plBuiltInField_PublishDate.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product publish date</value>
+  </data>
+  <data name="plBuiltInField_PublishDate.Text" xml:space="preserve">
+    <value>Publish Date</value>
+  </data>
+  <data name="plBuiltInField_RatingAverage.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product average rating</value>
+  </data>
+  <data name="plBuiltInField_RatingAverage.Text" xml:space="preserve">
+    <value>Rating Average</value>
+  </data>
+  <data name="plBuiltInField_Title.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product title</value>
+  </data>
+  <data name="plBuiltInField_Title.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="plBuiltInField_Views.Help" xml:space="preserve">
+    <value>Check on to allow user to search by product views</value>
+  </data>
+  <data name="plBuiltInField_Views.Text" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="plCategory.Help" xml:space="preserve">
+    <value>Select categories to display in search. Uncheck all will display all categories.</value>
+  </data>
+  <data name="plCategory.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="plMode.Help" xml:space="preserve">
+    <value>Choose "Search Mode"</value>
+  </data>
+  <data name="plMode.Text" xml:space="preserve">
+    <value>Search Mode</value>
+  </data>
+  <data name="plRepeatColumns.Help" xml:space="preserve">
+    <value>If an attribute uses check box list (or radio button list) to display its value, specify check box list (or radio button list) repeat columns here.</value>
+  </data>
+  <data name="plRepeatColumns.Text" xml:space="preserve">
+    <value>Repeat Columns</value>
+  </data>
+  <data name="plUDT_1.Help" xml:space="preserve">
+    <value>Select custom attribute 1 which allow user to search</value>
+  </data>
+  <data name="plUDT_1.Text" xml:space="preserve">
+    <value>Custom Attribute 1</value>
+  </data>
+  <data name="plUDT_10.Help" xml:space="preserve">
+    <value>Select custom attribute 10 which allow user to search</value>
+  </data>
+  <data name="plUDT_10.Text" xml:space="preserve">
+    <value>Custom Attribute 10</value>
+  </data>
+  <data name="plUDT_2.Help" xml:space="preserve">
+    <value>Select custom attribute 2 which allow user to search</value>
+  </data>
+  <data name="plUDT_2.Text" xml:space="preserve">
+    <value>Custom Attribute 2</value>
+  </data>
+  <data name="plUDT_3.Help" xml:space="preserve">
+    <value>Select custom attribute 3 which allow user to search</value>
+  </data>
+  <data name="plUDT_3.Text" xml:space="preserve">
+    <value>Custom Attribute 3</value>
+  </data>
+  <data name="plUDT_4.Help" xml:space="preserve">
+    <value>Select custom attribute 4 which allow user to search</value>
+  </data>
+  <data name="plUDT_4.Text" xml:space="preserve">
+    <value>Custom Attribute 4</value>
+  </data>
+  <data name="plUDT_5.Help" xml:space="preserve">
+    <value>Select custom attribute 5 which allow user to search</value>
+  </data>
+  <data name="plUDT_5.Text" xml:space="preserve">
+    <value>Custom Attribute 5</value>
+  </data>
+  <data name="plUDT_6.Help" xml:space="preserve">
+    <value>Select custom attribute 6 which allow user to search</value>
+  </data>
+  <data name="plUDT_6.Text" xml:space="preserve">
+    <value>Custom Attribute 6</value>
+  </data>
+  <data name="plUDT_7.Help" xml:space="preserve">
+    <value>Select custom attribute 7 which allow user to search</value>
+  </data>
+  <data name="plUDT_7.Text" xml:space="preserve">
+    <value>Custom Attribute 7</value>
+  </data>
+  <data name="plUDT_8.Help" xml:space="preserve">
+    <value>Select custom attribute 8 which allow user to search</value>
+  </data>
+  <data name="plUDT_8.Text" xml:space="preserve">
+    <value>Custom Attribute 8</value>
+  </data>
+  <data name="plUDT_9.Help" xml:space="preserve">
+    <value>Select custom attribute 9 which allow user to search</value>
+  </data>
+  <data name="plUDT_9.Text" xml:space="preserve">
+    <value>Custom Attribute 9</value>
+  </data>
+  <data name="plWidth_Input.Help" xml:space="preserve">
+    <value>Enter the input width</value>
+  </data>
+  <data name="plWidth_Input.Text" xml:space="preserve">
+    <value>Input Width</value>
+  </data>
+  <data name="plWidth_Label.Help" xml:space="preserve">
+    <value>Enter the label width</value>
+  </data>
+  <data name="plWidth_Label.Text" xml:space="preserve">
+    <value>Label Width</value>
+  </data>
+  <data name="plWidth_Operator.Help" xml:space="preserve">
+    <value>Specify the operator (=, &lt;, &gt;, like, unlike, between) width</value>
+  </data>
+  <data name="plWidth_Operator.Text" xml:space="preserve">
+    <value>Operator Width</value>
+  </data>
+  <data name="secAdvanced.Text" xml:space="preserve">
+    <value>Advanced Search Settings</value>
+  </data>
+  <data name="secBasic.Text" xml:space="preserve">
+    <value>Basic Search Settings</value>
+  </data>
+  <data name="secCategory.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="Tip_Advanced_BuiltInField.Text" xml:space="preserve">
+    <value>Specify the built-in fields which allow user to search below. For example, if you check on "Publish Date", then user can search products based their publish date.</value>
+  </data>
+  <data name="Tip_Advanced_Input.Text" xml:space="preserve">
+    <value>Specify the width of lable/ input / perator below. For example, if you enter 300 as "Input Width", then all input controls (text box, drop down list, etc) will take 300px as their width.</value>
+  </data>
+  <data name="Tip_Advanced_UDT.Text" xml:space="preserve">
+    <value>Besides the built-in fields, you can also specify up to 10 custom attributes below to let user to search. For example, if you create a "Color" attribute and limit its value as "Red", "White", "Green" at "Cp_Admin sub module - Admin Control Panel - System Data - Attributes", you can select "Custom Attribute 1" as "Color" below, then user will see a "Color" search condition, and can select its value from "Red", "White", "Green" drop down list.</value>
+  </data>
+  <data name="Tip_Category.Text" xml:space="preserve">
+    <value>Select categories which will be displayed in search interface (support "Basic" and "Advanced" search mode). Uncheck all will display all categories.</value>
+  </data>
+  <data name="Tip_Mode.Text" xml:space="preserve">
+    <value>Choose "Basic" mode to provide the basic search function (search by product title, category, and creator), choose "Advanced" mode if you want to allow user to search custom attributes (which are created at "Cp_Admin sub module - Admin control panel - System Data - Attributes").</value>
+  </data>
+  <data name="Tip_RepeatColumns.Text" xml:space="preserve">
+    <value>If an attribute uses check box list (or radio button list) to display its value, specify check box list (or radio button list) repeat columns here. Enter -1 to ignore this setting.</value>
+  </data>
+  <data name="plBuiltInField_Price.Help" xml:space="preserve">
+    <value>Check to allow user to search by price.</value>
+  </data>
+  <data name="plBuiltInField_Price.Text" xml:space="preserve">
+    <value>Show Price</value>
+  </data>
+  <data name="secGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="plBuiltInField_City.Help" xml:space="preserve">
+    <value>Search City</value>
+  </data>
+  <data name="plBuiltInField_City.Text" xml:space="preserve">
+    <value>Search City</value>
+  </data>
+  <data name="plBuiltInField_Country.Help" xml:space="preserve">
+    <value>Allow to search country</value>
+  </data>
+  <data name="plBuiltInField_Country.Text" xml:space="preserve">
+    <value>Search Country</value>
+  </data>
+  <data name="plBuiltInField_State.Help" xml:space="preserve">
+    <value>Search State/Province</value>
+  </data>
+  <data name="plBuiltInField_State.Text" xml:space="preserve">
+    <value>Search State/Province</value>
+  </data>
+  <data name="plBuiltInField_Town.Help" xml:space="preserve">
+    <value>Search Town</value>
+  </data>
+  <data name="plBuiltInField_Town.Text" xml:space="preserve">
+    <value>Search Town</value>
+  </data>
+  <data name="Tip_Advanced_Location.Text" xml:space="preserve">
+    <value>Module also allows you to search based location. For example, search products (listings) which country = USA, state/province = California, city = Los Angeles, town = Bell. Note, 1. Current department must enable "Location" property (can be modified at "Cp_Admin sub module - Admin Control Panel - Departments"). 2. If there is only 1 country (specified at ""Cp_Admin sub module - Admin control panel - Configurations - Location"), then the country dropdownlist will be hidden even "Search Country" option is checked.</value>
+  </data>
+  <data name="plBuiltInField_Sku.Help" xml:space="preserve">
+    <value>Check to allow search by Sku</value>
+  </data>
+  <data name="plBuiltInField_Sku.Text" xml:space="preserve">
+    <value>Sku</value>
+  </data>
+  <data name="secAbout.Text" xml:space="preserve">
+    <value>About Cp_Product_Search sub module</value>
+  </data>
+  <data name="Tip_About.Text" xml:space="preserve">
+    <value>Classified Pro is an enterprise-class DNN module which helps you to create an online store, auction website and also publish classified ads. It contains 16 sub modules and 1 skin object. Cp_Product_Search is one of these 16 sub modules, it is used to provide a stand alone search interface to public. &lt;br/&gt;&lt;br/&gt;
+Cp_Product_Search sub module is always used combined with Cp_Product_List sub module. After user specify the search condition and click "Search" button, the result will be shown in Cp_Product_List sub module. Note, Cp_Product_List sub module also includes a search feature which works similiar to Cp_Product_Search sub module.&lt;br/&gt;&lt;br/&gt;
+You can add multiple instances of Cp_Product_Search sub module to different pages. It is template based, you can customize your desired display effect by create different templates.&lt;br/&gt;&lt;br/&gt;
+If current site enables content localization, Cp_Product_Search sub module will generate result according to page culture. For example, if current page culture is "en-US (English)", it will navigate to English page of Cp_Product_List sub module; if current page culture is "zh-CN (Simple Chinese)", it will navigate to Simple Chinese page of Cp_Product_List sub module; if page culture is neutral, it will navigate according to current context culture.</value>
+  </data>
+  <data name="Tip_ListPage.Text" xml:space="preserve">
+    <value>Select when click search button, which page will display result products (listings). That page should have a Cp_Product_List sub module instance on it. If you don't specify, module will use the default list page for selected department (which is specified in "Cp_Admin sub module - Admin Control Panel - Departments") to display.</value>
+  </data>
+</root>

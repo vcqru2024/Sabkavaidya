@@ -1,0 +1,43 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<vcqru.Modules.bookappointmentbookappointment.Models.Settings>
+
+@using DotNetNuke.Web.Mvc.Helpers
+
+<h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead"><a href="" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a></h2>
+<fieldset>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Setting1, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.CheckBoxFor(m => Model.Setting1)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Setting2, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextBoxFor(m => Model.Setting2)
+    </div>
+    <div class="dnnFormItem">
+        <div class="dnnLabel" style="position: relative;">
+            @Html.LabelFor(m => Model.Email, new { @class = "col-md-2 control-label" })
+        </div>
+        @Html.TextBoxFor(m => Model.Email)
+    </div>
+    <div class="dnnFormItem">
+        <div><label for="Banner1">Banner 1 Url</label></div>
+        @Html.TextBoxFor(m => m.Banner1, new { @readonly = "readonly" })
+        <div>
+            <label for="banner1Upload">Upload Banner 1 Image</label>
+            <input type="file" id="banner1Upload" name="banner1Upload" accept="image/*" />
+        </div>
+    </div>
+    <div class="dnnFormItem">
+        <div><label for="Banner2">Banner 2 Url</label></div>
+        @Html.TextBoxFor(m => m.Banner2, new { @readonly = "readonly" })
+        <div>
+            <label for="banner2Upload">Upload Banner 2 Image</label>
+            <input type="file" id="banner2Upload" name="banner2Upload" accept="image/*" />
+        </div>
+    </div>
+</fieldset>
+
+

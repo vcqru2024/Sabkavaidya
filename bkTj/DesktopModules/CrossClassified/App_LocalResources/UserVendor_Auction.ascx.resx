@@ -1,0 +1,929 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="plCategory.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="plCategory.Help" xml:space="preserve">
+    <value>Product Category</value>
+  </data>
+  <data name="ErrorMessage_Category.Text" xml:space="preserve">
+    <value>Please provide at least 1 category (up to {0} categories) for this product.</value>
+  </data>
+  <data name="plName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="plOrder.Text" xml:space="preserve">
+    <value>Sort Index</value>
+  </data>
+  <data name="plOrder.Help" xml:space="preserve">
+    <value>The "Sort Index" is the first factor when display products.The default is 100, means don't set special display order.However, if you have some important products which you want them always display first to public, you can set a lower sort index (e.g.20).</value>
+  </data>
+  <data name="plName.Help" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="lblProductInfo.Text" xml:space="preserve">
+    <value>Product Info</value>
+  </data>
+  <data name="plImage.Text" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="plImage.Help" xml:space="preserve">
+    <value>Choose product image file (jpe, jpeg, jpg, bmp, png). You can select video from your files, or add from external url, for example, http://DnnModule.com/portals/0/test.jpg</value>
+  </data>
+  <data name="Date.ErrorMessage" xml:space="preserve">
+    <value>Invalid date</value>
+  </data>
+  <data name="plAuthed.Text" xml:space="preserve">
+    <value>Authed</value>
+  </data>
+  <data name="plAuthed.Help" xml:space="preserve">
+    <value>Authorize Product</value>
+  </data>
+  <data name="plFeatured.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="plFeatured.Help" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="plViewRoles.Text" xml:space="preserve">
+    <value>View Roles</value>
+  </data>
+  <data name="plViewRoles.Help" xml:space="preserve">
+    <value>Select roles which can view this product</value>
+  </data>
+  <data name="plAllowRating.Text" xml:space="preserve">
+    <value>Allow Rating</value>
+  </data>
+  <data name="plAllowRating.Help" xml:space="preserve">
+    <value>Allow visitors to rating product by default, each product can has its own rating settings. Note, if product is sell online, then customers who bought this listing can rating it natively.</value>
+  </data>
+  <data name="plRatingRoles.Text" xml:space="preserve">
+    <value>Rating Roles</value>
+  </data>
+  <data name="plRatingRoles.Help" xml:space="preserve">
+    <value>Select roles which can ratings by default, each product can has its own rating roles. Note, if product is sell online, then only customers who bought this product can rating it.</value>
+  </data>
+  <data name="plAllowComment.Text" xml:space="preserve">
+    <value>Allow Comment</value>
+  </data>
+  <data name="plAllowComment.Help" xml:space="preserve">
+    <value>Allow Comment Online</value>
+  </data>
+  <data name="plCommentRoles.Text" xml:space="preserve">
+    <value>Comment Roles</value>
+  </data>
+  <data name="plCommentRoles.Help" xml:space="preserve">
+    <value>Choose Comment Roles</value>
+  </data>
+  <data name="plAutoAuthComment.Text" xml:space="preserve">
+    <value>Auto Authorize Comment</value>
+  </data>
+  <data name="plAutoAuthComment.Help" xml:space="preserve">
+    <value>Auto Authorize Comment Information</value>
+  </data>
+  <data name="chkAuthed.Text" xml:space="preserve">
+    <value>Authed</value>
+  </data>
+  <data name="chkFeatured.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="lblAllowComment.Text" xml:space="preserve">
+    <value>Allow Comment</value>
+  </data>
+  <data name="lblAllowRating.Text" xml:space="preserve">
+    <value>Allow Rating</value>
+  </data>
+  <data name="lblAuthed.Text" xml:space="preserve">
+    <value>Authed</value>
+  </data>
+  <data name="lblStartPrice.Text" xml:space="preserve">
+    <value>Start Pr.</value>
+  </data>
+  <data name="lblCreatedDate.Text" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="lblFeatured.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblViews.Text" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="lblOrder.Text" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="li_ProductStatus_All.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="lblReservePrice.Text" xml:space="preserve">
+    <value>Reserve Pr.</value>
+  </data>
+  <data name="plPreviousVersion.Help" xml:space="preserve">
+    <value>When product is a advanced version of existing item, module will display a "new version available" tip in existing item detail. And, you can also move reviews from old version to new version.</value>
+  </data>
+  <data name="plPreviousVersion.Text" xml:space="preserve">
+    <value>Previous Version</value>
+  </data>
+  <data name="plLinkUrl.Help" xml:space="preserve">
+    <value>When user click product, it will navigate to this link url. Leave it as blank if you don't want link to external url.</value>
+  </data>
+  <data name="plLinkUrl.Text" xml:space="preserve">
+    <value>Link Url</value>
+  </data>
+  <data name="lblRelatedInfo.Text" xml:space="preserve">
+    <value>Related</value>
+  </data>
+  <data name="chkActive.Text" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="li_ProductStatus_Featured.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="li_ProductStatus_UnActive.Text" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="li_ProductStatus_UnAuthed.Text" xml:space="preserve">
+    <value>Unauthorized</value>
+  </data>
+  <data name="btnAddProduct.Text" xml:space="preserve">
+    <value>Add Product</value>
+  </data>
+  <data name="plActive.Help" xml:space="preserve">
+    <value>Set product as active. If a product is marked as inactive, it will not display to visitors.</value>
+  </data>
+  <data name="plActive.Text" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="ControlTitle_uservendor_auction.Text" xml:space="preserve">
+    <value>My Auction Products</value>
+  </data>
+  <data name="imgCopyAsNew.Text" xml:space="preserve">
+    <value>Copy as new product</value>
+  </data>
+  <data name="plWeight.Help" xml:space="preserve">
+    <value>Product weight which used to calculate shippping fee.</value>
+  </data>
+  <data name="imgToggleActive.Text" xml:space="preserve">
+    <value>Toggle Active</value>
+  </data>
+  <data name="imgToggleAuthed.Text" xml:space="preserve">
+    <value>Toggle Authed</value>
+  </data>
+  <data name="imgToggleFeatured.Text" xml:space="preserve">
+    <value>Toggle Featured</value>
+  </data>
+  <data name="btnAddAttachment.Text" xml:space="preserve">
+    <value>Add Attachment</value>
+  </data>
+  <data name="lblFilePath.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="lblId.Text" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="lblPortalDisableComment.Text" xml:space="preserve">
+    <value>Comment is disabled by site administrator.</value>
+  </data>
+  <data name="lblPortalDisableRating.Text" xml:space="preserve">
+    <value>Rating is disabled by site administrator.</value>
+  </data>
+  <data name="lblProductName.Text" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="lblSelectCategory.Text" xml:space="preserve">
+    <value>Product Category</value>
+  </data>
+  <data name="lbtnAddTag.Text" xml:space="preserve">
+    <value>Add Tag</value>
+  </data>
+  <data name="li_ProductStatus_Expired.Text" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="btnSearch.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="plAttachment.Help" xml:space="preserve">
+    <value>Select attachment of this product</value>
+  </data>
+  <data name="plAttachment.Text" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="plDownloadRoles.Help" xml:space="preserve">
+    <value>Select roles which can download attachments of this product.</value>
+  </data>
+  <data name="plDownloadRoles.Text" xml:space="preserve">
+    <value>Attachment Download Roles</value>
+  </data>
+  <data name="plPopularTag.Help" xml:space="preserve">
+    <value>Choose popular tags from drop down list box, click "Add Tag" button to add it to product tag list.</value>
+  </data>
+  <data name="plPopularTag.Text" xml:space="preserve">
+    <value>Popular Tags</value>
+  </data>
+  <data name="imgAudio.Text" xml:space="preserve">
+    <value>Edit related audio</value>
+  </data>
+  <data name="imgDownload.Text" xml:space="preserve">
+    <value>Edit download files, clients can download them after paid.</value>
+  </data>
+  <data name="imgImage.Text" xml:space="preserve">
+    <value>Edit related images</value>
+  </data>
+  <data name="imgVideo.Text" xml:space="preserve">
+    <value>Edit related videos</value>
+  </data>
+  <data name="lblType.Text" xml:space="preserve">
+    <value>Department:</value>
+  </data>
+  <data name="plStockQuantity.Help" xml:space="preserve">
+    <value>Enter stock quantity, module will reduce this value after ordered. If stock quantity is lower to 0, then user can't buy it anymore.</value>
+  </data>
+  <data name="plStockQuantity.Text" xml:space="preserve">
+    <value>Stock Quantity</value>
+  </data>
+  <data name="lblDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="plPackageFee.Text" xml:space="preserve">
+    <value>Additional Package Fee</value>
+  </data>
+  <data name="plPackageFee.Help" xml:space="preserve">
+    <value>Additional amount to charge for shipping per item, will be added to the shipping total for the order</value>
+  </data>
+  <data name="plSku.Text" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="lbtnSelectShip.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="plSku.Help" xml:space="preserve">
+    <value>SKU=stock keeping uint, this value is optional.</value>
+  </data>
+  <data name="btnBackToList.Text" xml:space="preserve">
+    <value>Back to product list</value>
+  </data>
+  <data name="lblAudioList.Text" xml:space="preserve">
+    <value>Audio for "{0}"</value>
+  </data>
+  <data name="lblAudioPath.Text" xml:space="preserve">
+    <value>Audio Path</value>
+  </data>
+  <data name="lblAudioTitle.Text" xml:space="preserve">
+    <value>Audio Title</value>
+  </data>
+  <data name="lblDownloadList.Text" xml:space="preserve">
+    <value>Download files for "{0}"</value>
+  </data>
+  <data name="lblDuration.Text" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="lblFileName.Text" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+  <data name="lblImageList.Text" xml:space="preserve">
+    <value>Related images for "{0}"</value>
+  </data>
+  <data name="lblImagePath.Text" xml:space="preserve">
+    <value>Image Path</value>
+  </data>
+  <data name="lblImageTitle.Text" xml:space="preserve">
+    <value>Image Title</value>
+  </data>
+  <data name="lblProductStatus.Text" xml:space="preserve">
+    <value>Product Status:</value>
+  </data>
+  <data name="lblSize.Text" xml:space="preserve">
+    <value>File Size</value>
+  </data>
+  <data name="lblStepSynchronize.Text" xml:space="preserve">
+    <value>Step 2: Synchronize uploaded files from temporary directory to server.</value>
+  </data>
+  <data name="lblStepUpload.Text" xml:space="preserve">
+    <value>Step 1: Module provides two upload methods: MS Silverlight and JavaScript.  MS Silverlight plug-in is recommended (if it is available) because it allows you to upload big size files.  Click "Select Files" button to select files (you can press Ctrl key to select multiple files once), then click "upload" button to upload files to temporary directory.</value>
+  </data>
+  <data name="lblVideoList.Text" xml:space="preserve">
+    <value>Related videos for "{0}"</value>
+  </data>
+  <data name="lblVideoPath.Text" xml:space="preserve">
+    <value>Video Path</value>
+  </data>
+  <data name="lblVideoTitle.Text" xml:space="preserve">
+    <value>Video Title</value>
+  </data>
+  <data name="plAudioDescription.Help" xml:space="preserve">
+    <value>Audio description (optional)</value>
+  </data>
+  <data name="plAudioDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="plAudioFile.Help" xml:space="preserve">
+    <value>Choose audio file (mp3).You can select audio from your files. Or add from external url, for example, http://DnnModule.com/portals/0/test.mp3.</value>
+  </data>
+  <data name="plAudioTitle.Help" xml:space="preserve">
+    <value>Enter audio title. It can't be null</value>
+  </data>
+  <data name="plAudioTitle.Text" xml:space="preserve">
+    <value>Audio Title</value>
+  </data>
+  <data name="plAudioFile.Text" xml:space="preserve">
+    <value>Audio File</value>
+  </data>
+  <data name="plImageDescription.Help" xml:space="preserve">
+    <value>Image description (optional)</value>
+  </data>
+  <data name="plImageDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="plImageFile.Help" xml:space="preserve">
+    <value>Choose image file (jpe, jpeg, jpg, bmp, png). You can select image from your files, or add from external url, for example, http://DnnModule.com/portals/0/test.jpg</value>
+  </data>
+  <data name="plImageFile.Text" xml:space="preserve">
+    <value>Image File</value>
+  </data>
+  <data name="plImageTitle.Help" xml:space="preserve">
+    <value>Enter image title, can't be null</value>
+  </data>
+  <data name="plImageTitle.Text" xml:space="preserve">
+    <value>Image Title</value>
+  </data>
+  <data name="plVideoDescription.Help" xml:space="preserve">
+    <value>Video description (optional)</value>
+  </data>
+  <data name="plVideoDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="plVideoFile.Help" xml:space="preserve">
+    <value>Choose video file (.flv or mp4). You can select video from your files. Or add from external url, for example, http://DnnModule.com/portals/0/test.flv. You can also type youtube url as external source, for example, http://www.youtube.com/watch?v=0klgLsSxGsU. Besides that, you can add video from embed code. Nearlly all video sites offer these embed code.</value>
+  </data>
+  <data name="plVideoFile.Text" xml:space="preserve">
+    <value>Video File</value>
+  </data>
+  <data name="plVideoTitle.Help" xml:space="preserve">
+    <value>Enter video title, can't be null</value>
+  </data>
+  <data name="plVideoTitle.Text" xml:space="preserve">
+    <value>Video Title</value>
+  </data>
+  <data name="Error_SpecifyAudio.Text" xml:space="preserve">
+    <value>Please specify a valid audio.</value>
+  </data>
+  <data name="Error_SpecifyImage.Text" xml:space="preserve">
+    <value>Please specify a valid image.</value>
+  </data>
+  <data name="Error_SpecifyVideo.Text" xml:space="preserve">
+    <value>Please specify a valid video.</value>
+  </data>
+  <data name="btnAddAudio.Text" xml:space="preserve">
+    <value>Add Audio</value>
+  </data>
+  <data name="btnAddDownload.Text" xml:space="preserve">
+    <value>Upload new file</value>
+  </data>
+  <data name="btnAddImage.Text" xml:space="preserve">
+    <value>Add Image</value>
+  </data>
+  <data name="plWeight.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="btnAddVideo.Text" xml:space="preserve">
+    <value>Add Video</value>
+  </data>
+  <data name="lblProductCategory.Text" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="lblProductName1.Text" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="RegModuleTip.Text" xml:space="preserve">
+    <value>You are using a unregistered copy of Classified Pro which can add up to 100 product items. Please register at "Cp_Admin sub module - Help - Register" section to remove this limitation. Thanks for your support.</value>
+  </data>
+  <data name="lblStockQuantity.Text" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="btnAddAudioFromFolder.Text" xml:space="preserve">
+    <value>Add multiple audio from folder</value>
+  </data>
+  <data name="btnAddImageFromFolder.Text" xml:space="preserve">
+    <value>Add multiple images from folder</value>
+  </data>
+  <data name="btnAddVideoFromFolder.Text" xml:space="preserve">
+    <value>Add multiple videos from folder</value>
+  </data>
+  <data name="MyFolder.Help" xml:space="preserve">
+    <value>You can add related files under selected folder by click "Add From Folder"</value>
+  </data>
+  <data name="MyFolder.Text" xml:space="preserve">
+    <value>My Folders</value>
+  </data>
+  <data name="plVideoDuration.Help" xml:space="preserve">
+    <value>Enter video duration (optional), hh:mm:ss format like 01:20:03. Note, module will automatic detect its duration if it is from local files and video encode feature is enabled in "General settings" of Cp_Admin sub module.</value>
+  </data>
+  <data name="plVideoDuration.Text" xml:space="preserve">
+    <value>Video Duration</value>
+  </data>
+  <data name="plVideoThumbnail.Help" xml:space="preserve">
+    <value>Specify a thumbnail image for video (optional). Note, module will automatic detect its thumbnail if it is from local files and video encode feature is enabled in "General settings" of Cp_Admin sub module.</value>
+  </data>
+  <data name="plVideoThumbnail.Text" xml:space="preserve">
+    <value>Video Thumbnail</value>
+  </data>
+  <data name="lblPageSize.Text" xml:space="preserve">
+    <value>Page:</value>
+  </data>
+  <data name="divBasic.Text" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="divCategory.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="divDelivery.Text" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="divDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="divLicense.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="divSpecialOffer.Text" xml:space="preserve">
+    <value>Special Offer</value>
+  </data>
+  <data name="divSummary.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="divSupport.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="divTag.Text" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="imgAttachment.Text" xml:space="preserve">
+    <value>Edit attachment files</value>
+  </data>
+  <data name="lblAttachmentList.Text" xml:space="preserve">
+    <value>Attachments for "{0}"</value>
+  </data>
+  <data name="btnSynchronize.Text" xml:space="preserve">
+    <value>Synchronize to server</value>
+  </data>
+  <data name="divPermission.Text" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="lblIndex.Text" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="btnAddFromFile.Text" xml:space="preserve">
+    <value>Add File</value>
+  </data>
+  <data name="btnChooseDownloadFromFile.Text" xml:space="preserve">
+    <value>Add from existing file</value>
+  </data>
+  <data name="chkDeleteFileAfterAdded.Text" xml:space="preserve">
+    <value>Delete this file after add</value>
+  </data>
+  <data name="lblAddFromFile_Step2.Text" xml:space="preserve">
+    <value>Step 1: Choose a file from existing files.</value>
+  </data>
+  <data name="lblAddFromFile_Step3.Text" xml:space="preserve">
+    <value>Step 2: Click "Add File" button to add it.</value>
+  </data>
+  <data name="Tip_UploadNewFile.Text" xml:space="preserve">
+    <value>If you have problem to upload large files (e.g. your zip package is 100mb in size), we recommend you to upload them via ftp tools first, then click "Add from existing files" to add them.</value>
+  </data>
+  <data name="Error_FileNotExist.Text" xml:space="preserve">
+    <value>The file you specified doesn't exist, please check it.</value>
+  </data>
+  <data name="Error_SpecifyZipFile.Text" xml:space="preserve">
+    <value>Please specify a valid file first.</value>
+  </data>
+  <data name="lblTagTip.Text" xml:space="preserve">
+    <value>Enter tags below (one tag per line) or click "Add Tag" to add existing popular tag.</value>
+  </data>
+  <data name="Tip_ManagePermission.Text" xml:space="preserve">
+    <value>Note, only site administrators or product manage roles can access this tab. Normal users will use the default permissions which are specified in "Cp_Admin sub module - Admin Control Panel - Configurations - Store Settings".</value>
+  </data>
+  <data name="Tip_SelectCategory.Text" xml:space="preserve">
+    <value>Select at least 1 category (up to {0} categories) for current product.</value>
+  </data>
+  <data name="Tip_Summary.Text" xml:space="preserve">
+    <value>Enter short description for this product (1000 characters limit) .</value>
+  </data>
+  <data name="Tip_FileExtension.Text" xml:space="preserve">
+    <value>Allowable files: {0}</value>
+  </data>
+  <data name="Tip_AudioSource.Text" xml:space="preserve">
+    <value>&lt;p&gt;Audio source can come from bellowings:&lt;br/&gt;
+1. Local File, Mp3 files which you uploaded to site.&lt;br/&gt;&lt;br/&gt;
+2. External Url, like followings&lt;br/&gt;
+    :File in exernal site, e.g http://DnnModule.com/portals/0/test.mp3&lt;br/&gt;
+    :Http stream, e.g http://http://DnnModule.com/Audio.asp?Audioid=3
+&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_VideoSource.Text" xml:space="preserve">
+    <value>&lt;p&gt;Video source can come from bellowings:&lt;br/&gt;
+1. Local File, Flv/Mp4/Swf video files which you uploaded to site.&lt;br/&gt;&lt;br/&gt;
+2. External Url, like followings&lt;br/&gt;
+    :File in exernal site, e.g. http://DnnModule.com/portals/0/test.flv&lt;br/&gt;
+    :Http stream, e.g. http://http://DnnModule.com/video.asp?videoid=3&lt;br/&gt;
+    :YouTube video url, e.g. http://youtube.com/watch?v=aYlx5gW90Aw&lt;br/&gt;&lt;br/&gt;
+3. Embed Code, embed code from other sites.
+&lt;/p&gt;</value>
+  </data>
+  <data name="divMap.Text" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="plLatitude.Help" xml:space="preserve">
+    <value>Enter latitude of your listing (product).</value>
+  </data>
+  <data name="plLatitude.Text" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="plLongitude.Help" xml:space="preserve">
+    <value>Enter longitude of your listing (product).</value>
+  </data>
+  <data name="plLongitude.Text" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="Tip_LinkUrl.Text" xml:space="preserve">
+    <value>Leave link url as "None" in most cases. If you specify it, module will navigate to that url when visitor click product in Cp_Product_List sub module.</value>
+  </data>
+  <data name="li_BillFrequency_Day.Text" xml:space="preserve">
+    <value>Day(s)</value>
+  </data>
+  <data name="li_BillFrequency_Month.Text" xml:space="preserve">
+    <value>Month(s)</value>
+  </data>
+  <data name="li_BillFrequency_Week.Text" xml:space="preserve">
+    <value>Week(s)</value>
+  </data>
+  <data name="li_BillFrequency_Year.Text" xml:space="preserve">
+    <value>Year(s)</value>
+  </data>
+  <data name="plBillPeriod.Help" xml:space="preserve">
+    <value>These two fields are used in conjunction to enter a Billing Period. e.g. 2 weeks, or 1 month</value>
+  </data>
+  <data name="plBillPeriod.Text" xml:space="preserve">
+    <value>Billing Period (Every)</value>
+  </data>
+  <data name="plRecursiveBill.Help" xml:space="preserve">
+    <value>Check on "Recursive Billing" and enter "Billing Period" if you want to charge recursive.</value>
+  </data>
+  <data name="plRecursiveBill.Text" xml:space="preserve">
+    <value>Recursive Billing</value>
+  </data>
+  <data name="Tip_RecursiveBill.Text" xml:space="preserve">
+    <value>Check on "Recursive Billing" and enter "Billing Period" if you want to charge recursive.</value>
+  </data>
+  <data name="Tip_ViewOrder.Text" xml:space="preserve">
+    <value>The "Sort Index" is the first factor when display products. The default is 10000, means don't set special display order. However, if you have some important products which you want them always display first to public, you can set a lower sort index (e.g. 9000).</value>
+  </data>
+  <data name="lblProductQuota.Text" xml:space="preserve">
+    <value>Your quota:{0}, Used {1}</value>
+  </data>
+  <data name="Warning_ExceedQuota.Text" xml:space="preserve">
+    <value>You have reached your products quota. Before add new product, please contact site administrator to increase your products quota, or delete existing products .</value>
+  </data>
+  <data name="plMapTitle.Help" xml:space="preserve">
+    <value>Map title whick display above the red air bubble (which indicate your position). Module will use prouct name instead if you don't specify it.</value>
+  </data>
+  <data name="plMapTitle.Text" xml:space="preserve">
+    <value>Map Title</value>
+  </data>
+  <data name="Tip_GoogleMap_Sample.Text" xml:space="preserve">
+    <value>Google map sample</value>
+  </data>
+  <data name="plManufacturer.Help" xml:space="preserve">
+    <value>Choose a manufacturer</value>
+  </data>
+  <data name="plManufacturer.Text" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="lblActive.Text" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="lblEndDate.Text" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="lblStartDate.Text" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="lblQuantity.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="btnRepublishSelected.Text" xml:space="preserve">
+    <value>Republish Selected</value>
+  </data>
+  <data name="imgBiddingHistory.Text" xml:space="preserve">
+    <value>View bidding histroy</value>
+  </data>
+  <data name="imgRepublish.Text" xml:space="preserve">
+    <value>Republish this item if it is expired but not sold out (or bidder won it but didn't check out).&lt;br/&gt; Note, if "Automatic Republish" option (locates under "Cp_Admin sub module - Admin contorl panel - Configurations - Store Settings") is checked,&lt;br/&gt; Classified Pro will automatic republish expired auction listings (if they don't get any valid bid).</value>
+  </data>
+  <data name="lblAuctionInfo.Text" xml:space="preserve">
+    <value>Auction</value>
+  </data>
+  <data name="lblBuyNowPrice.Text" xml:space="preserve">
+    <value>Buy Now Pr.</value>
+  </data>
+  <data name="li_ProductStatus_SoldOut.Text" xml:space="preserve">
+    <value>Sold Out</value>
+  </data>
+  <data name="RepublishItem.Text" xml:space="preserve">
+    <value>Republish a auction item will delete all bid history of it, are you sure you want to republish this expired item?</value>
+  </data>
+  <data name="RepublishItems.Text" xml:space="preserve">
+    <value>Republish auction items will delete all bid history of them, are you sure you want to republish these auction items?</value>
+  </data>
+  <data name="li_ShippingFeeType_Default.Text" xml:space="preserve">
+    <value>Depends on the shipping method which client choose</value>
+  </data>
+  <data name="li_ShippingFeeType_FixedShippingFee.Text" xml:space="preserve">
+    <value>Fixed shipping fee</value>
+  </data>
+  <data name="li_ShippingFeeType_NoShippingFee.Text" xml:space="preserve">
+    <value>No shipping fee</value>
+  </data>
+  <data name="plAuctionDays.Help" xml:space="preserve">
+    <value>Value must lower (or equal to) the maximum auction days of current department. This value can't be changed after product creation.</value>
+  </data>
+  <data name="plAuctionDays.Text" xml:space="preserve">
+    <value>Auction Days</value>
+  </data>
+  <data name="plBidIncrement.Help" xml:space="preserve">
+    <value>Enter the minimum increment for each bidding.</value>
+  </data>
+  <data name="plBidIncrement.Text" xml:space="preserve">
+    <value>Minimum Bidding Increment</value>
+  </data>
+  <data name="plBuyNowPrice.Help" xml:space="preserve">
+    <value>User can directly order your auction product with this price (without the bidding process), Leave it as 0 if you don't allow direct order.</value>
+  </data>
+  <data name="plBuyNowPrice.Text" xml:space="preserve">
+    <value>Buy Now Price</value>
+  </data>
+  <data name="plFixedShippingFee.Help" xml:space="preserve">
+    <value>If the "Shipping Fee Type" is "Seller choose the shipping method - fixed shipping fee", specify a fixed shipping fee here.</value>
+  </data>
+  <data name="plFixedShippingFee.Text" xml:space="preserve">
+    <value>Fixed Shipping Fee</value>
+  </data>
+  <data name="plFixedTaxRate.Help" xml:space="preserve">
+    <value>If the "Tax Rate Type" is "Fixed tax rate", specify a fixed tax rate here. Note, you don't need to provide % symbol.</value>
+  </data>
+  <data name="plFixedTaxRate.Text" xml:space="preserve">
+    <value>Fixed Tax Rate</value>
+  </data>
+  <data name="plReservePrice.Help" xml:space="preserve">
+    <value>Enter a reserve price. If the final auction price is lower than this value, the auction will be cancelled. Leave it as 0 if you don't want to limit it.</value>
+  </data>
+  <data name="plReservePrice.Text" xml:space="preserve">
+    <value>Reserve Price</value>
+  </data>
+  <data name="plShippingFeeType.Help" xml:space="preserve">
+    <value>Choose shipping fee type for this listing.</value>
+  </data>
+  <data name="plShippingFeeType.Text" xml:space="preserve">
+    <value>Shipping Fee Type</value>
+  </data>
+  <data name="plStartPrice.Help" xml:space="preserve">
+    <value>Enter a initial auction price, leave it as 0 if you don't want to limit it. </value>
+  </data>
+  <data name="plStartPrice.Text" xml:space="preserve">
+    <value>Start Price</value>
+  </data>
+  <data name="plTaxRateType.Help" xml:space="preserve">
+    <value>Choose tax rate type for this listing.</value>
+  </data>
+  <data name="plTaxRateType.Text" xml:space="preserve">
+    <value>Tax Rate Type</value>
+  </data>
+  <data name="Tip_AuctionPrice.Text" xml:space="preserve">
+    <value>Please note below auction properties:&lt;br/&gt;
+1. Start Price, the initial auction start price, value must bigger than 0.&lt;br/&gt;
+2. Minimum Bidding Increment, the minimum increment for each bidding, value must bigger than 0. Note, this value is available for English and Vickrey auction type only.&lt;br/&gt;
+3. Reserve Price, if the final auction price is lower than this value, the auction will be cancelled. Leave it as 0 if you don't want to limit it.&lt;br/&gt;
+4. Buy Now Price, a "buy now" price which allows buyers to bypass bidding altogether and purchase the item outright. Leave it as 0 if you don't allow direct order.
+Note, module doesn't allow "buy now" price for second item auction type.&lt;br/&gt;
+5. Start Date, End Date, Auction Days, These values &lt;font color="red"&gt;can't be changed&lt;/font&gt; after product creation.&lt;br/&gt;
+6. Stock Quantity, for second item auction type, module doesn't allow stock quantity lower than 2. For other auction types, module will set this value as 1.
+</value>
+  </data>
+  <data name="lblCurrentBid.Text" xml:space="preserve">
+    <value>Current Bid</value>
+  </data>
+  <data name="lblBid.Text" xml:space="preserve">
+    <value>Bidding Price</value>
+  </data>
+  <data name="lblBidderName.Text" xml:space="preserve">
+    <value>Bidder</value>
+  </data>
+  <data name="lblBiddingList.Text" xml:space="preserve">
+    <value>Bidding histroy for "{0}"</value>
+  </data>
+  <data name="ErrorMessage_Stock.Text" xml:space="preserve">
+    <value>For second item auction type, module doesn't allow stock quantity &lt; 2, please change it.</value>
+  </data>
+  <data name="Tip_RepublishSuccess.Text" xml:space="preserve">
+    <value>Republish Success.</value>
+  </data>
+  <data name="lblAuctionResult.Text" xml:space="preserve">
+    <value>Auction Result:</value>
+  </data>
+  <data name="li_AuctionResult_HasBidButReservePriceNotMet.Text" xml:space="preserve">
+    <value>2 - Expired and has bid, but reserve price not met</value>
+  </data>
+  <data name="li_AuctionResult_InBidding.Text" xml:space="preserve">
+    <value>0 - In bidding process</value>
+  </data>
+  <data name="li_AuctionResult_NoBid.Text" xml:space="preserve">
+    <value>1 - Expired but no bid</value>
+  </data>
+  <data name="li_AuctionResult_PriceValidForBidderPurchase.Text" xml:space="preserve">
+    <value>3 - Has bid and reserve price met, waiting for bidder check out</value>
+  </data>
+  <data name="li_AuctionResult_SoldOut.Text" xml:space="preserve">
+    <value>4 - Bidder paid, item was sold out</value>
+  </data>
+  <data name="ErrorMessage_BidIncrement.Text" xml:space="preserve">
+    <value>Minimum Bidding Increment must bigger than 0.</value>
+  </data>
+  <data name="ErrorMessage_BuyNowPrice.Text" xml:space="preserve">
+    <value>Buy now price should bigger than start price (if it is not equal to 0).</value>
+  </data>
+  <data name="ErrorMessage_StartPrice.Text" xml:space="preserve">
+    <value>Start price must bigger than 0.</value>
+  </data>
+  <data name="lblAuctionCheckResult.Text" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="lblColorLegend.Text" xml:space="preserve">
+    <value>Product name color legend</value>
+  </data>
+  <data name="lblLegend.Text" xml:space="preserve">
+    <value>Action button legend</value>
+  </data>
+  <data name="plStartDate.Help" xml:space="preserve">
+    <value>Enter auction start date/time</value>
+  </data>
+  <data name="plStartDate.Text" xml:space="preserve">
+    <value>Start Date/Time</value>
+  </data>
+  <data name="divLocation.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="ErrorMessage_AuctionDays.Text" xml:space="preserve">
+    <value>"Auction Days" can't bigger than {0} days, please change it.</value>
+  </data>
+  <data name="ErrorMessage_DateDifferThan.Text" xml:space="preserve">
+    <value>The interval between auction "Start Date/Time" and "End Date/Time" can't bigger than {0} days, please change it.</value>
+  </data>
+  <data name="ErrorMessage_EndDateLower.Text" xml:space="preserve">
+    <value>Auction "End Date/Time" can't sonner than "Start Date/Time", please change it.</value>
+  </data>
+  <data name="ErrorMessage_WrongDateFormat_End.Text" xml:space="preserve">
+    <value>Invalid date/time format for "End Date/Time", please check it.</value>
+  </data>
+  <data name="ErrorMessage_WrongDateFormat_Start.Text" xml:space="preserve">
+    <value>Invalid date/time format for "Start Date/Time", please check it.</value>
+  </data>
+  <data name="plEndDate.Help" xml:space="preserve">
+    <value>Enter auction end date/time</value>
+  </data>
+  <data name="plEndDate.Text" xml:space="preserve">
+    <value>End Date/Time</value>
+  </data>
+  <data name="Tip_AuctionDate.Text" xml:space="preserve">
+    <value>Click the date (and time) picker to specify the auction start/end date (time), these values &lt;font color="red"&gt;can't be changed&lt;/font&gt; after product creation . Note:&lt;br/&gt;1. If you specify "End Date/Time", module will ignore the "Auction Days" property. &lt;br/&gt;2. If you leave "End Date/Time" as empty, module will take "Start Date/Time" + "Auction Days" as "End Date/Time". &lt;br/&gt;3. Modify date/time value to specify minute. For example, change "10/20/2014 8:00 AM" to "10/20/2014 8:24 AM" to start at 8:24 AM.</value>
+  </data>
+  <data name="plShippingProperty.Help" xml:space="preserve">
+    <value>Enter shipping property.e.g, Length=300cm, Width=200cm,Height=400cm</value>
+  </data>
+  <data name="plShippingProperty.Text" xml:space="preserve">
+    <value>Shipping Property</value>
+  </data>
+  <data name="lblUploadViaJs.Text" xml:space="preserve">
+    <value>If above MS Silverlight upload control isn't available (for example, you are using iPhone/iPad/Android/tablet, or using Windows 10 edge browser which doesn't support Silverlight), try click "Upload Files Via JavaScript" button below. Note, you can also press Ctrl key to select multiple files once.</value>
+  </data>
+  <data name="lbtnUploadViaJs.Text" xml:space="preserve">
+    <value>Upload Files Via JavaScript</value>
+  </data>
+</root>

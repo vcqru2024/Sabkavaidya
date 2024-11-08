@@ -1,0 +1,20 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='Scrolling'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[Scrolling] [bit] NULL
+GO
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

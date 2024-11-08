@@ -1,0 +1,57 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddDisease.Models.Disease>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+
+<script src="https://cdn.ckeditor.com/4.17.0/standard/ckeditor.js"></script>
+<div id="Disease-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight"><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div><label for="diseaseName">@Dnn.LocalizeString("lblName")</label></div>
+                @Html.TextBoxFor(m => m.DiseaseName)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="diseaseDescription">@Dnn.LocalizeString("lblDescription")</label></div>
+                <textarea id="diseaseDescription" name="DiseaseDescription">@Model.DiseaseDescription</textarea>
+                <!-- CKEditor initialization -->
+                <script>
+                    CKEDITOR.replace('diseaseDescription');
+                </script>
+            </div>
+            <!-- Add other fields as needed -->
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+    <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+    <a href="@Url.Action("index", "Disease")" class="btn btn-success">Cancle</a>
+    @*<a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>*@
+</div>
+<script>
+ /*globals jQuery, window, Sys */
+    (function ($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({
+                expandText: '@Dnn.LocalizeString("ExpandAll")',
+                collapseText: '@Dnn.LocalizeString("CollapseAll")',
+                targetArea: '#dnnEditBasicSettings'
+            });
+        }
+
+        $(function () {
+            $('#cancelEdit').click(function () { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function () {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+
+</script>

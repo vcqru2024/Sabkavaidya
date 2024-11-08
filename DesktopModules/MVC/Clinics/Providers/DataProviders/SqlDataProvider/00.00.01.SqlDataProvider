@@ -1,0 +1,43 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Clinics_Items]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Clinics_Items]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}Clinics_Items
+    (
+    ClinicId int NOT NULL IDENTITY (1, 1),
+    ClinicName nvarchar(MAX) NOT NULL,
+    ClinicDescription nvarchar(MAX) NOT NULL,
+    ClinicImage nvarchar(MAX) NULL,
+    ClinicLocation nvarchar(MAX) NULL,
+    Department1 nvarchar(MAX) NULL,
+    Department2 nvarchar(MAX) NULL,
+    Department3 nvarchar(MAX) NULL,
+    Speciality nvarchar(MAX) NULL,  -- Added new column for Speciality
+    Reviews float NULL,
+    YearsOfExperience int NULL,
+    ClinicUrl nvarchar(MAX) NULL,
+    ModuleId int NOT NULL,
+    CreatedByUserId int NOT NULL,
+    LastModifiedByUserId int NOT NULL,
+    CreatedOnDate datetime NOT NULL,
+    LastModifiedOnDate datetime NOT NULL
+    )  ON [PRIMARY]
+     TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}Clinics_Items ADD CONSTRAINT
+    PK_{objectQualifier}Clinics_Items PRIMARY KEY CLUSTERED 
+    (
+    ClinicId
+    ) WITH( STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

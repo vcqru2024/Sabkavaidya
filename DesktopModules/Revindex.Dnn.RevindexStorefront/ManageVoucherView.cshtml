@@ -1,0 +1,115 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<ManageVoucherViewModel>
+
+<div class="rvd-module-container rvdsf rvdsf-managevoucher-container">
+	@if (Model.Visible)
+	{
+		if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+		{
+			<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert])">@Model.TempData[Global.TempDataKeys.Message]</div>
+		}
+		<div class="rvd-form">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+					
+				</div>
+			</div>
+			<hr />
+			<fieldset>
+				
+			</fieldset>
+		</div>
+		<div class="rvdsf-list-container">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="list-group">
+						@foreach (var voucher in Model.Vouchers.OrderBy(v => v.VoucherDefinition.Name))
+						{
+						<li class="list-group-item">
+							<p><strong>@voucher.VoucherDefinition.Name</strong> <span class="label label-default badge badge-secondary" style="margin-left: 20px">@Html.LocalizeString(((int)voucher.Status).ToString(), Global.FilePaths.LocalVoucherStatusTypeResourceFile)</span></p> 
+							<div class="rvdsf-managevoucher-cardbackground" style="">
+								<div class="rvdsf-managevoucher-cardcontent">
+									<div id="rvdsfManageVoucherPre_@voucher.VoucherID" style="max-height: 200px;">@voucher.Code</div>
+								</div>
+							</div>
+							<p class="row">
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label class="col-sm-5 control-label">@Html.LocalizeString("ActiveAmountLabel")</label>
+										<div class="col-sm-7">
+											@voucher.FormattedActiveAmount
+										</div>
+									</div>
+								</div>
+
+								@if (voucher.VoucherDefinition.StartDate.HasValue)
+								{
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label class="col-sm-5 control-label">@Html.LocalizeString("StartDateLabel")</label>
+											<div class="col-sm-7">
+												@String.Format(Html.LocalizeString(Global.LocalizedStrings.Format_Date, Global.FilePaths.LocalSharedResourceFile), voucher.VoucherDefinition.StartDate.Value)
+											</div>
+										</div>
+									</div>
+								}
+								@if (voucher.StopDate.HasValue)
+								{
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label class="col-sm-5 control-label">@Html.LocalizeString("StopDateLabel")</label>
+											<div class="col-sm-7">
+												@String.Format(Html.LocalizeString(Global.LocalizedStrings.Format_Date, Global.FilePaths.LocalSharedResourceFile), voucher.StopDate.Value)
+											</div>
+										</div>
+									</div>
+								}
+							</p>
+							<div class="text-right">
+								<button type="button" class="btn btn-primary" href="#" onclick="rvdsfManageVoucher.copyToClipboard('rvdsfManageVoucherPre_@voucher.VoucherID'); return false;">
+									@Html.LocalizeString("CopyLink")
+								</button>
+							</div>
+						</li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	}
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+	<script type="text/plain" id="rvdsfStartupScriptManageOrder">
+		@foreach (var script in Model.StartupScripts)
+		{
+			<text>@Html.Raw(script)</text>
+		}
+	</script>
+</div>
+
+<script>
+	var rvdsfManageVoucher = rvdsfManageVoucher || {}
+
+	rvdsfManageVoucher.copyToClipboard = function (targetID) {
+
+		// Create hidden input to perform copy operation
+		var aux = document.createElement("input")
+		aux.setAttribute("value", document.getElementById(targetID).innerText)
+		document.body.appendChild(aux)
+		aux.select()
+		document.execCommand("copy")
+		document.body.removeChild(aux)
+	}
+
+</script>

@@ -1,0 +1,172 @@
+/*!
+ * This file was auto-generated using SASS
+ * You can manually modify it - but usually you will want to 
+ * Re-generate it using the SASS variables of your theme
+*/
+
+/* .accordion-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    overflow-anchor: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease
+} */
+
+@media(prefers-reduced-motion: reduce) {
+    .accordion-button {
+        transition: none
+    }
+}
+
+/* .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%230c63e4%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
+    transform: rotate(-180deg)
+} */
+
+/* .accordion-button::after {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-left: auto;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23212529%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    transition: transform .2s ease-in-out
+} */
+
+@media(prefers-reduced-motion: reduce) {
+    .accordion-button::after {
+        transition: none
+    }
+}
+
+/* .accordion-button:hover {
+    z-index: 2
+} */
+
+/* .accordion-button:focus {
+    z-index: 3;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .25)
+} */
+
+/* .accordion-header {
+    margin-bottom: 0
+} */
+
+/* .accordion-item {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .125)
+} */
+/* 
+.accordion-item:first-of-type {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem
+} */
+
+/* .accordion-item:first-of-type .accordion-button {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px)
+} */
+
+.accordion-item:not(:first-of-type) {
+    border-top: 0
+}
+
+.accordion-item:last-of-type {
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem
+}
+
+/* .accordion-item:last-of-type .accordion-button.collapsed {
+    border-bottom-right-radius: calc(0.25rem - 1px);
+    border-bottom-left-radius: calc(0.25rem - 1px)
+} */
+
+/* .accordion-item:last-of-type .accordion-collapse {
+    border-bottom-right-radius: .25rem;
+    border-bottom-left-radius: .25rem
+} */
+
+/* .accordion-body {
+    padding: 1rem 1.25rem
+} */
+
+/* .accordion-flush .accordion-collapse {
+    border-width: 0
+} */
+
+/* .accordion-flush .accordion-item {
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0
+} */
+
+/* .accordion-flush .accordion-item:first-child {
+    border-top: 0
+} */
+
+/* .accordion-flush .accordion-item:last-child {
+    border-bottom: 0
+}
+
+.accordion-flush .accordion-item .accordion-button {
+    border-radius: 0
+} */
+
+.app-faq4-wrapper {
+    margin-bottom: 1.5rem
+}
+
+/*# sourceMappingURL=styles.min.css.map*/
+/*saatvik-faq*/
+.saatvik-faq {
+    background-color: var(--bs-primary-bg-subtle);
+    padding: 2rem 0;
+}
+
+.saatvik-faq .web-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.saatvik-faq .accordion-item .accordion-header .accordion-button {
+    font-size: 18px;
+    font-weight: 500;
+    background-color: var(--bs-white);
+    box-shadow: none;
+}
+
+    .saatvik-faq .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+        background-color: #0a579a !important;
+        box-shadow: none;
+        color: var(--bs-white);
+    }
+
+.saatvik-faq .accordion-item {
+    border-radius: var(--bs-border-radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.saatvik-faq .accordion-item .accordion-collapse .accordion-body {
+    background-color: var(--bs-white);
+}
+
+.saatvik-faq .accordion-item .accordion-collapse .accordion-body p {
+    color: var(--bs-secondary);
+}
+
+.saatvik-faq .accordion-item .accordion-collapse .accordion-body p:last-of-type {
+    margin-bottom: 0;
+}

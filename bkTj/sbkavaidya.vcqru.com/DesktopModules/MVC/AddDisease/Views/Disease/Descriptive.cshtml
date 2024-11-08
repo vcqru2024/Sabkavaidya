@@ -1,0 +1,160 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddDisease.Models.DiseaseAppointmentViewModel>
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Entities.Tabs
+@using DotNetNuke.Entities.Portals
+@{
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, Dnn.DnnPage.ResolveUrl("~/DesktopModules/MVC/AddDisease/custom.css"));
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, Dnn.DnnPage.ResolveUrl("~/assets/css/css.css"));
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, Dnn.DnnPage.ResolveUrl("~/assets/css/responsive.css"));
+
+    var portalSettings = PortalSettings.Current;
+    var tabController = new TabController();
+    var currentTab = tabController.GetTab(portalSettings.ActiveTab.TabID, portalSettings.PortalId);
+    var breadcrumbs = new List<TabInfo>();
+
+    while (currentTab != null)
+    {
+        breadcrumbs.Insert(0, currentTab);
+        currentTab = currentTab.ParentId > 0 ? tabController.GetTab(currentTab.ParentId, portalSettings.PortalId) : null;
+    }
+}
+<div class="container">
+    <div class="diseases-details-header">
+        <div class="col-lg-12">
+         <a href="#">  <img src="/assets/img/product img/no-more-no-pain.jpg" /></a>
+                
+            </div>
+    
+        </div>
+    </div>
+</div>
+<!--  -->
+<div class="diseases-details-content">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-xxl-8 col-xl-8 col-lg-8">
+                <div class="blog-read-section mb-5">
+                    <div class="card">
+                        <div id="Disease-@Model.disease.DiseaseId" class="card-body">
+                            <h5>@Model.disease.DiseaseName</h5>
+                            <p class="card-text">@Html.Raw(Model.disease.DiseaseDescription)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4">
+                <div class="row g-4">
+                    <div class="col-lg-12">
+                        <div class="appointment-form">
+                            <div class="card">
+                                @Html.Partial("~/DesktopModules/MVC/AddAppointment/Views/Appointment/Edit.cshtml", Model.Appointment)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="recent-posts">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Related Diseases</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="#"> Arthroscopy</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Knee Pain</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Depression</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#"> Weight Loss</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Joint Health</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Hair & Skin Care</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Mental Health</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.Partial("~/DesktopModules/MVC/AddDoctor/Views/Doctor/index.cshtml", Model.doctor)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- faq -->
+@*<section class="faq-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="web-heading">
+                        <h1>FAQ</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto corrupti sit inventore
+                            blanditiis beatae quis voluptatum molestias eius sapiente delectus? Quisquam ipsa maiores
+                            repellat laborum quo itaque nihil voluptatum ut.
+                        </p>
+                    </div>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What does a nutritionist/ Dietitian do?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    We are manufacturers of highly reliable, low maintenance and dependable equipment
+                                    and service providers for Oil and Gas, Offshore, Road, Infrastructure, Construction,
+                                    Mining and Ship Building industries.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    What does a nutritionist/ Dietitian do?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    We are manufacturers of highly reliable, low maintenance and dependable equipment
+                                    and service providers for Oil and Gas, Offshore, Road, Infrastructure, Construction,
+                                    Mining and Ship Building industries.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What does a nutritionist/ Dietitian do?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    We are manufacturers of highly reliable, low maintenance and dependable equipment
+                                    and service providers for Oil and Gas, Offshore, Road, Infrastructure, Construction,
+                                    Mining and Ship Building industries.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>*@

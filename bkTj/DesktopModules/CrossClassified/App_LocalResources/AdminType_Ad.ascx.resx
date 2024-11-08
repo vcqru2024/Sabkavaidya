@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnAddType.Text" xml:space="preserve">
+    <value>Add Department</value>
+  </data>
+  <data name="ControlTitle_admintype_ad.Text" xml:space="preserve">
+    <value>Classified Ad Departments</value>
+  </data>
+  <data name="plName.Help" xml:space="preserve">
+    <value>Product department name</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="plName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblOrder.Text" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="plDetailPage.Help" xml:space="preserve">
+    <value>Select which page to dispaly product detail which belong to this department. You should put a Cp_Product_Detail sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_Detail sub module instance on page first time.</value>
+  </data>
+  <data name="plDetailPage.Text" xml:space="preserve">
+    <value>Cp_Product_Detail Sub Module Page</value>
+  </data>
+  <data name="plImage.Help" xml:space="preserve">
+    <value>Specify a image for this department (optional)</value>
+  </data>
+  <data name="plImage.Text" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="plListPage.Help" xml:space="preserve">
+    <value>Select which page to dispaly product list which belong to this department when user searches product or click product category. You should put a Cp_Product_List sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_List sub module instance on page first time.</value>
+  </data>
+  <data name="plListPage.Text" xml:space="preserve">
+    <value>Cp_Product_List Sub Module Page</value>
+  </data>
+  <data name="plOrder.Help" xml:space="preserve">
+    <value>Specify item index for sorting.</value>
+  </data>
+  <data name="plOrder.Text" xml:space="preserve">
+    <value>Sort Index</value>
+  </data>
+  <data name="btnDetailWizard.Text" xml:space="preserve">
+    <value>Run Detail Page Setting Wizard</value>
+  </data>
+  <data name="plEnableField.Help" xml:space="preserve">
+    <value>Specifications are detail description of products which belong to this department. Module has some built-in fields, like "Description/After Service/Special Offer" for all departments. And it also supports "Delivery" property for physical goods and "License" for software/digital files.&lt;br/&gt;
+    Besides that, module also support up 5 additional specification fields which you can customize. You can enable them and specify their title and default value.&lt;br/&gt;
+    For example, if you sell notebook, besides "Detail Description", you may want add "Technical Details"  specification for it (check http://www.amazon.com/Toshiba-Satellite-L645D-S4036-TruBrite-14-Inch/dp/B003M5GVJY/ref=sr_1_2?m=ATVPDKIKX0DER&amp;s=pc&amp;ie=UTF8&amp;qid=1285333024&amp;sr=1-2 for live demo).&lt;br/&gt;
+    Note, use these specification fields for long content (html or text based ). If you want to customize short specific content, use  "Product Attributes" feature in CP_Admin sub module instead.&lt;br/&gt;</value>
+  </data>
+  <data name="plEnableField.Text" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="plFieldTitle.Help" xml:space="preserve">
+    <value>Enter title for this specification, like "Technical Details"</value>
+  </data>
+  <data name="plFieldTitle.Text" xml:space="preserve">
+    <value>Specification Title</value>
+  </data>
+  <data name="divSpecification_1.Text" xml:space="preserve">
+    <value>Specification 1</value>
+  </data>
+  <data name="divSpecification_2.Text" xml:space="preserve">
+    <value>Specification 2</value>
+  </data>
+  <data name="divSpecification_3.Text" xml:space="preserve">
+    <value>Specification 3</value>
+  </data>
+  <data name="divSpecification_4.Text" xml:space="preserve">
+    <value>Specification 4</value>
+  </data>
+  <data name="divSpecification_5.Text" xml:space="preserve">
+    <value>Specification 5</value>
+  </data>
+  <data name="divBasic.Text" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="divFieldEnable.Text" xml:space="preserve">
+    <value>Fields Enable</value>
+  </data>
+  <data name="Tip_FieldEnable.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Module has some built-in fields for product information. Like "Summary/Support/Sku/Weight/Image.......". You can control whether to use them for each deparment. For example, if you uncheck "Enable Sku Field" option for current department, then when posting products which belong to this deparment, the "Sku" field will be hidden. It also will be hidden when displaying in Cp_Product_List and Cp_Product_Detail sub modules.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, some fields will be hidden automatically for specific department. For example, if current department sell type is "Digital files", then the "Weight" will be hidden automatically.&lt;/p&gt;</value>
+  </data>
+  <data name="plFieldEnable_Delivery.Help" xml:space="preserve">
+    <value>Check to enable "Delivery" field</value>
+  </data>
+  <data name="plFieldEnable_Delivery.Text" xml:space="preserve">
+    <value>Enable "Delivery" Field</value>
+  </data>
+  <data name="plFieldEnable_Description.Help" xml:space="preserve">
+    <value>Check to enable "Description" field</value>
+  </data>
+  <data name="plFieldEnable_Description.Text" xml:space="preserve">
+    <value>Enable "Description" Field</value>
+  </data>
+  <data name="plFieldEnable_License.Help" xml:space="preserve">
+    <value>Check to enable "License" field</value>
+  </data>
+  <data name="plFieldEnable_License.Text" xml:space="preserve">
+    <value>Enable "License" Field</value>
+  </data>
+  <data name="plFieldEnable_LinkUrl.Help" xml:space="preserve">
+    <value>Check to enable "Link Url" field</value>
+  </data>
+  <data name="plFieldEnable_LinkUrl.Text" xml:space="preserve">
+    <value>Enable "Link Url" Field</value>
+  </data>
+  <data name="plFieldEnable_PackageFee.Help" xml:space="preserve">
+    <value>Check to enable "Package Fee" field</value>
+  </data>
+  <data name="plFieldEnable_PackageFee.Text" xml:space="preserve">
+    <value>Enable "Package Fee" Field</value>
+  </data>
+  <data name="plFieldEnable_PreviousVersion.Help" xml:space="preserve">
+    <value>Check to enable "Previous Version" field</value>
+  </data>
+  <data name="plFieldEnable_PreviousVersion.Text" xml:space="preserve">
+    <value>Enable "Previous Version" Field</value>
+  </data>
+  <data name="plFieldEnable_Price.Help" xml:space="preserve">
+    <value>Check to enable "Sell Price/Promo Price/Promo Start/Promo End" field</value>
+  </data>
+  <data name="plFieldEnable_Price.Text" xml:space="preserve">
+    <value>Enable "Price" Field</value>
+  </data>
+  <data name="plFieldEnable_Sku.Help" xml:space="preserve">
+    <value>Check to enable "Sku" field</value>
+  </data>
+  <data name="plFieldEnable_Sku.Text" xml:space="preserve">
+    <value>Enable "Sku" Field</value>
+  </data>
+  <data name="plFieldEnable_SpecialOffer.Help" xml:space="preserve">
+    <value>Check to enable "Special Offer" field</value>
+  </data>
+  <data name="plFieldEnable_SpecialOffer.Text" xml:space="preserve">
+    <value>Enable "Special Offer" Field</value>
+  </data>
+  <data name="plFieldEnable_StockQuantity.Help" xml:space="preserve">
+    <value>Check to enable "Stock Quantity" field</value>
+  </data>
+  <data name="plFieldEnable_StockQuantity.Text" xml:space="preserve">
+    <value>Enable "Stock Quantity" Field</value>
+  </data>
+  <data name="plFieldEnable_Summary.Help" xml:space="preserve">
+    <value>Check to enable "Summary" field</value>
+  </data>
+  <data name="plFieldEnable_Summary.Text" xml:space="preserve">
+    <value>Enable "Summary" Field</value>
+  </data>
+  <data name="plFieldEnable_Support.Help" xml:space="preserve">
+    <value>Check to enable "Support" field</value>
+  </data>
+  <data name="plFieldEnable_Support.Text" xml:space="preserve">
+    <value>Enable "Support" Field</value>
+  </data>
+  <data name="plFieldEnable_Weight.Help" xml:space="preserve">
+    <value>Check to enable "Weight" field</value>
+  </data>
+  <data name="plFieldEnable_Weight.Text" xml:space="preserve">
+    <value>Enable "Weight" Field</value>
+  </data>
+  <data name="lblFieldDefault.Text" xml:space="preserve">
+    <value>Default value for this specification. Seller can modify it to fit his/her products.</value>
+  </data>
+  <data name="Tip_DetailPage.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Select which page to dispaly product detail which belong to this department. You should put a Cp_Product_Detail sub module instance on that page and select its department to this item.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp; Note, module will automatic fill this value when you put Cp_Product_Detail sub module instance on page first time. You can also click "Run detail page setting wizard" button to configure it at any time.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;This setting is also vital to integrate with DNN built-in search mechanism. If you can't search your products with DNN built-in search, please check this setting.</value>
+  </data>
+  <data name="Tip_ExtendField.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Specifications are detail description of products which belong to this department. Module already has a built-in fields - "Detail" for all departments.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Besides that, module also supports up 5 additional specification fields which you can customize. You can enable them and specify their title and default value.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp; For example, if you publish notebook products, besides "Product Detail", you may also want add a "Technical Detail" specification for it. To do it, you can check on "Enable" option for "Specification 1", input "Technical Detail" as its title. Then seller will see a "Technical Detail" field while editing products which belong to current department. You can also specify "Default value" for it so seller can simply modify this default value while editing his products.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Note, use these specification fields for long content (html based ). If you want to customize short specific content, use  "Cp_Admin sub module - Admin Control Panel - System Data - Attributes" feature instead.</value>
+  </data>
+  <data name="Tip_ListPage.Text" xml:space="preserve">
+    <value>Select which page to dispaly product list which belong to this department when user searches product or click product category. You should put a Cp_Product_List sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_List sub module instance on page first time.</value>
+  </data>
+  <data name="plAllowGoogleMap.Help" xml:space="preserve">
+    <value>Check this option to integrate with Google Maps. Products which belong to this department can provide its longitude and latitude and show in Google Maps.</value>
+  </data>
+  <data name="plAllowGoogleMap.Text" xml:space="preserve">
+    <value>Integrate with Google Maps</value>
+  </data>
+  <data name="Tip_AllowGoogleMap.Text" xml:space="preserve">
+    <value>Check this option to integrate with Google Maps. Listings which belong to this department can provide its longitude/latitude and show in Google Maps. This is useful when you publish map related listings (e.g. park, city, hotel...etc).</value>
+  </data>
+  <data name="divGoogleMap.Text" xml:space="preserve">
+    <value>Location &amp; Google Maps</value>
+  </data>
+  <data name="plAllowLocation.Help" xml:space="preserve">
+    <value>Check to enable location</value>
+  </data>
+  <data name="plAllowLocation.Text" xml:space="preserve">
+    <value>Enable Location</value>
+  </data>
+  <data name="Tip_AllowLocation.Text" xml:space="preserve">
+    <value>If checked, listings which belong to this department can specify its location(country, province, city, and town). This is useful when you publish location related listings. For example, when publishing ads for restaurant, seller can specify a restaurant location to country = USA, state/province = California, city = Los Angeles, town = Bell.</value>
+  </data>
+  <data name="divFileUpload.Text" xml:space="preserve">
+    <value>Client File Upload</value>
+  </data>
+  <data name="lblUploadExtension.Text" xml:space="preserve">
+    <value>File Extension</value>
+  </data>
+  <data name="lblUploadRequire.Text" xml:space="preserve">
+    <value>Require</value>
+  </data>
+  <data name="lblUploadRuleTitle1.Text" xml:space="preserve">
+    <value>File Title 1</value>
+  </data>
+  <data name="lblUploadRuleTitle10.Text" xml:space="preserve">
+    <value>File Title 10</value>
+  </data>
+  <data name="lblUploadRuleTitle2.Text" xml:space="preserve">
+    <value>File Title 2</value>
+  </data>
+  <data name="lblUploadRuleTitle3.Text" xml:space="preserve">
+    <value>File Title 3</value>
+  </data>
+  <data name="lblUploadRuleTitle4.Text" xml:space="preserve">
+    <value>File Title 4</value>
+  </data>
+  <data name="lblUploadRuleTitle5.Text" xml:space="preserve">
+    <value>File Title 5</value>
+  </data>
+  <data name="lblUploadRuleTitle6.Text" xml:space="preserve">
+    <value>File Title 6</value>
+  </data>
+  <data name="lblUploadRuleTitle7.Text" xml:space="preserve">
+    <value>File Title 7</value>
+  </data>
+  <data name="lblUploadRuleTitle8.Text" xml:space="preserve">
+    <value>File Title 8</value>
+  </data>
+  <data name="lblUploadRuleTitle9.Text" xml:space="preserve">
+    <value>File Title 9</value>
+  </data>
+  <data name="lblUploadSize.Text" xml:space="preserve">
+    <value>Size Limit</value>
+  </data>
+  <data name="li_UploadLimit_Unlimited.Text" xml:space="preserve">
+    <value>Unlimited</value>
+  </data>
+  <data name="plAllowUploadForTicket.Help" xml:space="preserve">
+    <value>Allow client to upload files while submitting help ticket to products which belong to this department.</value>
+  </data>
+  <data name="plAllowUploadForTicket.Text" xml:space="preserve">
+    <value>Allow Upload For Ticket</value>
+  </data>
+  <data name="plUploadExtension.Help" xml:space="preserve">
+    <value>Enter the file extension which user can upload. For example, enter "zip,jpg,png", then client can only upload winzip files (.zip) and pictures (.jpg .png).</value>
+  </data>
+  <data name="plUploadExtension.Text" xml:space="preserve">
+    <value>File Extension</value>
+  </data>
+  <data name="plUploadLimit.Help" xml:space="preserve">
+    <value>How many files user can upload</value>
+  </data>
+  <data name="plUploadLimit.Text" xml:space="preserve">
+    <value>Upload File Count</value>
+  </data>
+  <data name="plUploadSize.Help" xml:space="preserve">
+    <value>Specify the file size which user can upload</value>
+  </data>
+  <data name="plUploadSize.Text" xml:space="preserve">
+    <value>Upload Limit</value>
+  </data>
+  <data name="Tip_FileUpload.Text" xml:space="preserve">
+    <value>You can allow client to upload files while submitting help ticket for an ad which belong to this department here. For example, you are publishing the job listings, a client can create a help ticket (a job request) for a job, and upload related files (his resume, pictures, etc) to you, then you can view these files.&lt;br/&gt;&lt;br/&gt;
+
+By default, module allows client uploading unlimited files for a help ticket, you can limit the total file size and the file extension. For example, if you enter "Upload Limit" as 10, and "File Extension" as "zip,jpg,png", then client can upload up to 10mb files for a help ticket, and can only upload winzip files (.zip) and pictures (.jpg .png). Note, the "File Extension" must also exist in DNN Persona Bar "Settings - Security  - More - More Security Settings - Allowable File Extensions". For example, if you enter ".psd" at "File Extennsion" to allow client uploading photoshop files (.psd) here, but if .psd doesn't exist in "Allowable File Extensions", then client still can't upload .psd files.&lt;br/&gt;&lt;br/&gt;
+
+You can also specify the upload file count and extension (size). For example, you can select "Upload File Count" as 2 to allow client uploading 2 files only. And for file 1, enter "File Title" as "Resume", "File Extension" as "doc,docx", "File Size" as "5", then client knows that he needs to upload a MS Word resume (doc, docx), and its size is less than 5mb. For file 2, enter "File Title" as "Personal Photo", "File Extension" as "jpg,png,bmp,jpe,jpeg", "File Size" as "3", then client knows that he needs to upload 1 personal picture.</value>
+  </data>
+  <data name="divFileUpload_Vendor.Text" xml:space="preserve">
+    <value>Seller File Upload</value>
+  </data>
+  <data name="plAllowUploadForTicket_Vendor.Help" xml:space="preserve">
+    <value>Allow seller upload files For help ticket</value>
+  </data>
+  <data name="plAllowUploadForTicket_Vendor.Text" xml:space="preserve">
+    <value>Allow Seller Upload For Ticket</value>
+  </data>
+  <data name="plUploadSize_Vendor.Help" xml:space="preserve">
+    <value>The total file size which seller can upload for a order (or a help ticket).</value>
+  </data>
+  <data name="plUploadSize_Vendor.Text" xml:space="preserve">
+    <value>Seller Upload Limit</value>
+  </data>
+  <data name="Tip_FileUpload_Vendor.Text" xml:space="preserve">
+    <value>Besides client, you can also allow seller to upload files for a help ticket which belongs to this department here. For example, you are publishing the software introduction, a client can report a problem while using software, and upload related screen shots to you, then you show them the correct operation instructions (with pictures).&lt;br/&gt;&lt;br/&gt;
+
+You can limit the total file size which seller can upload for a help ticket. But unlike the client file upload, module allows seller uploading unlimited files for a help ticket, and doesn't limit the file extension. Of course, the upload file extension must exist in DNN Persona Bar "Settings - Security  - More - More Security Settings - Allowable File Extensions".</value>
+  </data>
+  <data name="plVendorProfilePage.Help" xml:space="preserve">
+    <value>Choose the Cp_Product_VendorProfile sub module page for this department.</value>
+  </data>
+  <data name="plVendorProfilePage.Text" xml:space="preserve">
+    <value>Cp_Product_VendorProfile Sub Module Page</value>
+  </data>
+  <data name="Tip_VendorProfilePage.Text" xml:space="preserve">
+    <value>Select which page to dispaly vendor profile (and his ads) which belong to this department when user click vendor item at Cp_Product_Vendor sub module. You should put a Cp_Product_VendorProfile sub module instance on that page and select its department to this item. Note, module will automatic fill this value when you put Cp_Product_VendorProfile sub module instance on page first time.&lt;br/&gt;&lt;br/&gt;
+If you have a lot of vendors/sellers who have posted ads on this site, then the Cp_Product_VendorProfile sub module maybe useful. If not, just ignore it (and the Vendor Profile page option).</value>
+  </data>
+</root>

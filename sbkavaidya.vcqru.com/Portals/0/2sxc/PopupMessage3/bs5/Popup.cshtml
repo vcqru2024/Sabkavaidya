@@ -1,0 +1,33 @@
+@inherits Custom.Hybrid.RazorTyped
+@* --- This is the Bootstrap5 Edition of the Files --- *@
+@{
+  var popupContent = MyItem;
+  var settings = popupContent.Dyn.Presentation;
+  var showPopup = settings.Activated == true          // popup activated?
+    && settings.ActiveFrom <= DateTime.Now.Date  // showFrom <= today?
+    && settings.ActiveTo >= DateTime.Now.Date;    // showTo >= today?
+  var domId = "app-popup3-js-modal-" + UniqueKey;
+
+  // Default Toolbar with custom settings, show left
+  var contentToolbar = Kit.Toolbar.Default().Settings(hover: "left", autoAddMore:"start", show:"always");
+}
+
+@* Do not delete warning and demo popup for admin *@
+@if (MyUser.IsContentAdmin) {
+
+  <div class="alert alert-info d-flex justify-content-between">
+    <div class="d-flex align-items-center">
+      @App.Resources.String("DoNotDeleteWarning")
+      @* Add Toolbar as ul li Element *@
+      @contentToolbar.AsTag(popupContent)
+    </div>
+    <a data-micromodal-trigger="@domId" class="btn btn-primary btn-sm text-white">@App.Resources.String("TestPopup")</a>
+  </div>
+}
+
+@if (MyUser.IsContentAdmin || showPopup) {
+  <div class="app-popup3">
+    @Html.Partial("Popup.PartModal.cshtml", new { domId, popupContent })
+  </div>
+  @Html.Partial("Assets.cshtml", new { domId, ShowAgainAfter = popupContent.Presentation.Int("ShowAgainAfter")})
+}

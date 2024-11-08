@@ -1,0 +1,11 @@
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<puresystems.Modules.ContentPro.Components.RazorModel>
+
+<p style="text-align: center;"><strong><span style="font-size: 32px;">@Model.Content.Title</span></strong></p>
+<br />
+<p><span style="font-size: 18px;">@Model.Content.Body</span></p>
+<br />
+<p><span style="color: #444444;"><a href="@Model.Content.Link"> <span style="color: #444444;">@Model.Content.Link</span></a></span></p>
+<p style="text-align: right;"><strong><em><br />
+</em></strong></p>
+<p style="text-align: right;"><strong><em>@Model.Content.Location</em></strong></p>
+<br />

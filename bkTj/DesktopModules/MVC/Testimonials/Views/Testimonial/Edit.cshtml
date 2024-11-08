@@ -1,0 +1,68 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<vcqru.Testimonials.Models.Testimonial>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Testimonial-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight">
+            <a href="#">@Dnn.LocalizeString("ExpandAll")</a>
+        </div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <div class="dnnFormItem">
+                <div><label for="testimonialName">Name</label></div>
+                @Html.TextBoxFor(m => m.Name, new { id = "testimonialName", placeholder = "Enter name", pattern = "[A-Za-z ]+", title = "Only letters and spaces are allowed.", onkeypress = "return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode == 32)" })
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="testimonialLocation">Location</label></div>
+                @Html.TextBoxFor(m => m.Location)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="testimonialCondition">Condition</label></div>
+                @Html.TextBoxFor(m => m.Condition)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="testimonialMessage">Message</label></div>
+                @Html.TextAreaFor(m => m.Message)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="testimonialImageUrl">ImageUrl</label></div>
+                @Html.TextBoxFor(m => m.ImageUrl, new { @readonly = "readonly", id = "testimonialImageUrl" })
+                <div>
+                    <label for="imageUpload">UploadImage</label>
+                    <input type="file" id="imageUpload" name="imageUpload" accept="image/*" />
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+    <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+    <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+</div>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings .dnnFormExpandContent a').dnnExpandAll({
+                expandText: '@Dnn.LocalizeString("ExpandAll")',
+                collapseText: '@Dnn.LocalizeString("CollapseAll")',
+                targetArea: '#dnnEditBasicSettings'
+            });
+        }
+
+        $(function() {
+            $('#cancelEdit').click(function() { dnnModal.closePopUp(false); });
+            dnnEditBasicSettings();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(function() {
+                dnnEditBasicSettings();
+            });
+        });
+
+    }(jQuery, window.Sys));
+</script>

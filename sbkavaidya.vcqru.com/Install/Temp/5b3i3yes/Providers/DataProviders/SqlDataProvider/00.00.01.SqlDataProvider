@@ -1,0 +1,39 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}AddAppointment_Appointments]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE {databaseOwner}{objectQualifier}AddAppointment_Appointments
+    (
+        AppointmentId int NOT NULL IDENTITY (1, 1),
+        PatientName nvarchar(MAX) NOT NULL,
+        PatientPhone nvarchar(MAX) NOT NULL,
+        DoctorName nvarchar(MAX) NOT NULL,
+        DoctorId int Not Null,
+        AppointmentDate datetime NOT NULL,
+        AppointmentTime time NOT NULL,
+        IsApproved bit NOT NULL DEFAULT 0, -- New column
+        ModuleId int NOT NULL,
+        CreatedOnDate datetime NOT NULL,
+        CreatedByUserId int NOT NULL,
+        LastModifiedOnDate datetime NOT NULL,
+        LastModifiedByUserId int NOT NULL
+    ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+
+    ALTER TABLE {databaseOwner}{objectQualifier}AddAppointment_Appointments 
+    ADD CONSTRAINT PK_{objectQualifier}AddAppointment_Appointments 
+    PRIMARY KEY CLUSTERED (AppointmentId)
+    WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY];
+END
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

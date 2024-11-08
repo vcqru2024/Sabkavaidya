@@ -1,0 +1,1276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Required.Text" xml:space="preserve">
+    <value>Value can't be null</value>
+  </data>
+  <data name="plViewRoles.Text" xml:space="preserve">
+    <value>Default Product View Roles</value>
+  </data>
+  <data name="plViewRoles.Help" xml:space="preserve">
+    <value>You can control which roles can view products by default. Note, each product can has its own view roles.</value>
+  </data>
+  <data name="plRequireApproval.Text" xml:space="preserve">
+    <value>Approval Product Before Display</value>
+  </data>
+  <data name="plRequireApproval.Help" xml:space="preserve">
+    <value>Check this to require products to be approved before being displayed to users.</value>
+  </data>
+  <data name="secRating.Text" xml:space="preserve">
+    <value>Product Rating</value>
+  </data>
+  <data name="plAllowRating.Text" xml:space="preserve">
+    <value>Allow Rating</value>
+  </data>
+  <data name="plAllowRating.Help" xml:space="preserve">
+    <value>Allow visitors to rating product by default. Note, each product can has its own rating settings.</value>
+  </data>
+  <data name="plRatingRoles.Text" xml:space="preserve">
+    <value>Default Rating Roles</value>
+  </data>
+  <data name="plRatingRoles.Help" xml:space="preserve">
+    <value>Select roles which can ratings by default, each product can has its own rating roles. Note, if product is sold online, then only customers who bought this product can rating it.</value>
+  </data>
+  <data name="secComment.Text" xml:space="preserve">
+    <value>Product Comment</value>
+  </data>
+  <data name="plAllowComment.Text" xml:space="preserve">
+    <value>Allow Comment</value>
+  </data>
+  <data name="plAllowComment.Help" xml:space="preserve">
+    <value>Allow visitors to post comment by default. Note, each product can has its own comment settings.</value>
+  </data>
+  <data name="plCommentRoles.Text" xml:space="preserve">
+    <value>Default Comment Roles</value>
+  </data>
+  <data name="plCommentRoles.Help" xml:space="preserve">
+    <value>Select roles which can post comments by default. Note, each product can has its own comment roles.</value>
+  </data>
+  <data name="plAutoAuthComment.Text" xml:space="preserve">
+    <value>Auto Authorize Comment</value>
+  </data>
+  <data name="plAutoAuthComment.Help" xml:space="preserve">
+    <value>Auto authorize user comment. Unauthorized comments will not display to normal visitors.</value>
+  </data>
+  <data name="plEnablePaypal.Text" xml:space="preserve">
+    <value>Enable PayPal</value>
+  </data>
+  <data name="secGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="plCategorySelectCount.Help" xml:space="preserve">
+    <value>Enter the maximum categories a product can belong to.</value>
+  </data>
+  <data name="plCategorySelectCount.Text" xml:space="preserve">
+    <value>Category Selection Limit</value>
+  </data>
+  <data name="secOrder.Text" xml:space="preserve">
+    <value>Store Settings</value>
+  </data>
+  <data name="plCurrencySymbol.Help" xml:space="preserve">
+    <value>Currency symbol used for the product prices.</value>
+  </data>
+  <data name="plCurrencySymbol.Text" xml:space="preserve">
+    <value>Currency Symbol</value>
+  </data>
+  <data name="ControlTitle_adminproduct_settings.Text" xml:space="preserve">
+    <value>Store Settings</value>
+  </data>
+  <data name="plDownloadRoles.Help" xml:space="preserve">
+    <value>Select roles which can download product attached files by default. Note, each product can has its own download roles.</value>
+  </data>
+  <data name="plDownloadRoles.Text" xml:space="preserve">
+    <value>Default Attachment Download Roles</value>
+  </data>
+  <data name="plEnableFixedPrice.Help" xml:space="preserve">
+    <value>Check this option to let user buy products online. Note, you need to configure your payment information (PayPal or Authorize.net) before visitors can check out.</value>
+  </data>
+  <data name="plEnableFixedPrice.Text" xml:space="preserve">
+    <value>Enable Fixed Price Products</value>
+  </data>
+  <data name="plRecommendRoles.Help" xml:space="preserve">
+    <value>Select roles which can post comments by default. Note, each product can has its own recommend roles.</value>
+  </data>
+  <data name="plRecommendRoles.Text" xml:space="preserve">
+    <value>Recommend Roles</value>
+  </data>
+  <data name="plTagSelectCount.Help" xml:space="preserve">
+    <value>Enter how many tags a product can belong to. Value must between 1 and 10.</value>
+  </data>
+  <data name="plTagSelectCount.Text" xml:space="preserve">
+    <value>Tag Selection Limit</value>
+  </data>
+  <data name="secDownload.Text" xml:space="preserve">
+    <value>Product Attachments</value>
+  </data>
+  <data name="plEnablePaypal.Help" xml:space="preserve">
+    <value>Check to enable PayPal payment gateway. Note, you must fill related information to use it.</value>
+  </data>
+  <data name="plStoreName.Text" xml:space="preserve">
+    <value>Store Name</value>
+  </data>
+  <data name="plAllowRecommend.Help" xml:space="preserve">
+    <value>Allow visitors to recommend product by default. Note, each product can has its own recommend settings.</value>
+  </data>
+  <data name="plAllowRecommend.Text" xml:space="preserve">
+    <value>Allow Recommend</value>
+  </data>
+  <data name="secPaypal.Text" xml:space="preserve">
+    <value>PayPal payment gateway</value>
+  </data>
+  <data name="errAuthorize.Text" xml:space="preserve">
+    <value>Please check your Authorize.net information. Note, the Transaction POST URL/Version/Payment URL/API Login ID/Transaction Key can't be null if "Enable Authorize.net" is checked.</value>
+  </data>
+  <data name="errPaypal.Text" xml:space="preserve">
+    <value>Please check your PayPal information. Note, the PayPal ID/Verification URL/Payment URL/Language/Charset/button URL/Currency can't be null if "Enable PayPal" is checked.</value>
+  </data>
+  <data name="li_AuthorizeCaptureType_AUTH_CAPTURE.Text" xml:space="preserve">
+    <value>Auth and Capture</value>
+  </data>
+  <data name="li_AuthorizeCaptureType_AUTH_ONLY.Text" xml:space="preserve">
+    <value>Auth Only</value>
+  </data>
+  <data name="li_AuthorizeCaptureType_CAPTURE_ONLY.Text" xml:space="preserve">
+    <value>Capture Only</value>
+  </data>
+  <data name="MustBetween1To10.Text" xml:space="preserve">
+    <value>Enter a value between 1-10.</value>
+  </data>
+  <data name="plAuthorizeApiLoginId.Help" xml:space="preserve">
+    <value>To get your Api Login ID and transaction key, visit https://account.authorize.net, login to your account, click on the "Account" tab at the top, and then on the "Api Login ID and Transaction Key" link (under Security settings).</value>
+  </data>
+  <data name="plAuthorizeApiLoginId.Text" xml:space="preserve">
+    <value>API Login ID</value>
+  </data>
+  <data name="plAuthorizeTestMode.Help" xml:space="preserve">
+    <value>When in test mode, transactions are not live</value>
+  </data>
+  <data name="plAuthorizeTestMode.Text" xml:space="preserve">
+    <value>Test Mode</value>
+  </data>
+  <data name="plAuthorizeTransactionKey.Help" xml:space="preserve">
+    <value>To get your Api Login ID and transaction key, visit https://account.authorize.net, login to your account, click on the "Account" tab at the top, and then on the "Api Login ID and Transaction Key" link (under Security settings).</value>
+  </data>
+  <data name="plAuthorizeTransactionKey.Text" xml:space="preserve">
+    <value>Transaction Key</value>
+  </data>
+  <data name="plAuthorizeTransactionPostUrl.Help" xml:space="preserve">
+    <value>Enter the Post Url provided to you when you registered with Authorize.Net. It should be https://secure.authorize.net/gateway/transact.dll in most cases. However, if you use developer account which offered by Authorize.net for test, you should input it at  https://test.authorize.net/gateway/transact.dll. For live accounts, you should change it as https://secure.authorize.net/gateway/transact.dll even in "Test Mode"</value>
+  </data>
+  <data name="plAuthorizeTransactionPostUrl.Text" xml:space="preserve">
+    <value>Transaction Post Url</value>
+  </data>
+  <data name="plAuthorizeVersion.Help" xml:space="preserve">
+    <value>The version number of the AIM gateway you are posting to (use the value "3.1" unless told otherwise by Authorize.Net)</value>
+  </data>
+  <data name="plAuthorizeVersion.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="plEnableAuthorize.Help" xml:space="preserve">
+    <value>Check to enable Authorize.net payment gateway. Note, Authorize.net can only applied to US dollar ($). And it requires secure connection (https:) for live transaction. However, you can use unsecured connection (http:) to test Authorize.net payment gateway.</value>
+  </data>
+  <data name="plEnableAuthorize.Text" xml:space="preserve">
+    <value>Enable Authorize.net</value>
+  </data>
+  <data name="plPayPalButtonUrl.Help" xml:space="preserve">
+    <value>URL of a PayPal graphic which will appear during checkout.</value>
+  </data>
+  <data name="plPayPalButtonUrl.Text" xml:space="preserve">
+    <value>PayPal Button Url</value>
+  </data>
+  <data name="plPayPalCharset.Help" xml:space="preserve">
+    <value>Specify charset used for data transfered. Consult PayPal documentation for the supported charset list</value>
+  </data>
+  <data name="plPayPalCharset.Text" xml:space="preserve">
+    <value>Charset</value>
+  </data>
+  <data name="plPayPalCurrency.Help" xml:space="preserve">
+    <value>Three character PayPal currency code. For example enter USD for U.S. Dollar, EUR for Euro, CAD for  Canadian Dollar. For more information, please visit https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&amp;content_ID=developer/e_howto_api_nvp_currency_codes.</value>
+  </data>
+  <data name="plPayPalCurrency.Text" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="plPayPalId.Help" xml:space="preserve">
+    <value>The PayPal account (email address like support@DnnModule.com) which used to receive money.</value>
+  </data>
+  <data name="plPayPalId.Text" xml:space="preserve">
+    <value>PayPal Account</value>
+  </data>
+  <data name="plPayPalLanguage.Help" xml:space="preserve">
+    <value>Language used on PayPal website, value must be one of this : AU, DE, ES, FR, GB, IT, US. Consult PayPal documentation for the supported country list</value>
+  </data>
+  <data name="plPayPalLanguage.Text" xml:space="preserve">
+    <value>PayPal Language</value>
+  </data>
+  <data name="plPayPalPaymentUrl.Help" xml:space="preserve">
+    <value>Payment URL on PayPal.</value>
+  </data>
+  <data name="plPayPalPaymentUrl.Text" xml:space="preserve">
+    <value>PayPal Payment Url</value>
+  </data>
+  <data name="plPayPalSecureId.Help" xml:space="preserve">
+    <value>The Secure Merchant Account ID is optional but recommended for hardening your security. This value is displayed on your profile summary at PayPal.</value>
+  </data>
+  <data name="plPayPalSecureId.Text" xml:space="preserve">
+    <value>Secure ID</value>
+  </data>
+  <data name="plPayPalSurchargeFixed.Help" xml:space="preserve">
+    <value>If you want to charge a fixed surcharge for using PayPal, specify the amount here.
+
+Leave blank or set to 0 for no fixed surcharge. Can be used with or without a percentage surcharge.
+
+The surcharge will be added at checkout as part of your shipping &amp; handling charge</value>
+  </data>
+  <data name="plPayPalSurchargeFixed.Text" xml:space="preserve">
+    <value>Surcharge (Fixed)</value>
+  </data>
+  <data name="plPayPalSurchargePercent.Help" xml:space="preserve">
+    <value>If you want to charge a percentage surcharge for using PayPal, specify the percentage here.
+
+Leave blank or set to 0 for no percentage surcharge. Can be used with or without a fixed surcharge.
+
+The surcharge will be added at checkout as part of your shipping &amp; handling charge.</value>
+  </data>
+  <data name="plPayPalSurchargePercent.Text" xml:space="preserve">
+    <value>Surcharge (Percent)</value>
+  </data>
+  <data name="plPayPalVerificationUrl.Help" xml:space="preserve">
+    <value>URL for verifying payment on PayPal.</value>
+  </data>
+  <data name="plPayPalVerificationUrl.Text" xml:space="preserve">
+    <value>PayPal Verification Url</value>
+  </data>
+  <data name="plUsePayPalSandbox.Help" xml:space="preserve">
+    <value>Tick this checkbox to use the PayPal sandbox for testing purposes.</value>
+  </data>
+  <data name="plUsePayPalSandbox.Text" xml:space="preserve">
+    <value>Test Via Sandbox</value>
+  </data>
+  <data name="secAuthorize.Text" xml:space="preserve">
+    <value>Authorize.net payment gateway (for US dollar $  only )</value>
+  </data>
+  <data name="plAuthorizeCaptureType.Help" xml:space="preserve">
+    <value>Choose the capture type</value>
+  </data>
+  <data name="plAuthorizeCaptureType.Text" xml:space="preserve">
+    <value>Capture Type</value>
+  </data>
+  <data name="plRssItemCounts.Help" xml:space="preserve">
+    <value>Enter how many items are displayed to RSS feeds.</value>
+  </data>
+  <data name="plRssItemCounts.Text" xml:space="preserve">
+    <value>RSS Item Counts</value>
+  </data>
+  <data name="plDefaultAddressCountry.Help" xml:space="preserve">
+    <value>Default country for user address. Speciy a country which most of your clients belong.</value>
+  </data>
+  <data name="plDefaultAddressCountry.Text" xml:space="preserve">
+    <value>Default Country</value>
+  </data>
+  <data name="plStoreEmail.Help" xml:space="preserve">
+    <value>Email address which used to receive/send order information. Can't be null if online order is enabled.</value>
+  </data>
+  <data name="plStoreEmail.Text" xml:space="preserve">
+    <value>Store Email</value>
+  </data>
+  <data name="plStoreName.Help" xml:space="preserve">
+    <value>Store name which used in send mail to clients. Can't be null if online order is enabled.</value>
+  </data>
+  <data name="errStoreNameAndEmail.Text" xml:space="preserve">
+    <value>Store name and store email can't be null if "Enable online order " is checked.</value>
+  </data>
+  <data name="plEnableDeleteOrder.Help" xml:space="preserve">
+    <value>Check to enable sellers delete order history of his own.</value>
+  </data>
+  <data name="plEnableDeleteOrder.Text" xml:space="preserve">
+    <value>Enable Delete Order</value>
+  </data>
+  <data name="plShippingTaxable.Help" xml:space="preserve">
+    <value>A value indicating whether shipping is taxable</value>
+  </data>
+  <data name="plShippingTaxable.Text" xml:space="preserve">
+    <value>Shipping Is Taxable</value>
+  </data>
+  <data name="plWeightSymbol.Help" xml:space="preserve">
+    <value>Symbol for product weight, default is lbs (=pounds), you can change it as "kg" or something similar</value>
+  </data>
+  <data name="plWeightSymbol.Text" xml:space="preserve">
+    <value>Weight Symbol</value>
+  </data>
+  <data name="Tip_ManualPayment.Text" xml:space="preserve">
+    <value>Manual processing payment gateway enables customer to pay offline. When client click "Confirm Order" via manual processing payment gateway, his order status will be changed as "Awaiting Payment". Client can pay money offline (via wire transfer, bank transfer..etc). Seller can change order status as "Paid" after receive customer's money.</value>
+  </data>
+  <data name="plEnableManual.Help" xml:space="preserve">
+    <value>Manual processing payment gateway enables customer to pay offline. Seller then change order status after receive customer payment.</value>
+  </data>
+  <data name="plEnableManual.Text" xml:space="preserve">
+    <value>Enable Manual Processing</value>
+  </data>
+  <data name="secManual.Text" xml:space="preserve">
+    <value>Manual processing payment gateway (offline payment)</value>
+  </data>
+  <data name="errDineroMail.Text" xml:space="preserve">
+    <value>Please specify your "Merchant Account" for "DineroMail payment gateway"</value>
+  </data>
+  <data name="li_DineroMailCountry_Argentina.Text" xml:space="preserve">
+    <value>Argentina</value>
+  </data>
+  <data name="li_DineroMailCountry_Brazil.Text" xml:space="preserve">
+    <value>Brazil</value>
+  </data>
+  <data name="li_DineroMailCountry_Chile.Text" xml:space="preserve">
+    <value>Chile</value>
+  </data>
+  <data name="li_DineroMailCountry_Mexico.Text" xml:space="preserve">
+    <value>Mexico</value>
+  </data>
+  <data name="li_DineroMailCurrency_ars.Text" xml:space="preserve">
+    <value>ars (Argentina's currency)</value>
+  </data>
+  <data name="li_DineroMailCurrency_brl.Text" xml:space="preserve">
+    <value>brl (Brazil's currency)</value>
+  </data>
+  <data name="li_DineroMailCurrency_clp.Text" xml:space="preserve">
+    <value>clp (Chile's currency)</value>
+  </data>
+  <data name="li_DineroMailCurrency_mxn.Text" xml:space="preserve">
+    <value>mxn (Mexico's currency)</value>
+  </data>
+  <data name="li_DineroMailCurrency_usd.Text" xml:space="preserve">
+    <value>usd (United State's currency)</value>
+  </data>
+  <data name="li_DineroMailLanguage_en.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="li_DineroMailLanguage_es.Text" xml:space="preserve">
+    <value>Spanish</value>
+  </data>
+  <data name="li_DineroMailLanguage_pt.Text" xml:space="preserve">
+    <value>Portuguese</value>
+  </data>
+  <data name="plDineroMailCountry_Id.Help" xml:space="preserve">
+    <value>Country where the Merchant will operate.</value>
+  </data>
+  <data name="plDineroMailCountry_Id.Text" xml:space="preserve">
+    <value>Merchant Country</value>
+  </data>
+  <data name="plDineroMailCurrency.Help" xml:space="preserve">
+    <value>Choose customer check out currency.</value>
+  </data>
+  <data name="plDineroMailCurrency.Text" xml:space="preserve">
+    <value>Check Out Currency</value>
+  </data>
+  <data name="plDineroMailLanguage.Help" xml:space="preserve">
+    <value>Customer check out language in DineroMail</value>
+  </data>
+  <data name="plDineroMailLanguage.Text" xml:space="preserve">
+    <value>Check Out Language</value>
+  </data>
+  <data name="plDineroMailMerchant.Help" xml:space="preserve">
+    <value>DineroMail's Account number which used to receive money, without the oblique and the last digit.</value>
+  </data>
+  <data name="plDineroMailMerchant.Text" xml:space="preserve">
+    <value>Merchant Account</value>
+  </data>
+  <data name="plDineroMailSeller_Name.Help" xml:space="preserve">
+    <value>Merchant's name. Or legend that the merchant wishes to show instead of his/her e-mail address.</value>
+  </data>
+  <data name="plDineroMailSeller_Name.Text" xml:space="preserve">
+    <value>Seller Name (optional)</value>
+  </data>
+  <data name="plEnableDineroMail.Help" xml:space="preserve">
+    <value>Check to enable DineroMail payment gateway.</value>
+  </data>
+  <data name="plEnableDineroMail.Text" xml:space="preserve">
+    <value>Enable DineroMail</value>
+  </data>
+  <data name="secDineroMail.Text" xml:space="preserve">
+    <value>DineroMail payment gateway (for Latinamercia)</value>
+  </data>
+  <data name="li_DineroMail_AuthorizePaid_Auto.Text" xml:space="preserve">
+    <value>Auto Authorize</value>
+  </data>
+  <data name="li_DineroMail_AuthorizePaid_Manual.Text" xml:space="preserve">
+    <value>Manual Check</value>
+  </data>
+  <data name="plDineroMail_AuthorizePaid.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Unlike PayPal, DineroMail doesn't provide any postback mechanism after client paid, so module has no way to know if money is really received. The typical process will like followings:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Client choose "DineroMail" payment gateway and paid on DineroMail site, then DineroMail will redirect him to your site.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. His order status will be changed as "awaiting payment" after redirect to your site. A mail will send to store administrator and seller about his order information.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Store administrator then change client order status as "paid"  by click "Admin Control Panel - Sale Report - Order History " when confirm  that  money is already received, and do necessay work, like shipping.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. If client ordered is software or digital files, he can download them after his order status has been changed as "paid".
+&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;However, if you change "Admin Control Panel - Configuration - General Settings - DineroMail payment gateway - Verify paid status" value from "Manual" to "Auto", then client order status will be automatic changed as "paid" after redirect to your site from DineroMail. But as mentioned above, DineroMail doesn't provide any postback mechanism to let module verify if money is really received. So in theory, malice users can pretend the redirect process without paid to grift you. Don't change "Verify paid status " as "Auto" unless followings:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. You don't care about these malice actions .&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. What you sell is goods which need to shipping, not software (digital files) or portal roles. In this case, if you find malice order without paid, you can delete these order information and don't shipping to them.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3.&lt;font color="red"&gt; Important notice, please beware of the risks before change "Verify paid status " to  "Auto".&lt;/font&gt; 
+&lt;/p&gt;</value>
+  </data>
+  <data name="plDineroMail_AuthorizePaid.Text" xml:space="preserve">
+    <value>Verify Paid Status</value>
+  </data>
+  <data name="plRssTitle.Help" xml:space="preserve">
+    <value>Enter RSS title which will display when visitor subscribing. Default avlue is "Classified Pro RSS Feed ", you can change it to meet your site. For example, if your site name is "DnnModule.com", you can change RSS title as "DnnModule.com RSS Feed" </value>
+  </data>
+  <data name="plRssTitle.Text" xml:space="preserve">
+    <value>RSS Title</value>
+  </data>
+  <data name="secRss.Text" xml:space="preserve">
+    <value>RSS</value>
+  </data>
+  <data name="plEnableAudio.Help" xml:space="preserve">
+    <value>Check this option to enable user attach audio to his products.</value>
+  </data>
+  <data name="plEnableAudio.Text" xml:space="preserve">
+    <value>Enable Attach Audio</value>
+  </data>
+  <data name="plEnableDocument.Help" xml:space="preserve">
+    <value>Check this option to enable user attach documents to his products.</value>
+  </data>
+  <data name="plEnableDocument.Text" xml:space="preserve">
+    <value>Enable Attach Documents</value>
+  </data>
+  <data name="plEnableVideo.Help" xml:space="preserve">
+    <value>Check this option to enable user attach videos to his products.</value>
+  </data>
+  <data name="plEnableVideo.Text" xml:space="preserve">
+    <value>Enable Attach Videos</value>
+  </data>
+  <data name="plEnableImage.Help" xml:space="preserve">
+    <value>Check this option to enable user attach images to his products.</value>
+  </data>
+  <data name="plEnableImage.Text" xml:space="preserve">
+    <value>Enable Attach Images</value>
+  </data>
+  <data name="Tip_Software.Text" xml:space="preserve">
+    <value>&amp;nbsp; &amp;nbsp;If store sell downloadable files (software / digital files / audio / videos..etc), user can download his ordered files at "Cp_Admin sub module - Buyer Center - My Products" after paid. By default, module will read download file and response it as file stream to let user save it on his computer. This works fine when file is not big. Besides that, it doesn't expose file location, so it can protect your files.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp; &amp;nbsp;However, if your downloadable files are big. For example, each package is more than 100mb in size. These big files will need more time to response as stream, and user may need a lot of time to save it on his computer. In this case, check on "Show file url for download" option below to let user download quickly. User can even use some download tools to download it smoothly. Of course, expose file url will result some risk. But it is a better way to handle big files.</value>
+  </data>
+  <data name="plShowSoftwareUrl.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp; &amp;nbsp;If store sell downloadable files (software/digital files/audio/video..etc), user can download their ordered files at "Cp_Admin - Buyer Center - My Products" after paid. By default, module will read download file and response it as file stream to let user save it on his computer. This works fine when file is not big. Besides that, it doesn't expose file location, so it can protect your files.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp; &amp;nbsp;However, if your downloadable files are big. For example, each package is more than 100mb size. These big files will need more time to response as stream, and users may need a lot of time to save it on his computer. In this case, check on "Show file url for download" option below to let user download quickly. User can even use some download tools to download it smoothly. Of course, expose file url will result some risk. But it is a better way to handle big files.
+ &lt;/p&gt;</value>
+  </data>
+  <data name="plShowSoftwareUrl.Text" xml:space="preserve">
+    <value>Show File Url For Download</value>
+  </data>
+  <data name="secSoftware.Text" xml:space="preserve">
+    <value>Sell downloadable files ( software / digital files / videos/ audio.., etc)</value>
+  </data>
+  <data name="Tip_EnableDeleteOrder.Text" xml:space="preserve">
+    <value>Check to enable seller to delete order history of his own.</value>
+  </data>
+  <data name="Tip_Order.Text" xml:space="preserve">
+    <value>If you publish products which are sold online (includes both fixed price listings and auction listings), you need to configure payment information (PayPal/Authorize.net/DineroMail..etc) before client can check out.</value>
+  </data>
+  <data name="Tip_StoreEmail.Text" xml:space="preserve">
+    <value>Email address which used to receive/send mail notification (order/comment/help ticket, etc). Can't be null if online order is enabled.</value>
+  </data>
+  <data name="Tip_Extension.Text" xml:space="preserve">
+    <value>&amp;nbsp; &amp;nbsp;By default, module only allows seller to upload winzip files (*.zip) to sell. If you want to allow seller to upload other files, you can change "Downloadable file extensions" below. &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp; &amp;nbsp;For example, enter Winzip Files(*.zip)|*.zip|Pdf files|*.pdf to allow upload both *.zip and *.pdf files. Enter Winzip Files(*.zip)|*.zip|Images (*.jpg;*.gif)|*.jpg;*.gif|Pdf files|*.pdf to allow upload *.zip, *.pdf, *.jpg, *.gif files. Enter All Files (*.*)|*.* to let seller upload all files.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp; &amp;nbsp;Please note two things: &lt;br/&gt;&amp;nbsp; &amp;nbsp;1. The file extension format must be correct (use | to separate file extensions). &lt;br/&gt;&amp;nbsp; &amp;nbsp;2. Make sure seller uploaded files are safe. For example, allow upload .exe files is a bad idea because these files maybe dangerous.</value>
+  </data>
+  <data name="plFileExtension.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp; &amp;nbsp;By default, module only allow seller upload winzip files (*.zip) to sell. If you want to allow seller upload other files, you can change "Downloadable file extensions" below. &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp; &amp;nbsp;For example, enter Winzip Files (*.zip)|*.zip|Pdf files|*.pdf to allow upload both *.zip and *.pdf files. Enter Winzip Files (*.zip)|*.zip|Images (*.jpg;*.gif)|*.jpg;*.gif|Pdf files|*.pdf to allow upload *.zip, *.pdf, *.jpg, *.gif files. Enter All Files (*.*)|*.* to let seller upload all files.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp; &amp;nbsp;Please note two things: &lt;br/&gt;&amp;nbsp; &amp;nbsp;1, The file extension format must be correct (use | to separate file extensions). &lt;br/&gt;&amp;nbsp; &amp;nbsp;2, Make sure seller uploaded files are safe. For example, allow upload .exe files is a bad idea because these files maybe dangerous.
+&lt;/p&gt;</value>
+  </data>
+  <data name="plFileExtension.Text" xml:space="preserve">
+    <value>Downloadable File Extensions</value>
+  </data>
+  <data name="li_PayPalLanguage_AU.Text" xml:space="preserve">
+    <value>Australia</value>
+  </data>
+  <data name="li_PayPalLanguage_AT.Text" xml:space="preserve">
+    <value>Austria</value>
+  </data>
+  <data name="li_PayPalLanguage_ES.Text" xml:space="preserve">
+    <value>Spain</value>
+  </data>
+  <data name="li_PayPalLanguage_FR.Text" xml:space="preserve">
+    <value>France</value>
+  </data>
+  <data name="li_PayPalLanguage_GB.Text" xml:space="preserve">
+    <value>United Kingdom</value>
+  </data>
+  <data name="li_PayPalLanguage_IT.Text" xml:space="preserve">
+    <value>Italy</value>
+  </data>
+  <data name="li_PayPalLanguage_US.Text" xml:space="preserve">
+    <value>United States</value>
+  </data>
+  <data name="plEnableModifyPrice.Help" xml:space="preserve">
+    <value>Check to enable sellers modify order price to offer discount. If unchecked, then clients will not see "request discount" feature in his shopping cart.</value>
+  </data>
+  <data name="plEnableModifyPrice.Text" xml:space="preserve">
+    <value>Enable Modify Order Price</value>
+  </data>
+  <data name="Tip_EnableModifyPrice.Text" xml:space="preserve">
+    <value>Check to enable sellers modify order price to offer discount. If unchecked, then clients will not see "request discount" feature in his shopping cart.</value>
+  </data>
+  <data name="errGoogleCheckout.Text" xml:space="preserve">
+    <value>Please specify your "Merchant ID" and "Merchant Key" for "Google Checkout payment gateway"</value>
+  </data>
+  <data name="plEnableGoogleCheckout.Help" xml:space="preserve">
+    <value>Check to enable Google Checkout payment gateway.</value>
+  </data>
+  <data name="plEnableGoogleCheckout.Text" xml:space="preserve">
+    <value>Enable Google Checkout</value>
+  </data>
+  <data name="plGoogleCheckoutMerchantId.Help" xml:space="preserve">
+    <value>Enter your google checkout Merchant Id which will receive money.</value>
+  </data>
+  <data name="plGoogleCheckoutMerchantId.Text" xml:space="preserve">
+    <value>Merchant ID</value>
+  </data>
+  <data name="plGoogleCheckoutMerchantKey.Help" xml:space="preserve">
+    <value>Enter your google checkout Merchant key.</value>
+  </data>
+  <data name="plGoogleCheckoutMerchantKey.Text" xml:space="preserve">
+    <value>Merchant Key</value>
+  </data>
+  <data name="plGoogleCheckout_AuthorizePaid.Help" xml:space="preserve">
+    <value>Choose how to verfiy paid status</value>
+  </data>
+  <data name="plGoogleCheckout_AuthorizePaid.Text" xml:space="preserve">
+    <value>Verify Paid Status</value>
+  </data>
+  <data name="plUseGoogleCheckoutSandbox.Help" xml:space="preserve">
+    <value>Visit &lt;a href="http://code.google.com/intl/zh-CN/apis/checkout/developer/Google_Checkout_Basic_HTML_Sandbox.html" target="_blank"&gt;http://code.google.com/intl/zh-CN/apis/checkout/developer/Google_Checkout_Basic_HTML_Sandbox.html&lt;/a&gt; to see how to create Google sandbox accounts.</value>
+  </data>
+  <data name="plUseGoogleCheckoutSandbox.Text" xml:space="preserve">
+    <value>Test Via Sanbox</value>
+  </data>
+  <data name="secGoogleCheckout.Text" xml:space="preserve">
+    <value>Google Checkout payment gateway (for US dollar $ only)</value>
+  </data>
+  <data name="Tip_EnableRelated.Text" xml:space="preserve">
+    <value>You can disable seller to add related documents/images/videos/audio to a product by uncheck below options.</value>
+  </data>
+  <data name="Tip_GoogleCheckout_Id.Text" xml:space="preserve">
+    <value>See below images to get your "Merchant Id" and "Merchant Key"</value>
+  </data>
+  <data name="Tip_ManageRoles.Text" xml:space="preserve">
+    <value>By default, only site administrators can access "Cp_Admin sub module - Admin Control Panel" sub sections to manage all data. You can allow other roles to also have same permissions by choosing "Data Manage Roles" below.</value>
+  </data>
+  <data name="errPayment.Text" xml:space="preserve">
+    <value>Please provide at least one valid payment gateway if you want to enable online order.</value>
+  </data>
+  <data name="plSendMoneyToVendorAccount.Help" xml:space="preserve">
+    <value>Check to let seller receive money using their own accounts</value>
+  </data>
+  <data name="plSendMoneyToVendorAccount.Text" xml:space="preserve">
+    <value>Send Money To Seller Account</value>
+  </data>
+  <data name="Tip_Authorize.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;To get your Api Login ID and transaction key, visit https://account.authorize.net, login to your account, click on the "Account" tab at the top, and then on the "Api Login ID and Transaction Key" link (under Security settings).&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_SendMoneyToVendorAccount.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;By default, module will use site defined accounts to receive money. Check below option to let seller receive money using their own accounts (PayPal, Google chekcout..etc).&lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, if this option is checked, then seller must provide his own accounts (PayPal, Google checkout, Authorize.Net..etc) at "Cp_Admin sub module - Seller Center - My Profile" to receive money.</value>
+  </data>
+  <data name="Tip_PayPalId.Text" xml:space="preserve">
+    <value>The PayPal account (email address like support@DnnModule.com) which used to receive money.</value>
+  </data>
+  <data name="Tip_Comment.Text" xml:space="preserve">
+    <value>Specify the default comment permissions for product. Note, each product can has its own comment settings.</value>
+  </data>
+  <data name="Tip_Download.Text" xml:space="preserve">
+    <value>Specify the default attachment download permissions for product. Note, each product can has its own settings.</value>
+  </data>
+  <data name="Tip_Rating.Text" xml:space="preserve">
+    <value>Specify the default rating permissions for product. Note,&lt;br/&gt; 1. Each product can has its own rating settings.&lt;br/&gt; 2. If a product is sold online, then only customers who bought this product can post rating to it.</value>
+  </data>
+  <data name="plEnableAd.Help" xml:space="preserve">
+    <value>Uncheck this option if you want to hide "Classified Ads" related features (e.g, "My Classified Ads" section).</value>
+  </data>
+  <data name="plEnableAd.Text" xml:space="preserve">
+    <value>Enable Classified Ads</value>
+  </data>
+  <data name="Tip_Feature.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;By default, Classified Pro allows you to publish fixed price products, auction listings, and classified ads in Cp_Admin sub module. If you don't need some features, you can uncheck below options to hide related menu. For example, uncheck "Enable Classified Ads" will hide "Data Management - Classified Ads" and "Seller Center - My Classified Ads" menus from Cp_Admin sub module. Uncheck "Enable Auction Listings" option will hide "Data Management - Auction Listings" and "Seller Center - My Auction Listings" menu. Uncheck "Enable Fixed Price Products" option will hide "Data Management - Fixed Price Products" and "Seller Center - My Fixed Price Products" menu.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Note, if you use Classified Pro module to publish classified ads only, no transactions (bidding, buying, or payments) are managed through the website, we recommend you to uncheck both "Enable Fixed Price Products" and "Enable Auction Listings" options.</value>
+  </data>
+  <data name="plEnableAuction.Help" xml:space="preserve">
+    <value>Enable Auction Listings</value>
+  </data>
+  <data name="plEnableAuction.Text" xml:space="preserve">
+    <value>Enable Auction Listings</value>
+  </data>
+  <data name="secFeature.Text" xml:space="preserve">
+    <value>Features Enable/Disable</value>
+  </data>
+  <data name="plDomainName.Help" xml:space="preserve">
+    <value>Domain name is used while sending auction notification emails, can't be null.</value>
+  </data>
+  <data name="plDomainName.Text" xml:space="preserve">
+    <value>Domain Name</value>
+  </data>
+  <data name="plBidder_Bid_Content.Help" xml:space="preserve">
+    <value>Bidder_Bid Email Content</value>
+  </data>
+  <data name="plBidder_Bid_Content.Text" xml:space="preserve">
+    <value>Bidder_Bid Email Content</value>
+  </data>
+  <data name="plBidder_Bid_Notify.Help" xml:space="preserve">
+    <value>Send email notification to bidder when they placed a bid (Bidder_Bid)</value>
+  </data>
+  <data name="plBidder_Bid_Notify.Text" xml:space="preserve">
+    <value>Notify bidder they placed a bid (Bidder_Bid)</value>
+  </data>
+  <data name="plBidder_Bid_Title.Help" xml:space="preserve">
+    <value>Bidder_Bid Email Title</value>
+  </data>
+  <data name="plBidder_Bid_Title.Text" xml:space="preserve">
+    <value>Bidder_Bid Email Title</value>
+  </data>
+  <data name="plBidder_NotWon_Content.Help" xml:space="preserve">
+    <value>Bidder_NotWon Email Content</value>
+  </data>
+  <data name="plBidder_NotWon_Content.Text" xml:space="preserve">
+    <value>Bidder_NotWon Email Content</value>
+  </data>
+  <data name="plBidder_NotWon_Notify.Help" xml:space="preserve">
+    <value>Send email notification to bidder when they not won a auction (Bidder_NotWon)</value>
+  </data>
+  <data name="plBidder_NotWon_Notify.Text" xml:space="preserve">
+    <value>Notify bidder they not won (Bidder_NotWon)</value>
+  </data>
+  <data name="plBidder_NotWon_Title.Help" xml:space="preserve">
+    <value>Bidder_NotWon Email Title</value>
+  </data>
+  <data name="plBidder_NotWon_Title.Text" xml:space="preserve">
+    <value>Bidder_NotWon Email Title</value>
+  </data>
+  <data name="plBidder_Outbid_Content.Help" xml:space="preserve">
+    <value>Bidder_Outbid Email Content</value>
+  </data>
+  <data name="plBidder_Outbid_Content.Text" xml:space="preserve">
+    <value>Bidder_Outbid Email Content</value>
+  </data>
+  <data name="plBidder_Outbid_Notify.Help" xml:space="preserve">
+    <value>Send email notification to bidder when they were outbid (Bidder_Outbid)</value>
+  </data>
+  <data name="plBidder_Outbid_Notify.Text" xml:space="preserve">
+    <value>Notify bidder they were outbid (Bidder_Outbid)</value>
+  </data>
+  <data name="plBidder_Outbid_Title.Help" xml:space="preserve">
+    <value>Bidder_Outbid Email Title</value>
+  </data>
+  <data name="plBidder_Outbid_Title.Text" xml:space="preserve">
+    <value>Bidder_Outbid Email Title</value>
+  </data>
+  <data name="plBidder_Proxy_Content.Help" xml:space="preserve">
+    <value>Bidder_Proxy Email Content</value>
+  </data>
+  <data name="plBidder_Proxy_Content.Text" xml:space="preserve">
+    <value>Bidder_Proxy Email Content</value>
+  </data>
+  <data name="plBidder_Proxy_Notify.Help" xml:space="preserve">
+    <value>Send email notification to bidder when they placed a proxy bidding (Bidder_Proxy)</value>
+  </data>
+  <data name="plBidder_Proxy_Notify.Text" xml:space="preserve">
+    <value>Notify bidder they placed a proxy bidding (Bidder_Proxy)</value>
+  </data>
+  <data name="plBidder_Proxy_Title.Help" xml:space="preserve">
+    <value>Bidder_Proxy Email Title</value>
+  </data>
+  <data name="plBidder_Proxy_Title.Text" xml:space="preserve">
+    <value>Bidder_Proxy Email Title</value>
+  </data>
+  <data name="plBidder_Won_Content.Help" xml:space="preserve">
+    <value>Bidder_Won Email Content</value>
+  </data>
+  <data name="plBidder_Won_Content.Text" xml:space="preserve">
+    <value>Bidder_Won Email Content</value>
+  </data>
+  <data name="plBidder_Won_Notify.Help" xml:space="preserve">
+    <value>Send email notification to bidder when they won a auction (Bidder_Won)</value>
+  </data>
+  <data name="plBidder_Won_Notify.Text" xml:space="preserve">
+    <value>Notify bidder they won (Bidder_Won)</value>
+  </data>
+  <data name="plBidder_Won_Title.Help" xml:space="preserve">
+    <value>Bidder_Won Email Title</value>
+  </data>
+  <data name="plBidder_Won_Title.Text" xml:space="preserve">
+    <value>Bidder_Won Email Title</value>
+  </data>
+  <data name="plSeller_AuctionOff_Content.Help" xml:space="preserve">
+    <value>Seller_AuctionOff Email Content</value>
+  </data>
+  <data name="plSeller_AuctionOff_Content.Text" xml:space="preserve">
+    <value>Seller_AuctionOff Email Content</value>
+  </data>
+  <data name="plSeller_AuctionOff_Notify.Help" xml:space="preserve">
+    <value>Send email notification to seller listing was autioned off (Seller_NotMet)</value>
+  </data>
+  <data name="plSeller_AuctionOff_Notify.Text" xml:space="preserve">
+    <value>Notify seller listing was autioned off (Seller_AuctionOff)</value>
+  </data>
+  <data name="plSeller_AuctionOff_Title.Help" xml:space="preserve">
+    <value>Seller_AuctionOff Email Title</value>
+  </data>
+  <data name="plSeller_AuctionOff_Title.Text" xml:space="preserve">
+    <value>Seller_AuctionOff Email Title</value>
+  </data>
+  <data name="plSeller_Bid_Content.Help" xml:space="preserve">
+    <value>Seller_Bid Email Content</value>
+  </data>
+  <data name="plSeller_Bid_Content.Text" xml:space="preserve">
+    <value>Seller_Bid Email Content</value>
+  </data>
+  <data name="plSeller_Bid_Notify.Help" xml:space="preserve">
+    <value>Send email notification to seller that a bidder placed a bid (Seller_Bid)</value>
+  </data>
+  <data name="plSeller_Bid_Notify.Text" xml:space="preserve">
+    <value>Notify seller that a bidder placed a bid (Seller_Bid)</value>
+  </data>
+  <data name="plSeller_Bid_Title.Help" xml:space="preserve">
+    <value>Seller_Bid Email Title</value>
+  </data>
+  <data name="plSeller_Bid_Title.Text" xml:space="preserve">
+    <value>Seller_Bid Email Title</value>
+  </data>
+  <data name="plSeller_NoBid_Content.Help" xml:space="preserve">
+    <value>Seller_NoBid Email Content</value>
+  </data>
+  <data name="plSeller_NoBid_Content.Text" xml:space="preserve">
+    <value>Seller_NoBid Email Content</value>
+  </data>
+  <data name="plSeller_NoBid_Notify.Help" xml:space="preserve">
+    <value>Send email notification to seller that no bid were placed (Seller_NoBid)</value>
+  </data>
+  <data name="plSeller_NoBid_Notify.Text" xml:space="preserve">
+    <value>Notify seller that no bid were placed (Seller_NoBid)</value>
+  </data>
+  <data name="plSeller_NoBid_Title.Help" xml:space="preserve">
+    <value>Seller_NoBid Email Title</value>
+  </data>
+  <data name="plSeller_NoBid_Title.Text" xml:space="preserve">
+    <value>Seller_NoBid Email Title</value>
+  </data>
+  <data name="plSeller_NotMet_Content.Help" xml:space="preserve">
+    <value>Seller_NotMet Email Content</value>
+  </data>
+  <data name="plSeller_NotMet_Content.Text" xml:space="preserve">
+    <value>Seller_NotMet Email Content</value>
+  </data>
+  <data name="plSeller_NotMet_Notify.Help" xml:space="preserve">
+    <value>Send email notification to seller that reserve price didn't met (Seller_NotMet)</value>
+  </data>
+  <data name="plSeller_NotMet_Notify.Text" xml:space="preserve">
+    <value>Notify seller that reserve price didn't met (Seller_NotMet)</value>
+  </data>
+  <data name="plSeller_NotMet_Title.Help" xml:space="preserve">
+    <value>Seller_NotMet Email Title</value>
+  </data>
+  <data name="plSeller_NotMet_Title.Text" xml:space="preserve">
+    <value>Seller_NotMet Email Title</value>
+  </data>
+  <data name="secAuction.Text" xml:space="preserve">
+    <value>Auction Settings (email notification and automatic republish)</value>
+  </data>
+  <data name="Tip_Auction.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Specify the email notification content in auction process below. Note, words with "[" prefix and "]" suffix will be replaced while sending mail. For example, [DomainName] will replaced as your domain name (e.g, http://DnnModule.com),  [BidPrice] will be replaced as bid price, [CreatedDate] will be replaced as created date time...etc.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;By default, when an auction item is expired (but didn't get a valid bid), seller needs to manually republish it to display to public again. You can check on "Automatic republish expired autions" option to let module automatic republish these expired auction listings.</value>
+  </data>
+  <data name="li_Currency_AUD.Text" xml:space="preserve">
+    <value>AUD - Australian Dollar</value>
+  </data>
+  <data name="li_Currency_BRL.Text" xml:space="preserve">
+    <value>BRL - Brazilian Real</value>
+  </data>
+  <data name="li_Currency_CAD.Text" xml:space="preserve">
+    <value>CAD - Canadian Dollar</value>
+  </data>
+  <data name="li_Currency_CHF.Text" xml:space="preserve">
+    <value>CHF - Swiss Franc</value>
+  </data>
+  <data name="li_Currency_CZK.Text" xml:space="preserve">
+    <value>CZK - Czech Koruna</value>
+  </data>
+  <data name="li_Currency_DKK.Text" xml:space="preserve">
+    <value>DKK - Danish Krone</value>
+  </data>
+  <data name="li_Currency_EUR.Text" xml:space="preserve">
+    <value>EUR - Euro</value>
+  </data>
+  <data name="li_Currency_GBP.Text" xml:space="preserve">
+    <value>GBP - Pound Sterling</value>
+  </data>
+  <data name="li_Currency_HKD.Text" xml:space="preserve">
+    <value>HKD - Hong Kong Dollar</value>
+  </data>
+  <data name="li_Currency_HUF.Text" xml:space="preserve">
+    <value>HUF - Hungarian Forint</value>
+  </data>
+  <data name="li_Currency_ILS.Text" xml:space="preserve">
+    <value>ILS - Israeli New Sheqel</value>
+  </data>
+  <data name="li_Currency_JPY.Text" xml:space="preserve">
+    <value>JPY - Japanese Yen</value>
+  </data>
+  <data name="li_Currency_MXN.Text" xml:space="preserve">
+    <value>MXN - Mexican Peso</value>
+  </data>
+  <data name="li_Currency_MYR.Text" xml:space="preserve">
+    <value>MYR - Malaysian Ringgit</value>
+  </data>
+  <data name="li_Currency_NOK.Text" xml:space="preserve">
+    <value>NOK - Norwegian Krone</value>
+  </data>
+  <data name="li_Currency_NZD.Text" xml:space="preserve">
+    <value>NZD - New Zealand Dollar</value>
+  </data>
+  <data name="li_Currency_PHP.Text" xml:space="preserve">
+    <value>PHP - Philippine Peso</value>
+  </data>
+  <data name="li_Currency_PLN.Text" xml:space="preserve">
+    <value>PLN - Polish Zloty</value>
+  </data>
+  <data name="li_Currency_RUB.Text" xml:space="preserve">
+    <value>RUB - Russian Ruble</value>
+  </data>
+  <data name="li_Currency_SEK.Text" xml:space="preserve">
+    <value>SEK - Swedish Krona</value>
+  </data>
+  <data name="li_Currency_SGD.Text" xml:space="preserve">
+    <value>SGD - Singapore Dollar</value>
+  </data>
+  <data name="li_Currency_THB.Text" xml:space="preserve">
+    <value>THB - Thai Baht</value>
+  </data>
+  <data name="li_Currency_TRY.Text" xml:space="preserve">
+    <value>TRY - Turkish Lira</value>
+  </data>
+  <data name="li_Currency_TWD.Text" xml:space="preserve">
+    <value>TWD - Taiwan New Dollar</value>
+  </data>
+  <data name="li_Currency_USD.Text" xml:space="preserve">
+    <value>USD - U.S. Dollar</value>
+  </data>
+  <data name="plAutomatic_Republish_Expired.Help" xml:space="preserve">
+    <value>If checked, module will automatic republish expired auction items.</value>
+  </data>
+  <data name="plAutomatic_Republish_Expired.Text" xml:space="preserve">
+    <value>Automatic Republish Expired Auctions</value>
+  </data>
+  <data name="plEnableStripe.Help" xml:space="preserve">
+    <value>Enable Stripe Payment Gateway</value>
+  </data>
+  <data name="plEnableStripe.Text" xml:space="preserve">
+    <value>Enable Stripe Payment Gateway</value>
+  </data>
+  <data name="plStripeTestMode.Help" xml:space="preserve">
+    <value>Test Mode</value>
+  </data>
+  <data name="plStripeTestMode.Text" xml:space="preserve">
+    <value>Test Mode</value>
+  </data>
+  <data name="plStripe_Currency.Help" xml:space="preserve">
+    <value>Enter currency</value>
+  </data>
+  <data name="plStripe_Currency.Text" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="plStripe_LiveSecrectKey.Help" xml:space="preserve">
+    <value>Enter Live Secrect Key</value>
+  </data>
+  <data name="plStripe_LiveSecrectKey.Text" xml:space="preserve">
+    <value>Live Secrect Key</value>
+  </data>
+  <data name="plStripe_TestSecrectKey.Help" xml:space="preserve">
+    <value>Enter Test Secrect Key</value>
+  </data>
+  <data name="plStripe_TestSecrectKey.Text" xml:space="preserve">
+    <value>Test Secrect Key</value>
+  </data>
+  <data name="secStripe.Text" xml:space="preserve">
+    <value>Stripe Payment Gateway</value>
+  </data>
+  <data name="Tip_Stripe.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;With Stripe, you can accept payments from almost any credit card and debit card, no matter where your customer lives. U.S. businesses can accept Visa, MasterCard, American Express, JCB, Discover, and Diners Club. Canadian, European, and Australian businesses can accept Visa, MasterCard, and American Express. For more information, please visit &lt;a href="https://stripe.com/" target="_blank"&gt;https://stripe.com/&lt;/a&gt;. Please note:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;1. You need to provide both "Test Secret Key" and "Live Secret Key" to use Strip. Login to stripe.com, click "Your Account - Account Settings - Api Keys" you will see your "Test Secret Key" and "Live Secret Key".&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;2. "Test Mode" allows you to test Strip payment gateway without pay real money, the test mode can run on unsecured connection (http:). Uncheck it when your site goes live.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;3. To use Strip in real transaction, your site &lt;font color="red"&gt;must be SSL based (https:)&lt;/font&gt;, however, the "Test Mode" can run on http: protocol. So you can test Strip first (by check on "Test Mode"), then setup SSL when site goes live. Visit &lt;a href="https://stripe.com/help/ssl" target="_blank"&gt;https://stripe.com/help/ssl&lt;/a&gt; for more detail.</value>
+  </data>
+  <data name="Tip_Stripe_Currency.Text" xml:space="preserve">
+    <value>visit &lt;a href="https://support.stripe.com/questions/which-currencies-does-stripe-support" target="_blank"&gt;https://support.stripe.com/questions/which-currencies-does-stripe-support&lt;/a&gt; for currency detail.</value>
+  </data>
+  <data name="errStripe.Text" xml:space="preserve">
+    <value>Please check Stripe payment information. The test secrect key/live secrect key/currency can't be null if "Enable Stripe" is checked. Also note, to use Stripe, your web site must be SSL (https:) based. If not, you can only check on the "Test Mode" to test fake transaction only.</value>
+  </data>
+  <data name="plVendorProfile_Field10Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 10</value>
+  </data>
+  <data name="plVendorProfile_Field10Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 10</value>
+  </data>
+  <data name="plVendorProfile_Field10Title.Help" xml:space="preserve">
+    <value>Profile Field 10 Title</value>
+  </data>
+  <data name="plVendorProfile_Field10Title.Text" xml:space="preserve">
+    <value>Profile Field 10 Title</value>
+  </data>
+  <data name="plVendorProfile_Field1Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 1</value>
+  </data>
+  <data name="plVendorProfile_Field1Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 1</value>
+  </data>
+  <data name="plVendorProfile_Field1Title.Help" xml:space="preserve">
+    <value>Profile Field 1 Title</value>
+  </data>
+  <data name="plVendorProfile_Field1Title.Text" xml:space="preserve">
+    <value>Profile Field 1 Title</value>
+  </data>
+  <data name="plVendorProfile_Field2Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 2</value>
+  </data>
+  <data name="plVendorProfile_Field2Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 2</value>
+  </data>
+  <data name="plVendorProfile_Field2Title.Help" xml:space="preserve">
+    <value>Profile Field 2 Title</value>
+  </data>
+  <data name="plVendorProfile_Field2Title.Text" xml:space="preserve">
+    <value>Profile Field 2 Title</value>
+  </data>
+  <data name="plVendorProfile_Field3Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 3</value>
+  </data>
+  <data name="plVendorProfile_Field3Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 3</value>
+  </data>
+  <data name="plVendorProfile_Field3Title.Help" xml:space="preserve">
+    <value>Profile Field 3 Title</value>
+  </data>
+  <data name="plVendorProfile_Field3Title.Text" xml:space="preserve">
+    <value>Profile Field 3 Title</value>
+  </data>
+  <data name="plVendorProfile_Field4Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 4</value>
+  </data>
+  <data name="plVendorProfile_Field4Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 4</value>
+  </data>
+  <data name="plVendorProfile_Field4Title.Help" xml:space="preserve">
+    <value>Profile Field 4 Title</value>
+  </data>
+  <data name="plVendorProfile_Field4Title.Text" xml:space="preserve">
+    <value>Profile Field 4 Title</value>
+  </data>
+  <data name="plVendorProfile_Field5Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 5</value>
+  </data>
+  <data name="plVendorProfile_Field5Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 5</value>
+  </data>
+  <data name="plVendorProfile_Field5Title.Help" xml:space="preserve">
+    <value>Profile Field 5 Title</value>
+  </data>
+  <data name="plVendorProfile_Field5Title.Text" xml:space="preserve">
+    <value>Profile Field 5 Title</value>
+  </data>
+  <data name="plVendorProfile_Field6Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 6</value>
+  </data>
+  <data name="plVendorProfile_Field6Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 6</value>
+  </data>
+  <data name="plVendorProfile_Field6Title.Help" xml:space="preserve">
+    <value>Profile Field 6 Title</value>
+  </data>
+  <data name="plVendorProfile_Field6Title.Text" xml:space="preserve">
+    <value>Profile Field 6 Title</value>
+  </data>
+  <data name="plVendorProfile_Field7Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 7</value>
+  </data>
+  <data name="plVendorProfile_Field7Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 7</value>
+  </data>
+  <data name="plVendorProfile_Field7Title.Help" xml:space="preserve">
+    <value>Profile Field 7 Title</value>
+  </data>
+  <data name="plVendorProfile_Field7Title.Text" xml:space="preserve">
+    <value>Profile Field 7 Title</value>
+  </data>
+  <data name="plVendorProfile_Field8Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 8</value>
+  </data>
+  <data name="plVendorProfile_Field8Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 8</value>
+  </data>
+  <data name="plVendorProfile_Field8Title.Help" xml:space="preserve">
+    <value>Profile Field 8 Title</value>
+  </data>
+  <data name="plVendorProfile_Field8Title.Text" xml:space="preserve">
+    <value>Profile Field 8 Title</value>
+  </data>
+  <data name="plVendorProfile_Field9Enable.Help" xml:space="preserve">
+    <value>Enable Profile Field 9</value>
+  </data>
+  <data name="plVendorProfile_Field9Enable.Text" xml:space="preserve">
+    <value>Enable Profile Field 9</value>
+  </data>
+  <data name="plVendorProfile_Field9Title.Help" xml:space="preserve">
+    <value>Profile Field 9 Title</value>
+  </data>
+  <data name="plVendorProfile_Field9Title.Text" xml:space="preserve">
+    <value>Profile Field 9 Title</value>
+  </data>
+  <data name="secVendorProfile.Text" xml:space="preserve">
+    <value>Seller Profile</value>
+  </data>
+  <data name="Tip_VendorProfile.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Classified Pro already provides a lot of data field for seller profile. For example, Company, Tel, Fax, IM(instant messenger), Linkman, Business Scope...etc. Seller can specify his profile at "Cp_Admin sub module - Seller Center - My Profile". Besides that, Classified Pro also provides extra 10 data fields which allow you to custom as your wish. For example, if you want to add a "Refund Policy" for seller profile, you can do it as follows:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;1. Check on "Enable Profile Field 1".&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;2. Enter "Refund Policy" as "Profile Field 1 Title".&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;3. Now when seller editing his profile at "Cp_Admin sub module - Seller Center - My Profile", he will see a extra "Refund Policy" data field.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;4. Seller profile can be shown in Cp_Product_Vendor, Cp_Product_List, Cp_Product_Detail sub modules.&lt;br/&gt;</value>
+  </data>
+  <data name="plAllowVendorDefineShippingMethod.Help" xml:space="preserve">
+    <value>Check to enable seller to define his favorite (available) shipping methods</value>
+  </data>
+  <data name="plAllowVendorDefineShippingMethod.Text" xml:space="preserve">
+    <value>Enable Seller Defined Shipping Methods</value>
+  </data>
+  <data name="Tip_AllowVendorDefineShippingMethod.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;By default, all sellers will use site defined shipping methods to deliver physical goods. Check below option to let seller define his favorite (or available) shipping methods.&lt;br/&gt;&amp;nbsp;&amp;nbsp;For example, site administrators can define two shipping methods (under "Cp_Admin sub module - Admin Control Panel - Configurations - Shipping Methods"), "USPS", "Feedex". Seller A can select "USPS" only as his favorite shipping methods (under "Cp_Admin sub module - Seller Center - My Profile"), and reject "Feedex", then when a user buy product from Seller A, he can only select shipping method as "USPS".</value>
+  </data>
+  <data name="li_PayPalLanguage_BE.Text" xml:space="preserve">
+    <value>Belgium</value>
+  </data>
+  <data name="li_PayPalLanguage_BR.Text" xml:space="preserve">
+    <value>Brazil</value>
+  </data>
+  <data name="li_PayPalLanguage_CA.Text" xml:space="preserve">
+    <value>Canada</value>
+  </data>
+  <data name="li_PayPalLanguage_CH.Text" xml:space="preserve">
+    <value>Switzerland</value>
+  </data>
+  <data name="li_PayPalLanguage_CN.Text" xml:space="preserve">
+    <value>China</value>
+  </data>
+  <data name="li_PayPalLanguage_da_DK.Text" xml:space="preserve">
+    <value>Danish (for Denmark only)</value>
+  </data>
+  <data name="li_PayPalLanguage_he_IL.Text" xml:space="preserve">
+    <value>Hebrew (all)</value>
+  </data>
+  <data name="li_PayPalLanguage_id_ID.Text" xml:space="preserve">
+    <value>Indonesian (for Indonesia only)</value>
+  </data>
+  <data name="li_PayPalLanguage_ja_JP.Text" xml:space="preserve">
+    <value>Japanese (for Japan only)</value>
+  </data>
+  <data name="li_PayPalLanguage_NL.Text" xml:space="preserve">
+    <value>Netherlands</value>
+  </data>
+  <data name="li_PayPalLanguage_no_NO.Text" xml:space="preserve">
+    <value>Norwegian (for Norway only)</value>
+  </data>
+  <data name="li_PayPalLanguage_PL.Text" xml:space="preserve">
+    <value>Poland</value>
+  </data>
+  <data name="li_PayPalLanguage_PT.Text" xml:space="preserve">
+    <value>Portugal</value>
+  </data>
+  <data name="li_PayPalLanguage_pt_BR.Text" xml:space="preserve">
+    <value>Brazilian Portuguese (for Portugal and Brazil only)</value>
+  </data>
+  <data name="li_PayPalLanguage_RU.Text" xml:space="preserve">
+    <value>Russia</value>
+  </data>
+  <data name="li_PayPalLanguage_ru_RU.Text" xml:space="preserve">
+    <value>Russian (for Lithuania, Latvia, and Ukraine only)</value>
+  </data>
+  <data name="li_PayPalLanguage_sv_SE.Text" xml:space="preserve">
+    <value>Swedish (for Sweden only)</value>
+  </data>
+  <data name="li_PayPalLanguage_th_TH.Text" xml:space="preserve">
+    <value>Thai (for Thailand only)</value>
+  </data>
+  <data name="li_PayPalLanguage_tr_TR.Text" xml:space="preserve">
+    <value>Turkish (for Turkey only)</value>
+  </data>
+  <data name="li_PayPalLanguage_zh_CN.Text" xml:space="preserve">
+    <value>Simplified Chinese (for China only)</value>
+  </data>
+  <data name="li_PayPalLanguage_zh_HK.Text" xml:space="preserve">
+    <value>Traditional Chinese (for Hong Kong only)</value>
+  </data>
+  <data name="li_PayPalLanguage_zh_TW.Text" xml:space="preserve">
+    <value>Traditional Chinese (for Taiwan only)</value>
+  </data>
+  <data name="plDataManageRoles.Help" xml:space="preserve">
+    <value>By default, only site administrators can access "Cp_Admin sub module - Admin Control Panel" sub sections to manage all data. You can allow other roles to also have same permissions by choosing "Data Manage Roles" below.</value>
+  </data>
+  <data name="plDataManageRoles.Text" xml:space="preserve">
+    <value>Data Manage Roles</value>
+  </data>
+  <data name="Tip_RequireApproval.Text" xml:space="preserve">
+    <value>If checked, then products which are created by normal sellers will requrie to be approved before being displayed to public.</value>
+  </data>
+  <data name="errAlipay.Text" xml:space="preserve">
+    <value>Please check Alipay payment gateway information. To use it, you must provide "Alipay Account", "Partner ID", and "Key".</value>
+  </data>
+  <data name="plAlipayKey.Help" xml:space="preserve">
+    <value>Your Alipay Key, can be found at https://b.alipay.com/order/myOrder.htm. </value>
+  </data>
+  <data name="plAlipayKey.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="plAlipayPartner.Help" xml:space="preserve">
+    <value>Alipay Partner Id</value>
+  </data>
+  <data name="plAlipayPartner.Text" xml:space="preserve">
+    <value>Partner Id</value>
+  </data>
+  <data name="plAlipaySeller_email.Help" xml:space="preserve">
+    <value>Alipay Account, it should be an email address.</value>
+  </data>
+  <data name="plAlipaySeller_email.Text" xml:space="preserve">
+    <value>Alipay Account</value>
+  </data>
+  <data name="plEnableAlipay.Help" xml:space="preserve">
+    <value>Enable Alipay payment gateway</value>
+  </data>
+  <data name="plEnableAlipay.Text" xml:space="preserve">
+    <value>Enable Alipay</value>
+  </data>
+  <data name="secAlipay.Text" xml:space="preserve">
+    <value>Alipay Payment Gateway (for China Yuan only)</value>
+  </data>
+  <data name="Tip_Alipay.Text" xml:space="preserve">
+    <value>To receive money via Alipay, please sign a merchant account at http://www.alipay.com, and provide below information.</value>
+  </data>
+</root>

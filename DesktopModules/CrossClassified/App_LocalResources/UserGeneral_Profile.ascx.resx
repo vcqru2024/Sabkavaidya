@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="plSecurityValue.Text" xml:space="preserve">
+    <value>Security Value</value>
+  </data>
+  <data name="plIntegrateUrl.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Instant Order Notification is a feature which posts the order values to the URL specificed above. The "Security Value" is also sent so that you can check to help ensure the post is a valid post from this web site.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The "Instant Order Notification" field/value pairs are sent to the URL as a "form" post. The post fields are listed below:&lt;br/&gt;
+
+OrderID, OrderNo, OrderDetailID, InvoiceID, ClientID, BillToFirstName, BillToLastName, BillToEmail, PackageName, PackageID, OptionName, OptionID, RetailPrice, Quantity, TaxFee, ShipID, ShipName, ShipFee, Amount, CreatedDate, SecurityValue.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;For example, if post url is http://DnnModule.com/getorder.aspx, then module will post above information to http://DnnModule.com/getorder.aspx.&lt;/p&gt;</value>
+  </data>
+  <data name="lbtnBasic.Text" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="plDelivery.Text" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="plDelivery.Help" xml:space="preserve">
+    <value>Default delivery information while adding new product</value>
+  </data>
+  <data name="lbtnOrderNotification.Text" xml:space="preserve">
+    <value>Instant Order Notification</value>
+  </data>
+  <data name="plCustomerMessage.Text" xml:space="preserve">
+    <value>Customer Message</value>
+  </data>
+  <data name="plP_C_CountryCode.Help" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="plP_C_RegionCode.Text" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="plP_C_City.Help" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="plP_C_City.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="plP_C_Address2.Help" xml:space="preserve">
+    <value>Address 2 for check (optional)</value>
+  </data>
+  <data name="lblCustomizeDisplayTip.Text" xml:space="preserve">
+    <value>You can enter default values for Support/License/Delivery fields. When adding new product, these content will be the default data.</value>
+  </data>
+  <data name="plSecurityValue.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Instant Order Notification is a feature which posts the order values to the URL specificed above. The "Security Value" is also sent so that you can check to help ensure the post is a valid post from this web site.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The "Instant Order Notification" field/value pairs are sent to the URL as a "get" post. The post fields are listed below:&lt;br/&gt;
+
+InvoiceID, BillToFirstName, BillToLastName, BillToEmail, BillToCountry, PackageName, PackageID, OptionName, OptionID, Price, Quantity, Amount, SecurityValue.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;For example, if post url is http://DnnModule.com/getorder.aspx and current order InvoiceID is 001 and SecurityValue is dnn, then module will send a request to http://DnnModule.com/getorder.aspx?InvoiceID=001&amp;SecurityValue=dnn.&lt;/p&gt;</value>
+  </data>
+  <data name="plIntegrateUrl.Text" xml:space="preserve">
+    <value>Post to Url</value>
+  </data>
+  <data name="plCustomerMessage.Help" xml:space="preserve">
+    <value>This e-mail message is sent to customers after they order user products.&lt;br/&gt;
+
+Keyword Replace Values:&lt;br/&gt;
+
+#InvoiceName#, #BillToFirstName#, #BillToLastName#, 
+#PackageName#, #PackageID#, #OptionName#, #OptionID#, #OptionText#</value>
+  </data>
+  <data name="lbtnPayment.Text" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="lbtnCustomerMessage.Text" xml:space="preserve">
+    <value>Customer Mail</value>
+  </data>
+  <data name="plLogoUrl.Help" xml:space="preserve">
+    <value>Company Logo Url</value>
+  </data>
+  <data name="plSlogan.Text" xml:space="preserve">
+    <value>Slogan or Phrase</value>
+  </data>
+  <data name="plP_Type.Text" xml:space="preserve">
+    <value>Payment Type</value>
+  </data>
+  <data name="plP_DD_AccountNumber.Help" xml:space="preserve">
+    <value>Enter Account Number</value>
+  </data>
+  <data name="li_P_DD_AccountType_Savings.Text" xml:space="preserve">
+    <value>Savings</value>
+  </data>
+  <data name="plP_Type.Help" xml:space="preserve">
+    <value>Choose user favorite payment type .Site will send user money based user choice. Note, user need to fill related information for his/her payment type.</value>
+  </data>
+  <data name="secCheck.Text" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="plP_C_Payee.Help" xml:space="preserve">
+    <value>Payee Name for check</value>
+  </data>
+  <data name="plP_C_Address1.Text" xml:space="preserve">
+    <value>Address 1</value>
+  </data>
+  <data name="plP_C_Address1.Help" xml:space="preserve">
+    <value>Address 1 for check</value>
+  </data>
+  <data name="plP_C_Address2.Text" xml:space="preserve">
+    <value>Address 2</value>
+  </data>
+  <data name="ControlTitle_usergeneral_profile.Text" xml:space="preserve">
+    <value>Seller Profile</value>
+  </data>
+  <data name="plEmail.Help" xml:space="preserve">
+    <value>Enter user mail address which will receive related mail.</value>
+  </data>
+  <data name="plAvatarEmail.Text" xml:space="preserve">
+    <value>Avatar Email</value>
+  </data>
+  <data name="plAvatarEmail.Help" xml:space="preserve">
+    <value>Enter user email, this is mainly used to display user &lt;a href="http://www.gravatar.com"&gt;Gravatar&lt;/a&gt;</value>
+  </data>
+  <data name="plSiteUrl.Text" xml:space="preserve">
+    <value>Site Url</value>
+  </data>
+  <data name="plSiteUrl.Help" xml:space="preserve">
+    <value>User support site url</value>
+  </data>
+  <data name="li_P_Type_DirectDeposit.Text" xml:space="preserve">
+    <value>Direct Deposit</value>
+  </data>
+  <data name="plP_DD_AccountType.Text" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="li_P_DD_AccountType_Checking.Text" xml:space="preserve">
+    <value>Checking</value>
+  </data>
+  <data name="plP_C_Payee.Text" xml:space="preserve">
+    <value>Payee Name</value>
+  </data>
+  <data name="lblOrderNotificationTip.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Instant Order Notification is a feature which posts the order values to the Url you specificed. The "Security Value" is also sent so that you can check to ensure the post is a valid post from this web site. You can use this feature to gather information into your own system (like cms software)&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The "Instant Order Notification" field/value pairs are sent to the URL as a "form" post. The post fields are listed below:&lt;br/&gt;&lt;br/&gt;
+
+OrderID, OrderNo, OrderDetailID, InvoiceID, ClientID, BillToFirstName, BillToLastName, BillToEmail, PackageName, PackageID, OptionName, OptionID, RetailPrice, Quantity, TaxFee, ShipID, ShipName, ShipFee, Amount, CreatedDate, SecurityValue.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;For example, if you input post url as http://DnnModule.com/getorder.aspx, then module will post above information to http://DnnModule.com/getorder.aspx when a order is occurred. You can get related information in getorder.aspx file as follows:&lt;br/&gt;&lt;br/&gt;
+
+                if (Request.Form["BillToFirstName"] != null)&lt;br/&gt;
+                {&lt;br/&gt;
+                    string firstName = Request.Form["BillToFirstName"].ToString();&lt;br/&gt;
+                }&lt;br/&gt;
+               
+&lt;/p&gt;</value>
+  </data>
+  <data name="plP_C_RegionCode.Help" xml:space="preserve">
+    <value>Region</value>
+  </data>
+  <data name="plP_C_CountryCode.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="plSupport.Help" xml:space="preserve">
+    <value>Default support information while adding new product</value>
+  </data>
+  <data name="plSupport.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="UpdateSuccess.Text" xml:space="preserve">
+    <value>Update success</value>
+  </data>
+  <data name="lbtnCustomizeDisplay.Text" xml:space="preserve">
+    <value>Default Value</value>
+  </data>
+  <data name="plEmail.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="plLogoUrl.Text" xml:space="preserve">
+    <value>Logo Url</value>
+  </data>
+  <data name="plP_DD_BankName.Text" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="plP_DD_BankName.Help" xml:space="preserve">
+    <value>Enter bank name</value>
+  </data>
+  <data name="li_P_Type_Paypal.Text" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="li_P_Type_Check.Text" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="secPaypal.Text" xml:space="preserve">
+    <value>PayPal</value>
+  </data>
+  <data name="plP_Paypal.Text" xml:space="preserve">
+    <value>PayPal account</value>
+  </data>
+  <data name="plP_DD_AccountType.Help" xml:space="preserve">
+    <value>Select account type</value>
+  </data>
+  <data name="lblCustomerMessageTip.Text" xml:space="preserve">
+    <value>This e-mail message is sent to customers after they order your products.&lt;br/&gt;
+
+Keyword replace values:&lt;br/&gt;&lt;br/&gt;
+
+#InvoiceName#, #BillToFirstName#, #BillToLastName#, &lt;br/&gt;
+#PackageName#, #PackageID#, #OptionName#, #OptionID#&lt;br/&gt;&lt;br/&gt;
+For example, if you input " Dear  #BillToFirstName# #BillToLastName#, 
+ Thank you for purchase our #PackageName# product.", then when a user named "Tom Cruise" order your "ThinkPad" product, a mail will send to him like "Dear  Tom Cruise, Thank you for purchase our ThinkPad product."&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="plSlogan.Help" xml:space="preserve">
+    <value>User slogan or phrase</value>
+  </data>
+  <data name="plBiography.Help" xml:space="preserve">
+    <value>Enter user biography, this will be displayed as "About author" in product detail module.</value>
+  </data>
+  <data name="plBiography.Text" xml:space="preserve">
+    <value>User Biography</value>
+  </data>
+  <data name="plP_Paypal.Help" xml:space="preserve">
+    <value>Enter user PayPal account which will receive money. It needs to be filled if your payment is selectd as "PayPal"</value>
+  </data>
+  <data name="plP_DD_RoutingNumber.Text" xml:space="preserve">
+    <value>Routing Number</value>
+  </data>
+  <data name="plP_DD_RoutingNumber.Help" xml:space="preserve">
+    <value>Enter Routing Number</value>
+  </data>
+  <data name="plP_DD_AccountNumber.Text" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="plLicense.Help" xml:space="preserve">
+    <value>Default license information while adding new product</value>
+  </data>
+  <data name="plLicense.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="secDirectDeposit.Text" xml:space="preserve">
+    <value>Direct Deposit</value>
+  </data>
+  <data name="Tip_AvatarEmail.Text" xml:space="preserve">
+    <value>If you have an avatar photo at &lt;a href="http://www.gravatar.com" target="_blank"&gt;Gravatar (http://www.gravatar.com)&lt;/a&gt;, you can enter its email address to get your avatar, and show it in product detail page.  Note, if you already specify an avatar photo in this site (you can specify it by editing your profile in DNN built-in user account page), module will use that prior, and ignore below Gravatar address.</value>
+  </data>
+  <data name="plAdditionalParm.Help" xml:space="preserve">
+    <value>Additional parm list user want specify to post to your url, separate by comma (, ). For example, if user sell products in multiple site and  want trace order source and host country, you can add additional parm as "Source=DnnModules, Country=China".</value>
+  </data>
+  <data name="plAdditionalParm.Text" xml:space="preserve">
+    <value>Additional Parm</value>
+  </data>
+  <data name="CurrentUser.Text" xml:space="preserve">
+    <value>Current User {0}&amp;bnsp;&amp;bnsp;</value>
+  </data>
+  <data name="lblBiography.Text" xml:space="preserve">
+    <value>Enter biography below, this will be displayed as "About Seller" in Cp_Product_Detail sub module.</value>
+  </data>
+  <data name="Tip_Email.Text" xml:space="preserve">
+    <value>Enter mail address which will receive related notification.</value>
+  </data>
+  <data name="Tip_Payment.Text" xml:space="preserve">
+    <value>Classified Pro is multi-seller based. By default, all money are sent to site defined accounts, and it is site administrator's responsibility to distribute seller's income to each seller periodically (e.g, 1 time per month). If you sell products on this site, you can provide your payment information here (which is used to receive your income from site administrators).</value>
+  </data>
+  <data name="errAuthorize.Text" xml:space="preserve">
+    <value>Please check your Authorize.net information. Note, the API Login ID/Transaction Key can't be null if "Accept Authorize.net" is checked.</value>
+  </data>
+  <data name="errDineroMail.Text" xml:space="preserve">
+    <value>Please specify your "Merchant Account" for "DineroMail payment gateway"</value>
+  </data>
+  <data name="errGoogleCheckout.Text" xml:space="preserve">
+    <value>Please specify your "Merchant ID" and "Merchant Key" for "Google Checkout payment gateway"</value>
+  </data>
+  <data name="errPayment.Text" xml:space="preserve">
+    <value>Please provide at least one valid payment gateway to receive meney</value>
+  </data>
+  <data name="errPaypal.Text" xml:space="preserve">
+    <value>The PayPal ID can't be null if "Accept PayPal" is checked.</value>
+  </data>
+  <data name="plEnableR_Manual.Help" xml:space="preserve">
+    <value>Check to enable manual processing</value>
+  </data>
+  <data name="plEnableR_Manual.Text" xml:space="preserve">
+    <value>Accept manual processing</value>
+  </data>
+  <data name="plR_Authorize_Enable.Help" xml:space="preserve">
+    <value>Check this option to accept meney from Authorize.net</value>
+  </data>
+  <data name="plR_Authorize_Enable.Text" xml:space="preserve">
+    <value>Accept Authorize.net</value>
+  </data>
+  <data name="plR_Authorize_Id.Help" xml:space="preserve">
+    <value>To get your Api Login ID and transaction key, visit https://account.authorize.net, login to your account, click on the "Account" tab at the top, and then on the "Api Login ID and Transaction Key" link (under Security settings).</value>
+  </data>
+  <data name="plR_Authorize_Id.Text" xml:space="preserve">
+    <value>My Api Login ID</value>
+  </data>
+  <data name="plR_Authorize_Key.Help" xml:space="preserve">
+    <value>To get your Api Login ID and transaction key, visit https://account.authorize.net, login to your account, click on the "Account" tab at the top, and then on the "Api Login ID and Transaction Key" link (under Security settings).</value>
+  </data>
+  <data name="plR_Authorize_Key.Text" xml:space="preserve">
+    <value>My Transaction Key</value>
+  </data>
+  <data name="plR_DineroMail_Enable.Help" xml:space="preserve">
+    <value>Check this option to accept meney from DineroMail</value>
+  </data>
+  <data name="plR_DineroMail_Enable.Text" xml:space="preserve">
+    <value>Accept DineroMail</value>
+  </data>
+  <data name="plR_DineroMail_Id.Help" xml:space="preserve">
+    <value>Merchant’s name. Or legend that the merchant wishes to show instead of his/her e-mail address.</value>
+  </data>
+  <data name="plR_DineroMail_Id.Text" xml:space="preserve">
+    <value>My Merchant Account</value>
+  </data>
+  <data name="plR_GoogleCheckout_Enable.Help" xml:space="preserve">
+    <value>Check this option to accept money from Google Checkout</value>
+  </data>
+  <data name="plR_GoogleCheckout_Enable.Text" xml:space="preserve">
+    <value>Accept Google Checkout</value>
+  </data>
+  <data name="plR_GoogleCheckout_Id.Help" xml:space="preserve">
+    <value>Enter your google checkout Merchant Id which will receive money.</value>
+  </data>
+  <data name="plR_GoogleCheckout_Id.Text" xml:space="preserve">
+    <value>My Merchant Id</value>
+  </data>
+  <data name="plR_GoogleCheckout_Key.Help" xml:space="preserve">
+    <value>Enter your google checkout Merchant key.</value>
+  </data>
+  <data name="plR_GoogleCheckout_Key.Text" xml:space="preserve">
+    <value>My Merchant Key</value>
+  </data>
+  <data name="plR_Paypal_Enable.Help" xml:space="preserve">
+    <value>Check this option to accept meney from PayPal</value>
+  </data>
+  <data name="plR_Paypal_Enable.Text" xml:space="preserve">
+    <value>Accept PayPal</value>
+  </data>
+  <data name="plR_Paypal_Id.Help" xml:space="preserve">
+    <value>Your PayPal account (email address like support@DnnModule.com) which used to receive money.</value>
+  </data>
+  <data name="plR_Paypal_Id.Text" xml:space="preserve">
+    <value>My PayPal Account</value>
+  </data>
+  <data name="secR_Authorize.Text" xml:space="preserve">
+    <value>Authorize.net payment gateway (for US dollar $ only )</value>
+  </data>
+  <data name="secR_DineroMail.Text" xml:space="preserve">
+    <value>DineroMail payment gateway (for Latinamercia)</value>
+  </data>
+  <data name="secR_GoogleCheckout.Text" xml:space="preserve">
+    <value>Google Checkout payment gateway (for US dollar $ only)</value>
+  </data>
+  <data name="secR_Manual.Text" xml:space="preserve">
+    <value>Manual processing payment gateway</value>
+  </data>
+  <data name="secR_Paypal.Text" xml:space="preserve">
+    <value>PayPal payment gateway</value>
+  </data>
+  <data name="Tip_Authorize.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;To get your Api Login ID and transaction key, visit https://account.authorize.net, login to your account, click on the "Account" tab at the top, and then on the "Api Login ID and Transaction Key" link (under Security settings).</value>
+  </data>
+  <data name="Tip_GoogleCheckout_Id.Text" xml:space="preserve">
+    <value>See below images to get your "Merchant Id" and "Merchant Key"</value>
+  </data>
+  <data name="Tip_ManualPayment.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;Manual processing payment gateway enables customer to pay order offline. When client click "Confirm Order" via manual processing payment gateway, his order status will change as "Awaiting Payment". Then client can pay money offline (via wire transfer, bank transfer..etc) to you. You can change order status as "Paid" after received customer payment.</value>
+  </data>
+  <data name="Tip_ReceiveMoney.Text" xml:space="preserve">
+    <value>Site allows each seller to define his/her own payment gateway, and directly receive money from customers. Please choose your payment gateway below (at least one) and input related information to receive money from customer.</value>
+  </data>
+  <data name="Tip_PayPalId.Text" xml:space="preserve">
+    <value>Your PayPal account (email address like support@DnnModule.com) which used to receive money.</value>
+  </data>
+  <data name="Tip_NoCountry.Text" xml:space="preserve">
+    <value>Please specify at least 1 country in "Cp_Admin sub module - Admin Control Panel - Configurations - Location".</value>
+  </data>
+  <data name="errStripe.Text" xml:space="preserve">
+    <value>The "Live Secrect Key"  can't be null if "Accept Stripe" is checked.</value>
+  </data>
+  <data name="plAddress.Help" xml:space="preserve">
+    <value>Detail Address</value>
+  </data>
+  <data name="plAddress.Text" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="plBusinessScope.Help" xml:space="preserve">
+    <value>enter business scope</value>
+  </data>
+  <data name="plBusinessScope.Text" xml:space="preserve">
+    <value>Business Scope</value>
+  </data>
+  <data name="plCompany.Help" xml:space="preserve">
+    <value>Enter your company name, like IBM, Leveno</value>
+  </data>
+  <data name="plCompany.Text" xml:space="preserve">
+    <value>Your Company</value>
+  </data>
+  <data name="plFax.Help" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="plFax.Text" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="plIM.Help" xml:space="preserve">
+    <value>Your Instant Messager number, like QQ, Skype</value>
+  </data>
+  <data name="plIM.Text" xml:space="preserve">
+    <value>IM (Instant Messager)</value>
+  </data>
+  <data name="plLinkman.Help" xml:space="preserve">
+    <value>Linkman</value>
+  </data>
+  <data name="plLinkman.Text" xml:space="preserve">
+    <value>Linkman</value>
+  </data>
+  <data name="plR_Stripe_Enable.Help" xml:space="preserve">
+    <value>Check to accept stripe</value>
+  </data>
+  <data name="plR_Stripe_Enable.Text" xml:space="preserve">
+    <value>Accept Stripe</value>
+  </data>
+  <data name="plR_Stripe_LiveSecrectKey.Help" xml:space="preserve">
+    <value>The "Live Secrect Key"  can't be null if "Accept Stripe" is checked.</value>
+  </data>
+  <data name="plR_Stripe_LiveSecrectKey.Text" xml:space="preserve">
+    <value>Live Secret Key</value>
+  </data>
+  <data name="plTel.Help" xml:space="preserve">
+    <value>Telephone/Mobile</value>
+  </data>
+  <data name="plTel.Text" xml:space="preserve">
+    <value>Telephone/Mobile</value>
+  </data>
+  <data name="plVendorCity.Help" xml:space="preserve">
+    <value>Company City</value>
+  </data>
+  <data name="plVendorCity.Text" xml:space="preserve">
+    <value>Company City</value>
+  </data>
+  <data name="plVendorCountry.Help" xml:space="preserve">
+    <value>Select Company Country</value>
+  </data>
+  <data name="plVendorCountry.Text" xml:space="preserve">
+    <value>Company Country</value>
+  </data>
+  <data name="plVendorState.Help" xml:space="preserve">
+    <value>Company State/Province</value>
+  </data>
+  <data name="plVendorState.Text" xml:space="preserve">
+    <value>Company State/Province</value>
+  </data>
+  <data name="plVendorTown.Help" xml:space="preserve">
+    <value>Company Town</value>
+  </data>
+  <data name="plVendorTown.Text" xml:space="preserve">
+    <value>Company Town</value>
+  </data>
+  <data name="plZipcode.Help" xml:space="preserve">
+    <value>Zipcode</value>
+  </data>
+  <data name="plZipcode.Text" xml:space="preserve">
+    <value>Zipcode</value>
+  </data>
+  <data name="secR_Stripe.Text" xml:space="preserve">
+    <value>Stripe payment gateway</value>
+  </data>
+  <data name="Tip_Company.Text" xml:space="preserve">
+    <value>Enter your company information below (company name, country, state, city, tel, fax...etc). These information can be displayed to site visitors.</value>
+  </data>
+  <data name="Tip_Stripe.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;With Stripe, you can accept payments from almost any credit card and debit card, no matter where your customer lives. U.S. businesses can accept Visa, MasterCard, American Express, JCB, Discover, and Diners Club. Canadian, European, and Australian businesses can accept Visa, MasterCard, and American Express. For more information, please visit &lt;a href="https://stripe.com/" target="_blank"&gt;https://stripe.com/&lt;/a&gt;. You need to provide "Live Secret Key" to use Strip. Login to stripe.com, click "Your Account - Account Settings - Api Keys" you will see your "Live Secret Key".
+</value>
+  </data>
+  <data name="plFavoriteShippingMethod.Help" xml:space="preserve">
+    <value>Choose your favorite (available) shipping methods.</value>
+  </data>
+  <data name="plFavoriteShippingMethod.Text" xml:space="preserve">
+    <value>Favorite Shipping Methods</value>
+  </data>
+  <data name="Tip_FavoriteShippingMethod.Text" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;By default, all sellers will use site defined shipping methods to deliver physical goods. However, you can choose some of them as your favorite (or available) shipping methods. &lt;br/&gt;&amp;nbsp;&amp;nbsp;For example, site administrators can define two shipping methods (under "Cp_Admin sub module - Admin Control Panel - Configurations - Shipping Methods"), for example, "USPS", "Feedex". You can select "USPS" only as your favorite shipping methods, and reject "Feedex", then when a user buy a product from you, he can only select shipping method as "USPS". Note, if you uncheck all of them, module will take all default shipping methods as your favorite shipping methods.&lt;br/&gt;&amp;nbsp;&amp;nbsp;Ignore this option if you don't need to deliver physical goods.</value>
+  </data>
+  <data name="errAlipay.Text" xml:space="preserve">
+    <value>Please check Alipay payment gateway information. To use it, you must provide "Alipay Account", "Partner ID", and "Key".</value>
+  </data>
+  <data name="li_P_Type_Alipay.Text" xml:space="preserve">
+    <value>Alipay</value>
+  </data>
+  <data name="plP_Alipay.Help" xml:space="preserve">
+    <value>Enter your Alipay account</value>
+  </data>
+  <data name="plP_Alipay.Text" xml:space="preserve">
+    <value>Alipay Account</value>
+  </data>
+  <data name="plR_Alipay_Enable.Help" xml:space="preserve">
+    <value>Enable Alipay payment gateway</value>
+  </data>
+  <data name="plR_Alipay_Enable.Text" xml:space="preserve">
+    <value>Enable Alipay</value>
+  </data>
+  <data name="plR_Alipay_Id.Help" xml:space="preserve">
+    <value>Alipay Account, it should be an email address.</value>
+  </data>
+  <data name="plR_Alipay_Id.Text" xml:space="preserve">
+    <value>Alipay Account</value>
+  </data>
+  <data name="plR_Alipay_Key.Help" xml:space="preserve">
+    <value>Your Alipay Key, can be found at https://b.alipay.com/order/myOrder.htm.</value>
+  </data>
+  <data name="plR_Alipay_Key.Text" xml:space="preserve">
+    <value>Key</value>
+  </data>
+  <data name="plR_Alipay_Partner.Help" xml:space="preserve">
+    <value>Alipay Partner Id</value>
+  </data>
+  <data name="plR_Alipay_Partner.Text" xml:space="preserve">
+    <value>Partner Id</value>
+  </data>
+  <data name="secAlipay.Text" xml:space="preserve">
+    <value>Alipay</value>
+  </data>
+  <data name="secR_Alipay.Text" xml:space="preserve">
+    <value>Alipay Payment Gateway (for China Yuan only)</value>
+  </data>
+  <data name="Tip_Alipay.Text" xml:space="preserve">
+    <value>To receive money via Alipay, please sign a merchant account at http://www.alipay.com, and provide below information.</value>
+  </data>
+  <data name="plProtectPassword.Help" xml:space="preserve">
+    <value>Enter your default protect password.</value>
+  </data>
+  <data name="plProtectPassword.Text" xml:space="preserve">
+    <value>Protect Password</value>
+  </data>
+  <data name="Tip_ProtectPassword.Text" xml:space="preserve">
+    <value>Your classified ads (news article, job listing, etc) can be published as protected, so user needs to input a correct password before view its detail. Here you can enter the default protect password.  Note, 1. Site administrators (and you) don't need to input password to view your ad detail even it is marked as protected. 2. Each ad can have its own protect password (different password).</value>
+  </data>
+</root>

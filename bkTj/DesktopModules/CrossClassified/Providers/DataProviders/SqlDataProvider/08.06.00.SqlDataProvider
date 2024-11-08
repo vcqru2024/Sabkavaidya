@@ -1,0 +1,1143 @@
+
+
+/******   create new table ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_VariantGroup]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_VariantGroup](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeId] [int] NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[SortIndex] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_VariantGroup] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Variant]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_Variant](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[GroupId] [int] NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[Name] [nvarchar](500) NULL,
+	[BonusPrice] [decimal](18, 2) NULL,
+	[IsDefault] [bit] NULL,
+	[BonusWeight] [decimal](18, 2) NULL,
+	[Active] [bit] NULL,
+	[SortIndex] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_Variant] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Variant_CP_Product_VariantGroup]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Variant]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Variant]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_Variant_CP_Product_VariantGroup] FOREIGN KEY([GroupId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_VariantGroup] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Variant_CP_Product_VariantGroup]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Variant]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Variant] CHECK CONSTRAINT [FK_{objectQualifier}CP_Product_Variant_CP_Product_VariantGroup]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_VariantGroup_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_VariantGroup]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_VariantGroup]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_VariantGroup_CP_Product_Type] FOREIGN KEY([TypeId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Type] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_VariantGroup_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_VariantGroup]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_VariantGroup] CHECK CONSTRAINT [FK_{objectQualifier}CP_Product_VariantGroup_CP_Product_Type]
+GO
+
+
+/******   alter table CP_Common_User ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add P_Alipay_Id nvarchar(100) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add R_Alipay_Enable bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add R_Alipay_Partner nvarchar(100) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add R_Alipay_Id nvarchar(100) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add R_Alipay_Key nvarchar(100) NULL
+
+go
+
+/******   alter table CP_Product_Cart ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Cart add VariantId nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Cart add VariantValue nvarchar(500) NULL
+
+
+/******   alter table CP_Product_OrderDetail ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add VariantId nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_OrderDetail add VariantValue nvarchar(500) NULL
+
+go
+
+
+
+/****** drop legacy stored procedures ******/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Get]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_GetByType]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_PagingByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+GO
+
+
+/****** create new stored procedures ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Get]
+	@UserId int
+AS
+SELECT a.UserId,
+    a.Username,
+    a.FirstName,
+    a.LastName,
+    a.DisplayName,
+    b.Email,
+    b.AvatarEmail,
+    b.Authed,
+    b.SiteUrl,
+    b.LogoUrl,
+    b.Slogan,
+    b.Biography,
+    b.P_Type,
+    b.P_DD_BankName,
+    b.P_DD_RoutingNumber,
+    b.P_DD_AccountNumber,
+    b.P_DD_AccountType,
+    b.P_Paypal,
+    b.P_C_Payee,
+    b.P_C_Address1,
+    b.P_C_Address2,
+    b.P_C_City,
+    b.P_C_RegionCode,
+    b.P_C_CountryCode,
+    b.CustomerMessage,
+    b.IntegrateUrl,
+    b.Support,
+    b.License,
+    b.Delivery,
+    b.AdditionalParm,
+    b.SecurityValue,
+    b.R_Paypal_Enable,
+    b.R_Paypal_Id,
+    b.R_Authorize_Enable,
+    b.R_Authorize_Id,
+    b.R_Authorize_Key,
+    b.R_DineroMail_Enable,
+    b.R_DineroMail_Id,
+    b.R_GoogleCheckout_Enable,
+    b.R_GoogleCheckout_Id,
+    b.R_GoogleCheckout_Key,
+    b.R_Manual_Enable,
+    b.R_Stripe_Enable,
+	b.R_Stripe_LiveSecrectKey,
+	b.Company,
+	b.Tel,
+	b.Fax,
+	b.IM,
+	b.Linkman,
+	b.CountryId,
+	b.Country,
+	b.StateId,
+	b.State,
+	b.CityId,
+	b.City,
+	b.TownId,
+	b.Town,
+	b.Address,
+	b.BusinessScope,
+	b.Zipcode,
+	b.Field1,
+	b.Field2,
+	b.Field3,
+	b.Field4,
+	b.Field5,
+	b.Field6,
+	b.Field7,
+	b.Field8,
+	b.Field9,
+	b.Field10,
+	b.[FavoriteShipMethod],
+	b.[P_Alipay_Id],
+	b.[R_Alipay_Enable],
+	b.[R_Alipay_Partner],
+	b.[R_Alipay_Id],
+	b.[R_Alipay_Key]
+FROM {databaseOwner}{objectQualifier}Users a
+left join {databaseOwner}{objectQualifier}CP_Common_User b
+on a.[UserId]=b.[UserId]
+WHERE a.[UserId] = @UserId
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Update]
+	@UserId int, 
+	@Email nvarchar(80), 
+	@AvatarEmail nvarchar(80), 
+	@Authed bit, 
+	@SiteUrl nvarchar(200), 
+	@LogoUrl nvarchar(200), 
+	@Slogan nvarchar(200), 
+	@Biography ntext, 
+	@P_Type nvarchar(20), 
+	@P_DD_BankName nvarchar(400), 
+	@P_DD_RoutingNumber nvarchar(200), 
+	@P_DD_AccountNumber nvarchar(100), 
+	@P_DD_AccountType nvarchar(40), 
+	@P_Paypal nvarchar(40), 
+	@P_C_Payee nvarchar(40), 
+	@P_C_Address1 nvarchar(200), 
+	@P_C_Address2 nvarchar(200), 
+	@P_C_City nvarchar(200), 
+	@P_C_RegionCode nvarchar(200), 
+	@P_C_CountryCode nvarchar(200), 
+	@CustomerMessage nvarchar(4000),
+    @IntegrateUrl nvarchar(400),
+    @Support ntext,
+    @License ntext,
+    @Delivery ntext,
+    @AdditionalParm nvarchar(200),
+    @SecurityValue nchar(20),
+    @R_Paypal_Enable bit,
+	@R_Paypal_Id nvarchar(200),
+	@R_Authorize_Enable bit,
+	@R_Authorize_Id nvarchar(200),
+	@R_Authorize_Key nvarchar(200),
+	@R_DineroMail_Enable bit,
+	@R_DineroMail_Id nvarchar(200),
+	@R_GoogleCheckout_Enable bit,
+	@R_GoogleCheckout_Id nvarchar(200),
+	@R_GoogleCheckout_Key nvarchar(200),
+	@R_Manual_Enable bit,
+	@R_Stripe_Enable bit,
+	@R_Stripe_LiveSecrectKey nvarchar(400),
+	@Company nvarchar(800),
+	@Tel nvarchar(800),
+	@Fax nvarchar(800),
+	@IM nvarchar(800),
+	@Linkman nvarchar(800),
+	@CountryId int,
+	@Country nvarchar(200),
+	@StateId int,
+	@State nvarchar(200),
+	@CityId int,
+	@City nvarchar(200),
+	@TownId int,
+	@Town nvarchar(200),
+	@Address nvarchar(800),
+	@BusinessScope nvarchar(2000),
+	@Zipcode nvarchar(50),
+	@Field1 nvarchar(4000),
+	@Field2 nvarchar(4000),
+	@Field3 nvarchar(4000),
+	@Field4 nvarchar(4000),
+	@Field5 nvarchar(4000),
+	@Field6 nvarchar(4000),
+	@Field7 nvarchar(4000),
+	@Field8 nvarchar(4000),
+	@Field9 nvarchar(4000),
+	@Field10 nvarchar(4000),
+	@FavoriteShipMethod nvarchar(200),
+	@P_Alipay_Id	nvarchar(100),
+	@R_Alipay_Enable bit,
+	@R_Alipay_Partner	nvarchar(100),
+	@R_Alipay_Id	nvarchar(100),
+	@R_Alipay_Key	nvarchar(100)
+AS
+Declare @RecordCount int
+
+Select @RecordCount=count(UserId) 
+from {databaseOwner}{objectQualifier}CP_Common_User
+where UserId=@UserId
+if (@RecordCount>0) 
+    begin
+       UPDATE {databaseOwner}{objectQualifier}CP_Common_User 
+       SET
+	    [Email] = @Email,
+	    [AvatarEmail] = @AvatarEmail,
+	    [Authed] = @Authed,
+	    [SiteUrl] = @SiteUrl,
+	    [LogoUrl] = @LogoUrl,
+	    [Slogan] = @Slogan,
+    	[Biography] = @Biography,
+	    [P_Type] = @P_Type,
+	    [P_DD_BankName] = @P_DD_BankName,
+	    [P_DD_RoutingNumber] = @P_DD_RoutingNumber,
+	    [P_DD_AccountNumber] = @P_DD_AccountNumber,
+	    [P_DD_AccountType] = @P_DD_AccountType,
+	    [P_Paypal] = @P_Paypal,
+	    [P_C_Payee] = @P_C_Payee,
+	    [P_C_Address1] = @P_C_Address1,
+	    [P_C_Address2] = @P_C_Address2,
+	    [P_C_City] = @P_C_City,
+	    [P_C_RegionCode] = @P_C_RegionCode,
+	    [P_C_CountryCode] = @P_C_CountryCode,
+	    [CustomerMessage] = @CustomerMessage,
+        [IntegrateUrl]=@IntegrateUrl,
+        [Support]=@Support,
+        [License]=@License,
+        [Delivery]=@Delivery,
+        [AdditionalParm]=@AdditionalParm,
+        [SecurityValue]=@SecurityValue,
+        [R_Paypal_Enable] = @R_Paypal_Enable,
+	    [R_Paypal_Id] = @R_Paypal_Id,
+	    [R_Authorize_Enable] = @R_Authorize_Enable,
+	    [R_Authorize_Id] = @R_Authorize_Id,
+	    [R_Authorize_Key] = @R_Authorize_Key,
+	    [R_DineroMail_Enable] = @R_DineroMail_Enable,
+	    [R_DineroMail_Id] = @R_DineroMail_Id,
+	    [R_GoogleCheckout_Enable] = @R_GoogleCheckout_Enable,
+	    [R_GoogleCheckout_Id] = @R_GoogleCheckout_Id,
+	    [R_GoogleCheckout_Key] = @R_GoogleCheckout_Key,
+	    [R_Manual_Enable] = @R_Manual_Enable,
+	    [R_Stripe_Enable] = @R_Stripe_Enable,
+	    [R_Stripe_LiveSecrectKey] = @R_Stripe_LiveSecrectKey,
+	    [Company] = @Company,
+	    [Tel] = @Tel,
+	    [Fax] = @Fax,
+	    [IM] = @IM,
+	    [Linkman] = @Linkman,
+	    [CountryId] = @CountryId,
+	    [Country] = @Country,
+	    [StateId] = @StateId,
+	    [State] = @State,
+	    [CityId] = @CityId,
+	    [City] = @City,
+	    [TownId] = @TownId,
+	    [Town] = @Town,
+	    [Address] = @Address,
+	    [BusinessScope] = @BusinessScope,
+	    [Zipcode] = @Zipcode,
+	    [Field1] = @Field1,
+	    [Field2] = @Field2,
+	    [Field3] = @Field3,
+	    [Field4] = @Field4,
+	    [Field5] = @Field5,
+	    [Field6] = @Field6,
+	    [Field7] = @Field7,
+	    [Field8] = @Field8,
+	    [Field9] = @Field9,
+	    [Field10] = @Field10,
+	    [FavoriteShipMethod] = @FavoriteShipMethod,
+	    [P_Alipay_Id] = @P_Alipay_Id,
+	    [R_Alipay_Enable] = @R_Alipay_Enable,
+	    [R_Alipay_Partner] = @R_Alipay_Partner,
+	    [R_Alipay_Id] = @R_Alipay_Id,
+	    [R_Alipay_Key] = @R_Alipay_Key
+     WHERE [UserId] = @UserId
+   end
+else
+    begin
+      INSERT INTO {databaseOwner}{objectQualifier}CP_Common_User (
+	[UserId],
+    [Email],
+	[AvatarEmail],
+	[Authed],
+	[SiteUrl],
+	[LogoUrl],
+	[Slogan],
+	[Biography],
+	[P_Type],
+	[P_DD_BankName],
+	[P_DD_RoutingNumber],
+	[P_DD_AccountNumber],
+	[P_DD_AccountType],
+	[P_Paypal],
+	[P_C_Payee],
+	[P_C_Address1],
+	[P_C_Address2],
+	[P_C_City],
+	[P_C_RegionCode],
+	[P_C_CountryCode],
+	[CustomerMessage],
+    [IntegrateUrl],
+    [Support],
+    [License],
+    [Delivery],
+    [AdditionalParm],
+    [SecurityValue],
+    [R_Paypal_Enable],
+	[R_Paypal_Id],
+	[R_Authorize_Enable],
+	[R_Authorize_Id],
+	[R_Authorize_Key],
+	[R_DineroMail_Enable],
+	[R_DineroMail_Id],
+	[R_GoogleCheckout_Enable],
+	[R_GoogleCheckout_Id],
+	[R_GoogleCheckout_Key],
+	[R_Manual_Enable],
+	[R_Stripe_Enable],
+	[R_Stripe_LiveSecrectKey],
+	[Company],
+	[Tel],
+	[Fax],
+	[IM],
+	[Linkman],
+	[CountryId],
+	[Country],
+	[StateId],
+	[State],
+	[CityId],
+	[City],
+	[TownId],
+	[Town],
+	[Address],
+	[BusinessScope],
+	[Zipcode],
+	[Field1],
+	[Field2],
+	[Field3],
+	[Field4],
+	[Field5],
+	[Field6],
+	[Field7],
+	[Field8],
+	[Field9],
+	[Field10],
+	[FavoriteShipMethod],
+	[P_Alipay_Id],
+	[R_Alipay_Enable],
+	[R_Alipay_Partner],
+	[R_Alipay_Id],
+	[R_Alipay_Key]
+) VALUES (
+    @UserId,
+	@Email,
+	@AvatarEmail,
+	@Authed,
+	@SiteUrl,
+	@LogoUrl,
+	@Slogan,
+	@Biography,
+	@P_Type,
+	@P_DD_BankName,
+	@P_DD_RoutingNumber,
+	@P_DD_AccountNumber,
+	@P_DD_AccountType,
+	@P_Paypal,
+	@P_C_Payee,
+	@P_C_Address1,
+	@P_C_Address2,
+	@P_C_City,
+	@P_C_RegionCode,
+	@P_C_CountryCode,
+	@CustomerMessage,
+    @IntegrateUrl,
+    @Support,
+    @License,
+    @Delivery,
+    @AdditionalParm,
+    @SecurityValue,
+    @R_Paypal_Enable,
+	@R_Paypal_Id,
+	@R_Authorize_Enable,
+	@R_Authorize_Id,
+	@R_Authorize_Key,
+	@R_DineroMail_Enable,
+	@R_DineroMail_Id,
+	@R_GoogleCheckout_Enable,
+	@R_GoogleCheckout_Id,
+	@R_GoogleCheckout_Key,
+	@R_Manual_Enable,
+	@R_Stripe_Enable,
+	@R_Stripe_LiveSecrectKey,
+	@Company,
+	@Tel,
+	@Fax,
+	@IM,
+	@Linkman,
+	@CountryId,
+	@Country,
+	@StateId,
+	@State,
+	@CityId,
+	@City,
+	@TownId,
+	@Town,
+	@Address,
+	@BusinessScope,
+	@Zipcode,
+	@Field1,
+	@Field2,
+	@Field3,
+	@Field4,
+	@Field5,
+	@Field6,
+	@Field7,
+	@Field8,
+	@Field9,
+	@Field10,
+	@FavoriteShipMethod,
+	@P_Alipay_Id,
+	@R_Alipay_Enable,
+	@R_Alipay_Partner,
+	@R_Alipay_Id,
+	@R_Alipay_Key
+    )
+    end 
+    
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_PagingByType]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType]
+    @TypeId   int,
+    @SearchTerm nvarchar(50),
+    @PageSize int, 
+    @PageIndex int
+AS
+  Declare @PageLowerBound int
+  DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	ItemId	int
+     )
+
+----Insert into temptable
+    insert into #PageIndex(ItemId)
+    SELECT distinct a.[UserId]
+    FROM {databaseOwner}{objectQualifier}Users a
+    Inner join {databaseOwner}{objectQualifier}CP_Product_Product c
+    on a.[UserId]=c.[UserId]
+    where (c.[TypeId] = @TypeId)--TypeId
+    and (@SearchTerm='''' or a.[Username] like ''%''+@SearchTerm+''%'') -- SearchTerm
+
+
+select 
+	a.UserId,
+    a.Username,
+    a.FirstName,
+    a.LastName,
+    a.DisplayName, 
+    b.Email,
+    b.AvatarEmail,
+    b.Authed,
+    b.SiteUrl,
+    b.LogoUrl,
+    b.Slogan,
+    ''Biography''='''',
+    b.P_Type,
+    b.P_DD_BankName,
+    b.P_DD_RoutingNumber,
+    b.P_DD_AccountNumber,
+    b.P_DD_AccountType,
+    b.P_Paypal,
+    b.P_C_Payee,
+    b.P_C_Address1,
+    b.P_C_Address2,
+    b.P_C_City,
+    b.P_C_RegionCode,
+    b.P_C_CountryCode,
+    ''CustomerMessage''='''',
+    ''IntegrateUrl''='''',
+    ''Support''='''',
+    ''License''='''',
+    ''Delivery''='''',
+    b.AdditionalParm,
+    b.SecurityValue,
+    b.R_Paypal_Enable,
+    b.R_Paypal_Id,
+    b.R_Authorize_Enable,
+    b.R_Authorize_Id,
+    b.R_Authorize_Key,
+    b.R_DineroMail_Enable,
+    b.R_DineroMail_Id,
+    b.R_GoogleCheckout_Enable,
+    b.R_GoogleCheckout_Id,
+    b.R_GoogleCheckout_Key,
+    b.R_Manual_Enable,
+    b.R_Stripe_Enable,
+	b.R_Stripe_LiveSecrectKey,
+	b.Company,
+	b.Tel,
+	b.Fax,
+	b.IM,
+	b.Linkman,
+	b.CountryId,
+	b.Country,
+	b.StateId,
+	b.State,
+	b.CityId,
+	b.City,
+	b.TownId,
+	b.Town,
+	b.Address,
+	b.BusinessScope,
+	b.Zipcode,
+	b.Field1,
+	b.Field2,
+	b.Field3,
+	b.Field4,
+	b.Field5,
+	b.Field6,
+	b.Field7,
+	b.Field8,
+	b.Field9,
+	b.Field10,
+	b.[FavoriteShipMethod],
+	b.[P_Alipay_Id],
+	b.[R_Alipay_Enable],
+	b.[R_Alipay_Partner],
+	b.[R_Alipay_Id],
+	b.[R_Alipay_Key]
+FROM {databaseOwner}{objectQualifier}Users a
+left join {databaseOwner}{objectQualifier}CP_Common_User b
+on a.[UserId]=b.[UserId]
+Inner join #PageIndex  c
+on a.[UserId]=c.[ItemId]
+and  c.[IndexId]> @PageLowerBound	
+and	 c.[IndexId]< @PageUpperBound	  
+ ORDER BY c.IndexId
+	
+	 --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_GetByType]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_GetByType]
+    @TypeId   int
+AS
+select distinct
+	a.UserId,
+    a.Username,
+    a.FirstName,
+    a.LastName,
+    a.DisplayName, 
+    b.Email,
+    b.AvatarEmail,
+    b.Authed,
+    b.SiteUrl,
+    b.LogoUrl,
+    b.Slogan,
+    ''Biography''='''',
+    b.P_Type,
+    b.P_DD_BankName,
+    b.P_DD_RoutingNumber,
+    b.P_DD_AccountNumber,
+    b.P_DD_AccountType,
+    b.P_Paypal,
+    b.P_C_Payee,
+    b.P_C_Address1,
+    b.P_C_Address2,
+    b.P_C_City,
+    b.P_C_RegionCode,
+    b.P_C_CountryCode,
+    ''CustomerMessage''='''',
+    ''IntegrateUrl''='''',
+    ''Support''='''',
+    ''License''='''',
+    ''Delivery''='''',
+    b.AdditionalParm,
+    b.SecurityValue,
+    b.R_Paypal_Enable,
+    b.R_Paypal_Id,
+    b.R_Authorize_Enable,
+    b.R_Authorize_Id,
+    b.R_Authorize_Key,
+    b.R_DineroMail_Enable,
+    b.R_DineroMail_Id,
+    b.R_GoogleCheckout_Enable,
+    b.R_GoogleCheckout_Id,
+    b.R_GoogleCheckout_Key,
+    b.R_Manual_Enable,
+    b.R_Stripe_Enable,
+	b.R_Stripe_LiveSecrectKey,
+	b.Company,
+	b.Tel,
+	b.Fax,
+	b.IM,
+	b.Linkman,
+	b.CountryId,
+	b.Country,
+	b.StateId,
+	b.State,
+	b.CityId,
+	b.City,
+	b.TownId,
+	b.Town,
+	b.Address,
+	b.BusinessScope,
+	b.Zipcode,
+	b.Field1,
+	b.Field2,
+	b.Field3,
+	b.Field4,
+	b.Field5,
+	b.Field6,
+	b.Field7,
+	b.Field8,
+	b.Field9,
+	b.Field10,
+	b.[FavoriteShipMethod],
+	b.[P_Alipay_Id],
+	b.[R_Alipay_Enable],
+	b.[R_Alipay_Partner],
+	b.[R_Alipay_Id],
+	b.[R_Alipay_Key]
+FROM {databaseOwner}{objectQualifier}Users a
+left join {databaseOwner}{objectQualifier}CP_Common_User b
+on a.UserId=b.UserId
+Inner join {databaseOwner}{objectQualifier}CP_Product_Product c
+on a.UserId=c.UserId
+where (c.TypeId = @TypeId)--TypeId
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Update]
+	@Id int, 
+	@ProductId int, 
+	@ProductName nvarchar(200), 
+	@ClientId int, 
+	@ClientName nvarchar(50), 
+	@VendorId int, 
+	@VendorName nvarchar(50), 
+	@OptionId int, 
+	@OptionName nvarchar(200), 
+	@Quantity int, 
+	@UnitPrice decimal(18, 2), 
+	@TaxFee decimal(18, 2), 
+	@ShipFee decimal(18, 2), 
+	@CreatedDate datetime, 
+	@ItemSum decimal(18, 2),
+    @DiscountRequest nvarchar(1000),
+    @DiscountResponse nvarchar(1000),
+    @OrderMemo nvarchar(1000),
+    @Coupon nvarchar(200),
+    @VariantId nvarchar(200),
+    @VariantValue nvarchar(500) 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Cart SET
+	[ProductId] = @ProductId,
+	[ProductName] = @ProductName,
+	[ClientId] = @ClientId,
+	[ClientName] = @ClientName,
+	[VendorId] = @VendorId,
+	[VendorName] = @VendorName,
+	[OptionId] = @OptionId,
+	[OptionName] = @OptionName,
+	[Quantity] = @Quantity,
+	[UnitPrice] = @UnitPrice,
+	[TaxFee] = @TaxFee,
+	[ShipFee] = @ShipFee,
+	[CreatedDate] = @CreatedDate,
+	[ItemSum] = @ItemSum,
+    [DiscountRequest] = @DiscountRequest,
+    [DiscountResponse] = @DiscountResponse,
+    [OrderMemo] = @OrderMemo,
+    [Coupon] = @Coupon,
+    [VariantId] = @VariantId,
+    [VariantValue] = @VariantValue 
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Add]
+	@ProductId int,
+	@ProductName nvarchar(200),
+	@ClientId int,
+	@ClientName nvarchar(50),
+	@VendorId int,
+	@VendorName nvarchar(50),
+	@OptionId int,
+	@OptionName nvarchar(200),
+	@Quantity int,
+	@UnitPrice decimal(18, 2),
+	@TaxFee decimal(18, 2),
+	@ShipFee decimal(18, 2),
+	@CreatedDate datetime,
+	@ItemSum decimal(18, 2),
+    @DiscountRequest nvarchar(1000),
+    @DiscountResponse nvarchar(1000),
+    @OrderMemo nvarchar(1000),
+    @Coupon nvarchar(200),
+    @VariantId nvarchar(200),
+    @VariantValue nvarchar(500)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Cart (
+	[ProductId],
+	[ProductName],
+	[ClientId],
+	[ClientName],
+	[VendorId],
+	[VendorName],
+	[OptionId],
+	[OptionName],
+	[Quantity],
+	[UnitPrice],
+	[TaxFee],
+	[ShipFee],
+	[CreatedDate],
+	[ItemSum],
+    [DiscountRequest],
+    [DiscountResponse],
+    [OrderMemo],
+    [Coupon],
+    [VariantId],
+    [VariantValue]
+) VALUES (
+	@ProductId,
+	@ProductName,
+	@ClientId,
+	@ClientName,
+	@VendorId,
+	@VendorName,
+	@OptionId,
+	@OptionName,
+	@Quantity,
+	@UnitPrice,
+	@TaxFee,
+	@ShipFee,
+	GetDate(),
+	@ItemSum,
+    @DiscountRequest,
+    @DiscountResponse,
+    @OrderMemo,
+    @Coupon,
+    @VariantId,
+    @VariantValue
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+	@Id int, 
+	@OrderId int, 
+	@PortalId int, 
+	@TypeId int, 
+	@OrderNo nvarchar(100), 
+	@InvoiceNo nvarchar(100), 
+	@ClientId int, 
+	@ClientName nvarchar(50), 
+	@VendorId int, 
+	@VendorName nvarchar(50), 
+	@ProductId int, 
+	@ProductName nvarchar(200), 
+	@OptionId int, 
+	@OptionName nvarchar(200), 
+	@Quantity int, 
+	@UnitPrice decimal(18, 2), 
+	@TaxFee decimal(18, 2), 
+	@ShipFee decimal(18, 2), 
+	@ItemSum decimal(18, 2), 
+	@CreatedDate datetime, 
+	@ShipDate datetime, 
+	@ArriveDate datetime, 
+	@DiscountRequest nvarchar(1000), 
+	@DiscountResponse nvarchar(1000), 
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int,
+    @RecursiveBill bit,
+    @NextBillDate datetime,
+    @Guid nvarchar(200),
+    @Coupon nvarchar(200),
+    @ShippingStatus int,
+    @ShippingMethod nvarchar(200),
+    @ShippingNo nvarchar(200),
+    @ClientSignDate datetime,
+    @VariantId nvarchar(200),
+    @VariantValue nvarchar(500)
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_OrderDetail SET
+	[OrderId] = @OrderId,
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[OrderNo] = @OrderNo,
+	[InvoiceNo] = @InvoiceNo,
+	[ClientId] = @ClientId,
+	[ClientName] = @ClientName,
+	[VendorId] = @VendorId,
+	[VendorName] = @VendorName,
+	[ProductId] = @ProductId,
+	[ProductName] = @ProductName,
+	[OptionId] = @OptionId,
+	[OptionName] = @OptionName,
+	[Quantity] = @Quantity,
+	[UnitPrice] = @UnitPrice,
+	[TaxFee] = @TaxFee,
+	[ShipFee] = @ShipFee,
+	[ItemSum] = @ItemSum,
+	[CreatedDate] = @CreatedDate,
+	[ShipDate] = @ShipDate,
+	[ArriveDate] = @ArriveDate,
+	[DiscountRequest] = @DiscountRequest,
+	[DiscountResponse] = @DiscountResponse,
+	[OrderMemo] = @OrderMemo,
+    [OrderStatus] = @OrderStatus,
+    [RecursiveBill] = @RecursiveBill,
+    [NextBillDate] = NextBillDate,
+    [Guid] = @Guid,
+    [Coupon] = @Coupon,
+    [ShippingStatus] = @ShippingStatus,
+    [ShippingMethod] = @ShippingMethod,
+    [ShippingNo] = @ShippingNo,
+    [ClientSignDate] = @ClientSignDate,
+    [VariantId] = @VariantId,
+    [VariantValue] = @VariantValue 
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+	@OrderId int,
+	@PortalId int,
+	@TypeId int,
+	@OrderNo nvarchar(100),
+	@InvoiceNo nvarchar(100),
+	@ClientId int,
+	@ClientName nvarchar(50),
+	@VendorId int,
+	@VendorName nvarchar(50),
+	@ProductId int,
+	@ProductName nvarchar(200),
+	@OptionId int,
+	@OptionName nvarchar(200),
+	@Quantity int,
+	@UnitPrice decimal(18, 2),
+	@TaxFee decimal(18, 2),
+	@ShipFee decimal(18, 2),
+	@ItemSum decimal(18, 2),
+	@CreatedDate datetime,
+	@ShipDate datetime,
+	@ArriveDate datetime,
+	@DiscountRequest nvarchar(1000),
+	@DiscountResponse nvarchar(1000),
+	@OrderMemo nvarchar(1000),
+    @OrderStatus int,
+    @RecursiveBill bit,
+    @NextBillDate datetime,
+    @Guid nvarchar(200),
+    @Coupon nvarchar(200),
+    @ShippingStatus int,
+    @ShippingMethod nvarchar(200),
+    @ShippingNo nvarchar(200),
+    @ClientSignDate datetime,
+    @VariantId nvarchar(200),
+    @VariantValue nvarchar(500)
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_OrderDetail (
+	[OrderId],
+	[PortalId],
+	[TypeId],
+	[OrderNo],
+	[InvoiceNo],
+	[ClientId],
+	[ClientName],
+	[VendorId],
+	[VendorName],
+	[ProductId],
+	[ProductName],
+	[OptionId],
+	[OptionName],
+	[Quantity],
+	[UnitPrice],
+	[TaxFee],
+	[ShipFee],
+	[ItemSum],
+	[CreatedDate],
+	[ShipDate],
+	[ArriveDate],
+	[DiscountRequest],
+	[DiscountResponse],
+	[OrderMemo],
+    [OrderStatus],
+    [RecursiveBill],
+    [NextBillDate],
+    [Guid],
+    [Coupon],
+    [ShippingStatus],
+    [ShippingMethod],
+    [ShippingNo],
+    [ClientSignDate],
+    [VariantId],
+    [VariantValue]
+) VALUES (
+	@OrderId,
+	@PortalId,
+	@TypeId,
+	@OrderNo,
+	@InvoiceNo,
+	@ClientId,
+	@ClientName,
+	@VendorId,
+	@VendorName,
+	@ProductId,
+	@ProductName,
+	@OptionId,
+	@OptionName,
+	@Quantity,
+	@UnitPrice,
+	@TaxFee,
+	@ShipFee,
+	@ItemSum,
+	GetDate(),
+	@ShipDate,
+	@ArriveDate,
+	@DiscountRequest,
+	@DiscountResponse,
+	@OrderMemo,
+    @OrderStatus,
+    @RecursiveBill,
+    @NextBillDate,
+    @Guid,
+    @Coupon,
+    @ShippingStatus,
+    @ShippingMethod,
+    @ShippingNo,
+    @ClientSignDate,
+    @VariantId,
+    @VariantValue
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+
+
+
+
+

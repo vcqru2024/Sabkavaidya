@@ -1,0 +1,104 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@{
+  // The current swiper (can also be a demo item, if nothing has been added yet)
+  var swiper = MyItem;
+  
+  // Get some helper commands for later on
+  var helpers = GetCode("Helpers.cs");
+
+  // Merge settings on swiper with predefined Settings, so we always have all setting, even if not specified at the item level
+  var swiperSettings = AsStack(swiper, App.Settings);
+
+  // Figure out width (eg. '100%', '1200px') and height ("100vh" or a ratio like "x:y")
+  var sliderWidth = swiperSettings.String("Width");
+
+  var sliderHeightOrRatio = swiperSettings.String("Height");
+
+  // Prepare style to set height or aspect ratio (determined by the ":" in the height)
+  var isRatio = sliderHeightOrRatio.IndexOf(":") > 0;
+  var aspectRatioStyle = isRatio ? "--aspect-ratio:calc(" + sliderHeightOrRatio.Replace(":", "/")  + ")": "";
+  var swiperContainerHeight = isRatio ? "" : "height: " + sliderHeightOrRatio + ";";
+
+  // Toolbar for the swiper itself
+  var swiperToolbar = Kit.Toolbar.Default().Settings(hover: "left", autoAddMore: "start");
+
+  // The toolbar (or a demo-info-toolbar if it's just a preview)
+  var slideToolbar = Kit.Toolbar.Default().Delete().DetectDemo(swiper, message: App.Resources.String("ToolbarSlideIsDemo"));
+}
+
+<div class="app-swiper2" @swiperToolbar.For(swiper) style="@aspectRatioStyle">
+  @* Slider main container and wrapper *@
+  <div class="swiper swiper-@swiper.Id" style="width: @sliderWidth; @swiperContainerHeight">
+    <div class="swiper-wrapper">
+      @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
+      @if (!swiper.Children("Slides").Any()) {
+        @Html.Partial("Swiper.PartEmpty.cshtml")
+      } 
+
+      @* Slides - Add each one (if there are any) *@
+      @foreach (var slide in swiper.Children("Slides")) {
+
+        // Get all the texts to later check which ones contain real values
+        var title = slide.String("Title");
+        var text = slide.String("Text");
+        var linkText = slide.String("LinkText");
+        var anyText = Text.First(title, text, linkText);
+
+        // Merge settings of the current slide, the swiper defaults and the App settings/defaults
+        var sldSettings = AsStack(slide, swiper, App.Settings);
+        var overlayEffect = sldSettings.String("OverlayEffect");  // Positioning
+        var duration = sldSettings.Int("ShowDuration");           // time the slide will show if auto-playing
+        var textPos = sldSettings.String("TextPosition");
+        var darkContent = sldSettings.Bool("DarkContent");
+
+        <div class="swiper-slide" data-swiper-autoplay="@duration" @slideToolbar.For(slide)>
+          <div class="image-wrapper @helpers.SlideWrapperClasses(textPos, overlayEffect, darkContent)">
+            @* Add the <picture> tag with all the sources *@
+            @slide.Picture("Image", settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: title)
+
+            @if (Text.Has(anyText)) {
+              @* Show Overlay behind text *@
+              <div class="overlay overlay-@overlayEffect"></div>
+
+              <div class='d-flex position-relative h-100 @helpers.OverlayAlignClasses(textPos)'>
+                <div class="w-100 py-3 py-md-4 px-3 px-md-5 @helpers.OverlayTextAlignClasses(textPos)">
+                  @* Show Title in overlay *@  
+                  @if (Text.Has(title)) {
+                    <p class="lead" data-swiper-parallax="-250">@title</p>
+                  }
+                  @* Show Description / additional Text in overlay *@  
+                  @if (Text.Has(text)) {
+                    <div data-swiper-parallax="-500">@Html.Raw(text)</div>
+                  }
+
+                  @* Show Link in overlay *@  
+                  @if (Text.Has(linkText)) {
+                    <div data-swiper-parallax="-750">
+                      <a class="btn btn-primary" href='@slide.Url("Link")' target='@(slide.Bool("LinkBlankTarget") == true ? "_blank" : "")'>@linkText</a>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+
+          </div>
+        </div>
+      }
+
+    </div>
+
+    @* Pagination *@
+    @if (swiperSettings.Bool("ShowPaginationDots")) {
+      <div class="swiper-pagination"></div>
+    }
+
+    @* Navigation buttons (right left arrows) *@
+    @if (swiperSettings.Bool("ShowPaginationArrows")) {
+      <div class="swiper-button-prev swiper-button-prev-@swiper.Id"></div>
+      <div class="swiper-button-next swiper-button-next-@swiper.Id"></div>
+    }
+  </div>
+</div>
+
+@Html.Partial("Swiper.PartAssets.cshtml", new { swiper, swiperSettings })

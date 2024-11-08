@@ -1,0 +1,57 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<ManageProductDownloadViewModel>
+
+<div class="rvd-module-container rvdsf rvdsf-manageproductdownload-container">
+	@if (Model.Visible)
+	{
+		if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+		{
+			<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert])">@Model.TempData[Global.TempDataKeys.Message]</div>
+		}
+		<div class="rvdsf-list-container">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="list-group mb-3">
+						@foreach (var pv in Model.ProductVariants.OrderBy(pv => pv.Product.Name))
+						{
+						<li class="list-group-item">
+							<a class="pull-right float-right" href="@pv.DownloadFileUrl" @(pv.DownloadFileUrl.Contains("fileticket") ? "download" : "")>
+								<em class="glyphicon glyphicon-download fa fas fa-upload"></em>
+							</a>
+							<strong>
+								<a href="@pv.DownloadFileUrl" @(pv.DownloadFileUrl.Contains("fileticket") ? "download" : "")>@pv.Product.Name</a>
+							</strong>
+							@if (!String.IsNullOrEmpty(pv.Name))
+							{
+								<br /><small>@pv.Name</small>
+							}
+						</li>
+					}
+					</ul>
+				</div>
+			</div>
+		</div>
+	}
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+	<script type="text/plain" id="rvdsfStartupScriptManageOrder">
+		@foreach (var script in Model.StartupScripts)
+		{
+			<text>@Html.Raw(script)</text>
+		}
+	</script>
+</div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>

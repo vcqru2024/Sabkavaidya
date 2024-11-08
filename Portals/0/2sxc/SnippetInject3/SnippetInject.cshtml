@@ -1,0 +1,44 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@{
+ // The main configuration is the content of the current module
+  var snippetContent = MyItem;
+
+  // Detect what kind of snippet this is (js, html, css)
+  var snippetType = MyView.Identifier;
+
+  // Disable quality-check which otherwise warns 2sxc-developers that inline scripts shouldn't be used
+  // 2sxclint:disable:no-inline-script
+}
+@* Add editing section above the content for admins, because the snippet (js/css) is invisible *@
+
+@if (MyUser.IsContentAdmin) {
+  <div class='app-snippetinject3-edit' @Kit.Toolbar.Default(snippetContent)>
+      @App.Resources.String("DoNotDeleteWarning")
+  </div>
+  <style>
+    .app-snippetinject3-edit {
+      color: #856404;
+      background-color: #fff3cd;
+      padding: .75rem 1.25rem;
+      margin-bottom: 1rem;
+      border-radius: .25rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+}
+
+@if (snippetType == "html") {
+  @snippetContent.Html("Html", container:"")
+}
+@if (snippetType == "css") {
+  <style>
+  @snippetContent.Html("Styles", container:"")
+  </style>
+}
+@if (snippetType == "js") {
+  <script>
+  @snippetContent.Html("Script", container:"")
+  </script>
+}

@@ -1,0 +1,203 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContent') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContent
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterCategoryContent]
+	@CatIDs {databaseOwner}{objectQualifier}ContentProCategoryList READONLY,
+	@FieldSetID INTEGER,
+	@SortDirection nvarchar(max),
+	@NumberOfArticles int,
+	@TypeID INTEGER,
+	@FieldID nvarchar(max),
+	@BuiltInField nvarchar(max)
+AS
+BEGIN
+       -- SET NOCOUNT ON added to prevent extra result sets from
+       -- interfering with SELECT statements.
+       SET NOCOUNT ON;
+
+	IF (@NumberOfArticles = 0)
+	BEGIN
+	   select * from {databaseOwner}{objectQualifier}ContentPro_Content Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}{objectQualifier}ContentPro_Content AS [content]
+       WHERE
+          EXISTS (SELECT * FROM {databaseOwner}{objectQualifier}ContentPro_ContentCategories WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (StartDT IS NULL AND EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		   CASE WHEN @SortDirection = 'asc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  asc,
+	  CASE WHEN @SortDirection = 'desc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  desc,
+	  CASE WHEN @SortDirection = 'asc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+	 
+			 
+			  CASE WHEN @SortDirection = 'asc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+			  CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Sort' then Content.Sort END DESC
+	END
+	ELSE
+	BEGIN
+	   select * from {databaseOwner}{objectQualifier}ContentPro_Content Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}{objectQualifier}ContentPro_Content AS [content]
+       WHERE
+          EXISTS (SELECT * FROM {databaseOwner}{objectQualifier}ContentPro_ContentCategories WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (StartDT IS NULL AND EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+        AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		    CASE WHEN @SortDirection = 'asc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  asc,
+	  CASE WHEN @SortDirection = 'desc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  desc,
+	  CASE WHEN @SortDirection = 'asc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+	 
+			 
+			  CASE WHEN @SortDirection = 'asc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+			  CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Sort' then Content.Sort END DESC
+	END
+
+
+END
+
+
+GO
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentGroupID') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentGroupID
+GO
+
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterCategoryContentGroupID]
+	-- Add the parameters for the stored procedure here
+		@RoleID INTEGER,
+		@CatIDs {databaseOwner}{objectQualifier}ContentProCategoryList READONLY,
+	@FieldSetID INTEGER,
+	@SortDirection nvarchar(max),
+	@NumberOfArticles int,
+	@TypeID INTEGER,
+	@FieldID nvarchar(max),
+	@BuiltInField nvarchar(max)
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+		IF (@NumberOfArticles = 0)
+	BEGIN
+	   select * from {databaseOwner}{objectQualifier}ContentPro_Content Content
+      inner join {databaseOwner}{objectQualifier}ContentPro_ContentSocialGroup ss on ss.ContentID=Content.ContentID
+WHERE ss.RoleID = @RoleID and ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (StartDT IS NULL AND EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		   CASE WHEN @SortDirection = 'asc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  asc,
+	  CASE WHEN @SortDirection = 'desc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  desc,
+	  CASE WHEN @SortDirection = 'asc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+	 
+			 
+			  CASE WHEN @SortDirection = 'asc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+			  CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Sort' then Content.Sort END DESC
+	END
+	ELSE
+	BEGIN
+	   select  * from {databaseOwner}{objectQualifier}ContentPro_Content Content
+        inner join {databaseOwner}{objectQualifier}ContentPro_ContentSocialGroup ss on ss.ContentID=Content.ContentID
+WHERE ss.RoleID = @RoleID and  ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (StartDT IS NULL AND EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		   CASE WHEN @SortDirection = 'asc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  asc,
+	  CASE WHEN @SortDirection = 'desc' and @TypeID = 1 then ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'float') end  desc,
+	  CASE WHEN @SortDirection = 'asc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 2 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+	 
+			 
+			  CASE WHEN @SortDirection = 'asc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end ASC,
+			  CASE WHEN @SortDirection = 'desc' and @TypeID = 4 then  ContentXML.value('(//Article/Field[@FieldID=sql:variable("@FieldID")])[1]', 'nvarchar(max)') end desc,
+			  CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @BuiltInField = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @BuiltInField = 'Sort' then Content.Sort END DESC
+	END
+
+END
+GO
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

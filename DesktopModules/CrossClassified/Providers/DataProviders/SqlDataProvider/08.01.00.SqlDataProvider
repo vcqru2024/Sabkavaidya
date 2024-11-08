@@ -1,0 +1,1810 @@
+
+
+/******   alter table CP_Product_Product ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add CountryId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Country nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add StateId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add State nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add CityId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add City nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add TownId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Product add Town nvarchar(200) NULL
+
+go
+
+/******   alter table CP_Product_Type ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Product_Type add AllowLocation bit NULL
+
+go
+
+/******   alter table CP_Common_User ******/
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add R_Stripe_Enable bit NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add R_Stripe_LiveSecrectKey nvarchar(400) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Company nvarchar(800) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Tel nvarchar(800) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Fax nvarchar(800) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add IM nvarchar(800) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Linkman nvarchar(800) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add CountryId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Country nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add StateId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add State nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add CityId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add City nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add TownId int NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Town nvarchar(200) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Address nvarchar(800) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add BusinessScope nvarchar(2000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Zipcode nvarchar(50) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field1 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field2 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field3 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field4 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field5 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field6 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field7 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field8 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field9 nvarchar(4000) NULL
+
+alter table {databaseOwner}{objectQualifier}CP_Common_User add Field10 nvarchar(4000) NULL
+go
+
+
+/******   create new tables  ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_GlobalRole]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Discount_GlobalRole](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[UserId] [int] NULL,
+	[RoleId] [int] NULL,
+	[RoleName] [nvarchar](200) NULL,
+	[Discount] [int] NULL,
+	[Types] [nvarchar](400) NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](2000) NULL,
+	[Active] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Discount_GlobalRole] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_GlobalDate]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Discount_GlobalDate](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[UserId] [int] NULL,
+	[Discount] [int] NULL,
+	[Types] [nvarchar](400) NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](2000) NULL,
+	[Active] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Discount_GlobalDate] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_GlobalCoupon]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Discount_GlobalCoupon](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortalId] [int] NOT NULL,
+	[UserId] [int] NULL,
+	[Coupon] [nvarchar](200) NULL,
+	[Discount] [int] NULL,
+	[Types] [nvarchar](400) NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](2000) NULL,
+	[Active] [bit] NULL,
+	[IsPublic] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Discount_GlobalCoupon] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[OptionId] [int] NULL,
+	[OptionName] [nvarchar](200) NULL,
+	[Discount] [int] NULL,
+	[FirstCustomer] [int] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](2000) NULL,
+	[Active] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Discount_FirstCustomer] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Date]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Discount_Date](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProductId] [int] NOT NULL,
+	[OptionId] [int] NULL,
+	[OptionName] [nvarchar](200) NULL,
+	[Discount] [int] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+	[Description] [nvarchar](2000) NULL,
+	[Active] [bit] NULL,
+	[CreatedDate] [datetime] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Discount_Date] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Town]') AND type in (N'U'))
+BEGIN
+CREATE TABLE {databaseOwner}[{objectQualifier}CP_Product_Town](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CityId] [int] NOT NULL,
+	[Name] [nvarchar](200) NULL,
+	[Abbreviation] [nvarchar](50) NULL,
+	[DisplayOrder] [int] NULL,
+ CONSTRAINT [PK_{objectQualifier}CP_Product_Town] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Date_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Date]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Date]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Discount_Date_CP_Product_Product] FOREIGN KEY([ProductId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Product] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Date_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Date]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Date] CHECK CONSTRAINT [FK_{objectQualifier}CP_Discount_Date_CP_Product_Product]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_FirstCustomer_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Discount_FirstCustomer_CP_Product_Product] FOREIGN KEY([ProductId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_Product] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_FirstCustomer_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer] CHECK CONSTRAINT [FK_{objectQualifier}CP_Discount_FirstCustomer_CP_Product_Product]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Town_CP_Product_City]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Town]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Town]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}CP_Product_Town_CP_Product_City] FOREIGN KEY([CityId])
+REFERENCES {databaseOwner}[{objectQualifier}CP_Product_City] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Town_CP_Product_City]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Town]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Town] CHECK CONSTRAINT [FK_{objectQualifier}CP_Product_Town_CP_Product_City]
+GO
+
+
+/****** create index to improve performance ******/
+
+  if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Auction_Bid_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Auction_Bid_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Auction_Bid] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Auction_Proxy_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Auction_Proxy_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Auction_Proxy] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_Coupon_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_Coupon_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_Coupon] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_Customer_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_Customer_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_Customer] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_Date_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_Date_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_Date] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_FirstCustomer_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_FirstCustomer_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_Product_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_Product_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_Product] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_Quantity_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_Quantity_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_Quantity] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Discount_Role_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Discount_Role_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Discount_Role] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Attachment_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Attachment_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Attachment] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Audio_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Audio_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Audio] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Comment_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Comment_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Comment] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Download_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Download_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Download] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Image_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Image_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Image] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Option_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Option_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Option] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_OrderDetail_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_OrderDetail_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_OrderDetail] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_ProductToCategory_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_ProductToCategory_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_ProductToCategory] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_ProductToRole_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_ProductToRole_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_ProductToRole] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_ProductToTag_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_ProductToTag_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_ProductToTag] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Rating_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Rating_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Rating] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+    if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_UDData_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_UDData_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_UDData] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+   if not exists (select * from dbo.sysindexes where name='IX_{objectQualifier}CP_Product_Video_ProductId')
+	begin
+		create NONCLUSTERED index IX_{objectQualifier}CP_Product_Video_ProductId 
+			on {databaseOwner}[{objectQualifier}CP_Product_Video] ([ProductId]) on [PRIMARY]  
+	end
+   go
+
+/****** drop legacy stored procedures ******/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Get]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+
+/****** create new stored procedures ******/
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Update]
+	@UserId int, 
+	@Email nvarchar(80), 
+	@AvatarEmail nvarchar(80), 
+	@Authed bit, 
+	@SiteUrl nvarchar(200), 
+	@LogoUrl nvarchar(200), 
+	@Slogan nvarchar(200), 
+	@Biography ntext, 
+	@P_Type nvarchar(20), 
+	@P_DD_BankName nvarchar(400), 
+	@P_DD_RoutingNumber nvarchar(200), 
+	@P_DD_AccountNumber nvarchar(100), 
+	@P_DD_AccountType nvarchar(40), 
+	@P_Paypal nvarchar(40), 
+	@P_C_Payee nvarchar(40), 
+	@P_C_Address1 nvarchar(200), 
+	@P_C_Address2 nvarchar(200), 
+	@P_C_City nvarchar(200), 
+	@P_C_RegionCode nvarchar(200), 
+	@P_C_CountryCode nvarchar(200), 
+	@CustomerMessage nvarchar(4000),
+    @IntegrateUrl nvarchar(400),
+    @Support ntext,
+    @License ntext,
+    @Delivery ntext,
+    @AdditionalParm nvarchar(200),
+    @SecurityValue nchar(20),
+    @R_Paypal_Enable bit,
+	@R_Paypal_Id nvarchar(200),
+	@R_Authorize_Enable bit,
+	@R_Authorize_Id nvarchar(200),
+	@R_Authorize_Key nvarchar(200),
+	@R_DineroMail_Enable bit,
+	@R_DineroMail_Id nvarchar(200),
+	@R_GoogleCheckout_Enable bit,
+	@R_GoogleCheckout_Id nvarchar(200),
+	@R_GoogleCheckout_Key nvarchar(200),
+	@R_Manual_Enable bit,
+	@R_Stripe_Enable bit,
+	@R_Stripe_LiveSecrectKey nvarchar(400),
+	@Company nvarchar(800),
+	@Tel nvarchar(800),
+	@Fax nvarchar(800),
+	@IM nvarchar(800),
+	@Linkman nvarchar(800),
+	@CountryId int,
+	@Country nvarchar(200),
+	@StateId int,
+	@State nvarchar(200),
+	@CityId int,
+	@City nvarchar(200),
+	@TownId int,
+	@Town nvarchar(200),
+	@Address nvarchar(800),
+	@BusinessScope nvarchar(2000),
+	@Zipcode nvarchar(50),
+	@Field1 nvarchar(4000),
+	@Field2 nvarchar(4000),
+	@Field3 nvarchar(4000),
+	@Field4 nvarchar(4000),
+	@Field5 nvarchar(4000),
+	@Field6 nvarchar(4000),
+	@Field7 nvarchar(4000),
+	@Field8 nvarchar(4000),
+	@Field9 nvarchar(4000),
+	@Field10 nvarchar(4000)
+AS
+Declare @RecordCount int
+
+Select @RecordCount=count(UserId) 
+from {databaseOwner}{objectQualifier}CP_Common_User
+where UserId=@UserId
+if (@RecordCount>0) 
+    begin
+       UPDATE {databaseOwner}{objectQualifier}CP_Common_User 
+       SET
+	    [Email] = @Email,
+	    [AvatarEmail] = @AvatarEmail,
+	    [Authed] = @Authed,
+	    [SiteUrl] = @SiteUrl,
+	    [LogoUrl] = @LogoUrl,
+	    [Slogan] = @Slogan,
+    	[Biography] = @Biography,
+	    [P_Type] = @P_Type,
+	    [P_DD_BankName] = @P_DD_BankName,
+	    [P_DD_RoutingNumber] = @P_DD_RoutingNumber,
+	    [P_DD_AccountNumber] = @P_DD_AccountNumber,
+	    [P_DD_AccountType] = @P_DD_AccountType,
+	    [P_Paypal] = @P_Paypal,
+	    [P_C_Payee] = @P_C_Payee,
+	    [P_C_Address1] = @P_C_Address1,
+	    [P_C_Address2] = @P_C_Address2,
+	    [P_C_City] = @P_C_City,
+	    [P_C_RegionCode] = @P_C_RegionCode,
+	    [P_C_CountryCode] = @P_C_CountryCode,
+	    [CustomerMessage] = @CustomerMessage,
+        [IntegrateUrl]=@IntegrateUrl,
+        [Support]=@Support,
+        [License]=@License,
+        [Delivery]=@Delivery,
+        [AdditionalParm]=@AdditionalParm,
+        [SecurityValue]=@SecurityValue,
+        [R_Paypal_Enable] = @R_Paypal_Enable,
+	    [R_Paypal_Id] = @R_Paypal_Id,
+	    [R_Authorize_Enable] = @R_Authorize_Enable,
+	    [R_Authorize_Id] = @R_Authorize_Id,
+	    [R_Authorize_Key] = @R_Authorize_Key,
+	    [R_DineroMail_Enable] = @R_DineroMail_Enable,
+	    [R_DineroMail_Id] = @R_DineroMail_Id,
+	    [R_GoogleCheckout_Enable] = @R_GoogleCheckout_Enable,
+	    [R_GoogleCheckout_Id] = @R_GoogleCheckout_Id,
+	    [R_GoogleCheckout_Key] = @R_GoogleCheckout_Key,
+	    [R_Manual_Enable] = @R_Manual_Enable,
+	    [R_Stripe_Enable] = @R_Stripe_Enable,
+	    [R_Stripe_LiveSecrectKey] = @R_Stripe_LiveSecrectKey,
+	    [Company] = @Company,
+	    [Tel] = @Tel,
+	    [Fax] = @Fax,
+	    [IM] = @IM,
+	    [Linkman] = @Linkman,
+	    [CountryId] = @CountryId,
+	    [Country] = @Country,
+	    [StateId] = @StateId,
+	    [State] = @State,
+	    [CityId] = @CityId,
+	    [City] = @City,
+	    [TownId] = @TownId,
+	    [Town] = @Town,
+	    [Address] = @Address,
+	    [BusinessScope] = @BusinessScope,
+	    [Zipcode] = @Zipcode,
+	    [Field1] = @Field1,
+	    [Field2] = @Field2,
+	    [Field3] = @Field3,
+	    [Field4] = @Field4,
+	    [Field5] = @Field5,
+	    [Field6] = @Field6,
+	    [Field7] = @Field7,
+	    [Field8] = @Field8,
+	    [Field9] = @Field9,
+	    [Field10] = @Field10
+     WHERE [UserId] = @UserId
+   end
+else
+    begin
+      INSERT INTO {databaseOwner}{objectQualifier}CP_Common_User (
+	[UserId],
+    [Email],
+	[AvatarEmail],
+	[Authed],
+	[SiteUrl],
+	[LogoUrl],
+	[Slogan],
+	[Biography],
+	[P_Type],
+	[P_DD_BankName],
+	[P_DD_RoutingNumber],
+	[P_DD_AccountNumber],
+	[P_DD_AccountType],
+	[P_Paypal],
+	[P_C_Payee],
+	[P_C_Address1],
+	[P_C_Address2],
+	[P_C_City],
+	[P_C_RegionCode],
+	[P_C_CountryCode],
+	[CustomerMessage],
+    [IntegrateUrl],
+    [Support],
+    [License],
+    [Delivery],
+    [AdditionalParm],
+    [SecurityValue],
+    [R_Paypal_Enable],
+	[R_Paypal_Id],
+	[R_Authorize_Enable],
+	[R_Authorize_Id],
+	[R_Authorize_Key],
+	[R_DineroMail_Enable],
+	[R_DineroMail_Id],
+	[R_GoogleCheckout_Enable],
+	[R_GoogleCheckout_Id],
+	[R_GoogleCheckout_Key],
+	[R_Manual_Enable],
+	[R_Stripe_Enable],
+	[R_Stripe_LiveSecrectKey],
+	[Company],
+	[Tel],
+	[Fax],
+	[IM],
+	[Linkman],
+	[CountryId],
+	[Country],
+	[StateId],
+	[State],
+	[CityId],
+	[City],
+	[TownId],
+	[Town],
+	[Address],
+	[BusinessScope],
+	[Zipcode],
+	[Field1],
+	[Field2],
+	[Field3],
+	[Field4],
+	[Field5],
+	[Field6],
+	[Field7],
+	[Field8],
+	[Field9],
+	[Field10]
+) VALUES (
+    @UserId,
+	@Email,
+	@AvatarEmail,
+	@Authed,
+	@SiteUrl,
+	@LogoUrl,
+	@Slogan,
+	@Biography,
+	@P_Type,
+	@P_DD_BankName,
+	@P_DD_RoutingNumber,
+	@P_DD_AccountNumber,
+	@P_DD_AccountType,
+	@P_Paypal,
+	@P_C_Payee,
+	@P_C_Address1,
+	@P_C_Address2,
+	@P_C_City,
+	@P_C_RegionCode,
+	@P_C_CountryCode,
+	@CustomerMessage,
+    @IntegrateUrl,
+    @Support,
+    @License,
+    @Delivery,
+    @AdditionalParm,
+    @SecurityValue,
+    @R_Paypal_Enable,
+	@R_Paypal_Id,
+	@R_Authorize_Enable,
+	@R_Authorize_Id,
+	@R_Authorize_Key,
+	@R_DineroMail_Enable,
+	@R_DineroMail_Id,
+	@R_GoogleCheckout_Enable,
+	@R_GoogleCheckout_Id,
+	@R_GoogleCheckout_Key,
+	@R_Manual_Enable,
+	@R_Stripe_Enable,
+	@R_Stripe_LiveSecrectKey,
+	@Company,
+	@Tel,
+	@Fax,
+	@IM,
+	@Linkman,
+	@CountryId,
+	@Country,
+	@StateId,
+	@State,
+	@CityId,
+	@City,
+	@TownId,
+	@Town,
+	@Address,
+	@BusinessScope,
+	@Zipcode,
+	@Field1,
+	@Field2,
+	@Field3,
+	@Field4,
+	@Field5,
+	@Field6,
+	@Field7,
+	@Field8,
+	@Field9,
+	@Field10
+    )
+    end 
+    
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Get]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Get]
+	@UserId int
+AS
+SELECT a.UserId,
+    a.Username,
+    a.FirstName,
+    a.LastName,
+    a.DisplayName,
+    b.Email,
+    b.AvatarEmail,
+    b.Authed,
+    b.SiteUrl,
+    b.LogoUrl,
+    b.Slogan,
+    b.Biography,
+    b.P_Type,
+    b.P_DD_BankName,
+    b.P_DD_RoutingNumber,
+    b.P_DD_AccountNumber,
+    b.P_DD_AccountType,
+    b.P_Paypal,
+    b.P_C_Payee,
+    b.P_C_Address1,
+    b.P_C_Address2,
+    b.P_C_City,
+    b.P_C_RegionCode,
+    b.P_C_CountryCode,
+    b.CustomerMessage,
+    b.IntegrateUrl,
+    b.Support,
+    b.License,
+    b.Delivery,
+    b.AdditionalParm,
+    b.SecurityValue,
+    b.R_Paypal_Enable,
+    b.R_Paypal_Id,
+    b.R_Authorize_Enable,
+    b.R_Authorize_Id,
+    b.R_Authorize_Key,
+    b.R_DineroMail_Enable,
+    b.R_DineroMail_Id,
+    b.R_GoogleCheckout_Enable,
+    b.R_GoogleCheckout_Id,
+    b.R_GoogleCheckout_Key,
+    b.R_Manual_Enable,
+    b.R_Stripe_Enable,
+	b.R_Stripe_LiveSecrectKey,
+	b.Company,
+	b.Tel,
+	b.Fax,
+	b.IM,
+	b.Linkman,
+	b.CountryId,
+	b.Country,
+	b.StateId,
+	b.State,
+	b.CityId,
+	b.City,
+	b.TownId,
+	b.Town,
+	b.Address,
+	b.BusinessScope,
+	b.Zipcode,
+	b.Field1,
+	b.Field2,
+	b.Field3,
+	b.Field4,
+	b.Field5,
+	b.Field6,
+	b.Field7,
+	b.Field8,
+	b.Field9,
+	b.Field10
+FROM {databaseOwner}{objectQualifier}Users a
+left join {databaseOwner}{objectQualifier}CP_Common_User b
+on a.[UserId]=b.[UserId]
+WHERE a.[UserId] = @UserId
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+	@Id int, 
+	@PortalId int, 
+	@Name nvarchar(80), 
+	@ParentId int, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@TypePath nvarchar(255), 
+	@ListPage int, 
+	@DetailPage int, 
+	@SellType int, 
+	@Sellable bit, 
+	@Order int, 
+	@Level int, 
+	@Description nvarchar(1000), 
+	@EnableTax bit, 
+	@ChargePercent decimal(10, 2), 
+	@EnableField1 bit, 
+	@Field1Title nvarchar(50), 
+	@Field1Default ntext, 
+	@EnableField2 bit, 
+	@Field2Title nvarchar(50), 
+	@Field2Default ntext, 
+	@EnableField3 bit, 
+	@Field3Title nvarchar(50), 
+	@Field3Default ntext, 
+	@EnableField4 bit, 
+	@Field4Title nvarchar(50), 
+	@Field4Default ntext, 
+	@EnableField5 bit, 
+	@Field5Title nvarchar(50), 
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit, 
+	@FieldEnable_Summary bit, 
+	@FieldEnable_LinkUrl bit, 
+	@FieldEnable_Description bit, 
+	@FieldEnable_Image bit, 
+	@FieldEnable_Support bit, 
+	@FieldEnable_License bit, 
+	@FieldEnable_Price bit, 
+	@FieldEnable_StockQuantity bit, 
+	@FieldEnable_Delivery bit, 
+	@FieldEnable_SpecialOffer bit, 
+	@FieldEnable_Weight bit, 
+	@FieldEnable_PackageFee bit, 
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit,
+    @AuctionType int,
+    @AllowProxyBidding bit,
+    @MaxAuctionDays int,
+    @WinnerType int,
+    @ListingType int,
+    @BidIncrement decimal(18,2),
+    @AllowLocation bit    
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Type SET
+	[PortalId] = @PortalId,
+	[Name] = @Name,
+	[ParentId] = @ParentId,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[TypePath] = @TypePath,
+	[ListPage] = @ListPage,
+	[DetailPage] = @DetailPage,
+	[SellType] = @SellType,
+	[Sellable] = @Sellable,
+	[Order] = @Order,
+	[Level] = @Level,
+	[Description] = @Description,
+	[EnableTax] = @EnableTax,
+	[ChargePercent] = @ChargePercent,
+	[EnableField1] = @EnableField1,
+	[Field1Title] = @Field1Title,
+	[Field1Default] = @Field1Default,
+	[EnableField2] = @EnableField2,
+	[Field2Title] = @Field2Title,
+	[Field2Default] = @Field2Default,
+	[EnableField3] = @EnableField3,
+	[Field3Title] = @Field3Title,
+	[Field3Default] = @Field3Default,
+	[EnableField4] = @EnableField4,
+	[Field4Title] = @Field4Title,
+	[Field4Default] = @Field4Default,
+	[EnableField5] = @EnableField5,
+	[Field5Title] = @Field5Title,
+	[Field5Default] = @Field5Default,
+    [FieldEnable_PreviousVersion] = @FieldEnable_PreviousVersion,
+	[FieldEnable_Summary] = @FieldEnable_Summary,
+	[FieldEnable_LinkUrl] = @FieldEnable_LinkUrl,
+	[FieldEnable_Description] = @FieldEnable_Description,
+	[FieldEnable_Image] = @FieldEnable_Image,
+	[FieldEnable_Support] = @FieldEnable_Support,
+	[FieldEnable_License] = @FieldEnable_License,
+	[FieldEnable_Price] = @FieldEnable_Price,
+	[FieldEnable_StockQuantity] = @FieldEnable_StockQuantity,
+	[FieldEnable_Delivery] = @FieldEnable_Delivery,
+	[FieldEnable_SpecialOffer] = @FieldEnable_SpecialOffer,
+	[FieldEnable_Weight] = @FieldEnable_Weight,
+	[FieldEnable_PackageFee] = @FieldEnable_PackageFee,
+	[FieldEnable_Sku] = @FieldEnable_Sku,
+	[RequireAddress] = @RequireAddress,
+    [AllowGoogleMap] = @AllowGoogleMap,
+    [AllowRecursiveBill] = @AllowRecursiveBill,
+    [AuctionType] = @AuctionType,
+    [AllowProxyBidding] = @AllowProxyBidding,
+    [MaxAuctionDays] = @MaxAuctionDays,
+    [WinnerType] = @WinnerType,
+    [ListingType] = @ListingType,
+    [BidIncrement] = @BidIncrement,
+    [AllowLocation] = @AllowLocation
+WHERE
+	[Id] = @Id
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+	@PortalId int,
+    @Name nvarchar(80),
+	@ParentId int,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@TypePath nvarchar(255),
+	@ListPage int,
+	@DetailPage int,
+	@SellType int,
+	@Sellable bit,
+	@Order int,
+	@Level int,
+	@Description nvarchar(1000),
+	@EnableTax bit,
+    @ChargePercent decimal(10, 2),
+    @EnableField1 bit,
+	@Field1Title nvarchar(50),
+	@Field1Default ntext,
+	@EnableField2 bit,
+	@Field2Title nvarchar(50),
+	@Field2Default ntext,
+	@EnableField3 bit,
+	@Field3Title nvarchar(50),
+	@Field3Default ntext,
+	@EnableField4 bit,
+	@Field4Title nvarchar(50),
+	@Field4Default ntext,
+	@EnableField5 bit,
+	@Field5Title nvarchar(50),
+	@Field5Default ntext,
+    @FieldEnable_PreviousVersion bit,
+	@FieldEnable_Summary bit,
+	@FieldEnable_LinkUrl bit,
+	@FieldEnable_Description bit,
+	@FieldEnable_Image bit,
+	@FieldEnable_Support bit,
+	@FieldEnable_License bit,
+	@FieldEnable_Price bit,
+	@FieldEnable_StockQuantity bit,
+	@FieldEnable_Delivery bit,
+	@FieldEnable_SpecialOffer bit,
+	@FieldEnable_Weight bit,
+	@FieldEnable_PackageFee bit,
+	@FieldEnable_Sku bit,
+	@RequireAddress bit,
+    @AllowGoogleMap bit,
+    @AllowRecursiveBill bit,
+    @AuctionType int,
+    @AllowProxyBidding bit,
+    @MaxAuctionDays int,
+    @WinnerType int,
+    @ListingType int,
+    @BidIncrement decimal(18,2),
+    @AllowLocation bit 
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Type (
+	[PortalId],
+    [Name],
+	[ParentId],
+	[Thumbnail],
+	[Image],
+	[TypePath],
+	[ListPage],
+	[DetailPage],
+	[SellType],
+	[Sellable],
+	[Order],
+	[Level],
+	[Description],
+	[EnableTax],
+    [ChargePercent],
+    [EnableField1],
+	[Field1Title],
+	[Field1Default],
+	[EnableField2],
+	[Field2Title],
+	[Field2Default],
+	[EnableField3],
+	[Field3Title],
+	[Field3Default],
+	[EnableField4],
+	[Field4Title],
+	[Field4Default],
+	[EnableField5],
+	[Field5Title],
+	[Field5Default],
+    [FieldEnable_PreviousVersion],
+	[FieldEnable_Summary],
+	[FieldEnable_LinkUrl],
+	[FieldEnable_Description],
+	[FieldEnable_Image],
+	[FieldEnable_Support],
+	[FieldEnable_License],
+	[FieldEnable_Price],
+	[FieldEnable_StockQuantity],
+	[FieldEnable_Delivery],
+	[FieldEnable_SpecialOffer],
+	[FieldEnable_Weight],
+	[FieldEnable_PackageFee],
+	[FieldEnable_Sku],
+	[RequireAddress],
+    [AllowGoogleMap],
+    [AllowRecursiveBill],
+    [AuctionType],
+    [AllowProxyBidding],
+    [MaxAuctionDays],
+    [WinnerType],
+    [ListingType],
+    [BidIncrement],
+    [AllowLocation]
+) VALUES (
+	@PortalId,
+	@Name,
+	@ParentId,
+	@Thumbnail,
+	@Image,
+	@TypePath,
+	@ListPage,
+	@DetailPage,
+	@SellType,
+	@Sellable,
+	@Order,
+	@Level,
+	@Description,
+	@EnableTax,
+	@ChargePercent,
+	@EnableField1,
+	@Field1Title,
+	@Field1Default,
+	@EnableField2,
+	@Field2Title,
+	@Field2Default,
+	@EnableField3,
+	@Field3Title,
+	@Field3Default,
+	@EnableField4,
+	@Field4Title,
+	@Field4Default,
+	@EnableField5,
+	@Field5Title,
+	@Field5Default,
+    @FieldEnable_PreviousVersion,
+	@FieldEnable_Summary,
+	@FieldEnable_LinkUrl,
+	@FieldEnable_Description,
+	@FieldEnable_Image,
+	@FieldEnable_Support,
+	@FieldEnable_License,
+	@FieldEnable_Price,
+	@FieldEnable_StockQuantity,
+	@FieldEnable_Delivery,
+	@FieldEnable_SpecialOffer,
+	@FieldEnable_Weight,
+	@FieldEnable_PackageFee,
+	@FieldEnable_Sku,
+	@RequireAddress,
+    @AllowGoogleMap,
+    @AllowRecursiveBill,
+    @AuctionType,
+    @AllowProxyBidding,
+    @MaxAuctionDays,
+    @WinnerType,
+    @ListingType,
+    @BidIncrement,
+    @AllowLocation
+)
+
+select SCOPE_IDENTITY()
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]
+    @TypeId   int,
+    @SearchTerm nvarchar(50),
+    @PageSize int, 
+    @PageIndex int
+AS
+  Declare @PageLowerBound int
+  DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexId		int IdENTITY (1, 1) NOT NULL,
+	ItemId	int
+     )
+
+----Insert into temptable
+    insert into #PageIndex(ItemId)
+    SELECT distinct a.[UserId]
+    FROM {databaseOwner}{objectQualifier}Users a
+    Inner join {databaseOwner}{objectQualifier}CP_Product_Product c
+    on a.[UserId]=c.[UserId]
+    where (c.[TypeId] = @TypeId)--TypeId
+    and (@SearchTerm='''' or a.[Username] like ''%''+@SearchTerm+''%'') -- SearchTerm
+
+
+select 
+	a.UserId,
+    a.Username,
+    a.FirstName,
+    a.LastName,
+    a.DisplayName, 
+    b.Email,
+    b.AvatarEmail,
+    b.Authed,
+    b.SiteUrl,
+    b.LogoUrl,
+    b.Slogan,
+    ''Biography''='''',
+    b.P_Type,
+    b.P_DD_BankName,
+    b.P_DD_RoutingNumber,
+    b.P_DD_AccountNumber,
+    b.P_DD_AccountType,
+    b.P_Paypal,
+    b.P_C_Payee,
+    b.P_C_Address1,
+    b.P_C_Address2,
+    b.P_C_City,
+    b.P_C_RegionCode,
+    b.P_C_CountryCode,
+    ''CustomerMessage''='''',
+    ''IntegrateUrl''='''',
+    ''Support''='''',
+    ''License''='''',
+    ''Delivery''='''',
+    b.AdditionalParm,
+    b.SecurityValue,
+    b.R_Paypal_Enable,
+    b.R_Paypal_Id,
+    b.R_Authorize_Enable,
+    b.R_Authorize_Id,
+    b.R_Authorize_Key,
+    b.R_DineroMail_Enable,
+    b.R_DineroMail_Id,
+    b.R_GoogleCheckout_Enable,
+    b.R_GoogleCheckout_Id,
+    b.R_GoogleCheckout_Key,
+    b.R_Manual_Enable,
+    b.R_Stripe_Enable,
+	b.R_Stripe_LiveSecrectKey,
+	b.Company,
+	b.Tel,
+	b.Fax,
+	b.IM,
+	b.Linkman,
+	b.CountryId,
+	b.Country,
+	b.StateId,
+	b.State,
+	b.CityId,
+	b.City,
+	b.TownId,
+	b.Town,
+	b.Address,
+	b.BusinessScope,
+	b.Zipcode,
+	b.Field1,
+	b.Field2,
+	b.Field3,
+	b.Field4,
+	b.Field5,
+	b.Field6,
+	b.Field7,
+	b.Field8,
+	b.Field9,
+	b.Field10
+FROM {databaseOwner}{objectQualifier}Users a
+left join {databaseOwner}{objectQualifier}CP_Common_User b
+on a.[UserId]=b.[UserId]
+Inner join #PageIndex  c
+on a.[UserId]=c.[ItemId]
+and  c.[IndexId]> @PageLowerBound	
+and	 c.[IndexId]< @PageUpperBound	  
+ ORDER BY c.IndexId
+	
+	 --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexId) FROM #PageIndex
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]
+    @TypeId   int
+AS
+select distinct
+	a.UserId,
+    a.Username,
+    a.FirstName,
+    a.LastName,
+    a.DisplayName, 
+    b.Email,
+    b.AvatarEmail,
+    b.Authed,
+    b.SiteUrl,
+    b.LogoUrl,
+    b.Slogan,
+    ''Biography''='''',
+    b.P_Type,
+    b.P_DD_BankName,
+    b.P_DD_RoutingNumber,
+    b.P_DD_AccountNumber,
+    b.P_DD_AccountType,
+    b.P_Paypal,
+    b.P_C_Payee,
+    b.P_C_Address1,
+    b.P_C_Address2,
+    b.P_C_City,
+    b.P_C_RegionCode,
+    b.P_C_CountryCode,
+    ''CustomerMessage''='''',
+    ''IntegrateUrl''='''',
+    ''Support''='''',
+    ''License''='''',
+    ''Delivery''='''',
+    b.AdditionalParm,
+    b.SecurityValue,
+    b.R_Paypal_Enable,
+    b.R_Paypal_Id,
+    b.R_Authorize_Enable,
+    b.R_Authorize_Id,
+    b.R_Authorize_Key,
+    b.R_DineroMail_Enable,
+    b.R_DineroMail_Id,
+    b.R_GoogleCheckout_Enable,
+    b.R_GoogleCheckout_Id,
+    b.R_GoogleCheckout_Key,
+    b.R_Manual_Enable,
+    b.R_Stripe_Enable,
+	b.R_Stripe_LiveSecrectKey,
+	b.Company,
+	b.Tel,
+	b.Fax,
+	b.IM,
+	b.Linkman,
+	b.CountryId,
+	b.Country,
+	b.StateId,
+	b.State,
+	b.CityId,
+	b.City,
+	b.TownId,
+	b.Town,
+	b.Address,
+	b.BusinessScope,
+	b.Zipcode,
+	b.Field1,
+	b.Field2,
+	b.Field3,
+	b.Field4,
+	b.Field5,
+	b.Field6,
+	b.Field7,
+	b.Field8,
+	b.Field9,
+	b.Field10
+FROM {databaseOwner}{objectQualifier}Users a
+left join {databaseOwner}{objectQualifier}CP_Common_User b
+on a.UserId=b.UserId
+Inner join {databaseOwner}{objectQualifier}CP_Product_Product c
+on a.UserId=c.UserId
+where (c.TypeId = @TypeId)--TypeId
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+	@Id int, 
+	@PortalId int, 
+	@TypeId int, 
+	@UserId int, 
+	@CreatedDate datetime, 
+	@Name nvarchar(200),
+    @PreviousVersion int, 
+	@Authed bit, 
+	@Featured bit, 
+	@Active bit, 
+	@Summary nvarchar(1000), 
+	@LinkUrl nvarchar(200), 
+	@Description ntext, 
+	@Thumbnail nvarchar(200), 
+	@Image nvarchar(200), 
+	@Support ntext, 
+	@License ntext, 
+	@RoleAfterOrder int, 
+	@RoleAddDay int, 
+	@PurchasePrice decimal(18, 2), 
+	@PromoPrice decimal(18, 2), 
+    @EnablePromoPrice bit,
+	@PromoStart datetime, 
+	@PromoEnd datetime, 
+	@StockQuantity int, 
+	@LowThreshold int, 
+	@Delivery ntext, 
+	@SpecialOffer ntext, 
+	@Views int, 
+	@PublishDate datetime, 
+	@ExpireDate datetime, 
+	@LastModifiedDate datetime, 
+	@AllowComment bit, 
+	@AllowRating bit, 
+	@CommentRoles nvarchar(200), 
+	@RatingRoles nvarchar(200), 
+	@DownloadRoles nvarchar(200), 
+	@AutoAuthComment bit, 
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @MapTitle nvarchar(2000),
+    @ManufacturerId int,
+    @IsAuction bit,
+    @StartPrice decimal(18, 2), 
+    @ReservePrice decimal(18, 2), 
+    @BuyNowPrice decimal(18, 2), 
+    @AuctionDays int,
+    @TaxRateType int,
+    @FixedTaxRate decimal(18, 2),
+    @ShippingFeeType int,
+    @FixedShippingFee decimal(18, 2),
+    @BidIncrement decimal(18, 2),
+    @AuctionCheck bit,
+    @AuctionCheckResult int, 
+    @CountryId int, 
+	@Country nvarchar(200), 
+	@StateId int, 
+	@State nvarchar(200), 
+	@CityId int, 
+	@City nvarchar(200), 
+	@TownId int, 
+	@Town nvarchar(200),
+    @ViewRoles nvarchar(200), 
+    @Categories nvarchar(200),
+    @Tags nvarchar(200),
+    @RefreshRelation bit 
+AS
+
+UPDATE {databaseOwner}{objectQualifier}CP_Product_Product SET
+	[PortalId] = @PortalId,
+	[TypeId] = @TypeId,
+	[UserId] = @UserId,
+	[CreatedDate] = @CreatedDate,
+	[Name] = @Name,
+    [PreviousVersion]=@PreviousVersion,
+	[Authed] = @Authed,
+	[Featured] = @Featured,
+	[Active] = @Active,
+	[Summary] = @Summary,
+	[LinkUrl] = @LinkUrl,
+	[Description] = @Description,
+	[Thumbnail] = @Thumbnail,
+	[Image] = @Image,
+	[Support] = @Support,
+	[License] = @License,
+	[RoleAfterOrder] = @RoleAfterOrder,
+	[RoleAddDay] = @RoleAddDay,
+	[PurchasePrice] = @PurchasePrice,
+	[PromoPrice] = @PromoPrice,
+    [EnablePromoPrice]=@EnablePromoPrice,
+	[PromoStart] = @PromoStart,
+	[PromoEnd] = @PromoEnd,
+	[StockQuantity] = @StockQuantity,
+	[LowThreshold] = @LowThreshold,
+	[Delivery] = @Delivery,
+	[SpecialOffer] = @SpecialOffer,
+	[Views] = @Views,
+	[PublishDate] = @PublishDate,
+	[ExpireDate] = @ExpireDate,
+	[LastModifiedDate] = GetDate(),
+	[AllowComment] = @AllowComment,
+	[AllowRating] = @AllowRating,
+	[CommentRoles] = @CommentRoles,
+	[RatingRoles] = @RatingRoles,
+	[DownloadRoles] = @DownloadRoles,
+	[AutoAuthComment] = @AutoAuthComment,
+	[Order] = @Order,
+    [Weight]=@Weight,
+    [PackageFee]=@PackageFee,
+    [Sku]=@Sku,
+    [Field1]=@Field1,
+    [Field2]=@Field2,
+    [Field3]=@Field3,
+    [Field4]=@Field4,
+    [Field5]=@Field5,
+    [Longitude] = @Longitude,
+    [Latitude] = @Latitude,
+    [RecursiveBill] = @RecursiveBill,
+    [BillPeriod] = @BillPeriod,
+    [BillFrequency] = @BillFrequency,
+    [MapTitle] = @MapTitle,
+    [ManufacturerId] = @ManufacturerId,
+    [IsAuction] = @IsAuction,
+    [StartPrice] = @StartPrice,
+    [ReservePrice] = @ReservePrice,
+    [BuyNowPrice] = @BuyNowPrice,
+    [AuctionDays] = @AuctionDays,
+    [TaxRateType] = @TaxRateType,
+    [FixedTaxRate] = @FixedTaxRate,
+    [ShippingFeeType] = @ShippingFeeType,
+    [FixedShippingFee] = @FixedShippingFee,
+    [BidIncrement] = @BidIncrement,
+    [AuctionCheck] = @AuctionCheck,
+    [AuctionCheckResult] = @AuctionCheckResult,
+    [CountryId] = @CountryId,
+	[Country] = @Country,
+	[StateId] = @StateId,
+	[State] = @State,
+	[CityId] = @CityId,
+	[City] = @City,
+	[TownId] = @TownId,
+	[Town] = @Town
+WHERE
+	[Id] = @Id
+
+If (@RefreshRelation=1)
+Begin
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToCategory WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToTag WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+
+     DELETE {databaseOwner}{objectQualifier}CP_Product_ProductToRole WHERE ProductId = @Id
+     INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @Id, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+end 
+
+' 
+END
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+	@PortalId int,
+	@TypeId int,
+	@UserId int,
+	@CreatedDate datetime,
+	@Name nvarchar(200),
+    @PreviousVersion int,
+	@Authed bit,
+	@Featured bit,
+	@Active bit,
+	@Summary nvarchar(1000),
+	@LinkUrl nvarchar(200),
+	@Description ntext,
+	@Thumbnail nvarchar(200),
+	@Image nvarchar(200),
+	@Support ntext,
+	@License ntext,
+	@RoleAfterOrder int,
+	@RoleAddDay int,
+	@PurchasePrice decimal(18, 2),
+	@PromoPrice decimal(18, 2),
+    @EnablePromoPrice bit,
+	@PromoStart datetime,
+	@PromoEnd datetime,
+	@StockQuantity int,
+	@LowThreshold int,
+	@Delivery ntext,
+	@SpecialOffer ntext,
+	@Views int,
+	@PublishDate datetime,
+	@ExpireDate datetime,
+	@LastModifiedDate datetime,
+	@AllowComment bit,
+	@AllowRating bit,
+	@CommentRoles nvarchar(200),
+	@RatingRoles nvarchar(200),
+	@DownloadRoles nvarchar(200),
+	@AutoAuthComment bit,
+	@Order int,
+    @Weight decimal(18, 2), 
+    @PackageFee decimal(18, 2), 
+    @Sku nvarchar(200),
+    @Field1 ntext, 
+    @Field2 ntext,
+    @Field3 ntext,
+    @Field4 ntext,
+    @Field5 ntext,
+    @Longitude nvarchar(40),
+    @Latitude nvarchar(40),
+    @RecursiveBill bit,
+    @BillPeriod int,
+    @BillFrequency int,
+    @MapTitle nvarchar(2000),
+    @ManufacturerId int,
+    @IsAuction bit,
+    @StartPrice decimal(18, 2), 
+    @ReservePrice decimal(18, 2), 
+    @BuyNowPrice decimal(18, 2), 
+    @AuctionDays int,
+    @TaxRateType int,
+    @FixedTaxRate decimal(18, 2),
+    @ShippingFeeType int,
+    @FixedShippingFee decimal(18, 2), 
+    @BidIncrement decimal(18, 2), 
+    @AuctionCheck bit,
+    @AuctionCheckResult int,
+    @CountryId int,
+	@Country nvarchar(200),
+	@StateId int,
+	@State nvarchar(200),
+	@CityId int,
+	@City nvarchar(200),
+	@TownId int,
+	@Town nvarchar(200),
+    @ViewRoles nvarchar(200),
+    @Categories nvarchar(200),
+    @Tags nvarchar(200)   
+AS
+
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_Product (
+	[PortalId],
+	[TypeId],
+	[UserId],
+	[CreatedDate],
+	[Name],
+    [PreviousVersion],
+	[Authed],
+	[Featured],
+	[Active],
+	[Summary],
+	[LinkUrl],
+	[Description],
+	[Thumbnail],
+	[Image],
+	[Support],
+	[License],
+	[RoleAfterOrder],
+	[RoleAddDay],
+	[PurchasePrice],
+	[PromoPrice],
+    [EnablePromoPrice],
+	[PromoStart],
+	[PromoEnd],
+	[StockQuantity],
+	[LowThreshold],
+	[Delivery],
+	[SpecialOffer],
+	[Views],
+	[PublishDate],
+	[ExpireDate],
+	[LastModifiedDate],
+	[AllowComment],
+	[AllowRating],
+	[CommentRoles],
+	[RatingRoles],
+	[DownloadRoles],
+	[AutoAuthComment],
+	[Order],
+    [Weight],
+    [PackageFee],
+    [Sku],
+    [Field1],
+    [Field2],
+    [Field3],
+    [Field4],
+    [Field5],
+    [Longitude],
+    [Latitude],
+    [RecursiveBill],
+    [BillPeriod],
+    [BillFrequency],
+    [MapTitle],
+    [ManufacturerId],
+    [IsAuction],
+    [StartPrice],
+    [ReservePrice],
+    [BuyNowPrice],
+    [AuctionDays],
+    [TaxRateType],
+    [FixedTaxRate],
+    [ShippingFeeType],
+    [FixedShippingFee],
+    [BidIncrement],
+    [AuctionCheck],
+    [AuctionCheckResult],
+    [CountryId],
+	[Country],
+	[StateId],
+	[State],
+	[CityId],
+	[City],
+	[TownId],
+	[Town]
+ ) VALUES (
+	@PortalId,
+	@TypeId,
+	@UserId,
+	GetDate(),
+	@Name,
+    @PreviousVersion,
+	@Authed,
+	@Featured,
+	@Active,
+	@Summary,
+	@LinkUrl,
+	@Description,
+	@Thumbnail,
+	@Image,
+	@Support,
+	@License,
+	@RoleAfterOrder,
+	@RoleAddDay,
+	@PurchasePrice,
+	@PromoPrice,
+    @EnablePromoPrice,
+	@PromoStart,
+	@PromoEnd,
+	@StockQuantity,
+	@LowThreshold,
+	@Delivery,
+	@SpecialOffer,
+	@Views,
+	@PublishDate,
+	@ExpireDate,
+	GetDate(),
+	@AllowComment,
+	@AllowRating,
+	@CommentRoles,
+	@RatingRoles,
+	@DownloadRoles,
+	@AutoAuthComment,
+	@Order,
+    @Weight,
+    @PackageFee,
+    @Sku,
+    @Field1,
+    @Field2,
+    @Field3,
+    @Field4,
+    @Field5,
+    @Longitude,
+    @Latitude,
+    @RecursiveBill,
+    @BillPeriod,
+    @BillFrequency,
+    @MapTitle,
+    @ManufacturerId,
+    @IsAuction,
+    @StartPrice,
+    @ReservePrice,
+    @BuyNowPrice,
+    @AuctionDays,
+    @TaxRateType,
+    @FixedTaxRate,
+    @ShippingFeeType,
+    @FixedShippingFee,
+    @BidIncrement,
+    @AuctionCheck,
+    @AuctionCheckResult,
+    @CountryId,
+	@Country,
+	@StateId,
+	@State,
+	@CityId,
+	@City,
+	@TownId,
+	@Town
+)
+
+DECLARE @ProductId INT	
+SET @ProductId = @@IDENTITY
+	
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToCategory SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Categories)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToTag SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@Tags)
+INSERT INTO {databaseOwner}{objectQualifier}CP_Product_ProductToRole SELECT @ProductId, intValue FROM {databaseOwner}CP_CsvToInt(@ViewRoles)
+
+select @ProductId
+
+' 
+END
+GO
+

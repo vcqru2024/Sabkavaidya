@@ -1,0 +1,335 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_Types](
+	[TypeID] [int] NOT NULL,
+	[TypeName] [nvarchar](max) NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_Types] PRIMARY KEY CLUSTERED 
+(
+	[TypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+) 
+GO
+
+INSERT INTO {databaseOwner}[{objectQualifier}ContentPro_Types]
+           ([TypeID]
+           ,[TypeName])
+     VALUES
+           (0,'Checkbox'),(1,'Number'),(2,'Text'),(3,'Image'),(4,'Rich Text'),(5,'Datetime'),(6,'File')
+GO
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_FieldSet](
+	[FieldSetID] [int] IDENTITY(1,1) NOT NULL,
+	[FieldSetName] [nvarchar](50) NULL,
+	[FieldSetDescription] [nvarchar](max) NULL,
+	
+ CONSTRAINT [PK{objectQualifier}ContentPro_FieldsSet] PRIMARY KEY CLUSTERED 
+(
+	[FieldSetID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+GO
+
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_Field](
+	[FieldID] [int] IDENTITY(1,1) NOT NULL,
+	[FieldName] [nvarchar](50) NULL,
+	[TypeID] [int] NULL,
+	[FieldSetID] [int] NULL,
+	[Sort] [int] NULL,
+	[Required] [bit] NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_Fields] PRIMARY KEY CLUSTERED 
+(
+	[FieldID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Field]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Field_ContentPro_FieldSet] FOREIGN KEY([FieldSetID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_FieldSet] ([FieldSetID])
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Field] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_Field_ContentPro_FieldSet]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Field]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Field_ContentPro_Types] FOREIGN KEY([TypeID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_Types] ([TypeID])
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Field] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_Field_ContentPro_Types]
+GO
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_Content](
+	[ContentID] [int] IDENTITY(1,1) NOT NULL,
+	[ContentXML] [xml] NULL,
+	[Active] [bit] NULL,
+	[StartDT] [datetime] NULL,
+	[EndDT] [datetime] NULL,
+	[PortalID] [int] NULL,
+	[CreatedDT] [datetime] NULL,
+	[CreatedBy] [int] NULL,
+	[LastModifiedDT] [datetime] NULL,
+	[LastModifiedBy] [int] NULL,
+	[FieldSetID] [int] NULL,
+	[Url] [nvarchar](max) NULL,
+	[ModuleID] [int] NULL,
+	[Title] [nvarchar](max) NULL,
+	[Sort] [int] NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_Content] PRIMARY KEY CLUSTERED 
+(
+	[ContentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Content]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Content_ContentPro_FieldSet] FOREIGN KEY([FieldSetID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_FieldSet] ([FieldSetID])
+ON DELETE CASCADE
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Content] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_Content_ContentPro_FieldSet]
+GO
+
+
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_Template](
+	[TemplateID] [int] IDENTITY(1,1) NOT NULL,
+	[FieldSetID] [int] NULL,
+	[TemplateName] [nvarchar](50) NULL,
+	[CreatedByUser] [int] NULL,
+	[LastModifiedByUser] [int] NULL,
+	[CreatedDT] [datetime] NULL,
+	[LastModifiedDT] [datetime] NULL,
+	[TemplateContent] [nvarchar](max) NULL,
+	[List] [bit] NULL,
+	
+ CONSTRAINT [PK{objectQualifier}ContentPro_Template] PRIMARY KEY CLUSTERED 
+(
+	[TemplateID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Template]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Template_ContentPro_FieldSet] FOREIGN KEY([FieldSetID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_FieldSet] ([FieldSetID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Template] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_Template_ContentPro_FieldSet]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_View](
+	[ViewID] [int] IDENTITY(1,1) NOT NULL,
+	[ViewName] [nvarchar](50) NULL,
+	[TemplateID] [int] NULL,
+	[ContentID] [int] NULL,
+	[CreatedDT] [datetime] NULL,
+	[CreatedByUser] [int] NULL,
+	[LastModifiedDT] [datetime] NULL,
+	[LastModifiedByUser] [int] NULL,
+	[ModuleID] [int] NULL,
+	[ListFieldSetID] [int] NULL,
+	[SamePage] [bit] NULL,
+	[TabID] [nvarchar](max) NULL,
+	[TemplateDetailsID] [int] NULL,
+	[Dynamic] [bit] NULL,
+	[OrderFilter] [int] NULL,
+	[OrderField] [int] NULL,
+	[Sitemap] [bit] NULL,
+	[Bootstrap] [bit] NULL,
+	[NumArticles] [int] NULL,
+	[ModuleUrl] [bit] NULL,
+	[Paging] [bit] NULL,
+	[CategoryOneFilter] [bit] NULL,
+	[CategoryAllFilter] [bit] NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_View] PRIMARY KEY CLUSTERED 
+(
+	[ViewID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_View_ContentPro_Template] FOREIGN KEY([TemplateID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_Template] ([TemplateID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_View_ContentPro_Template]
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories](
+	[CatID] [int] IDENTITY(1,1) NOT NULL,
+	[CatName] [nvarchar](max) NULL,
+	[ParentID] [int] NULL,
+	[FieldSetID] [int] NULL,
+	[CatDescription] [nvarchar](max) NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_Categories] PRIMARY KEY CLUSTERED 
+(
+	[CatID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories]  WITH NOCHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Categories_ContentPro_FieldSet] FOREIGN KEY([FieldSetID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_FieldSet] ([FieldSetID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories] NOCHECK CONSTRAINT [FK{objectQualifier}ContentPro_Categories_ContentPro_FieldSet]
+GO
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories](
+	[ContentCategoriesID] [int] IDENTITY(1,1) NOT NULL,
+	[ContentID] [int] NULL,
+	[CatID] [int] NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_ContentCategories] PRIMARY KEY CLUSTERED 
+(
+	[ContentCategoriesID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_ContentCategories_ContentPro_Categories] FOREIGN KEY([CatID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_Categories] ([CatID])
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_ContentCategories_ContentPro_Categories]
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_ContentCategories_ContentPro_Content] FOREIGN KEY([ContentID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_Content] ([ContentID])
+ON DELETE CASCADE
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_ContentCategories_ContentPro_Content]
+GO
+
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_ViewCategories](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ViewID] [int] NOT NULL,
+	[CatID] [int] NOT NULL,
+	[IsAll] [bit] NULL,
+ CONSTRAINT [PK{objectQualifier}ContentPro_ViewCategories] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+GO
+
+
+
+CREATE TYPE {databaseOwner}[{objectQualifier}ContentProCategoryList] AS TABLE(
+	[CatID] [int] NULL
+)
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetContent]
+	@CatIDs {databaseOwner}{objectQualifier}ContentProCategoryList READONLY,
+	@FieldSetID INTEGER
+AS
+BEGIN
+		SET NOCOUNT ON;
+
+		select * from {databaseOwner}[{objectQualifier}ContentPro_Content] Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+         {databaseOwner}[{objectQualifier}ContentPro_Content] AS [content]
+       WHERE
+          EXISTS (SELECT * FROM {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+END
+GO
+
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterContent]
+	@FieldSetID INTEGER,
+	@Field nvarchar(max),
+	@SortDirection nvarchar(max)
+AS
+BEGIN
+       SET NOCOUNT ON;
+
+   select * from  {databaseOwner}[{objectQualifier}ContentPro_Content] Content
+       where  ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+                 ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') asc
+
+END
+GO
+
+
+CREATE PROCEDURE  {databaseOwner}[{objectQualifier}ContentPro_GetFilterCategoryContent]
+	@CatIDs {databaseOwner}{objectQualifier}ContentProCategoryList READONLY,
+	@FieldSetID INTEGER,
+	@Field nvarchar(max),
+	@SortDirection nvarchar(max)
+AS
+BEGIN
+       SET NOCOUNT ON;
+
+   select * from  {databaseOwner}[{objectQualifier}ContentPro_Content] Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+           {databaseOwner}[{objectQualifier}ContentPro_Content] AS [content]
+       WHERE
+          EXISTS (SELECT * FROM  {databaseOwner}[{objectQualifier}ContentPro_ContentCategories] WHERE ContentID = [content].ContentID AND CatID IN (SELECT CatID FROM @CatIDs)) 
+       GROUP BY
+          [content].ContentID)
+       
+       AND ((Content.StartDT<=GETDATE() AND Content.EndDT >=GETDATE()) 
+	   OR (Content.StartDT IS NULL AND Content.EndDT >=GETDATE()) 
+	   OR (StartDT IS NULL AND EndDT IS NULL)
+	   OR (Content.StartDT<=GETDATE() AND Content.EndDT IS NULL ))
+       AND @FieldSetID = Content.FieldSetID AND Content.Active = 1
+
+       order by 
+	   
+		CASE WHEN @SortDirection = 'asc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END ASC,
+		CASE WHEN @SortDirection = 'desc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END DESC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'StartDT' then Content.StartDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'StartDT' then Content.StartDT END ASC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'EndDT' then Content.EndDT END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'EndDT' then Content.EndDT END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Title' then Content.Title END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Title' then Content.Title END DESC,
+		CASE WHEN @SortDirection = 'asc' AND @Field = 'Sort' then Content.Sort END ASC,
+		CASE WHEN @SortDirection = 'desc' AND @Field = 'Sort' then Content.Sort END DESC
+
+
+
+END
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

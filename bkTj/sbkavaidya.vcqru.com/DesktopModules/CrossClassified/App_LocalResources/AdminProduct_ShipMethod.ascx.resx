@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblShipFeeList.Text" xml:space="preserve">
+    <value>Shipping Fees for "{0}". Note, module will take 0.00 for address which doesn't have shipping fee formulas specified.</value>
+  </data>
+  <data name="plShipFeeDisplayOrder.Text" xml:space="preserve">
+    <value>Display Order</value>
+  </data>
+  <data name="lblBasicFee.Text" xml:space="preserve">
+    <value>Basic Fee</value>
+  </data>
+  <data name="lblBasicWeight.Text" xml:space="preserve">
+    <value>Basic Weight</value>
+  </data>
+  <data name="lblShipFeeName.Text" xml:space="preserve">
+    <value>Shipping Fees</value>
+  </data>
+  <data name="plShipMethodName.Text" xml:space="preserve">
+    <value>Shipping Method Name</value>
+  </data>
+  <data name="ControlTitle_adminproduct_shipmethod.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="btnAddShipMethod.Text" xml:space="preserve">
+    <value>Add Shipping Method</value>
+  </data>
+  <data name="lblStateName.Text" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="plShipFeeDisplayOrder.Help" xml:space="preserve">
+    <value>Display order for this shipping fee</value>
+  </data>
+  <data name="btnBackToList.Text" xml:space="preserve">
+    <value>Back to shipping method list</value>
+  </data>
+  <data name="lblCountryName.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="btnAddShipFee.Text" xml:space="preserve">
+    <value>Add Shipping Fee</value>
+  </data>
+  <data name="lblShipMethodName.Text" xml:space="preserve">
+    <value>Shipping Method</value>
+  </data>
+  <data name="lblDisplayOrder.Text" xml:space="preserve">
+    <value>Display Order</value>
+  </data>
+  <data name="imgShipFee.Text" xml:space="preserve">
+    <value>View/edit shipping fees of this shipping method</value>
+  </data>
+  <data name="plShipMethodName.Help" xml:space="preserve">
+    <value>Enter shipping method name</value>
+  </data>
+  <data name="plShipMethodDisplayOrder.Text" xml:space="preserve">
+    <value>Display Order</value>
+  </data>
+  <data name="lblShipMethodList.Text" xml:space="preserve">
+    <value>Shipping method list </value>
+  </data>
+  <data name="lblShipFee.Text" xml:space="preserve">
+    <value>Shipping Fee</value>
+  </data>
+  <data name="plShipMethodDisplayOrder.Help" xml:space="preserve">
+    <value>Display order for this shipping method</value>
+  </data>
+  <data name="lblIsDefault.Text" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="lblAllState.Text" xml:space="preserve">
+    <value>All State (*)</value>
+  </data>
+  <data name="lblExtendFee.Text" xml:space="preserve">
+    <value>Extend Fee</value>
+  </data>
+  <data name="lblExtendWeight.Text" xml:space="preserve">
+    <value>Entend Weight</value>
+  </data>
+  <data name="lblShipFeeCompute.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Shipping fee follows below formulas:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;If a product weight &lt; basic weight, then shipping fee = basic fee.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;If a product weight &gt; basic weight, then shipping fee = basic fee + round [ (total weight -  basic weight)/ extend weight ] * extend fee.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;For example, if USPS basic fee is 20, basic weight is 1 lbs, extend weight is 0.5 lbs and extend fee is $10, then if a product weight is 0.8 lbs, its shipping fee is $20. If a product weight is 1.8 lbs, its shipping fee = 20 + round [ (1.8 - 1)/0.5 ] *10 =  $24.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Note, you can also ignore above formulas, directly specify a fixed shipping fee to a product.&lt;/p&gt;</value>
+  </data>
+  <data name="plBasicFee.Help" xml:space="preserve">
+    <value>Basic fee for selected shipping method. If a product weight &lt; basic weight, then shipping fee = basic fee.</value>
+  </data>
+  <data name="plBasicFee.Text" xml:space="preserve">
+    <value>Basic Fee</value>
+  </data>
+  <data name="plBasicWeight.Help" xml:space="preserve">
+    <value>Basic weight for selected shipping method. If a product weight &lt; basic weight, then shipping fee = basic fee.</value>
+  </data>
+  <data name="plBasicWeight.Text" xml:space="preserve">
+    <value>Basic Weight</value>
+  </data>
+  <data name="plCountry.Help" xml:space="preserve">
+    <value>Choose country which shipping fee will be applied</value>
+  </data>
+  <data name="plCountry.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="plExtendFee.Help" xml:space="preserve">
+    <value>Extend fee for selected shipping method. If a product weight &gt; basic weight, then shipping fee = basic fee + round [ (total weight -  basic weight)/ extend weight ] * extend fee.</value>
+  </data>
+  <data name="plExtendFee.Text" xml:space="preserve">
+    <value>Extend Fee</value>
+  </data>
+  <data name="plExtendWeight.Help" xml:space="preserve">
+    <value>Extend weight for selected shipping method, If a product weight &gt; basic weight, then shipping fee = basic fee + round [ (total weight -  basic weight)/ extend weight ] * extend fee.</value>
+  </data>
+  <data name="plExtendWeight.Text" xml:space="preserve">
+    <value>Extend Weight</value>
+  </data>
+  <data name="plState.Help" xml:space="preserve">
+    <value>Choose State/Province which shipping fee will be apllied. Choose "All State (*)" to applied to all states of selected country.</value>
+  </data>
+  <data name="plState.Text" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="Error_NoCountry.Text" xml:space="preserve">
+    <value>Please specify countries for this shipping method before add shipping fee.</value>
+  </data>
+  <data name="plApplyToCountry.Help" xml:space="preserve">
+    <value>Select countries which this shipping method apply.</value>
+  </data>
+  <data name="plApplyToCountry.Text" xml:space="preserve">
+    <value>Apply to country</value>
+  </data>
+  <data name="Tip_SelectCountry.Text" xml:space="preserve">
+    <value>Please select at least one country which this shipping method can be applied.</value>
+  </data>
+</root>

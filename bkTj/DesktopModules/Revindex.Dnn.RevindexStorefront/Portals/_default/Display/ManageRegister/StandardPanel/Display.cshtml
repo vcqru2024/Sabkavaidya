@@ -1,0 +1,348 @@
+﻿@* Template name: StandardPanel *@
+@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ManageRegisterWebViewPage
+
+<div id="rvdsfManageRegisterPanelContainer" class="modal-fullscreen modal fade rvd-module-container rvdsf rvdsf-manageregister-container rvdsf-manageregister-grid">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-8">
+						<h4 data-bind="text: SalesOrderSet.BillingFirstName"></h4>
+					</div>
+					<div class="col-sm-4 text-right">
+						<button type="button" class="btn btn-link btn-lg" data-bind="click: toggleFullscreen" ><em class="glyphicon glyphicon-fullscreen fas fa fa-expand"></em></button>
+					</div>
+				</div>
+				<hr />
+				<div data-bind="visible: (SalesOrderSet.SalesOrder() && SalesOrderSet.SalesOrder().Status() != 7) || SalesOrderSet.MainQuantity() == 0" style="display:none;">
+					<div class="rvdsf-startup-container text-muted" ><p><em class="glyphicon glyphicon-shopping-cart fa fas fa-shopping-cart" style="font-size: 20vh"></em></p><h3 class="text-muted">@Html.LocalizeString("StartupLabel")</h3></div>
+				</div>
+				<div data-bind="visible: SalesOrderSet.SalesOrder() && SalesOrderSet.SalesOrder().Status() == 7 && SalesOrderSet.MainQuantity() > 0" style="display:none">
+					<div class="row">
+						<div id="rvdsfLeftColumnManageRegisterContainer" class="col-7 col-sm-7 table-responsive">
+							<table class="table table-striped rvdsf-salesorderdetail-table">
+								<tbody data-bind="foreach: { data: SalesOrderSet.MainSalesOrderDetails, as: 'sod'}">
+									<tr>
+										<td class="col-1 col-xs-1" data-bind="if: sod.ProductVariant.MainThumbnailGallery"><a data-bind="attr: { href: sod.ProductVariant.ProductDetail.TabUrl }"><img class="img-responsive img-fluid" data-bind="attr: {src: sod.ProductVariant.MainThumbnailGallery.MediaUrl}" /></a></td>
+										<td class="col-8 col-xs-8">
+											<a data-bind="text: sod.ProductName, attr: { href: sod.ProductVariant.ProductDetail.TabUrl }"></a>
+											<div class="rvdsf-productvariant-name" data-bind="visible: sod.ProductVariantName, text: sod.ProductVariantName"></div>
+											<!-- ko if: FormattedBookingStartDate -->
+											<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-bookingdates" style="width: auto">
+												<tr>
+													<td><strong>@Html.LocalizeString("BookingStartDateLabel")</strong></td>
+													<td data-bind="text: sod.FormattedBookingStartDate"></td>
+												</tr>
+												<tr>
+													<td><strong>@Html.LocalizeString("BookingStopDateLabel")</strong></td>
+													<td data-bind="text: sod.FormattedBookingStopDate"></td>
+												</tr>
+											</table>
+											<!-- /ko -->
+											<!-- ko if: Object.keys(sod.DynamicFormResult).length > 0 -->
+											<!-- ko with: sod.DynamicFormResult -->
+											<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-dynamicformresult" data-bind="foreach: Object.keys($data)" style="width: auto">
+												<tr>
+													<td><strong data-bind="text: $data + ':'"></strong></td>
+													<td data-bind="text: $parent[$data]"></td>
+												</tr>
+											</table>
+											<!-- /ko -->
+											<!-- /ko -->
+											<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-productparts" data-bind="foreach: { data: $parent.SalesOrderSet.SalesOrderDetails, as: 'csod' }" style="width: auto">
+												<tr data-bind="if: csod.ParentSalesOrderDetailID() == sod.SalesOrderDetailID()">
+													<td><strong data-bind="text: csod.ProductName"></strong><strong data-bind="visible: csod.ProductVariantName, text: ' - ' + csod.ProductVariantName()"></strong></td>
+													<td data-bind="text: csod.PartQuantity"></td>
+												</tr>
+											</table>
+										</td>
+										<td class="col-1 col-xs-1 rvdsf-field-qty"><span class="badge badge-secondary" data-bind="text: Quantity"></span></td>
+										<td class="col-2 col-xs-2 rvdsf-label-amount" data-bind="text: Status() == 9 ? null : FormattedCombinedTotalAmount"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="rvdsfRightColumnManageRegisterContainer" class="col-5 col-sm-5">
+							<div id="rvdsfReviewOrderContainer">
+								<div class="form-horizontal rvdsf-manageregister-amount-container" data-bind="visible: !SalesOrderSet.HasQuotedProduct() && !SalesOrderSet.HasQuotedShipping()">
+									<div class="form-group row rvdsf-label-totalquantity" >
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalQuantityLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.MainSalesOrderDetails().map(sod => sod.Quantity()).reduce((accumulator, currentValue) => accumulator + currentValue, 0)"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-totalsalesorderdetaildiscountamount" data-bind="visible: SalesOrderSet.TotalSalesOrderDetailDiscountAmount() < 0">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalSalesOrderDetailDiscountLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalSalesOrderDetailDiscountAmount"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-subtotalamount">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("SubTotalLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedSubTotalAmount"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-totalhandlingamount" data-bind="visible: SalesOrderSet.TotalHandlingAmount() > 0">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalHandlingLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalHandlingAmount"></p>
+										</div>
+									</div>
+									<!-- ko if: SalesOrderSet.RequireShipping() -->
+									<div class="form-group row rvdsf-label-totalshippingamount">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalShippingLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalShippingAmount"></p>
+										</div>
+									</div>
+									<!-- /ko -->
+									<div class="form-group row rvdsf-label-totaltaxamount">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalTaxLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalTaxAmount"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-totalsavingsamount" data-bind="visible: SalesOrderSet.TotalSavingsAmount() < 0">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalSavingsLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalSavingsAmount"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-totalrewardspoint" data-bind="visible: ShowRewardsPoint">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("RewardsPointQualifiedLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedRewardsPointsQualified"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-totalamount">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalAmount"></p>
+										</div>
+									</div>
+									<div class="form-group row rvdsf-label-totalbalancedue">
+										<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("TotalBalanceDueLabel")</label>
+										<div class="col-xs-6 col-6">
+											<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedBalanceConsidered"></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="rvdsfLoading" class="rvd-loading" style="display: none"><img src="~/Images/Loading.gif" /></div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses KnockoutJS. See http://knockoutjs.com *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+}
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script type="text/javascript">
+	var rvdsfManageRegister = rvdsfManageRegister || {}
+
+	$(document).ready(function () {
+
+        // Initialize progress loading
+        $(document).ajaxStart(function () {
+            // Only show loading if it exceeds 1 sec
+            $("#rvdsfLoading").data("timer", setTimeout(function () { $("#rvdsfLoading").show(); }, 1000))
+        }).ajaxStop(function () {
+            if ($("#rvdsfLoading").data("timer"))
+                clearTimeout($("#rvdsfLoading").data("timer"))
+
+            $("#rvdsfLoading").hide();
+        })
+
+    	// Handle anti-forgery error when user is logged out
+        $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+        	if (jqxhr.status == 401)
+        		window.location.reload(true)
+        })
+
+        // Initialize jQuery Validation with Bootstrap default styles
+        $('#Form').validate({
+            highlight: function(element) {
+				$(element).closest('.form-group').addClass('has-error');
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-error');
+				$(element).removeClass('is-invalid');
+			},
+			errorElement: 'div',
+			errorClass: 'help-block invalid-feedback',
+			errorPlacement: function(error, element) {
+				if (element.parent('.input-group').length) {
+					error.insertAfter(element.parent());
+				} else if(element.prop('type') === 'checkbox') {
+					error.appendTo(element.parent().parent());
+				} else if(element.prop('type') === 'radio') {
+					error.appendTo(element.parent().parent());
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			onsubmit: false
+        })
+
+        // Add custom method to validate at least one checkbox in group is selected
+        $.validator.addMethod("requiredGroup", function (value, element, params) {
+            if (params)
+                return ($("input[name='" + params + "']:checked").length > 0)
+            else
+                return true
+        }, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+        // Bind KnockoutJS view model
+        var manageRegisterContainer = document.getElementById("rvdsfManageRegisterPanelContainer")
+        manageRegisterContainer.databind = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+			var that = this
+
+			manageRegisterContainer.isBinding = true
+			
+			$.ajax({
+				context: this,
+				beforeSend: servicesFramework.setModuleHeaders,
+				url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageRegister/ViewModel"
+            })
+            .done(function (data, status) {
+				var that = this
+				var mapping = {
+					// Always treat SalesOrder as observable even when not null
+					"SalesOrder": {
+						create: function (options) {
+							return options.data != null ? ko.observable(ko.mapping.fromJS(options.data)) : ko.observable();
+						}
+					}
+				}
+
+				if (this.viewModel) {
+
+					var totalQuantity = this.viewModel.SalesOrderSet.MainSalesOrderDetails().length
+
+					ko.mapping.fromJS(data, mapping, this.viewModel)
+
+					// Scroll sales order details list to bottom if the number of items has changed
+					if (this.viewModel.SalesOrderSet.MainSalesOrderDetails().length > totalQuantity && $('#rvdsfLeftColumnManageRegisterContainer').length > 0)
+						$('#rvdsfLeftColumnManageRegisterContainer').scrollTop($('#rvdsfLeftColumnManageRegisterContainer')[0].scrollHeight);
+                }
+                else {
+					this.viewModel = ko.mapping.fromJS(data, mapping);
+
+                    // Helper function to format currency
+                    this.viewModel.formatCurrency = function (number) {
+                        return new Intl.NumberFormat(this.Currency.CultureCode(), { style: 'currency', currency: this.Currency.CurrencyCode() }).format((typeof number === "function" ? number() : number) * this.Currency.ExchangeRate());
+					}
+
+					this.viewModel.toggleFullscreen = function () {
+						if ($('#rvdsfManageRegisterPanelContainer').hasClass("show") || $('#rvdsfManageRegisterPanelContainer').hasClass("in"))
+							$('#rvdsfManageRegisterPanelContainer').modal('hide')
+						else
+							$('#rvdsfManageRegisterPanelContainer').modal({backdrop: false}).modal('show')
+					}
+
+					this.viewModel.validate = function () {
+
+						var validationResult = $('#Form .rvdsf-manageregister-container input, .rvdsf-manageregister-container select, .rvdsf-manageregister-container textarea').valid()
+
+						// Scroll to first error
+						if (!validationResult) {
+							$('html, body').animate({
+								scrollTop: $('.has-error').offset().top - 110
+							}, 800);
+						}
+
+						return (validationResult)
+					}
+
+					ko.applyBindings(this.viewModel, manageRegisterContainer)
+				}
+
+				manageRegisterContainer.isBinding = false
+			})
+			.fail(function (data, textStatus, errorThrown) {
+                manageRegisterContainer.isBinding = false
+            })
+        }
+
+		manageRegisterContainer.databind()
+
+		manageRegisterContainer.isBinding = false
+		manageRegisterContainer.updateDate = new Date()
+		manageRegisterContainer.refresh = function () {
+			var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+			var that = this
+
+			// Only check if we are not in the process of binding
+			if (!manageRegisterContainer.isBinding) {
+
+				$.ajax({
+					context: this,
+					beforeSend: servicesFramework.setModuleHeaders,
+					url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageRegister/SalesRegister"
+				})
+				.done(function (data, status) {
+					var updateDate = new Date(data.UpdateDate)
+					if (updateDate.toISOString() > manageRegisterContainer.updateDate.toISOString()) {
+						manageRegisterContainer.updateDate = updateDate
+						manageRegisterContainer.databind()
+					}
+				})
+			}
+
+			// Throttle refresh rate
+			var timeout = 5000
+			if (manageRegisterContainer.viewModel && manageRegisterContainer.viewModel.SalesOrderSet)
+				if (manageRegisterContainer.viewModel.SalesOrderSet.SalesOrder())
+					timeout = 2000
+
+			setTimeout(function () {
+				manageRegisterContainer.refresh();
+			}, timeout)			
+		}
+
+		manageRegisterContainer.refresh()
+
+		// Resize left column dynamically for desktop view
+		if ($(window).width() >= 768) {
+			setInterval(function () {
+				var height = window.innerHeight - Math.max(0, $("#rvdsfLeftColumnManageRegisterContainer").offset().top - $(document).scrollTop()) - 20
+				$("#rvdsfLeftColumnManageRegisterContainer").css("height", height + "px")
+			}, 1000)
+		}
+    })
+</script>

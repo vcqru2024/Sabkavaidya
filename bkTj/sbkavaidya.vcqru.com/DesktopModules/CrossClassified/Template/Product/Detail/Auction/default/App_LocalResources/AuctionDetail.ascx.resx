@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblCreatedDate.Text" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="lblRelated.Text" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="lblSummary.Text" xml:space="preserve">
+    <value>Summary:</value>
+  </data>
+  <data name="lblRating.Text" xml:space="preserve">
+    <value>Rating:</value>
+  </data>
+  <data name="lblRatingVotes.Text" xml:space="preserve">
+    <value>Rating People:</value>
+  </data>
+  <data name="lblAverage.Text" xml:space="preserve">
+    <value>Average Rating:</value>
+  </data>
+  <data name="lblSay.Text" xml:space="preserve">
+    <value>Says:</value>
+  </data>
+  <data name="lblCommentHead.Text" xml:space="preserve">
+    <value>Comments:</value>
+  </data>
+  <data name="lblCommentNeedAuth.Text" xml:space="preserve">
+    <value>Your comment information must be authorized before display.</value>
+  </data>
+  <data name="lblEnter.Text" xml:space="preserve">
+    <value>Post your comment</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Your Name:</value>
+  </data>
+  <data name="lblEmail.Text" xml:space="preserve">
+    <value>Your Gravatar Mail:</value>
+  </data>
+  <data name="lblComment.Text" xml:space="preserve">
+    <value>Comment Info:</value>
+  </data>
+  <data name="btnAddComment.Text" xml:space="preserve">
+    <value>Submit Comment</value>
+  </data>
+  <data name="Comment.ErrorMessage.Text" xml:space="preserve">
+    <value>Please enter your comment.</value>
+  </data>
+  <data name="lblCommentNeedLoggedIn.Text" xml:space="preserve">
+    <value>Login or register to post comment</value>
+  </data>
+  <data name="Name.ErrorMessage.Text" xml:space="preserve">
+    <value>Please enter your name.</value>
+  </data>
+  <data name="lblUrl.Text" xml:space="preserve">
+    <value>Your Site:</value>
+  </data>
+  <data name="lblAboutAuthor.Text" xml:space="preserve">
+    <value>About Seller</value>
+  </data>
+  <data name="lblAttachments.Text" xml:space="preserve">
+    <value>Attachments:</value>
+  </data>
+  <data name="lblAttacmentNeedLoggedIn.Text" xml:space="preserve">
+    <value>(Login to view attachments).</value>
+  </data>
+  <data name="lblCreator.Text" xml:space="preserve">
+    <value>Listed By:</value>
+  </data>
+  <data name="lblEmailExplanation.Text" xml:space="preserve">
+    <value>If you have an avatar photo at &lt;a href="http://www.gravatar.com" target="_blank"&gt;Gravatar (http://www.gravatar.com)&lt;/a&gt;, you can enter its email address below to show your avatar in comments.  Note, if you are a register user of this site and already specify an avatar photo in your profile, module will use that prior, and ignore below Gravatar address.</value>
+  </data>
+  <data name="lblTags.Text" xml:space="preserve">
+    <value>Tags:</value>
+  </data>
+  <data name="lblViews.Text" xml:space="preserve">
+    <value>Views:</value>
+  </data>
+  <data name="lblAddFavorite.Text" xml:space="preserve">
+    <value>Add Favorite</value>
+  </data>
+  <data name="lblPrint.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Return.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="btnAddWatch.Text" xml:space="preserve">
+    <value>Add To Watch List</value>
+  </data>
+  <data name="btnOrderNow.Text" xml:space="preserve">
+    <value>Buy Now</value>
+  </data>
+  <data name="lblOrderCount.Text" xml:space="preserve">
+    <value>Quantity:</value>
+  </data>
+  <data name="lblStockQuantity.Text" xml:space="preserve">
+    <value>Stock:</value>
+  </data>
+  <data name="tabAboutAuthor.Text" xml:space="preserve">
+    <value>About Seller</value>
+  </data>
+  <data name="tabAttachment.Text" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="tabComment.Text" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="tabDelivery.Text" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="tabDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="tabLicense.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="tabRating.Text" xml:space="preserve">
+    <value>Ratings</value>
+  </data>
+  <data name="tabRelatedAudio.Text" xml:space="preserve">
+    <value>Related Audio</value>
+  </data>
+  <data name="tabRelatedImage.Text" xml:space="preserve">
+    <value>Related Images</value>
+  </data>
+  <data name="tabRelatedVideo.Text" xml:space="preserve">
+    <value>Related Videos</value>
+  </data>
+  <data name="tabRelatedProduct.Text" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="tabSpecialOffer.Text" xml:space="preserve">
+    <value>Special Offer</value>
+  </data>
+  <data name="tabSupport.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="lblRatingInfo.Text" xml:space="preserve">
+    <value>Rating Info:</value>
+  </data>
+  <data name="lblYourRating.Text" xml:space="preserve">
+    <value>Your Rating:</value>
+  </data>
+  <data name="Tip_InvalidQuantity.Text" xml:space="preserve">
+    <value>Invalid quantity, please check if it exceeds product stock.</value>
+  </data>
+  <data name="WatchListAdded.Text" xml:space="preserve">
+    <value>Watch list was added successfully.</value>
+  </data>
+  <data name="btnAddTicket.Text" xml:space="preserve">
+    <value>Contact Seller</value>
+  </data>
+  <data name="hlNewVersion.Text" xml:space="preserve">
+    <value>New version available</value>
+  </data>
+  <data name="lblVendorReply.Text" xml:space="preserve">
+    <value>Seller Reply:</value>
+  </data>
+  <data name="lblPackageFee.Text" xml:space="preserve">
+    <value>Package Fee:</value>
+  </data>
+  <data name="lblSku.Text" xml:space="preserve">
+    <value>SKU:</value>
+  </data>
+  <data name="lblWeight.Text" xml:space="preserve">
+    <value>Weight:</value>
+  </data>
+  <data name="lblCreatedDateHead.Text" xml:space="preserve">
+    <value>Date/Time</value>
+  </data>
+  <data name="tabBidHistory.Text" xml:space="preserve">
+    <value>Bid History</value>
+  </data>
+  <data name="lblAddTicket.Text" xml:space="preserve">
+    <value>Contact Seller</value>
+  </data>
+  <data name="lblLastModifiedDate.Text" xml:space="preserve">
+    <value>Last modified date:</value>
+  </data>
+  <data name="tabGoogleMap.Text" xml:space="preserve">
+    <value>Google Map</value>
+  </data>
+  <data name="Tip_HaveSubscriber.Text" xml:space="preserve">
+    <value>You have a item which requries recursive charge in your cart, please check out first (or delete it from cart) before add this item.</value>
+  </data>
+  <data name="Tip_HaveItem.Text" xml:space="preserve">
+    <value>You already have some items in your cart, current item requires recursive payment and can't be added with them. Please check out first (or delete other items from your cart) before add this item.</value>
+  </data>
+  <data name="MustBeInteger.Text" xml:space="preserve">
+    <value>Value must be integer</value>
+  </data>
+  <data name="lblShippingOption.Text" xml:space="preserve">
+    <value>Shipping Options:</value>
+  </data>
+  <data name="ShippingFeeType_Default.Text" xml:space="preserve">
+    <value>Depends on customer choosing shipping method</value>
+  </data>
+  <data name="ShippingFeeType_FixedShippingFee.Text" xml:space="preserve">
+    <value>Fixed shipping fee, {0}{1}</value>
+  </data>
+  <data name="ShippingFeeType_NoShippingFee.Text" xml:space="preserve">
+    <value>Free Shipping, {0}0.00</value>
+  </data>
+  <data name="btnSubmitBid.Text" xml:space="preserve">
+    <value>Submit Bid</value>
+  </data>
+  <data name="chkProxy.Text" xml:space="preserve">
+    <value>Proxy Bid</value>
+  </data>
+  <data name="Days.Text" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Hours.Text" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="lblBuyNowPrice.Text" xml:space="preserve">
+    <value>Buy Now Price:</value>
+  </data>
+  <data name="lblCurrentBid.Text" xml:space="preserve">
+    <value>Current Bid:</value>
+  </data>
+  <data name="lblCurrentBidder.Text" xml:space="preserve">
+    <value>High Bidder:</value>
+  </data>
+  <data name="lblIncrement.Text" xml:space="preserve">
+    <value>Minimum bid increment:</value>
+  </data>
+  <data name="lblRemainTime.Text" xml:space="preserve">
+    <value>Remaining Time:</value>
+  </data>
+  <data name="lblReservePrice.Text" xml:space="preserve">
+    <value>Reserve Price:</value>
+  </data>
+  <data name="lblStartPrice.Text" xml:space="preserve">
+    <value>Start Price:</value>
+  </data>
+  <data name="lblYourBid.Text" xml:space="preserve">
+    <value>Your Bid:</value>
+  </data>
+  <data name="lblYourProxyBid.Text" xml:space="preserve">
+    <value>Your Maximum Bid:</value>
+  </data>
+  <data name="Tip_WatchAddSuccess.Text" xml:space="preserve">
+    <value>Watch list was added successfully.</value>
+  </data>
+  <data name="Tip_InvalidBidPrice.Text" xml:space="preserve">
+    <value>Invalid bid price, please check it.</value>
+  </data>
+  <data name="Tip_NoReservePrice.Text" xml:space="preserve">
+    <value>No reserve price</value>
+  </data>
+  <data name="Tip_ReservePriceMet.Text" xml:space="preserve">
+    <value>Reserve price met</value>
+  </data>
+  <data name="Tip_ReservePriceNotMet.Text" xml:space="preserve">
+    <value>Reserve price not met</value>
+  </data>
+  <data name="Tip_YouAreWinner.Text" xml:space="preserve">
+    <value>You are the highest bidder.</value>
+  </data>
+  <data name="AuctionExplaination_English.Text" xml:space="preserve">
+    <value>&lt;p&gt;
+&amp;nbsp;&amp;nbsp;&lt;font color="Red"&gt;English Auction&lt;/font&gt;, also known as an open ascending price auction. This type of auction is arguably the most common form of auction in use today. 
+Participants bid openly against one another, with each subsequent bid higher than the previous bid. 
+The auction ends when no participant is willing to bid further, at which point the highest bidder pays their bid. 
+Alternatively, if the seller has set a minimum sale price in advance (the 'reserve' price) and the final bid does not reach that price the item remains unsold. 
+Sometimes the auctioneer sets a minimum amount by which the next bid must exceed the current highest bid. &lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The most significant distinguishing factor of this auction type is that the current highest bid is always available to potential bidders. 
+The English auction is commonly used for selling goods, most prominently antiques and artwork, but also secondhand goods and real estate.&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="AuctionExplaination_SealedFirstPrice.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&lt;font color="Red"&gt;Sealed first-price auction&lt;/font&gt;, also known as a first-price sealed-bid auction (FPSB). 
+In this type of auction all bidders simultaneously submit sealed bids so that no bidder knows the bid of any other participant. 
+The highest bidder pays the price they submitted. &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;This type of auction is distinct from the English auction, in that bidders can only submit one bid each. 
+Furthermore, as bidders cannot see the bids of other participants they cannot adjust their own bids accordingly. 
+Sealed first-price auctions are commonly used in tendering, particularly for government contracts and auctions for mining leases. &lt;br/&gt;&lt;br/&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="AuctionExplaination_SecondItem.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&lt;font color="Red"&gt;Second item auction&lt;/font&gt; is the only one which supports more than 1 quantity of product. In a second item auction, 
+the seller offers more than one identical item for sale, so that there may be more than one winning bidder. 
+Each bidder can bid for all the items or only some of them, and publicly indicates the price that he/she is willing to pay for each item. 
+However, all winning bidders need to pay only the lowest qualifying (successful) bid. If there are more successful bids than items available,
+priority goes to the bidders who submitted their bids first.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;In order to beat a competing bidder, one must bid a higher price per item than that competitor, 
+regardless of the number of items that are being bid for. Here is an example of how this might work:&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The seller auctions 5 identical items.&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Bidder "A" bids for 2 items at $20 each.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Bidder "B" bids for 4 items at $21 each.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Bidder "C" bids for 3 items at $18 each.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The outcome of this auction would be:&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Bidder "B" wins 4 items at $20 each....&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Bidder "A" wins 1 item at $20 each.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;The price is $20 because that was the lowest successful bid (hence the second price). &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;Since Bidder "A" was only awarded 1 item, and his original bid was for 2 items, he has the right to refuse the purchase of that partial amount. &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;As a winning bidder, you have the right to refuse paying if you are only awarded less than the number of the items you were bidding on..&lt;br/&gt;&lt;br/&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="AuctionExplaination_Vickrey.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&lt;font color="Red"&gt;Vickrey auction&lt;/font&gt;, also known as a sealed-bid second-price auction. 
+This is identical to the sealed first-price auction except that the winning bidder pays the second highest bid rather than their own. 
+This is very similar to the proxy bidding system used by eBay, where the winner pays the second highest bid plus a bidding increment (e.g., 10%).&lt;br/&gt;&lt;br/&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="BidCount.Text" xml:space="preserve">
+    <value>{0} Bids</value>
+  </data>
+  <data name="lblAuctionEnd.Text" xml:space="preserve">
+    <value>Auction Ends:</value>
+  </data>
+  <data name="lblAuctionStart.Text" xml:space="preserve">
+    <value>Auction Started:</value>
+  </data>
+  <data name="lblBidderNameHead.Text" xml:space="preserve">
+    <value>Bidder</value>
+  </data>
+  <data name="lblBidHead.Text" xml:space="preserve">
+    <value>Bid</value>
+  </data>
+  <data name="lblBidHistory.Text" xml:space="preserve">
+    <value>Bid History:</value>
+  </data>
+  <data name="lblProductName.Text" xml:space="preserve">
+    <value>Listing:</value>
+  </data>
+  <data name="tabAuctionExplaination.Text" xml:space="preserve">
+    <value>Auction Explanation</value>
+  </data>
+  <data name="Tip_AlreadyBid.Text" xml:space="preserve">
+    <value>This item only allows you to submit bid once. You already submitted bid before and can't bid it again.</value>
+  </data>
+  <data name="lblFeedbackScore.Text" xml:space="preserve">
+    <value>Feedback Score:</value>
+  </data>
+  <data name="lblClientName.Text" xml:space="preserve">
+    <value>Client:</value>
+  </data>
+  <data name="lblRatingDate.Text" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="lblRatingHead.Text" xml:space="preserve">
+    <value>Rating:</value>
+  </data>
+  <data name="Tip_BidSuccess.Text" xml:space="preserve">
+    <value>Bid successfully.</value>
+  </data>
+  <data name="Tip_BidWasBeyond.Text" xml:space="preserve">
+    <value>Your bid was submitted, however, there are some other users who offer higher bid via proxy bid mechanism, please check bid history for detail.</value>
+  </data>
+  <data name="Tip_Expired.Text" xml:space="preserve">
+    <value>Expired on {0}</value>
+  </data>
+  <data name="Tip_ItemExpired.Text" xml:space="preserve">
+    <value>Item is expired, can't submit bid to it (or directly buy it) anymore.</value>
+  </data>
+  <data name="Tip_CanNotBidYourself.Text" xml:space="preserve">
+    <value>You can't submit bid to your own auction listing. Try log in as another account if you just want to test this feature.</value>
+  </data>
+  <data name="Tip_ProxyBid.Text" xml:space="preserve">
+    <value>If "Proxy Bid" option is checked, site will bid incrementally for you up to your maximum bid.</value>
+  </data>
+  <data name="Tip_PriceBetween.Text" xml:space="preserve">
+    <value>Invalid bid price (someone may submit bid sooner than you), value must between {0} - {1}, please check it.</value>
+  </data>
+  <data name="Tip_PriceLower.Text" xml:space="preserve">
+    <value>Invalid bid price (someone may submit bid sooner than you), value can't lower than {0}, please check it.</value>
+  </data>
+  <data name="Tip_SoldOut.Text" xml:space="preserve">
+    <value>&lt;font color="red"&gt;Already sold out&lt;/font&gt;</value>
+  </data>
+  <data name="lblAddress.Text" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="lblBusinessScope.Text" xml:space="preserve">
+    <value>Business Scope:</value>
+  </data>
+  <data name="lblCompany.Text" xml:space="preserve">
+    <value>Company:</value>
+  </data>
+  <data name="lblFax.Text" xml:space="preserve">
+    <value>Fax:</value>
+  </data>
+  <data name="lblIM.Text" xml:space="preserve">
+    <value>IM:</value>
+  </data>
+  <data name="lblLinkman.Text" xml:space="preserve">
+    <value>Linkman:</value>
+  </data>
+  <data name="lblLocationCity.Text" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="lblLocationCountry.Text" xml:space="preserve">
+    <value>Country:</value>
+  </data>
+  <data name="lblLocationState.Text" xml:space="preserve">
+    <value>State/Province:</value>
+  </data>
+  <data name="lblLocationTown.Text" xml:space="preserve">
+    <value>Town:</value>
+  </data>
+  <data name="lblLogoUrl.Text" xml:space="preserve">
+    <value>Logo:</value>
+  </data>
+  <data name="lblSiteUrl.Text" xml:space="preserve">
+    <value>Web Site:</value>
+  </data>
+  <data name="lblSlogan.Text" xml:space="preserve">
+    <value>Slogan:</value>
+  </data>
+  <data name="lblTel.Text" xml:space="preserve">
+    <value>Tel:</value>
+  </data>
+  <data name="lblZipcode.Text" xml:space="preserve">
+    <value>Zipcode:</value>
+  </data>
+  <data name="lblShippingProperty.Text" xml:space="preserve">
+    <value>Shipping Property:</value>
+  </data>
+  <data name="Minutes.Text" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="Seconds.Text" xml:space="preserve">
+    <value>Seconds</value>
+  </data>
+  <data name="chkPrivate.Text" xml:space="preserve">
+    <value>Private (viewable for seller only)</value>
+  </data>
+</root>

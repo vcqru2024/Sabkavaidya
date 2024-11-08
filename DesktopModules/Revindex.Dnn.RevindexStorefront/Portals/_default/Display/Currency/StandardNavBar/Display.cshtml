@@ -1,0 +1,19 @@
+﻿@* Template name: StandardNavBar *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.CurrencyWebViewPage<CurrencyViewModel>
+
+<div class="rvdsf rvdsf-currency-container">
+	<div class="btn-group btn-group-xs">
+		<button type="button" class="btn btn-default btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="badge badge-secondary">@Model.Currency.CurrencySymbol</span> @Model.Currency.CurrencyCode <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			@foreach (var c in Model.Currencies)
+			{
+				<li class="dropdown-item"><a href="#" onclick="document.cookie = '@Global.CookieKeys.CurrencyCulture|@Dnn.Portal.PortalId=@c.CultureCode; path=/'; location.reload(true); return false;"><span class="badge badge-secondary">@c.CurrencySymbol</span> @c.CurrencyCode</a></li>
+			}
+		</ul>
+	</div>
+</div>

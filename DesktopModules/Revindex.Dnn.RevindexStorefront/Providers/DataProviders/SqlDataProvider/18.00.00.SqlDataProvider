@@ -1,0 +1,111 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]') AND type in (N'U'))
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite](
+		[FavoriteID] [int] IDENTITY(1,1) NOT NULL,
+		[PortalID] [int] NOT NULL,
+		[UserID] [int] NOT NULL,
+		[ProductID] [int] NOT NULL,
+		[CreateDate] [datetime] NOT NULL,
+		[RowVersion] [timestamp] NOT NULL,
+	 CONSTRAINT [PK_{objectQualifier}Revindex_Storefront_Favorite] PRIMARY KEY CLUSTERED 
+	(
+		[FavoriteID] ASC
+	))
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]') AND name = N'IX_{objectQualifier}Revindex_Storefront_Favorite')
+	CREATE UNIQUE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_Favorite] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]
+	(
+		[PortalID] ASC,
+		[UserID] ASC,
+		[ProductID] ASC
+	)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]') AND name = N'IX_{objectQualifier}Revindex_Storefront_Favorite_1')
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_Favorite_1] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]
+	(
+		[UserID] ASC
+	)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]') AND name = N'IX_{objectQualifier}Revindex_Storefront_Favorite_2')
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Revindex_Storefront_Favorite_2] ON {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]
+	(
+		[ProductID] ASC
+	)
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}FK_Revindex_Storefront_Favorite_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_Favorite_Portals] FOREIGN KEY([PortalID])
+	REFERENCES {databaseOwner}[{objectQualifier}Portals] ([PortalID])
+	ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}FK_Revindex_Storefront_Favorite_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_Favorite_Portals]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}FK_Revindex_Storefront_Favorite_Revindex_Storefront_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_Favorite_Revindex_Storefront_Product] FOREIGN KEY([ProductID])
+	REFERENCES {databaseOwner}[{objectQualifier}Revindex_Storefront_Product] ([ProductID])
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}FK_Revindex_Storefront_Favorite_Revindex_Storefront_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_Favorite_Revindex_Storefront_Product]
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}FK_Revindex_Storefront_Favorite_Users]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]  WITH CHECK ADD  CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_Favorite_Users] FOREIGN KEY([UserID])
+	REFERENCES {databaseOwner}[{objectQualifier}Users] ([UserID])
+	ON DELETE CASCADE
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}FK_Revindex_Storefront_Favorite_Users]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite]'))
+	ALTER TABLE {databaseOwner}[{objectQualifier}Revindex_Storefront_Favorite] CHECK CONSTRAINT [FK_{objectQualifier}Revindex_Storefront_Favorite_Users]
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ProductListAddToFavoriteShow')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		ProductListAddToFavoriteShow bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductListAddToFavoriteShow DEFAULT 0,
+		ProductDetailAddToFavoriteShow bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductDetailAddToFavoriteShow DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductListAddToFavoriteShow
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductDetailAddToFavoriteShow
+END
+GO
+
+-- Add ManageFavoriteDisplayTemplate column
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ManageFavoriteDisplayTemplate')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ManageFavoriteDisplayTemplate varchar(255) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFavoriteDisplayTemplate DEFAULT 'StandardGrid'
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ManageFavoriteActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFavoriteActive DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFavoriteDisplayTemplate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFavoriteActive
+END 
+GO
+
+
+-- Add communication emails for product inventory and price changes
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'CommunicationProductVariantInventoryUpdateEmailActive')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		CommunicationProductVariantInventoryUpdateEmailActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_CommunicationProductVariantInventoryUpdateEmailActive DEFAULT 0,
+		CommunicationProductVariantInventoryUpdateEmailTemplate xml NULL,
+		CommunicationProductVariantPriceUpdateEmailActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_CommunicationProductVariantPriceUpdateEmailActive DEFAULT 0,
+		CommunicationProductVariantPriceUpdateEmailTemplate xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_CommunicationProductVariantInventoryUpdateEmailActive
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_CommunicationProductVariantPriceUpdateEmailActive
+END
+GO

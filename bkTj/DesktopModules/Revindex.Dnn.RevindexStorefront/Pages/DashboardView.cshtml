@@ -1,0 +1,1029 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<DashboardViewModel>
+
+<div class="rvd-module-container rvdsf-dashboard-container">
+	@if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+	{
+		<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert])">@Model.TempData[Global.TempDataKeys.Message]</div>
+	}
+	@if (Model.MissingModules.Count > 0)
+	{
+		<div class="alert alert-warning">@String.Format(Html.LocalizeString("ModuleMissingLabel"), @String.Join(", ", Model.MissingModules.ToArray())) <a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Configuration-InstallerControl" } })">@Html.LocalizeString("HelpMeLink")</a></div>
+	}
+	<h2>@Html.LocalizeString("DashboardHeader")</h2>
+	<hr />
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("SalesOrderHealthHeader")</h3>
+				</div>
+				<div class="panel-body card-body">
+					<div class="text-center" style="min-height: 50px">
+						@{ var orderHealthy = true; }
+						@if (Model.SalesOrderStatusReport.TotalPendingSalesOrder > 0)
+						{
+							orderHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, ((int)SalesOrderStatusType.Pending).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-status-1">@Model.SalesOrderStatusReport.TotalPendingSalesOrder @Html.LocalizeString("1", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalQuotedSalesOrder > 0)
+						{
+							orderHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, ((int)SalesOrderStatusType.Quoted).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-status-9">@Model.SalesOrderStatusReport.TotalQuotedSalesOrder @Html.LocalizeString("9", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalOrderedSalesOrder > 0)
+						{
+							orderHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, ((int)SalesOrderStatusType.Ordered).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-status-2">@Model.SalesOrderStatusReport.TotalOrderedSalesOrder @Html.LocalizeString("2", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalProcessingSalesOrder > 0)
+						{
+							orderHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, ((int)SalesOrderStatusType.Processing).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-status-3">@Model.SalesOrderStatusReport.TotalProcessingSalesOrder @Html.LocalizeString("3", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile)</span></a>
+						}
+						@if (orderHealthy)
+						{
+							<span>@Html.LocalizeString("GoodLabel")</span>
+						}
+					</div>
+					<div id="rvdsfSalesOrderStatusPanel"></div>
+					<script>
+						$(document).ready(function () {
+							var data = [
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("5", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalCancelledSalesOrder,
+									color: 'Khaki'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("4", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalCompletedSalesOrder,
+									color: 'YellowGreen'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("6", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalDeclinedSalesOrder,
+									color: 'Red'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("2", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalOrderedSalesOrder,
+									color: 'Gold'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("1", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalPendingSalesOrder,
+									color: 'HotPink'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("3", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalProcessingSalesOrder,
+									color: 'SkyBlue'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("9", Global.FilePaths.LocalSalesOrderStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalQuotedSalesOrder,
+									color: 'DeepPink'
+								},
+							]
+							
+
+							if (Math.max.apply(Math, data.map(function(o) { return o.value; })) == 0) {
+								data = [{
+									category: 'No data',
+									value: 1,
+									color: 'Silver'
+								}]
+							}
+
+							$("#rvdsfSalesOrderStatusPanel").kendoChart({
+								chartArea: {
+									height: 190,
+									margin: 0
+								},
+								legend: {
+									visible: false
+								},
+								seriesDefaults: {
+									type: "donut"
+								},
+								series: [{ name: "", data: data }],
+								tooltip: {
+									visible: true,
+									template: "#= category #: #= value #"
+								}
+							});
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("SalesPaymentHealthHeader")</h3>
+				</div>
+				<div class="panel-body card-body">
+					<div class="text-center" style="min-height: 50px">
+						@{ var paymentHealthy = true; }
+						@if (Model.SalesOrderStatusReport.TotalIncompleteSalesPayment > 0)
+						{
+							paymentHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderSalesPaymentStatus, ((int)SalesPaymentStatusType.Incomplete).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-salespaymentstatus-6">@Model.SalesOrderStatusReport.TotalIncompleteSalesPayment @Html.LocalizeString("6", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalPendingSalesPayment > 0)
+						{
+							paymentHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderSalesPaymentStatus, ((int)SalesPaymentStatusType.Pending).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-salespaymentstatus-1">@Model.SalesOrderStatusReport.TotalPendingSalesPayment @Html.LocalizeString("1", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalDeclinedSalesPayment > 0)
+						{
+							paymentHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderSalesPaymentStatus, ((int)SalesPaymentStatusType.Declined).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-salespaymentstatus-5">@Model.SalesOrderStatusReport.TotalDeclinedSalesPayment @Html.LocalizeString("5", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile)</span></a>
+						}
+						@if (paymentHealthy)
+						{
+							<span>@Html.LocalizeString("GoodLabel")</span>
+						}
+					</div>
+					<div id="rvdsfSalesPaymentStatusPanel"></div>
+					<script>
+						$(document).ready(function () {
+							var data = [
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("3", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalCancelledSalesPayment,
+									color: 'Khaki'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("5", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalDeclinedSalesPayment,
+									color: 'Red'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("6", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalIncompleteSalesPayment,
+									color: 'Silver'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("2", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalPaidSalesPayment,
+									color: 'YellowGreen'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("1", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalPendingSalesPayment,
+									color: 'HotPink'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("4", Global.FilePaths.LocalSalesPaymentStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalRefundedSalesPayment,
+									color: 'DarkKhaki'
+								},
+							]
+							
+
+							if (Math.max.apply(Math, data.map(function(o) { return o.value; })) == 0) {
+								data = [{
+									category: 'No data',
+									value: 1,
+									color: 'Silver'
+								}]
+							}
+
+							$("#rvdsfSalesPaymentStatusPanel").kendoChart({
+								chartArea: {
+									height: 190,
+									margin: 0
+								},
+								legend: {
+									visible: false
+								},
+								seriesDefaults: {
+									type: "donut"
+								},
+								series: [{ name: "", data: data }],
+								tooltip: {
+									visible: true,
+									template: "#= category #: #= value #"
+								}
+							});
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("ShippingHealthHeader")</h3>
+				</div>
+				<div class="panel-body card-body">
+					<div class="text-center" style="min-height: 50px">
+						@{ var shippingHealthy = true; }
+						@if (Model.SalesOrderStatusReport.TotalNotShippedShipping > 0)
+						{
+							shippingHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderShippingStatus, ((int)ShippingStatusType.NotShipped).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-shippingstatus-2">@Model.SalesOrderStatusReport.TotalNotShippedShipping @Html.LocalizeString("2", Global.FilePaths.LocalShippingStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalPackingShipping > 0)
+						{
+							shippingHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderShippingStatus, ((int)ShippingStatusType.Packing).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-shippingstatus-5">@Model.SalesOrderStatusReport.TotalPackingShipping @Html.LocalizeString("5", Global.FilePaths.LocalShippingStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalPackedShipping > 0)
+						{
+							shippingHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderShippingStatus, ((int)ShippingStatusType.Packed).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-shippingstatus-6">@Model.SalesOrderStatusReport.TotalPackedShipping @Html.LocalizeString("6", Global.FilePaths.LocalShippingStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalDispatchingShipping > 0)
+						{
+							shippingHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderShippingStatus, ((int)ShippingStatusType.Dispatching).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-shippingstatus-7">@Model.SalesOrderStatusReport.TotalDispatchingShipping @Html.LocalizeString("7", Global.FilePaths.LocalShippingStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.SalesOrderStatusReport.TotalUndeliverableShipping > 0)
+						{
+							shippingHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-SalesOrderControl" }, { Global.QueryStringKeys.SearchSalesOrderStatus, "-1" }, { Global.QueryStringKeys.SearchSalesOrderShippingStatus, ((int)ShippingStatusType.Undeliverable).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-salesorder-shippingstatus-4">@Model.SalesOrderStatusReport.TotalUndeliverableShipping @Html.LocalizeString("4", Global.FilePaths.LocalShippingStatusTypeResourceFile)</span></a>
+						}
+						@if (shippingHealthy)
+						{
+							<span>@Html.LocalizeString("GoodLabel")</span>
+						}
+					</div>
+					<div id="rvdsfShippingStatusPanel"></div>
+					<script>
+						$(document).ready(function () {
+							var data = [
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("7", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalDispatchingShipping,
+									color: 'SteelBlue'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("1", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalNotRequiredShipping,
+									color: 'LightGreen'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("2", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalNotShippedShipping,
+									color: 'Gold'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("6", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalPackedShipping,
+									color: 'SkyBlue'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("5", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalPackingShipping,
+									color: 'LightBlue'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("3", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalShippedShipping,
+									color: 'YellowGreen'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("4", Global.FilePaths.LocalShippingStatusTypeResourceFile))',
+									value: @Model.SalesOrderStatusReport.TotalUndeliverableShipping,
+									color: 'Red'
+								},
+							]
+							
+
+							if (Math.max.apply(Math, data.map(function(o) { return o.value; })) == 0) {
+								data = [{
+									category: 'No data',
+									value: 1,
+									color: 'Silver'
+								}]
+							}
+
+							$("#rvdsfShippingStatusPanel").kendoChart({
+								chartArea: {
+									height: 190,
+									margin: 0
+								},
+								legend: {
+									visible: false
+								},
+								seriesDefaults: {
+									type: "donut"
+								},
+								series: [{ name: "", data: data }],
+								tooltip: {
+									visible: true,
+									template: "#= category #: #= value #"
+								}
+							});
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("RecurringSalesOrderHealthHeader")</h3>
+				</div>
+				<div class="panel-body card-body">
+					<div class="text-center" style="min-height: 50px">
+						@{ var recurringHealthy = true; }
+						@if (Model.RecurringSalesOrderStatusReport.TotalHoldRecurringOrder > 0)
+						{
+							recurringHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-RecurringSalesOrderControl" }, { Global.QueryStringKeys.SearchRecurringSalesOrderStatus, ((int)RecurringSalesOrderStatusType.Hold).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-recurringsalesorder-status-2">@Model.RecurringSalesOrderStatusReport.TotalHoldRecurringOrder @Html.LocalizeString("2", Global.FilePaths.LocalRecurringSalesOrderStatusTypeResourceFile)</span></a>
+						}
+						@if (Model.RecurringSalesOrderStatusReport.TotalInvalidRecurringOrder > 0)
+						{
+							recurringHealthy = false;
+							<a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Sales-RecurringSalesOrderControl" }, { Global.QueryStringKeys.SearchRecurringSalesOrderStatus, ((int)RecurringSalesOrderStatusType.Invalid).ToString() }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })"><span class="label badge rvdsf-recurringsalesorder-status-3">@Model.RecurringSalesOrderStatusReport.TotalInvalidRecurringOrder @Html.LocalizeString("3", Global.FilePaths.LocalRecurringSalesOrderStatusTypeResourceFile)</span></a>
+						}
+						@if (recurringHealthy)
+						{
+							<span>@Html.LocalizeString("GoodLabel")</span>
+						}
+					</div>
+					<div id="rvdsfRecurringSalesOrderStatusPanel"></div>
+					<script>
+						$(document).ready(function () {
+							var data = [
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("1", Global.FilePaths.LocalRecurringSalesOrderStatusTypeResourceFile))',
+									value: @Model.RecurringSalesOrderStatusReport.TotalActiveRecurringOrder,
+									color: 'SkyBlue'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("4", Global.FilePaths.LocalRecurringSalesOrderStatusTypeResourceFile))',
+									value: @Model.RecurringSalesOrderStatusReport.TotalCancelledRecurringOrder,
+									color: 'Khaki'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("2", Global.FilePaths.LocalRecurringSalesOrderStatusTypeResourceFile))',
+									value: @Model.RecurringSalesOrderStatusReport.TotalHoldRecurringOrder,
+									color: 'HotPink'
+								},
+								{
+									category: '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("3", Global.FilePaths.LocalRecurringSalesOrderStatusTypeResourceFile))',
+									value: @Model.RecurringSalesOrderStatusReport.TotalInvalidRecurringOrder,
+									color: 'Red'
+								},
+							]
+							
+
+							if (Math.max.apply(Math, data.map(function(o) { return o.value; })) == 0) {
+								data = [{
+									category: 'No data',
+									value: 1,
+									color: 'Silver'
+								}]
+							}
+
+							$("#rvdsfRecurringSalesOrderStatusPanel").kendoChart({
+								chartArea: {
+									height: 190,
+									margin: 0
+								},
+								legend: {
+									visible: false
+								},
+								seriesDefaults: {
+									type: "donut"
+								},
+								series: [{ name: "", data: data }],
+								tooltip: {
+									visible: true,
+									template: "#= category #: #= value #"
+								}
+							});
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-header pb-2 mt-4 mb-2 border-bottom">
+		<h3>@Html.LocalizeString("SalesSnapshotHeader")</h3>
+	</div>
+	<div>
+		<ul class="nav nav-pills" role="tablist">
+			<li role="presentation" class="nav-item active"><a class="nav-link active" href="#rvdsfDailySalesSnapshotReport" role="tab" data-toggle="tab"><small>@Html.LocalizeString("TodayLabel")</small></a></li>
+			<li role="presentation" class="nav-item"><a class="nav-link" href="#rvdsfWeeklySalesSnapshotReport" role="tab" data-toggle="tab"><small>@Html.LocalizeString("WeekLabel")</small></a></li>
+			<li role="presentation" class="nav-item"><a class="nav-link" href="#rvdsfMonthlySalesSnapshotReport" role="tab" data-toggle="tab"><small>@Html.LocalizeString("MonthLabel")</small></a></li>
+			<li role="presentation" class="nav-item"><a class="nav-link" href="#rvdsfQuarterlySalesSnapshotReport" role="tab" data-toggle="tab"><small>@Html.LocalizeString("QuarterLabel")</small></a></li>
+			<li role="presentation" class="nav-item"><a class="nav-link" href="#rvdsfYearlySalesSnapshotReport" role="tab" data-toggle="tab"><small>@Html.LocalizeString("YearLabel")</small></a></li>
+		</ul>
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="rvdsfDailySalesSnapshotReport">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("RevenueHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.DailySalesSnapshotReport.FormattedCurrentRevenue</h4>
+									<label>@Html.LocalizeString("YesterdayLabel")</label>
+									<p>@Model.DailySalesSnapshotReport.FormattedPreviousRevenue</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.DailySalesSnapshotReport.PercentChangeRevenue.HasValue)
+									{
+										<h4 style="color: @(Model.DailySalesSnapshotReport.PercentChangeRevenue < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.DailySalesSnapshotReport.PercentChangeRevenue.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("NumberOfOrdersHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.DailySalesSnapshotReport.CurrentNumberOfOrders</h4>
+									<label>@Html.LocalizeString("YesterdayLabel")</label>
+									<p>@Model.DailySalesSnapshotReport.PreviousNumberOfOrders</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.DailySalesSnapshotReport.PercentChangeNumberOfOrders.HasValue)
+									{
+										<h4 style="color: @(Model.DailySalesSnapshotReport.PercentChangeNumberOfOrders < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.DailySalesSnapshotReport.PercentChangeNumberOfOrders.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("AverageOrderHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.DailySalesSnapshotReport.FormattedCurrentAvgOrderAmount</h4>
+									<label>@Html.LocalizeString("YesterdayLabel")</label>
+									<p>@Model.DailySalesSnapshotReport.FormattedPreviousAvgOrderAmount</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.DailySalesSnapshotReport.PercentChangeAvgOrderAmount.HasValue)
+									{
+										<h4 style="color: @(Model.DailySalesSnapshotReport.PercentChangeAvgOrderAmount < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.DailySalesSnapshotReport.PercentChangeAvgOrderAmount.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="rvdsfWeeklySalesSnapshotReport">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("RevenueHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.WeeklySalesSnapshotReport.FormattedCurrentRevenue</h4>
+									<label>@Html.LocalizeString("LastWeekLabel")</label>
+									<p>@Model.WeeklySalesSnapshotReport.FormattedPreviousRevenue</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.WeeklySalesSnapshotReport.PercentChangeRevenue.HasValue)
+									{
+										<h4 style="color: @(Model.WeeklySalesSnapshotReport.PercentChangeRevenue < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.WeeklySalesSnapshotReport.PercentChangeRevenue.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("NumberOfOrdersHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.WeeklySalesSnapshotReport.CurrentNumberOfOrders</h4>
+									<label>@Html.LocalizeString("LastWeekLabel")</label>
+									<p>@Model.WeeklySalesSnapshotReport.PreviousNumberOfOrders</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.WeeklySalesSnapshotReport.PercentChangeNumberOfOrders.HasValue)
+									{
+										<h4 style="color: @(Model.WeeklySalesSnapshotReport.PercentChangeNumberOfOrders < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.WeeklySalesSnapshotReport.PercentChangeNumberOfOrders.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("AverageOrderHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.WeeklySalesSnapshotReport.FormattedCurrentAvgOrderAmount</h4>
+									<label>@Html.LocalizeString("LastWeekLabel")</label>
+									<p>@Model.WeeklySalesSnapshotReport.FormattedPreviousAvgOrderAmount</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.WeeklySalesSnapshotReport.PercentChangeAvgOrderAmount.HasValue)
+									{
+										<h4 style="color: @(Model.WeeklySalesSnapshotReport.PercentChangeAvgOrderAmount < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.WeeklySalesSnapshotReport.PercentChangeAvgOrderAmount.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="rvdsfMonthlySalesSnapshotReport">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("RevenueHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.MonthlySalesSnapshotReport.FormattedCurrentRevenue</h4>
+									<label>@Html.LocalizeString("LastMonthLabel")</label>
+									<p>@Model.MonthlySalesSnapshotReport.FormattedPreviousRevenue</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.MonthlySalesSnapshotReport.PercentChangeRevenue.HasValue)
+									{
+										<h4 style="color: @(Model.MonthlySalesSnapshotReport.PercentChangeRevenue < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.MonthlySalesSnapshotReport.PercentChangeRevenue.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("NumberOfOrdersHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.MonthlySalesSnapshotReport.CurrentNumberOfOrders</h4>
+									<label>@Html.LocalizeString("LastMonthLabel")</label>
+									<p>@Model.MonthlySalesSnapshotReport.PreviousNumberOfOrders</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.MonthlySalesSnapshotReport.PercentChangeNumberOfOrders.HasValue)
+									{
+										<h4 style="color: @(Model.MonthlySalesSnapshotReport.PercentChangeNumberOfOrders < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.MonthlySalesSnapshotReport.PercentChangeNumberOfOrders.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("AverageOrderHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.MonthlySalesSnapshotReport.FormattedCurrentAvgOrderAmount</h4>
+									<label>@Html.LocalizeString("LastMonthLabel")</label>
+									<p>@Model.MonthlySalesSnapshotReport.FormattedPreviousAvgOrderAmount</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.MonthlySalesSnapshotReport.PercentChangeAvgOrderAmount.HasValue)
+									{
+										<h4 style="color: @(Model.MonthlySalesSnapshotReport.PercentChangeAvgOrderAmount < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.MonthlySalesSnapshotReport.PercentChangeAvgOrderAmount.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="rvdsfQuarterlySalesSnapshotReport">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("RevenueHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.QuarterlySalesSnapshotReport.FormattedCurrentRevenue</h4>
+									<label>@Html.LocalizeString("LastQuarterLabel")</label>
+									<p>@Model.QuarterlySalesSnapshotReport.FormattedPreviousRevenue</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.QuarterlySalesSnapshotReport.PercentChangeRevenue.HasValue)
+									{
+										<h4 style="color: @(Model.QuarterlySalesSnapshotReport.PercentChangeRevenue < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.QuarterlySalesSnapshotReport.PercentChangeRevenue.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("NumberOfOrdersHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.QuarterlySalesSnapshotReport.CurrentNumberOfOrders</h4>
+									<label>@Html.LocalizeString("LastQuarterLabel")</label>
+									<p>@Model.QuarterlySalesSnapshotReport.PreviousNumberOfOrders</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.QuarterlySalesSnapshotReport.PercentChangeNumberOfOrders.HasValue)
+									{
+										<h4 style="color: @(Model.QuarterlySalesSnapshotReport.PercentChangeNumberOfOrders < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.QuarterlySalesSnapshotReport.PercentChangeNumberOfOrders.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("AverageOrderHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.QuarterlySalesSnapshotReport.FormattedCurrentAvgOrderAmount</h4>
+									<label>@Html.LocalizeString("LastQuarterLabel")</label>
+									<p>@Model.QuarterlySalesSnapshotReport.FormattedPreviousAvgOrderAmount</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.QuarterlySalesSnapshotReport.PercentChangeAvgOrderAmount.HasValue)
+									{
+										<h4 style="color: @(Model.QuarterlySalesSnapshotReport.PercentChangeAvgOrderAmount < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.QuarterlySalesSnapshotReport.PercentChangeAvgOrderAmount.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div role="tabpanel" class="tab-pane" id="rvdsfYearlySalesSnapshotReport">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("RevenueHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.YearlySalesSnapshotReport.FormattedCurrentRevenue</h4>
+									<label>@Html.LocalizeString("LastYearLabel")</label>
+									<p>@Model.YearlySalesSnapshotReport.FormattedPreviousRevenue</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.YearlySalesSnapshotReport.PercentChangeRevenue.HasValue)
+									{
+										<h4 style="color: @(Model.YearlySalesSnapshotReport.PercentChangeRevenue < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.YearlySalesSnapshotReport.PercentChangeRevenue.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("NumberOfOrdersHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.YearlySalesSnapshotReport.CurrentNumberOfOrders</h4>
+									<label>@Html.LocalizeString("LastYearLabel")</label>
+									<p>@Model.YearlySalesSnapshotReport.PreviousNumberOfOrders</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.YearlySalesSnapshotReport.PercentChangeNumberOfOrders.HasValue)
+									{
+										<h4 style="color: @(Model.YearlySalesSnapshotReport.PercentChangeNumberOfOrders < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.YearlySalesSnapshotReport.PercentChangeNumberOfOrders.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="panel panel-default card" style="min-height: 160px">
+							<div class="panel-heading card-header">
+								<h3 class="panel-title card-title">@Html.LocalizeString("AverageOrderHeader")</h3>
+							</div>
+							<div class="panel-body card-body row">
+								<div class="col-xs-8 col-8">
+									<h4>@Model.YearlySalesSnapshotReport.FormattedCurrentAvgOrderAmount</h4>
+									<label>@Html.LocalizeString("LastYearLabel")</label>
+									<p>@Model.YearlySalesSnapshotReport.FormattedPreviousAvgOrderAmount</p>
+								</div>
+								<div class="col-xs-4 col-4">
+									@if (Model.YearlySalesSnapshotReport.PercentChangeAvgOrderAmount.HasValue)
+									{
+										<h4 style="color: @(Model.YearlySalesSnapshotReport.PercentChangeAvgOrderAmount < 0 ? "#FF5555" : "#00AA00"); word-break: break-all;">@Model.YearlySalesSnapshotReport.PercentChangeAvgOrderAmount.Value.ToString("+0.#;-0.#;0")%</h4>
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-header pb-2 mt-4 mb-2 border-bottom">
+		<h3>@Html.LocalizeString("SalesActivityByRevenueHeader")</h3>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="rvdsfSalesRevenueActivityPanel" style="height: 300px"></div>
+			<script>
+				$(document).ready(function () {
+					$("#rvdsfSalesRevenueActivityPanel").kendoChart({
+						legend: {
+							visible: false
+						},
+						seriesDefaults: {
+							type: "line",
+							line: {
+									style: "smooth",
+									width: 2,
+									color: "#ff0000",
+							},
+							markers: {
+								visible: true,
+								background: "rgba(0, 0, 0, 0.2)",
+								border: {
+									width: 0
+								},
+								size: 6
+							},
+						},
+						series: [{
+							name: "Revenue",
+							data: [
+									@for (int i = Model.SalesPerformanceByDateReportItems.Count - 1; i >= 0 && i >= Model.SalesPerformanceByDateReportItems.Count - 60; i--)
+									{
+										var item = Model.SalesPerformanceByDateReportItems[i];
+										<text>@item.Revenue.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture), </text>
+									}
+							],
+						}],
+						valueAxis: {
+							labels: {
+								format: "{0}",
+								color: "#666"
+							},
+							line: {
+								visible: false
+							},
+						},
+						categoryAxis: {
+							categories: [
+									@for (int i = Model.SalesPerformanceByDateReportItems.Count - 1; i >= 0 && i >= Model.SalesPerformanceByDateReportItems.Count - 60; i--)
+									{
+										var item = Model.SalesPerformanceByDateReportItems[i];
+										<text>new Date("@item.Date.ToString("yyyy-MM-dd")"), </text>
+									}
+							],
+							maxDivisions: 30,
+							line: {
+								visible: false
+							},
+							labels: {
+								color: "#666",
+								rotation: -45
+							},
+						},
+						tooltip: {
+							visible: true,
+							format: "{0}",
+							template: "#= kendo.toString(category, 'yyyy-MM-dd') #: #= value #"
+						}
+					});
+				});
+			</script>
+		</div>
+	</div>
+	<div class="page-header pb-2 mt-4 mb-2 border-bottom">
+		<h3>@Html.LocalizeString("SalesActivityByNumberOfOrdersHeader")</h3>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="rvdsfSalesNumberOfOrderPanel" style="height: 300px"></div>
+			<script>
+				$(document).ready(function () {
+					$("#rvdsfSalesNumberOfOrderPanel").kendoChart({
+						legend: {
+							visible: false
+						},
+						seriesDefaults: {
+							type: "line",
+							line: {
+									style: "smooth",
+									width: 2,
+									color: "#6699cc",
+							},
+							markers: {
+								visible: true,
+								background: "rgba(0, 0, 0, 0.2)",
+								border: {
+									width: 0
+								},
+								size: 6
+							},
+						},
+						series: [{
+							name: "Number of Orders",
+							data: [
+									@for (int i = Model.SalesPerformanceByDateReportItems.Count - 1; i >= 0 && i >= Model.SalesPerformanceByDateReportItems.Count - 60; i--)
+									{
+										var item = Model.SalesPerformanceByDateReportItems[i];
+										<text>@item.NumberOfOrders, </text>
+									}
+							],
+						}],
+						valueAxis: {
+							labels: {
+								format: "{0}",
+								color: "#666"
+							},
+							line: {
+								visible: false
+							},
+						},
+						categoryAxis: {
+							categories: [
+									@for (int i = Model.SalesPerformanceByDateReportItems.Count - 1; i >= 0 && i >= Model.SalesPerformanceByDateReportItems.Count - 60; i--)
+									{
+										var item = Model.SalesPerformanceByDateReportItems[i];
+										<text>new Date("@item.Date.ToString("yyyy-MM-dd")"), </text>
+									}
+							],
+							maxDivisions: 30,
+							line: {
+								visible: false
+							},
+							labels: {
+								color: "#666",
+								rotation: -45
+							},
+						},
+						tooltip: {
+							visible: true,
+							format: "{0}",
+							template: "#= kendo.toString(category, 'yyyy-MM-dd') #: #= value #"
+						}
+					});
+				});
+			</script>
+		</div>
+	</div>
+	<div class="page-header pb-2 mt-4 mb-2 border-bottom">
+		<h3>@Html.LocalizeString("SalesActivityByAverageOrderHeader")</h3>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div id="rvdsfSalesAverageOrderAmountPanel" style="height: 300px"></div>
+			<script>
+				$(document).ready(function () {
+					$("#rvdsfSalesAverageOrderAmountPanel").kendoChart({
+						legend: {
+							visible: false
+						},
+						seriesDefaults: {
+							type: "line",
+							line: {
+									style: "smooth",
+									width: 2,
+									color: "#ff9966",
+							},
+							markers: {
+								visible: true,
+								background: "rgba(0, 0, 0, 0.2)",
+								border: {
+									width: 0
+								},
+								size: 6
+							},
+						},
+						series: [{
+							name: "Number of Orders",
+							data: [
+									@for (int i = Model.SalesPerformanceByDateReportItems.Count - 1; i >= 0 && i >= Model.SalesPerformanceByDateReportItems.Count - 60; i--)
+									{
+										var item = Model.SalesPerformanceByDateReportItems[i];
+										<text>@item.AverageOrderAmount.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture), </text>
+									}
+							],
+						}],
+						valueAxis: {
+							labels: {
+								format: "{0}",
+								color: "#666"
+							},
+							line: {
+								visible: false
+							},
+						},
+						categoryAxis: {
+							categories: [
+									@for (int i = Model.SalesPerformanceByDateReportItems.Count - 1; i >= 0 && i >= Model.SalesPerformanceByDateReportItems.Count - 60; i--)
+									{
+										var item = Model.SalesPerformanceByDateReportItems[i];
+										<text>new Date("@item.Date.ToString("yyyy-MM-dd")"), </text>
+									}
+							],
+							maxDivisions: 30,
+							line: {
+								visible: false
+							},
+							labels: {
+								color: "#666",
+								rotation: -45
+							},
+						},
+						tooltip: {
+							visible: true,
+							format: "{0}",
+							template: "#= kendo.toString(category, 'yyyy-MM-dd') #: #= value #"
+						}
+					});
+				});
+			</script>
+		</div>
+	</div>
+	<div class="page-header pb-2 mt-4 mb-2 border-bottom">
+		<h3>@Html.LocalizeString("ProductSnapshotHeader")</h3>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("TopProductsByRevenueHeader") <small class="pull-right float-right">@Html.LocalizeString("TopProductsPeriodLabel")</small></h3>
+				</div>
+				<div class="panel-body card-body" style="min-height: 230px">
+					<table class="table table-condensed table-sm">
+						@foreach (var item in Model.TopSellingProductsByRevenueItems)
+						{
+						<tr>
+							<td><a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Catalog-ProductControl" }, { Global.QueryStringKeys.ProductID, item.ProductID.ToString() } })">@item.Product.Name</a></td>
+							<td style="white-space: nowrap"><strong>@item.FormattedRevenue</strong></td>
+						</tr>
+						}
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("TopProductsByUnitHeader") <small class="pull-right float-right">@Html.LocalizeString("TopProductsPeriodLabel")</small></h3>
+				</div>
+				<div class="panel-body card-body" style="min-height: 230px">
+					<table class="table table-condensed table-sm">
+						@foreach (var item in Model.TopSellingProductsByQuantityItems)
+						{
+						<tr>
+							<td><a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Catalog-ProductControl" }, { Global.QueryStringKeys.ProductID, item.ProductID.ToString() } })">@item.Product.Name</a></td>
+							<td><strong>@item.Quantity</strong></td>
+						</tr>
+						}
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-default card">
+				<div class="panel-heading card-header">
+					<h3 class="panel-title card-title">@Html.LocalizeString("LowProductInventoryHeader")</h3>
+				</div>
+				<div class="panel-body card-body" style="min-height: 230px">
+					<table class="table table-condensed table-sm">
+						@foreach (var item in Model.LowProductInventoryReport)
+						{
+							<tr>
+								<td><a href="@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.PageTarget, "Catalog-ProductVariantControl" }, { Global.QueryStringKeys.ProductID, item.ProductID.ToString() }, { Global.QueryStringKeys.ProductVariantID, item.ProductVariantID.ToString() } })">@item.Product.Name</a></td>
+								<td><strong>@item.Inventory</strong></td>
+							</tr>
+						}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="text-muted mt-4">v@(Model.Version.ToString()) @Model.Edition</p>
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+</div>

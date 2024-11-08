@@ -1,0 +1,254 @@
+
+/* Style header bar */
+#topHeader {
+    background: #0e2936;
+    min-width: 25px;
+    min-height: 70px;
+    padding: 0;
+    z-index: 11;
+}
+
+@media only screen and (min-width: 768px) {
+    #topHeader {
+        position: fixed;
+        top: 0px;
+        z-index: 11;
+        width: 100%;
+    }
+
+    .dnn8.authenticated #topHeader {
+        top: 50px;
+    }
+}
+
+/* Adjust header bar for mobile */
+@media only screen and (max-width: 767px) {
+    #topHeader div.col-xs-12,
+    #topHeader div.col-sm-12 {
+        margin-top: 14px;
+    }
+}
+
+/* Adjust page main menu */
+#topHeader .navbar {
+    margin: 0 0;
+    min-height: 35px;
+    font-size: 11px;
+}
+
+#topHeader .navbar-inverse {
+    background-color: transparent;
+    border: none;
+}
+
+#topHeader .navbar-nav > li {
+    max-width: 120px;
+}
+
+#topHeader .navbar-nav > li > a {
+    overflow: hidden;
+    padding-bottom: 9px;
+    padding-top: 6px;
+    padding-right: 8px;
+    padding-left: 8px;
+    white-space: nowrap;
+}
+
+#topHeader .navbar-nav > .active > a {
+    background-color: transparent;
+}
+
+/* Adjust page menu for desktop */
+@media only screen and (min-width: 768px) {
+    #topHeader .navbar-collapse {
+        float: right;
+    }
+}
+
+.logo {
+    max-height: 60px;
+    max-width: 160px;
+    padding: 10px 0;
+}
+
+#login ul.buttonGroup {
+    list-style: none;
+}
+
+#login .loginGroup, #login .registerGroup {
+    float: right;
+    padding: 0;
+    margin: 0
+}
+
+#login .loginGroup a, #login .registerGroup a {
+display: inline-block;
+position: relative;
+height: 34px;
+min-width: 12px;
+padding: 7px 15px 0;
+color: #fff;
+font-size: 11px;
+vertical-align: middle
+}
+
+#login .loginGroup a:hover, #login .registerGroup a:hover {
+    background: #d7d7d7;
+    color: #333;
+    text-decoration: none
+}
+
+#login .loginGroup a:active, #login .registerGroup a:active {
+    color: #333
+}
+
+#login .loginGroup a strong, #login .registerGroup a strong {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    font-size: 11px;
+    text-indent: -9999px
+}
+
+#login .registerGroup li {
+float: left;
+line-height: 1.2em
+}
+
+#login .registerGroup li:first-child:hover {
+    border-left: #222
+}
+
+#login .registerGroup .buttonGroup {
+    margin-right: 0
+}
+
+#login .registerGroup .userProfileImg a {
+    min-width: 25px;
+    min-height: 32px;
+    padding: 0;
+    background: 0 0
+}
+
+#login .registerGroup a span {
+    display: inline-block;
+    position: absolute;
+    right: 2px;
+    top: -9px;
+    min-width: 7px;
+    margin-right: 3px;
+    background: #3b96b6;
+    text-align: center;
+    font-size: 11px;
+    color: #fff;
+    -webkit-text-shadow: 0 1px 0 #333;
+    text-shadow: 0 1px 0 #333
+}
+
+#login .registerGroup a img {
+    height: 32px;
+    width: 32px;
+    background: #333
+}
+
+#login .userNotifications {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc
+}
+
+#login .userNotifications strong {
+    height: 100%;
+    background: url(Media/NotificationIcon.png) center center no-repeat
+}
+
+#login .userMessages strong {
+    height: 100%;
+    background: url(Media/MessageIcon.png) center center no-repeat
+}
+
+#login .userMessages a, #login .userNotifications a {
+    padding: 0 18px
+}
+
+#login .userMessages a span, #login .userNotifications a span {
+    display: inline-block;
+    margin-top: 9px;
+    margin-right: 0;
+    background-color: transparent;
+    font-size: 10px
+}
+
+.language .language-object span img {
+    opacity: 0.3;
+}
+
+.language .language-object .Language.selected img {
+    opacity: 1;
+}
+
+.searchInputContainer input[type="text"] {
+    height: 34px;
+    margin-left: 10px;
+}
+
+#search-action, .SearchButton, .search-toggle-icon {
+    background: url(Media/SearchIcon.png) center center no-repeat #c3c1c1;
+    width: 35px;
+    height: 34px;
+    display: block;
+    position: absolute;
+    top: 0;
+    font-family: 'Open Sans',Arial,Helvetica,sans-serif;
+    font-size: 22px;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    color: #dcddd8;
+    text-indent: -9999px
+}
+
+/* Hide visible to admin warning */
+div.dnnFormInfo.dnnFormInfoAdminErrMssg {
+    display: none;
+}
+
+/* Make Bootstrap dropdown expand on hover for desktop */
+@media only screen and (min-width: 768px) {
+    ul.nav li.dropdown:hover > ul.dropdown-menu {
+        display: block;
+    }
+
+    /* Support multi-level menu in Bootstrap dropdown */
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top: -1px;
+    }
+}
+
+/* Content pane */
+@media only screen and (min-width: 768px) {
+
+    div.content-pane {
+        margin-top: 70px;
+        margin-bottom: 40px;
+    }
+
+    .dnn8.authenticated div.content-pane {
+        margin-top: 90px;
+    }
+}
+
+
+

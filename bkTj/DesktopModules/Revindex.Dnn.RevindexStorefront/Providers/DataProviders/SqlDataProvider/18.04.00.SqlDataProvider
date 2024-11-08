@@ -1,0 +1,20 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Support Klarna payments
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentMethodsKlarnaPaymentsActive')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsKlarnaPaymentsActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsKlarnaPaymentsActive DEFAULT 0,
+		PaymentMethodsKlarnaPaymentsAvailabilityRule xml NULL,
+		PaymentGatewaysKlarnaPaymentsUsername varchar(255) NULL,
+		PaymentGatewaysKlarnaPaymentsPassword varchar(255) NULL,
+		PaymentGatewaysKlarnaPaymentsGatewayUrl varchar(255) NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsKlarnaPaymentsActive
+END 
+GO

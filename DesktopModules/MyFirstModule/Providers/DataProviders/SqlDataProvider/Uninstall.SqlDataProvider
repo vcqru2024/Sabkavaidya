@@ -1,0 +1,36 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_Tasks]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}VCQRU_Tasks]
+GO
+
+/************** UNINSTALLING STORED PROCEDURES ***********************
+IF EXISTS (select FROM dbo.sysobjects WHERE id object_id(N'{databaseOwner} [{objectQualifier} VCQRU_GetTasks]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_GetTasks
+GO
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_AddTask]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_AddTask
+GO
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_UpdateTask]') and                    OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_UpdateTask
+GO    
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_GetIncompleteTasks]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_GetIncompleteTasks
+GO

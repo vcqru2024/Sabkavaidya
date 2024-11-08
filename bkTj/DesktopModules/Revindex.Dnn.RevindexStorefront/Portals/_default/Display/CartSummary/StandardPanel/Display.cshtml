@@ -1,0 +1,120 @@
+﻿@* Template name: StandardPanel *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ClientSideWebViewPage
+
+<div id="rvdsfCartSummaryPanelContainer" class="rvdsf rvdsf-cartsummary-container">
+	<div data-bind="visible: SalesOrderSet.MainQuantity() == 0" style="display:none">
+		<div class="text-center alert alert-info">@Html.LocalizeString(Global.LocalizedStrings.Message_CartEmpty, Global.FilePaths.LocalSharedResourceFile)</div>
+	</div>
+	<div data-bind="visible: SalesOrderSet.MainQuantity() > 0" style="display:none">
+		<div class="table-responsive" style="max-height: 400px; margin-bottom: 20px">
+			<table class="table table-striped rvdsf-salesorderdetail-table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>@Html.LocalizeString("ProductColumn")</th>
+					<th>@Html.LocalizeString("QuantityColumn")</th>
+					<th>@Html.LocalizeString("AmountColumn")</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: SalesOrderSet.MainSalesOrderDetails">
+				<tr>
+					<td data-bind="if: ProductVariant.MainThumbnailGallery"><img data-bind="attr: {src: ProductVariant.MainThumbnailGallery.MediaUrl}" /></td>
+					<td>
+						<a data-bind="text: ProductName, attr: { href: ProductVariant.ProductDetail.TabUrl }"></a>
+						<div class="rvdsf-productvariant-name" data-bind="visible: ProductVariantName, text: ProductVariantName"></div>
+						<!-- ko if: FormattedBookingStartDate -->
+						<table class="table table-condensed table-sm table-borderless rvdsf-bookingdates" style="width: auto">
+							<tr>
+								<td><strong>@Html.LocalizeString("BookingStartDateLabel")</strong></td>
+								<td data-bind="text: FormattedBookingStartDate"></td>
+							</tr>
+							<tr>
+								<td><strong>@Html.LocalizeString("BookingStopDateLabel")</strong></td>
+								<td data-bind="text: FormattedBookingStopDate"></td>
+							</tr>
+						</table>
+						<!-- /ko -->
+						<!-- ko if: Object.keys(DynamicFormResult).length > 0 -->
+						<!-- ko with: DynamicFormResult -->
+						<table class="table table-condensed table-sm table-borderless rvdsf-dynamicformresult clearfix" data-bind="foreach: Object.keys($data)" style="width: auto">
+							<tr>
+								<td><strong data-bind="text: $data + ':'"></strong></td>
+								<td data-bind="text: $parent[$data]"></td>
+							</tr>
+						</table>
+						<!-- /ko -->
+						<!-- /ko -->
+					</td>
+					<td class="rvdsf-label-qty" data-bind="text: Quantity"></td>
+					<td class="rvdsf-label-amount" data-bind="text: Status() == 9 ? null : FormattedCombinedTotalAmount"></td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div class="form-horizontal rvdsf-cartsummary-amount-container" data-bind="ifnot: SalesOrderSet.HasQuotedProduct">
+			<div class="form-group rvdsf-label-subtotalamount row">
+				<label class="control-label col-form-label col-sm-6 text-sm-right">@Html.LocalizeString("SubTotalLabel")</label>
+				<div class="col-sm-6">
+					<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedSubTotalAmount"></p>
+				</div>
+			</div>
+			<div class="form-group rvdsf-label-rewardspoint row" data-bind="visible: ShowRewardsPoint">
+				<label class="control-label col-form-label col-sm-6 text-sm-right">@Html.LocalizeString("RewardsPointQualifiedLabel")</label>
+				<div class="col-sm-6">
+					<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedRewardsPointsQualified"></p>
+				</div>
+			</div>
+		</div>
+		<div class="btn-toolbar text-center">
+			<button type="button" data-bind="click: function() { location.href = Cart.TabUrl() }" class="btn btn-primary btn-block rvdsf-btn-cart">@Html.LocalizeString("CartLink")</button>
+			<button type="button" data-bind="click: function() { location.href = Checkout.TabUrl() }" class="btn btn-primary btn-block rvdsf-btn-checkout">@Html.LocalizeString("CheckoutLink")</button>
+		</div>
+	</div>
+</div>
+
+@* Uses KnockoutJS. See http://knockoutjs.com *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+}
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+<script type="text/javascript">
+
+        $(document).ready(function() {
+
+            // Bind KnockoutJS view model
+            var container = document.getElementById("rvdsfCartSummaryPanelContainer")
+            container.databind = function () {
+                var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+                $.ajax({
+                    beforeSend: servicesFramework.setModuleHeaders,
+                    url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "CartSummary/ViewModel"
+                })
+                .done(function (data, status) {
+                    if (container.viewModel) {
+                        ko.mapping.fromJS(data, container.viewModel)
+                    }
+                    else {
+                        container.viewModel = ko.mapping.fromJS(data);
+
+                        // Helper function to format currency
+                        container.viewModel.formatCurrency = function (number) {
+                            return new Intl.NumberFormat(this.Currency.CultureCode(), { style: 'currency', currency: this.Currency.CurrencyCode() }).format((typeof number === "function" ? number() : number) * this.Currency.ExchangeRate());
+                        }
+
+                        ko.applyBindings(container.viewModel, container)
+                    }
+                })
+            }
+
+            container.databind()
+        })
+</script>
+

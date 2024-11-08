@@ -1,0 +1,215 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Saatvik.Modules.AddDisease.Models.DiseaseAppointmentViewModel>
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+@using DotNetNuke.Web.Client.ClientResourceManagement
+@using DotNetNuke.Entities.Tabs
+@using DotNetNuke.Entities.Portals
+@{
+    ClientResourceManager.RegisterStyleSheet(Dnn.DnnPage, Dnn.DnnPage.ResolveUrl("~/DesktopModules/MVC/AddDisease/custom.css"));
+
+    var portalSettings = PortalSettings.Current;
+    var tabController = new TabController();
+    var currentTab = tabController.GetTab(portalSettings.ActiveTab.TabID, portalSettings.PortalId);
+    var breadcrumbs = new List<TabInfo>();
+
+    while (currentTab != null)
+    {
+        breadcrumbs.Insert(0, currentTab);
+        currentTab = currentTab.ParentId > 0 ? tabController.GetTab(currentTab.ParentId, portalSettings.PortalId) : null;
+    }
+}
+<section class="app-breadcrumb">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            @foreach (var breadcrumb in breadcrumbs)
+            {
+                <li class="breadcrumb-item"><a href="@breadcrumb.FullUrl">@breadcrumb.TabName</a></li>
+            }
+            <li class="breadcrumb-item active" aria-current="page">@portalSettings.ActiveTab.TabName</li>
+        </ol>
+    </nav>
+</section>
+
+<section class="about-us-page">
+    <div class="container">
+        <div class="app-breadcrumb mt-0 mb-5">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Arthroscopy</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row row-cols-xxl-2 row-cols-xl-2 row-cols-lg-2 row-cols-md-1 row-cols-1 g-4">
+            <div class="col order-lg-1 order-2">
+                <div class="web-heading">
+                    <h1>
+                        Arthroscopy:Treatment,<br>
+                        procedure,cost and Side Effects
+                    </h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et porro doloribus doloremque
+                        voluptatibus nobis error cumque reiciendis fugiat, debitis, cupiditate neque beatae, quasi
+                        aspernatur facilis. Saepe eligendi voluptates doloribus eius.
+                    </p>
+                </div>
+                <div class="headers-btn mt-3">
+                    <a href="tel:8418092373" class="btn btn-primary"><i class="fa fa-phone"></i> +91 8418092373</a>
+                </div>
+            </div>
+            <div class="col order-lg-2 order-1 text-lg-end text-center">
+                <img src="assets/img/about-us-header.svg" alt="About us" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+<!--  -->
+<section class="blog-details">
+    <div class="container">
+        <div class="row g-xxl-4 g-xl-4 g-lg-3 g-md-3 g-3">
+            <div class="col-xxl-8 col-xl-8 col-lg-8">
+                <div class="blog-read-section mb-5">
+                    <div class="card">
+                        <div class="card-body" id="Disease-@Model.disease.DiseaseId">
+                            <h4 class="card-title">@Model.disease.DiseaseName</h4>
+                            <p class="card-text">
+                                @Html.Raw(Model.disease.DiseaseDescription)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-xl-4 col-lg-4">
+                <div class="row g-xxl-4 g-xl-4 g-lg-3 g-md-3 g-3">
+                    <div class="col-lg-12">
+                        <div class="appointment-form">
+                            <div class="card">
+                                @Html.Partial("~/DesktopModules/MVC/AddAppointment/Views/Appointment/Edit.cshtml", Model.Appointment)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="recent-posts">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Related Diseases</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="#"> Arthroscopy</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Knee Pain</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Depression</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#"> Weight Loss</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Joint Health</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Hair & Skin Care</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Mental Health</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="dr-experts">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Here are the experts</h5>
+                                    <p class="card-text">
+                                        No two individuals are alike. Saatvik follows
+                                        “Ayunique”.
+                                    </p>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="#">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <div class="doctor-profile">
+                                                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&amp;w=1528&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                                 alt="Doctor Profile">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <p>4.7 Starts</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6>Delhi</h6>
+                                                        <h6>Dr. Keshav Chauhan</h6>
+                                                        <h6>BAMS, PGDM Panchakarma</h6>
+                                                        <p>Specialises in Endorine & Skin</p>
+                                                        <p>Experience: 8+ years</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <div class="doctor-profile">
+                                                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&amp;w=1528&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                                 alt="Doctor Profile">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <p>4.7 Starts</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6>Delhi</h6>
+                                                        <h6>Dr. Keshav Chauhan</h6>
+                                                        <h6>BAMS, PGDM Panchakarma</h6>
+                                                        <p>Specialises in Endorine & Skin</p>
+                                                        <p>Experience: 8+ years</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <div class="doctor-profile">
+                                                            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&amp;w=1528&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                                 alt="Doctor Profile">
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <p>4.7 Starts</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6>Delhi</h6>
+                                                        <h6>Dr. Keshav Chauhan</h6>
+                                                        <h6>BAMS, PGDM Panchakarma</h6>
+                                                        <p>Specialises in Endorine & Skin</p>
+                                                        <p>Experience: 8+ years</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add CurrencyCultureCode to RecurringSalesOrder table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'CurrencyCultureCode')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD
+	CurrencyCultureCode varchar(20) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_RecurringSalesOrder_CurrencyCultureCode DEFAULT 'en-US'
+END 
+GO
+
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'CurrencyCultureCode')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder SET CurrencyCultureCode = CultureCode
+END 
+GO

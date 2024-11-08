@@ -1,0 +1,101 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@{
+  // Get current post to show from the View-Query + some Helpers
+  var post = AsItem(MyData);
+  var detailsHelpers = GetCode("DetailsHelper.cs");
+  var isBs5 = Kit.Css.Is("bs5");
+
+  @* Preflight: check if post found, else show notification and stop processing *@
+  if (post == null) {
+    <h1>@App.Resources.String("LabelPostNotExists")</h1>
+    <p>@App.Resources.String("LabelPostNotExistsText")</p>
+    @detailsHelpers.BackToListButton()
+    // Set 404 status if the post was not found
+    Kit.Page.SetHttpStatus(404, "Error: Blog Post not Found.");
+    return;
+  }
+
+	// Add open-graph meta-tags to page header
+  detailsHelpers.AddMetaTags(post);
+}
+
+<section class="container">
+    <div class="row justify-content-center app-blog5 app-blog5-post-detail">
+        <article class="col-lg-8 mb-4" @Kit.Toolbar.Empty().Edit(post)>
+            <div class="card">
+                <div class="card-body">
+                    @* 1. Header containing the main image, title and date information *@
+                    <div class="app-blog5-post-header">
+                        @Html.Partial("./parts/AuthorDateAndCategories.cshtml", new { post, HeadingType = "h1" })
+                        @Html.Partial("./parts/MainImage.cshtml", new { post })
+                    </div>
+
+                    @* 2. Body of the post - will also create inner content blocks / apps *@
+                    <div class="app-blog5-post-content mb-4">
+                        @post.Html("Content")
+                    </div>
+
+                    @* 3. Footer with Tags, Links to prev/next and sharing buttons *@
+                    <div class="app-blog5-post-footer">
+                        @* 3.1 Tags of post *@
+                        @{
+                            var tags = post.Children("Tags");
+                        }
+                        @if (tags.Any())
+                        {
+                            var marginRight = isBs5 ? "me-2" : "mr-2";
+                            <div class="app-blog5-tags d-flex align-items-center">
+                                <strong class="@marginRight">@App.Resources.String(tags.Count() > 1 ? "Tags" : "Tag"): </strong>
+                                @foreach (var tag in tags)
+                                {
+                                    <a class="btn btn-sm btn-light @marginRight" href='@Link.To(parameters: "tag=" + tag.String("Tag"))' title='@tag.Attribute("Name")'>@tag.String("Name")</a>
+                                }
+                            </div>
+                        }
+
+                        <hr />
+
+                        @* 3.3 Author *@
+                        @{
+                            var author = post.Child("Author");
+                            var authorName = author.String("FullName");
+                        }
+                        <div class="app-blog5-post-author-details d-flex">
+                            <div>
+                                @author.Html("ShortBio", container: "")
+                                @App.Resources.String("ReadMoreAuthor")
+                                <a href='@Link.To(parameters: "author=" + authorName)'>@authorName</a>
+                            </div>
+                            @if (Text.Has(author.Url("Image")))
+                            {
+                                <div>
+                                    @author.Picture("Image", settings: "Author", imgClass: "rounded-circle author-picture", imgAltFallback: author.String("FullName"))
+                                </div>
+                            }
+                        </div>
+                        <hr />
+
+                        @* 3.4 Preview of previous and next post *@
+                        @{
+                            var previousPost = AsItem(MyData["Previous"]);
+                            var nextPost = AsItem(MyData["Next"]);
+                        }
+                        <div class='app-blog5-article-links d-flex align-items-center @(previousPost == null ? "justify-content-end" : "justify-content-between")'>
+                            @detailsHelpers.PostMicroPreview(previousPost, "previous")
+                            @detailsHelpers.PostMicroPreview(nextPost, "next")
+                        </div>
+
+                        <hr />
+
+                        @* 3.5 "Back to list" button *@
+                        @detailsHelpers.BackToListButton()
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+@Html.Partial("./parts/Assets.cshtml")

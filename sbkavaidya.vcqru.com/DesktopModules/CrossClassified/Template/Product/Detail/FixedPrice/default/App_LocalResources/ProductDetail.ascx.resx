@@ -1,0 +1,507 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblCreatedDate.Text" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="lblPrice.Text" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="lblPublishDate.Text" xml:space="preserve">
+    <value>Publish Date:</value>
+  </data>
+  <data name="lblRelated.Text" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="lblSummary.Text" xml:space="preserve">
+    <value>Summary:</value>
+  </data>
+  <data name="lblPurchasePrice.Text" xml:space="preserve">
+    <value>Sell Price:</value>
+  </data>
+  <data name="lblRating.Text" xml:space="preserve">
+    <value>Rating:</value>
+  </data>
+  <data name="lblRatingVotes.Text" xml:space="preserve">
+    <value>Rating People:</value>
+  </data>
+  <data name="lblAverage.Text" xml:space="preserve">
+    <value>Average Rating:</value>
+  </data>
+  <data name="bthPost.Text" xml:space="preserve">
+    <value>Submit Rating</value>
+  </data>
+  <data name="lblSay.Text" xml:space="preserve">
+    <value>Says:</value>
+  </data>
+  <data name="lblCommentHead.Text" xml:space="preserve">
+    <value>Comment List:</value>
+  </data>
+  <data name="lblCommentNeedAuth.Text" xml:space="preserve">
+    <value>Your comment information must be authorized before display.</value>
+  </data>
+  <data name="lblEnter.Text" xml:space="preserve">
+    <value>Post your comment</value>
+  </data>
+  <data name="lblName.Text" xml:space="preserve">
+    <value>Your Name:</value>
+  </data>
+  <data name="lblEmail.Text" xml:space="preserve">
+    <value>Your Gravatar Mail:</value>
+  </data>
+  <data name="lblComment.Text" xml:space="preserve">
+    <value>Comment Info:</value>
+  </data>
+  <data name="chkPrivate.Text" xml:space="preserve">
+    <value>Private (viewable for seller only)</value>
+  </data>
+  <data name="btnAddComment.Text" xml:space="preserve">
+    <value>Submit Comment</value>
+  </data>
+  <data name="Comment.ErrorMessage.Text" xml:space="preserve">
+    <value>Please enter your comment.</value>
+  </data>
+  <data name="lblCommentNeedLoggedIn.Text" xml:space="preserve">
+    <value>Login or register to post comment</value>
+  </data>
+  <data name="lblRatingNeedLoggedIn.Text" xml:space="preserve">
+    <value>Login or register to submit rating.</value>
+  </data>
+  <data name="Name.ErrorMessage.Text" xml:space="preserve">
+    <value>Please enter your name.</value>
+  </data>
+  <data name="lblUrl.Text" xml:space="preserve">
+    <value>Your  Site:</value>
+  </data>
+  <data name="ibtnDown.Text" xml:space="preserve">
+    <value>Rete it down</value>
+  </data>
+  <data name="ibtnUp.Text" xml:space="preserve">
+    <value>Rate it up</value>
+  </data>
+  <data name="lblAboutAuthor.Text" xml:space="preserve">
+    <value>About Seller</value>
+  </data>
+  <data name="lblAttachments.Text" xml:space="preserve">
+    <value>Attachments:</value>
+  </data>
+  <data name="lblAttacmentNeedLoggedIn.Text" xml:space="preserve">
+    <value>(Login to view attachments).</value>
+  </data>
+  <data name="lblAuthor.Text" xml:space="preserve">
+    <value>Author:</value>
+  </data>
+  <data name="lblCreator.Text" xml:space="preserve">
+    <value>Listed By:</value>
+  </data>
+  <data name="lblEmailExplanation.Text" xml:space="preserve">
+    <value>If you have an avatar photo at &lt;a href="http://www.gravatar.com" target="_blank"&gt;Gravatar (http://www.gravatar.com)&lt;/a&gt;, you can enter its email address below to show your avatar in comments.  Note, if you are a register user of this site and already specify an avatar photo in your profile, module will use that prior, and ignore below Gravatar address.</value>
+  </data>
+  <data name="lblBuyBeforeRating.Text" xml:space="preserve">
+    <value>Only customers who bought this product before can post rating.</value>
+  </data>
+  <data name="lblTags.Text" xml:space="preserve">
+    <value>Tags:</value>
+  </data>
+  <data name="lblViews.Text" xml:space="preserve">
+    <value>Views:</value>
+  </data>
+  <data name="lblRecommend.Text" xml:space="preserve">
+    <value>Recommendation:</value>
+  </data>
+  <data name="lblAddFavorite.Text" xml:space="preserve">
+    <value>Add Favorite</value>
+  </data>
+  <data name="lblPrint.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="Return.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="btnAddCart.Text" xml:space="preserve">
+    <value>Add To Cart</value>
+  </data>
+  <data name="btnAddWatch.Text" xml:space="preserve">
+    <value>Add To Watch List</value>
+  </data>
+  <data name="btnOrderNow.Text" xml:space="preserve">
+    <value>Order Now</value>
+  </data>
+  <data name="lblOption.Text" xml:space="preserve">
+    <value>Option:</value>
+  </data>
+  <data name="lblOrderCount.Text" xml:space="preserve">
+    <value>Quantity:</value>
+  </data>
+  <data name="lblPromoEnd.Text" xml:space="preserve">
+    <value>Promo End:</value>
+  </data>
+  <data name="lblPromoPrice.Text" xml:space="preserve">
+    <value>Promo Price:</value>
+  </data>
+  <data name="lblPromoStart.Text" xml:space="preserve">
+    <value>Promo Start:</value>
+  </data>
+  <data name="lblStockQuantity.Text" xml:space="preserve">
+    <value>Stock:</value>
+  </data>
+  <data name="tabAboutAuthor.Text" xml:space="preserve">
+    <value>About Seller</value>
+  </data>
+  <data name="tabAttachment.Text" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="tabComment.Text" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="tabDelivery.Text" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="tabDescription.Text" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="tabLicense.Text" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="tabRating.Text" xml:space="preserve">
+    <value>Ratings</value>
+  </data>
+  <data name="tabRelatedAudio.Text" xml:space="preserve">
+    <value>Related Audio</value>
+  </data>
+  <data name="tabRelatedImage.Text" xml:space="preserve">
+    <value>Related Images</value>
+  </data>
+  <data name="tabRelatedVideo.Text" xml:space="preserve">
+    <value>Related Videos</value>
+  </data>
+  <data name="tabRelatedProduct.Text" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="tabSpecialOffer.Text" xml:space="preserve">
+    <value>Special Offer</value>
+  </data>
+  <data name="tabSupport.Text" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="lblRatingInfo.Text" xml:space="preserve">
+    <value>Rating Info:</value>
+  </data>
+  <data name="lblYourRating.Text" xml:space="preserve">
+    <value>Your Rating:</value>
+  </data>
+  <data name="lblAddSuccess.Text" xml:space="preserve">
+    <value>Add successfully.</value>
+  </data>
+  <data name="lblInvalidQuantity.Text" xml:space="preserve">
+    <value>Invalid quantity, please check if it exceeds product (or its option) stock, or it is lower than the product minimum sell quantity.</value>
+  </data>
+  <data name="WatchListAdded.Text" xml:space="preserve">
+    <value>Watch list was added successfully.</value>
+  </data>
+  <data name="lblAlreadyInRole.Text" xml:space="preserve">
+    <value>You can't buy this product because you already belong to this role.</value>
+  </data>
+  <data name="btnAddTicket.Text" xml:space="preserve">
+    <value>Contact Seller</value>
+  </data>
+  <data name="hlNewVersion.Text" xml:space="preserve">
+    <value>New version available</value>
+  </data>
+  <data name="Anonymous.Text" xml:space="preserve">
+    <value>Anonymous User</value>
+  </data>
+  <data name="lblVendorReply.Text" xml:space="preserve">
+    <value>Seller Reply:</value>
+  </data>
+  <data name="lblSiteAdministrator.Text" xml:space="preserve">
+    <value>You are site administrator, don't need buy any role. Try login in as another user if you only want to test.</value>
+  </data>
+  <data name="lblPackageFee.Text" xml:space="preserve">
+    <value>Package Fee:</value>
+  </data>
+  <data name="lblSku.Text" xml:space="preserve">
+    <value>SKU:</value>
+  </data>
+  <data name="lblWeight.Text" xml:space="preserve">
+    <value>Weight:</value>
+  </data>
+  <data name="lblClientNameHead.Text" xml:space="preserve">
+    <value>Buyer</value>
+  </data>
+  <data name="lblCreatedDateHead.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="lblPriceHead.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="lblProductNameHead.Text" xml:space="preserve">
+    <value>Product &amp; Option</value>
+  </data>
+  <data name="lblQuantityHead.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="tabTransactionHistory.Text" xml:space="preserve">
+    <value>Transaction History</value>
+  </data>
+  <data name="lblAddTicket.Text" xml:space="preserve">
+    <value>Contact Seller</value>
+  </data>
+  <data name="lblLastModifiedDate.Text" xml:space="preserve">
+    <value>Last modified date:</value>
+  </data>
+  <data name="tabGoogleMap.Text" xml:space="preserve">
+    <value>Google Map</value>
+  </data>
+  <data name="lblHaveSubscriber.Text" xml:space="preserve">
+    <value>You have a item which requrie recursive charge in your cart, please check out first (or delete it from cart) before add this item.</value>
+  </data>
+  <data name="lblOrderMemo.Text" xml:space="preserve">
+    <value>Enter your postscript (requirements/memo) below (optional)</value>
+  </data>
+  <data name="lblHaveItem.Text" xml:space="preserve">
+    <value>You already have some items in your cart, current item requires recursive payment and can't be added with them. Please check out first (or delete other items from your cart) before add this item.</value>
+  </data>
+  <data name="lblCoupon.Text" xml:space="preserve">
+    <value>Enter Coupon:</value>
+  </data>
+  <data name="lblInvalidCoupon.Text" xml:space="preserve">
+    <value>Invalid coupon, or this coupon doesn't apply to selected product (option), please check it.</value>
+  </data>
+  <data name="DiscountFormat_Coupon.Text" xml:space="preserve">
+    <value>Get a &lt;font color="red"&gt;{0}&lt;/font&gt; discount on &lt;a href="{1}" &gt;"{2}"&lt;/a&gt; by enter &lt;font color="red"&gt;{3}&lt;/font&gt; as coupon code.</value>
+  </data>
+  <data name="DiscountFormat_Customer.Text" xml:space="preserve">
+    <value>Seller specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to you on &lt;a href="{1}"&gt;"{2}"&lt;/a&gt; as a return to your support.</value>
+  </data>
+  <data name="DiscountFormat_Product.Text" xml:space="preserve">
+    <value>Get a &lt;font color="red"&gt;{0}&lt;/font&gt; discount on &lt;a href="{1}"&gt;"{2}"&lt;/a&gt; when you order &lt;a href="{3}" target="_blank"&gt;"{4}"&lt;/a&gt;.</value>
+  </data>
+  <data name="DiscountFormat_Quantity.Text" xml:space="preserve">
+    <value>Get a &lt;font color="red"&gt;{0}&lt;/font&gt; discount on &lt;a href="{1}"&gt;"{2}"&lt;/a&gt; when you order more than &lt;font color="red"&gt;{3}&lt;/font&gt; items.</value>
+  </data>
+  <data name="MustBeInteger.Text" xml:space="preserve">
+    <value>Value must be integer</value>
+  </data>
+  <data name="tabDiscount.Text" xml:space="preserve">
+    <value>Discounts</value>
+  </data>
+  <data name="DiscountFormat_Expire.Text" xml:space="preserve">
+    <value>&amp;nbsp;This discount will expire on {0}.</value>
+  </data>
+  <data name="DiscountFormat_Role.Text" xml:space="preserve">
+    <value>Seller specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to &lt;font color="red"&gt;"{1}"&lt;/font&gt; user role on &lt;a href="{2}"&gt;"{3}"&lt;/a&gt;.</value>
+  </data>
+  <data name="lblExpireDate.Text" xml:space="preserve">
+    <value>Expire Date:</value>
+  </data>
+  <data name="lblShippingOption.Text" xml:space="preserve">
+    <value>Shipping Options:</value>
+  </data>
+  <data name="ShippingFeeType_Default.Text" xml:space="preserve">
+    <value>Depend on the user choosing shipping method.</value>
+  </data>
+  <data name="ShippingFeeType_FixedShippingFee.Text" xml:space="preserve">
+    <value>Fixed shipping fee, {0}{1}</value>
+  </data>
+  <data name="ShippingFeeType_NoShippingFee.Text" xml:space="preserve">
+    <value>Free Shipping, {0}0.00</value>
+  </data>
+  <data name="lblChooseOption.Text" xml:space="preserve">
+    <value>Choose your favorite option below</value>
+  </data>
+  <data name="DiscountFormat_Coupon_Site.Text" xml:space="preserve">
+    <value>Get a &lt;font color="red"&gt;{0}&lt;/font&gt; discount for all products in this site by enter &lt;font color="red"&gt;{1}&lt;/font&gt; as coupon code.</value>
+  </data>
+  <data name="DiscountFormat_Coupon_Vendor.Text" xml:space="preserve">
+    <value>Get a &lt;font color="red"&gt;{0}&lt;/font&gt; discount for all products of this seller by enter &lt;font color="red"&gt;{1}&lt;/font&gt; as coupon code.</value>
+  </data>
+  <data name="DiscountFormat_Role_Site.Text" xml:space="preserve">
+    <value>Site administrator specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to &lt;font color="red"&gt;"{1}"&lt;/font&gt; user role for all products in this site.</value>
+  </data>
+  <data name="DiscountFormat_Role_Vendor.Text" xml:space="preserve">
+    <value>Seller specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to &lt;font color="red"&gt;"{1}"&lt;/font&gt; user role for all his products.</value>
+  </data>
+  <data name="lblAddress.Text" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="lblBusinessScope.Text" xml:space="preserve">
+    <value>Business Scope:</value>
+  </data>
+  <data name="lblCompany.Text" xml:space="preserve">
+    <value>Company:</value>
+  </data>
+  <data name="lblFax.Text" xml:space="preserve">
+    <value>Fax:</value>
+  </data>
+  <data name="lblIM.Text" xml:space="preserve">
+    <value>IM:</value>
+  </data>
+  <data name="lblLinkman.Text" xml:space="preserve">
+    <value>Linkman:</value>
+  </data>
+  <data name="lblLocationCity.Text" xml:space="preserve">
+    <value>City:</value>
+  </data>
+  <data name="lblLocationCountry.Text" xml:space="preserve">
+    <value>Country:</value>
+  </data>
+  <data name="lblLocationState.Text" xml:space="preserve">
+    <value>State/Province:</value>
+  </data>
+  <data name="lblLocationTown.Text" xml:space="preserve">
+    <value>Town:</value>
+  </data>
+  <data name="lblLogoUrl.Text" xml:space="preserve">
+    <value>Logo:</value>
+  </data>
+  <data name="lblSiteUrl.Text" xml:space="preserve">
+    <value>Web Site:</value>
+  </data>
+  <data name="lblSlogan.Text" xml:space="preserve">
+    <value>Slogan:</value>
+  </data>
+  <data name="lblTel.Text" xml:space="preserve">
+    <value>Tel:</value>
+  </data>
+  <data name="lblZipcode.Text" xml:space="preserve">
+    <value>Zipcode:</value>
+  </data>
+  <data name="Tip_MaxDiscount.Text" xml:space="preserve">
+    <value>Note, you will be applied to the &lt;font color="red"&gt;highest discount rate&lt;/font&gt; if you meet multiple discount requirements.</value>
+  </data>
+  <data name="DiscountFormat_Date.Text" xml:space="preserve">
+    <value>Seller specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to &lt;a href="{1}"&gt;"{2}"&lt;/a&gt; on "{3}".</value>
+  </data>
+  <data name="DiscountFormat_Date_Site.Text" xml:space="preserve">
+    <value>Site administrator specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to all products in this site on "{1}".</value>
+  </data>
+  <data name="DiscountFormat_Date_Vendor.Text" xml:space="preserve">
+    <value>Seller specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to all his products on "{1}".</value>
+  </data>
+  <data name="DiscountFormat_FirstBuyer.Text" xml:space="preserve">
+    <value>Seller specify &lt;font color="red"&gt;{0}&lt;/font&gt; discount to &lt;a href="{1}"&gt;"{2}"&lt;/a&gt; for the first &lt;font color="red"&gt;"{3}"&lt;/font&gt; buyer.</value>
+  </data>
+  <data name="lblOutOfStock.Text" xml:space="preserve">
+    <value>(Out of stock)</value>
+  </data>
+  <data name="lblShippingProperty.Text" xml:space="preserve">
+    <value>Shipping Property:</value>
+  </data>
+</root>

@@ -1,0 +1,85 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetArchive') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}ContentPro_GetArchive
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetArchive]
+       -- Add the parameters for the stored procedure here
+       @FSet int
+AS
+BEGIN
+       -- SET NOCOUNT ON added to prevent extra result sets from
+       -- interfering with SELECT statements.
+       SET NOCOUNT ON;
+
+SELECT YEAR(StartDT) as ArchiveYear, DATENAME(month,StartDT) as ArchiveMonth,  COUNT(ContentID) as Count, MONTH(StartDT) as monthnumber
+FROM {databaseOwner}{objectQualifier}ContentPro_Content
+WHERE FieldSetID = @FSet and Active = 1
+GROUP BY YEAR(StartDT), DATENAME(month, StartDT),MONTH(StartDT)
+order by ArchiveYear desc,monthnumber asc;
+
+END
+
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDate') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+       drop procedure {databaseOwner}{objectQualifier}ContentPro_GetFilterCategoryContentDate
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}ContentPro_GetFilterCategoryContentDate]
+       -- Add the parameters for the stored procedure here
+       @FieldSetID INTEGER,
+       @Field nvarchar(max),
+       @SortDirection nvarchar(max),
+       @Month integer,
+       @Year integer
+AS
+BEGIN
+       -- SET NOCOUNT ON added to prevent extra result sets from
+       -- interfering with SELECT statements.
+       SET NOCOUNT ON;
+
+     select * from {databaseOwner}{objectQualifier}ContentPro_Content
+       where ContentID in (SELECT
+          ContentID
+       FROM
+          {databaseOwner}{objectQualifier}ContentPro_Content AS [content]
+       
+       GROUP BY
+          [content].ContentID)
+       
+       AND (YEAR(StartDT)=@Year AND MONTH(StartDT)=@Month)
+          
+       AND @FieldSetID = FieldSetID AND Active = 1
+
+       order by 
+          
+              CASE WHEN @SortDirection = 'asc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END ASC,
+              CASE WHEN @SortDirection = 'desc' AND IsNumeric(@Field) = 1 then ContentXML.value('(/Article/Field[@FieldName=sql:variable("@Field")])[1]', 'nvarchar(max)') END DESC,
+              CASE WHEN @SortDirection = 'desc' AND @Field = 'StartDT' then StartDT END DESC,
+              CASE WHEN @SortDirection = 'asc' AND @Field = 'StartDT' then StartDT END ASC,
+              CASE WHEN @SortDirection = 'asc' AND @Field = 'EndDT' then EndDT END ASC,
+              CASE WHEN @SortDirection = 'desc' AND @Field = 'EndDT' then EndDT END DESC,
+              CASE WHEN @SortDirection = 'asc' AND @Field = 'Title' then Title END ASC,
+              CASE WHEN @SortDirection = 'desc' AND @Field = 'Title' then Title END DESC,
+              CASE WHEN @SortDirection = 'asc' AND @Field = 'Sort' then Sort END ASC,
+              CASE WHEN @SortDirection = 'desc' AND @Field = 'Sort' then Sort END DESC
+END
+
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

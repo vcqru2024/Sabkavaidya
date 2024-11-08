@@ -1,0 +1,1 @@
+﻿<%@ page language="C#" autoeventwireup="true" inherits="Cross.Modules.CP_Product.View.Alipay_notify_url, App_Web_alipay_notify_url.aspx.87459c53" viewStateEncryptionMode="Always" %>

@@ -1,0 +1,828 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Gateway;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<ManagePaymentViewModel>
+
+<div class="rvd-module-container rvdsf rvdsf-managepayment-container">
+	@if (Model.Visible)
+	{
+		if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+		{
+			<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert])">@Model.TempData[Global.TempDataKeys.Message]</div>
+		}
+		if (Model.ListView)
+		{
+			<div class="rvdsf-list-container">
+				<div class="row rvdsf-actionbar-container">
+					<div class="col-sm-6">
+					</div>
+					<div class="col-sm-6 text-sm-right">
+						<button type="button" id="rvdsfAddManagePaymentButton" class="btn btn-primary" onclick="location.href = '@Global.RouteUrl(new NameValueCollection() { { Global.QueryStringKeys.UserPaymentID, "0" }, { Global.QueryStringKeys.ReturnUrl, Request.RawUrl } })#@Dnn.Module.ModuleID'">@Html.LocalizeString("AddLink")</button>
+					</div>
+				</div>
+				<hr />
+				<div class="row">
+					<div class="col-sm-12">
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>@Html.LocalizeString("PaymentMethodColumn")</th>
+									<th>@Html.LocalizeString("AddressColumn")</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var up in Model.UserPayments.OrderBy(up => up.PaymentMethodName))
+								{
+									<tr onclick="location.href='@Global.RouteUrl(new NameValueCollection() {
+						{ Global.QueryStringKeys.UserPaymentID, up.UserPaymentID.ToString() },
+						{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)'" style="cursor:pointer">
+										<td>
+											<a href="@Global.RouteUrl(new NameValueCollection() {
+						{ Global.QueryStringKeys.UserPaymentID, up.UserPaymentID.ToString() },
+						{ Global.QueryStringKeys.ReturnUrl, Request.RawUrl }}, false)">@up.PaymentMethodName</a><br />
+						@up.FormattedHint
+						@if (up.PaymentMethod == PaymentMethodType.CreditCard && up.CreditCardExpiryYear.HasValue)
+						{
+							<text><br /><strong>@Html.LocalizeString("ExpireLabel")</strong> <span>@up.CreditCardExpiryMonth</span>/<span>@up.CreditCardExpiryYear</span></text>
+						}
+					</td>
+					<td>
+						@if (!String.IsNullOrEmpty(up.Company))
+						{<text>@up.Company<br /></text>}
+						@up.FirstName @up.LastName
+						<br />
+						@up.Street<br />
+						@if (!String.IsNullOrEmpty(up.Unit))
+						{
+							<text>@up.Unit</text><br />
+						}
+						@if (!String.IsNullOrEmpty(up.District))
+						{
+							<text>@up.District</text><br />
+						}
+						@up.City @up.SubdivisionName @up.PostalCode<br />
+						@up.CountryName<br /><br />
+						@up.Phone<br />
+						@up.Email
+					</td>
+					<td><a id="rvdsfDeleteManagePaymentLink_@up.UserPaymentID" href="#" onclick="event.stopPropagation(); if (confirm('@Html.LocalizeString(Global.LocalizedStrings.Message_ConfirmDelete, Global.FilePaths.LocalSharedResourceFile)')) { Revindex.Web.FormPost(this, 'Delete', false, { userPaymentID: @up.UserPaymentID }) }; return false;"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></a></td>
+				</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		}
+		else
+		{
+			<div class="rvd-form">
+				@Html.Partial("Pages/Shared/BackView", Model.BackView)
+				<h2>@Html.LocalizeString("UserPaymentHeader")@(Html.Partial("Pages/Shared/BreadcrumbView", Model.BreadcrumbView))</h2>
+				<div class="row rvdsf-actionbar-container">
+					<div class="col-sm-6">
+						<a class="btn btn-link" href="@Global.RouteUrl(new NameValueCollection())#@Dnn.Module.ModuleID"><em class="glyphicon glyphicon-list fa fas fa-list"></em> @Html.LocalizeString("ViewListLink")</a>
+					</div>
+				</div>
+				<hr />
+				<fieldset>
+					<div class="col-sm-offset-3 offset-sm-3 col-sm-6">
+						@if (Model.UserAddresses.Count > 0)
+						{
+							<div class="text-right form-group">
+								<div class="btn-group">
+									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										@Html.LocalizeString("UserAddressLink") <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu rvdsf-useraddress-container">
+										@foreach (var ua in Model.UserAddresses)
+										{
+											<li class="dropdown-item">
+												<a id="rvdsfUserAddressManagePaymentLink_@(ua.UserAddressID)" href="#" onclick="Revindex.Web.FormPost(this, 'UserAddressChanged', false, { userAddressID: @ua.UserAddressID }); return false;">
+													<strong>@ua.FirstName  @ua.LastName @(String.IsNullOrEmpty(ua.Company) ? "" : "(" + ua.Company + ")")</strong><br />
+													<span>@ua.Street</span><br />
+													@if (!String.IsNullOrEmpty(ua.Unit))
+													{
+														<span>@ua.Unit</span><br />
+													}
+													@if (!String.IsNullOrEmpty(ua.District))
+													{
+														<span>@ua.District</span><br />
+													}
+													<span>@ua.City</span><br />
+													<span>@ua.SubdivisionName</span>
+													<span>@ua.PostalCode</span>
+													<span>@ua.CountryName</span>
+												</a>
+											</li>
+											<li role="separator" class="divider dropdown-divider"></li>
+										}
+									</ul>
+								</div>
+							</div>
+						}
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("FirstNameLabel")</label>
+							<input type="text" name="FirstNameManagePaymentField" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.FirstNameManagePaymentField" autocomplete="given-name" />
+						</div>
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("LastNameLabel")</label>
+							<input type="text" name="LastNameManagePaymentField" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.LastNameManagePaymentField" autocomplete="family-name" />
+						</div>
+						<div class="form-group">
+							<label class="control-label">@Html.LocalizeString("CompanyLabel")</label>
+							<input type="text" name="CompanyManagePaymentField" class="form-control" value="@Model.CompanyManagePaymentField" autocomplete="organization" />
+						</div>
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("CountryLabel")</label>
+							<select id="rvdsfCountryCodeManagePaymentField" name="CountryCodeManagePaymentField" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" onchange="Revindex.Web.FormPost(this, 'CountryChanged', false, { countryCode: this.value })" autocomplete="country">
+								<option value=""></option>
+								@foreach (var country in Model.Countries)
+								{
+									<option value="@country.IsoAlpha2Code" @(Model.CountryCodeManagePaymentField == country.IsoAlpha2Code ? "selected" : "")>@country.Name</option>
+								}
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("StreetLabel")</label>
+							<input type="text" name="StreetManagePaymentField" maxlength="200" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" autocomplete="address-line1" value="@Model.StreetManagePaymentField" placeholder="@Html.LocalizeString("StreetPlaceHolder")" >
+						</div>
+						<div class="form-group">
+							<input type="text" name="UnitManagePaymentField" maxlength="200" class="form-control" autocomplete="address-line2" value="@Model.UnitManagePaymentField" placeholder="@Html.LocalizeString("UnitPlaceHolder")" />
+						</div>
+						@if (Model.HasDistrictSystem)
+						{
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("DistrictLabel")</label>
+								<input type="text" name="DistrictManagePaymentField" maxlength="50" class="form-control" autocomplete="address-level3" value="@Model.DistrictManagePaymentField" />
+							</div>
+						}
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("CityLabel")</label>
+							<input type="text" name="CityManagePaymentField" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.CityManagePaymentField" autocomplete="address-level2" />
+						</div>
+						@if (Model.Subdivisions.Count > 0)
+						{
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("SubdivisionLabel")</label>
+								<select name="SubdivisionCodeManagePaymentField" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" class="form-control" autocomplete="address-level1">
+									<option value=""></option>
+									@foreach (var subdivision in Model.Subdivisions)
+									{
+										<option value="@subdivision.IsoCode" @(Model.SubdivisionCodeManagePaymentField == subdivision.IsoCode ? "selected" : "")>@subdivision.Name</option>
+									}
+								</select>
+							</div>
+						}
+						<div class="form-group">
+							<label class="control-label @(!String.IsNullOrEmpty(Model.CountryCodeManagePaymentField) && Model.Countries.Where(c => c.IsoAlpha2Code == Model.CountryCodeManagePaymentField).First().HasPostalCodeSystem ? "required" : "")">@Html.LocalizeString("PostalCodeLabel")</label>
+							<input type="text" name="PostalCodeManagePaymentField" class="form-control" value="@Model.PostalCodeManagePaymentField" @(!String.IsNullOrEmpty(Model.CountryCodeManagePaymentField) && Model.Countries.Where(c => c.IsoAlpha2Code == Model.CountryCodeManagePaymentField).First().HasPostalCodeSystem ? "required" : "") data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" autocomplete="postal-code" />
+						</div>
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("PhoneLabel")</label>
+							<input type="text" name="PhoneManagePaymentField" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.PhoneManagePaymentField" autocomplete="tel" />
+						</div>
+						<div class="form-group">
+							<label class="control-label">@Html.LocalizeString("EmailLabel")</label>
+							<input type="email" name="EmailManagePaymentField" class="form-control" maxlength="256" value="@Model.EmailManagePaymentField" autocomplete="email" />
+						</div>
+						<div class="form-group">
+							<label class="control-label required">@Html.LocalizeString("PaymentMethodLabel")</label>
+							<select class="form-control" id="rvdsfPaymentMethodTypeManagePaymentField" name="PaymentMethodTypeManagePaymentField" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" onchange="Revindex.Web.FormPost(this, 'PaymentMethodTypeChanged', false, { paymentMethodType: this.value })" @(Model.UserPaymentID == 0 ? "" : "disabled")>
+								<option value=""></option>
+								@foreach (var paymentMethod in Model.AvailablePaymentMethods.OrderBy(p => p.PaymentMethodName))
+								{
+									<option value="@((int)paymentMethod.PaymentMethod)" @(Model.PaymentMethodTypeManagePaymentField == paymentMethod.PaymentMethod ? "selected" : "")>@paymentMethod.PaymentMethodName</option>
+								}
+							</select>
+						</div>
+						<div id="rvdsfSalesPaymentErrorManagePaymentContainer" class="alert alert-danger" style="display:none"></div>
+						@if (Model.PaymentMethodTypeManagePaymentField == PaymentMethodType.ACH)
+						{
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("InstitutionNameLabel")</label>
+								<input type="text" name="InstitutionNameManagePaymentField" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.InstitutionNameManagePaymentField" />
+							</div>
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("InstitutionNumberLabel")</label>
+								<input type="text" name="InstitutionNumberManagePaymentField" class="form-control" pattern="[0-9]{6,20}" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.InstitutionNumberManagePaymentField" />
+							</div>
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("AccountTypeLabel")</label>
+								<select name="AccountTypeManagePaymentField" class="form-control">
+									@foreach (var accountType in Enum.GetValues(typeof(AccountType)).Cast<AccountType>().OrderBy(at => Html.LocalizeString(((int)at).ToString(), Global.FilePaths.LocalGatewayAccountTypeResourceFile)))
+									{
+										<option value="@((int)accountType)" @(Model.AccountTypeManagePaymentField == accountType ? "selected" : "")>@Html.LocalizeString(((int)accountType).ToString(), Global.FilePaths.LocalGatewayAccountTypeResourceFile)</option>
+									}
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("AccountNumberLabel")</label>
+								<input type="text" name="AccountNumberManagePaymentField" class="form-control" pattern="[\*\d]{6,20}" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" value="@Model.AccountNumberManagePaymentField" />
+							</div>
+						}
+						else if (Model.PaymentMethodTypeManagePaymentField == PaymentMethodType.CreditCard)
+						{
+							var paymentMethod = Model.AvailablePaymentMethods.Where(p => p.PaymentMethod == PaymentMethodType.CreditCard).FirstOrDefault();
+							if (paymentMethod.PaymentGateway == "AuthorizeNetAccept")
+							{
+								Model.StartupScripts.Add("rvdsfManagePayment.initializeCreditCardPayment()");
+								<div class="form-group">
+									<label class="required">@Html.LocalizeString("CreditCardNumberLabel")</label>
+									<input id="rvdsfPaymentHintManagePaymentInput" class="form-control" type="text" disabled required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+									<button id="rvdsfRemoveCreditCardButton" class="btn btn-primary" type="button" style="display:none" onclick="$('#rvdsfPaymentHintManagePaymentInput').val(''); $('#rvdsfRemoveCreditCardButton').hide(); $('#rvdsfAddCreditCardButton').show()">@Html.LocalizeString("RemoveLabel")</button>
+									<button id="rvdsfAddCreditCardButton" class="btn btn-primary" type="button" >@Html.LocalizeString("AddLabel")</button>
+									<input id="rvdsfPaymentNonceManagePaymentInput" type="hidden" />
+									<input id="rvdsfCreditCardExpiryMonthManagePaymentInput" type="hidden" name="CreditCardExpiryMonthManagePaymentField" value="@Model.CreditCardExpiryMonthManagePaymentField"/>
+									<input id="rvdsfCreditCardExpiryYearManagePaymentInput" type="hidden" name="CreditCardExpiryYearManagePaymentField" value="@Model.CreditCardExpiryYearManagePaymentField"/>
+								</div>
+							}
+							else if (paymentMethod.PaymentGateway == "Braintree" || paymentMethod.PaymentGateway == "Stripe" || paymentMethod.PaymentGateway == "Square")
+							{
+								Model.StartupScripts.Add("rvdsfManagePayment.initializeCreditCardPayment()");
+								<div class="form-group">
+									<label class="control-label required">@Html.LocalizeString("CreditCardNumberLabel")</label>
+									<div id="rvdsfCreditCardContainer" class="form-control"></div>
+								</div>
+							}
+							else
+							{
+								Model.StartupScripts.Add("rvdsfManagePayment.initializeCreditCardPayment()");
+								<div class="form-group">
+									<label class="control-label required">@Html.LocalizeString("CreditCardNumberLabel")</label>
+									<input id="rvdsfCreditCardNumberManagePaymentInput" name="CreditCardNumberManagePaymentField" type="text" class="form-control" value="@Model.CreditCardNumberManagePaymentField" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" minlength="15" maxlength="24" autocomplete="cc-number" onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 32)" placeholder="1234 1234 1234 1234" />
+								</div>
+								<div class="form-group">
+									<label>@Html.LocalizeString("CreditCardExpiryLabel")</label>
+									<div class="row">
+										<div class="col-sm-6 col-xs-6 col-6">
+											<select class="form-control" name="CreditCardExpiryMonthManagePaymentField" autocomplete="cc-exp-month">
+												@for (int month = 1; month <= 12; month++)
+												{
+													<option value="@month" @(Model.CreditCardExpiryMonthManagePaymentField == month ? "selected" : "")>@month.ToString("00")</option>
+												}
+											</select>
+										</div>
+										<div class="col-sm-6 col-xs-6 col-6">
+											<select class="form-control" name="CreditCardExpiryYearManagePaymentField" autocomplete="cc-exp-year">
+												@for (int year = DateTime.Now.Year; year < DateTime.UtcNow.AddYears(16).Year; year++)
+												{
+													<option value="@year" @(Model.CreditCardExpiryYearManagePaymentField == year ? "selected" : "")>@year</option>
+												}
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="required">@Html.LocalizeString("CreditCardVerificationNumberLabel")</label>
+									<div class="row">
+										<div class="col-sm-6 col-xs-6 col-6">
+											<input name="CreditCardVerificationNumberManagePaymentField" value="@Model.CreditCardVerificationNumberManagePaymentField" type="text" class="form-control" required data-msg="@Html.LocalizeString("CreditCardVerificationNumberRequiredError")" maxlength="5" autocomplete="cc-csc" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="123" />
+										</div>
+										<div class="col-sm-6 col-xs-6 col-6"><img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/CvvSample.png" style="max-height: 32px" /></div>
+									</div>
+								</div>
+							}
+							<input type="hidden" name="PaymentNonceManagePaymentField" value="@Model.PaymentNonceManagePaymentField" />
+							<input type="hidden" name="ProfileNumberManagePaymentField" value="@Model.ProfileNumberManagePaymentField" />
+							<input type="hidden" name="PaymentNumberManagePaymentField" value="@Model.PaymentNumberManagePaymentField" />
+							<input type="hidden" name="PaymentHintManagePaymentField" value="@Model.PaymentHintManagePaymentField" />
+							<input type="hidden" name="AuthenticationTokenManagePaymentField" value="@Model.AuthenticationTokenManagePaymentField" />
+						}
+						else if (Model.PaymentMethodTypeManagePaymentField == PaymentMethodType.Venmo)
+						{
+							Model.StartupScripts.Add("rvdsfManagePayment.initializeVenmoPayment()");
+							<div class="form-group">
+								<label class="required">@Html.LocalizeString("VenmoAuthorizationLabel")</label>
+								<input class="form-control" type="text" style="border: 0" name="PaymentNonceManagePaymentField" value="@Model.PaymentNonceManagePaymentField" disabled required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+								<input type="hidden" name="PaymentHintManagePaymentField" value="@Model.PaymentHintManagePaymentField" />
+								<a id="rvdsfManagePaymentVenmoButton" class="btn btn-primary" style="display:none; width: 162px;"><img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/VenmoLogo.png" alt="" aria-label="venmo"></a>
+							</div>
+						}
+						else if (Model.PaymentMethodTypeManagePaymentField == PaymentMethodType.VirtualCardServicesPay)
+						{
+							<div class="form-group">
+								<label class="control-label required">@Html.LocalizeString("CreditCardNumberLabel")</label>
+								<input id="rvdsfCreditCardNumberManagePaymentInput" name="CreditCardNumberManagePaymentField" type="text" class="form-control" value="@Model.CreditCardNumberManagePaymentField" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" minlength="15" maxlength="24" autocomplete="cc-number" onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 32)" placeholder="1234 1234 1234 1234" />
+							</div>
+							<div class="form-group">
+								<label>@Html.LocalizeString("CreditCardExpiryLabel")</label>
+								<div class="row">
+									<div class="col-sm-6 col-xs-6 col-6">
+										<select class="form-control" name="CreditCardExpiryMonthManagePaymentField" autocomplete="cc-exp-month">
+											@for (int month = 1; month <= 12; month++)
+											{
+												<option value="@month" @(Model.CreditCardExpiryMonthManagePaymentField == month ? "selected" : "")>@month.ToString("00")</option>
+											}
+										</select>
+									</div>
+									<div class="col-sm-6 col-xs-6 col-6">
+										<select class="form-control" name="CreditCardExpiryYearManagePaymentField" autocomplete="cc-exp-year">
+											@for (int year = DateTime.Now.Year; year < DateTime.UtcNow.AddYears(16).Year; year++)
+											{
+												<option value="@year" @(Model.CreditCardExpiryYearManagePaymentField == year ? "selected" : "")>@year</option>
+											}
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="required">@Html.LocalizeString("CreditCardVerificationNumberLabel")</label>
+								<div class="row">
+									<div class="col-sm-6 col-xs-6 col-6">
+										<input name="CreditCardVerificationNumberManagePaymentField" value="@Model.CreditCardVerificationNumberManagePaymentField" type="text" class="form-control" required data-msg="@Html.LocalizeString("CreditCardVerificationNumberRequiredError")" maxlength="5" autocomplete="cc-csc" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="123" />
+									</div>
+									<div class="col-sm-6 col-xs-6 col-6"><img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/CvvSample.png" style="max-height: 32px" /></div>
+								</div>
+							</div>
+							<input type="hidden" name="ProfileNumberManagePaymentField" value="@Model.ProfileNumberManagePaymentField" />
+							<input type="hidden" name="PaymentNumberManagePaymentField" value="@Model.PaymentNumberManagePaymentField" />
+							<input type="hidden" name="PaymentHintManagePaymentField" value="@Model.PaymentHintManagePaymentField" />
+							<input type="hidden" name="AuthenticationTokenManagePaymentField" value="@Model.AuthenticationTokenManagePaymentField" />
+						}
+					<div class="text-right form-group">
+						@if (!String.IsNullOrEmpty(Request.QueryString[Global.QueryStringKeys.ReturnUrl]) && Model.UserPaymentID > 0)
+						{
+							<button id="rvdsfDeleteManagePaymentButton" type="button" class="btn btn-default btn-light" onclick="if (confirm('@Html.LocalizeString(Global.LocalizedStrings.Message_ConfirmDelete, Global.FilePaths.LocalSharedResourceFile)')) { Revindex.Web.FormPost(this, 'Delete', false, { userPaymentID: @Model.UserPaymentID }) }">@Html.LocalizeString("DeleteLink")</button>
+						}
+						<button type="button" id="rvdsfCancelManagePaymentButton" class="btn btn-default btn-light" onclick="Revindex.Web.FormPost(this, 'Cancel', false)">@Html.LocalizeString("CancelLink")</button>
+						<button id="rvdsfSaveManagePaymentButton" type="button" class="btn btn-primary" onclick="rvdsfManagePayment.save(this, false)">@Html.LocalizeString("SaveLink")</button>
+						@if (!String.IsNullOrEmpty(Request.QueryString[Global.QueryStringKeys.ReturnUrl]))
+						{
+							<button id="rvdsfSaveAndReturnManagePaymentButton" type="button" class="btn btn-primary" onclick="rvdsfManagePayment.save(this, true)">@Html.LocalizeString("SaveAndReturnLink")</button>
+						}
+					</div>
+					</div>
+				</fieldset>
+			</div>
+		}
+	}
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+	<script type="text/plain" id="rvdsfStartupScriptManagePayment">
+		@foreach (var script in Model.StartupScripts)
+		{
+			<text>@Html.Raw(script)</text>
+		}
+	</script>
+</div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/additional-methods.min.js" defer></script>
+
+@* Uses jQuery Unobtrusive Validation. See http://www.mobzystems.com/blog/setting-up-jquery-unobtrusive-validation/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validate-unobtrusive/jquery.validate.unobtrusive.min.js" defer></script>
+
+@* Use cleave for credit card auto formatting. See https://nosir.github.io/cleave.js/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/cleave/cleave.min.js" defer></script>
+
+<script type="text/javascript">
+	var rvdsfManagePayment = rvdsfManagePayment || {}
+
+	rvdsfManagePayment.initializeCreditCardPayment = function () {
+
+		var that = this
+		@{
+			var creditCardPaymentMethod = Model.AvailablePaymentMethods.Where(pm => pm.PaymentMethod == PaymentMethodType.CreditCard).FirstOrDefault();
+			if (creditCardPaymentMethod != null)
+			{
+				if (creditCardPaymentMethod.PaymentGateway == "AuthorizeNetAccept")
+				{
+					<text>
+						$("#rvdsfAddCreditCardButton").addClass("AcceptUI")
+						$("#rvdsfAddCreditCardButton").attr("data-billingAddressOptions", '{"show":true, "required":false}')
+						$("#rvdsfAddCreditCardButton").attr("data-apiLoginID", "@creditCardPaymentMethod.UserID")
+						$("#rvdsfAddCreditCardButton").attr("data-clientKey", "@creditCardPaymentMethod.PublicKey")
+						$("#rvdsfAddCreditCardButton").attr("data-acceptUIFormBtnTxt", "@Html.LocalizeString("AddLabel")")
+						$("#rvdsfAddCreditCardButton").attr("data-acceptUIFormHeaderTxt", "")
+						$("#rvdsfAddCreditCardButton").attr("data-paymentOptions", '{"showCreditCard": true, "showBankAccount": false}')
+						$("#rvdsfAddCreditCardButton").attr("data-responseHandler", "authorizeNetAcceptResponseHandler")
+
+						// Cannot load script outside HTML. Authorize.net will reject.
+						var script = document.createElement("script");
+						script.src = "@(creditCardPaymentMethod.TestMode.Value ? "https://jstest.authorize.net/v1/Accept.js" : "https://js.authorize.net/v1/Accept.js")"
+						script.charset = "utf-8";
+						document.head.appendChild(script);
+
+						script = document.createElement("script");
+						script.src = "@(creditCardPaymentMethod.TestMode.Value ? "https://jstest.authorize.net/v3/AcceptUI.js" : "https://js.authorize.net/v3/AcceptUI.js")"
+						script.charset = "utf-8";
+						document.head.appendChild(script);
+
+						window.authorizeNetAcceptResponseHandler = function (response) {
+							if (response.messages.resultCode === "Error") {
+								if (response.messages.message.length > 0)
+									$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(response.messages.message[0].text).show()
+							}
+							else {
+								$("input[name='PaymentNonceManagePaymentField']").val(response.opaqueData.dataDescriptor + "|" + response.opaqueData.dataValue)
+								$("input[name='PaymentHintManagePaymentField']").val(response.encryptedCardData.cardNumber.substring(response.encryptedCardData.cardNumber.length - 4))
+								$("#rvdsfCreditCardExpiryMonthManagePaymentInput").val(parseInt(response.encryptedCardData.expDate.substring(0, 2)))
+								$("#rvdsfCreditCardExpiryYearManagePaymentInput").val(2000 + parseInt(response.encryptedCardData.expDate.substring(response.encryptedCardData.expDate.length - 2)))
+
+								$("#rvdsfPaymentHintManagePaymentInput").val($("input[name='PaymentHintManagePaymentField']").val())
+
+								$("#rvdsfRemoveCreditCardButton").show()
+								$("#rvdsfAddCreditCardButton").hide()
+							}
+						}
+					</text>
+				}
+				else if (creditCardPaymentMethod.PaymentGateway == "Braintree")
+				{
+					<text>
+						$("#rvdsfCreditCardContainer").removeClass("form-control")
+						$("#rvdsfCreditCardContainer").children().remove()
+						$.getScript("https://js.braintreegateway.com/web/dropin/1.37.0/js/dropin.min.js", function( data, textStatus, jqxhr ) {
+							braintree.dropin.create({
+								authorization: "@creditCardPaymentMethod.Token",
+								container: '#rvdsfCreditCardContainer'
+							}, (error, dropinInstance) => {
+								if (error) {
+									$("#rvdsfSalesPaymentErrorManagePaymentContainer").text("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentMethodUnavailable, Global.FilePaths.LocalSharedResourceFile))").show()
+								}
+								else {
+									that.braintree = dropinInstance
+								}
+							});
+						})
+					</text>
+				}
+				else if (creditCardPaymentMethod.PaymentGateway == "Stripe")
+				{
+					<text>
+						$.getScript("https://js.stripe.com/v3/", 
+							function (data, textStatus, jqxhr) {
+								that.stripe = Stripe("@creditCardPaymentMethod.PublicKey")
+								that.stripeCard = that.stripe.elements({ locale: "@Dnn.Portal.CultureCode.Substring(0, 2)" }).create('card', { hidePostalCode: true })
+								that.stripeCard.mount('#rvdsfCreditCardContainer');
+							})
+					</text>
+				}
+				else if (creditCardPaymentMethod.PaymentGateway == "Square")
+				{
+					<text>
+						var scriptFile = '@(creditCardPaymentMethod.TestMode == true ? "https://js.squareupsandbox.com/v2/paymentform" : "https://js.squareup.com/v2/paymentform")'
+						$.getScript(scriptFile, function (data, textStatus, jqxhr) {
+							that.square = new SqPaymentForm({
+							applicationId: "@creditCardPaymentMethod.PublicKey",
+							locationId: "@creditCardPaymentMethod.LocationKey",
+							card: {
+								elementId: 'rvdsfCreditCardContainer'
+							},
+							callbacks: {
+							cardNonceResponseReceived: function (errors, nonce, paymentData, contacts) {
+							if (errors) {
+								$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(errors[0].message).show()
+							} else {
+								@if (creditCardPaymentMethod.AuthenticateIdentity)
+								{
+									<text>
+									// Authenticate 3D Secure
+									that.square.verifyBuyer(
+										nonce,
+										{
+										intent: 'STORE',
+											billingContact: {
+											givenName: $("input[name='FirstNameManagePaymentField']").val(),
+												familyName: $("input[name='LastNameManagePaymentField']").val()
+											}
+									},
+										function (err, verificationResult) {
+										if (err == null) {
+												$("input[name='CreditCardNumberManagePaymentField']").val(null)
+												$("input[name='ProfileNumberManagePaymentField']").val(null)
+												$("input[name='PaymentNumberManagePaymentField']").val(nonce)
+												$("input[name='PaymentHintManagePaymentField']").val(paymentData.last_4)
+												$("input[name='AuthenticationTokenManagePaymentField']").val(verificationResult.token)
+												Revindex.Web.FormPost(that.square.sender, 'Save', true, { Return: that.returnBack, CreditCardExpiryMonthManagePaymentField: paymentData.exp_month, CreditCardExpiryYearManagePaymentField: paymentData.exp_year })
+											}
+										else {
+												$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(err.message).show()
+											}
+									})
+									</text>
+								}
+								else {
+									<text>
+										$("input[name='CreditCardNumberManagePaymentField']").val(null)
+										$("input[name='ProfileNumberManagePaymentField']").val(null)
+										$("input[name='PaymentNumberManagePaymentField']").val(nonce)
+										$("input[name='PaymentHintManagePaymentField']").val(paymentData.last_4)
+										Revindex.Web.FormPost(that.square.sender, 'Save', true, { Return: that.returnBack, CreditCardExpiryMonthManagePaymentField: paymentData.exp_month, CreditCardExpiryYearManagePaymentField: paymentData.exp_year })
+									</text>
+								}
+								
+								}
+							}
+						}
+						})
+
+						that.square.build()
+						})
+					</text>
+				}
+				else
+				{
+					<text>
+						var cleave = new Cleave('#rvdsfCreditCardNumberManagePaymentInput', {
+						creditCard: true })
+					</text>
+				}
+			}
+		}
+	}
+
+	rvdsfManagePayment.initializeVenmoPayment = function () {
+		var that = this
+		@{
+			var venmoPaymentMethod = Model.AvailablePaymentMethods.Where(pm => pm.PaymentMethod == PaymentMethodType.Venmo).FirstOrDefault();
+
+			if (venmoPaymentMethod != null)
+			{
+				if (venmoPaymentMethod.PaymentGateway == "Braintree")
+				{
+					<text>
+						$.when(
+							$.getScript("https://js.braintreegateway.com/web/3.94.0/js/client.min.js"),
+							$.getScript("https://js.braintreegateway.com/web/3.94.0/js/venmo.min.js"),
+							$.getScript("https://js.braintreegateway.com/web/3.94.0/js/data-collector.min.js"),
+							$.Deferred(function(deferred){
+								$(deferred.resolve);
+							})
+						).done(function(){
+							
+							var venmoButton = document.getElementById('rvdsfManagePaymentVenmoButton');
+
+							braintree.client.create({
+								authorization: "@venmoPaymentMethod.Token"
+							}, function (clientError, clientInstance) {
+								if (clientError) {
+									$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(clientError.message).show()
+									return;
+								}
+
+								braintree.dataCollector.create({
+									client: clientInstance
+								}, function (dataCollectorError, dataCollectorInstance) {
+									if (dataCollectorError) {
+										$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(dataCollectorError.message).show()
+										return;
+									}
+
+									that.ClientDevice(dataCollectorInstance.deviceData)
+								})
+
+								braintree.venmo.create({
+									client: clientInstance,
+									allowDesktop: true,
+									allowNewBrowserTab: false,
+									paymentMethodUsage: 'multi_use'
+								}, function (venmoError, venmoInstance) {
+									if (venmoError) {
+										$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(venmoError.message).show()
+										return;
+									}
+
+									if (!venmoInstance.isBrowserSupported()) {
+										$("#rvdsfSalesPaymentErrorManagePaymentContainer").text("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentMethodUnavailable, Global.FilePaths.LocalSharedResourceFile))").show()
+										return;
+									}
+
+									// Display button
+									venmoButton.style.display = 'block';
+									venmoButton.addEventListener('click', function () {
+										venmoButton.disabled = true;
+
+										venmoInstance.tokenize(function (tokenizeError, payload) {
+											venmoButton.removeAttribute('disabled');
+											
+											if (tokenizeError) {
+												$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(tokenizeError.message).show()
+											} else {
+												$("input[name='PaymentHintManagePaymentField']").val(payload.details.username)
+												$("input[name='PaymentNonceManagePaymentField']").val(payload.nonce)
+											}
+										})
+									})
+								})
+							})
+						})	
+					</text>
+				}
+			}
+		}
+	}
+
+	rvdsfManagePayment.validate = function () {
+
+		var validationResult = $('#Form .rvdsf-managepayment-container input, .rvdsf-managepayment-container select, .rvdsf-managepayment-container textarea').valid()
+
+		// Scroll to first error
+		if (!validationResult) {
+			$('html, body').animate({
+				scrollTop: $('.has-error').offset().top - 110
+			}, 800);
+		}
+
+		return validationResult
+	}
+
+	rvdsfManagePayment.save = function (sender, returnBack) {
+		this.returnBack = returnBack
+		that = this
+
+		$("#rvdsfSalesPaymentErrorManagePaymentContainer").hide()
+
+		if (this.validate()) {
+			if ($("#rvdsfPaymentMethodTypeManagePaymentField").val() == 3) {
+
+				// Tokenize only if this is not a post payment
+				if (!@(Model.IsPostPayment ? "true" : "false")) {
+					@if (creditCardPaymentMethod != null && creditCardPaymentMethod.PaymentGateway == "Braintree")
+					{
+						<text>
+						// See https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
+						this.braintree.requestPaymentMethod((error, payload) => {
+							if (error) {
+								$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(error.message).show()
+							}
+							else {
+								$("input[name='PaymentNonceManagePaymentField']").val(payload.nonce)
+								$("input[name='PaymentHintManagePaymentField']").val(payload.details.lastFour)
+
+								// HACK: Braintree imports a library that uses strict mode. This causes __doPostBack to fail.
+								// We can bypass the strict mode by creating a dummy event object to workaround it.
+								// https://stackoverflow.com/questions/14533585/jqueryui-dialog-firefox-asp-net-access-to-strict-mode-caller-function-is-c
+								// https://stackoverflow.com/questions/23254763/vb-net-javascript-issue-involving-strict-mode
+								window.event = {}
+
+								Revindex.Web.FormPost(sender, 'Save', false, { Return: that.returnBack, CreditCardExpiryMonthManagePaymentField: payload.details.expirationMonth, CreditCardExpiryYearManagePaymentField: payload.details.expirationYear })
+							}
+						});
+						</text>
+					}
+					else if (creditCardPaymentMethod != null && creditCardPaymentMethod.PaymentGateway == "IntuitQBPayments")
+					{
+						<text>
+						var tokenUrl = "@(creditCardPaymentMethod.TestMode.Value ? "https://sandbox.api.intuit.com/quickbooks/v4/payments/tokens" : "https://api.intuit.com/quickbooks/v4/payments/tokens")"
+												
+						var tokenData = {
+							card: {
+								name: $("input[name='FirstNameManagePaymentField']").val() + ' ' + $("input[name='LastNameManagePaymentField']").val(), 
+								number: $("input[name='CreditCardNumberManagePaymentField']").val().replaceAll(/ /g, ""), 
+								expMonth: $("select[name='CreditCardExpiryMonthManagePaymentField']").val().padStart(2, "0"), 
+								address: {
+									postalCode: $("input[name='PostalCodeManagePaymentField']").val(), 
+									country: $("select[name='CountryCodeManagePaymentField']").val(), 
+									region: $("select[name='SubdivisionCodeManagePaymentField']").val() ? $("select[name='SubdivisionCodeManagePaymentField']").val().substring(3) : "", 
+									streetAddress: $("input[name='StreetManagePaymentField']").val(), 
+									city: $("input[name='CityManagePaymentField']").val()
+								}, 
+								expYear: $("select[name='CreditCardExpiryYearManagePaymentField']").val(), 
+								cvc: $("input[name='CreditCardVerificationNumberManagePaymentField']").val()
+							}
+						}
+
+						$.ajax({
+							type: "POST",
+							contentType: "application/json",
+							url: tokenUrl,
+							data: JSON.stringify(tokenData)
+						})
+						.done(function (data, textStatus, jqXHR) {
+
+							$("input[name='PaymentHintManagePaymentField']").val($("input[name='CreditCardNumberManagePaymentField']").val().slice(-4))
+							$("input[name='PaymentNonceManagePaymentField']").val(data.value)
+							$("input[name='CreditCardNumberManagePaymentField']").val('')
+
+							Revindex.Web.FormPost(sender, 'Save', false, { Return: that.returnBack })
+						})
+						.fail(function (data, textStatus, errorThrown) {
+							$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(data.responseJSON.errors[0].message).show()
+						})
+						</text>
+					}
+					else if (creditCardPaymentMethod != null && creditCardPaymentMethod.PaymentGateway == "Square")
+					{
+						<text>
+						this.square.requestCardNonce()
+
+						// Square does not return a promise. We will tag our defer object
+						// to the square object so that it can be resolved in the callback above
+						this.square.sender = sender
+						</text>
+					}
+					else if (creditCardPaymentMethod != null && creditCardPaymentMethod.PaymentGateway == "Stripe")
+					{
+						<text>
+						this.stripe.createPaymentMethod('card', this.stripeCard, {
+							billing_details: { name: $("input[name='FirstNameManagePaymentField']").val() + ' ' + $("input[name='LastNameManagePaymentField']").val() }
+						}).then(function (result) {
+							if (result.error) {
+								$("#rvdsfSalesPaymentErrorManagePaymentContainer").text(result.error.message).show()
+
+							} else {
+								$("input[name='CreditCardNumberManagePaymentField']").val(null)
+								$("input[name='ProfileNumberManagePaymentField']").val(null)
+								$("input[name='PaymentNumberManagePaymentField']").val(result.paymentMethod.id)
+								$("input[name='PaymentHintManagePaymentField']").val(result.paymentMethod.card.last4)
+								Revindex.Web.FormPost(sender, 'Save', true, { Return: that.returnBack, CreditCardExpiryMonthManagePaymentField: result.paymentMethod.card.exp_month, CreditCardExpiryYearManagePaymentField: result.paymentMethod.card.exp_year })
+							}
+						})
+						</text>
+					}
+					else
+					{
+						<text>
+						if (returnBack)
+							Revindex.Web.FormPost(sender, 'Save', true, { Return: true, ClientScreenColorDepthManageOrderField: window.screen.colorDepth, ClientScreenHeightManageOrderField: window.screen.height, ClientScreenWidthManageOrderField: window.screen.width, ClientTimeZoneOffsetManageOrderField: new Date().getTimezoneOffset(), ClientLanguageManageOrderField: window.navigator.language })
+						else
+							Revindex.Web.FormPost(sender, 'Save', true, { ClientScreenColorDepthManageOrderField: window.screen.colorDepth, ClientScreenHeightManageOrderField: window.screen.height, ClientScreenWidthManageOrderField: window.screen.width, ClientTimeZoneOffsetManageOrderField: new Date().getTimezoneOffset(), ClientLanguageManageOrderField: window.navigator.language })
+						</text>
+					}
+				}
+				else
+				{
+					if (returnBack)
+						Revindex.Web.FormPost(sender, 'Save', true, { Return: true, ClientScreenColorDepthManageOrderField: window.screen.colorDepth, ClientScreenHeightManageOrderField: window.screen.height, ClientScreenWidthManageOrderField: window.screen.width, ClientTimeZoneOffsetManageOrderField: new Date().getTimezoneOffset(), ClientLanguageManageOrderField: window.navigator.language })
+					else
+						Revindex.Web.FormPost(sender, 'Save', true, { ClientScreenColorDepthManageOrderField: window.screen.colorDepth, ClientScreenHeightManageOrderField: window.screen.height, ClientScreenWidthManageOrderField: window.screen.width, ClientTimeZoneOffsetManageOrderField: new Date().getTimezoneOffset(), ClientLanguageManageOrderField: window.navigator.language })
+				}
+			}
+			else {
+				if (returnBack)
+					Revindex.Web.FormPost(sender, 'Save', true, { Return: true, ClientScreenColorDepthManageOrderField: window.screen.colorDepth, ClientScreenHeightManageOrderField: window.screen.height, ClientScreenWidthManageOrderField: window.screen.width, ClientTimeZoneOffsetManageOrderField: new Date().getTimezoneOffset(), ClientLanguageManageOrderField: window.navigator.language })
+				else
+					Revindex.Web.FormPost(sender, 'Save', true, { ClientScreenColorDepthManageOrderField: window.screen.colorDepth, ClientScreenHeightManageOrderField: window.screen.height, ClientScreenWidthManageOrderField: window.screen.width, ClientTimeZoneOffsetManageOrderField: new Date().getTimezoneOffset(), ClientLanguageManageOrderField: window.navigator.language })
+				}
+			}
+		}
+
+		function pageLoad(sender, args) {
+
+				// Restore jQuery Unobstrusive Validation. Parse will not update unless we reset it first.
+				var form = $("#Form").removeData("validator").removeData("unobtrusiveValidation")
+				$.validator.unobtrusive.parse(form);
+
+				// Scroll to first error
+				if ($('.rvd-module-container div.alert.alert-danger:visible, .rvd-module-container div.alert.alert-warning:visible, .rvd-module-container div.alert.alert-success:visible').length > 0) {
+					$('html, body').animate({
+						scrollTop: $('.rvd-module-container div.alert.alert-danger:visible, .rvd-module-container div.alert.alert-warning:visible, .rvd-module-container div.alert.alert-success:visible').offset().top - 110
+					}, 200);
+				}
+
+				// Initialize jQuery Validation with Bootstrap default styles
+				$('#Form').validate({
+					highlight: function(element) {
+						$(element).closest('.form-group').addClass('has-error');
+						$(element).addClass('is-invalid');
+					},
+					unhighlight: function(element) {
+						$(element).closest('.form-group').removeClass('has-error');
+						$(element).removeClass('is-invalid');
+					},
+					errorElement: 'div',
+					errorClass: 'help-block invalid-feedback',
+					errorPlacement: function(error, element) {
+						if (element.parent('.input-group').length) {
+							error.insertAfter(element.parent());
+						} else if(element.prop('type') === 'checkbox') {
+							error.appendTo(element.parent().parent());
+						} else if(element.prop('type') === 'radio') {
+							error.appendTo(element.parent().parent());
+						} else {
+							error.insertAfter(element);
+						}
+					},
+					onsubmit: false
+				})
+
+				// Add custom method to validate at least one checkbox in group is selected
+				$.validator.addMethod("requiredGroup", function (value, element, params) {
+					if (params)
+						return ($("input[name='" + params + "']:checked").length > 0)
+					else
+						return true
+				}, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+				// Execute start up scripts
+				if ($("#rvdsfStartupScriptManagePayment").length > 0) {
+					eval($("#rvdsfStartupScriptManagePayment").text())
+				}
+			}
+
+			$(document).ready(function () {
+				Revindex.Web.MaintainFocus.Initialize(true)
+			})
+</script>

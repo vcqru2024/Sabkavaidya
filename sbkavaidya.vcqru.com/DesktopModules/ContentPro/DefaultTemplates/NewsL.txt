@@ -1,0 +1,7 @@
+﻿@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<puresystems.Modules.ContentPro.Components.RazorModel>
+
+@foreach (var Item in Model.Content.List){
+<p style="text-align: center;"><span style="font-size: 18px; color: #444444;">@Item.Content.Body</span></p>
+<p style="text-align: left;"><span style="color: #444444;"><em><span style="color: #444444;"><a href="@Item.Content.Url"> Read More... </a></span><br />
+</em></span></p>
+}

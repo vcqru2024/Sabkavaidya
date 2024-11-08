@@ -1,0 +1,42 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support USPS address validation
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD AddressValidationProvidersUSPSUserID varchar(255) NULL
+
+	-- Add Family column to Gallery table
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Gallery ADD	Family int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Gallery_Family DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Gallery	DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Gallery_Family
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		-- Update Gallery.Family to take same values as DisplayOrder
+		UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Gallery SET Family = DisplayOrder
+
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

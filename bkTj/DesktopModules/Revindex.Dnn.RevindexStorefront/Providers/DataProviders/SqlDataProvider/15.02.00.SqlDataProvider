@@ -1,0 +1,65 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support Purolator
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider ADD
+		PurolatorKey varchar(255) NULL,
+		PurolatorPassword varchar(255) NULL,
+		PurolatorAccountNumber varchar(255) NULL,
+		PurolatorActivationKey varchar(255) NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider ADD
+		PurolatorTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingProvider_PurolatorTestMode DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingProvider_PurolatorTestMode
+
+	-- Support Payment Term concept
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentTermsCODActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentTermsCODActive DEFAULT 0,
+		PaymentTermsCODAvailabilityRule xml NULL,
+		PaymentTermsNet30Active bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentTermsNet30Active DEFAULT 0,
+		PaymentTermsNet30AvailabilityRule xml NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentTermsCODActive
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+		DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentTermsNet30Active
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD PaymentTerm int NULL
+	
+	-- Support matching nearest warehouse
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ProductWarehouseProximityMatchActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductWarehouseProximityMatchActive DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ProductWarehouseProximityMatchActive
+	
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

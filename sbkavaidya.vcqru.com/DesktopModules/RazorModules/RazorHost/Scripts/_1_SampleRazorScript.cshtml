@@ -1,0 +1,16 @@
+@functions { 
+ public List<DotNetNuke.Entities.Tabs.TabInfo> GetTabs()
+ {
+  return DotNetNuke.Entities.Tabs.TabController.GetPortalTabs(Dnn.Portal.PortalId, -1, true, true);
+ }
+}
+
+<table>
+@foreach (var tab in GetTabs())
+{
+ <tr>
+  <td>@tab.TabID</td>
+  <td><a href="@(DotNetNuke.Common.Globals.NavigateURL(tab.TabID))">@tab.TabPath</a></td>
+ </tr>
+}
+</table>

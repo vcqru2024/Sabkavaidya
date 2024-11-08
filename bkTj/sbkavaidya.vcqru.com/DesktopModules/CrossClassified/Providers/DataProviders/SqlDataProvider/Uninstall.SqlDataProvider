@@ -1,0 +1,1496 @@
+﻿/** Drop  Function **/
+
+/****** Object:  UserDefinedFunction {databaseOwner}[{objectQualifier}CP_CsvToInt]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[CP_CsvToInt]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION {databaseOwner}[CP_CsvToInt]
+GO
+
+/****** Drop procedues ******/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ProductToRole_GetByProduct]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToRole_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ProductToRole_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ProductToTag_GetByProduct]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToTag_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ProductToTag_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_ProductToCategory_GetByProduct]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToCategory_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ProductToCategory_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_Get]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Get]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Get]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByOrder]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByOrder]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByOrder]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_Add]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Add]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_Update]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Update]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_Delete]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Delete]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_Delete]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByProductAndClient]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByProductAndClient]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByProductAndClient]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByModuleSettings]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType_Product]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByParm]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorByPortal]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorByPortal]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorByPortal]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetRss]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_List]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByDate]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorSell]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByClient]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByClient]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByClient]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByMonth]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByType]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_DeleteByUser]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_DeleteByUser]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_DeleteByUser]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetFlashImage]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetRelatedRows]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorByType]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetVendorByType]
+GO
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_Add]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_Delete]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetProductDaysForMonth]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetProductDaysForMonth]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetProductDaysForMonth]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_FillDefaultData]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_FillDefaultData]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_FillDefaultData]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetProductMonths]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetProductMonths]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetProductMonths]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_Get]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_GetByName]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_GetByName]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_GetByName]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_GetByPortals]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_GetByPortals]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_SwapOrder]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_SwapOrder]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_SwapOrder]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_Update]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDField_GetByType]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDField_GetByType]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Get]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDData_Copy]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_Copy]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_Copy]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDData_Delete]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_CartAddress_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDData_Get]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDData_GetByFieldAndProduct]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_GetByFieldAndProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_GetByFieldAndProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDData_GetByProduct]    ScriptDate:08/15/2010 23:20:27 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Attachment_Get]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Attachment_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_UDData_Update]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Audio_Update]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Audio_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Attachment_GetByProduct]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Attachment_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Image_Update]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Image_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Attachment_Add]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Attachment_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Video_Update]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Video_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Attachment_Update]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Attachment_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Attachment_Delete]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Attachment_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Audio_Get]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Audio_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Audio_GetByProduct]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Audio_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Get]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Audio_Add]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Audio_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_GetByPortals]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Add]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Audio_Delete]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Audio_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Update]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_Get]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Image_Get]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Image_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_Role_Delete]    ScriptDate:08/15/2010 23:20:28 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_Role_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_GetByUser]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_GetByUser]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_GetByUser]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Image_GetByProduct]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Image_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_Add]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Image_Add]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Image_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_Update]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Address_Delete]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Address_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Image_Delete]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Image_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Video_Get]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Video_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Video_GetByProduct]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Video_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Video_Add]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Video_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Video_Delete]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Video_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Option_Get]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Option_GetByProduct]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_GetByList]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_GetByList]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_GetByList]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Option_Add]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Option_Update]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Option_Delete]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Option_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_Get]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_GetByProduct]    ScriptDate:08/15/2010 23:20:29 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_List]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_List]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_Add]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_Add]
+GO
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Download_GetByProductAndOption]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download_GetByProductAndOption]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Download_GetByProductAndOption]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_Update]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_Delete]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Download_Get]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Download_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Download_GetByProduct]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Download_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Download_Add]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Download_Add]
+GO
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Download_Delete]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Download_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByUser]    ScriptDate:08/15/2010 23:20:30 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_GetByUser]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByUser]
+GO
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_GetByVendor]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_GetByVendor]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_GetByVendor]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_GetByClient]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_GetByClient]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_GetByClient]
+GO
+
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_Get]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_Add]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_Update]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_Delete]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByClient]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_GetByClient]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByClient]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_GetByVendor]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_Add]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_Delete]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_Get]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_RestorePrice]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_RestorePrice]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_RestorePrice]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetItemCount]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetItemCount]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetItemCount]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_GetByParent]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_GetByParent]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_GetByParent]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetPreviousVersion]    ScriptDate:08/15/2010 23:20:31 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetPreviousVersion]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetPreviousVersion]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_GetByPortals]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_GetByPortals]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_GetByList]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_GetByList]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_GetByList]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_Update]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_UpdateLevel]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_UpdateLevel]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_UpdateLevel]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_UpdateOrder]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_UpdateOrder]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_UpdateOrder]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Category_GetByType]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Category_GetByType]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Watch_Get]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Watch_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Watch_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Watch_GetByUser]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Watch_GetByUser]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Watch_GetByUser]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Watch_Add]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Watch_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Watch_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_User_Get]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Watch_Delete]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Watch_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Watch_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_User_Update]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ticket_Get]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ticket_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_User_Delete]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ticket_Add]    ScriptDate:08/15/2010 23:20:32 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ticket_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_GetByType_Product]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ticket_Update]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ticket_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ticket_Delete]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ticket_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Get]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Get]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_GetByPortals]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_GetByPortals]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_GetByTicket]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail_GetByTicket]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_GetByTicket]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Add]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Add]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Update]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Attachment_DeleteByProduct]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment_DeleteByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Attachment_DeleteByProduct]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Update]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Type_Delete]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Type_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Download_GetByOption]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download_GetByOption]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Download_GetByOption]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Delete]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Ticket_List]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Ticket_List]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Tag_Add]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Tag_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_Get]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Tag_Delete]    ScriptDate:08/15/2010 23:20:33 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Tag_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_List]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_List]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_List]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Tag_Get]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Tag_Get]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_Add]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Add]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Tag_GetByTag]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag_GetByTag]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Tag_GetByTag]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_Update]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Update]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Tag_GetByType]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Tag_GetByType]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Order_Delete]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Order_Delete]
+GO
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Tag_Update]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Tag_Update]
+GO
+
+
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetNewVersion]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetNewVersion]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetNewVersion]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_Move]    ScriptDate:08/15/2010 23:20:34 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_Move]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_Move]
+GO
+
+
+/** procedure in v6.2  **/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Update]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Delete]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Get]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_GetByPortals]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Add]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Update]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Country_Delete]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Get]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_GetByCountry]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_GetByCountry]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Add]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Update]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_State_Delete]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Get]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Add]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Update]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_Delete]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_Get]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByCountry]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByCountry]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByShipMethod]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry_GetByShipMethod]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod_GetByPortals]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod_GetByPortals]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Get]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_GetByType]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Add]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Update]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_TaxRate_Delete]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Get]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_GetByShipMethod]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_GetByShipMethod]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ShipFee_Add]
+GO
+
+/** procedure in v6.4  **/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByProduct]    ScriptDate:08/15/2010 23:20:26 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail_GetByProduct]
+GO
+
+/** procedure in v7.2  **/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}Cp_Product_Tag_GetWithPaging]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Cp_Product_Tag_GetWithPaging]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Cp_Product_Tag_GetWithPaging]
+GO
+
+/** procedure in v7.4  **/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_UpdateViews]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_UpdateViews]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_UpdateViews]
+GO
+
+/** procedure in v7.7  **/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_City_Add]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_City_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_City_Delete]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_City_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_City_Get]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_City_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_City_GetByState]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City_GetByState]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_City_GetByState]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_City_Update]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_City_Update]
+GO
+
+/** procedure in v7.8  **/
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Add]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Delete]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Get]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Coupon_GetByProduct]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Coupon_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Update]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Coupon_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Customer_Add]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Customer_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Customer_Delete]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Customer_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Customer_Get]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Customer_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Customer_GetByCustomer]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer_GetByCustomer]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Customer_GetByCustomer]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Customer_GetByProduct]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Customer_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Customer_Update]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Customer_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Product_Add]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Product_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Product_Delete]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Product_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Product_Get]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Product_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Product_GetByProduct]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Product_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Product_Update]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Product_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Add]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Delete]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Get]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Quantity_GetByProduct]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Quantity_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Update]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Quantity_Update]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Discount_Quantity]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_Quantity]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Discount_Product]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_Product]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Discount_Customer]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_Customer]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Add]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Delete]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Get]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_GetByType]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_GetByType]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Update]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer_Update]
+GO
+
+/** procedure in v7.9  **/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByProduct]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Cart_DeleteByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Add]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Add]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Add]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Delete]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Delete]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Delete]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Get]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Get]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Get]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_GetByProduct]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_GetByProduct]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Discount_Role_Update]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role_Update]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Discount_Role_Update]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Rating_GetAverageForVendor]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating_GetAverageForVendor]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Rating_GetAverageForVendor]
+GO
+
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Product_GetByAuction]    Script Date: 09/14/2013 11:50:05 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product_GetByAuction]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Product_GetByAuction]
+GO
+
+/** procedures in v8.3  **/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToTag_UpdateWithCulture]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_ProductToTag_UpdateWithCulture]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData_GetByCulture]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_UDData_GetByCulture]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_PagingByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_PagingByType]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User_GetByType]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Common_User_GetByType]
+GO
+
+/** Drop  Relations **/
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Ship_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Ship] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Ship_CP_Product_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_UserCategory_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UserCategory]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_UserCategory] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_UserCategory_CP_Product_Type]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ProductToRole_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPProduct_ProductToRole]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ProductToRole] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_ProductToRole_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ProductToTag_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToTag]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ProductToTag] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_ProductToTag_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Tag_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Tag] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Tag_CP_Product_Type]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ProductToCategory_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToCategory]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ProductToCategory] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_ProductToCategory_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Comment_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Comment] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Comment_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_OrderDetail_CP_Product_Order]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_OrderDetail_CP_Product_Order]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_OrderDetail_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_OrderDetail_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Product_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Product] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Product_CP_Product_Type]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Type_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Type] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Type_Portals]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Rating_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Rating] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Rating_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Cart_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Cart] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Cart_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_UDField_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_UDField] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_UDField_CP_Product_Type]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_UDData_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_UDData] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_UDData_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Category_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Category] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Category_CP_Product_Type]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Attachment_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Attachment] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Attachment_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Audio_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Audio] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Audio_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Image_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Image] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Image_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Video_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Video] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Video_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Common_Role_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Common_Role] DROP CONSTRAINT [FK_{objectQualifier}CP_Common_Role_Portals]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Address_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Address] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Address_Portals]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Option_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Option] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Option_CP_Product_Product]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Download_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Download] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Download_CP_Product_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Watch_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Watch]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Watch] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Watch_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Ticket_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Ticket] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Ticket_CP_Product_Product]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_TicketDetail_CP_Product_Ticket]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_TicketDetail_CP_Product_Ticket]
+GO
+
+
+/** relation in v6.2  **/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ShipFee_CP_Product_ShipMethod]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipFee] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_ShipFee_CP_Product_ShipMethod]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Country_Portals]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Country] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Country_Portals]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_TaxRate_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_TaxRate] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_TaxRate_CP_Product_Type]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_State_CP_Product_Country]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_State] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_State_CP_Product_Country]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_Country]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_Country]
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_ShipMethod]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_ShipMethodToCountry_CP_Product_ShipMethod]
+GO
+
+/** relation in v7.7  **/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_City_CP_Product_State]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_City] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_City_CP_Product_State]
+GO
+
+/** relation in v7.8  **/
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Coupon_CP_Product_Product]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Coupon_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Coupon] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Coupon_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Customer_CP_Product_Product]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Customer_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Customer]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Customer] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Customer_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Product_CP_Product_Product]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Product_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Product]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Product] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Product_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Quantity_CP_Product_Product]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Quantity_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Quantity]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Quantity] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Quantity_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Product_Manufacturer_CP_Product_Type]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Manufacturer_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Manufacturer_CP_Product_Type]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Bid]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Bid] DROP CONSTRAINT [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Proxy]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Proxy] DROP CONSTRAINT [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Role] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]
+GO
+
+/** relation in v7.9  **/
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Bid]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Bid] DROP CONSTRAINT [FK_{objectQualifier}CP_Auction_Bid_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Proxy]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Auction_Proxy] DROP CONSTRAINT [FK_{objectQualifier}CP_Auction_Proxy_CP_Product_Product]
+GO
+
+/****** Object:  ForeignKey [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Role] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Role_CP_Product_Product]
+GO
+
+/** relation in v8.1  **/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_Date_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Date]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_Date] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_Date_CP_Product_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Discount_FirstCustomer_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer] DROP CONSTRAINT [FK_{objectQualifier}CP_Discount_FirstCustomer_CP_Product_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Town_CP_Product_City]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Town]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Town] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Town_CP_Product_City]
+GO
+
+/** relation in v8.3  **/
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Content_Product_CP_Product_Product]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_Product]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CPContent_Product] DROP CONSTRAINT [FK_{objectQualifier}CP_Content_Product_CP_Product_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Content_Type_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_Type]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CPContent_Type] DROP CONSTRAINT [FK_{objectQualifier}CP_Content_Type_CP_Product_Type]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Content_UDField_CP_Product_UDField]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_UDField]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CPContent_UDField] DROP CONSTRAINT [FK_{objectQualifier}CP_Content_UDField_CP_Product_UDField]
+GO
+
+/** relation in v8.6  **/
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_Variant_CP_Product_VariantGroup]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Variant]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_Variant] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_Variant_CP_Product_VariantGroup]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}CP_Product_VariantGroup_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_VariantGroup]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_VariantGroup] DROP CONSTRAINT [FK_{objectQualifier}CP_Product_VariantGroup_CP_Product_Type]
+GO
+
+/** relation in v8.9  **/
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'{databaseOwner}[FK_{objectQualifier}Cp_Product_UploadRule_CP_Product_Type]') AND parent_object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UploadRule]'))
+ALTER TABLE {databaseOwner}[{objectQualifier}CP_Product_UploadRule] DROP CONSTRAINT [FK_{objectQualifier}Cp_Product_UploadRule_CP_Product_Type]
+GO
+
+
+/** Drop  tables **/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_Product]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CPContent_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_UDField]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CPContent_UDField]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_Type]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CPContent_Type]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_Misc]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CPContent_Misc]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CPContent_Page]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CPContent_Page]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ship]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Ship]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UserCategory]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_UserCategory]
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToRole]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ProductToRole]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToTag]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ProductToTag]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Tag]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Tag]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ProductToCategory]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ProductToCategory]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Comment]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Rating]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Rating]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Rating]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Cart]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Cart]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Cart]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_OrderDetail]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_OrderDetail]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_OrderDetail]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Order]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Order]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Order]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_UDData]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDData]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_UDData]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_UDField]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UDField]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_UDField]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_CartAddress]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_CartAddress]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_CartAddress]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Attachment]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Attachment]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Attachment]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Audio]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Audio]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Audio]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Image]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Image]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Image]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Video]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Video]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Video]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Common_Role]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_Role]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Common_Role]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Address]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Address]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Address]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Option]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Option]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Option]
+GO
+
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Download]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Download]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Download]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Common_User]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Common_User]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Common_User]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Watch]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Watch]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Watch]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_TicketDetail]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TicketDetail]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_TicketDetail]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Ticket]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Ticket]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Ticket]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethodToCountry]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipFee]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipFee]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ShipMethod]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ShipMethod]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_TaxRate]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_TaxRate]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Town]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Town]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_City]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_City]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_State]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_State]
+GO
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Country]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Country]
+GO
+
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Discount_Coupon]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Coupon]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_Coupon]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Manufacturer]    Script Date: 04/02/2013 12:13:49 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Manufacturer]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Manufacturer]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Auction_Bid]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Bid]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Auction_Bid]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Auction_Proxy]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Auction_Proxy]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Auction_Proxy]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Discount_Role]    Script Date: 09/14/2013 11:50:06 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Role]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_Role]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_Date]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_Date]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_FirstCustomer]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_GlobalCoupon]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_GlobalCoupon]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_GlobalDate]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_GlobalDate]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Discount_GlobalRole]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Discount_GlobalRole]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Category]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Category]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Category]
+GO
+
+/****** Object:  Table {databaseOwner}[{objectQualifier}CP_Product_Product]    ScriptDate:08/15/2010 23:05:44 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Product]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Product]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Variant]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Variant]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_VariantGroup]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_VariantGroup]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_UploadRule]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_UploadRule]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_ClientUpload]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_ClientUpload]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Type]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}CP_Product_Type]
+GO
+
+/****** delete schedule item ******/
+
+Delete from {databaseOwner}[{objectQualifier}Schedule]
+Where [TypeFullName] = 'Cross.Modules.CP_Product.Business.Schedule,Cross.Dnn.Modules.ClassifiedPro'
+
+GO

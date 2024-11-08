@@ -1,0 +1,995 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ProductsHeader.Text" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="ProductHeader.Text" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="GalleryHeader.Text" xml:space="preserve">
+    <value>Gallery</value>
+  </data>
+  <data name="PromotionHeader.Text" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="ShippingHeader.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="HandlingHeader.Text" xml:space="preserve">
+    <value>Handling</value>
+  </data>
+  <data name="VariantGroupsHeader.Text" xml:space="preserve">
+    <value>Variant groups</value>
+  </data>
+  <data name="VariantsHeader.Text" xml:space="preserve">
+    <value>Variants</value>
+  </data>
+  <data name="CategoriesHeader.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="SEOHeader.Text" xml:space="preserve">
+    <value>SEO</value>
+  </data>
+  <data name="ExportLink.Text" xml:space="preserve">
+    <value>Export</value>
+    <comment>Export ||file||</comment>
+  </data>
+  <data name="ImportLink.Text" xml:space="preserve">
+    <value>Import</value>
+    <comment>Import ||file||</comment>
+  </data>
+  <data name="AddHyperLink.Text" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="ResetLinkButton.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="SearchLinkButton.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PageItemsLabel.Text" xml:space="preserve">
+    <value>Page items:</value>
+  </data>
+  <data name="DuplicateLink.Text" xml:space="preserve">
+    <value>Duplicate</value>
+  </data>
+  <data name="PreviewLink.Text" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="MoreFeaturesLink.Text" xml:space="preserve">
+    <value>More features</value>
+  </data>
+  <data name="ExportViewLink.Text" xml:space="preserve">
+    <value>Export view</value>
+    <comment>Export view ||file||</comment>
+  </data>
+  <data name="ExportAllLink.Text" xml:space="preserve">
+    <value>Export all</value>
+    <comment>Export everything ||file||</comment>
+  </data>
+  <data name="AddNewCategoryLink.Text" xml:space="preserve">
+    <value>Add new category</value>
+  </data>
+  <data name="EditLink.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="DeleteLinkButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SaveLinkButton.Text" xml:space="preserve">
+    <value>Save</value>
+    <comment>Save ||file||</comment>
+  </data>
+  <data name="SaveAndBackLinkButton.Text" xml:space="preserve">
+    <value>Save &amp; return</value>
+  </data>
+  <data name="Name.Header" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Published.Header" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="DisplayOrder.Header" xml:space="preserve">
+    <value>Display order</value>
+  </data>
+  <data name="SummaryLabel.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="OverviewLabel.Text" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="SpecificationsLabel.Text" xml:space="preserve">
+    <value>Specifications</value>
+  </data>
+  <data name="TermsLabel.Text" xml:space="preserve">
+    <value>Terms</value>
+  </data>
+  <data name="FAQLabel.Text" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="GuideLabel.Text" xml:space="preserve">
+    <value>Guide</value>
+  </data>
+  <data name="CategorySearchLabelControl.Text" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ManufacturerSearchLabelControl.Text" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="DistributorSearchLabelControl.Text" xml:space="preserve">
+    <value>Distributor</value>
+  </data>
+  <data name="InventorySearchLabelControl.Text" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="SellerSearchLabelControl.Text" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="SellerSearchLabelControl.Help" xml:space="preserve">
+    <value>View items belonging to a specific seller.</value>
+  </data>
+  <data name="GeneralDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="DisplayDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="AvailabilityDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Availability</value>
+  </data>
+  <data name="AttributeDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="CustomFieldDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Custom field</value>
+  </data>
+  <data name="RecurringDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Recurring</value>
+  </data>
+  <data name="BookingDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Booking</value>
+  </data>
+  <data name="ComponentDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Component</value>
+  </data>
+  <data name="RequiredDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="RelatedDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Related</value>
+  </data>
+  <data name="SimilarDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Similar</value>
+  </data>
+  <data name="CrosssellDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Cross-sell</value>
+  </data>
+  <data name="ProductReviewDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="ActionDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="RewardsPointDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Reward</value>
+  </data>
+  <data name="ResourceDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="ReturnDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="ProductChannelDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="ExtensionDetailsViewTabLabel.Text" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="ProductKeyLabelControl.Text" xml:space="preserve">
+    <value>Product key</value>
+  </data>
+  <data name="ProductKeyLabelControl.Help" xml:space="preserve">
+    <value>Enter a key that uniquely identifies this item throughout the system. The key could be your item name, SKU, any short meaningful text or simply a GUID value as long as the value is unique. The key is useful for bulk import and programming automation to help refer back to this item.</value>
+  </data>
+  <data name="SellerLabelControl.Text" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="SellerLabelControl.Help" xml:space="preserve">
+    <value>Enter the name if this item belongs to a seller.</value>
+  </data>
+  <data name="NameLabelControl.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameLabelControl.Help" xml:space="preserve">
+    <value>This is the product name that will be displayed on your cart.</value>
+  </data>
+  <data name="ProductTypeLabelControl.Text" xml:space="preserve">
+    <value>Product type</value>
+  </data>
+  <data name="ProductTypeLabelControl.Help" xml:space="preserve">
+    <value>Reserved for future use.</value>
+  </data>
+  <data name="SummaryLabelControl.Text" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="OverviewNameLabelControl.Text" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="OverviewNameLabelControl.Help" xml:space="preserve">
+    <value>Override the description name or leave blank to use the default name.</value>
+  </data>
+  <data name="OverviewLabelControl.Text" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="SpecificationsNameLabelControl.Text" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="SpecificationsNameLabelControl.Help" xml:space="preserve">
+    <value>Override the description name or leave blank to use the default name.</value>
+  </data>
+  <data name="SpecificationsLabelControl.Text" xml:space="preserve">
+    <value>Specifications</value>
+  </data>
+  <data name="TermsNameLabelControl.Text" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="TermsNameLabelControl.Help" xml:space="preserve">
+    <value>Override the description name or leave blank to use the default name.</value>
+  </data>
+  <data name="TermsLabelControl.Text" xml:space="preserve">
+    <value>Terms</value>
+  </data>
+  <data name="FAQNameLabelControl.Text" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="FAQNameLabelControl.Help" xml:space="preserve">
+    <value>Override the description name or leave blank to use the default name.</value>
+  </data>
+  <data name="FAQLabelControl.Text" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="BuyingGuideNameLabelControl.Text" xml:space="preserve">
+    <value>Heading</value>
+  </data>
+  <data name="BuyingGuideNameLabelControl.Help" xml:space="preserve">
+    <value>Override the description name or leave blank to use the default name.</value>
+  </data>
+  <data name="BuyingGuideLabelControl.Text" xml:space="preserve">
+    <value>Buying guide</value>
+  </data>
+  <data name="PriceHeader.Text" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="SalesTypeLabelControl.Text" xml:space="preserve">
+    <value>Sales type</value>
+  </data>
+  <data name="SalesTypeLabelControl.Help" xml:space="preserve">
+    <value>Determine if product can be sold directly or must be quoted.</value>
+  </data>
+  <data name="BasePriceLabelControl.Text" xml:space="preserve">
+    <value>Base price</value>
+  </data>
+  <data name="BasePriceLabelControl.Help" xml:space="preserve">
+    <value>Enter the product base price without the money symbol. (e.g. 10.50)</value>
+  </data>
+  <data name="PriceTextLabelControl.Text" xml:space="preserve">
+    <value>Price text</value>
+  </data>
+  <data name="PriceTextLabelControl.Help" xml:space="preserve">
+    <value>Any text entered here will be shown in place of the actual price. For example, you can override the price label to show "Call for price" or "See price at checkout". Custom price text is often used for sales over telephone or to prevent price comparison sites from robot scraping your price information. Some manufacturers may even place restrictions on how prices should be displayed especially if the selling price is below the manufacturer's minimum advertised price.</value>
+  </data>
+  <data name="MSRPLabelControl.Text" xml:space="preserve">
+    <value>MSRP</value>
+  </data>
+  <data name="MSRPLabelControl.Help" xml:space="preserve">
+    <value>Provide the manufacturer suggested retail price.</value>
+  </data>
+  <data name="ProductCostLabelControl.Text" xml:space="preserve">
+    <value>Product cost</value>
+  </data>
+  <data name="ProductCostLabelControl.Help" xml:space="preserve">
+    <value>Provide the actual cost of this product.</value>
+  </data>
+  <data name="TaxClassLabelControl.Text" xml:space="preserve">
+    <value>Tax class</value>
+  </data>
+  <data name="TaxClassLabelControl.Help" xml:space="preserve">
+    <value>If this product is taxable, select the appropriate tax class.</value>
+  </data>
+  <data name="PromotionStartDateLabelControl.Text" xml:space="preserve">
+    <value>Promotion start date</value>
+  </data>
+  <data name="PromotionStartDateLabelControl.Help" xml:space="preserve">
+    <value>Enter a start date (yyyy-mm-dd) to begin running promotion. Leave blank if promotion is available immediately.</value>
+  </data>
+  <data name="PromotionStopDateLabelControl.Text" xml:space="preserve">
+    <value>Promotion stop date</value>
+  </data>
+  <data name="PromotionStopDateLabelControl.Help" xml:space="preserve">
+    <value>Enter a stop date (yyyy-mm-dd) to end running promotion. Leave blank if promotion is available perpetually.</value>
+  </data>
+  <data name="SKULabelControl.Text" xml:space="preserve">
+    <value>SKU</value>
+  </data>
+  <data name="SKULabelControl.Help" xml:space="preserve">
+    <value>Provide a unique SKU number for this product.</value>
+  </data>
+  <data name="UniversalProductCodeLabelControl.Text" xml:space="preserve">
+    <value>Universal product code</value>
+  </data>
+  <data name="UniversalProductCodeLabelControl.Help" xml:space="preserve">
+    <value>Unique product identifier code such as GTIN, ISBN, UPC, EAN, etc.</value>
+  </data>
+  <data name="ManufacturerLabelControl.Text" xml:space="preserve">
+    <value>Manufacturer</value>
+  </data>
+  <data name="ManufacturerLabelControl.Help" xml:space="preserve">
+    <value>Associate this product with the manufacturer.</value>
+  </data>
+  <data name="ManufacturerSKULabelControl.Text" xml:space="preserve">
+    <value>Manufacturer SKU</value>
+  </data>
+  <data name="ManufacturerSKULabelControl.Help" xml:space="preserve">
+    <value>This is only useful if you need to reference a manufacturer's product by their unique SKU number.</value>
+  </data>
+  <data name="DistributorLabelControl.Text" xml:space="preserve">
+    <value>Distributor</value>
+  </data>
+  <data name="DistributorLabelControl.Help" xml:space="preserve">
+    <value>Associate this product with the distributor.</value>
+  </data>
+  <data name="DistributorSKULabelControl.Text" xml:space="preserve">
+    <value>Distributor SKU</value>
+  </data>
+  <data name="DistributorSKULabelControl.Help" xml:space="preserve">
+    <value>This is only useful if you need to reference a distributor's product by their unique SKU number.</value>
+  </data>
+  <data name="WarehouseLabelControl.Text" xml:space="preserve">
+    <value>Warehouse</value>
+  </data>
+  <data name="WarehouseLabelControl.Help" xml:space="preserve">
+    <value>Associate this product with the warehouse where the product is shipped from. If you leave blank, the product is assumed to be shipped from your business address.</value>
+  </data>
+  <data name="InventoryLabelControl.Text" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="InventoryLabelControl.Help" xml:space="preserve">
+    <value>Empty value indicates unlimited inventory on hand.</value>
+  </data>
+  <data name="MinInventoryLabelControl.Text" xml:space="preserve">
+    <value>Min inventory</value>
+  </data>
+  <data name="MinInventoryLabelControl.Help" xml:space="preserve">
+    <value>The minimum inventory is used to indicate when low inventory should be reported and reordered. Empty value indicates no minimum inventory.</value>
+  </data>
+  <data name="MaxInventoryLabelControl.Text" xml:space="preserve">
+    <value>Max inventory</value>
+  </data>
+  <data name="MaxInventoryLabelControl.Help" xml:space="preserve">
+    <value>The maximum inventory that should be reordered when inventory runs low. Empty value indicates unlimited inventory.</value>
+  </data>
+  <data name="InventoryEmptyBehaviorLabelControl.Text" xml:space="preserve">
+    <value>Inventory behavior</value>
+  </data>
+  <data name="InventoryEmptyBehaviorLabelControl.Help" xml:space="preserve">
+    <value>How product should behave when inventory has exhausted.</value>
+  </data>
+  <data name="MinOrderQuantityLabelControl.Text" xml:space="preserve">
+    <value>Min order quantity</value>
+  </data>
+  <data name="MinOrderQuantityLabelControl.Help" xml:space="preserve">
+    <value>Empty value indicates no minimum order.</value>
+  </data>
+  <data name="MaxOrderQuantityLabelControl.Text" xml:space="preserve">
+    <value>Max order quantity</value>
+  </data>
+  <data name="MaxOrderQuantityLabelControl.Help" xml:space="preserve">
+    <value>Empty value indicates unlimited order.</value>
+  </data>
+  <data name="AllowableOrderQuantityLabelControl.Text" xml:space="preserve">
+    <value>Allowable order quantity</value>
+  </data>
+  <data name="AllowableOrderQuantityLabelControl.Help" xml:space="preserve">
+    <value>Enter the quantities you want to allow, separated by a pipe "|" delimiter. Use a dash to denote a range of quantities. For example, if you enter "1|3|5-7|9" in the text box, only quantities 1, 3, 5, 6, 7 and 9 will be allowed</value>
+  </data>
+  <data name="RequireShippingLabelControl.Text" xml:space="preserve">
+    <value>Require shipping</value>
+  </data>
+  <data name="RequireShippingLabelControl.Help" xml:space="preserve">
+    <value>This product requires shipping.</value>
+  </data>
+  <data name="WeightLabelControl.Text" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="WeightLabelControl.Help" xml:space="preserve">
+    <value>Product weight, usually including its own packaging. This value could be used for shipping calculation.</value>
+  </data>
+  <data name="WidthLabelControl.Text" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="WidthLabelControl.Help" xml:space="preserve">
+    <value>Product dimension usually including its own packaging. These values may be used in shipping calculation.</value>
+  </data>
+  <data name="HeightLabelControl.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="HeightLabelControl.Help" xml:space="preserve">
+    <value>Product dimension usually including its own packaging. These values may be used in shipping calculation.</value>
+  </data>
+  <data name="DepthLabelControl.Text" xml:space="preserve">
+    <value>Depth</value>
+  </data>
+  <data name="DepthLabelControl.Help" xml:space="preserve">
+    <value>Product dimension usually including its own packaging. These values may be used in shipping calculation.</value>
+  </data>
+  <data name="PackageTypeLabelControl.Text" xml:space="preserve">
+    <value>Package type</value>
+  </data>
+  <data name="PackageTypeLabelControl.Help" xml:space="preserve">
+    <value>Specify the shipping package type used for shipping calculation. Do not specify a package type if you have trouble returning shipping rates as certain shipping providers may not support every type of shipping package.</value>
+  </data>
+  <data name="ShippingPriceLabelControl.Text" xml:space="preserve">
+    <value>Shipping price</value>
+  </data>
+  <data name="ShippingPriceLabelControl.Help" xml:space="preserve">
+    <value>This value is not used unless your configured shipping method rules require it to calculate the shipping amount by individual product. Enter the shipping price without the money symbol. (e.g. 10.50).</value>
+  </data>
+  <data name="ShippingCodeLabelControl.Text" xml:space="preserve">
+    <value>Shipping code</value>
+  </data>
+  <data name="ShippingCodeLabelControl.Help" xml:space="preserve">
+    <value>Shipping code may be used by your shipping provider to classify this package to obtain a more accurate quote. Leave blank if you don't have a shipping code. For example, the freight class code 50, as governed by the NMFC, indicates the package is durable enough to fit on a 4x4 pallet.</value>
+  </data>
+  <data name="RequireHandlingLabelControl.Text" xml:space="preserve">
+    <value>Require handling</value>
+  </data>
+  <data name="RequireHandlingLabelControl.Help" xml:space="preserve">
+    <value>This product requires handling.</value>
+  </data>
+  <data name="HandlingPriceLabelControl.Text" xml:space="preserve">
+    <value>Handling price</value>
+  </data>
+  <data name="HandlingPriceLabelControl.Help" xml:space="preserve">
+    <value>This value is not used unless your configured handling method rules require it to calculate the handling amount by individual product. Enter the handling price without the money symbol. (e.g. 10.50).</value>
+  </data>
+  <data name="FeaturedLabelControl.Text" xml:space="preserve">
+    <value>Featured</value>
+  </data>
+  <data name="FeaturedLabelControl.Help" xml:space="preserve">
+    <value>Display this item on product list even when no category is selected.</value>
+  </data>
+  <data name="CategoriesLabelControl.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="CategoriesLabelControl.Help" xml:space="preserve">
+    <value>Select the categories belonging to this product.</value>
+  </data>
+  <data name="DefaultCategoryLabelControl.Text" xml:space="preserve">
+    <value>Default category</value>
+  </data>
+  <data name="DefaultCategoryLabelControl.Help" xml:space="preserve">
+    <value>A default category is useful to help customers locate similar products. The default category is shown on the breadcrumb if customer arrived on the product detail page without selecting a category, manufacturer, distributor or coming from a search.</value>
+  </data>
+  <data name="UrlNameLabelControl.Text" xml:space="preserve">
+    <value>URL name</value>
+  </data>
+  <data name="UrlNameLabelControl.Help" xml:space="preserve">
+    <value>Specify a unique name that will appear in the URL slug for the product detail page. The name should contain meaningful keywords in lowercase. The product name will be used if this value is empty. A good set of keywords can help your page ranking in search results. E.g. A good URL name for "Apple iPad" product could be something like "apple ipad tablet" that will produce a nice clean URL http://a.com/product/apple-ipad-tablet.</value>
+  </data>
+  <data name="PageTitleLabelControl.Text" xml:space="preserve">
+    <value>Page title</value>
+  </data>
+  <data name="PageTitleLabelControl.Help" xml:space="preserve">
+    <value>Specify a custom page title for the product detail page. A good title can help your page ranking in search results.</value>
+  </data>
+  <data name="MetaKeywordsLabelControl.Text" xml:space="preserve">
+    <value>Meta keywords</value>
+  </data>
+  <data name="MetaKeywordsLabelControl.Help" xml:space="preserve">
+    <value>Specify META keywords for the product detail page.</value>
+  </data>
+  <data name="MetaDescriptionLabelControl.Text" xml:space="preserve">
+    <value>Meta description</value>
+  </data>
+  <data name="MetaDescriptionLabelControl.Help" xml:space="preserve">
+    <value>Specify META description for the product detail page.</value>
+  </data>
+  <data name="PublishedLabelControl.Text" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="PublishedLabelControl.Help" xml:space="preserve">
+    <value>Publish this item to customers.</value>
+  </data>
+  <data name="BuyMethodLabelControl.Text" xml:space="preserve">
+    <value>Buy method</value>
+  </data>
+  <data name="BuyMethodLabelControl.Help" xml:space="preserve">
+    <value>Select which method to allow purchasing this product. If Internet method is unchecked, customers online will only be able to browse the product but they cannot purchase it.</value>
+  </data>
+  <data name="DisplayTemplateLabelControl.Text" xml:space="preserve">
+    <value>Display template</value>
+  </data>
+  <data name="DisplayTemplateLabelControl.Help" xml:space="preserve">
+    <value>The selected display template determines how to display the Product Detail module when this product is shown. Select a custom display template to associate to this product. Leave blank to use the default configuration template.</value>
+  </data>
+  <data name="ProductDetailUrlLabelControl.Text" xml:space="preserve">
+    <value>Product detail page</value>
+  </data>
+  <data name="ProductDetailUrlLabelControl.Help" xml:space="preserve">
+    <value>Specify a custom product detail page or use the default page if not specified.</value>
+  </data>
+  <data name="RedirectUrlLabelControl.Text" xml:space="preserve">
+    <value>Redirect</value>
+  </data>
+  <data name="RedirectUrlLabelControl.Help" xml:space="preserve">
+    <value>Redirect product page to another location. Useful for cases where the product is no longer available for sale, but a substitute product exists or customer should see a different page to preserve link.</value>
+  </data>
+  <data name="StartDateLabelControl.Text" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="StartDateLabelControl.Help" xml:space="preserve">
+    <value>Enter a start date (yyyy-mm-dd) to begin displaying product. Leave blank if product is available immediately.</value>
+  </data>
+  <data name="StopDateLabelControl.Text" xml:space="preserve">
+    <value>Stop date</value>
+  </data>
+  <data name="StopDateLabelControl.Help" xml:space="preserve">
+    <value>Enter a stop date (yyyy-mm-dd) to end displaying product. Leave blank if product is available perpetually.</value>
+  </data>
+  <data name="DisplayOrderLabelControl.Text" xml:space="preserve">
+    <value>Display order</value>
+  </data>
+  <data name="DisplayOrderLabelControl.Help" xml:space="preserve">
+    <value>Sort the item for display by lowest to highest number.</value>
+  </data>
+  <data name="AllowProductComparisonLabelControl.Text" xml:space="preserve">
+    <value>Allow product comparison</value>
+  </data>
+  <data name="AllowProductComparisonLabelControl.Help" xml:space="preserve">
+    <value>Allow this product to be compared with others.</value>
+  </data>
+  <data name="ShowInventoryLabelControl.Text" xml:space="preserve">
+    <value>Show inventory</value>
+  </data>
+  <data name="ShowSKULabelControl.Text" xml:space="preserve">
+    <value>Show SKU</value>
+  </data>
+  <data name="ShowPriceLabelControl.Text" xml:space="preserve">
+    <value>Show price</value>
+  </data>
+  <data name="ShowQuantityLabelControl.Text" xml:space="preserve">
+    <value>Show quantity</value>
+  </data>
+  <data name="ShowMSRPLabelControl.Text" xml:space="preserve">
+    <value>Show MSRP</value>
+  </data>
+  <data name="ShowSavingsLabelControl.Text" xml:space="preserve">
+    <value>Show savings</value>
+  </data>
+  <data name="ShowRewardPointsLabelControl.Text" xml:space="preserve">
+    <value>Show reward points</value>
+  </data>
+  <data name="ShowAddToCartLabelControl.Text" xml:space="preserve">
+    <value>Show Add to Cart button</value>
+  </data>
+  <data name="ShowBuyNowLabelControl.Text" xml:space="preserve">
+    <value>Show Buy Now button</value>
+  </data>
+  <data name="ShowSeeDetailsLabelControl.Text" xml:space="preserve">
+    <value>Show See Details button</value>
+  </data>
+  <data name="ShowAddToWishListLabelControl.Text" xml:space="preserve">
+    <value>Show Add to Wish List button</value>
+  </data>
+  <data name="ShowUpdateLabelControl.Text" xml:space="preserve">
+    <value>Show Update button</value>
+  </data>
+  <data name="ShowSocialShareLabelControl.Text" xml:space="preserve">
+    <value>Show social share buttons</value>
+  </data>
+  <data name="RecurringLabelControl.Text" xml:space="preserve">
+    <value>Recurring</value>
+  </data>
+  <data name="RecurringLabelControl.Help" xml:space="preserve">
+    <value>If this is a recurring product, enter the recurring interval. Zero indicates non-recurring.</value>
+  </data>
+  <data name="StartRecurringDateTypeLabelControl.Text" xml:space="preserve">
+    <value>Start recurring date</value>
+  </data>
+  <data name="StartRecurringDateTypeLabelControl.Help" xml:space="preserve">
+    <value>By default, the first recurring date is calculated from one recurring interval added to the order date. For example, if your recurring interval is every 1 month and the user purchased this product on Jan 1st, the first reocurrence will start on Feb 1st. You can initialize a different recurring start date by entering a date value or a non-zero interval value. For example, you can enter an interval of 14 days and it will only start the first recurring after 14 days have elapsed from the order date.</value>
+  </data>
+  <data name="RecurringMinRepeatLabelControl.Text" xml:space="preserve">
+    <value>Recurring min repeat</value>
+  </data>
+  <data name="RecurringMinRepeatLabelControl.Help" xml:space="preserve">
+    <value>If this is a recurring product, optionally enter the minimum number of times that must be repeated before allowing customers from cancelling future recurring orders. E.g. If this is a 12-month program and you don't want to give the customer the option to cancel before the 12 months have elapsed, you should enter 11 to repeat for the remaining 11 times excluding the initial order.</value>
+  </data>
+  <data name="RecurringMaxRepeatLabelControl.Text" xml:space="preserve">
+    <value>Recurring max repeat</value>
+  </data>
+  <data name="RecurringMaxRepeatLabelControl.Help" xml:space="preserve">
+    <value>If this is a recurring product, enter the maximum number of times to repeat or leave field blank to repeat perpetually. E.g. If this is a 12-month program, you should enter 11 to repeat for the remaining 11 times excluding the initial order.</value>
+  </data>
+  <data name="AllowRecurringGroupOrdersLabelControl.Text" xml:space="preserve">
+    <value>Allow grouping recurring orders</value>
+  </data>
+  <data name="AllowRecurringGroupOrdersLabelControl.Help" xml:space="preserve">
+    <value>If this is a recurring product, allow this variant to be grouped with other recurring sales orders that are repeating on the same time with the same shipping and payment to reduce shipping cost and payment transaction fees.</value>
+  </data>
+  <data name="PreorderLabelControl.Text" xml:space="preserve">
+    <value>Preorder days ahead</value>
+  </data>
+  <data name="PreorderLabelControl.Help" xml:space="preserve">
+    <value>If this is a recurring product that requires the order to be prepared in advanced on the next renewal such that the customer can be invoiced ahead of time for payment, enter the preorder days calculated ahead of the next recurring date. Zero indicates no advanced preordering is required. E.g. if you enter 10 days, the order will be prepared 10 days before the actual recurring is due.</value>
+  </data>
+  <data name="InventoryUnitTypeLabelControl.Text" xml:space="preserve">
+    <value>Unit type</value>
+  </data>
+  <data name="InventoryUnitTypeLabelControl.Help" xml:space="preserve">
+    <value>Indicate how inventory is treated.</value>
+  </data>
+  <data name="MinOrderUnitLabelControl.Text" xml:space="preserve">
+    <value>Min order unit</value>
+  </data>
+  <data name="MinOrderUnitLabelControl.Help" xml:space="preserve">
+    <value>Empty value indicates no minimum unit per booking. For example, if you set a value of 5 and the unit type is Day, then the customer must select a date range of 5 days or more.</value>
+  </data>
+  <data name="MaxOrderUnitLabelControl.Text" xml:space="preserve">
+    <value>Max order unit</value>
+  </data>
+  <data name="MaxOrderUnitLabelControl.Help" xml:space="preserve">
+    <value>Empty value indicates no maximum units per booking. For example, if you set a value of 5 and the unit type is Day, then the customer must select a date range of 5 days or less.</value>
+  </data>
+  <data name="MinBookingDateLabelControl.Text" xml:space="preserve">
+    <value>Min date</value>
+  </data>
+  <data name="MinBookingDateLabelControl.Help" xml:space="preserve">
+    <value>The minimum selectable date range in the calendar. Empty value will default to today's date.</value>
+  </data>
+  <data name="MaxBookingDateLabelControl.Text" xml:space="preserve">
+    <value>Max date</value>
+  </data>
+  <data name="MaxBookingDateLabelControl.Help" xml:space="preserve">
+    <value>The maximum selectable date range in the calendar. Empty value will default to maximum of 2 years ahead from today's date.</value>
+  </data>
+  <data name="MinBookingTimeLabelControl.Text" xml:space="preserve">
+    <value>Min time</value>
+  </data>
+  <data name="MinBookingTimeLabelControl.Help" xml:space="preserve">
+    <value>The minimum selectable time range in the calendar. Empty value indicates no minimum time enforced.</value>
+  </data>
+  <data name="MaxBookingTimeLabelControl.Text" xml:space="preserve">
+    <value>Max time</value>
+  </data>
+  <data name="MaxBookingTimeLabelControl.Help" xml:space="preserve">
+    <value>The maximum selectable time range in the calendar. Empty value indicates no maximum time enforced.</value>
+  </data>
+  <data name="AllowProductReviewLabelControl.Text" xml:space="preserve">
+    <value>Allow product review</value>
+  </data>
+  <data name="AllowProductReviewLabelControl.Help" xml:space="preserve">
+    <value>Allow customers to enter product reviews and ratings.</value>
+  </data>
+  <data name="AllowRewardsPointLabelControl.Text" xml:space="preserve">
+    <value>Allow rewards point</value>
+  </data>
+  <data name="AllowRewardsPointLabelControl.Help" xml:space="preserve">
+    <value>Allow this product to participate in rewards point program.</value>
+  </data>
+  <data name="RewardPointsLabelControl.Text" xml:space="preserve">
+    <value>Reward points</value>
+  </data>
+  <data name="RewardPointsLabelControl.Help" xml:space="preserve">
+    <value>By default, if unspecified, the number of points awarded for the purchase of this product is based on the selling price after any discount. You can specify a different number of points to award or leave blank to use the default.</value>
+  </data>
+  <data name="VoucherDefinitionLabelControl.Text" xml:space="preserve">
+    <value>Voucher</value>
+  </data>
+  <data name="VoucherDefinitionLabelControl.Help" xml:space="preserve">
+    <value>Associate this product with the voucher definition to automatically issue a new voucher to customer upon purchase.</value>
+  </data>
+  <data name="DownloadFileLabelControl.Text" xml:space="preserve">
+    <value>Download file</value>
+  </data>
+  <data name="DownloadFileLabelControl.Help" xml:space="preserve">
+    <value>Provide download file location if this is a virtual product or has a downloadable item. When specifying a URL, this field supports token replacement.</value>
+  </data>
+  <data name="RightDefinitionLabelControl.Text" xml:space="preserve">
+    <value>Rights</value>
+  </data>
+  <data name="RightDefinitionLabelControl.Help" xml:space="preserve">
+    <value>Automatically grant rights such as license key or serial number to customer upon purchase.</value>
+  </data>
+  <data name="RefundIntervalLabelControl.Text" xml:space="preserve">
+    <value>Refund allowed within</value>
+  </data>
+  <data name="RefundIntervalLabelControl.Help" xml:space="preserve">
+    <value>Leave empty to use the default return policy or enter a value greater than zero to allow returning the product.</value>
+  </data>
+  <data name="CreditIntervalLabelControl.Text" xml:space="preserve">
+    <value>Credit allowed within</value>
+  </data>
+  <data name="CreditIntervalLabelControl.Help" xml:space="preserve">
+    <value>Leave empty to use the default return policy or enter a value greater than zero to allow returning the product.</value>
+  </data>
+  <data name="ExchangeIntervalLabelControl.Text" xml:space="preserve">
+    <value>Exchange allowed within</value>
+  </data>
+  <data name="ExchangeIntervalLabelControl.Help" xml:space="preserve">
+    <value>Leave empty to use the default return policy or enter a value greater than zero to allow returning the product.</value>
+  </data>
+  <data name="RepairIntervalLabelControl.Text" xml:space="preserve">
+    <value>Repair allowed within</value>
+  </data>
+  <data name="RepairIntervalLabelControl.Help" xml:space="preserve">
+    <value>Leave empty to use the default return policy or enter a value greater than zero to allow returning the product.</value>
+  </data>
+  <data name="AllowPartialReturnLabelControl.Text" xml:space="preserve">
+    <value>Allow partial return</value>
+  </data>
+  <data name="AllowPartialReturnLabelControl.Help" xml:space="preserve">
+    <value>Allow customer to return a portion of the product instead of the entirety (e.g. return 2 items from a full case).</value>
+  </data>
+  <data name="HasSerialNumberLabelControl.Text" xml:space="preserve">
+    <value>Require serial number</value>
+  </data>
+  <data name="HasSerialNumberLabelControl.Help" xml:space="preserve">
+    <value>Indicate if each product has a unique serial number, which may be used by the system to validate a return request.</value>
+  </data>
+  <data name="ExtensionLabelControl.Text" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="ExtensionLabelControl.Help" xml:space="preserve">
+    <value>Provide any custom data associated with this item using XML.</value>
+  </data>
+  <data name="AnyLabel.Text" xml:space="preserve">
+    <value>Any</value>
+  </data>
+  <data name="BackorderInventoryLabel.Text" xml:space="preserve">
+    <value>Backorder - inventory backlog needed to fill order</value>
+  </data>
+  <data name="EmptyInventoryLabel.Text" xml:space="preserve">
+    <value>Empty - inventory has exhausted</value>
+  </data>
+  <data name="UnderstockInventoryLabel.Text" xml:space="preserve">
+    <value>Understock - inventory is below min quantity</value>
+  </data>
+  <data name="OverstockInventoryLabel.Text" xml:space="preserve">
+    <value>Overstock - inventory is above max quantity</value>
+  </data>
+  <data name="UnspecifiedInventoryLabel.Text" xml:space="preserve">
+    <value>Unspecified - inventory is unknown or infinite</value>
+  </data>
+  <data name="DirectSalesTypeLabel.Text" xml:space="preserve">
+    <value>Direct sales - Customer can purchase item for the listed price</value>
+  </data>
+  <data name="QuoteSalesTypeLabel.Text" xml:space="preserve">
+    <value>Quote - Customer must request a quote for final price</value>
+  </data>
+  <data name="DisallowOrderInventoryEmptyBehaviorLabel.Text" xml:space="preserve">
+    <value>Disallow order - show product with out of stock message</value>
+  </data>
+  <data name="DisableProductInventoryEmptyBehaviorLabel.Text" xml:space="preserve">
+    <value>Disable product - hide product</value>
+  </data>
+  <data name="AllowBackorderInventoryEmptyBehaviorLabel.Text" xml:space="preserve">
+    <value>Allow backorder - allow product to be purchased</value>
+  </data>
+  <data name="BagPackageTypeLabel.Text" xml:space="preserve">
+    <value>Bag</value>
+  </data>
+  <data name="BoxPackageTypeLabel.Text" xml:space="preserve">
+    <value>Box</value>
+  </data>
+  <data name="EnvelopePackageTypeLabel.Text" xml:space="preserve">
+    <value>Envelope</value>
+  </data>
+  <data name="TubePackageTypeLabel.Text" xml:space="preserve">
+    <value>Tube</value>
+  </data>
+  <data name="UnspecifiedPackageTypeLabel.Text" xml:space="preserve">
+    <value>Unspecified</value>
+  </data>
+  <data name="DayIntervalTypeLabel.Text" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="WeekIntervalTypeLabel.Text" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="MonthIntervalTypeLabel.Text" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="YearIntervalTypeLabel.Text" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="FixedDateRecurringDateTypeLabel.Text" xml:space="preserve">
+    <value>Fixed date</value>
+  </data>
+  <data name="IntervalRecurringDateTypeLabel.Text" xml:space="preserve">
+    <value>Interval</value>
+  </data>
+  <data name="ConstantInventoryUnitTypeLabel.Text" xml:space="preserve">
+    <value>Constant - Inventory is a regular non-booking product</value>
+  </data>
+  <data name="YearInventoryUnitTypeLabel.Text" xml:space="preserve">
+    <value>Year - Inventory is reserved per year</value>
+  </data>
+  <data name="MonthInventoryUnitTypeLabel.Text" xml:space="preserve">
+    <value>Month - Inventory is reserved per month</value>
+  </data>
+  <data name="WeekInventoryUnitTypeLabel.Text" xml:space="preserve">
+    <value>Week - Inventory is reserved per week</value>
+  </data>
+  <data name="DayInventoryUnitTypeLabel.Text" xml:space="preserve">
+    <value>Day - Inventory is reserved per day</value>
+  </data>
+  <data name="HourInventoryUnitTypeLabel.Text" xml:space="preserve">
+    <value>Hour - Inventory is reserved per hour</value>
+  </data>
+  <data name="BackControl.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="InventoryHeader.Text" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="AllowInternetOrderCheckBox.Text" xml:space="preserve">
+    <value>Internet</value>
+  </data>
+  <data name="AllowPhoneOrderCheckBox.Text" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="FilterLink.Text" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ProductSearchQueryPlaceholder.Text" xml:space="preserve">
+    <value>Search by product name or SKU</value>
+  </data>
+  <data name="ConditionTypeLabelControl.Text" xml:space="preserve">
+    <value>Condition</value>
+  </data>
+  <data name="NewConditionTypeLabel.Text" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="RefurbishedConditionTypeLabel.Text" xml:space="preserve">
+    <value>Refurbished</value>
+  </data>
+  <data name="UsedConditionTypeLabel.Text" xml:space="preserve">
+    <value>Used</value>
+  </data>
+  <data name="AllowSalesChannelLabelControl.Text" xml:space="preserve">
+    <value>Allow sales channel</value>
+  </data>
+  <data name="ExternalIDLabelControl.Text" xml:space="preserve">
+    <value>External ID</value>
+  </data>
+  <data name="FundLabelControl.Help" xml:space="preserve">
+    <value>Add funds to the customer's account equivalent to the amount purchased.</value>
+  </data>
+  <data name="FundLabelControl.Text" xml:space="preserve">
+    <value>Issue funds</value>
+  </data>
+  <data name="GenerateContentLabel.Text" xml:space="preserve">
+    <value>Generate content</value>
+  </data>
+  <data name="GenerateCategoryLabel.Text" xml:space="preserve">
+    <value>Generate category</value>
+  </data>
+</root>

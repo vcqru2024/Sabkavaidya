@@ -1,0 +1,410 @@
+﻿@* Template name: StandardPanel *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ProductFilterWebViewPage<ProductFilterViewModel>
+
+<div class="rvdsf rvdsf-productfilter-container">
+    <nav class="navbar navbar-default navbar-light visible-xs d-block d-sm-none">
+        <div class="navbar-header">
+            <button class="navbar-toggle navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#rvdsfProductFilterPanel">
+                <i class="glyphicon glyphicon-align-justify fa fas fa-reorder navbar-toggler-icon"></i>
+            </button>
+            <a class="navbar-brand">@Html.LocalizeString("Header")</a>
+        </div>
+    </nav>
+    <div id="rvdsfProductFilterPanel" class="collapse-xs">
+        @if (Model.ProductFilter.IsApplied)
+        {
+            <div class="btn-toolbar">
+                <button type="button" class="btn btn-primary" onclick="rvdsfProductFilter.resetFilter()"><span class="glyphicon glyphicon-remove fa fas fa-trash"></span> @Html.LocalizeString("ResetFilterLink")</button>
+            </div>
+        }
+
+        @if (Model.PriceFilterable)
+        {
+            decimal min = Model.Products.Select(p => p.MinCombinedSellingPrice).DefaultIfEmpty().Min();
+            decimal max = Model.Products.Select(p => p.MaxCombinedSellingPrice).DefaultIfEmpty().Max();
+            var filter = Model.ProductFilter.PriceFilter;
+
+            <div class="rvdsf-field-definition">
+                <label for="" class="control-label">@Html.LocalizeString("PriceLabel")</label>
+                <div>
+                    <div class="form-group text-center">
+                        <div class="badge badge-secondary">@(filter != null ? filter.MinPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " - " + filter.MaxPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " - " + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))</div>
+                        <div style="display: block; margin: auto;" data-id="@Global.ProductFilterKeys.Price" data-role="rangeslider" data-small-step="@Model.PriceStepSize.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-min="@min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-max="@max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-value="[@(filter != null ? filter.MinPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "," + filter.MaxPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "," + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))]" >
+                            <input />
+                            <input />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (Model.ManufacturerFilterable && Model.Manufacturers.Count > 0)
+        {
+            var filter = Model.ProductFilter.ManufacturerFilter;
+
+            <div class="rvdsf-field-definition">
+                <label for="" class="control-label">@Html.LocalizeString("ManufacturerLabel")</label>
+                <div class="row">
+                    @foreach (var manufacturer in Model.Manufacturers)
+                    {
+                        <div class="form-group col-xs-6 col-6">
+                            <div class="checkbox form-check">
+                                <label><input type="checkbox" @(filter != null && filter.ManufacturerIDs.Contains(manufacturer.ManufacturerID) ? "checked" : "") onchange="if (this.checked) rvdsfProductFilter.addFilter('@Global.ProductFilterKeys.Manufacturer', '@manufacturer.ManufacturerID'); else rvdsfProductFilter.removeFilter('@Global.ProductFilterKeys.Manufacturer', '@manufacturer.ManufacturerID');"> @manufacturer.Name</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.DistributorFilterable && Model.Distributors.Count > 0)
+        {
+            var filter = Model.ProductFilter.DistributorFilter;
+
+            <div class="rvdsf-field-definition">
+                <label for="" class="control-label">@Html.LocalizeString("DistributorLabel")</label>
+                <div class="row">
+                    @foreach (var distributor in Model.Distributors)
+                    {
+                        <div class="form-group col-xs-6 col-6">
+                            <div class="checkbox form-check">
+                                <label><input type="checkbox" @(filter != null && filter.DistributorIDs.Contains(distributor.DistributorID) ? "checked" : "") onchange="if (this.checked) rvdsfProductFilter.addFilter('@Global.ProductFilterKeys.Distributor', '@distributor.DistributorID'); else rvdsfProductFilter.removeFilter('@Global.ProductFilterKeys.Distributor', '@distributor.DistributorID');"> @distributor.Name</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.SellerFilterable && Model.Sellers.Count > 0)
+        {
+            var filter = Model.ProductFilter.SellerFilter;
+
+            <div class="rvdsf-field-definition">
+                <label for="" class="control-label">@Html.LocalizeString("SellerLabel")</label>
+                <div class="row">
+                    @foreach (var seller in Model.Sellers)
+                    {
+                        <div class="form-group col-xs-6 col-6">
+                            <div class="checkbox form-check">
+                                <label><input type="checkbox" @(filter != null && filter.SellerIDs.Contains(seller.SellerID) ? "checked" : "") onchange="if (this.checked) rvdsfProductFilter.addFilter('@Global.ProductFilterKeys.Seller', '@seller.SellerID'); else rvdsfProductFilter.removeFilter('@Global.ProductFilterKeys.Seller', '@seller.SellerID');"> @seller.Name</label>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.BookingDateFilterable)
+        {
+            DateTime min = DateTime.Today;
+            DateTime max = DateTime.Today.AddYears(3);
+            var filter = Model.ProductFilter.PriceFilter;
+
+            <div class="rvdsf-field-definition">
+                <label for="" class="control-label">@Html.LocalizeString("BookingDateLabel")</label>
+                <div style="margin-bottom: 60px">
+                    <div class="form-group">
+                        <label for="rvdsfProductFilterBookingStartDateInput" class="col-sm-2">@Html.LocalizeString("BookingStartDateLabel")</label>
+                        <div class="col-sm-10">
+                            <input id="rvdsfProductFilterBookingStartDateInput" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" placeholder="YYYY-MM-DD" value="@(Model.ProductFilter.BookingDateFilter == null ? "" : TimeZoneInfo.ConvertTimeFromUtc(Model.ProductFilter.BookingDateFilter.StartDate, Dnn.Portal.TimeZone).ToString("yyyy-MM-dd HH:mm:ss"))" />
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-top: 50px">
+                        <label for="rvdsfProductFilterBookingStopDateInput" class="col-sm-2">@Html.LocalizeString("BookingStopDateLabel")</label>
+                        <div class="col-sm-10">
+                            <input id="rvdsfProductFilterBookingStopDateInput" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" placeholder="YYYY-MM-DD" value="@(Model.ProductFilter.BookingDateFilter == null ? "" : TimeZoneInfo.ConvertTimeFromUtc(Model.ProductFilter.BookingDateFilter.StopDate, Dnn.Portal.TimeZone).ToString("yyyy-MM-dd HH:mm:ss"))"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+                    // Initialize datetimepicker
+                    var minDate = @Html.Raw("moment.utc().toDate()")
+                    var maxDate = @Html.Raw("moment(minDate).add(3, 'years').toDate()")                    
+
+					$("#rvdsfProductFilterBookingStartDateInput").kendoDatePicker({
+						culture: "@Dnn.Portal.CultureCode",
+						format: @Html.Raw("'yyyy-MM-dd'"),
+						min: minDate,
+						max: maxDate,
+						interval: 60,
+						change: function () {
+							// Clear stop value
+                            var stopKendoDateTimePicker = $('#rvdsfProductFilterBookingStopDateInput').data('kendoDatePicker')
+                            stopKendoDateTimePicker.value(null)
+
+                            if (this.value()) {
+                                stopKendoDateTimePicker.min(moment(this.value()).add(1, "days").toDate())
+                            }
+                            else {
+                                stopKendoDateTimePicker.min(minDate)
+                                rvdsfProductList.resetFilter('@Global.ProductFilterKeys.BookingDate')
+                            }
+						}
+                    })
+
+                    $("#rvdsfProductFilterBookingStopDateInput").kendoDatePicker({
+                        culture: "@Dnn.Portal.CultureCode",
+                        format: @Html.Raw("'yyyy-MM-dd'"),
+                        min: minDate,
+                        max: maxDate,
+                        interval: 60,
+                        change: function () {
+                            var startKendoDateTimePicker = $('#rvdsfProductFilterBookingStartDateInput').data('kendoDatePicker')
+
+                            if (this.value() && startKendoDateTimePicker.value()) {
+                                var startDate = moment.tz(kendo.toString(startKendoDateTimePicker.value(), 'yyyy-MM-dd 00:00:00'), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss")
+                                var stopDate = moment.tz(kendo.toString(this.value(), 'yyyy-MM-dd 00:00:00'), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss")
+                                var values = new Array(startDate, stopDate)
+                                rvdsfProductFilter.setFilter('@Global.ProductFilterKeys.BookingDate', values)
+                            }
+                        }
+					})
+                });
+			</script>
+        }
+
+        @foreach (var productAttributeGroup in Model.ProductAttributeGroups)
+        {
+            if (productAttributeGroup != null)
+            {
+                <div class="h4" style="cursor: pointer; clear: both"><span class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down"></span> @productAttributeGroup.Name</div>
+            }
+            foreach (var productAttributeDefinition in Model.ProductAttributeDefinitions.Where(pad => pad.ProductAttributeGroup == productAttributeGroup))
+            {
+                var filter = Model.ProductFilter.ProductAttributeFilters.Where(paf => paf.ProductAttributeDefinitionID == productAttributeDefinition.ProductAttributeDefinitionID).FirstOrDefault();
+
+                <div class="rvdsf-field-definition">
+                    <label for="" class="control-label">@productAttributeDefinition.Name</label>
+                    @if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Boolean)
+                    {
+                        <div class="row">
+                            <div class="form-group col-xs-6 col-6">
+                                <div class="checkbox form-check">
+                                    <label><input type="checkbox" @(filter != null && filter.Values.Contains("true") ? "checked" : "") onchange="if (this.checked) rvdsfProductFilter.addFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'true'); else rvdsfProductFilter.removeFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'true');"> @Html.LocalizeString("YesLabel")</label>
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-6 col-6">
+                                <div class="checkbox form-check">
+                                    <label><input type="checkbox" @(filter != null && filter.Values.Contains("false") ? "checked" : "") onchange="if (this.checked) rvdsfProductFilter.addFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'false'); else rvdsfProductFilter.removeFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'false');"> @Html.LocalizeString("NoLabel")</label>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Decimal || productAttributeDefinition.ProductAttributeType == ProductAttributeType.Integer)
+                    {
+                            decimal min = 0;
+                            decimal max = decimal.MaxValue;
+                            if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Decimal)
+                            {
+                                max = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.DecimalValue.HasValue).Select(pa => pa.DecimalValue.Value).Max();
+                                min = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.DecimalValue.HasValue).Select(pa => pa.DecimalValue.Value).Min();
+                            }
+                            else
+                            {
+                                max = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.IntegerValue.HasValue).Select(pa => pa.IntegerValue.Value).Max();
+                                min = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.IntegerValue.HasValue).Select(pa => pa.IntegerValue.Value).Min();
+                            }
+                        <div>
+                            <div class="form-group text-center">
+                                <div class="badge badge-secondary">@(filter != null ? filter.Values[0] + " - " + filter.Values[1] : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " - " + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))</div>
+                                <div style="display: block; margin: auto;" data-id="@productAttributeDefinition.ProductAttributeDefinitionID" data-role="rangeslider" data-precision="@(productAttributeDefinition.ProductAttributeType == ProductAttributeType.Integer ? 0 : 1)" data-small-step="@productAttributeDefinition.StepSize.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-min="@min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-max="@max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-value="[@(filter != null ? filter.Values[0] + "," + filter.Values[1] : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "," + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))]" >
+                                    <input />
+                                    <input />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Selection)
+                    {
+                        <div class="row">
+                            @foreach (var productAttributeDefinitionSelection in productAttributeDefinition.ProductAttributeDefinitionSelections.OrderBy(pads => pads.DisplayOrder).ThenBy(pads => pads.Text))
+                            {
+                                if (Model.Products.SelectMany(p => p.ProductVariants).SelectMany(pv => pv.MainProductAttributes).Any(pa => pa.SelectionValue.Contains(productAttributeDefinitionSelection)))
+                                {
+                                    <div class="form-group col-xs-6 col-6">
+                                        <div class="checkbox form-check">
+                                            <label><input type="checkbox" @(filter != null && filter.Values.Contains(productAttributeDefinitionSelection.ProductAttributeDefinitionSelectionID.ToString()) ? "checked" : "") onchange="if (this.checked) rvdsfProductFilter.addFilter(@productAttributeDefinition.ProductAttributeDefinitionID, '@productAttributeDefinitionSelection.ProductAttributeDefinitionSelectionID'); else rvdsfProductFilter.removeFilter(@productAttributeDefinition.ProductAttributeDefinitionID, '@productAttributeDefinitionSelection.ProductAttributeDefinitionSelectionID');"> @productAttributeDefinitionSelection.Text</label>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        }
+    </div>
+</div>
+
+@* Uses polyfill. See https://qa.polyfill.io *@
+<script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default"></script>
+
+@* Uses Moment library. See https://momentjs.com/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment/min/moment-with-locales.min.js" defer></script>
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment-timezone/moment-timezone-with-data.min.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.userevents.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.draganddrop.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.calendar.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.popup.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.datepicker.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.timepicker.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.datetimepicker.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.slider.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script>
+    $(document).ready(function () {
+        // Make groups collapsible
+        $('.rvdsf-productfilter-container div.h4').click(function () {
+            $(this).nextUntil('div.h4').slideToggle(100)
+            $(this).find("span.glyphicon").toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down')
+        })
+
+        // Bind slider event
+        $(".rvdsf-productfilter-container input[data-provide='slider']").on("slideStop", function (slideEvent) {
+            rvdsfProductFilter.setFilter($(this).data("id"), slideEvent.value)
+        })
+
+        $(".rvdsf-productfilter-container div[data-role='rangeslider']").each(function () {
+            var that = this
+            $(this).kendoRangeSlider({
+                min: parseFloat($(this).data("min")),
+                max: parseFloat($(this).data("max")),
+                smallStep: parseFloat($(this).data("small-step")),
+                tickPlacement: "BOTTOMRIGHT",
+                tooltip: { enabled: false },
+                change: function (e) { rvdsfProductFilter.setFilter($(e.sender.element).data("id"), e.values) },
+                slide: function (e) {
+                    // Change label
+                    $(that).parent().parent().prev(".badge").text(e.values[0].toFixed(1) + " - " + e.values[1].toFixed(1))
+                }
+            });
+
+            var rangeSlider = $(this).data("kendoRangeSlider")
+            rangeSlider.value($(this).data("value"))
+            rangeSlider.wrapper.css("width", "95%");
+            rangeSlider.resize();
+        })
+
+        // Resize slider when window is resized
+        $(window).on('resize', function () {
+            $("[data-role='rangeslider']").each(function () {
+                var rangeSlider = $(this).data("kendoRangeSlider");
+                rangeSlider.wrapper.css("width", "95%");
+                rangeSlider.resize();
+            });
+        });
+    })
+
+    var rvdsfProductFilter = rvdsfProductFilter || {}
+    rvdsfProductFilter.addFilter = function (productAttributeDefinitionID, value) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+        var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+        var encodedValues = params.get(String(productAttributeDefinitionID)) || ""
+
+        var values = []
+        encodedValues.split("|").map(function (val) { val && values.push(decodeURIComponent(val)) })
+
+        if (values.indexOf(value) < 0)
+            values.push(value)
+
+        encodedValues = ""
+        values.map(function (val) { encodedValues += encodeURIComponent(val) + "|" })
+
+        params.set(String(productAttributeDefinitionID), encodedValues)
+        url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    rvdsfProductFilter.setFilter = function (productAttributeDefinitionID, values) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+        var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+
+        encodedValues = ""
+        values.map(function(val) { encodedValues += encodeURIComponent(val) + "|" })
+
+        params.set(String(productAttributeDefinitionID), encodedValues)
+        url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    rvdsfProductFilter.removeFilter = function (productAttributeDefinitionID, value) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+        var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+        var encodedValues = params.get(String(productAttributeDefinitionID)) || ""
+
+        var values = []
+        encodedValues.split("|").map(function (val) { val && values.push(decodeURIComponent(val)) })
+
+        var index = values.indexOf(value)
+        if (index >= 0)
+            values.splice(index, 1)
+
+        encodedValues = ""
+        values.map(function (val) { encodedValues += encodeURIComponent(val) + "|" })
+
+        if (encodedValues == "|" || encodedValues == "")
+            params.delete(String(productAttributeDefinitionID))
+        else
+            params.set(String(productAttributeDefinitionID), encodedValues)
+
+        url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+        if (!url.searchParams.get("@Global.QueryStringKeys.ProductFilter"))
+            url.searchParams.delete("@Global.QueryStringKeys.ProductFilter")
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    rvdsfProductFilter.resetFilter = function (productAttributeDefinitionID) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+
+        if (productAttributeDefinitionID == null || typeof (productAttributeDefinitionID) === "undefined")
+            url.searchParams.delete("@Global.QueryStringKeys.ProductFilter")
+        else {
+            var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+            params.delete(String(productAttributeDefinitionID))
+
+            url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+            if (!url.searchParams.get("@Global.QueryStringKeys.ProductFilter"))
+                url.searchParams.delete("@Global.QueryStringKeys.ProductFilter")
+        }
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+</script>

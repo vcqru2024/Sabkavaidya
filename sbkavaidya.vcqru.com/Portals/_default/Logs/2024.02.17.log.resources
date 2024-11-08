@@ -1,0 +1,12 @@
+2024-02-17 16:10:12.100+05:30 [DESKTOP-TU3857L][D:3][T:85][ERROR] DotNetNuke.Services.Localization.LocalizationProvider - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Common.Globals.get_Status()
+   at DotNetNuke.Services.Localization.LocalizationProvider.TryGetStringInternal(String key, String userLanguage, String resourceFile, PortalSettings portalSettings, String& resourceValue)
+2024-02-17 16:10:12.198+05:30 [DESKTOP-TU3857L][D:3][T:85][ERROR] DotNetNuke.Services.Localization.LocalizationProvider - System.NullReferenceException: Object reference not set to an instance of an object.
+   at DotNetNuke.Common.Globals.get_Status()
+   at DotNetNuke.Services.Localization.LocalizationProvider.TryGetStringInternal(String key, String userLanguage, String resourceFile, PortalSettings portalSettings, String& resourceValue)
+2024-02-17 18:38:08.736+05:30 [DESKTOP-TU3857L][D:2][T:9][ERROR] DotNetNuke.Modules.Admin.Users.EditUser - System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at DotNetNuke.Modules.Admin.Users.EditUser.cmdUpdate_Click(Object sender, EventArgs e)

@@ -1,0 +1,369 @@
+﻿@* Template name: StandardPanel *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Globalization;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using DotNetNuke.Common;
+@inherits Revindex.Dnn.RevindexStorefront.Views.WishListWebViewPage<WishListViewModel>
+
+<div id="rvdsfWishListPanelContainer" class="rvdsf rvdsf-wishlist-container">
+	@if (Model.ValidationResults.Count > 0)
+	{
+		<div class="alert alert-danger">
+			@foreach (var validationResult in Model.ValidationResults)
+			{
+				<div>
+					<span class="glyphicon glyphicon-remove fa fas fa-exclamation-circle"></span> <span>@validationResult.Message</span>
+				</div>
+			}
+		</div>
+	}
+	@if (Model.WishList != null)
+	{
+		<h4>@Model.WishList.Name</h4>
+		<p class="lead">@Model.WishList.PersonalMessage</p>
+		<div class="well card">
+			<div class="form-horizontal card-body">
+				<div class="form-group row">
+					<label class="control-label col-form-label col-sm-4 col-xs-12 col-12 text-right">@Html.LocalizeString("RegistrantLabel")</label>
+					<p class="form-control-static form-control-plaintext col-sm-8 col-xs-12 col-12">@Model.WishList.RegistrantFirstName  @Model.WishList.RegistrantLastName @(String.IsNullOrEmpty(Model.WishList.Registrant2LastName) ? "" : " & " + Model.WishList.Registrant2FirstName + " " + Model.WishList.Registrant2LastName)</p>
+				</div>
+				@if (Model.WishList.EventDate.HasValue)
+				{
+					<div class="form-group row">
+						<label class="control-label col-form-label col-sm-4 col-xs-12 col-12 text-right">@Html.LocalizeString("EventDateLabel")</label>
+						<p class="form-control-static form-control-plaintext col-sm-8 col-xs-12 col-12">@Model.WishList.EventDate.Value.ToString("yyyy-MM-dd")</p>
+					</div>
+				}
+				@if (!String.IsNullOrEmpty(Model.WishList.EventCountryCode))
+				{
+					<div class="form-group row">
+						<label class="control-label col-form-label col-sm-4 col-xs-12 col-12 text-right">@Html.LocalizeString("EventLocationLabel")</label>
+						<p class="form-control-static form-control-plaintext col-sm-8 col-xs-12 col-12">
+							@if (!String.IsNullOrEmpty(Model.WishList.EventCity))
+							{
+								<span>@Model.WishList.EventCity,</span>
+							}
+							@if (!String.IsNullOrEmpty(Model.WishList.EventSubdivisionCode))
+							{
+								<span> @Model.WishList.EventSubdivisionName,</span>
+							}
+							<span>@Model.WishList.EventCountryName</span>
+						</p>
+					</div>
+				}
+			</div>
+		</div>
+		<div class="rvdsf-wishlist-grid row">
+			@foreach (var wishListDetail in Model.WishList.WishListDetails)
+			{
+				var product = wishListDetail.ProductVariant.Product;
+
+				<div class="col-sm-3">
+					<div class="rvdsf-product-container" style="@(wishListDetail.DesiredQuantity - wishListDetail.OrderedQuantity == 0 ? "filter: grayscale(100%)" : "")">
+						@if (product.ShowPrice && product.DefaultProductVariant.CombinedSavings > 0)
+						{
+							<div class="rvdsf-label-savings">
+								@Html.LocalizeString("SavingsLabel")@if (product.ProductVariants.Count == 1)
+								{<span> @product.DefaultProductVariant.FormattedCombinedPercentSavings</span>}
+							</div>
+						}
+						<div class="rvdsf-product-gallery-container">
+							@if (product.DefaultThumbnailGallery != null)
+							{
+								<a href="@product.DefaultProductVariant.ProductDetail.TabUrl"><img class="img-responsive img-fluid center-block d-block mx-auto" src="@product.DefaultThumbnailGallery.MediaUrl" alt="@wishListDetail.ProductVariant.Product.DefaultThumbnailGallery.AlternateText" /></a>
+							}
+						</div>
+						<div class="rvdsf-product-info-container">
+							<div class="rvdsf-field-name">
+								<a class="rvdsf-label-name" href="@product.ProductDetail.TabUrl">@product.Name</a>
+							</div>
+							@if (product.ShowProductReviews)
+							{
+								<div class="rvdsf-field-rating">
+									<input type="hidden" class="rating" readonly value="@(product.AverageOverallRating == 0 ? "" : product.AverageOverallRating.ToString(System.Globalization.CultureInfo.InvariantCulture))" />
+									@if (product.RatingCount > 0)
+									{
+										<span class="badge">@product.RatingCount</span>
+									}
+								</div>
+							}
+							@if (product.ShowPrice)
+							{
+								if (product.ProductVariants.Count == 1)
+								{
+									if (String.IsNullOrEmpty(product.DefaultProductVariant.PriceText))
+									{
+										<div class="rvdsf-field-price">
+											@if (product.DefaultProductVariant.CombinedPromotionPrice.HasValue)
+											{
+												<span class="rvdsf-label-price"><s>@product.DefaultProductVariant.FormattedCombinedPrice</s></span>
+												<span class="rvdsf-label-promotionprice">@product.DefaultProductVariant.FormattedCombinedPromotionPrice</span>
+											}
+											else
+											{
+												<span class="rvdsf-label-price">@product.DefaultProductVariant.FormattedCombinedPrice</span>
+											}
+										</div>
+									}
+									else
+									{
+										<div class="rvdsf-field-price">
+											<span class="rvdsf-label-pricetext">@product.DefaultProductVariant.PriceText</span>
+										</div>
+									}
+								}
+								else if (product.ProductVariants.Count > 1 && !String.IsNullOrEmpty(product.FormattedMinCombinedSellingPrice) && !String.IsNullOrEmpty(product.FormattedMaxCombinedSellingPrice))
+								{
+									<div class="rvdsf-field-price">
+										<span class="rvdsf-label-price">@(product.FormattedMinCombinedSellingPrice == product.FormattedMaxCombinedSellingPrice ? product.FormattedMinCombinedSellingPrice : product.FormattedMinCombinedSellingPrice + " - " + product.FormattedMaxCombinedSellingPrice)</span>
+									</div>
+								}
+							}
+						</div>
+						@if (product.ShowQuantity && product.AllowInternetOrder && !product.DefaultProductVariant.HasFormFields && product.ProductVariants.Count == 1)
+						{
+							<div class="rvdsf-product-form-container form-horizontal">
+								<div class="form-group row rvdsf-field-qty">
+									<label class="control-label col-form-label col-xs-6 col-6 text-right" for="rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)">@Html.LocalizeString("QuantityLabel")</label>
+									<div class="col-xs-6 col-6 text-left">
+										@if (product.DefaultProductVariant.AllowableOrderQuantityList.Count == 0)
+										{
+											<input id="rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)" name="rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)" type="number" class="form-control" required step="1" min="@(product.DefaultProductVariant.MinOrderQuantity.HasValue ? product.DefaultProductVariant.MinOrderQuantity : product.DefaultProductVariant.DefaultQuantity)" max="@(product.DefaultProductVariant.MaxOrderQuantity.HasValue ? product.DefaultProductVariant.MaxOrderQuantity : 9999 )" value="@product.DefaultProductVariant.DefaultQuantity" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+										}
+										else
+										{
+											<select id="rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)" name="rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)" class="form-control">
+												@foreach (var qty in product.DefaultProductVariant.AllowableOrderQuantityList)
+												{
+													<option value="@qty">@qty</option>
+												}
+											</select>
+										}
+									</div>
+								</div>
+							</div>
+						}
+						<div class="rvdsf-product-form-container form-horizontal">
+							<div class="form-group row">
+								<label class="control-label col-form-label col-xs-6 col-6 text-right">@Html.LocalizeString("DesiredLabel")</label>
+								<p class="form-control-static form-control-plaintext col-sm-2 col-xs-12 col-12">@(wishListDetail.DesiredQuantity - wishListDetail.OrderedQuantity)</p>
+							</div>
+						</div>
+						<div class="btn-toolbar">
+							@if (product.ShowSeeDetails)
+							{
+								<button type="button" class="rvdsf-btn-seedetails btn btn-primary" onclick="location.href = '@product.DefaultProductVariant.ProductDetail.TabUrl'">@Html.LocalizeString("SeeDetailsLink")</button>
+							}
+
+							@if (product.AllowInternetOrder && product.ProductVariants.Count == 1 && !product.DefaultProductVariant.HasFormFields && product.DefaultProductVariant.HasAcceptableInventory)
+							{
+								if (product.ShowAddToCart)
+								{
+									<button type="button" class="rvdsf-btn-addtocart btn btn-primary" onclick="rvdsfWishList.addProductToCart(@product.DefaultProductVariant.ProductVariantID, ($('#rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)').length ? $('#rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)').val() : @product.DefaultProductVariant.DefaultQuantity), 'rvdsfWishListMessage_@(Dnn.Module.ModuleID)_@(product.ProductID)', null)">@(product.DefaultProductVariant.SalesType == SalesType.Quote ? Html.LocalizeString("AddToQuoteLink") : Html.LocalizeString("AddToCartLink"))</button>
+								}
+
+								if (product.ShowBuyNow)
+								{
+									<button type="button" class="rvdsf-btn-buynow btn btn-primary" onclick="rvdsfWishList.addProductToCart(@product.DefaultProductVariant.ProductVariantID, ($('#rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)').length ? $('#rvdsfWishListQuantityInput_@(Dnn.Module.ModuleID)_@(product.ProductID)').val() : @product.DefaultProductVariant.DefaultQuantity), 'rvdsfWishListMessage_@(Dnn.Module.ModuleID)_@(product.ProductID)', '@Model.Checkout.TabUrl')">@(product.DefaultProductVariant.SalesType == SalesType.Quote ? Html.LocalizeString("QuoteNowLink") : Html.LocalizeString("BuyNowLink"))</button>
+								}
+							}
+						</div>
+						@if (!product.ProductVariants.Exists(pv => pv.HasAcceptableInventory))
+						{
+							<div class="alert alert-info rvdsf-label-soldout">@Html.LocalizeString("SoldOutLabel")</div>
+						}
+						<div id="rvdsfWishListMessage_@(Dnn.Module.ModuleID)_@(product.ProductID)" style="display:none"></div>
+					</div>
+				</div>
+			}
+		</div>
+	}
+	else
+	{
+		<div>
+			<div class="col-sm-12">
+				<div class="form-group">
+					<label class="control-label">@Html.LocalizeString("TypeLabel")</label>
+					<div>
+						<label class="radio-inline form-check-label form-check-inline">
+							<input class="form-check-input" type="radio" name="rvdsfWishListTypeInput" value="2" @(Model.SearchWishListType == WishListType.Baby ? "checked" : "")>@Html.LocalizeString("2", Global.FilePaths.LocalWishListTypeResourceFile)
+						</label>
+						<label class="radio-inline form-check-label  form-check-inline">
+							<input class="form-check-input" type="radio" name="rvdsfWishListTypeInput" value="3" @(Model.SearchWishListType == WishListType.Birthday ? "checked" : "")>@Html.LocalizeString("3", Global.FilePaths.LocalWishListTypeResourceFile)
+						</label>
+						<label class="radio-inline form-check-label  form-check-inline">
+							<input class="form-check-input" type="radio" name="rvdsfWishListTypeInput" value="1" @(Model.SearchWishListType == WishListType.Other ? "checked" : "")>@Html.LocalizeString("1", Global.FilePaths.LocalWishListTypeResourceFile)
+						</label>
+						<label class="radio-inline form-check-label  form-check-inline">
+							<input class="form-check-input" type="radio" name="rvdsfWishListTypeInput" value="4" @(Model.SearchWishListType == WishListType.Wedding ? "checked" : "")>@Html.LocalizeString("4", Global.FilePaths.LocalWishListTypeResourceFile)
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label required">@Html.LocalizeString("SearchLabel")</label>
+					<div>
+						<input id="rvdsfWishListSearchQueryInput" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" class="form-control" onkeypress="if (event.keyCode == '13') { event.preventDefault(); $('#rvdsfWishListSearchSubmitButton').click() }" value="@Model.SearchQuery" />
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="button" id="rvdsfWishListSearchSubmitButton" class="btn btn-primary" onclick="rvdsfWishList.search()" onclick2="var url = new window.URL('@Globals.NavigateURL()'); url.searchParams.set('@Global.QueryStringKeys.SearchWishListType', $('input[name=\'rvdsfWishListTypeInput\']:checked').val()); if ($('#rvdsfWishListSearchQueryInput').val() == '') url.searchParams.delete('@Global.QueryStringKeys.SearchQuery'); else url.searchParams.set('@Global.QueryStringKeys.SearchQuery', $('#rvdsfWishListSearchQueryInput').val()); location.href = url.href;">@Html.LocalizeString("SearchLink")</button>
+				</div>
+			</div>
+		</div>
+		if (Model.WishLists.Count > 0)
+		{
+			<div>
+				<hr />
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="col-sm-6">@Html.LocalizeString("NameColumn")</th>
+							<th class="col-sm-2 hidden-xs d-none d-sm-table-cell">@Html.LocalizeString("RegistrantColumn")</th>
+							<th class="col-sm-2">@Html.LocalizeString("EventDateColumn")</th>
+							<th class="col-sm-2">@Html.LocalizeString("EventLocationColumn")</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var wishList in Model.WishLists)
+						{
+							<tr onclick="location.href='@wishList.TabUrl'" style="cursor: pointer">
+								<td>
+									<a href="@wishList.TabUrl" onclick="event.stopPropagation()">@wishList.Name</a>
+								</td>
+								<td class="hidden-xs d-none d-sm-table-cell">
+									<span>@(wishList.RegistrantFirstName + " " + wishList.RegistrantLastName)</span>
+									@if (!String.IsNullOrEmpty(wishList.Registrant2FirstName) || !String.IsNullOrEmpty(wishList.Registrant2LastName))
+									{
+										<br />
+										<span>@wishList.Registrant2FirstName @wishList.Registrant2LastName</span>
+									}
+								</td>
+								<td>
+									@if (wishList.EventDate.HasValue)
+									{
+										<span>@wishList.EventDate.Value.ToString("yyyy-MM-dd")</span>
+									}
+								</td>
+								<td>
+									@if (!String.IsNullOrEmpty(wishList.EventCountryCode))
+									{
+										if (!String.IsNullOrEmpty(wishList.EventCity))
+										{
+											<span>@wishList.EventCity,</span>
+										}
+										if (!String.IsNullOrEmpty(wishList.EventSubdivisionCode))
+										{
+											<span> @wishList.EventSubdivisionName,</span>
+										}
+										<span>@wishList.EventCountryName</span>
+									}
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		}
+	}
+</div>
+<div id="rvdsfLoading" class="rvd-loading" style="display: none"><img src="~/Images/Loading.gif" /></div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses polyfill. See https://qa.polyfill.io *@
+<script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default"></script>
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script type="text/javascript">
+	var rvdsfWishList = rvdsfWishList || {}
+
+	rvdsfWishList.search = function () {
+
+		if ($('#Form .rvdsf-wishlist-container input, .rvdsf-wishlist-container select, .rvdsf-wishlist-container textarea').valid()) {
+
+			var url = new window.URL('@Globals.NavigateURL()')
+			url.searchParams.set('@Global.QueryStringKeys.SearchWishListType', $('input[name=\'rvdsfWishListTypeInput\']:checked').val())
+
+			if ($('#rvdsfWishListSearchQueryInput').val() == '')
+				url.searchParams.delete('@Global.QueryStringKeys.SearchQuery')
+			else url.searchParams.set('@Global.QueryStringKeys.SearchQuery', $('#rvdsfWishListSearchQueryInput').val())
+
+			location.href = url.href;
+		}
+	}
+
+	rvdsfWishList.addProductToCart = function (productVariantID, quantity, messageContainerID, redirect) {
+		var salesOrderDetailData = {
+			ProductVariantID: productVariantID,
+			Quantity: quantity
+		}
+
+		var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID)
+
+		$.ajax({
+			type: "POST",
+			beforeSend: servicesFramework.setModuleHeaders,
+			url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+			data: salesOrderDetailData
+		})
+		.done(function (data, textStatus, jqXHR) {
+
+			// Notify all Cart Summary modules to rebind
+			$(".rvdsf-cartsummary-container").each(function () {
+				this.databind()
+			})
+
+			$("#" + messageContainerID).attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToCart, Global.FilePaths.LocalSharedResourceFile)) <a class='btn btn-link' href='@Model.Cart.TabUrl'>@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("CartLink"))</a>").show().fadeOut(10000)
+
+			if (redirect)
+				location.href = redirect
+		})
+		.fail(function (data, textStatus, errorThrown) {
+			$("#" + messageContainerID).attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+		})
+	}
+
+	$(document).ready(function () {
+
+		// Initialize jQuery Validation with Bootstrap default styles
+		$('#Form').validate({
+			highlight: function(element) {
+				$(element).closest('.form-group').addClass('has-error');
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-error');
+				$(element).removeClass('is-invalid');
+			},
+			errorElement: 'div',
+			errorClass: 'help-block invalid-feedback',
+			errorPlacement: function(error, element) {
+				if (element.parent('.input-group').length) {
+					error.insertAfter(element.parent());
+				} else if(element.prop('type') === 'checkbox') {
+					error.appendTo(element.parent().parent());
+				} else if(element.prop('type') === 'radio') {
+					error.appendTo(element.parent().parent());
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			onsubmit: false
+		})
+
+		$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+	})
+</script>
+

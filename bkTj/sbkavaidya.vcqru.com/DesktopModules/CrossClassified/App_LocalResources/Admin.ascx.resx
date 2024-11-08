@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ControlTitle_.Text" xml:space="preserve">
+    <value>Classified Pro Admin</value>
+  </data>
+  <data name="lblAdminGeneral_Settings.Text" xml:space="preserve">
+    <value>Manage global settings here, like video convert, file storage (local or Amazon S3), Cp_Admin sub module layout content, Google web sitemap integration, DNN built-in journal support, SEO optimization, photo thumbnail / watermak generate, JQuery tab css, etc.&lt;br/&gt;&lt;br/&gt;In most cases, you only need 1 instance of the "Cp_Admin" sub module per portal. However, it also allows you to split its content into different parts and show these parts on different pages (by specifying different "Cp_Admin sub module layout content").</value>
+  </data>
+  <data name="lbtnAdminProduct_Category.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="lbtnAdminGeneral_Settings.Text" xml:space="preserve">
+    <value>Global Settings</value>
+  </data>
+  <data name="lblAdminProduct_Vendor.Text" xml:space="preserve">
+    <value>View users who have posted products on this site. Classified Pro is multi-seller based, you can allow other users to post products on this site at "Configurations - Seller Roles".&lt;br/&gt;&lt;br/&gt;
+Note, you can use Cp_Product_Vendor sub module to show sellers to public.</value>
+  </data>
+  <data name="lblAdminProduct_Settings.Text" xml:space="preserve">
+    <value>Manage settings which are related to store, like store name, auction email notification, data manage roles, payment gateway (PayPal / Google Checkout / Authorize.net / Stripe / Alipay / DineroMail / Manual), seller profile, etc.&lt;br/&gt;&lt;br/&gt;Module provides some predefined test accounts for payment gateway, you can use them to test, then switch to real accounts when site goes live. Note, 1. You must give "View Page" permission of current page (and also Cp_Admin sub module) to "All Users" to use PayPal payment gateway. 2. The live mode of Authorize.Net and Stripe payment gateways can only be used under secure connection (https:), however, their "Test Mode" can run under unsecured connection (http:).</value>
+  </data>
+  <data name="lblAdminProduct_UDT.Text" xml:space="preserve">
+    <value>Different products have different attributes. For example, when publishing computer, you may want specify its "Monitor Size" and "Memory". When publishing software, you may want to specify its "Version" and "Platform".&lt;br/&gt;&lt;br/&gt;
+Attributes (e.g. "Version" or "Platform") are used to create these extra inter-dependant product data fields. After create an attribute, seller can then enter specific attribute values for an individual product (e.g. "Windows", "Mac", "Linux"). These attribute values can also be shown in Cp_Product_List (and Cp_Product_Detail) sub modules.&lt;br/&gt;&lt;br/&gt;
+You can also search products based these attributes via Cp_Product_Search (or Cp_Product_List) sub module. For example, you can allow visitors to search "Platform" attribute in Cp_Product_List sub module after create it.&lt;br/&gt;&lt;br/&gt;Please note the differences between attribute and option (variant), attribute value is specified by the seller, and buyer can only view it. However, option (and also variant) is used to provide a way to allow client choosing his favorite product properties while adding to cart. Check "Help - Differences between attributes, options, and variants" section for more details.</value>
+  </data>
+  <data name="lblNoPermission.Text" xml:space="preserve">
+    <value>Please register or login to view your products.</value>
+  </data>
+  <data name="lbtnAdminProduct_Product.Text" xml:space="preserve">
+    <value>Fixed Price Listings</value>
+  </data>
+  <data name="lbtnAdminProduct_Tag.Text" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="lbtnAdminProduct_Settings.Text" xml:space="preserve">
+    <value>Store Settings</value>
+  </data>
+  <data name="lbtnAdminProduct_Type.Text" xml:space="preserve">
+    <value>Departments</value>
+  </data>
+  <data name="lblAdminProduct_Type.Text" xml:space="preserve">
+    <value>Departments are top-level unit to organize data, you must create at least 1 department before post products. Each department has its own categories / attributes / manufacturers / tags / products / tax rates. Classified Pro supports 3 types of departments (Fixed Price, Auction, and Classified Ads), you can also hide unwanted fields or create extra fields for each department. Please note the below properties while adding a department: "Listing Type", "Sell Property", "Auction Type".&lt;br/&gt;&lt;br/&gt;
+"Listing Type" property controls the behavior of departments. To build a standard online store, create at least 1 department which "Listing Type" is "0 - Fixed Price Listing";
+to build an online auction site, create at least 1 department which "Listing Type" is "1 - Auction Listing"; to publish classified ads (advertising goods or promoting services, or posting news articles / photos / videos / audio / documents / jobs / real estate /cars...etc), 
+create at least 1 department which "Listing Type" is "2 - Classified Ads". Of course, you can create multiple departments to let Classified Pro handle both online store, auction system, and classified ads on same site.&lt;br/&gt;&lt;br/&gt;
+"Sell Property" property controls the content of departments. You can specify it to portal roles / digital files / physical goods / other virtual items to sell (publish) different products.&lt;br/&gt;&lt;br/&gt;
+
+
+Note, 1. When you run the "Classified Pro Setup Wizard" (this wizard will display when there is no department specified), module will create some basic departments for you. You can choose to keep them or delete as your wish later. 2. After departments creation, you can use Cp_Product_Type sub module to show them to public.</value>
+  </data>
+  <data name="lblAdminProduct_Category.Text" xml:space="preserve">
+    <value>Categories allow you to group products easier. Classified Pro supports unlimited level categoires. A product can belong to multiple categories.&lt;br/&gt;&lt;br/&gt;
+Note, you must create at least 1 category for each department before post products. After categoires creation, you can use Cp_Product_Category sub module to show them to public. You can also use Cp_Product_ListTab sub module to display categories with JQuery UI tabs, and show products/listings for each category as tab content.</value>
+  </data>
+  <data name="lblAdminProduct_Product.Text" xml:space="preserve">
+    <value>Classified Pro is multi-seller based, here you can manage fixed price products which are created by all sellers. If you want to post your own products, click "Seller Center - My Fixed Price Listings" instead.&lt;br/&gt;&lt;br/&gt;
+Note, you can use Cp_Product_List (and Cp_Product_ListTab, Cp_Product_Slideshow, Cp_Product_ListDashboard) sub modules to show products to public. You can also add other sub modules (like Cp_Product_Search, Cp_Product_Archive...) to let visitors search products easily.</value>
+  </data>
+  <data name="lblTrialTips.Text" xml:space="preserve">
+    <value>You currently have 60 days trial version of Classified Pro module, please buy official version at &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt;, thanks. Note, your data will keep exist after re-install using the official version.&lt;br/&gt;</value>
+  </data>
+  <data name="lbtnAdminProduct_Vendor.Text" xml:space="preserve">
+    <value>Sellers</value>
+  </data>
+  <data name="lbtnAdminProduct_SellReport.Text" xml:space="preserve">
+    <value>Site Sales</value>
+  </data>
+  <data name="lblAdminProduct_SellReport.Text" xml:space="preserve">
+    <value>View product sales report, click item to view detail.</value>
+  </data>
+  <data name="lbtnAdminProduct_UDT.Text" xml:space="preserve">
+    <value>Attributes</value>
+  </data>
+  <data name="lblAdminProduct_Tag.Text" xml:space="preserve">
+    <value>Seller can add multiple tags to a product while editing it, click here to manage these tags. &lt;br/&gt;&lt;br/&gt;
+Note, you can use Cp_Product_Tag (and Cp_Product_TagDashboard) sub module to show tags to public.</value>
+  </data>
+  <data name="secAdmin.Text" xml:space="preserve">
+    <value>Admin Control Panel</value>
+  </data>
+  <data name="secAdminGeneral.Text" xml:space="preserve">
+    <value>Configurations</value>
+  </data>
+  <data name="secAdminProduct.Text" xml:space="preserve">
+    <value>Data Management</value>
+  </data>
+  <data name="lblUserGeneral_File.Text" xml:space="preserve">
+    <value>Your Files (videos / audio / images / documents, etc), upload them before attach with your products. Module provides two upload methods, the "Silverlight" style allows you to upload big size files which beyond the configuration in web.config file (e.g, 100mb), but it requires MS Silverlight plug-in (for PC only). The "Normal" style supports both PC and mobile/tablet (iPhone/iPad/Android.., etc), but upload file size is limited by the the configuration in web.config file.&lt;br/&gt;&lt;br/&gt;
+You can use the "Get Url" feature to show a file url, and reference it while editing product detail. Note, if site allows client (or seller) uploading files, module will automatic create two folders ("ClientUpload" and "SellerUpload") to store these files, please don't delete them.</value>
+  </data>
+  <data name="lblUserGeneral_Folder.Text" xml:space="preserve">
+    <value>Your folders, configure them before upload files.</value>
+  </data>
+  <data name="lblUserGeneral_Profile.Text" xml:space="preserve">
+    <value>Manage your email address, company information, payment gateway, biography, customer mail, instant order notification, product default value and other personal information here.&lt;br/&gt;&lt;br/&gt; The "Customer Mail" allows you to define mail content which will be sent to customer after he order your product. And the "Instant Order Notification" allows you to define a Url to receive the order data (for example, gather order data into your own CRM application).</value>
+  </data>
+  <data name="lblUserBuyer_Cart.Text" xml:space="preserve">
+    <value>Check out here, you can also edit cart items and submit discount request if necessary.</value>
+  </data>
+  <data name="lblUserVendor_Comment.Text" xml:space="preserve">
+    <value>View visitor comments to your products.</value>
+  </data>
+  <data name="lblUserVendor_Product.Text" xml:space="preserve">
+    <value>Add/edit your fixed price products here. Fixed price listings can be created for large quantities of identical items and buyers can select the number of items that they would like to purchase. After create a product, you can attach multiple images / documents / audio / videos with it. If what you sell is software / digital files, you can also add multiple files as "Download Files" so clients can download them after paid.&lt;br/&gt;&lt;br/&gt;You can also create options and variants for a product. Options and variants provide a way to allow client choosing his favorite product properties while adding to cart. They are very similar, the only difference is that option supports stock property, while variant doesn't support. Check "Help - Differences between attributes, options, and variants" section for more details.&lt;br/&gt;&lt;br/&gt;Module allows you to specify various discounts to a product, client will be automatic applied to the highest discount if he meets multiple discounts requirements. Note, here you can create stand alone discounts only. Click "My Common Discounts" if you want to create discounts which can be applied to all your fixed price products.</value>
+  </data>
+  <data name="lblUserVendor_Review.Text" xml:space="preserve">
+    <value>View customer ratings to your products.</value>
+  </data>
+  <data name="lblUserVendor_Ticket.Text" xml:space="preserve">
+    <value>Help ticket is a one-to-one help mechanism between you and customers. Click here to view user submitted help tickets to your products. &lt;br/&gt;&lt;br/&gt;If site allows you to upload files with your help ticket, or allows client uploading files, you can view / upload these files here. For example, you are selling a DNN module, a client buy it but has problem while using it, he can upload the issue screen shots for help, and you can upload the fixed files to him.</value>
+  </data>
+  <data name="lblUserVendor_SellReport.Text" xml:space="preserve">
+    <value>View your sales report, click a item you will see order detail. You can also change order status and shipping status here. For example, if site enables "Manual Process" payment gateway, you can change client order status from "Awaiting Payment" to "Paid" after receive money via wire transfer, and change shipping status from "Packed" to "Dispatching".&lt;br/&gt;&lt;br/&gt;If site allows you uploading files to your client, or allows client uploading files to you, you can view / upload these files here. For example, you are selling a picture process service, a client can paid for this service, and upload original files to you, you process them and then upload back to the client.</value>
+  </data>
+  <data name="lbtnUserGeneral_File.Text" xml:space="preserve">
+    <value>My Files</value>
+  </data>
+  <data name="lbtnUserGeneral_Folder.Text" xml:space="preserve">
+    <value>My Folders</value>
+  </data>
+  <data name="lbtnUserGeneral_Profile.Text" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+  <data name="lbtnUserBuyer_Cart.Text" xml:space="preserve">
+    <value>My Shopping Cart</value>
+  </data>
+  <data name="lbtnUserVendor_Comment.Text" xml:space="preserve">
+    <value>Visitor Comments</value>
+  </data>
+  <data name="lbtnUserVendor_Product.Text" xml:space="preserve">
+    <value>My Fixed Price Listings</value>
+  </data>
+  <data name="lbtnUserVendor_Review.Text" xml:space="preserve">
+    <value>Customer Ratings</value>
+  </data>
+  <data name="lbtnUserVendor_Ticket.Text" xml:space="preserve">
+    <value>Customer Help Tickets</value>
+  </data>
+  <data name="lbtnUserVendor_SellReport.Text" xml:space="preserve">
+    <value>My Sales</value>
+  </data>
+  <data name="secUserBuyer.Text" xml:space="preserve">
+    <value>Buyer Center</value>
+  </data>
+  <data name="secUserVendor.Text" xml:space="preserve">
+    <value>Seller Center</value>
+  </data>
+  <data name="lblUserBuyer_Order.Text" xml:space="preserve">
+    <value>Your order history, click item to view detail or submit help ticket/rating. If site allows you to upload files with your order (for example, you buy a picture print service, and can upload files to the seller to print), you can upload here.</value>
+  </data>
+  <data name="lblUserBuyer_Review.Text" xml:space="preserve">
+    <value>Your ratings to ordered products.</value>
+  </data>
+  <data name="lblUserBuyer_Ticket.Text" xml:space="preserve">
+    <value>Help ticket is a one-to-one help mechanism between you and sellers. Click to view all your help tickets which submitted before. &lt;br/&gt;&lt;br/&gt;If site allows you to upload files with your help ticket (for example, you buy a software, but has problem while using it, you can upload the issue screen shots for help), you can upload here. If seller uploads files with your ticket, you can also view them here.</value>
+  </data>
+  <data name="lblUserBuyer_Watch.Text" xml:space="preserve">
+    <value>View products which are added into your watch list. You can submit help ticket here.</value>
+  </data>
+  <data name="lbtnUserBuyer_Order.Text" xml:space="preserve">
+    <value>My Orders</value>
+  </data>
+  <data name="lbtnUserBuyer_Review.Text" xml:space="preserve">
+    <value>My Ratings</value>
+  </data>
+  <data name="lbtnUserBuyer_Ticket.Text" xml:space="preserve">
+    <value>Help Ticket</value>
+  </data>
+  <data name="lbtnUserBuyer_Watch.Text" xml:space="preserve">
+    <value>My Watch List</value>
+  </data>
+  <data name="lblAdminGeneral_Role.Text" xml:space="preserve">
+    <value>Classified Pro is multi-seller based. By default, only site administrators can post products and upload files. Here you can specify other roles which can post products and upload files in your site. Please note:&lt;br/&gt;&lt;br/&gt;
+1. Classified Pro allows you to limit the "Departments" which seller can post products to. So it is better to create departments first (by click "Admin Control Panel - Departments"), then configure seller roles.&lt;br/&gt;&lt;br/&gt; 2. You can use Classified Pro module to sell these seller roles, so registered users need to buy (subscribe) these seller roles first before post products to your site. You can also charge seller roles based different conditions (departments, product count, disk quota, etc).&lt;br/&gt;&lt;br/&gt; 3. There is a "Charge Percent" property for each department which you can use to charge commission from seller sales.&lt;br/&gt;&lt;br/&gt; 4. By default, module will use site defined accounts to receive money, it is site administrator's responsibility to distribute seller's income to them (e.g, once a month). You can also click "Store Settings" and check on "Send money to seller account" to let seller receive money with his/her own account.&lt;br/&gt;&lt;br/&gt; 5. Check "Help - How to charge commission from seller sales?" and also "How to sell portal roles (seller roles)" section for more details.</value>
+  </data>
+  <data name="lbtnAdminGeneral_Role.Text" xml:space="preserve">
+    <value>Seller Roles</value>
+  </data>
+  <data name="lblHelp_MimeType.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Module needs a few mime type support to work. You can add them as follows if not available. Take flash video (.flv) as example.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. On the Windows 2003 server, open the Internet Information Services Manager.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Expand the Local Computer Server.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Right-click the local computer server and select Properties.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. Select the MIME Types tab.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;5. Click the New... button and enter the following information:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;6. Associated Extension box: .FLV.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;7. MIME Type box: flv-application/octet-stream&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;8. Click Ok.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;9. Restart the World Wide Web Publishing service.&lt;/p&gt;
+&lt;p&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;You also need to add below mime types using the same steps.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .xap                            mime -type: application/x-silverlight-app, for Silverlight file upload control.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .mp4                           mime -type: video/mp4, for playing mp4 videos&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .mp3                            mime -type: audio/mpeg, for playing mp3 music&lt;/p&gt;
+&lt;p&gt;Here is a list of the related file extension and its mime type, they are not necessary, just for reference.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;   .rbs                             mime type: application/octet-stream. &lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;   .3gp                            mime -type: video/3gpp&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .m4v                            mime -type: video/x-m4v &lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .m4a                            mime -type: audio/x-m4a&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .m4b                            mime -type: audio/m4b&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .wmv                            mime -type: video/x-ms-wmv&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .avi                            mime -type: video/x-msvideo&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    .asf                            mime -type: video/x-ms-asf&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;   .mov                            mime -type: video/quicktime&lt;/p&gt;</value>
+  </data>
+  <data name="secHelp.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="secHelp_MimeType.Text" xml:space="preserve">
+    <value>Flash video (.flv)/H.264 (.mp4) and Silverlight file upload control mime type</value>
+  </data>
+  <data name="secHelp_VideoConvert_Online.Text" xml:space="preserve">
+    <value>Online Video Convert</value>
+  </data>
+  <data name="ConfigTip_A3Auth.Text" xml:space="preserve">
+    <value>Please configure your Amazon A3 information in "Admin Control Panel - Configurations - General Settings" first.</value>
+  </data>
+  <data name="ConfigTip_ProductType.Text" xml:space="preserve">
+    <value>Please add at least 1 department in "Admin Control Panel - Departments" first.</value>
+  </data>
+  <data name="ConfigTip_ProductCategory.Text" xml:space="preserve">
+    <value>There are some departments (for example, the "{0}" department) which have no categories associated. Please add at least 1 category for each department in "Admin Control Panel - System Data - Categories" first.</value>
+  </data>
+  <data name="btnRegister.Text" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="plDescription.Help" xml:space="preserve">
+    <value>Enter description of your site (600 character limit)</value>
+  </data>
+  <data name="plDescription.Text" xml:space="preserve">
+    <value>Your Site Description</value>
+  </data>
+  <data name="plLogo.Help" xml:space="preserve">
+    <value>Enter your site logo url (gif/jpg/png files)</value>
+  </data>
+  <data name="plLogo.Text" xml:space="preserve">
+    <value>Your Site Logo</value>
+  </data>
+  <data name="plName.Help" xml:space="preserve">
+    <value>Enter your site name, can't be null</value>
+  </data>
+  <data name="plName.Text" xml:space="preserve">
+    <value>Your Site Name</value>
+  </data>
+  <data name="plUrl.Help" xml:space="preserve">
+    <value>Enter your site url, it is better to enter full url which contains the Cp_Product_List sub module instance.</value>
+  </data>
+  <data name="plUrl.Text" xml:space="preserve">
+    <value>Your Site Url</value>
+  </data>
+  <data name="Register_Status_NotRegister.Text" xml:space="preserve">
+    <value>Not Registered</value>
+  </data>
+  <data name="Register_Status_Ok.Text" xml:space="preserve">
+    <value>Register success</value>
+  </data>
+  <data name="lblSuccess.Text" xml:space="preserve">
+    <value>Submit success, thanks for your support</value>
+  </data>
+  <data name="btnAddShowcase.Text" xml:space="preserve">
+    <value>Add Showcase</value>
+  </data>
+  <data name="plInvoiceId.Help" xml:space="preserve">
+    <value>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;You currently have Classified Pro standard edition, please enter your invoice id while bought this module and click "Register". Note, don't click "Register" button if you just want to test this module on your site!!&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Normally seller will send invoice id to your mail address when you buy module. You can also login to site where you bought this module to find invoice id. If you bought it from snowcovered.com, click "My Account" after login to snowcovered.com. If you bought it from http://DnnModule.com, visit http://DnnModule.com/store.aspx and click "My orders" to find invoice id.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Contact xiaoqi98@msn.com if you have any problem while registering this module.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Thanks for your support.</value>
+  </data>
+  <data name="plInvoiceId.Text" xml:space="preserve">
+    <value>Invoice Id</value>
+  </data>
+  <data name="lblUserVendor_ItemInCart.Text" xml:space="preserve">
+    <value>View items which are put into client's cart (but haven't check out yet). Note, module allows you to specify various discounts to a product, client will be automatic applied to the highest discount if he meets multiple discounts requirements. If these built-in discounts are not enough, here you can manually modify the order price to offer discount directly.</value>
+  </data>
+  <data name="lbtnUserVendor_ItemInCart.Text" xml:space="preserve">
+    <value>Products In The Shopping Cart</value>
+  </data>
+  <data name="lblUserBuyer_Product.Text" xml:space="preserve">
+    <value>Your ordered products, click item to view order detail or submit help ticket/rating. If what you order is software/digital files, you can download related files here. For physical goods which requrie delivery, you can sign for express delivery after receive product.&lt;br/&gt;&lt;br/&gt;If site allows you to upload files with your order (for example, you buy a picture print service, and can upload files to the seller to print), you can upload here. If seller upload files to you, you can also view them here.</value>
+  </data>
+  <data name="lbtnUserBuyer_Product.Text" xml:space="preserve">
+    <value>My Products</value>
+  </data>
+  <data name="secHelp_PaypalSandbox.Text" xml:space="preserve">
+    <value>Using PayPal Payment Gateway</value>
+  </data>
+  <data name="lblAdminProduct_Order.Text" xml:space="preserve">
+    <value>View clients order history, click order item to view product detail. You can also delete or change order status here. For example, if site enables "Manual Process" payment gateway, you can change client order status from "Awaiting Payment" to "Paid" after receive money via wire transfer.</value>
+  </data>
+  <data name="lbtnAdminProduct_Order.Text" xml:space="preserve">
+    <value>Order History</value>
+  </data>
+  <data name="lblAdminProduct_Statistic.Text" xml:space="preserve">
+    <value>Classified Pro is multi-seller based, here you can view sales statistic for all sellers in a certain period. Click item to view seller payment information if you want send money to them.&lt;br/&gt;&lt;br/&gt;
+If you are using PayPal to distribute sellers' income periodic, instead of send them one by one in PayPal control panel, you can try to create a mass payment file and upload it to PayPal, then let PayPal to process the payment to all sellers automatically.</value>
+  </data>
+  <data name="lbtnAdminProduct_Statistic.Text" xml:space="preserve">
+    <value>Sales Statistic</value>
+  </data>
+  <data name="lblHelp_Online.Text" xml:space="preserve">
+    <value>Visit &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt; to get online help.</value>
+  </data>
+  <data name="secHelp_Online.Text" xml:space="preserve">
+    <value>Online Help</value>
+  </data>
+  <data name="secHelp_AuthorizeTest.Text" xml:space="preserve">
+    <value>Test transaction via Authorize.Net</value>
+  </data>
+  <data name="secHelp_Faqs.Text" xml:space="preserve">
+    <value>Faqs</value>
+  </data>
+  <data name="lblAdminProduct_Location.Text" xml:space="preserve">
+    <value>Location is used everywhere in module. For example, 1. Customer's address creation; 2. Charge tax (based client billing address); 3. Seller company location (specify in "Seller Center - My Profile"); 4. Product (listing) can also have a location property.&lt;br/&gt;&lt;br/&gt;Module supports 4 level of regionalism (country, state/province, city, town). For example, country = USA, state/province = California, city = Los Angeles, town = Bell, or country = China, state/province = YunNan, city = KunMing, town = WuHua.&lt;br/&gt;&lt;br/&gt;By default, module will automatic create countries/states data for US and Canada when running at the first time. You can delete them if necessary.</value>
+  </data>
+  <data name="lbtnAdminProduct_Location.Text" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="lblAdminProduct_ShipMethod.Text" xml:space="preserve">
+    <value>Shipping methods dictate the type of shipping, e.g. "USPS", "Personal Courier", "By Land", "By Air". Once you have created a shipping method, it can be used to calculate shipping costs based on various criteria. Note, you can ignore them if your store doesn't need to shipping.&lt;br/&gt;&lt;br/&gt;
+Module also allows you to specify a fixed shipping fee to a product. If you only have a few products to sell and want to charge a fixed shipping fee, you can ignore the shipping fee formulas, only need to create the shipping methods.</value>
+  </data>
+  <data name="lbtnAdminProduct_ShipMethod.Text" xml:space="preserve">
+    <value>Shipping</value>
+  </data>
+  <data name="secAdminSell.Text" xml:space="preserve">
+    <value>Sales Report</value>
+  </data>
+  <data name="secHelp_VideoConvert_Offline.Text" xml:space="preserve">
+    <value>Offline Video Convert</value>
+  </data>
+  <data name="ConfigTip_EmptyType_FixedPrice.Text" xml:space="preserve">
+    <value>There is no department available for fixed price products, please add at least 1 department and select its "Listing Type" as "0 - Fixed Pirce Listing" in "Admin Control Panel - Departments" first.</value>
+  </data>
+  <data name="lblAdminPromotion_Campaign.Text" xml:space="preserve">
+    <value>Use campaigns to easily send promotion emails to users that are registered on your site. This is a great way of informing your customers of new offers and keep them coming back to your store.&lt;br/&gt;&lt;br/&gt;Note, this is a simple email feature and can't handle too much emails (less than 500). Check our "Cross Bulk Mailer" module at &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt; if you want to send massive emails (e.g. 1, 000, 000 emails).</value>
+  </data>
+  <data name="lbtnAdminPromotion_Campaign.Text" xml:space="preserve">
+    <value>Campaigns</value>
+  </data>
+  <data name="secAdminPromotion.Text" xml:space="preserve">
+    <value>Global Discounts (Coupons) &amp; Promotion Emails</value>
+  </data>
+  <data name="secHelp_DineroMail.Text" xml:space="preserve">
+    <value>Using DineroMail payment gateway</value>
+  </data>
+  <data name="secHelp_SendReceiveMail.Text" xml:space="preserve">
+    <value>How to send &amp; receive mail notification</value>
+  </data>
+  <data name="secRegister.Text" xml:space="preserve">
+    <value>Register Classified Pro Module</value>
+  </data>
+  <data name="secShowcase.Text" xml:space="preserve">
+    <value>Showcase of Classified Pro module</value>
+  </data>
+  <data name="secHelp_GoogleCheckoutSandbox.Text" xml:space="preserve">
+    <value>Test transaction via Google Checkout Sandbox</value>
+  </data>
+  <data name="Tip_UserGeneral_ReceiveMoney.Text" xml:space="preserve">
+    <value>&lt;br/&gt;Warning: you haven't provide any valid account to receive money.</value>
+  </data>
+  <data name="lblTrialExpired.Text" xml:space="preserve">
+    <value>Your trial version of Classified Pro module is expired, please upgrade to official version at &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt;, thanks. Note, your data will keep exist after re-install using the official version.&lt;br/&gt;</value>
+  </data>
+  <data name="Tip_ForAdministratorAndManageRole.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles who have data manage permissions (specified in "Admin control panel - Configurations - Store Settings").</value>
+  </data>
+  <data name="Tip_ForAdministratorAndVendor.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles which are specified in "Admin control panel - Configurations - Seller Roles".</value>
+  </data>
+  <data name="Tip_ForAdministratorOnly.Text" xml:space="preserve">
+    <value>This section is available for site administrators only.</value>
+  </data>
+  <data name="Tip_ForRegister.Text" xml:space="preserve">
+    <value>This section is available for all registered users.</value>
+  </data>
+  <data name="lblAdminProduct_Manufacturer.Text" xml:space="preserve">
+    <value>In Classified Pro, manufacturer is equal to brand (or trademark, supplier, or something else similar), a product can belong to 1 manufacturer. For example, when you sell computers, you can create a few manufacturers here (e.g, "Leveno", "IBM", "Dell"), so user can easily find products which belong to certain manufacturer.&lt;br/&gt;&lt;br/&gt;
+Note, 1. If you don't create any manufactuer for a department, then the "Manufacter" selection will be hidden when editing product which belong to that department. 2. You can use Cp_Product_Manufacturer sub module to show manufacturers to public.</value>
+  </data>
+  <data name="lbtnAdminProduct_Manufacturer.Text" xml:space="preserve">
+    <value>Manufacturers</value>
+  </data>
+  <data name="lblUserBuyer_Discount.Text" xml:space="preserve">
+    <value>Seller may offer discounts to his/her old customers sometimes. For example, if you order product "A" from a seller, he may specify 30% discount to you for product "B". Here you can view these discounts.</value>
+  </data>
+  <data name="lbtnUserBuyer_Discount.Text" xml:space="preserve">
+    <value>My Discounts</value>
+  </data>
+  <data name="ConfigTip_EmptyType_Auction.Text" xml:space="preserve">
+    <value>There is no department available for auction products, please add at least 1 department and select its "Listing Type" as "1 - Auction Listing" in "Admin Control Panel - Departments" first.</value>
+  </data>
+  <data name="lblUserVendor_Auction.Text" xml:space="preserve">
+    <value>Here you can add/edit your products which will be sold with auction. The standard auction is used to sell goods or services to the highest bidder. Sellers can also elect to set a "reserve" price, which will guarantee that their item will not be sold unless this minimum requested price is met, and a "buy now" price which allows buyers to bypass bidding altogether and purchase the item outright.&lt;br/&gt;&lt;br/&gt;After create a product, you can attach multiple images / documents / audio / videos with it. If what you sell is software / digital files, you can also add multiple files as "Download Files" so clients can download them after paid.</value>
+  </data>
+  <data name="lbtnUserVendor_Auction.Text" xml:space="preserve">
+    <value>My Auction Listings</value>
+  </data>
+  <data name="lblAdminProduct_Ad.Text" xml:space="preserve">
+    <value>Manage classified ads which are created by all sellers. Click "Seller Center - My Classified Ads" instead to post your ad listings.&lt;br/&gt;&lt;br/&gt;
+Again, the Cp_Product_List (and Cp_Product_ListTab, Cp_Product_Slideshow, Cp_Product_ListDashboard) sub modules can be used to to show these ads to public.</value>
+  </data>
+  <data name="lblAdminProduct_Auction.Text" xml:space="preserve">
+    <value>Edit/delete auction products which are created by all sellers here. Click "Seller Center - My Auction Listings" instead if you want to post your own auction listings.&lt;br/&gt;&lt;br/&gt;
+Note, the Cp_Product_List (and Cp_Product_ListTab, Cp_Product_Slideshow, Cp_Product_ListDashboard) sub modules can be used to to show these auction products to public.</value>
+  </data>
+  <data name="lbtnAdminProduct_Ad.Text" xml:space="preserve">
+    <value>Classified Ads</value>
+  </data>
+  <data name="lbtnAdminProduct_Auction.Text" xml:space="preserve">
+    <value>Auction Listings</value>
+  </data>
+  <data name="secAdminSystem.Text" xml:space="preserve">
+    <value>System Data (Categories &amp; Attributes &amp; Manufacturers)</value>
+  </data>
+  <data name="ConfigTip_EmptyType_ClassifiedAd.Text" xml:space="preserve">
+    <value>There is no department available for classified ads, please add at least 1 department and select its "Listing Type" as "2 - Classified Ads" in "Admin Control Panel - Departments" first.</value>
+  </data>
+  <data name="lblUserBuyer_Auction.Text" xml:space="preserve">
+    <value>View your bidding here (Active, Won, Not Won, Paid, Give Up, Proxy Bidding). You can also check out the auction listings which you won.&lt;br/&gt;
+By default, site will check expired auction listings every 5 minutes, and update your bidding status (e.g. change Active to Won), please be patient.</value>
+  </data>
+  <data name="lblUserVendor_Ad.Text" xml:space="preserve">
+    <value>Add/edit your classified ads here. Best for advertising goods or promoting services, or posting news articles / photos / videos / audio / documents / jobs / real estate / cars...etc, Classified Ads promote communication between interested parties; but no transactions (bidding, buying, or payments) are managed through the website. Unlike traditional classified ads, online classified ads benefit from the addition of images, videos, audio, documents, and internal messages (comments, ratings, help tickets, etc).&lt;br/&gt;&lt;br/&gt;Note, you can create classical banners (slideshow) by specify "Link Url" property for ads. Expand "Help - How to create classical banners (slideshow)" section for more detail.</value>
+  </data>
+  <data name="lbtnUserBuyer_Auction.Text" xml:space="preserve">
+    <value>My Bidding</value>
+  </data>
+  <data name="lbtnUserVendor_Ad.Text" xml:space="preserve">
+    <value>My Classified Ads</value>
+  </data>
+  <data name="lblAdminPromotion_Discount.Text" xml:space="preserve">
+    <value>Add/edit global discounts &amp; coupons here, these discounts &amp; coupons will be applied to all fixed price products in this site. For example, you can create a 30% "Date Discount" between 12/25 to 12/30, so buyer can get 30% discount when ordering any fixed price products in this period.&lt;br/&gt;&lt;br/&gt;Classified Pro supports 3 levels of discounts (coupons): 1. Global discounts (created here) which can be applied to all products in this site. 2. Seller common discounts (created at "Seller Center - My Common Discounts"), which can be applied to all products of that seller. 3. Stand alone discounts (created at "Seller Center - My Fixed Price Listings") which can be applied to a single product only. Note, if a buyer meets multiple discounts requirements, he will be automatic applied to the highest discount.</value>
+  </data>
+  <data name="lblUserVendor_Discount.Text" xml:space="preserve">
+    <value>Add/edit your common discounts &amp; coupons here, these discounts &amp; coupons will be applied to all your fixed price products. For example, you can create a 30% "Date Discount" between 12/25 to 12/30, so buyer can get 30% discount when ordering your fixed price products in this period.&lt;br/&gt;&lt;br/&gt;Classified Pro supports 3 levels of discounts (coupons): 1. Global discounts which are created by site administrators, these discounts can be applied to all products in this site. 2. Seller common discounts (created here), which can be applied to all your products. 3. Stand alone discounts (created at "Seller Center - My Fixed Price Listings") which can be applied to a single product only. Note, if a buyer meets multiple discounts requirements, he will be automatic applied to the highest discount.</value>
+  </data>
+  <data name="lbtnAdminPromotion_Discount.Text" xml:space="preserve">
+    <value>Global Discounts &amp; Coupons</value>
+  </data>
+  <data name="lbtnUserVendor_Discount.Text" xml:space="preserve">
+    <value>My Common Discounts</value>
+  </data>
+  <data name="secHelp_ChargeCommision.Text" xml:space="preserve">
+    <value>How to charge commission from seller sales?</value>
+  </data>
+  <data name="secHelp_SellRole.Text" xml:space="preserve">
+    <value>How to sell portal roles (seller roles)</value>
+  </data>
+  <data name="secHelp_SplitCpAdmin.Text" xml:space="preserve">
+    <value>How to separate "Admin Control Panel" / "Seller Center" / "Buyer Center" sections into different pages?</value>
+  </data>
+  <data name="secHelp_ContentLocalization.Text" xml:space="preserve">
+    <value>Content Localization (Multiple Languages Content) Support</value>
+  </data>
+  <data name="secHelp_SubModulesIntroduction.Text" xml:space="preserve">
+    <value>16 sub modules and 1 skin object in Classified Pro</value>
+  </data>
+  <data name="lblContentLocalization_Location.Text" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;br/&gt;Note, the location you entered here is corresponding to the default language ({0}). To fully support content localization, you need to click &lt;img src="{1}"/&gt; link, to translate location content to other languages.</value>
+  </data>
+  <data name="lblContentLocalization_Shipping.Text" xml:space="preserve">
+    <value>&lt;br/&gt;&lt;br/&gt;Note, the shipping methods you entered here is corresponding to the default language ({0}). To fully support content localization, you need to click &lt;img src="{1}"/&gt; link, to translate shipping methods content to other languages.</value>
+  </data>
+  <data name="lblContentLocalization_SystemData.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles who have data manage permissions (specified in "Admin control panel - Configurations - Store Settings"). Note, the data (Categories / Attributes / Manufacturers) you entered below is corresponding to the default language ({0}). To fully support content localization, you need to click &lt;img src="{1}"/&gt; link, to translate all contents to other languages.</value>
+  </data>
+  <data name="lblContentLocalization_Vendor.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles which are specified in "Admin control panel - Configurations - Seller Roles". Note, the data (fixed price listings / auction listings / ads) you entered below is corresponding to the default language ({0}). To fully support content localization, you need to click &lt;img src="{1}"/&gt; link, to translate all contents to other languages.</value>
+  </data>
+  <data name="lblUserBuyer_Address.Text" xml:space="preserve">
+    <value>Define your shipping addresses here (to receive physical goods). You can create multiple addresses (e.g. "Home", "Company") and choose from them while checking out.</value>
+  </data>
+  <data name="lbtnUserBuyer_Address.Text" xml:space="preserve">
+    <value>My Shipping Addresses</value>
+  </data>
+  <data name="lblContentLocalization_Manage.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles who have data manage permissions (specified in "Admin control panel - Configurations - Store Settings"). Note, the data (fixed price listings / auction listings / ads) below is corresponding to the default language ({0}). Click &lt;img src="{1}"/&gt; link, you can view contents of other languages.</value>
+  </data>
+  <data name="lblManageTip.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles who have data manage permissions (specified in "Admin control panel - Configurations - Store Settings").</value>
+  </data>
+  <data name="lblAdminType_Ad.Text" xml:space="preserve">
+    <value>Best for advertising goods or promoting services, or posting news articles / photos / videos / audio / documents / jobs / real estate / cars...etc, Classified Ads promote communication between interested parties; but no transactions (bidding, buying, or payments) are managed through the website. For example, if you want to publish news article and real estate listings (not sell or auction, just list), you can create 2 ad departments (e.g, "News" and "Real Estate") here.&lt;br/&gt;&lt;br/&gt;The "Allow Uploading Files" property is useful when you want to gather information from users. For example, you are publishing job listings, an interested user can submit a request (a help ticket) to a job, and upload his resume (pictures,credentials) to you.</value>
+  </data>
+  <data name="lblAdminType_Auction.Text" xml:space="preserve">
+    <value>To build an online auction site, create at least 1 "Auction Department" here. Classified Pro module supports nearly all types of auctions (English auction, Sealed first-price auction, Vickrey auction, Second item auction, by specifying the "Auction Type" property). Again, the "Sell Property" property controls the content of departments, you can specify it to physical goods / digital files / other virtual items to auction different products.</value>
+  </data>
+  <data name="lblAdminType_Fixed.Text" xml:space="preserve">
+    <value>To build a standard online store, create at least 1 "Fixed Price Department" here. Please note the "Sell Property" property while adding a department, it controls the content of departments. You can specify it to portal roles / digital files / physical goods / other virtual items to sell different products.&lt;br/&gt;&lt;br/&gt;You can also create variant groups for the department here. Variant provides a way to allow client choosing his favorite product properties while adding to cart.</value>
+  </data>
+  <data name="lblContentLocalization_Type.Text" xml:space="preserve">
+    <value>This section is available for site administrators and roles who have data manage permissions (specified in "Admin control panel - Configurations - Store Settings"). Note, the departments you entered below is corresponding to the default language ({0}). To fully support content localization, you need to click &lt;img src="{1}"/&gt; link, to translate all contents to other languages.</value>
+  </data>
+  <data name="lbtnAdminType_Ad.Text" xml:space="preserve">
+    <value>Ad Departments</value>
+  </data>
+  <data name="lbtnAdminType_Auction.Text" xml:space="preserve">
+    <value>Auction Departments</value>
+  </data>
+  <data name="lbtnAdminType_Fixed.Text" xml:space="preserve">
+    <value>Fixed Price Departments</value>
+  </data>
+  <data name="secAdminType.Text" xml:space="preserve">
+    <value>Departments</value>
+  </data>
+  <data name="Tip_Type.Text" xml:space="preserve">
+    <value>Classified Pro allows you to publish fixed price products / auction listings / classified ads on same site. Departments are top-level unit to organize these data, each department has its own categories / attributes / manufacturers / tags / products / tax rates, you can also hide unwanted data fields (or create extra data fields at "Categories &amp; Attributes &amp; Manufacturers" section) for each department. Please note:&lt;br/&gt;&lt;br/&gt;
+
+
+1. When you run the "Classified Pro Setup Wizard" (this wizard will display when there is no department specified), module will create some basic departments for you. You can choose to keep them or edit/delete as your wish later. &lt;br/&gt;&lt;br/&gt;2. You can create multiple departments to let Classified Pro handle both online store, auction system, and classified ads on same site. After departments creation, you can use Cp_Product_Type sub module to show them to public.&lt;br/&gt;&lt;br/&gt;3. Department has a "Allow Uploading Files" property, this is useful if you allow client uploading files while ordering a product (or submit help ticket), or allow seller uploading files to the client. For example, you are selling picture processing service, a client can paid for this service, and upload related pictures to the seller, seller then processes them and upload back to the client.&lt;br/&gt;</value>
+  </data>
+  <data name="secHelp_AttributeAndOption.Text" xml:space="preserve">
+    <value>Differences between Attributes, Options, and Variants</value>
+  </data>
+  <data name="RegModuleTip.Text" xml:space="preserve">
+    <value>You are using a unregistered copy of Classified Pro (standard edition) which can add up to 100 product items. Please register at "Cp_Admin sub module - Help - Register" section to remove this limitation. Any problem, please contact xiaoqi98@msn.com. Thanks for your support.</value>
+  </data>
+</root>

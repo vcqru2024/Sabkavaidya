@@ -1,0 +1,21 @@
+﻿<data method="BasicProductVariantPriceUpdateEmail" version="1.0">
+  <mailTo>{xsl:if test="in/productVariant/previousBasePrice &amp;gt; in/productVariant/basePrice" }{xsl:value-of select="in/user/email" /}{/xsl:if}</mailTo>
+  <mailFrom></mailFrom>
+  <subject>{xsl:value-of select="in/configuration/generalStoreName" /} Product Update - {xsl:value-of select="in/productVariant/product/name" /} is now cheaper</subject>
+  <htmlBody>
+    <![CDATA[<div style="text-align: center">
+Hi {xsl:value-of select="concat(in/user/firstName, ' ', in/user/lastName)" /}
+<p>
+    Good news! The following product is now cheaper. Go ahead and place your order before it disappears!
+</p>
+<p>
+	<a href="{xsl:value-of select='in/productVariant/productDetail/tabUrl' /}"><img src="{xsl:value-of select='in/productVariant/mainThumbnailGallery/mediaUrl' /}" style="width: 300px; margin-bottom: 20px;"/></a><br/>
+	<a href="{xsl:value-of select='in/productVariant/productDetail/tabUrl' /}"><strong>{xsl:value-of select="in/productVariant/product/name" /}</strong></a><br/>
+</p>
+<p>
+	If you have any questions or need assistance, please do not hesitate to contact us.
+</p>
+</div>
+]]>
+  </htmlBody>
+</data>

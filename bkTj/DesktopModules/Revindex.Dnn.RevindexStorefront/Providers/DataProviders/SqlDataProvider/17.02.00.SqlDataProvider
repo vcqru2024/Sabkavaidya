@@ -1,0 +1,24 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Support shipping method as quote
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_ShippingMethod' AND COLUMN_NAME = 'SalesType')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod ADD SalesType int NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingMethod_SalesType DEFAULT 1
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingMethod_SalesType
+
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod ADD Fallback bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingMethod_Fallback DEFAULT 0
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingMethod_Fallback
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesOrder' AND COLUMN_NAME = 'ShippingQuoted')
+BEGIN
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD ShippingQuoted bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_SalesOrder_ShippingQuoted DEFAULT 0
+    ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_SalesOrder_ShippingQuoted
+END
+GO

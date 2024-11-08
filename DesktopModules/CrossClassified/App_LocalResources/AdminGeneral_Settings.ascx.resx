@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblVideoConvertTips.Text" xml:space="preserve">
+    <value>Video convert options is only available for host account (super user). Please login with host account if you want to change them.</value>
+  </data>
+  <data name="plA3Bucket.Text" xml:space="preserve">
+    <value>Amazon S3 Bucket</value>
+  </data>
+  <data name="plA3Bucket.Help" xml:space="preserve">
+    <value>If you choose store file via Amazon S3, enter a bucket which will store files. </value>
+  </data>
+  <data name="lblPermissionCheckDeny.Text" xml:space="preserve">
+    <value>Video convert permission check failed, please contact your hosting provider.</value>
+  </data>
+  <data name="lblPermissionCheckOk.Text" xml:space="preserve">
+    <value>Video convert permission check ok, congratulation!</value>
+  </data>
+  <data name="plPostWatermark.Text" xml:space="preserve">
+    <value>Post Watermark</value>
+  </data>
+  <data name="plPostWatermark.Help" xml:space="preserve">
+    <value>Check this option to post a watermark to videos.</value>
+  </data>
+  <data name="li_VideoConvert_Type_H264.Text" xml:space="preserve">
+    <value>H.264 (.mp4)</value>
+  </data>
+  <data name="li_VideoConvert_Type_Flv.Text" xml:space="preserve">
+    <value>.Flv</value>
+  </data>
+  <data name="secVideoConvert_Online.Text" xml:space="preserve">
+    <value>Online Video Convert </value>
+  </data>
+  <data name="li_FileStorage_A3.Text" xml:space="preserve">
+    <value>Amazon Simple Storage Services (Amazon S3)</value>
+  </data>
+  <data name="li_FileStorage_Local.Text" xml:space="preserve">
+    <value>Under portal root</value>
+  </data>
+  <data name="plA3AccessKey.Text" xml:space="preserve">
+    <value>Amazon S3 Access Key</value>
+  </data>
+  <data name="plA3AccessKey.Help" xml:space="preserve">
+    <value>If you choose store file via Amazon S3, enter access key of your account.</value>
+  </data>
+  <data name="plVideoConvert_Type.Text" xml:space="preserve">
+    <value>Video Convert Format</value>
+  </data>
+  <data name="plVideoConvert_Type.Help" xml:space="preserve">
+    <value>Select video format which will be converted. Default is flash video (.flv).H.264 (.mp4) offers better quality but it also consume more cpu resources while converting, its size also big than .flv format.</value>
+  </data>
+  <data name="plA3SecretKey.Help" xml:space="preserve">
+    <value>If you choose store file via Amazon S3, enter secret key of your account.</value>
+  </data>
+  <data name="plA3SecretKey.Text" xml:space="preserve">
+    <value>Amazon S3 Secret Key</value>
+  </data>
+  <data name="plGenerateThumb.Help" xml:space="preserve">
+    <value>If this option is checked, module will automatic generate thubmnail image if necessary. For example, if product image is Cpu.jpg, then module will generate a thunbmail named thumb_Cpu.jpg. It will improve performance greatly while displaying images in list.</value>
+  </data>
+  <data name="plGenerateThumb.Text" xml:space="preserve">
+    <value>Generate Thumbnail?</value>
+  </data>
+  <data name="plThumbnailSize.Help" xml:space="preserve">
+    <value>Enter thumbnail image size to be generated.</value>
+  </data>
+  <data name="plThumbnailSize.Text" xml:space="preserve">
+    <value>Thumbnail Size</value>
+  </data>
+  <data name="ControlTitle_admingeneral_settings.Text" xml:space="preserve">
+    <value>Global Settings</value>
+  </data>
+  <data name="plFileStorage.Help" xml:space="preserve">
+    <value>Choose user file storage. For small and medium sites, store files under portal root is enough. However, if you have large amout files to handle, then store them via Amazon Simple Storage Services (Amazon S3) will be a better solution. Check http://aws.amazon.com/s3/ for more details.</value>
+  </data>
+  <data name="plFileStorage.Text" xml:space="preserve">
+    <value>File Storage</value>
+  </data>
+  <data name="plPermissionCheck.Help" xml:space="preserve">
+    <value>To convert videos, web server must give execute permission to DesktopModules\CrossClassified\Exe folder (or its parent folder). Contact your hosting provider if you can't pass video convert permission check. For more details, please see "Help - video convert permission" section in Cp_Admin sub module.</value>
+  </data>
+  <data name="plPermissionCheck.Text" xml:space="preserve">
+    <value>Permission Check</value>
+  </data>
+  <data name="plVideoConvert.Help" xml:space="preserve">
+    <value>Check this option to convert user upload videos to .flv or h264 (.mp4) format. Note, you must pass the "permission check" to convert videos successfully.</value>
+  </data>
+  <data name="plVideoConvert.Text" xml:space="preserve">
+    <value>Enable Video Convert</value>
+  </data>
+  <data name="plVideoConvert_Width.Help" xml:space="preserve">
+    <value>Choose video width which will be converted. If source video width is small than this value, video will keep its own width after convert. If source video width is bigger than this value, its width will changed after convert. Default value is 480, this is the H.264 video format width of YouTube.com. Choose "use existing video width" option will not change source video width.</value>
+  </data>
+  <data name="plVideoConvert_Width.Text" xml:space="preserve">
+    <value>Convert Width</value>
+  </data>
+  <data name="plWatermark.Help" xml:space="preserve">
+    <value>Select a watermark file (.gif) which will be posted to videos.</value>
+  </data>
+  <data name="plWatermark.Text" xml:space="preserve">
+    <value>Watermark</value>
+  </data>
+  <data name="li_VideoConvert_Width_UseExisting.Text" xml:space="preserve">
+    <value>Use existing video width</value>
+  </data>
+  <data name="secFileStorage.Text" xml:space="preserve">
+    <value>File Storage</value>
+  </data>
+  <data name="plUseSeoFriendlyUrl.Help" xml:space="preserve">
+    <value>If this option is checked, module will generate item detail url using item name. For example, if a product name is Cross Product 5.5, then its detail url will be like http://www.youdomainname.com/tabid/453/articleid/232/Cross-Product-5-5.aspx. This will improve seo friendly. We recommend customers check this option if your information is written by English. However, for other language like Chinese, it is better to turn this option off.</value>
+  </data>
+  <data name="plUseSeoFriendlyUrl.Text" xml:space="preserve">
+    <value>Enable SEO Friendly Url</value>
+  </data>
+  <data name="secSeo.Text" xml:space="preserve">
+    <value>SEO Friendly Url</value>
+  </data>
+  <data name="A3AuthFailed.Text" xml:space="preserve">
+    <value>Please check your Amazon A3 access key, secrect key and bucket name, make sure they are correct.</value>
+  </data>
+  <data name="plProcessExitTime.Help" xml:space="preserve">
+    <value>Video convert process time limit (millisecond). If convert time exceed value, process will terminate and your video will not continue to convert. Default value is 1800000 (30 minutes), this value will let you convert a video which size bigger than 1G in normal computer. Increase this value if you want to handle very big videos (e.g. dvd files more than 10g). Decrease this value if you don't want user upload big videos.</value>
+  </data>
+  <data name="plProcessExitTime.Text" xml:space="preserve">
+    <value>Process Time Limit</value>
+  </data>
+  <data name="plModulePage_Help.Help" xml:space="preserve">
+    <value>If you provide help information to users (for example, explain term of use/offer faqs, etc), specify its page here. When user click the "help" button in "Cp_Product_AccountLink" module, (or click the "help" button in skin object), module will navigate to this page.</value>
+  </data>
+  <data name="plModulePage_Help.Text" xml:space="preserve">
+    <value>Help Page</value>
+  </data>
+  <data name="secModulePage_Help.Text" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="secVideoConvert_Offline.Text" xml:space="preserve">
+    <value>Offline Video Convert</value>
+  </data>
+  <data name="plUserFolderRoot.Help" xml:space="preserve">
+    <value>Enter folder root which store user upload files. Default value is "CrossClassified", means that user upload files will store under portals/[portalID]/CrossClassified folder. You can change them to meet you needs. For example, if you also use our Cross Article module, you can change it as "CrossArticle" so Classified Pro will use the same folder root as Cross Article module.</value>
+  </data>
+  <data name="plUserFolderRoot.Text" xml:space="preserve">
+    <value>Local Folder Root</value>
+  </data>
+  <data name="Tip_HelpPage.Text" xml:space="preserve">
+    <value>If you provide help information to users (for example, explain term of use/offer faqs, etc), specify its page here. When user click the "help" button in "Cp_Product_AccountLink" sub module, (or click the "help" button in skin object), module will navigate to this page. For live demo, please visit &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt;.</value>
+  </data>
+  <data name="Tip_SeoUrl.Text" xml:space="preserve">
+    <value>If this option is checked, module will generate item detail url using item name. For example, if a product name is Cross Product 5.5, then its detail url will be like http://www.youdomainname.com/tabid/453/productid/232/Cross-Product-5-5.aspx. This will improve SEO friendly. We recommend customers to check on this option if your information is written by English. However, for other language like Chinese, it is better to turn this option off.</value>
+  </data>
+  <data name="Tip_A3.Text" xml:space="preserve">
+    <value>To store files on Amazon S3, you must provide below information: Access key, Secret Key and S3 bucket.</value>
+  </data>
+  <data name="Tip_UserFolderRoot.Text" xml:space="preserve">
+    <value>Enter folder root which stores user upload files. Default value is "CrossClassified", means that user upload files will be stored under portals/[PortalID]/CrossClassified/[UserID] folder. You can change it to meet you needs. For example, if you also use our Cross Video Gallery module, you can change it as "CrossUserFile" so Classified Pro module will use the same folder root as Cross Video Gallery module.</value>
+  </data>
+  <data name="Tip_GenerateThumb.Text" xml:space="preserve">
+    <value>If this option is checked, module will automatic generate thubmnail image if necessary. For example, if product image is Cpu.jpg, then module will generate a thunbmail named thumb_Cpu.jpg. It will improve performance greatly while displaying images in list.</value>
+  </data>
+  <data name="plDnnSitemap.Help" xml:space="preserve">
+    <value>Check on this option to integrate with DNN built-in web sitemap.</value>
+  </data>
+  <data name="plDnnSitemap.Text" xml:space="preserve">
+    <value>Integrate with DNN built-in web sitemap</value>
+  </data>
+  <data name="plYourSitemap.Help" xml:space="preserve">
+    <value>Your web sitemap url</value>
+  </data>
+  <data name="plYourSitemap.Text" xml:space="preserve">
+    <value>Your Web Sitemap Url</value>
+  </data>
+  <data name="secHelp_DnnSitemap.Text" xml:space="preserve">
+    <value>Integrate with Google web sitemap</value>
+  </data>
+  <data name="Tip_DnnSitemapIntegration.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;As we know, DNN provides a web sitemap file which can be submitted to &lt;a href="https://www.google.com/webmasters/tools/home" target="_blank"&gt;&lt;font color="red"&gt;Google webmaster tools&lt;/font&gt;&lt;/a&gt; to let Google index your site more easily. You can configure your web sitemap url by click DNN standard menu "Admin - Search engine sitemap". It is a great way to improve your site seo.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;By default, DNN only lists your web pages as sitemap urls. However, you can check on below option to let Classified Pro also includes your product urls in web sitemap urls. It is a must do action if you want to your products be searched more easily.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;We &lt;font color="red"&gt;strongly reommend&lt;/font&gt; you check on "Integrate with DNN built-in web sitemap" option and submit your web sitemap to Google. Note, if you don't find your product url in your site map urls, you need to delete Portals/[Portal ID]/Sitemap/sitemap.xml file first to clear existing cache.&lt;br/&gt;&lt;br/&gt;
+
+
+&amp;nbsp;&amp;nbsp;You can follow below steps to submit your web sitemap.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;1. Before you begin, make sure you have the your site added and verified in your Webmaster Tools account.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;2. On the Webmaster Tools home page, click your site.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;3. Under Site configuration, click Sitemaps.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;4. Click "Submit a Sitemap".&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;5. In the text box, copy your web sitemap url below and click "Submit Sitemap".&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;6. Note, you need to &lt;font color="red"&gt;uncheck this option first&lt;/font&gt; if you want to uninstall Classified Pro package.
+&lt;/p&gt;</value>
+  </data>
+  <data name="plGoogleMapApi.Help" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;To integrate Google maps with your products, you need to provide a api key. Classified Pro module already create a key for you. If you want to use your own, you can sign up a new key at &lt;a href="https://code.google.com/apis/console" target="_blank"&gt;&lt;font color="red"&gt;https://code.google.com/apis/console&lt;/font&gt;&lt;/a&gt; and enter it. Check &lt;a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank"&gt;&lt;font color="red"&gt;https://developers.google.com/maps/documentation/javascript/tutorial&lt;/font&gt;&lt;/a&gt; for more details.
+&lt;/p&gt;</value>
+  </data>
+  <data name="plGoogleMapApi.Text" xml:space="preserve">
+    <value>Google Maps Api Key</value>
+  </data>
+  <data name="secGoogleMap.Text" xml:space="preserve">
+    <value>Integrate with Google Maps</value>
+  </data>
+  <data name="Tip_GoogleMapApi.Text" xml:space="preserve">
+    <value>To integrate Google maps with your products, you need to provide a api key. Classified Pro already created a key for you to test it. We strongly recommend you to sing up your own api key at &lt;a href="https://code.google.com/apis/console" target="_blank"&gt;&lt;font color="red"&gt;https://code.google.com/apis/console&lt;/font&gt;&lt;/a&gt; and enter it. Check &lt;a href="https://developers.google.com/maps/documentation/javascript/tutorial" target="_blank"&gt;&lt;font color="red"&gt;https://developers.google.com/maps/documentation/javascript/tutorial&lt;/font&gt;&lt;/a&gt; for more details.</value>
+  </data>
+  <data name="AuthFailed_WatermarkImage.Text" xml:space="preserve">
+    <value>Please provide a valid .gif image as watermark file, or uncheck the "Add Watermark" option.</value>
+  </data>
+  <data name="li_WatermarkPosition_BottomLeft.Text" xml:space="preserve">
+    <value>Bottom Left</value>
+  </data>
+  <data name="li_WatermarkPosition_BottomRight.Text" xml:space="preserve">
+    <value>Bottom Right</value>
+  </data>
+  <data name="li_WatermarkPosition_TopLeft.Text" xml:space="preserve">
+    <value>Top Left</value>
+  </data>
+  <data name="li_WatermarkPosition_TopRight.Text" xml:space="preserve">
+    <value>Top Right</value>
+  </data>
+  <data name="li_WatermarkType_Image.Text" xml:space="preserve">
+    <value>.gif image</value>
+  </data>
+  <data name="li_WatermarkType_Text.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="plAddWatermark.Help" xml:space="preserve">
+    <value>Control whether to add watermark to user uploaded photos. The watermark can be a text, or a small image (.gif file).</value>
+  </data>
+  <data name="plAddWatermark.Text" xml:space="preserve">
+    <value>Add Watermark</value>
+  </data>
+  <data name="plTextFontBgColor.Help" xml:space="preserve">
+    <value>Watermakr text background color, default is #000000</value>
+  </data>
+  <data name="plTextFontBgColor.Text" xml:space="preserve">
+    <value>Text Background Color</value>
+  </data>
+  <data name="plTextFontColor.Help" xml:space="preserve">
+    <value>Watermakr text color, default is #EBEBEB</value>
+  </data>
+  <data name="plTextFontColor.Text" xml:space="preserve">
+    <value>Text Color</value>
+  </data>
+  <data name="plTextFontFamily.Help" xml:space="preserve">
+    <value>Text font family, default is "Arial". You can change to other font family, but make sure it is a valid font.</value>
+  </data>
+  <data name="plTextFontFamily.Text" xml:space="preserve">
+    <value>Text Font Family</value>
+  </data>
+  <data name="plWatermarkImage.Help" xml:space="preserve">
+    <value>Choose a .gif file as watermark image.</value>
+  </data>
+  <data name="plWatermarkImage.Text" xml:space="preserve">
+    <value>Watermark Image</value>
+  </data>
+  <data name="plWatermarkPosition.Help" xml:space="preserve">
+    <value>Watermark Position, can be put on top left/top right/bottom left/bottom right.</value>
+  </data>
+  <data name="plWatermarkPosition.Text" xml:space="preserve">
+    <value>Watermark Position</value>
+  </data>
+  <data name="plWatermarkText.Help" xml:space="preserve">
+    <value>Watermark Text</value>
+  </data>
+  <data name="plWatermarkText.Text" xml:space="preserve">
+    <value>Watermark Text</value>
+  </data>
+  <data name="plWatermarkType.Help" xml:space="preserve">
+    <value>The watermark can be a text, or a small image (.gif file).</value>
+  </data>
+  <data name="plWatermarkType.Text" xml:space="preserve">
+    <value>Watermark Type</value>
+  </data>
+  <data name="secWatermark.Text" xml:space="preserve">
+    <value>Photo thumbnail and watermark</value>
+  </data>
+  <data name="Tip_Watermark.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Control whether to add watermark to user upload photos. The watermark can be a text, or a small image (.gif file). Please note:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Module will try to optimize photo after add watermark. In most cases, this process will keep same photo quality but will reduce photo size.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. If you want to generate watermark based gif image, please make sure it is not a animation file. We also recommend you to choose a gif image which has transparent background.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. See below sample images as a reference.
+&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_Watermark_Sample_Gif.Text" xml:space="preserve">
+    <value>Sample image with gif watermark.</value>
+  </data>
+  <data name="Tip_Watermark_Sample_Text.Text" xml:space="preserve">
+    <value>Sample image with text watermark.</value>
+  </data>
+  <data name="plShowCopyright.Help" xml:space="preserve">
+    <value>Select this to add the Classified Pro module copyright credits to the Page Source.</value>
+  </data>
+  <data name="plShowCopyright.Text" xml:space="preserve">
+    <value>Show Copyright Credits</value>
+  </data>
+  <data name="plJournalTypeId.Help" xml:space="preserve">
+    <value>By default, product journal will be added under "articleadd" type, you can change it to other type if needed.</value>
+  </data>
+  <data name="plJournalTypeId.Text" xml:space="preserve">
+    <value>Add Under Type</value>
+  </data>
+  <data name="plJournal_Enabled.Help" xml:space="preserve">
+    <value>Check to integrate with DNN built-in journal.</value>
+  </data>
+  <data name="plJournal_Enabled.Text" xml:space="preserve">
+    <value>Enable Integration</value>
+  </data>
+  <data name="secJournal.Text" xml:space="preserve">
+    <value>Integrate with DNN built-in journal &amp; Social Share</value>
+  </data>
+  <data name="Tip_JournalIntegration.Text" xml:space="preserve">
+    <value>Check on below options to integrate with DNN built-in journal. When a user posts an product/comment, module will automatic adds a record to his journals.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;By default, product journal will be added under "product" type, you can change it to other type if necessary.</value>
+  </data>
+  <data name="plShowSettingActionButton.Help" xml:space="preserve">
+    <value>Show setting button in other 15 sub modules, this is useful if you are not familiar with Classified Pro module.</value>
+  </data>
+  <data name="plShowSettingActionButton.Text" xml:space="preserve">
+    <value>Show Setting Button Shortcut In Sub Modules</value>
+  </data>
+  <data name="li_LayoutContent_Admin.Text" xml:space="preserve">
+    <value>"Admin Control Panel" only</value>
+  </data>
+  <data name="li_LayoutContent_AdminAndVendor.Text" xml:space="preserve">
+    <value>"Admin Control Panel" and "Seller Center"</value>
+  </data>
+  <data name="li_LayoutContent_All.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="li_LayoutContent_Buyer.Text" xml:space="preserve">
+    <value>"Buyer Center" only</value>
+  </data>
+  <data name="li_LayoutContent_Vendor.Text" xml:space="preserve">
+    <value>"Seller Center" only</value>
+  </data>
+  <data name="li_LayoutContent_VendorAndBuyer.Text" xml:space="preserve">
+    <value>"Seller Center" and "Buyer Center"</value>
+  </data>
+  <data name="plLayoutContent.Help" xml:space="preserve">
+    <value>Choose layout content of current Cp_Admin sub module instance</value>
+  </data>
+  <data name="plLayoutContent.Text" xml:space="preserve">
+    <value>Layout Content</value>
+  </data>
+  <data name="secLayoutContent.Text" xml:space="preserve">
+    <value>Cp_Admin sub module layout content</value>
+  </data>
+  <data name="plHideAllTips.Help" xml:space="preserve">
+    <value>To help user using Classified Pro, we have put a lot of tips on the module interface. These tips are very useful for beginners to be familiar with Classified Pro but they look cumbersome sometimes. If you are already familiar with Classified Pro, you can check on below option, to hide all these tips. Caution: be very careful to check on this option.</value>
+  </data>
+  <data name="plHideAllTips.Text" xml:space="preserve">
+    <value>Hide All Tips</value>
+  </data>
+  <data name="plTabStyle.Help" xml:space="preserve">
+    <value>Choose tab css style in the Cp_Admin sub module. </value>
+  </data>
+  <data name="plTabStyle.Text" xml:space="preserve">
+    <value>Tab CSS</value>
+  </data>
+  <data name="Tip_HideAllTips.Text" xml:space="preserve">
+    <value>To help user using Classified Pro, we have put a lot of tips on the module interface. These tips are very useful for beginners to be familiar with Classified Pro but they look cumbersome sometimes. If you are already familiar with Classified Pro, you can check on below option, to hide all these tips. &lt;font color="red"&gt;Caution:&lt;/font&gt; be very careful to check on this option.</value>
+  </data>
+  <data name="Tip_TabStyle.Text" xml:space="preserve">
+    <value>Jquery tab is used everywhere in the Cp_Admin sub module. For example, when you edit items at "Cp_Admin sub module - Seller Center - My Auction Listings", you will see data is organized with JQuery tab. Classified Pro provides &lt;font color="red"&gt;24&lt;/font&gt; css styles (locates under DesktopModules/CrossClassified/css/jquery-ui-themes-1.11.4/themes folder) for these tabs, here you can choose your favorite one.</value>
+  </data>
+  <data name="plEnableAdSocialShare.Help" xml:space="preserve">
+    <value>Enable Ad Social Share</value>
+  </data>
+  <data name="plEnableAdSocialShare.Text" xml:space="preserve">
+    <value>Enable Ad Social Share</value>
+  </data>
+  <data name="Tip_AdSocialShare.Text" xml:space="preserve">
+    <value>When posting classified ads (like news article, job listing, house rent, etc), author (seller) can mark ad as public / protected, or only viewable between his friends / followers / social groups. If you don't need this feature, uncheck below option.</value>
+  </data>
+  <data name="plEnableSilverlightUpload.Help" xml:space="preserve">
+    <value>Classified Pro provides two file upload controls - the normal javascript based upload control and the MS Silverlight plug-in based file upload control. If you don't like the MS Silverlight file upload control, uncheck this option to hide it.</value>
+  </data>
+  <data name="plEnableSilverlightUpload.Text" xml:space="preserve">
+    <value>Enable Silverlight File Upload</value>
+  </data>
+</root>

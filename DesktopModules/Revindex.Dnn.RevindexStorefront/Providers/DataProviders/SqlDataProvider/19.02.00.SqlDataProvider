@@ -1,0 +1,33 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'PaymentMethodsVenmoActive')
+BEGIN
+	
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		PaymentMethodsVenmoActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsVenmoActive DEFAULT 0,
+		PaymentMethodsVenmoAvailabilityRule xml NULL,
+		PaymentGatewaysBraintreePublicKey varchar(255) NULL,
+		PaymentGatewaysBraintreePrivateKey varchar(255) NULL,
+		PaymentGatewaysBraintreeTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysBraintreeTestMode DEFAULT 0,
+		PaymentMethodsVenmoPaymentGateway varchar(255) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsVenmoPaymentGateway DEFAULT 'Braintree'
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsVenmoActive
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentGatewaysBraintreeTestMode
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_PaymentMethodsVenmoPaymentGateway
+
+END 
+GO
+
+
+
+
+
+	

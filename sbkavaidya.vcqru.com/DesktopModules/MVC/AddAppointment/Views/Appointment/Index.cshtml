@@ -1,0 +1,55 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<IEnumerable<Saatvik.Modules.AddAppointment.Models.AppointmentBooking>>
+
+@using System.Text.RegularExpressions
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Appointments-@Dnn.ModuleContext.ModuleId">
+    <a href="@Url.Action("Edit", "Appointment", new { ctl = "Edit", appointmentId = -1 })" class="addAppointmentLink">
+        @Dnn.LocalizeString("AddAppointment")
+    </a>
+
+    @if (Model.Count() == 0)
+    {
+        <p>No Appointments</p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Patient Phone Number</th>
+                    <th>Doctor Name</th>
+                    <th>Appointment Date</th>
+                    <th>Appointment Time</th>
+                    <th>IsApproved</th>
+                    @if (Dnn.ModuleContext.IsEditable)
+                    {
+                        <th>@Dnn.LocalizeString("Actions")</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var appointment in Model)
+                {
+                    <tr>
+                        <td>@appointment.PatientName</td>
+                        <td>@appointment.PatientPhone</td>
+                        <td>@appointment.DoctorName</td>
+                        <td>@appointment.AppointmentDate.ToShortDateString()</td>
+                        <td>@DateTime.Today.Add(appointment.AppointmentTime).ToString("hh:mm tt")</td>
+                        <td>@(appointment.IsApproved ? "Yes" : "No")</td>
+
+                        @if (Dnn.ModuleContext.IsEditable)
+                        {
+                            <td>
+                                <a href="@Url.Action("Edit", "Appointment", new { ctl = "Edit", appointmentId = appointment.AppointmentId })">Edit</a>
+                                <a href="@Url.Action("Delete", "Appointment", new { appointmentId = appointment.AppointmentId })">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,2641 @@
+﻿/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+    .form-label span {
+        color: var(--bs-danger);
+    }
+
+.form-select,
+.form-control {
+    border-radius: 2px !important;
+    text-transform: capitalize;
+}
+
+/*navbar*/
+.navbar {
+    background: var(--bs-white);
+}
+
+.saatvik-navbar {
+    background-color: var(--bs-white);
+    box-shadow: var(--bs-box-shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+    .saatvik-navbar .navbar .navbar-brand {
+        display: none;
+    }
+
+    .saatvik-navbar svg {
+        height: 1.5rem;
+    }
+
+.saatvik-navbar {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding: 0.25rem 0;
+}
+
+    .saatvik-navbar .navbar .offcanvas-body .navbar-nav .nav-item .nav-link {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        text-align: center;
+        text-transform: capitalize;
+       text-wrap:nowrap;
+    }
+
+    .saatvik-navbar .navbar {
+        padding: 0;
+    }
+
+        .saatvik-navbar .navbar .offcanvas-body .navbar-nav .nav-item .nav-link img {
+            height: 2rem;
+            width: 2rem;
+            display: block;
+            margin: 0 auto;
+        }
+      
+        .saatvik-navbar .navbar .offcanvas-body .navbar-nav .nav-item {
+            width: 100%;
+        }
+
+/*.hero*/
+.hero .carousel {
+    width: 100%;
+}
+
+    .hero .carousel .carousel-inner {
+        height: 100%;
+    }
+
+        .hero .carousel .carousel-inner .carousel-item {
+            height: 100%;
+        }
+
+            .hero .carousel .carousel-inner .carousel-item img {
+                height: 100%;
+                object-fit: cover;
+            }
+.carousel-indicators{
+    display:none;
+}
+
+
+.appointment-icons {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+    border-radius: var(--bs-border-radius-lg);
+    position: relative;
+}
+
+.our-blog-listing {
+    margin: 3rem 0;
+}
+
+    .our-blog-listing .card:hover a {
+        color: #0a579a !important;
+    }
+
+    .our-blog-listing .card {
+        border: 0;
+        box-shadow: var(--bs-box-shadow-sm);
+        width: 100%;
+        overflow: hidden;
+    }
+
+        .our-blog-listing .card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        .our-blog-listing .card .blog-img {
+            overflow: hidden;
+            border-radius: var(--bs-border-radius-lg);
+        }
+
+        .our-blog-listing .card .card-img-top {
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+            border-radius: var(--bs-border-radius-sm);
+        }
+
+        .our-blog-listing .card .card-body .card-title {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+            .our-blog-listing .card .card-body .card-title a {
+                text-decoration: none;
+                color: var(--bs-dark);
+            }
+
+        .our-blog-listing .card .card-body .card-text {
+            color: var(--bs-secondary);
+            margin-bottom: 0.25rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+    .our-blog-listing .btn {
+        border-radius: 2px;
+    }
+
+.web-heading h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.web-heading p {
+    color: var(--bs-secondary);
+    margin-bottom: 0;
+}
+
+/*all-diseases-listing*/
+.all-diseases .card {
+    background-color: #f8f9fa;
+    border: 0;
+    margin-bottom: 3rem;
+}
+
+    .all-diseases .card .card-body ul {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        padding: 0 0 0.50rem 0;
+    }
+
+    .all-diseases .card .card-body li {
+        list-style: none;
+    }
+
+        .all-diseases .card .card-body li a {
+            border: 2px solid #dee2e6;
+            width: 3rem;
+            height: 3rem;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border-radius: var(--bs-border-radius-lg);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: var(--bs-secondary);
+            transition: all 0.3s ease-in-out;
+        }
+
+            .all-diseases .card .card-body li a:hover {
+                background-color: #0a579a;
+                color: var(--bs-white);
+            }
+
+    /*.all-diseases .card .card-body {
+        padding: 0.50rem;
+    }*/
+
+    .all-diseases .card .card-body ul::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    .all-diseases .card .card-body ul::-webkit-scrollbar-thumb {
+        background: #FB7700;
+        border-radius: 16px;
+    }
+
+.all-diseases .diseases-alphabetically {
+    height: 3rem;
+    width: 3rem;
+    background-color: #60cac1;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--bs-border-radius-sm);
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.all-diseases .diseases-lisitng {
+    margin-bottom: 3rem;
+}
+
+    .all-diseases .diseases-lisitng ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        column-count: 5;
+        width: 100%;
+    }
+
+        .all-diseases .diseases-lisitng ul li {
+            list-style: none;
+        }
+
+            .all-diseases .diseases-lisitng ul li a {
+                color: #0a579a;
+                text-decoration: none;
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                padding: 0.5rem;
+                transition: all 0.3s ease-in-out;
+                width: 100%;
+                font-size: 20px;
+                border-radius: var(--bs-border-radius-sm);
+                font-weight: 500;
+            }
+
+                .all-diseases .diseases-lisitng ul li a img {
+                    height: 2rem;
+                }
+
+                .all-diseases .diseases-lisitng ul li a:hover {
+                    background-color: #f8f9fa;
+                    color: #0a579a;
+                }
+
+/*---to-shine-page-breadcrumb----*/
+.app-breadcrumb {
+    margin: 2rem 0;
+}
+
+    .app-breadcrumb a {
+        text-decoration: none;
+        color: var(--bs-dark);
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .app-breadcrumb span a {
+        color: #0a579a;
+    }
+
+/*about-us-page*/
+.diseases-details-header {
+    border-radius: var(--bs-border-radius-lg);
+    margin: 2rem 0;
+}
+
+.btn {
+    border-radius: 2px;
+}
+
+/*.diseases-details-content*/
+.diseases-details-content {
+    margin: 2rem 0;
+}
+
+    .diseases-details-content .card {
+        border: 0;
+        box-shadow: var(--bs-box-shadow-sm);
+    }
+
+    .diseases-details-content .appointment-form .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+
+    .diseases-details-content .appointment-form .card .card-body p {
+        color: var(--bs-secondary);
+    }
+
+    .diseases-details-content .recent-posts .card .card-body .list-group .list-group-item a {
+        text-decoration: none;
+        color: var(--bs-secondary);
+    }
+/* footer */
+.footer {
+    padding: 3rem 0 1.50rem 0;
+    background: black;
+    color: white;
+}
+
+    .footer img {
+        margin-bottom: 1rem;
+    }
+
+    .footer h6 {
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer .company-info ul li {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 1rem;
+    }
+
+        .footer .company-info ul li:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .footer .company-info ul li p {
+            color: var(--bs-secondary);
+            margin-bottom: 0;
+        }
+
+        .footer .company-info ul li i {
+            color: #2596be;
+            line-height: 1.5;
+        }
+
+    .footer .footer-links ul li a:hover {
+        color: #0a579a;
+    }
+
+    .footer .footer-links ul li a {
+        color: var(--bs-secondary);
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+
+    .footer .footer-links ul li {
+        margin-bottom: 1rem;
+    }
+
+        .footer .footer-links ul li:last-of-type {
+            margin-bottom: 0;
+        }
+
+    .footer p {
+        color: var(--bs-secondary);
+        margin-bottom: 0;
+    }
+
+/* .web-pagination { */
+.web-pagination {
+    margin: 3rem 0;
+}
+
+    .web-pagination .pagination {
+        justify-content: center;
+        gap: 1rem;
+        margin: 0;
+    }
+
+        .web-pagination .pagination .page-item .page-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--bs-border-radius-sm);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--bs-dark);
+        }
+
+        .web-pagination .pagination .active > .page-link,
+        .page-link.active {
+            background-color: #0a579a;
+            border-color: #0a579a;
+            color: var(--bs-white);
+        }
+
+/*---all-services---*/
+/*.all-services {
+    margin: 3rem 0;
+}*/
+
+.all-services .web-heading {
+    margin-bottom: 3rem;
+}
+
+.all-services .card {
+    border: none;
+    box-shadow: var(--bs-box-shadow-sm);
+}
+
+    .all-services .card a {
+        text-decoration: none;
+    }
+
+    .all-services .card .card-body .card-title {
+        color: var(--bs-dark);
+    }
+
+    .all-services .card .card-body .card-text,
+    .all-services .card .card-body p {
+        color: var(--bs-secondary);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin-bottom: 0;
+    }
+
+    .all-services .card .card-img-top {
+        height: 12rem;
+        object-fit: cover;
+    }
+
+.banner {
+    text-align: center;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.icon-item {
+    text-align: center;
+}
+
+    .icon-item img {
+        display: block;
+        margin: 0 auto;
+        width: 50px;
+        height: 50px;
+    }
+
+@media screen and (max-width: 425px) {
+    .appointment-icons img {
+        height: 0;
+        margin: 0 auto;
+        margin-bottom: 0.25rem;
+    }
+}
+
+.medicinebanner {
+    margin:2rem 0;
+}
+
+.medicinetop {
+    margin-right: 10px;
+}
+
+.right-container {
+    width: 40%;
+    padding: 20px 20px 0 0;
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+    z-index: 1;
+}
+
+.u-disable-scroll--x {
+    overflow: hidden;
+}
+
+.u-row {
+    position: relative;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.heading-alpha {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.health-product__section {
+    border-top: 1px solid #f0f0f5;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+/*.carousel-item img {
+    height: 30rem;
+    object-fit: contain;
+}*/
+.call-outs-btns {
+    background-color: #0a579a;
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+    width: 100%;
+}
+
+    .call-outs-btns .btn {
+        width: 100%;
+        padding: 1rem;
+        text-transform: capitalize;
+        color: white !important;
+        font-weight: 500;
+        letter-spacing: 0.16rem;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .call-outs-btns img {
+        height: 2rem;
+    }
+
+.RelatedProducts {
+    padding: 2rem 0;
+    background-color: var(--bs-light);
+}
+
+    .RelatedProducts h2 {
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .RelatedProducts .card {
+        border-color: rgba(222, 226, 230, 0.45);
+        box-shadow: var(--bs-box-shadow-sm);
+        width: 100%;
+    }
+
+RelatedProducts .card img {
+    /* height: 10rem; */
+    object-fit: contain;
+    padding: 0.25rem 0.25rem 0 0.25rem;
+    border-radius: var(--bs-border-radius-lg);
+    transition: all .4s ease-in-out;
+}
+
+.RelatedProducts .card .card-title {
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    text-transform: capitalize;
+    -webkit-box-orient: vertical;
+}
+/*slider*/
+.btns-slider {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+    .btns-slider .carousel-control-prev,
+    .btns-slider .carousel-control-next {
+        background-color: red;
+        width: 3rem;
+        height: 3rem;
+        position: relative;
+        opacity: 1;
+    }
+
+.product-detail-slider .carousel-item img {
+    height: 25rem;
+    object-fit: contain;
+}
+
+.product-detail-slider {
+    background-color: var(--bs-white);
+}
+/*product detail*/
+.app-breadcrumb {
+    margin: 2rem 0;
+}
+
+    .app-breadcrumb .breadcrumb {
+        margin-bottom: 0;
+    }
+
+        .app-breadcrumb .breadcrumb .breadcrumb-item a:hover {
+            color: #D12427;
+        }
+
+        .app-breadcrumb .breadcrumb .breadcrumb-item {
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+            .app-breadcrumb .breadcrumb .breadcrumb-item a {
+                text-decoration: none;
+                color: var(--bs-dark);
+            }
+
+            .app-breadcrumb .breadcrumb .breadcrumb-item.active {
+                color: #D12427;
+            }
+
+.product-detail-description .product-overview-image {
+    position: relative;
+}
+
+    .product-detail-description .product-overview-image img {
+        width: 100%;
+    }
+
+.product-detail-description {
+    padding: 2rem 0;
+    overflow: hidden;
+}
+
+    .product-detail-description .product-overview-image::before {
+        content: "";
+        position: absolute;
+        top: 33.3334%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100vw;
+        background-color: #8bc34a;
+        transform: skewX(-24deg) rotate(8deg) translate(4.75rem, -4rem);
+        transform-origin: left;
+    }
+
+    .product-detail-description h1 {
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    /*.product-detail-description .card .card-body {
+padding: 3rem;
+}
+*/
+    .product-detail-description p {
+        color: var(--bs-secondary);
+        text-align: justify;
+    }
+
+        .product-detail-description p:last-of-type {
+            margin-bottom: 0;
+        }
+
+    .product-detail-description ul {
+        color: var(--bs-secondary);
+    }
+
+        .product-detail-description ul li {
+            line-height: 1.8;
+        }
+
+.product-specifications {
+    background-color: var(--bs-light);
+    padding: 2rem 0;
+}
+
+    .product-specifications ul {
+        margin: 0;
+        column-count: 2;
+    }
+
+    .product-specifications h2 {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .product-specifications ul li {
+        color: var(--bs-secondary);
+    }
+
+    .product-specifications ul li {
+        margin-bottom: 0.25rem;
+    }
+
+/*.specifications*/
+.specifications {
+    margin: 2rem 0;
+}
+
+    .specifications h2 {
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .specifications .accordion .accordion-item {
+        margin-bottom: 1rem;
+        border: 1px solid var(--bs-border-color);
+        border-radius: 0;
+    }
+
+        .specifications .accordion .accordion-item .accordion-header .accordion-button {
+            text-transform: uppercase;
+            box-shadow: none;
+            background-color: var(--bs-light);
+            color: var(--bs-dark);
+            font-weight: 500;
+            border-radius: 0;
+        }
+
+            .specifications .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+                background-color: #8bc34a;
+            }
+
+    .specifications .specifications-listing ul {
+        margin-bottom: 0;
+        column-count: 2;
+        gap: 2rem;
+        list-style: none;
+        padding: 0;
+    }
+
+    .specifications .accordion .accordion-item .accordion-collapse .accordion-body .specifications-listing ul li {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+        .specifications .accordion .accordion-item .accordion-collapse .accordion-body .specifications-listing ul li p {
+            margin-bottom: 0;
+            min-width: 200px;
+        }
+
+            .specifications .accordion .accordion-item .accordion-collapse .accordion-body .specifications-listing ul li p:last-of-type {
+                color: var(--bs-secondary);
+                width: auto;
+                min-width: auto;
+            }
+/* RelatedProducts */
+.RelatedProducts .card {
+    border-color: rgba(222, 226, 230, 0.45);
+    box-shadow: var(--bs-box-shadow-sm);
+    width: 100%;
+}
+
+.RelatedProducts h2 {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.RelatedProducts .card .card-img-top,
+.RelatedProducts .card img {
+    /*height: 10rem;*/
+    object-fit: contain;
+    padding: 0.25rem 0.25rem 0 0.25rem;
+    border-radius: var(--bs-border-radius-lg);
+    transition: all .4s ease-in-out;
+}
+
+.RelatedProducts .card .card-title {
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    text-transform: capitalize;
+    -webkit-box-orient: vertical;
+}
+
+.RelatedProducts .card p {
+    color: var(--bs-secondary);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0;
+}
+
+.RelatedProducts .card .card-body a {
+    display: flex;
+    align-items: center;
+    color: var(--bs-red-dark);
+    justify-content: space-between;
+    text-decoration: none;
+    font-weight: 500;
+    color: #D12427;
+}
+
+.RelatedProducts .card:hover img {
+    transform: scale(1.1);
+}
+
+.RelatedProducts .card .card-body a i {
+    font-size: 20px;
+}
+
+.RelatedProducts {
+    padding: 2rem 0;
+    background-color: var(--bs-light);
+}
+
+    .RelatedProducts .card .card-body a:hover {
+        color: var(--bs-warning);
+    }
+
+/* home page first section*/
+.video-consult {
+    background-color: #00000021;
+    padding-bottom: 10rem;
+    padding-top: 2rem;
+}
+/* Progress bar*/
+.progress-pera {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 2rem;
+}
+
+.workline img {
+    height: 3rem;
+    width: 3rem;
+}
+
+.workline {
+    margin-top: 1rem;
+}
+
+.work-heading {
+    margin-bottom: 6rem;
+}
+
+.howitworks {
+    padding-top: 2rem;
+    padding-bottom: 10rem;
+    background-color: darkgrey;
+}
+/* black wrapper*/
+.black-wrapper {
+    background-color: #7cbe42;
+}
+
+.trust-metric-section {
+    margin: 16px auto;
+    color: #fff;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 16px 0;
+}
+
+    .trust-metric-section .each-metric {
+        width: 50%;
+        padding: 16px;
+    }
+
+    .trust-metric-section .metric-count {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .trust-metric-section .metric-text {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+.Benefits-img img {
+    width: 2rem;
+}
+
+.expereinceonline {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.benefitsonline {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    background-color: #6495ed59;
+}
+
+.product-image img {
+    width: 100%;
+}
+
+.product-specifications {
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+
+
+/*new css */
+/* icon animation*/
+.sidefixed {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    /* opacity: 1; */
+    z-index: 1000;
+}
+
+    .sidefixed li {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* margin-bottom: 5px; */
+    }
+
+        .sidefixed li a {
+            transform: translateX(145px);
+            text-transform: uppercase;
+            transition: 0.5s;
+            padding: 10px;
+            width: 190px;
+            text-decoration: none;
+            font-size: 16px;
+            color: white;
+            border-radius: 0;
+            background: #0a579a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-wrap: nowrap;
+        }
+
+            .sidefixed li a:hover {
+                background-color: #29b3d4;
+                transform: translateX(0px);
+            }
+
+        .sidefixed li span {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .sidefixed li img {
+            width: 30px;
+            height: 30px;
+        }
+
+
+
+/* Naincy css*/
+/* consult-Doctor*/
+.consult-doctor-icons {
+    text-align: center;
+}
+
+.consult-doctor {
+    background-color: var(--bs-light);
+    padding: 2rem 0;
+}
+
+    .consult-doctor .web-heading {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+        .consult-doctor .web-heading h1 {
+            margin-bottom: 0;
+        }
+
+    .consult-doctor .consult-card {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+        .consult-doctor .consult-card .consult-icon {
+            height: 10rem;
+            width: 10rem;
+            border: 3px solid var(--bs-border-color);
+            border-radius: var(--bs-border-radius-pill);
+            box-shadow: var(--bs-box-shadow);
+            margin: 0 auto 1rem auto;
+            overflow: hidden;
+        }
+
+            .consult-doctor .consult-card .consult-icon img {
+                object-fit: cover;
+                transition: all .4s ease-in-out;
+                height: 100%;
+                width: 100%;
+            }
+
+        .consult-doctor .consult-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .consult-doctor .consult-card .btn {
+            font-weight: 600;
+            font-size: 18px;
+            color: #0a579a;
+        }
+/* end consult doctor*/
+/* blog categories*/
+.blog-categories {
+    background-color: var(--bs-light);
+    padding: 2rem 0;
+}
+    .blog-categories a {
+        text-decoration: none;
+        color: #0a579a;
+    }
+    .blog-categories .web-heading {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+        .blog-categories .web-heading h1 {
+            font-weight: 700;
+            color: var(--bs-blue-dark);
+            margin-bottom: 1rem;
+        }
+/* end */
+.app-blog5{
+    margin:2rem;
+}
+    .app-blog5 article {
+        box-shadow: var(--bs-box-shadow);
+        border: 0;
+        overflow: hidden;
+        border-radius: var(--bs-border-radius-lg);
+    }
+.app-blog5 .app-blog5-list-item .app-blog5-post-header .figure {
+    height: 14rem;
+}
+
+.blog-read-section mb-5 .card .card-body p {
+    color: var(--bs-secondary);
+}
+/* shop*/
+/* breadcrumb start */
+.pa-breadcrumb {
+    padding: 91px 0 93px;
+    background: linear-gradient(45deg,rgba(0, 0, 0, 0.56),rgba(0, 0, 0, 0.56) ), url(https://www.dermaessentia.com/cdn/shop/articles/Top_5_Green_Tea_Benefits_For_Skin.jpg?v=1665384776);
+    background-size: cover;
+}
+
+.pa-breadcrumb-box {
+    text-align: center;
+}
+
+    .pa-breadcrumb-box ul li {
+        display: inline-block;
+        padding-right: 30px;
+        position: relative;
+        color: #fff;
+        text-transform: capitalize;
+    }
+
+        .pa-breadcrumb-box ul li:last-child {
+            padding: 0;
+        }
+
+    .pa-breadcrumb-box h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+        color: #fff;
+        text-transform: capitalize;
+    }
+
+    .pa-breadcrumb-box ul li a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .pa-breadcrumb-box ul li:after {
+        position: absolute;
+        right: 10px;
+        top: 4px;
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 0, 0, 0);
+        border-top: 7px double #6caaa8;
+        border-right: 7px double #6caaa8;
+        transform: rotate(45deg);
+        bottom: 0;
+        margin: auto;
+    }
+
+    .pa-breadcrumb-box ul li:last-child:after {
+        display: none;
+    }
+/* breadcrumb end */
+a:hover {
+    text-decoration: none;
+    color: #6caaa8;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.spacer-top {
+    padding-top: 80px;
+}
+
+.spacer-bottom {
+    padding-bottom: 80px;
+}
+/* product start */
+.pa-product-box {
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    padding: 50px 30px 44px;
+    text-align: center;
+    position: relative;
+    transition: 0.3s;
+    margin-bottom: 30px;
+}
+
+.pa-trending-product .pa-heading {
+    margin-bottom: 31px;
+}
+
+.pa-product-content h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+    .pa-product-content h4 a {
+        color: black !important;
+    }
+
+.pa-product-content {
+    padding-top: 30px;
+}
+
+    .pa-product-content p {
+        margin-bottom: 0;
+        font-weight: 500;
+        color: #6caaa8;
+    }
+
+        .pa-product-content p del {
+            padding-right: 15px;
+            font-weight: 400;
+            color: #222;
+        }
+
+p.pa-product-rating i {
+    margin-right: 2px;
+    font-size: 12px;
+}
+
+p.pa-product-rating {
+    padding-bottom: 10px;
+}
+
+.pa-product-cart ul li svg {
+    width: 16px;
+    height: 16px;
+    transition: 0.3s;
+}
+
+.pa-product-cart ul li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+    .pa-product-cart ul li a {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        border: 1px solid #738d6c;
+        text-align: center;
+        display: block;
+        background: #fff;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+    }
+
+        .pa-product-cart ul li a:hover svg {
+            fill: #738d6c;
+        }
+
+.pa-product-cart {
+    bottom: -25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.pa-product-box:hover .pa-product-cart {
+    bottom: -15px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.pa-product-box:hover,
+.pa-blog-box:hover,
+.pa-counter-box:hover,
+.pa-medicine-box:hover {
+    transform: translateY(-5px);
+}
+
+.pa-product, .pa-blog, .pa-why-pure, .pa-team, .pa-price-plan {
+    padding-bottom: 50px;
+}
+/* shop start */
+.pa-sidebar-title {
+    font-size: 25px;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+    .pa-sidebar-title ul li a {
+        color: black !important;
+    }
+
+.pa-widget ul li {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+    .pa-widget ul li:last-child {
+        margin-bottom: 0;
+    }
+
+.pa-product-sidebar {
+    padding: 30px 30px 25px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+}
+
+.pa-widget.pa-search {
+    position: relative;
+}
+
+.pa-widget {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 22px;
+    padding-bottom: 30px;
+}
+
+    .pa-widget:last-child {
+        border: none;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+    }
+
+    .pa-widget.pa-search .pa-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        min-width: 100px;
+        height: 40px;
+        line-height: 36px;
+    }
+
+    .pa-widget.pa-search {
+        position: relative;
+    }
+
+        .pa-widget.pa-search input {
+            padding-right: 110px;
+        }
+
+    .pa-widget ul li span {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #6caaa8;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        color: #fff;
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 0px 2px;
+    }
+
+    .pa-widget.pa-tag ul li {
+        display: inline-block;
+        margin-bottom: 5px;
+        margin-right: 1px;
+    }
+
+    .pa-widget ul li a {
+        color: black !important;
+    }
+
+    .pa-widget.pa-tag ul li a {
+        border: 1px solid #6caaa8;
+        padding: 0px 10px;
+        min-height: 35px;
+        display: block;
+        line-height: 35px;
+        border-radius: 4px;
+        text-transform: capitalize;
+        text-decoration: none;
+        color: black !important;
+    }
+
+.pa-product-widget ul li {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.pa-product-widget .pa-pro-wid-img {
+    width: 70px;
+}
+
+.pa-product-widget .pa-pro-wid-content {
+    width: calc(100% - 70px);
+    padding-left: 15px;
+}
+
+.pa-pro-wid-content h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.pa-pro-wid-content p {
+    margin-bottom: 0;
+}
+
+.pa-pro-wid-img img {
+    border: 1px solid #6caaa8;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.pa-widget.pa-shop-category {
+    padding-bottom: 27px;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    padding: 0px 20px;
+    border: 1px solid #6caaa8;
+    outline: none;
+    border-radius: 50px;
+}
+
+.pa-widget.pa-search .pa-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    min-width: 100px;
+    height: 40px;
+    line-height: 36px;
+}
+
+.pa-btn {
+    background: #6caaa8;
+    color: #fff;
+    padding: 0px 20px;
+    min-width: 160px;
+    height: 50px;
+    line-height: 46px;
+    border: none;
+    border-radius: 50px;
+    text-transform: capitalize;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #6caaa8;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.pa-product-img img {
+    width: 100%;
+    height: 185px;
+    object-fit: cover;
+}
+
+.pa-add img {
+    width: 100%;
+    height: 200px;
+    object-fit:cover;
+}
+/* shop end */
+/* our clinic*/
+.our-clinic {
+    background-color: var(--bs-light);
+    padding: 2rem 0;
+}
+
+    .our-clinic .card {
+        box-shadow: var(--bs-box-shadow-sm);
+        border: 0;
+        border-radius: var(--bs-border-radius-lg);
+    }
+
+        .our-clinic .card .card-img-top {
+            border-radius: var(--bs-border-radius-lg);
+        }
+
+        .our-clinic .card .card-body .badge {
+            margin-bottom: 1rem;
+            border-radius: 2px;
+            text-transform: uppercase;
+            background-color: #60cac1;
+        }
+
+        .our-clinic .card .card-body .card-title {
+            margin-bottom: 1rem;
+        }
+
+        .our-clinic .card .card-body .card-title,
+        .our-clinic .card .card-body .card-text {
+            text-transform: capitalize;
+        }
+
+        .our-clinic .card .card-body .card-text {
+            color: var(--bs-secondary);
+        }
+
+        .our-clinic .card .card-body .btn {
+            /* border: 2px solid var(--bs-border-color); */
+            text-transform: uppercase;
+            /* color: var(--bs-primary); */
+            font-weight: 500;
+            background-color: #0a579a;
+            color: var(--bs-white);
+            border-radius: var(--bs-border-radius-lg);
+            width: 100%;
+        }
+
+        .our-clinic .card .card-body .clinic-chips {
+            display: flex;
+            padding: 0;
+            gap: 0.50rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+            .our-clinic .card .card-body .clinic-chips li span {
+                /* background-color: rgb(0 0 0 / 5%); */
+                background-color: rgb(10 87 154/16%);
+                /* border: 1px solid #0a579a; */
+                padding: 0.25rem 0.50rem;
+                display: flex;
+                align-items: center;
+                gap: 0.25rem;
+                border-radius: var(--bs-border-radius-lg);
+                text-transform: capitalize;
+                font-size: 14px;
+            }
+                .our-clinic .card .card-body .clinic-chips li span i {
+                    font-size: 16px;
+                }
+/* cart start */
+.pa-cart-box table, .pa-bill-detail table {
+    width: 100%;
+}
+
+.pa-cart-img img {
+    width: 70px;
+}
+
+.pa-cart-box table th {
+    padding: 12px 20px 13px;
+    text-transform: capitalize;
+}
+
+.pa-cart-box table td {
+    padding: 20px;
+    text-transform: capitalize;
+    border: 1px solid #eee;
+}
+
+.pa-cart-box table th, .pa-bill-detail table th {
+    background: var(--pureayurveda-primary);
+    color: #fff;
+}
+
+.pa-cart-box table th {
+    border-right: 1px solid #eee;
+}
+
+.pa-cart-box table td {
+    border-top: none;
+    max-width: 250px;
+}
+
+.pa-cart-quantity button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid var(--pureayurveda-primary);
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+    outline: none;
+    transition: 0.3s;
+}
+
+    .pa-cart-quantity button:hover {
+        background: var(--pureayurveda-primary);
+    }
+
+        .pa-cart-quantity button:hover:after,
+        .pa-cart-quantity button:hover:before {
+            background: #fff;
+        }
+
+    .pa-cart-quantity button:after,
+    .pa-cart-quantity button:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: '';
+        background: var(--pureayurveda-primary);
+        margin: auto;
+        width: 8px;
+        height: 2px;
+        transition: 0.3s;
+    }
+
+    .pa-cart-quantity button.pa-add:before {
+        width: 2px;
+        height: 8px;
+    }
+
+.pa-cart-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+    .pa-cart-quantity input {
+        width: 50px;
+        border-radius: 4px;
+        height: 35px;
+        margin: auto 4px;
+        padding: 0 5px;
+        text-align: center;
+        line-height: 35px;
+    }
+
+td.pa-cart-update, td.pa-cart-total, table.pa-garnd-total td:first-child {
+    text-align: right;
+}
+
+.pa-cart-box p {
+    margin: 0;
+}
+
+td.pa-cart-total-price p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--pureayurveda-primary);
+}
+
+.pa-garnd-total p span:first-child {
+    font-size: 20px;
+}
+
+.pa-garnd-total {
+    text-align: right;
+}
+
+    .pa-garnd-total p span:last-child {
+        min-width: 143px;
+        display: inline-block;
+        text-align: left;
+        color: var(--pureayurveda-primary);
+    }
+
+    .pa-garnd-total p span {
+        padding: 15px 20px;
+        font-weight: 600;
+    }
+
+    .pa-garnd-total .pa-btn {
+        margin-top: 20px;
+    }
+
+    .pa-garnd-total p {
+        border: 1px solid #eee;
+        border-top: 0;
+    }
+
+.pa-cart-box table th:first-child, .pa-bill-detail table th:first-child {
+    border-radius: 10px 0px 0px 0px;
+}
+
+.pa-cart-box table th:last-child, .pa-bill-detail table th:last-child {
+    border-radius: 0px 10px 0px 0px;
+    border: none;
+}
+
+.pa-garnd-total p:nth-child(3) {
+    border-radius: 0px 0px 10px 10px;
+}
+/* cart end */
+/* checkout start */
+.pa-checkout {
+    padding-top: 76px;
+}
+
+.pa-bill-form label {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+    .pa-bill-form label:last-child {
+        margin-bottom: 0;
+    }
+
+label.pa-bill-title, p.pa-bill-title {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.pa-bill-form label span {
+    min-width: 120px;
+}
+
+.pa-bill-detail table th {
+    padding: 12px 20px 13px;
+    text-transform: capitalize;
+    border-right: 1px solid #eee;
+}
+
+.pa-bill-detail table td {
+    padding: 15px 20px;
+    text-transform: capitalize;
+    border: 1px solid #eee;
+}
+
+.pa-checkout-total td {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+    .pa-checkout-total td:last-child {
+        color: var(--pureayurveda-primary);
+    }
+
+.pa-place-order-btn {
+    text-align: right;
+    margin-top: 30px;
+}
+/* patient testimonals*/
+.patient-testimonials {
+    margin: 3rem 0;
+}
+
+    .patient-testimonials .web-heading {
+        margin-bottom: 3rem;
+    }
+
+.web-heading h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.web-heading p {
+    color: var(--bs-secondary);
+    margin-bottom: 0;
+}
+
+.patient-testimonials .card {
+    border: 0;
+    box-shadow: 0px 3px 12px 0px rgba(75, 75, 75, 0.08);
+    border-radius: var(--bs-border-radius-lg);
+    overflow: hidden;
+}
+
+    .patient-testimonials .card .card-img-top {
+        border-radius: 0;
+        background-color: #0a579a;
+        padding: 0.50rem 1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: var(--bs-white);
+    }
+
+        .patient-testimonials .card .card-img-top ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            gap: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .patient-testimonials .card .card-img-top h5 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .patient-testimonials .card .card-img-top p {
+            margin-bottom: 0;
+            text-transform: capitalize;
+        }
+
+            .patient-testimonials .card .card-img-top p:last-of-type {
+                margin-bottom: 0;
+            }
+
+        .patient-testimonials .card .card-img-top ul li img {
+            height: 5rem;
+            border-radius: var(--bs-border-radius-pill);
+            border: 2px solid var(--bs-white);
+        }
+
+    .patient-testimonials .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+    /*end */
+@media only screen and (max-width: 425px) {
+    .consult-doctor .consult-card .consult-icon {
+        width: 6rem;
+        height: 6rem;
+        font-size:16px;
+    }
+}
+/*testimonals slider*/
+
+.patanjali-products .owl-carousel .owl-nav .owl-prev {
+    width: 40px;
+    height: 60px;
+    background-color: var(--bs-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: -10px;
+    box-shadow: 0px 0px 10px #3333331c;
+}
+
+.patanjali-products .owl-carousel .owl-nav .owl-next {
+    width: 40px;
+    height: 60px;
+    background-color: var(--bs-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: -50px;
+    box-shadow: 0px 0px 10px #3333331c;
+}
+    .patanjali-products  {
+        margin: 2rem;
+    }
+
+.web-heading h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.web-heading p {
+    color: var(--bs-secondary);
+    margin-bottom: 0;
+}
+
+.patanjali-products .card {
+    border: 0;
+    box-shadow: 0px 3px 12px 0px rgba(75, 75, 75, 0.08);
+    border-radius: var(--bs-border-radius-lg);
+    overflow: hidden;
+}
+
+    .patanjali-products .card .card-img-top {
+        border-radius: 0;
+        background-color: #0a579a;
+        padding: 0.50rem 1rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: var(--bs-white);
+    }
+
+        .patanjali-products .card .card-img-top ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            gap: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .patanjali-products .card .card-img-top h5 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .patanjali-products .card .card-img-top p {
+            margin-bottom: 0;
+            text-transform: capitalize;
+        }
+
+            .patanjali-products .card .card-img-top p:last-of-type {
+                margin-bottom: 0;
+            }
+
+        .patanjali-products .card .card-img-top ul li img {
+            height: 5rem;
+            border-radius: var(--bs-border-radius-pill);
+            border: 2px solid var(--bs-white);
+            width:5rem;
+        }
+
+    .patanjali-products .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+
+.patanjali-products .owl-carousel .owl-nav span {
+    font-size: 50px;
+    line-height: 0;
+    margin-bottom: 8px;
+    color: #0a579a;
+}
+.patanjali-products .owl-carousel .owl-stage-outer {
+    padding: 1rem 0;
+}
+@media only screen and (max-width: 425px) {
+    .patanjali-products .owl-carousel .owl-nav .owl-prev{
+        position:unset;
+    }
+    .patanjali-products .owl-carousel .owl-nav .owl-next {
+        position: unset;
+    }
+    .owl-nav{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:0.25rem;
+    }
+}
+/* end*/
+
+.banner-icons {
+    margin-top: -2rem;
+}
+
+    .banner-icons .card {
+        width: 100%;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        border: 0;
+        border-radius: var(--bs-border-radius-lg);
+        text-align: center;
+        background: #f8f9fa;
+    }
+
+        .banner-icons .card .card-body img {
+            height: 4rem;
+            border-radius: var(--bs-border-radius-lg);
+            margin-bottom: 0.50rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .banner-icons .card .card-body .btn {
+            font-size: 20px;
+            font-weight: 500;
+            border: 0;
+        }
+
+.video-modal form {
+    padding: 1rem;
+}
+
+.video-modal .modal-body {
+    padding: 0;
+}
+
+.video-modal img {
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.video-modal .modal-header {
+    text-align: center;
+}
+/*our clinic banner*/
+.ourclinicbanner {
+    margin: 2rem 0;
+}
+
+    .ourclinicbanner .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .ourclinicbanner .card-text {
+        color: var(--bs-secondary);
+    }
+
+    .ourclinicbanner .btn {
+        background-color: #0a579a;
+        color: var(--bs-white);
+    }
+
+    .ourclinicbanner img {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: var(--bs-border-radius-lg);
+    }
+    /*end banner*/
+/* medicine banner*/
+.ourmedicinebanner {
+    margin: 3rem 0;
+}
+
+    .ourmedicinebanner .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .ourmedicinebanner .card-text {
+        color: var(--bs-secondary);
+    }
+
+    .ourmedicinebanner .btn {
+        background-color: #0a579a;
+        color: var(--bs-white);
+    }
+
+    .ourmedicinebanner img {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: var(--bs-border-radius-lg);
+    }
+    /*end*/
+    /*herbs/food banner*/
+.herbsbanner {
+    margin: 3rem 0;
+    background: url(https://www.dermaessentia.com/cdn/shop/articles/Top_5_Green_Tea_Benefits_For_Skin.jpg?v=1665384776)
+}
+
+    .herbsbanner .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        color: var(--bs-white);
+    }
+
+    .herbsbanner .card-text {
+        color: var(--bs-white);
+    }
+
+    .herbsbanner .btn {
+        background-color: #0a579a;
+        color: var(--bs-white);
+        margin: 2rem 0;
+    }
+
+    .herbsbanner img {
+        width: 100%;
+       height:100%;
+        border-radius: var(--bs-border-radius-lg);
+    }
+    /*our treatments*/
+.our-treatments-banner {
+    background-position: center;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8015581232492998) 0%, rgba(255, 255, 255, 0) 100%), url('https://cdn.hswstatic.com/gif/becoming-doctor.jpg');
+    background-repeat: no-repeat;
+    height: 16rem;
+    width: 100%;
+    border-radius: var(--bs-border-radius-lg);
+    background-size: cover;
+    padding: 3rem;
+}
+
+    .our-treatments-banner h1 {
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .our-treatments-banner p {
+        margin-bottom: 0;
+    }
+.treatments-filter {
+    margin: 2rem 0;
+}
+
+.treatments-accordion {
+    box-shadow: var(--bs-box-shadow-sm);
+    padding: 1rem;
+    background-color: var(--bs-white);
+    border-radius: var(--bs-border-radius-lg);
+   
+}
+
+    .treatments-accordion .accordion .accordion-item .accordion-body ul {
+        margin-bottom: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        gap: 0.50rem;
+        flex-wrap: wrap;
+    }
+
+    .treatments-accordion .accordion .accordion-item .accordion-header .accordion-button {
+        font-size: 20px;
+        font-weight: 900;
+        text-transform: uppercase;
+        box-shadow:none;
+    }
+
+    .treatments-accordion .accordion .accordion-item .accordion-body ul li .btn {
+        border-radius: var(--bs-border-radius-pill);
+        border: 2px solid var(--bs-border-color);
+        font-weight: 500;
+        font-size: 14px;
+        width: 100%;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        color:black;
+    }
+
+.treatments-listing {
+    margin-bottom: 2rem;
+}
+
+    .treatments-listing ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        column-count: 3;
+    }
+
+        .treatments-listing ul li a {
+            color: black;
+            text-decoration: none;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            padding: 0.50rem;
+            transition: all 0.3s ease-in-out;
+            width: 100%;
+            font-size: 14px;
+            border-radius: var(--bs-border-radius-sm);
+            font-weight: 500;
+        }
+
+            .treatments-listing ul li a:hover {
+                background-color: var(--bs-white);
+            }
+
+            .treatments-listing ul li a img {
+                height: 1.50rem;
+            }
+
+    .treatments-listing .diseases-alphabetically {
+        height: 3rem;
+        width: 3rem;
+        background-color: #60cac1;
+        font-size: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--bs-border-radius-sm);
+        color: #fff;
+        font-weight: 500;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+    /*end*/
+    /*clinic internal card*/
+.ourclinicbanner {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 100%), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d');
+    padding: 3rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 2rem 0;
+    height: 20rem;
+}
+
+    .ourclinicbanner h1 {
+        font-weight: 700;
+        text-transform: capitalize;
+        color: var(--bs-white);
+    }
+
+    .ourclinicbanner p {
+        color: var(--bs-white);
+    }
+
+.heading-centers h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+.heading-centers p {
+    color: var(--bs-secondary);
+}
+
+.chip-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+    .chip-badge li span {
+        background-color: rgba(0, 0, 0, 0.10);
+        border: 1px solid var(--bs-border-color);
+        padding: 0.50rem 1rem;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: var(--bs-border-radius-pill);
+        text-transform: capitalize;
+        display: block;
+    }
+
+.head-cta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+    .head-cta li .btn {
+        border-radius: 2px;
+        text-transform: capitalize;
+        font-weight: 500;
+    }
+/*end*/
+/*video consulation*/
+.video-section {
+    position: relative;
+    background: url('https://img.freepik.com/free-photo/beds-medical-equipment-stand-out-with-soothing-blue-tones-hospital-room_157027-3248.jpg') no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Text color */
+    text-align: center;
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity */
+    z-index: 1; /* Make sure the overlay is on top */
+}
+
+.video-section .container {
+    position: relative;
+    z-index: 2; /* Bring the text above the overlay */
+}
+
+    .video-section h1 {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    .video-section p {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .video-section .btn-primary {
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 50px;
+    }
+
+.video-appointment {
+    padding: 50px 0;
+    background-color: #f7f7f7;
+}
+
+    .video-appointment img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.video-appointment-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.contact-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+    .contact-section h2 {
+        margin-bottom: 30px;
+    }
+
+.contact-info {
+    background: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+@media only screen and (max-width: 768px) {
+    .banner-icons {
+        margin:2rem 0;
+    }
+
+        .banner-icons .card .card-body img {
+            height: 2rem;
+        }
+
+        .banner-icons .card .card-body .btn {
+            font-size: 16px;
+            font-weight: normal;
+        }
+}
+.homeclinicbanner {
+    margin: 2rem 0;
+}
+
+    .homeclinicbanner .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .homeclinicbanner .card-text {
+        color: var(--bs-secondary);
+    }
+
+    .homeclinicbanner .btn {
+        background-color: #0a579a;
+        color: var(--bs-white);
+    }
+
+    .homeclinicbanner img {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: var(--bs-border-radius-lg);
+    }
+@media only screen and (max-width: 642px){
+    .treatments-listing ul{
+        column-count:1;
+    }
+}
+@media only screen and (max-width: 642px) {
+    .ourclinicbanner {
+        height:auto;
+    }
+}
+@media only screen and (max-width: 642px) {
+    .homemedicinebanner {
+        
+    }
+}
+.homemedicinebanner {
+    margin: 2rem 0;
+}
+
+    .homemedicinebanner .card-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .homemedicinebanner .card-text {
+        color: var(--bs-secondary);
+    }
+
+    .homemedicinebanner .btn {
+        background-color: #0a579a;
+        color: var(--bs-white);
+    }
+
+    .homemedicinebanner img {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: var(--bs-border-radius-lg);
+    }
+
+@media only screen and (max-width: 768px) {
+    .saatvik-navbar {
+        overflow-x: scroll;
+        overflow-y:hidden;
+    }
+    .to-shine-login{
+        display:none;
+    }
+}
+/* treatment-detail*/
+.disease-detail-section .card-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.disease-detail-section .card-text {
+    color: var(--bs-secondary);
+}
+
+.disease-detail-section .btn {
+    background-color: #0a579a;
+    color: var(--bs-white);
+}
+
+.disease-detail-section img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--bs-border-radius-lg);
+}
+
+/* blog-details */
+.blog-details .card {
+    border: 0;
+    box-shadow: 0px 3px 12px 0px rgba(75, 75, 75, 0.08);
+    /* box-shadow: var(--bs-box-shadow-sm); */
+    width: 100%;
+}
+
+.blog-details {
+    margin: 3rem 0;
+}
+
+    .blog-details .blog-read-section .card .card-body .card-title {
+        margin-bottom: 0.50rem;
+    }
+
+    .blog-details .blog-read-section .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+
+/* appointment-form */
+.appointment-form .card .card-body button {
+    border-radius: 2px;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+.appointment-form .card .card-body .card-title {
+    margin-bottom: 0.5rem;
+}
+
+.appointment-form .card .card-body .card-text {
+    margin-bottom: 1rem;
+    color: var(--bs-secondary);
+}
+
+.recent-posts .card .card-body .list-group .list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+    .recent-posts .card .card-body .list-group .list-group-item a {
+        text-decoration: none;
+        color: var(--bs-secondary);
+    }
+
+        .recent-posts .card .card-body .list-group .list-group-item a:hover {
+            color: var(--bs-primary);
+        }
+.terms-of-service, .privacy-policy, .shipping, .refund .card .card-body {
+    margin: 2rem;
+}
+    .terms-of-service .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+    .privacy-policy.card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+    .shipping .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+    .refund .card .card-body .card-text {
+        color: var(--bs-secondary);
+    }
+    /* expert testimonals*/
+.experts-testimonals .owl-carousel .owl-nav .owl-prev {
+    width: 40px;
+    height: 60px;
+    background-color: var(--bs-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: -10px;
+    box-shadow: 0px 0px 10px #3333331c;
+}
+
+.experts-testimonals .owl-carousel .owl-nav .owl-next {
+    width: 40px;
+    height: 60px;
+    background-color: var(--bs-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    right: -50px;
+    box-shadow: 0px 0px 10px #3333331c;
+}
+
+.experts-testimonals {
+    margin: 3rem 0;
+}
+
+    .experts-testimonals .web-heading {
+        margin-bottom: 3rem;
+    }
+
+.web-heading h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.experts-testimonals .card {
+    border: 0;
+    overflow: hidden;
+    border-radius: var(--bs-border-radius-lg);
+    width: 100%;
+    background-color: #edf2fa;
+}
+
+    .experts-testimonals .card .card-body {
+        padding: 2rem;
+    }
+
+    .experts-testimonals .card .card-img-top {
+        height: 10rem;
+        object-fit: cover;
+        width: 10rem;
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-top: 1rem;
+    }
+
+    .experts-testimonals .card .card-body .card-text i {
+        color: #34a3d5;
+    }
+
+/* .experts-testimonals .card-body .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #34a3d5;
+            color: white;
+            gap: 0.50rem;
+        }
+     */
+.experts-testimonals .owl-carousel .owl-nav span {
+    font-size: 50px;
+    line-height: 0;
+    margin-bottom: 8px;
+    color: #0a579a;
+}
+
+.experts-testimonals .card .card-body {
+    box-shadow: var(--bs-box-shadow-sm);
+    border: 0;
+    overflow: hidden;
+    border-radius: var(--bs-border-radius-lg);
+}
+
+.view-buttons {
+    display: flex;
+    gap: 3rem;
+}
+
+    .view-buttons .btn {
+        background-color: #34a3d5;
+        color: white;
+        width:100%;
+    }
+/* contact-us-form*/
+.custom-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.left-side {
+    padding: 20px;
+    width: 50%;
+}
+
+.right-side {
+    width: 50%;
+    padding: 0;
+}
+
+    .right-side img {
+        width: 100%;
+        height: 28rem;
+        object-fit: cover;
+        border-radius: 0 10px 10px 0;
+    }
+.doctor-profile-cards {
+    margin: 2rem 0;
+}
+
+    .doctor-profile-cards .dr-name {
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .doctor-profile-cards .btn {
+        border-radius: 2px;
+    }
+
+.dr-points {
+    padding: 0;
+    /* margin: 0; */
+    list-style: none;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+    .dr-points li {
+        display: flex;
+        align-items: center;
+        gap: 0.50rem;
+    }
+
+        .dr-points li p {
+            margin-bottom: 0;
+        }
+
+.chip-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.50rem;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+    .chip-badge li span {
+        background-color: rgba(0, 0, 0, 0.05);
+        /* border: 1px solid var(--bs-border-color); */
+        padding: 0.50rem 1rem;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: var(--bs-border-radius-pill);
+        text-transform: capitalize;
+        display: block;
+        color: #0f0f0f;
+    }
+/* doctor-about-us */
+.doctor-about-us p {
+    color: var(--bs-secondary);
+}
+
+.doctor-other-details {
+    margin: 2rem 0;
+}
+
+    .doctor-other-details p {
+        color: var(--bs-secondary);
+    }

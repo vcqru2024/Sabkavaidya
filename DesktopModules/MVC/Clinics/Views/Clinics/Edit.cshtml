@@ -1,0 +1,107 @@
+﻿@inherits DotNetNuke.Web.Mvc.Framework.DnnWebViewPage<Vcqru.Modules.AddClinic.Models.Clinic>
+
+@using System.Collections.Generic
+@using DotNetNuke.Web.Mvc.Helpers
+
+<div id="Clinic-@Dnn.ModuleContext.ModuleId">
+    <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
+        <div class="dnnFormExpandContent dnnRight "><a href="#">@Dnn.LocalizeString("ExpandAll")</a></div>
+
+        <h2 id="dnnSitePanel-BasicSettings" class="dnnFormSectionHead dnnClear">
+            <a href="#" class="dnnSectionExpanded">@Dnn.LocalizeString("BasicSettings")</a>
+        </h2>
+        <fieldset>
+            <!-- Clinic Name -->
+            <div class="dnnFormItem">
+                <div><label for="clinicName">@Dnn.LocalizeString("lblClinicName")</label></div>
+                @Html.TextBoxFor(m => m.ClinicName)
+            </div>
+            <!-- Clinic Description -->
+            <div class="dnnFormItem">
+                <div><label for="clinicDescription">@Dnn.LocalizeString("lblClinicDescription")</label></div>
+                @Html.TextAreaFor(m => m.ClinicDescription)
+            </div>
+            <!-- Clinic Location -->
+            <div class="dnnFormItem">
+                <div><label for="clinicLocation">@Dnn.LocalizeString("lblClinicLocation")</label></div>
+                @Html.TextBoxFor(m => m.ClinicLocation)
+            </div>
+            <!-- Clinic Image Upload -->
+            @*<div class="dnnFormItem">
+                @if (!string.IsNullOrEmpty(Model.ClinicImage))
+                {
+                    <img src="@Model.ClinicImage" alt="@Dnn.LocalizeString("lblClinicImage")" style="max-width: 200px; max-height: 200px;" />
+                }
+                <div><label for="clinicImageUpload">@Dnn.LocalizeString("lblUploadNewImage")</label></div>
+                @Html.TextBoxFor(m => m.ClinicImage, new { type = "file", id = "clinicImageUpload" })
+            </div>*@
+        <div class="dnnFormItem">
+            @if (!string.IsNullOrEmpty(Model.ClinicImage))
+            {
+                <img src="@Model.ClinicImage" alt="Clinic Image" id="clinicImagePreview" style="max-width: 200px; max-height: 200px;" />
+            }
+            else
+            {
+                <img src="" alt="No Image" id="clinicImagePreview" style="display: none; max-width: 200px; max-height: 200px;" />
+            }
+            <div><label for="ClinicImage">ImageUrl</label></div>
+            @Html.TextBoxFor(m => m.ClinicImage, new { @readonly = "readonly" })
+            <div>
+                <label for="clinicImageUpload">UploadImage</label>
+                <input type="file" id="clinicImageUpload" name="clinicImageUpload" accept="image/*" />
+            </div>
+        </div>
+            <!-- Speciality Field -->
+            <div class="dnnFormItem">
+                <div><label for="speciality">@Dnn.LocalizeString("lblSpeciality")</label></div>
+                @Html.TextBoxFor(m => m.Speciality)
+            </div>
+            <!-- Other Fields (Departments, Reviews, Experience, etc.) -->
+            <div class="dnnFormItem">
+                <div><label for="department1">@Dnn.LocalizeString("lblDepartment1")</label></div>
+                @Html.TextBoxFor(m => m.Department1)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="department2">@Dnn.LocalizeString("lblDepartment2")</label></div>
+                @Html.TextBoxFor(m => m.Department2)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="department3">@Dnn.LocalizeString("lblDepartment3")</label></div>
+                @Html.TextBoxFor(m => m.Department3)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="reviews">@Dnn.LocalizeString("lblReviews")</label></div>
+                @Html.TextBoxFor(m => m.Reviews)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="yearsOfExperience">@Dnn.LocalizeString("lblYearsOfExperience")</label></div>
+                @Html.TextBoxFor(m => m.YearsOfExperience)
+            </div>
+            <div class="dnnFormItem">
+                <div><label for="clinicUrl">@Dnn.LocalizeString("lblClinicUrl")</label></div>
+                @Html.TextBoxFor(m => m.ClinicUrl)
+            </div>
+            @Html.HiddenFor(m => m.ModuleId)
+        </fieldset>
+    </div>
+    <button type="submit" class="dnnPrimaryAction">@Dnn.LocalizeString("Submit")</button>
+    <a id="cancelEdit" href="#" class="dnnSecondaryAction">@Dnn.LocalizeString("Cancel")</a>
+</div>
+
+<script type="text/javascript">
+    /*globals jQuery, window, Sys */
+    (function ($, Sys) {
+        function dnnEditBasicSettings() {
+            $('#dnnEditBasicSettings').dnnPanels();
+            $('#dnnEditBasicSettings').on('click', 'a.dnnSectionExpanded', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var $content = $this.closest('.dnnForm').find('.dnnFormExpandContent');
+                $content.toggle();
+                $this.toggleClass('dnnSectionCollapsed dnnSectionExpanded');
+            });
+        }
+
+        $(document).ready(dnnEditBasicSettings);
+    })(jQuery, Sys);
+</script>

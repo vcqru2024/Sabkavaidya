@@ -1,0 +1,50 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@{
+  // Info: we're not using Bootstrap classes because ATM this App is CSS-Neutral
+  // For more extensive/custom use, we suggest use Bootstrap classes
+
+  // Figure out positioning of text based on View Settings, usually left, right or none
+  var showText = MyView.Identifier != "none";
+  var imagePositionClass = MyView.Identifier == "left" ? "app-imagecompare2-after-text" : "";
+  var imgWidthClass = showText ? "app-imagecompare2-img50" : "";
+
+  var imgPair = MyItem;
+
+  // Merge settings of current item with defaults to get resize parameters
+  var pairSettings = imgPair.Child("ImageSettings");
+  var resizeSettings = AsStack(pairSettings, AllSettings.Child("Images.ImageCompare"));
+  var resizeFactor = showText && pairSettings == null ? 0.5 : 1;
+  var labelBefore = imgPair.Bool("ShowLabels") ? imgPair.String("BeforeLabel") : "";
+  var labelAfter = imgPair.Bool("ShowLabels") ? imgPair.String("AfterLabel") : "";
+
+  var domId = "app-imagecompare2-id" + UniqueKey;
+}
+
+<div class="app-imagecompare2-main" @Kit.Toolbar.Default(imgPair)>
+
+  @* if we don't show the content/body, the title will still be needed, but above the image *@
+  @if (!showText) {
+    <h2>@imgPair.String("Title")</h2>
+  }
+  <div class="app-imagecompare2-content">
+    <div class="@imgWidthClass @imagePositionClass">
+        <div id="@domId" class="beer-slider" data-beer-label="@labelBefore">
+          @imgPair.Picture("LeftImage", settings: resizeSettings, factor: resizeFactor, imgAltFallback: imgPair.String("Title"))
+          <div class="beer-reveal" data-beer-label="@labelAfter">
+            <div>
+              @imgPair.Picture("RightImage", settings: resizeSettings, factor: resizeFactor, imgAltFallback: imgPair.String("Title"))
+            </div>
+          </div>
+        </div>
+    </div>
+    @if (showText) {
+      <div class="content-text">
+        <h2>@imgPair.String("Title")</h2>
+        @imgPair.Html("DescriptionText", container:"")
+      </div>
+    }
+  </div>
+</div>
+
+@Html.Partial("Assets.cshtml", new { domId })

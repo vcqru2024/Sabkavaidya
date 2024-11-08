@@ -1,0 +1,64 @@
+/******   drop legacy procedure CP_Product_Comment_GetByProduct ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]     ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]') AND type in (N'P', N'PC'))
+DROP PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]
+GO
+
+
+
+/******   create new procedure  ******/
+/****** Object:  StoredProcedure {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]    ScriptDate: 08/15/2010 21:56:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'
+
+/****** Object:  StoredProcedure dbo.[CP_Product_Comment_GetByProduct]    ScriptDate: 10/18/2007 01:57:06 ******/
+
+CREATE      PROCEDURE {databaseOwner}[{objectQualifier}CP_Product_Comment_GetByProduct]
+        @ProductId int,
+        @ShowUnAuthed  bit,
+        @ShowPrivate bit,
+        @PageSize int, 
+        @PageIndex int    
+AS
+  Declare @PageLowerBound int
+  DECLARE @PageUpperBound int
+    -- Set the page bounds
+    SET @PageLowerBound = @PageSize * @PageIndex
+    SET @PageUpperBound = @PageLowerBound + @PageSize + 1
+-- Create a temp table to store the select results
+    CREATE TABLE #PageIndex 
+    (
+	IndexID		int IDENTITY (1, 1) NOT NULL,
+	CommentId	int
+     )
+----Insert into temptable
+    insert into #PageIndex(CommentId)
+    SELECT
+	[id]
+    FROM {databaseOwner}{objectQualifier}CP_Product_Comment
+    WHERE [ProductId]=@ProductId
+    and(@ShowUnAuthed=1 or authed=1)
+    and(@ShowPrivate=1 or IsPrivate=0)
+    order by [id] asc
+
+---Get needs rows
+   SELECT
+	b.*
+    FROM #PageIndex a, {databaseOwner}{objectQualifier}CP_Product_Comment b
+    where b.id=a.CommentId 
+    and  a.IndexID> @PageLowerBound	
+    and	 a.IndexID< @PageUpperBound	  
+    ORDER BY
+	a.IndexID
+	
+	     --Return the total number of records available 
+	SELECT TotalRecords = COUNT(IndexID) FROM #PageIndex
+
+' 
+END
+GO

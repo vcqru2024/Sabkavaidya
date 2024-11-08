@@ -1,0 +1,123 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_Tasks]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+
+BEGINCREATE TABLE {databaseOwner}[{objectQualifier}VCQRU_Tasks](
+[TaskID] [int] IDENTITY(1,1) NOT NULL,
+[TaskName] [nvarchar](max) NOT NULL,
+[TaskDescription] [nvarchar](max) NULL,
+[IsCompleted] [bit] NOT NULL,
+[ModuleID] [int] NOT NULL,
+[UserID] [int] NOT NULL
+)
+
+ALTER TABLE {databaseOwner}[{objectQualifier}VCQRU_Tasks] ADD CONSTRAINT [PK_{databaseOwner}{objectQualifier}VCQRU_Tasks] PRIMARY KEY CLUSTERED  ([TaskID])
+END
+
+GO
+
+/************** STORED PROCEDURE CREATION SCRIPT ***********************/
+IF EXISTS (select * FROM dbo.sysobjects WHERE id object_id(N'{databaseOwner} [{objectQualifier}VCQRU_GetTasks]') and
+OBJECTPROPERTY(id, N'IsProcedure') = 1) DROP PROCEDURE {databaseOwner}{objectQualifier}CBP_GetTasks
+GO
+Create Procedure {databaseOwner}{objectQualifier}VCQRU_GetTasks
+@ModuleId int
+AS
+SELECT TaskId,
+TaskName,
+TaskDescription,
+isCompleted,
+UserId,
+ModuleId
+FROM {databaseOwner}{objectQualifier}VCQRU_Tasks
+WHERE ModuleId = @ModuleId
+GO
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}CBP_AddTask]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_AddTask
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}VCQRU_AddTask
+    @TaskName nvarchar(max),
+    @TaskDescription nvarchar(max),
+    @IsCompleted bit,
+    @ModuleID int,
+    @UserID int
+AS
+    INSERT INTO {databaseOwner}[{objectQualifier}VCQRU_Tasks](
+        TaskName,
+        TaskDescription,
+        IsCompleted,
+        ModuleID,
+        UserID
+    )
+
+VALUES (
+        @TaskName,
+        @TaskDescription,
+        @IsCompleted,
+        @ModuleID,
+        @UserID
+    )
+SELECT @@IDENTITY
+GO
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_UpdateTask]') and                    OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_UpdateTask
+GO       
+ CREATE PROCEDURE {databaseOwner}{objectQualifier}VCQRU_UpdateTask
+            @TaskID int,
+            @TaskName nvarchar(max),
+            @TaskDescription nvarchar(max),
+            @IsCompleted bit
+ AS
+ UPDATE {databaseOwner}[{objectQualifier}VCQRU_Tasks]
+ SET
+            TaskName = @TaskName,
+            TaskDescription = @TaskDescription,
+            IsCompleted = @IsCompleted       
+
+ WHERE TaskID = @TaskID
+ SELECT @TaskID
+ GO
+
+ IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_DeleteTask]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_DeleteTask
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}VCQRU_DeleteTask
+     @TaskId         int
+AS
+DELETE FROM {databaseOwner}[{objectQualifier}VCQRU_Tasks]
+WHERE  TaskID = @TaskId
+GO
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}VCQRU_GetIncompleteTasks]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE {databaseOwner}{objectQualifier}VCQRU_GetIncompleteTasks
+GO
+Create Procedure {databaseOwner}{objectQualifier}VCQRU_GetIncompleteTasks
+    @ModuleId int
+AS
+SELECT TaskId,
+        TaskName,
+    TaskDescription,
+    isCompleted,
+    UserId,
+    ModuleId
+FROM {databaseOwner}[{objectQualifier}VCQRU_Tasks]
+WHERE ModuleId = @ModuleId AND isCompleted = 0
+GO

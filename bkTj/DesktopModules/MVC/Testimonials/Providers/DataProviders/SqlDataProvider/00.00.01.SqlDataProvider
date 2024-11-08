@@ -1,0 +1,37 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Testimonials_Items]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Testimonials_Items]
+GO
+
+CREATE TABLE {databaseOwner}{objectQualifier}Testimonials_Items
+(
+    TestimonialId INT NOT NULL IDENTITY(1,1),
+    Name NVARCHAR(255) NOT NULL,
+    Location NVARCHAR(255) NULL,
+    Condition NVARCHAR(255) NULL,
+    ImageUrl NVARCHAR(255) NULL,
+    Message NVARCHAR(MAX) NOT NULL,
+    ModuleId INT NOT NULL,
+    CreatedByUserId INT NOT NULL,
+    LastModifiedByUserId INT NOT NULL,
+    CreatedOnDate DATETIME NOT NULL,
+    LastModifiedOnDate DATETIME NOT NULL
+) ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}Testimonials_Items ADD CONSTRAINT
+    PK_{objectQualifier}Testimonials_Items PRIMARY KEY CLUSTERED 
+    (
+    TestimonialId
+    ) WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO

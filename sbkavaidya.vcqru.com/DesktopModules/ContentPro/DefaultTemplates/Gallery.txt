@@ -1,0 +1,35 @@
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<puresystems.Modules.ContentPro.Components.RazorModel>
+<div class="grid">
+	<div class="row">
+		@foreach (var Item in Model.Content.List){
+		<div class="col-xs-12 col-sm-6 col-md-3 grid-item" >
+			<a href="@Item.Content.LargeImage" class="gallery" title="@Item.Content.Title"><img alt="@Item.Content.Title" src="@Item.Content.SmallImage" class="img-responsive" /></a>
+		</div>
+		}
+	</div>
+</div>
+<style type="text/css">
+	.grid-item {margin-top:20px;}
+</style>
+<script>
+	$(document).ready(function() {
+		$('a.gallery').featherlightGallery({
+			previousIcon: '«',
+			nextIcon: '»',
+			galleryFadeIn: 300,
+			openSpeed: 300
+		});
+		var $grid = $('.grid').imagesLoaded( function() {
+		  // init Masonry after all images have loaded
+		  $grid.masonry({
+			itemSelector: '.grid-item'
+		  });
+		});
+	});
+</script>
+<link rel="stylesheet" href="@Model.Content.ModulePath/DefaultTemplates/Gallery/Featherlight/featherlight.min.css" type="text/css" />
+<script type="text/javascript" src="@Model.Content.ModulePath/DefaultTemplates/Gallery/Featherlight/featherlight.min.js"></script>
+<link rel="stylesheet" href="@Model.Content.ModulePath/DefaultTemplates/Gallery/Featherlight/featherlight.gallery.min.css" type="text/css" />
+<script type="text/javascript" src="@Model.Content.ModulePath/DefaultTemplates/Gallery/Featherlight/featherlight.gallery.min.js"></script>
+<script type="text/javascript" src="@Model.Content.ModulePath/DefaultTemplates/Gallery/Masonry/imagesloaded.min.js"></script>
+<script type="text/javascript" src="@Model.Content.ModulePath/DefaultTemplates/Gallery/Masonry/masonry.min.js"></script>

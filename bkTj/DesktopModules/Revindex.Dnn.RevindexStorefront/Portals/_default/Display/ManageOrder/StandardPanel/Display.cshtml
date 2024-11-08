@@ -1,0 +1,1690 @@
+﻿@* Template name: StandardPanel *@
+@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ManageOrderWebViewPage
+
+<div id="rvdsfManageOrderPanelContainer" class="rvd-module-container rvdsf rvdsf-manageorder-container rvdsf-manageorder-grid" style="display:none" data-bind="visible: Visible">
+	<div id="rvdsfManageOrderMessage" style="display:none"></div>
+	<div class="alert alert-danger" data-bind="visible: GeneralError" style="display:none">
+		<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> <span data-bind="text: GeneralError"></span>
+	</div>
+	<div class="alert alert-danger" data-bind="visible: ServerError" style="display:none">
+		<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> <span data-bind="text: ServerError"></span>
+	</div>
+	<div class="alert alert-warning" data-bind="visible: GeneralWarning" style="display:none">
+		<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> <span data-bind="text: GeneralWarning"></span>
+	</div>
+    <!-- ko if: ListView -->
+		<div class="rvdsf-list-container">
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table table-striped table-hover rvdsf-salesorder-table">
+						<thead>
+							<tr>
+								<th>
+									<a data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : 'SalesOrderNumber', '@Global.QueryStringKeys.SalesOrderSortDirection' : (SalesOrderSortDirection() == 'asc' ? 'desc' : 'asc') })) + '#@Dnn.Module.ModuleID' }">@Html.LocalizeString("SalesOrderNumberColumn")</a>
+								</th>
+								<th>
+									<a data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : 'OrderDate', '@Global.QueryStringKeys.SalesOrderSortDirection' : (SalesOrderSortDirection() == 'asc' ? 'desc' : 'asc') })) + '#@Dnn.Module.ModuleID' }">@Html.LocalizeString("OrderDateColumn")</a>
+								</th>
+								<th>
+									<a data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : 'Status', '@Global.QueryStringKeys.SalesOrderSortDirection' : (SalesOrderSortDirection() == 'asc' ? 'desc' : 'asc') })) + '#@Dnn.Module.ModuleID' }">@Html.LocalizeString("StatusColumn")</a>
+								</th>
+								<th class="hidden-xs d-none d-sm-table-cell">
+									<a data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : 'SalesPaymentStatus', '@Global.QueryStringKeys.SalesOrderSortDirection' : (SalesOrderSortDirection() == 'asc' ? 'desc' : 'asc') })) + '#@Dnn.Module.ModuleID' }">@Html.LocalizeString("SalesPaymentStatusColumn")</a>
+								</th>
+								<th class="hidden-xs d-none d-sm-table-cell">
+									<a data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : 'ShippingStatus', '@Global.QueryStringKeys.SalesOrderSortDirection' : (SalesOrderSortDirection() == 'asc' ? 'desc' : 'asc') })) + '#@Dnn.Module.ModuleID' }">@Html.LocalizeString("ShippingStatusColumn")</a>
+								</th>
+								<th>
+									<a data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : 'TotalAmount', '@Global.QueryStringKeys.SalesOrderSortDirection' : (SalesOrderSortDirection() == 'asc' ? 'desc' : 'asc') })) + '#@Dnn.Module.ModuleID' }">@Html.LocalizeString("TotalAmountColumn")</a>
+								</th>
+							</tr>
+						</thead>
+						<tbody data-bind="foreach: { data: PagedSalesOrders, as: 'so'}">
+							<tr data-bind="click: function() { location.href = so.ManageOrder.DetailsUrl(); }" style="cursor: pointer">
+								<td><a data-bind="text: so.SalesOrderNumber, click: function() { location.href = so.ManageOrder.DetailsUrl(); }" onclick="event.stopPropagation()"></a></td>
+								<td data-bind="text: moment(so.OrderDate()).format('YYYY-MM-DD')"></td>
+								<td><span data-bind="text: so.StatusName, attr: { class: 'badge badge-default rvdsf-badge rvdsf-salesorder-status-' + so.Status()}"></span></td>
+								<td class="hidden-xs d-none d-sm-table-cell"><span data-bind="text: so.SalesPaymentStatusName, attr: { class: 'badge badge-default rvdsf-badge rvdsf-salesorder-salespaymentstatus-' + so.SalesPaymentStatus()}"></span></td>
+								<td class="hidden-xs d-none d-sm-table-cell"><span data-bind="text: so.ShippingStatusName, attr: { class: 'badge badge-default rvdsf-badge rvdsf-salesorder-shippingstatus-' + so.ShippingStatus()}"></span></td>
+								<td data-bind="text: so.FormattedTotalAmount"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<!-- ko if: SalesOrderPageViewCount() > 1 -->
+						<ul class="pagination pagination-sm">
+							<li data-bind="attr: { class: (SalesOrderPageViewIndex() <= 1 ? 'disabled' : '') + ' page-item' }">
+								<a class="page-link" data-bind="attr: { href: SalesOrderPageViewIndex() <= 1 ? '' : Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': SalesOrderPageViewIndex() - 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : SalesOrderSortExpression(), '@Global.QueryStringKeys.SalesOrderSortDirection' : SalesOrderSortDirection() })) + '#@Dnn.Module.ModuleID' }"><em class="glyphicon glyphicon-chevron-left fa fas fa-chevron-left"></em></a>
+							</li>
+							<!-- ko foreach: new Array(SalesOrderPageViewCount()) -->
+								<!-- ko if: $index() + 1 == $root.SalesOrderPageViewIndex() -->
+									<li class="active hidden-xs page-item"><span class="page-link" data-bind="text: $index() + 1"></span></li>
+								<!-- /ko -->
+								<!-- ko ifnot: $index() + 1 == $root.SalesOrderPageViewIndex() -->
+									<!-- ko if: $index() + 1 >= $root.SalesOrderPageMinRange() - 1 && $index() <= $root.SalesOrderPageMaxRange() -->
+										<li class="hidden-xs page-item">
+											<a class="page-link" data-bind="text: $index() + 1 == $root.SalesOrderPageMinRange() - 1 || $index() + 1== $root.SalesOrderPageMaxRange() + 1 ? '...' : $index() + 1, attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': $root.SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': $index() + 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : $root.SalesOrderSortExpression(), '@Global.QueryStringKeys.SalesOrderSortDirection' : $root.SalesOrderSortDirection() })) + '#@Dnn.Module.ModuleID' }"></a>
+										</li>
+									<!-- /ko -->
+								<!-- /ko -->
+							<!-- /ko -->
+							<li data-bind="attr: { class: (SalesOrderPageViewIndex() >= SalesOrderPageViewCount() ? 'disabled' : '') + ' page-item' }" >
+								<a class="page-link" data-bind="attr: { href: SalesOrderPageViewIndex() >= SalesOrderPageViewCount() ? '' : Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderPageViewSize': SalesOrderPageViewSize(), '@Global.QueryStringKeys.SalesOrderPageViewIndex': SalesOrderPageViewIndex() + 1, '@Global.QueryStringKeys.SalesOrderSortExpression' : SalesOrderSortExpression(), '@Global.QueryStringKeys.SalesOrderSortDirection' : SalesOrderSortDirection() })) + '#@Dnn.Module.ModuleID' }"><em class="glyphicon glyphicon-chevron-right fa fas fa-chevron-right"></em></a>
+							</li>
+						</ul>
+					<!-- /ko -->
+				</div>
+			</div>
+		</div>
+	<!-- /ko -->
+	<!-- ko ifnot: ListView -->
+		<div class="rvd-form">
+			<!-- ko if: ReturnUrl -->
+				<a class="rvdsf-btn-back" data-bind="attr: { href: ReturnUrl }" ></a>
+			<!-- /ko -->
+			<h2>@Html.LocalizeString("SalesOrderNumberHeader")
+				<ul class="rvdBreadcrumb">
+					<!-- ko foreach: Breadcrumbs -->
+						<li><a data-bind="click: function() { location.href = $data.Url(); }, text: $data.Name" ></a></li>
+					<!-- /ko -->
+				</ul>
+			</h2>
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+					<a class="btn btn-link" data-bind="attr: { href: Revindex.Web.RouteUrl(new URLSearchParams()) + '#@Dnn.Module.ModuleID' }"><em class="glyphicon glyphicon-list fa fas fa-list"></em> @Html.LocalizeString("ViewListLink")</a>
+					<!-- ko if: AllowPrint -->
+						<a class="btn btn-link" data-bind="attr: { href: PrintUrl }" href="" target="_blank"><em class="glyphicon glyphicon-print fa fas fa-print"></em> @Html.LocalizeString("PrintLink")</a>
+					<!-- /ko -->
+					<!-- ko if: AllowEmail -->
+						<button class="btn btn-link" data-bind="click: sendEmail"><em class="glyphicon glyphicon-envelope fa fas fa-envelope"></em> @Html.LocalizeString("EmailLink")</button>
+					<!-- /ko -->
+				</div>
+				<div class="col-sm-6 text-sm-right">
+					<!-- ko if: AllowReorder -->
+						<button class="btn btn-primary" data-bind="click: reorder" >@Html.LocalizeString("ReorderLink")</button>
+					<!-- /ko -->
+					<!-- ko if: AllowResume -->
+						<a class="btn btn-primary" data-bind="attr: { href: CartUrl }" >@Html.LocalizeString("ResumeLink")</a>
+					<!-- /ko -->
+				</div>
+			</div>
+			<hr />
+			<div>
+				<div class="row">
+					<div class="col-sm-6">
+						<h4><span data-bind="text: SalesOrder.StatusName, attr: { class: 'badge badge-default rvdsf-badge rvdsf-salesorder-status-' + SalesOrder.Status() }"></span></h4>
+					</div>
+					<div class="col-sm-6">
+						<h4 data-bind="text: SalesOrder.FormattedOrderDate"></h4>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="page-header pb-2 mt-4 mb-2 border-bottom"><h6>@Html.LocalizeString("BillingHeader") <span data-bind="text: SalesOrder.SalesPaymentStatusName, attr: { class: 'badge badge-default rvdsf-badge rvdsf-salesorder-salespaymentstatus-' + SalesOrder.SalesPaymentStatus() + ' pull-right float-right' }"></span></h6></div>
+						<div class="panel-body">
+							<p>
+								<!-- ko if: SalesOrder.BillingCompany -->
+									<!-- ko text: SalesOrder.BillingCompany --><!-- /ko --><br />
+								<!-- /ko -->
+								<!-- ko text: SalesOrder.BillingFirstName --><!-- /ko --> <!-- ko text: SalesOrder.BillingLastName --><!-- /ko -->
+								<!-- ko text: SalesOrder.BillingStreet --><!-- /ko --><br />
+								<!-- ko if: SalesOrder.BillingUnit -->
+									<!-- ko text: SalesOrder.BillingUnit --><!-- /ko --><br />
+								<!-- /ko -->
+								<!-- ko if: SalesOrder.BillingDistrict -->
+									<!-- ko text: SalesOrder.BillingDistrict --><!-- /ko --><br />
+								<!-- /ko -->
+								<!-- ko text: SalesOrder.BillingCity --><!-- /ko -->, <!-- ko text: SalesOrder.BillingSubdivisionName --><!-- /ko --><br />
+								<!-- ko text: SalesOrder.BillingPostalCode --><!-- /ko --> <!-- ko text: SalesOrder.BillingCountryName --><!-- /ko --><br />
+								<br />
+								<!-- ko text: SalesOrder.BillingPhone --><!-- /ko --><br />
+								<!-- ko text: SalesOrder.BillingEmail --><!-- /ko --><br />
+								<!-- ko text: SalesOrder.BusinessTaxNumber --><!-- /ko --><br />
+							</p>
+							<!-- ko if: SalesOrder.PurchaseOrderNumber -->
+								<div class="row">
+									<label class="col-sm-2">@Html.LocalizeString("PurchaseOrderNumberLabel")</label>
+									<div class="col-sm-10">
+										<span data-bind="text: SalesOrder.PurchaseOrderNumber"></span>
+									</div>
+								</div>
+							<!-- /ko -->
+							<!-- ko foreach: { data: SalesOrder.SalesPayments().filter(sp => sp.SalesPaymentID() != 0).sort((a,b) => { return a.PaymentDate()  - b.PaymentDate(); }), as: 'payment' } -->
+								<div class="row">
+									<label class="col-sm-3" data-bind="text: payment.TransactionTypeName() + ':'"></label>
+									<div class="col-sm-9">
+										<span data-bind="text: payment.PaymentMethodName() + ' ' + payment.FormattedAmount()"></span>
+									</div>
+								</div>
+							<!-- /ko -->
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="page-header pb-2 mt-4 mb-2 border-bottom"><h6>@Html.LocalizeString("ShippingHeader") <span data-bind="text: SalesOrder.ShippingStatusName, attr: { class: 'badge badge-default rvdsf-badge rvdsf-salesorder-shippingstatus-' + SalesOrder.ShippingStatus() + ' pull-right float-right' }"></span></h6></div>
+						<div class="panel-body">
+							<p>
+								<!-- ko if: SalesOrder.ShippingCompany -->
+									<!-- ko text: SalesOrder.ShippingCompany --><!-- /ko --><br />
+								<!-- /ko -->
+								<!-- ko text: SalesOrder.ShippingFirstName --><!-- /ko --> <!-- ko text: SalesOrder.ShippingLastName --><!-- /ko -->
+								<!-- ko text: SalesOrder.ShippingStreet --><!-- /ko --><br />
+								<!-- ko if: SalesOrder.ShippingUnit -->
+									<!-- ko text: SalesOrder.ShippingUnit --><!-- /ko --><br />
+								<!-- /ko -->
+								<!-- ko if: SalesOrder.ShippingDistrict -->
+									<!-- ko text: SalesOrder.ShippingDistrict --><!-- /ko --><br />
+								<!-- /ko -->
+								<!-- ko text: SalesOrder.ShippingCity --><!-- /ko -->, <!-- ko text: SalesOrder.ShippingSubdivisionName --><!-- /ko --><br />
+								<!-- ko text: SalesOrder.ShippingPostalCode --><!-- /ko --> <!-- ko text: SalesOrder.ShippingCountryName --><!-- /ko --><br />
+								<br />
+								<!-- ko text: SalesOrder.ShippingPhone --><!-- /ko --><br />
+								<!-- ko text: SalesOrder.ShippingEmail --><!-- /ko --><br />
+							</p>
+							<!-- ko if: SalesOrder.ShippingMethod -->
+									<div class="row">
+										<label class="col-sm-3">@Html.LocalizeString("ShippingMethodLabel")</label>
+										<div class="col-sm-9">
+											<span data-bind="text: SalesOrder.ShippingMethod.Name"></span>
+											<!-- ko if: SalesOrder.ShippingDestinationPoint -->
+												<span data-bind="text: SalesOrder.ShippingDestinationPoint"></span>
+											<!-- /ko -->
+											<!-- ko if: SalesOrder.ShippingExtension && SalesOrder.ShippingExtension.data && SalesOrder.ShippingExtension.data.destinationAddress() -->
+												<div data-bind="text: SalesOrder.ShippingExtension.data.destinationAddress"></div>
+											<!-- /ko -->
+										</div>
+									</div>
+							<!-- /ko -->
+							<!-- ko if: SalesOrder.ShippingTrackingCode -->
+								<div class="row">
+									<label class="col-sm-3">@Html.LocalizeString("ShippingTrackingCodeLabel")</label>
+									<div class="col-sm-9">
+										<span data-bind="text: SalesOrder.ShippingTrackingCode"></span>
+									</div>
+								</div>
+							<!-- /ko -->
+						</div>
+					</div>
+				</div>
+				<div class="page-header pb-2 mt-4 mb-2 border-bottom"><h6>@Html.LocalizeString("SalesOrderDetailHeader")</h6></div>
+				<table class="table table-striped table-hover rvdsf-salesorderdetail-table">
+					<tr>
+						<th class="col-sm-1 hidden-xs"></th>
+						<th class="col-sm-5">@Html.LocalizeString("ProductColumn")</th>
+						<th class="col-sm-1">@Html.LocalizeString("QuantityColumn")</th>
+						<th class="col-sm-1">@Html.LocalizeString("TotalAmountColumn")</th>
+					</tr>
+					<!-- ko foreach: { data: SalesOrder.MainSalesOrderDetails, as: 'sod' } -->
+						<tr data-bind="click: function() { location.href = sod.ProductVariant.ProductDetail.TabUrl(); }" style="cursor: pointer">
+							<td class="hidden-xs d-none d-sm-table-cell">
+								<!-- ko if: sod.ProductVariant.MainThumbnailGallery -->
+									<a data-bind="attr: { href: sod.ProductVariant.ProductDetail.TabUrl }" onclick="event.stopPropagation()"><img data-bind="attr: { src: sod.ProductVariant.MainThumbnailGallery.MediaUrl }" /></a>
+								<!-- /ko -->
+							</td>
+							<td>
+								<a data-bind="text: sod.ProductName, attr: { href: sod.ProductVariant.ProductDetail.TabUrl }" onclick="event.stopPropagation()"></a>
+								<!-- ko if: sod.ProductVariantName -->
+									<div class="rvdsf-productvariant-name" data-bind="text: sod.ProductVariantName"></div>
+								<!-- /ko -->
+								<span data-bind="text: sod.ShippingStatusName, attr: { class: 'hidden badge badge-default rvdsf-badge rvdsf-salesorderdetail-shippingstatus rvdsf-salesorder-shippingstatus-' + sod.ShippingStatus() + ' pull-right float-right' }"></span>
+								<!-- ko if: sod.FormattedBookingStartDate -->
+									<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-bookingdates" style="width: auto">
+										<tr>
+											<td><strong>@Html.LocalizeString("BookingStartDateLabel")</strong></td>
+											<td data-bind="text: sod.FormattedBookingStartDate"></td>
+										</tr>
+										<tr>
+											<td><strong>@Html.LocalizeString("BookingStopDateLabel")</strong></td>
+											<td data-bind="text: sod.FormattedBookingStopDate"></td>
+										</tr>
+									</table>
+								<!-- /ko -->
+								<!-- ko if: Object.keys(sod.DynamicFormResult).length > 0 -->
+								<!-- ko with: sod.DynamicFormResult -->
+									<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-dynamicformresult" data-bind="foreach: Object.keys($data)" style="width: auto">
+										<tr>
+											<td><strong data-bind="text: $data + ':'"></strong></td>
+											<td data-bind="text: $parent[$data]"></td>
+										</tr>
+									</table>
+								<!-- /ko -->
+								<!-- /ko -->
+								<table class="table table-condensed table-sm table-borderless rvdsf-productparts" data-bind="foreach: { data: $parent.SalesOrderSet.SalesOrderDetails, as: 'csod' }" style="width: auto">
+									<tr data-bind="if: csod.ParentSalesOrderDetailID() == sod.SalesOrderDetailID()">
+										<td><strong data-bind="text: csod.ProductName"></strong><strong data-bind="visible: csod.ProductVariantName, text: ' - ' + csod.ProductVariantName()"></strong></td>
+										<td data-bind="text: csod.PartQuantity"></td>
+										<td>
+											<!-- ko if: sod.AllowReturn() && sod.ProductVariant.AllowPartialReturn() -->
+												<button type="button" class="btn btn-xs" data-bind="click: $root.addSalesReturnDetail" onclick="event.stopPropagation()">@Html.LocalizeString("ReturnPartLink")</button>
+											<!-- /ko -->
+											<span data-bind="text: csod.ShippingStatus, attr: { class: 'hidden badge badge-default rvdsf-badge rvdsf-salesorderdetail-shippingstatus rvdsf-salesorder-shippingstatus-' + csod.ShippingStatus() + ' pull-right float-right' }"></span>
+										</td>
+									</tr>
+								</table>
+								<!-- ko if: sod.AllowReturn -->
+									<button type="button" class="btn btn-default btn-light" data-bind="click: $root.addSalesReturnDetail" onclick="event.stopPropagation()">@Html.LocalizeString("ReturnLink")</button>
+								<!-- /ko -->
+							</td>
+							<td data-bind="text: sod.Quantity"></td>
+							<td>
+								<!-- ko if: sod.Status() != @((int)SalesOrderDetailStatusType.Quoted) -->
+									<!-- ko text: sod.FormattedCombinedTotalAmount --><!-- /ko -->
+								<!-- /ko -->
+							</td>
+						</tr>
+					<!-- /ko -->
+				</table>
+				<!-- ko if: Object.keys(SalesOrder.DynamicFormResult).length > 0 -->
+				<!-- ko with: SalesOrder.DynamicFormResult -->
+				<table class="table table-condensed table-sm table-borderless rvdsf-dynamicformresult" data-bind="foreach: Object.keys($data)" style="width: auto">
+					<tr>
+						<td><strong data-bind="text: $data + ':'"></strong></td>
+						<td data-bind="text: $parent[$data]"></td>
+					</tr>
+				</table>
+				<!-- /ko -->
+				<!-- /ko -->
+				<!-- ko if: SalesOrder.CustomerNotes -->
+					<div class="form-group">
+						<label>@Html.LocalizeString("CustomerNotesLabel")</label>
+						<p data-bind="html: SalesOrder.CustomerNotes" class="form-control-static form-control-plaintext"></p>
+					</div>
+				<!-- /ko -->
+				<!-- ko if: !SalesOrder.HasQuotedProduct() -->
+					<div class="form-horizontal rvdsf-cart-amount-container">
+						<div class="col-sm-offset-6 offset-sm-6 col-sm-6 col-xs-12 col-12">
+							<!-- ko if: SalesOrder.TotalSalesOrderDetailDiscountAmount() < 0 -->
+								<div class="form-group rvdsf-label-totalsalesorderdetaildiscountamount row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalSalesOrderDetailDiscountLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalSalesOrderDetailDiscountAmount"></p>
+									</div>
+								</div>
+							<!-- /ko -->
+							<div class="form-group rvdsf-label-subtotalamount row">
+								<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("SubTotalLabel")</label>
+								<div class="col-xs-5 col-5">
+									<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedSubTotalAmount"></p>
+								</div>
+							</div>
+							<!-- ko if: SalesOrder.TotalHandlingAmount() > 0 -->
+								<div class="form-group rvdsf-label-totalhandlingamount row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalHandlingLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalHandlingAmount"></p>
+									</div>
+								</div>
+							<!-- /ko -->
+							<div class="form-group rvdsf-label-totalshippingamount row">
+								<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalShippingLabel")</label>
+								<div class="col-xs-5 col-5">
+									<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalShippingAmount"></p>
+								</div>
+							</div>
+							<div class="form-group rvdsf-label-totaltaxamount row">
+								<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalTaxLabel")</label>
+								<div class="col-xs-5 col-5">
+									<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalTaxAmount"></p>
+								</div>
+							</div>
+							<div class="form-group rvdsf-label-totalamount row">
+								<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalLabel")</label>
+								<div class="col-xs-5 col-5">
+									<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalAmount"></p>
+								</div>
+							</div>
+							<!-- ko if: SalesOrderSet.SalesOrders().length == 1 -->
+								<div class="form-group rvdsf-label-totalpaymentreceived row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalPaymentLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalPaymentReceived"></p>
+									</div>
+								</div>
+								<div class="form-group rvdsf-label-balancedue row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("BalanceDueLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedBalanceDue"></p>
+									</div>
+								</div>
+							<!-- /ko -->
+							<!-- ko if: SalesOrder.TotalSavingsAmount() < 0 -->
+								<div class="form-group rvdsf-label-totalsavingsamount row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalSavingsLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedTotalSavingsAmount"></p>
+									</div>
+								</div>
+							<!-- /ko -->
+							<!-- ko if: ShowRewardsPoint -->
+								<div class="form-group rvdsf-label-totalrewardspoint row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("RewardsPointQualifiedLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrder.FormattedRewardsPointsQualified"></p>
+									</div>
+								</div>
+							<!-- /ko -->
+							<!-- ko if: SalesOrderSet.SalesOrders().length > 1 -->
+								<div class="alert alert-info" role="alert">
+									@Html.LocalizeString("GroupOrderMessage")
+									<!-- ko foreach: { data: SalesOrderSet.SalesOrders, as: 'so' } -->
+										<!-- ko if: so.SalesOrderGUID() != $root.SalesOrderGUID() -->
+											<span>
+												#<a data-bind="text: so.SalesOrderNumber, attr: { href: Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.SalesOrderGUID': so.SalesOrderGUID(), '@Global.QueryStringKeys.ReturnUrl': location.href }), null)}" ></a>
+											</span>
+										<!-- /ko -->
+									<!-- /ko-->
+								</div>
+								<div class="form-group rvdsf-label-totalamount row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("GroupTotalLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalAmount"></p>
+									</div>
+								</div>
+								<div class="form-group rvdsf-label-totalamount row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("GroupTotalPaymentLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalPaymentReceived"></p>
+									</div>
+								</div>
+								<div class="form-group rvdsf-label-totalamount row">
+									<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("GroupBalanceDueLabel")</label>
+									<div class="col-xs-5 col-5">
+										<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedBalanceDue"></p>
+									</div>
+								</div>
+							<!-- /ko -->
+						</div>
+					</div>
+				<!-- /ko -->
+				<!-- ko if: AllowPay -->
+					<div class="page-header pb-2 mt-4 mb-2 border-bottom dnnFormSectionHead">
+						<h4><span>@Html.LocalizeString("PaymentSectionLabel")</span></h4>
+					</div>
+					<div class="col-sm-offset-3 offset-sm-3 col-sm-6">
+
+						<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 10; }) -->
+						<div class="alert alert-danger" style="display:none" data-bind="visible: VoucherError, text: VoucherError"></div>
+						<div class="form-group">
+							<label>@Html.LocalizeString("10", Global.FilePaths.LocalPaymentMethodTypeResourceFile)</label>
+							<div class="input-group">
+								<input type="text" data-bind="value: VoucherCode" class="form-control" />
+								<div class="input-group-btn input-group-append">
+									<button type="button" class="btn btn-outline-secondary rvdsf-btn-apply" data-bind="click: addVoucher">@Html.LocalizeString("ApplyLink")</button>
+								</div>
+							</div>
+						</div>
+						<div>
+							<ul class="rvdsf-voucher-list clearfix" data-bind="foreach: SalesOrderSet.SalesPayments">
+								<!-- ko if: PaymentMethod() == 10 -->
+								<li><a href="#" data-bind="click: $root.removeVoucher.bind($root)"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></a> <span data-bind="text: FormattedHint() + ' - ' + FormattedAmount()"></span></li>
+								<!-- /ko -->
+							</ul>
+						</div>
+						<!-- /ko -->
+						<div class="form-group">
+							<label>@Html.LocalizeString("PaymentMethodLabel")</label>
+							<div>
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 7; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 7, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("7", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 23; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 23, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("23", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 13; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 13, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("13", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 28; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 28, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("28", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 1; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 1, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("1", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 2; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 2, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("2", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 25; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 25, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("25", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 3; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 3, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> <img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/VisaAcceptanceMark.gif" /> <img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/MasterCardAcceptanceMark.gif" /> <img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/AmericanExpressAcceptanceMark.gif" />
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 24; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 24, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("24", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 21; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 21, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("21", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 29; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 29, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("29", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 32; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 32, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("32", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 30; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 30, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("30", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 31; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 31, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("31", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 14; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 14, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.LocalizeString("14", Global.FilePaths.LocalPaymentMethodTypeResourceFile)
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 11; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 11, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("11", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 4; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 4, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("4", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 22; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 22, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("22", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 8; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 8, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("8", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 6; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 6, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> <img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/PayPalAcceptanceMark.gif" />
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 15; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 15, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("15", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 19; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 19, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("19", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 26; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 26, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("26", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 17; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 17, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("17", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 33; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 33, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> <img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/VenmoAcceptanceMark.png" />
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 20; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 20, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("20", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: AvailablePaymentMethods().find(function(o) { return o.PaymentMethod() == 5; }) -->
+								<div class="radio form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="radio" name="rvdsfManageOrderPaymentMethod" data-bind="checkedValue: 5, checked: PrimaryPaymentMethod, event: { change: function() { initializePayment() } }" /> @Html.Raw(Html.LocalizeString("5", Global.FilePaths.LocalPaymentMethodTypeResourceFile))
+									</label>
+								</div>
+								<!-- /ko -->
+							</div>
+						</div>
+						<div class="alert alert-danger" style="display:none" data-bind="visible: SalesPaymentError, text: SalesPaymentError"></div>
+						<!-- ko template: {if: PrimaryPaymentMethod() == 6 && getPaymentGateway(6) == 'PayPalCheckout', afterRender: initializePayPalCheckoutPayment.bind($root) } -->
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("PayPalAuthorizationLabel")</label>
+							<input class="form-control" type="text" style="border: 0" data-bind="value: PaymentNonce" disabled required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+							<button class="btn btn-primary" type="button" data-bind="visible: PaymentNonce, click: function() { $root.PaymentNonce(null); $root.initializePayPalCheckoutPayment() }">@Html.LocalizeString("RemoveLabel")</button>
+							<div data-bind="visible: !PaymentNonce()" >
+							<a id="paypal-button-container" class="btn" style="padding: 0; border: 0; margin: 0 6px 0 3px; width: 162px"></a>
+							</div>
+						</div>
+						<!-- /ko -->
+						<!-- ko if: PrimaryPaymentMethod() == 23 -->
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("InstitutionNameLabel")</label>
+							<input name="rvdsfManageOrderInstitutionNameInput" type="text" class="form-control" required data-bind="value: InstitutionName" data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+						</div>
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("InstitutionNumberLabel")</label>
+							<input name="rvdsfManageOrderInstitutionNumberInput" type="text" class="form-control" required minlength="6" maxlength="20" data-bind="value: InstitutionNumber" data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+						</div>
+						<div class="form-group">
+							<label>@Html.LocalizeString("AccountTypeLabel")</label>
+							<select class="form-control" data-bind="value: AccountType">
+								<option value="1">@Html.LocalizeString("1", Global.FilePaths.LocalGatewayAccountTypeResourceFile)</option>
+								<option value="2">@Html.LocalizeString("2", Global.FilePaths.LocalGatewayAccountTypeResourceFile)</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("AccountNumberLabel")</label>
+							<input name="rvdsfManageOrderAccountNumberInput" type="text" class="form-control" required minlength="6" maxlength="20" autocomplete="off" data-bind="value: AccountNumber" data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+						</div>
+						<div class="form-group">
+							<div class="checkbox form-check">
+								<label class="form-check-label required">
+									<input class="form-check-input" name="rvdsfManageOrderACHAgreementInput" type="checkbox" required data-msg="@Html.LocalizeString("ACHAgreementRequiredError")">@Html.LocalizeString("ACHAgreementLabel")
+								</label>
+							</div>
+						</div>
+						<!-- /ko -->
+						<!-- ko template: {if: PrimaryPaymentMethod() == 3 && getPaymentGateway(3) == 'AuthorizeNetAccept', afterRender: initializeCreditCardPayment.bind($root) } -->
+						<div class="form-group">
+							<label class="control-label">@Html.LocalizeString("CreditCardNumberLabel")</label>
+							<input class="form-control" type="text" data-bind="value: PaymentHint" disabled required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+							<button class="btn btn-primary" type="button" data-bind="visible: PaymentHint, click: function() { $root.PaymentHint(null) }">@Html.LocalizeString("RemoveLabel")</button>
+							<button id="rvdsfAddCreditCardButton" class="btn btn-primary" type="button" data-bind="visible: !PaymentHint()">@Html.LocalizeString("AddLabel")</button>
+						</div>
+						<!-- /ko -->
+						<!-- ko template: {if: PrimaryPaymentMethod() == 3 && (getPaymentGateway(3) == 'Braintree' || getPaymentGateway(3) == 'Stripe' || getPaymentGateway(3) == 'Square'), afterRender: initializeCreditCardPayment.bind($root) } -->
+						<div class="form-group">
+							<label>@Html.LocalizeString("CreditCardNumberLabel")</label>
+							<div id="rvdsfCreditCardContainer" class="form-control"></div>
+						</div>
+						<!-- /ko -->
+						<!-- ko template: {if: PrimaryPaymentMethod() == 3 && getPaymentGateway(3) != 'AuthorizeNetAccept' && getPaymentGateway(3) != 'Braintree' && getPaymentGateway(3) != 'Stripe' && getPaymentGateway(3) != 'Square', afterRender: initializeCreditCardPayment.bind($root) } -->
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("CreditCardNumberLabel")</label>
+							<input id="rvdsfManageOrderCreditCardNumberInput" name="rvdsfManageOrderCreditCardNumberInput" type="text" data-bind="value: CreditCardNumber" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" minlength="15" maxlength="24" autocomplete="cc-number" onkeypress="return (event.charCode >= 48 && event.charCode <= 57 || event.charCode == 32)" placeholder="1234 1234 1234 1234" />
+						</div>
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("CreditCardExpiryLabel")</label>
+							<div class="row">
+								<div class="col-sm-6 col-xs-6 col-6">
+									<select class="form-control" data-bind="value: CreditCardExpiryMonth" autocomplete="cc-exp-month">
+										<option value="1">01</option>
+										<option value="2">02</option>
+										<option value="3">03</option>
+										<option value="4">04</option>
+										<option value="5">05</option>
+										<option value="6">06</option>
+										<option value="7">07</option>
+										<option value="8">08</option>
+										<option value="9">09</option>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+									</select>
+								</div>
+								<div class="col-sm-6 col-xs-6 col-6">
+									<select class="form-control" data-bind="options: CreditCardExpiryYears, value: CreditCardExpiryYear" autocomplete="cc-exp-year"></select>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("CreditCardVerificationNumberLabel")</label>
+							<div class="row">
+								<div class="col-sm-6 col-xs-6 col-6">
+									<input name="rvdsfManageOrderCreditCardVerificationNumberInput" data-bind="value: CreditCardCvv" type="text" class="form-control" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" maxlength="5" autocomplete="cc-csc" onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="123" />
+								</div>
+								<div class="col-sm-6 col-xs-6 col-6"><img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/CvvSample.png" style="max-height: 32px"/></div>
+							</div>
+						</div>
+						<!-- /ko -->
+						<!-- ko template: {if: PrimaryPaymentMethod() == 31, afterRender: initializeKlarnaPaymentsPayment.bind($root) } -->
+						<div class="form-group">
+							<div id="klarna-payments-container" ></div>
+						</div>
+						<!-- /ko -->
+						<!-- ko template: {if: PrimaryPaymentMethod() == 33, afterRender: initializeVenmoPayment.bind($root) } -->
+						<div class="form-group">
+							<label class="required">@Html.LocalizeString("VenmoAuthorizationLabel")</label>
+							<input class="form-control" type="text" style="border: 0" data-bind="value: PaymentNonce" disabled required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" />
+							<div data-bind="visible: !PaymentNonce()" >
+								<a id="rvdsfManageOrderVenmoButton" class="btn btn-primary" style="display:none; width: 162px;"><img src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Media/VenmoLogo.png" alt="" aria-label="venmo"></a>
+							</div>
+						</div>
+						<!-- /ko -->
+
+						<div class="form-group">
+							<button type="button" class="btn btn-primary btn-block rvdsf-btn-pay" data-bind="visible: !PaySubmitted(), click: function() { $root.pay(false) }">@Html.LocalizeString("PayLink")</button>
+						</div>
+					</div>
+				<!-- /ko -->
+			</div>
+		</div>
+	<!-- /ko -->
+</div>
+<div id="rvdsfLoading" class="rvd-loading" style="display: none"><img src="~/Images/Loading.gif" /></div>
+
+@* Uses polyfill for IE11. See https://qa.polyfill.io *@
+<script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default%2CArray.prototype.find"></script>
+
+@* Uses Revindex common libraries *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses common DNN libraries *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.DnnPlugins);
+}
+
+@* Uses KnockoutJS. See http://knockoutjs.com *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+}
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+@* Uses Moment library. See https://momentjs.com/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment/min/moment-with-locales.min.js" defer></script>
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment-timezone/moment-timezone-with-data.min.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+@* Use cleave for credit card auto formatting. See https://nosir.github.io/cleave.js/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/cleave/cleave.min.js" defer></script>
+
+<script type="text/javascript">
+	var rvdsfManageOrder = rvdsfManageOrder || {}
+
+	$(document).ready(function () {
+
+        // Initialize progress loading
+        $(document).ajaxStart(function () {
+            // Only show loading if it exceeds 1 sec
+            $("#rvdsfLoading").data("timer", setTimeout(function () { $("#rvdsfLoading").show(); }, 1000))
+        }).ajaxStop(function () {
+            if ($("#rvdsfLoading").data("timer"))
+                clearTimeout($("#rvdsfLoading").data("timer"))
+
+            $("#rvdsfLoading").hide();
+        })
+
+    	// Handle anti-forgery error when user is logged out
+        $(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+        	if (jqxhr.status == 401)
+        		window.location.reload(true)
+        })
+
+        // Initialize jQuery Validation with Bootstrap default styles
+        $('#Form').validate({
+            highlight: function(element) {
+				$(element).closest('.form-group').addClass('has-error');
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-error');
+				$(element).removeClass('is-invalid');
+			},
+			errorElement: 'div',
+			errorClass: 'help-block invalid-feedback',
+			errorPlacement: function(error, element) {
+				if (element.parent('.input-group').length) {
+					error.insertAfter(element.parent());
+				} else if(element.prop('type') === 'checkbox') {
+					error.appendTo(element.parent().parent());
+				} else if(element.prop('type') === 'radio') {
+					error.appendTo(element.parent().parent());
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			onsubmit: false
+        })
+
+        // Add custom method to validate at least one checkbox in group is selected
+        $.validator.addMethod("requiredGroup", function (value, element, params) {
+            if (params)
+                return ($("input[name='" + params + "']:checked").length > 0)
+            else
+                return true
+        }, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+        // Bind KnockoutJS view model
+        var manageOrderContainer = document.getElementById("rvdsfManageOrderPanelContainer")
+        manageOrderContainer.databind = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+			var that = this
+
+			// Merge page query with view model
+			var salesOrderGUID = "@Request.QueryString[Global.QueryStringKeys.SalesOrderGUID]"
+			var paymentReturnAction = "@Request.QueryString[Global.QueryStringKeys.PaymentReturnAction]"
+			var transactionToken = "@Request.QueryString[Global.QueryStringKeys.TransactionToken]"
+			var salesOrderPageViewSize = "@Request.QueryString[Global.QueryStringKeys.SalesOrderPageViewSize]"
+			var salesOrderPageViewIndex = "@Request.QueryString[Global.QueryStringKeys.SalesOrderPageViewIndex]"
+			var salesOrderSortExpression = "@Request.QueryString[Global.QueryStringKeys.SalesOrderSortExpression]"
+			var salesOrderSortDirection = "@Request.QueryString[Global.QueryStringKeys.SalesOrderSortDirection]"
+			var returnUrl = "@Html.Raw(Request.QueryString[Global.QueryStringKeys.ReturnUrl])"
+
+			if (this.viewModel) {
+				salesOrderPageViewSize = this.viewModel.SalesOrderPageViewSize()
+				salesOrderPageViewIndex = this.viewModel.SalesOrderPageViewIndex()
+				salesOrderSortExpression = this.viewModel.SalesOrderSortExpression()
+				salesOrderSortDirection = this.viewModel.SalesOrderSortDirection()
+			}
+			
+			$.ajax({
+				context: this,
+				beforeSend: servicesFramework.setModuleHeaders,
+				url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/ViewModel?salesOrderGUID=" + salesOrderGUID + "&paymentReturnAction=" + paymentReturnAction + "&transactionToken=" + transactionToken + "&salesOrderPageViewSize=" + salesOrderPageViewSize + "&salesOrderPageViewIndex=" + salesOrderPageViewIndex + "&salesOrderSortExpression=" + salesOrderSortExpression + "&salesOrderSortDirection=" + salesOrderSortDirection + "&returnurl=" + escape(returnUrl) + "&taburl=" + escape(location.href.replace(location.hash, ''))
+            })
+            .done(function (data, status) {
+				var that = this
+                var mapping = {}
+
+                if (this.viewModel) {
+                    ko.mapping.fromJS(data, mapping, this.viewModel)
+                }
+                else {
+					this.viewModel = ko.mapping.fromJS(data, mapping);
+
+					this.viewModel.CreditCardExpiryYears = ko.observableArray()
+					for (var i = 0; i <= 15; i++) {
+						this.viewModel.CreditCardExpiryYears.push(new Date().getFullYear() + i)
+					}
+
+					this.viewModel.CreditCardNumber = ko.observable('')
+					this.viewModel.CreditCardExpiryMonth = ko.observable(1)
+					this.viewModel.CreditCardExpiryYear = ko.observable(new Date().getYear())
+					this.viewModel.CreditCardCvv = ko.observable('')
+					this.viewModel.CreditCardHint = ko.observable('')
+					this.viewModel.ProfileNumber = ko.observable('')
+					this.viewModel.PaymentAmount = ko.observable(0)
+					this.viewModel.PaymentNumber = ko.observable('')
+					this.viewModel.PaymentNonce = ko.observable('')
+					this.viewModel.PaymentHint = ko.observable('')
+					this.viewModel.ClientDevice = ko.observable('')
+					this.viewModel.AuthenticationToken = ko.observable('')
+					this.viewModel.InstitutionName = ko.observable('')
+					this.viewModel.InstitutionNumber = ko.observable('')
+					this.viewModel.AccountNumber = ko.observable('')
+					this.viewModel.AccountType = ko.observable('')
+					this.viewModel.VoucherCode = ko.observable('')
+					this.viewModel.VoucherError = ko.observable(null)
+					this.viewModel.PaySubmitted = ko.observable(false)
+					this.viewModel.SalesPaymentError = ko.observable(null)
+					this.viewModel.SalesOrderPageMinRange = ko.pureComputed(function () { return 1 + (Math.floor((that.viewModel.SalesOrderPageViewIndex() - 1) / 10) * 10) })
+					this.viewModel.SalesOrderPageMaxRange = ko.pureComputed(function () { return that.viewModel.SalesOrderPageMinRange() + 9 })
+					
+
+					this.viewModel.addSalesPayment = function () {
+						this.SalesPaymentError(null)
+
+						if (this.PrimaryPaymentMethod() == null)
+							return
+
+						var salesPaymentData = {
+							SalesOrderGUID: this.SalesOrderGUID(),
+							Amount: this.PaymentAmount(),
+							CreditCardHint: this.CreditCardHint(),
+							CreditCardNumber: this.CreditCardNumber() ? this.CreditCardNumber().replace(/ /g, '') : null,
+							CreditCardExpiryMonth: this.CreditCardExpiryMonth(),
+							CreditCardExpiryYear: this.CreditCardExpiryYear(),
+							CreditCardCvv: this.CreditCardCvv(),
+							PaymentMethod: this.PrimaryPaymentMethod(),
+							ProfileNumber: this.ProfileNumber(),
+							PaymentNumber: this.PaymentNumber(),
+							PaymentNonce: this.PaymentNonce(),
+							PaymentHint: this.PaymentHint(),
+							AuthenticationToken: this.AuthenticationToken(),
+							InstitutionName: this.InstitutionName(),
+							InstitutionNumber: this.InstitutionNumber(),
+							AccountNumber: this.AccountNumber() ? this.AccountNumber().replace(/ /g, '') : null,
+							AccountType: this.AccountType(),
+							UserPaymentGUID: null,
+							ClientTimeZoneOffset: new Date().getTimezoneOffset(),
+							ClientScreenHeight: window.screen.height,
+							ClientScreenWidth: window.screen.width,
+							ClientScreenColorDepth: window.screen.colorDepth,
+							ClientLanguage: window.navigator.language,
+							ClientDevice: this.ClientDevice()
+						}
+
+						var post = $.ajax({
+							context: this,
+							type: "POST",
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/SalesPayment",
+							data: salesPaymentData
+						})
+						.done(function (data, textStatus, jqXHR) {
+							this.getViewModel()
+						})
+						.fail(function (data, textStatus, errorThrown) {
+							if ($.trim(data.responseText))
+								that.SalesPaymentError(data.responseJSON.Message)
+						})
+
+						return post
+					}
+
+					this.viewModel.addSalesReturnDetail = function (salesOrderDetail) {
+						var salesReturnDetailData = {
+							SalesOrderDetailID: salesOrderDetail.SalesOrderDetailID()
+                        }
+
+                        $.ajax({
+                            type: "PUT",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/SalesReturnDetail",
+                            data: salesReturnDetailData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+
+							$("#rvdsfManageOrderMessage").attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ActionSuccess, Global.FilePaths.LocalSharedResourceFile))").show().fadeOut(10000)                         
+
+							// Redirect
+							location.href = Revindex.Web.RouteUrl(new URLSearchParams({ '@Global.QueryStringKeys.ReturnUrl': location.href }), null, data.ManageReturn.DetailsUrl)
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            $("#rvdsfManageOrderMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+                        })
+					}
+
+					this.viewModel.addVoucher = function () {
+						this.VoucherError(null)
+
+						var voucherData = {
+							SalesOrderGUID: this.SalesOrderGUID(),
+							VoucherCode: this.VoucherCode()
+						}
+
+						$.ajax({
+							context: this,
+							type: "POST",
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/Voucher",
+							data: voucherData
+						})
+						.done(function (data, textStatus, jqXHR) {
+
+							// Clear input
+							this.VoucherCode(null)
+
+							this.getViewModel()
+						})
+						.fail(function (data, textStatus, errorThrown) {
+							if ($.trim(data.responseText))
+								this.VoucherError(data.responseJSON.Message)
+						})
+					}
+
+                    // Helper function to format currency
+                    this.viewModel.formatCurrency = function (number) {
+                        return new Intl.NumberFormat(this.Currency.CultureCode(), { style: 'currency', currency: this.Currency.CurrencyCode() }).format((typeof number === "function" ? number() : number) * this.Currency.ExchangeRate());
+					}
+
+					// Helper function to lookup payment gateway
+					this.viewModel.getPaymentGateway = function (paymentMethodType) {
+						var paymentMethod = this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == paymentMethodType })
+						if (paymentMethod)
+							return paymentMethod.PaymentGateway()
+						else
+							return null
+					}
+
+					this.viewModel.getViewModel = function () {
+						var mapping = {
+							'SalesOrders': {
+								key: function (data) {
+									return ko.utils.unwrapObservable(data.SalesOrderID);
+								}
+							},
+
+							// Don't map client side changed values
+							'ignore': [ "GeneralError",
+										"GeneralWarning",
+										"PrimaryPaymentMethod",
+										"PrimaryUserPaymentGUID",
+							]
+						}
+
+						// Merge page query with view model
+						var salesOrderGUID = "@Request.QueryString[Global.QueryStringKeys.SalesOrderGUID]"
+						var paymentReturnAction = "@Request.QueryString[Global.QueryStringKeys.PaymentReturnAction]"
+						var transactionToken = "@Request.QueryString[Global.QueryStringKeys.TransactionToken]"
+						var salesOrderPageViewSize = "@Request.QueryString[Global.QueryStringKeys.SalesOrderPageViewSize]"
+						var salesOrderPageViewIndex = "@Request.QueryString[Global.QueryStringKeys.SalesOrderPageViewIndex]"
+						var salesOrderSortExpression = "@Request.QueryString[Global.QueryStringKeys.SalesOrderSortExpression]"
+						var salesOrderSortDirection = "@Request.QueryString[Global.QueryStringKeys.SalesOrderSortDirection]"
+						var returnUrl = "@Html.Raw(Request.QueryString[Global.QueryStringKeys.ReturnUrl])"
+
+						if (this.viewModel) {
+							salesOrderPageViewSize = this.viewModel.SalesOrderPageViewSize()
+							salesOrderPageViewIndex = this.viewModel.SalesOrderPageViewIndex()
+							salesOrderSortExpression = this.viewModel.SalesOrderSortExpression()
+							salesOrderSortDirection = this.viewModel.SalesOrderSortDirection()
+						}
+
+						$.ajax({
+							context: this,
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/ViewModel?salesOrderGUID=" + salesOrderGUID + "&paymentReturnAction=" + paymentReturnAction + "&transactionToken=" + transactionToken + "&salesOrderPageViewSize=" + salesOrderPageViewSize + "&salesOrderPageViewIndex=" + salesOrderPageViewIndex + "&salesOrderSortExpression=" + salesOrderSortExpression + "&salesOrderSortDirection=" + salesOrderSortDirection + "&returnurl=" + escape(returnUrl) + "&taburl=" + escape(location.href.replace(location.hash, ''))
+							
+						})
+						.done(function (data, status) {
+							ko.mapping.fromJS(data, mapping, this)
+
+							// Check if payment method is still available
+							if (!this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == this.PrimaryPaymentMethod() }, this))
+								this.PrimaryPaymentMethod(null)
+
+							// Re-add client side observables in case new product was added to cart
+							// that belongs to a new sales order but page wasn't refreshed
+							this.SalesOrderSet.SalesOrders().map(function (so) {
+								if (typeof so.AvailableShippingMethods !== "function")
+									so.AvailableShippingMethods = ko.observableArray()
+
+								if (typeof so.AvailableShippingMethodsError !== "function")
+									so.AvailableShippingMethodsError = ko.observable(null)
+							}, this)
+						})
+					}
+
+					this.viewModel.initializeCreditCardPayment = function () {
+
+						var that = this
+
+						var paymentMethod = this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == 3 })
+						if (paymentMethod && paymentMethod.PaymentGateway() == 'AuthorizeNetAccept') {
+
+								$("#rvdsfAddCreditCardButton").addClass("AcceptUI")
+								$("#rvdsfAddCreditCardButton").attr("data-billingAddressOptions", '{"show":true, "required":false}')
+								$("#rvdsfAddCreditCardButton").attr("data-apiLoginID", paymentMethod.UserID())
+								$("#rvdsfAddCreditCardButton").attr("data-clientKey", paymentMethod.PublicKey())
+								$("#rvdsfAddCreditCardButton").attr("data-acceptUIFormBtnTxt", "@Html.LocalizeString("AddLabel")")
+								$("#rvdsfAddCreditCardButton").attr("data-acceptUIFormHeaderTxt", "")
+								$("#rvdsfAddCreditCardButton").attr("data-paymentOptions", '{"showCreditCard": true, "showBankAccount": false}')
+								$("#rvdsfAddCreditCardButton").attr("data-responseHandler", "authorizeNetAcceptResponseHandler")
+
+								// Cannot load script outside HTML. Authorize.net will reject.
+								var script = document.createElement("script");
+								script.src = "https://js.authorize.net/v1/Accept.js";
+								if (paymentMethod.TestMode())
+									script.src = "https://jstest.authorize.net/v1/Accept.js"
+								script.charset = "utf-8";
+								document.head.appendChild(script);
+
+								script = document.createElement("script");
+								script.src = "https://js.authorize.net/v3/AcceptUI.js";
+								if (paymentMethod.TestMode())
+									script.src = "https://jstest.authorize.net/v3/AcceptUI.js"
+								script.charset = "utf-8";
+								document.head.appendChild(script);
+
+								window.authorizeNetAcceptResponseHandler = function (response) {
+									that.PaymentNonce(response.opaqueData.dataDescriptor + "|" + response.opaqueData.dataValue)
+									that.PaymentHint(response.encryptedCardData.cardNumber.substring(response.encryptedCardData.cardNumber.length - 4))
+									that.CreditCardExpiryMonth(parseInt(response.encryptedCardData.expDate.substring(0, 2))) 
+									that.CreditCardExpiryYear(2000 + parseInt(response.encryptedCardData.expDate.substring(response.encryptedCardData.expDate.length - 2)))
+								}
+
+								// Authorize.net scrolls to top of page when the script gets loaded. This will force it back down
+								setTimeout(function () { $(window).scrollTop($('#rvdsfAddCreditCardButton').offset().top); }, 500)
+						}
+						else if (paymentMethod && paymentMethod.PaymentGateway() == 'Braintree' && document.getElementById('rvdsfCreditCardContainer')) {
+							$("#rvdsfCreditCardContainer").removeClass("form-control")
+							$("#rvdsfCreditCardContainer").children().remove()
+							$.getScript("https://js.braintreegateway.com/web/dropin/1.37.0/js/dropin.min.js", function( data, textStatus, jqxhr ) {
+								braintree.dropin.create({
+									authorization: paymentMethod.Token(),
+									container: '#rvdsfCreditCardContainer'
+								}, (error, dropinInstance) => {
+									if (error) {
+										that.SalesPaymentError("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentMethodUnavailable, Global.FilePaths.LocalSharedResourceFile))")
+									}
+									else {
+										that.braintree = dropinInstance
+									}
+								});
+							})
+						}
+						else if (paymentMethod && paymentMethod.PaymentGateway() == 'Stripe' && document.getElementById('rvdsfCreditCardContainer')) {
+							$.getScript("https://js.stripe.com/v3/", function (data, textStatus, jqxhr) {
+								that.stripe = Stripe(paymentMethod.PublicKey())
+								that.stripeCard = that.stripe.elements({ locale: "@Dnn.Portal.CultureCode.Substring(0, 2)" }).create('card', { hidePostalCode: true })
+								that.stripeCard.mount('#rvdsfCreditCardContainer');
+							})
+						}
+						else if (paymentMethod && paymentMethod.PaymentGateway() == 'Square' && document.getElementById('rvdsfCreditCardContainer')) {
+
+							var scriptFile = paymentMethod.TestMode() ? "https://sandbox.web.squarecdn.com/v1/square.js" : "https://web.squarecdn.com/v1/square.js"
+							$.getScript(scriptFile, function (data, textStatus, jqxhr) {
+
+								that.square = Square.payments(paymentMethod.PublicKey(), paymentMethod.LocationKey())
+								that.square.card({}).then(
+									card => {
+										that.square.cardResult = card;
+										$("#rvdsfCreditCardContainer").removeClass("form-control")
+										$("#rvdsfCreditCardContainer").children().remove()
+										card.attach("#rvdsfCreditCardContainer")
+									}
+								)
+							})
+						}
+						else {
+							var cleave = new Cleave('#rvdsfManageOrderCreditCardNumberInput', {
+								creditCard: true,
+								onValueChanged: function (e) { that.CreditCardNumber(e.target.value) }
+							})
+						}
+					}
+
+					this.viewModel.initializeKlarnaPaymentsPayment = function () {
+						this.SalesPaymentError(null)
+
+						var paymentMethod = this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == 31 })
+						window.klarnaAsyncCallback = function () {
+
+							Klarna.Payments.init({
+									client_token: paymentMethod.Token()
+								})
+
+								Klarna.Payments.load({
+										container: '#klarna-payments-container',
+										payment_method_category: paymentMethod.PaymentType()
+									},
+									function (res) {
+										if (!res.show_form) {
+											this.SalesPaymentError("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentMethodUnavailable, Global.FilePaths.LocalSharedResourceFile))")
+										}
+									}
+								)
+						};
+
+						$.getScript("https://x.klarnacdn.net/kp/lib/v1/api.js")
+					}
+
+					this.viewModel.initializePayPalCheckoutPayment = function () {
+						var that = this
+
+						var paymentMethod = this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == 6 })
+						if (paymentMethod && paymentMethod.PaymentGateway() == 'PayPalCheckout') {
+
+							// Use the nonce that has been authorized from previous session (e.g. Cart page if the amount is up to 1.15 times the authorized amount)
+							// https://developer.paypal.com/docs/checkout/integration-features/auth-capture/#understand-the-authorization-periods
+							var sp = that.SalesOrderSet.SalesPayments().find(function (sp) { return sp.PaymentMethod() == 6 })
+							if (sp && (sp.Amount() * 1.15) >= that.SalesOrderSet.TotalAmount().toFixed(2)) {
+								that.PaymentAmount(sp.Amount())
+								that.PaymentNonce(sp.PaymentNonce())
+							}
+
+							let script = document.createElement("script");
+							script.setAttribute("src", "https://www.paypal.com/sdk/js?vault=false&intent=authorize&commit=false&currency=" + that.PrimaryCurrency.CurrencyCode() + "&client-id=" + paymentMethod.PublicKey());
+							document.body.appendChild(script);
+
+							setTimeout(function () {
+								if ($("#paypal-button-container").children().length == 0 && !that.PaymentNonce()) {
+
+									paypal.Buttons({
+										style: {
+											layout: 'vertical',
+											shape: 'rect',
+											height: 32,
+											label: 'paypal',
+											tagline: false
+										},
+										createOrder: function (data, actions) {
+											return actions.order.create({
+												payer: {
+													name: {
+														given_name: that.SalesOrderSet.BillingFirstName(),
+														surname: that.SalesOrderSet.BillingLastName()
+													}
+												},
+												purchase_units: [{
+													amount: {
+														value: that.SalesOrderSet.TotalAmount().toFixed(2),
+														currency_code: that.PrimaryCurrency.CurrencyCode()
+													}
+												}]
+											});
+										},
+										onApprove: function (data, actions) {
+											that.PaymentAmount(that.SalesOrderSet.TotalAmount().toFixed(2))
+											that.PaymentNonce(data.orderID)
+										}
+									}).render('#paypal-button-container')
+
+								}
+							}, 2000)
+						}
+					}
+
+					this.viewModel.initializePayment = function () {
+
+						this.SalesPaymentError(null)
+
+						this.PaymentHint('')
+						this.PaymentAmount(0)
+						this.PaymentNonce('')
+						this.PaymentNumber('')
+						this.ProfileNumber('')
+
+						this.addSalesPayment()
+					}
+
+					this.viewModel.initializeVenmoPayment = function () {
+						var that = this
+						this.SalesPaymentError(null)
+
+						var paymentMethod = this.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == 33 })
+						if (paymentMethod && paymentMethod.PaymentGateway() == 'Braintree') {
+							$.when(
+								$.getScript("https://js.braintreegateway.com/web/3.94.0/js/client.min.js"),
+								$.getScript("https://js.braintreegateway.com/web/3.94.0/js/venmo.min.js"),
+								$.getScript("https://js.braintreegateway.com/web/3.94.0/js/data-collector.min.js"),
+								$.Deferred(function (deferred) {
+									$(deferred.resolve);
+								})
+							).done(function () {
+
+								var venmoButton = document.getElementById('rvdsfManageOrderVenmoButton');
+
+								braintree.client.create({
+									authorization: paymentMethod.Token()
+								}, function (clientError, clientInstance) {
+									if (clientError) {
+										that.SalesPaymentError(clientError.message)
+										return;
+									}
+
+									braintree.dataCollector.create({
+										client: clientInstance
+									}, function (dataCollectorError, dataCollectorInstance) {
+										if (dataCollectorError) {
+											that.SalesPaymentError(dataCollectorError.message)
+											return;
+										}
+
+										that.ClientDevice(dataCollectorInstance.deviceData)
+									})
+
+									braintree.venmo.create({
+										client: clientInstance,
+										allowDesktop: true,
+										allowNewBrowserTab: false,
+										paymentMethodUsage: 'multi_use'
+									}, function (venmoError, venmoInstance) {
+										if (venmoError) {
+											that.SalesPaymentError(venmoError.message)
+											return;
+										}
+
+										if (!venmoInstance.isBrowserSupported()) {
+											that.SalesPaymentError("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentMethodUnavailable, Global.FilePaths.LocalSharedResourceFile))")
+											return;
+										}
+
+										// Display button
+										venmoButton.style.display = 'block';
+										venmoButton.addEventListener('click', function () {
+											venmoButton.disabled = true;
+
+											venmoInstance.tokenize(function (tokenizeError, payload) {
+												venmoButton.removeAttribute('disabled');
+
+												if (tokenizeError) {
+													that.SalesPaymentError(tokenizeError.message)
+												} else {
+													that.PaymentHint(payload.details.username)
+													that.PaymentNonce(payload.nonce)
+												}
+											})
+										})
+									})
+								})
+							})
+						}
+					}
+
+					this.viewModel.pay = function (isPostPayment) {
+						this.SalesPaymentError(null)
+						this.ServerError(null)
+
+						if (isPostPayment || this.validate()) {
+
+							var that = this
+							var promise = $.when()
+							.then(function () {
+
+								that.PaySubmitted(true)
+
+								// Tokenize
+								if (!isPostPayment) {
+									if (that.PrimaryPaymentMethod() == 3) {
+										var paymentMethod = that.AvailablePaymentMethods().find(function (o) { return o.PaymentMethod() == 3 })
+										if (that.getPaymentGateway(3) == 'Braintree') {
+											return $.Deferred(function (defer) {
+												// See https://braintree.github.io/braintree-web-drop-in/docs/current/Dropin.html
+												that.braintree.requestPaymentMethod((error, payload) => {
+													if (error) {
+														that.SalesPaymentError(error.message)
+														that.PaySubmitted(false)
+														defer.reject()
+													}
+													else {
+														that.PaymentHint(payload.details.lastFour)
+														that.CreditCardExpiryMonth(payload.details.expirationMonth)
+														that.CreditCardExpiryYear(payload.details.expirationYear)
+														that.PaymentNonce(payload.nonce)
+														defer.resolve()
+													}
+												});
+											})
+										}
+										else if (that.getPaymentGateway(3) == 'IntuitQBPayments') {
+											return $.Deferred(function (defer) {
+												var tokenUrl = paymentMethod.TestMode() ? "https://sandbox.api.intuit.com/quickbooks/v4/payments/tokens" : "https://api.intuit.com/quickbooks/v4/payments/tokens"
+
+												var tokenData = {
+													card: {
+														name: that.SalesOrderSet.BillingFirstName() + " " + that.SalesOrderSet.BillingLastName(),
+														number: that.CreditCardNumber().replaceAll(/ /g, ""),
+														expMonth: that.CreditCardExpiryMonth().padStart(2, "0"),
+														address: {
+															postalCode: that.SalesOrderSet.BillingPostalCode(),
+															country: that.SalesOrderSet.BillingCountryCode(),
+															region: that.SalesOrderSet.BillingSubdivisionCode() ? that.SalesOrderSet.BillingPostalCode().substring(3) : "",
+															streetAddress: that.SalesOrderSet.BillingStreet(),
+															city: that.SalesOrderSet.BillingCity()
+														},
+														expYear: that.CreditCardExpiryYear(),
+														cvc: that.CreditCardCvv()
+													}
+												}
+
+												$.ajax({
+													type: "POST",
+													contentType: "application/json",
+													url: tokenUrl,
+													data: JSON.stringify(tokenData)
+												})
+												.done(function (data, textStatus, jqXHR) {
+
+													that.PaymentHint(that.CreditCardNumber().slice(-4))
+													that.PaymentNonce(data.value)
+													that.CreditCardNumber('')
+
+													defer.resolve()
+												})
+												.fail(function (data, textStatus, errorThrown) {
+													defer.reject()
+												})
+											})
+										}
+										else if (that.getPaymentGateway(3) == 'Square') {
+											return $.Deferred(function (defer) {
+												that.square.cardResult.tokenize().then(tokenResult => {
+
+													if (tokenResult.status == "OK") {
+														if (paymentMethod.AuthenticateIdentity()) {
+															that.square.verifyBuyer(tokenResult.token, {
+																amount: that.SalesOrderSet.TotalAmount().toFixed(2),
+																currencyCode: that.PrimaryCurrency.CurrencyCode(),
+																intent: 'CHARGE',
+																billingContact: {
+																	addressLines: [that.SalesOrderSet.BillingStreet()],
+																	familyName: that.SalesOrderSet.BillingLastName(),
+																	givenName: that.SalesOrderSet.BillingFirstName(),
+																	email: that.SalesOrderSet.BillingEmail(),
+																	country: that.SalesOrderSet.BillingCountryCode(),
+																	phone: that.SalesOrderSet.BillingPhone(),
+																	state: that.SalesOrderSet.BillingSubdivisionCode() ? that.SalesOrderSet.BillingSubdivisionCode().substring(3) : "",
+																	city: that.SalesOrderSet.BillingCity(),
+																}
+															}).then(verificationResult => {
+																that.CreditCardExpiryMonth(tokenResult.details.card.expMonth)
+																that.CreditCardExpiryYear(tokenResult.details.card.expYear)
+																that.PaymentNumber(tokenResult.token)
+																that.PaymentHint(tokenResult.details.card.last4)
+																that.AuthenticationToken(verificationResult.token)
+
+																defer.resolve()
+															})
+														}
+														else {
+															that.CreditCardExpiryMonth(tokenResult.details.card.expMonth)
+															that.CreditCardExpiryYear(tokenResult.details.card.expYear)
+															that.PaymentNumber(tokenResult.token)
+															that.PaymentHint(tokenResult.details.card.last4)
+
+															defer.resolve()
+														}
+													}
+													else {
+														that.SalesPaymentError(tokenResult.errors[0].message)
+														that.PaySubmitted(false)
+
+														defer.reject()
+													}
+												})
+											})
+										}
+										else if (that.getPaymentGateway(3) == 'Stripe') {
+											return $.Deferred(function (defer) {
+												that.stripe.createPaymentMethod('card', that.stripeCard, {
+													billing_details: { name: that.SalesOrderSet.BillingFirstName() + ' ' + that.SalesOrderSet.BillingLastName() }
+												}).then(function (result) {
+													if (result.error) {
+														that.SalesPaymentError(result.error.message)
+														that.PaySubmitted(false)
+
+														defer.reject()
+													} else {
+														that.CreditCardExpiryMonth(result.paymentMethod.card.exp_month)
+														that.CreditCardExpiryYear(result.paymentMethod.card.exp_year)
+														that.PaymentNumber(result.paymentMethod.id)
+														that.PaymentHint(result.paymentMethod.card.last4)
+
+														defer.resolve()
+													}
+												})
+											})
+										}
+									}
+									else if (that.PrimaryPaymentMethod() == 31) {
+										return $.Deferred(function (defer) {
+											Klarna.Payments.authorize({},
+												{
+													purchase_country: that.SalesOrderSet.BillingCountryCode(),
+													billing_address: {
+														given_name: that.SalesOrderSet.BillingFirstName(),
+														family_name: that.SalesOrderSet.BillingLastName(),
+														email: that.SalesOrderSet.BillingEmail(),
+														street_address: that.SalesOrderSet.BillingStreet(),
+														street_address2: that.SalesOrderSet.BillingUnit(),
+														postal_code: that.SalesOrderSet.BillingPostalCode(),
+														city: that.SalesOrderSet.BillingCity(),
+														region: that.SalesOrderSet.BillingSubdivisionCode() ? that.SalesOrderSet.BillingSubdivisionCode().substring(3) : "",
+														phone: that.SalesOrderSet.BillingPhone(),
+														country: that.SalesOrderSet.BillingCountryCode()
+													},
+													shipping_address: {
+														given_name: that.SalesOrderSet.ShippingFirstName(),
+														family_name: that.SalesOrderSet.ShippingLastName(),
+														email: that.SalesOrderSet.ShippingEmail(),
+														street_address: that.SalesOrderSet.ShippingStreet(),
+														street_address2: that.SalesOrderSet.ShippingUnit(),
+														postal_code: that.SalesOrderSet.ShippingPostalCode(),
+														city: that.SalesOrderSet.ShippingCity(),
+														region: that.SalesOrderSet.ShippingSubdivisionCode() ? that.SalesOrderSet.ShippingSubdivisionCode().substring(3) : "",
+														phone: that.SalesOrderSet.ShippingPhone(),
+														country: that.SalesOrderSet.ShippingCountryCode()
+													}
+												},
+												function (res) {
+													if (res.approved) {
+														that.PaymentNonce(res.authorization_token)
+
+														defer.resolve()
+													}
+													else {
+														that.SalesPaymentError("@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentDeclined, Global.FilePaths.LocalSharedResourceFile))")
+														that.PaySubmitted(false)
+
+														defer.reject()
+													}
+												})
+										})
+									}
+								}
+							})
+
+							.then(function () {
+								if (!isPostPayment) {
+									return that.addSalesPayment()
+								}
+							})
+
+							.then(function () {
+								var payPromise = that.updateSalesOrderSet('Pay')
+								payPromise.done(function (data, textStatus, jqXHR) {
+									if (data.PaymentGatewayPaymentRedirectUrl)
+										top.location.href = data.PaymentGatewayPaymentRedirectUrl
+									else if (data.PaymentGatewayPaymentFormPost) {
+
+										if (data.PaymentGatewayPaymentFormTarget == "_ipopup") {
+											Revindex.Web.Modal.Show('about:blank', 460, (jQuery(window).height() * 0.8), function () { that.PaySubmitted(false) })
+											var $form = $(data.PaymentGatewayPaymentFormPost).attr("target", "iPopUp")
+											setTimeout(function () { $form.appendTo('body').submit().remove(); }, 1000);
+										}
+										else {
+											document.body.innerHTML = data.PaymentGatewayPaymentFormPost
+											document.forms[0].submit()
+										}
+									}
+									else {
+										that.getViewModel()
+										$("#rvdsfManageOrderMessage").attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_PaymentSucceeded, Global.FilePaths.LocalSharedResourceFile))").show().fadeOut(10000)                         
+										$(window).scrollTop($("#rvdsfManageOrderPanelContainer").offset().top)
+									}
+								})
+								.fail(function (data, textStatus, errorThrown) {
+									if (data.status == 403)
+										window.location.replace(that.Cart.TabUrl())
+									else if ($.trim(data.responseText))
+										that.GeneralError(data.responseJSON.Message)
+
+									$(window).scrollTop($("#rvdsfManageOrderPanelContainer").offset().top)
+
+									that.PaySubmitted(false)
+								})
+
+								return payPromise
+							})
+						}
+					}
+
+					this.viewModel.removeVoucher = function (salesPayment) {
+						this.VoucherError(null)
+
+						var salesPaymentData = { SalesPaymentGUID: salesPayment.SalesPaymentGUID }
+
+						$.ajax({
+							context: this,
+							type: "DELETE",
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/SalesPayment",
+							data: salesPaymentData
+						})
+						.done(function (data, textStatus, jqXHR) {
+							this.getViewModel()
+						})
+					}
+
+					this.viewModel.reorder = function () {
+						var salesOrderData = {
+							SalesOrderGUID: that.viewModel.SalesOrderGUID()
+                        }
+
+                        $.ajax({
+                            type: "PUT",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/Reorder",
+							data: salesOrderData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+
+							$("#rvdsfManageOrderMessage").attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ActionSuccess, Global.FilePaths.LocalSharedResourceFile))").show().fadeOut(10000)                            
+
+							// Redirect to cart
+							location.href = that.viewModel.Cart.TabUrl()
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            $("#rvdsfManageOrderMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+                        })
+					}
+
+					this.viewModel.sendEmail = function () {
+						var salesOrderData = {
+							SalesOrderGUID: that.viewModel.SalesOrderGUID()
+                        }
+
+                        $.ajax({
+                            type: "PUT",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/Email",
+							data: salesOrderData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+
+                            $("#rvdsfManageOrderMessage").attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ActionSuccess, Global.FilePaths.LocalSharedResourceFile))").show().fadeOut(10000)                          
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                            $("#rvdsfManageOrderMessage").attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ActionFailed, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+                        })
+					}
+
+					this.viewModel.updateSalesOrderSet = function (operation) {
+
+						var salesOrderSetData = {
+							SalesOrderGUID: this.SalesOrderGUID(),
+							Operation: operation,
+							PaymentReturnAction: "@this.Request.QueryString[Global.QueryStringKeys.PaymentReturnAction]",
+							TransactionToken: "@this.Request.QueryString[Global.QueryStringKeys.TransactionToken]",
+							@foreach (var key in Request.Form.AllKeys)
+							{
+								<text>@(key): "@HttpUtility.JavaScriptStringEncode(Request.Form[key])",</text>
+							}
+						}
+
+						var put = $.ajax({
+							context: this,
+							type: "PUT",
+							beforeSend: servicesFramework.setModuleHeaders,
+							url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ManageOrder/SalesOrderSet?@Html.Raw(Request.QueryString.ToString())",
+							data: salesOrderSetData
+						})
+
+						return put
+					}
+
+					this.viewModel.validate = function () {
+
+						var validationResult = $('#Form .rvdsf-manageorder-container input, .rvdsf-manageorder-container select, .rvdsf-manageorder-container textarea').valid()
+
+						// Scroll to first error
+						if (!validationResult) {
+							$('html, body').animate({
+								scrollTop: $('.has-error').offset().top - 110
+							}, 800);
+						}
+
+						return (validationResult)
+					}
+
+					ko.applyBindings(this.viewModel, manageOrderContainer)
+
+					// Handle case where page is returned from a post payment result
+					if (@(!String.IsNullOrEmpty(this.Request.QueryString[Global.QueryStringKeys.PaymentReturnAction]) ? "true" : "false")) {
+
+						if (@(this.Request.QueryString[Global.QueryStringKeys.PaymentReturnAction] == "success" ? "true" : "false"))
+							this.viewModel.pay(true)
+					}
+                }
+            })
+        }
+
+        manageOrderContainer.databind()
+    })
+</script>

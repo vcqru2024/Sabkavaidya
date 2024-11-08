@@ -1,0 +1,1030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PageCountInfo.Text" xml:space="preserve">
+    <value>Sum:[RecordCount] Size:[PageSize] Page:[PageNumber] of [PageCount]</value>
+  </data>
+  <data name="NoRecord.Text" xml:space="preserve">
+    <value>No Record</value>
+  </data>
+  <data name="Browse.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="Message.NotConfigured" xml:space="preserve">
+    <value>Not Configured Yet</value>
+  </data>
+  <data name="InvalidCaptcha.Text" xml:space="preserve">
+    <value>Invalid Verification Code</value>
+  </data>
+  <data name="CaptchaText.Text" xml:space="preserve">
+    <value>Verification  Code</value>
+  </data>
+  <data name="MustBeInteger.Text" xml:space="preserve">
+    <value>Value must be integer</value>
+  </data>
+  <data name="Required.Text" xml:space="preserve">
+    <value>Value can't be null</value>
+  </data>
+  <data name="Search.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchResult.Text" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
+  <data name="DeleteConfirm_Related.Text" xml:space="preserve">
+    <value>Delete item will also delete all related information with it, are you sure to do it?</value>
+  </data>
+  <data name="imgDel.Text" xml:space="preserve">
+    <value>Delete this item</value>
+  </data>
+  <data name="imgEdit.Text" xml:space="preserve">
+    <value>Edit this item</value>
+  </data>
+  <data name="NoRecords.Text" xml:space="preserve">
+    <value>No Record</value>
+  </data>
+  <data name="Multi_DeleteConfirm_Related.Text" xml:space="preserve">
+    <value>Delete these items will also delete all related information with them, are you sure to do it?</value>
+  </data>
+  <data name="btnAdminHome.Text" xml:space="preserve">
+    <value>Return To Control Panel</value>
+  </data>
+  <data name="btnDeleteSelected.Text" xml:space="preserve">
+    <value>Delete Selected</value>
+  </data>
+  <data name="Finish.Text" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="StepNextButton.Text" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="StepPreviousButton.Text" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="DeleteItem.Text" xml:space="preserve">
+    <value>Are you sure to delete this item?</value>
+  </data>
+  <data name="DeleteItems.Text" xml:space="preserve">
+    <value>Are you sure to delete these items?</value>
+  </data>
+  <data name="imgDown.Text" xml:space="preserve">
+    <value>Move item down</value>
+  </data>
+  <data name="imgUp.Text" xml:space="preserve">
+    <value>Move item up</value>
+  </data>
+  <data name="li_LinkTarget_Blank.Text" xml:space="preserve">
+    <value>New Window</value>
+  </data>
+  <data name="li_LinkTarget_Self.Text" xml:space="preserve">
+    <value>Self Window</value>
+  </data>
+  <data name="btnMyAccount.Text" xml:space="preserve">
+    <value>Return To Control Panel</value>
+  </data>
+  <data name="btnSearch.Text" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="MustBeDecimal.Text" xml:space="preserve">
+    <value>Value must be decimal</value>
+  </data>
+  <data name="lblPageSize.Text" xml:space="preserve">
+    <value>Page Size:</value>
+  </data>
+  <data name="lblHelp_UploadFileExtension.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Control file types which allow user to upload as follows:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Login in as host account, click "Host - Host Settings".&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Expand to "Advanced Settings - Other Settings - Allowable File Extensions", add file extension which allow user to upload. For example, if you enable user to upload real player video (.rm), then add "rm" to it. &lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Click "Update" to save settings.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. If you enable video convert, make sure "flv" and "mp4" file extension are in allowable file extensions. Otherwise, you can't see them in "File Manage" page even they are converted successfully.&lt;/p&gt;</value>
+  </data>
+  <data name="secHelp_UploadFileExtension.Text" xml:space="preserve">
+    <value>How to configure allowable upload file extensions</value>
+  </data>
+  <data name="Help_AuthorizeTest.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Authorize.net requires &lt;font color="red"&gt;secure connection (https:)&lt;/font&gt; for live transaction. However, you can use unsecured connection (http:) to test Authorize.net payment gateway. Just like PayPal sandbox, we also create a developer account for customers to test Authorize.net. Please follow below steps to use them:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  1. In Cp_Admin sub module, click "Amin Control Panel - Configurations - Store Settings ", expand 'Authorize.net payment gateway" section.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  2. Check on "Test Mode"  option.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  3. Input  75sqQ96qHEP8 as  "API Login ID".&lt;/p&gt;
+ &lt;p&gt;&amp;nbsp;&amp;nbsp; 4. Input 7r83Sb4HUd58Tz5p as "Transaction Key".&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  5. Input https://test.authorize.net/gateway/transact.dll as "Transaction Post Url".&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  6. When you finish test and want to use live account. Uncheck "Test Mode" option and change Api login ID and Transaction Key using your own value. Note, you need to also change "Transaction Post Url" from https://test.authorize.net/gateway/transact.dll  to https://secure.authorize.net/gateway/transact.dll.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  7. You can also test Authorize.net using your live account by check on "Test Mode" and input your live Api login ID and Transaction Key.  Note, for live account, the "Transaction Post Url" should be https://secure.authorize.net/gateway/transact.dll.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_Faqs.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Q. How to upgrade from trial version to official version?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A. Simply re-install official version to overwrite existing trial version, then module will work and keep your existing data.
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q. How to register my module?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: If you bought standard edition of Classified Pro module, you need to register your copy by provide your invoice id. As follows:&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;1. In "Cp_Admin" sub module, click "Help – Register Module", enter your invoice id while buying this module, click "Register".&lt;br/&gt;
+ &amp;nbsp;&amp;nbsp;2. If you install module on test site, don’t register it. &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;3. Unregistered copy of standard edition can only add up to 50 product items. &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;4. Enterprise edition and enterprise + source edition don’t need to register.&lt;br/&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q.The captcha image doesn’t show in product detail, how to solve it?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: It occurs in some DNN version with asp.net 4.0, check DNN forum at http://www.dotnetnuke.com/Resources/Forums/tabid/795/forumid/190/postid/394250/scope/posts/Default.aspx#394250. to see how to fix it.
+&lt;/p&gt;
+
+
+
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: How to integrate Google Maps/Google Earth into my products?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: When create department in  "Cp_Admin module - Amin Control Panel - Departments", check on "Integrate with Google Maps" option, then product which belong to it will have latitube/longitude properties to show in Google Maps.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: How to charge recursive?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: When create department in  "Cp_Admin module - Amin Control Panel - Departments", check on "Allow recursive charge" option, then product which belong to it can charge recursive. Note, if "sell property" of current department is "Portal Roles", then it will support recursive billing even this option is unchecked.&lt;br/&gt;&amp;nbsp;&amp;nbsp;
+  Note, you must enable "PayPal" payment gateway to charge recursive.&lt;/p&gt;
+
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I want seller receive money using their own accounts, how can I do that?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: By detault, module will use site defined accounts to receive all money. You can check on "Cp_Admin module - Amin Control Panel - Configurations - Store Settings - Send money to seller account" option to let seller receive money using their own accounts (PayPal, Google chekcout..).
+  &lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, if this option is checked, then seller must provide their own accounts (PayPal, Google checkout, Authorize.Net) in "Cp_Admin module - Seller Center - My Profile" to receive money.&lt;/p&gt;
+
+
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: Why I can't see Authorize.net and Stripe payment gateway while checking out?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Authorize.net (and Stripe) requires secure connection (https:) for live transaction. However, you can use unsecured connection (http:) to test Authorize.net (and Stripe) payment gateway by check the "Test Mode" option.&lt;/p&gt;
+
+
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: Why I can't use PayPal gateway to check out?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: To use PayPal, you must give "View Page" permission of current page to "All Users".
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I am a seller and want to give discount to my customers, how can I do it?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: In Cp_Admin module, click "User Control Panel - Seller Center - Product in carts ", you can give customers discount by modify item summary price.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I don't need some fields while editing products. For example, I don't need the "Sku" information, how can hide it?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Module has some built-in fields for product information. Like "Summary/Support/Sku/Weight/Image.......". You can control whether to use them for each deparment. For example, if you uncheck "Enable Sku Field" option while editing department in  "Admin Control Panel - Departments", then when post products which belong to this deparment, the "Sku" field will be hidden. It also will be hidden when display in product list and detail module.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Note, some fields will be hidden automatically for specific department. For example, if current department sell type is "Digital files", then the "Weight" will be hidden automatically.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: How can I create additional fields for product?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A:  For create short content fields, click "Admin Control Panel - System Data - Attributes". If you want to create long content (text/html based) for product, click "Admin Control Panel - Departments", then check enable "Specification 1...5" and specify their title and default value as your with. &lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I want clients enter their address (contact) information before check out, how can I do that ?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: 1, If what you sell is goods, then module will automatic require client to enter their ship address and bill address before check out.&lt;br/&gt;
+     &amp;nbsp;&amp;nbsp;&amp;nbsp; 2, If what you sell is portal roles/software and digital files/other services, then module will require client enter their bill address if you check the "Require Address" option for portal roles/software and digital files/other services department in "Admin Control Panel - Departments".&lt;br/&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp; 3, Module will also  require client enter their bill address If you specify tax rate for  portal roles/software and digital files/other services departments  "Admin Control Panel - Departments", module need bill address to calculate tax fees.&lt;br/&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: How can I use "Admin Control Panel - Promotions - Campaigns " to send promotion emails?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: 1, First, please login in as Host account, then click "Host - Host Settings - Advanced Settings - SMTP Server Settings" to see if your Smtp server is configure correctly.&lt;br/&gt;
+     &amp;nbsp;&amp;nbsp;&amp;nbsp; 2, Because send bulk mails is a time consumed operation, module will try to send a test mail via your host email account before send bulk mails, so you also need to check if your host email account (locate under "Host - Host Settings - Basic Settings - Host Details - Host Email") is valid.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp; 3, Sometimes module doesn't send bulk mails while running on localhost domain, don't worry about it. It will work on official domain names.&lt;br/&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: When I click product item in Cp_Product_List module, it doesn't show its detail, why?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Make sure your provide a valid "Cp_Product_Detail sub module page" for current product department. That page must have a Cp_Product_Detail module instance on it and its "Department" must be same as Cp_Product_List module instance. Module will display a wizard to help you create that detail page when you add department first time. You can also reconfigure it by click "Run detail page setting wizards"  in "Admin Control Panel - Departments".&lt;/p&gt;
+
+
+
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: Why the shipping fee is display as 0.00?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Module will take 0.00 as shipping fee for address which doesn't have shipping fee forum specified. You can add shipping fee forum by click "Admin Control Panel - Configuration - Shipping".&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: Why the tax fee is display as 0.00?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Tax charged based client billing country and state. You can add tax rate by click "Admin Control Panel - Departments".&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I want to approve products before display to public, how can I do that?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Click "Cp_Admin module - Admin Control Panel - Configurations - Store Settings", then check on "General - Approval before display:" option.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I don't want to seller attach videos (audio/images/document) to his products, how can I do that?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: Click "Cp_Admin module - Admin Control Panel - Configurations - Store Settings", you will see "Enable attach documents/Enable attach videos/Enable attach audio /Enable attach images " options under "General" section, uncheck them will hide related functions. For example, if you uncheck "Enable attach videos" option, then "upload related videos" button will disappear while seller edit his products.  &lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: I want to sell pdf files with this module, but it only allows me to upload winzip files, how to fix it?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A: In Cp_Admin module, click "Amin Control Panel - Configurations – Store Settings", expand "Sell downloadable files (Software/digital..etc)" section, enter "Downloadable file extensions" as your wish. For example, enter "Winzip Files(*.zip)|*.zip|Pdf files|*.pdf" to allow upload both *.zip and *.pdf files to sell.&lt;/p&gt;
+
+&lt;p&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;Q: We use Classified Pro module to sell software/digital files (video, audio, etc). The downloadable package we sell is big and clients have problem to download them after paid. How can I fix it?&lt;br/&gt;
+      &amp;nbsp;&amp;nbsp;A:  When sell downloadable files (software/digital files/audio/video, etc), user can download their ordered files at "Cp_Admin sub module - Buyer Center - My Products" after paid. By default, module will read download file and response it as file stream to let user save it on his computer. This works fine when file is not big. Besides that, it doesn't expose file location, so it can protect your files.&lt;br/&gt;&lt;br/&gt;
+
+   &amp;nbsp;&amp;nbsp;However, if your downloadable files are big. For example, each package is more than 100mb in size. These big files will need more time to response as stream, and users may need a lot of time to save it on his computer. &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;In this case, check on "Cp_Admin module - Admin Control Panel - Configurations - Store Settings - Software/digital files download method  - Show file url for download" option  to let user download quickly. User can even use some download tools to download it smoothly. Of course, expose file url will result some risk. But it is a better way to handle big files. &lt;/p&gt;</value>
+  </data>
+  <data name="OrderStatus_AwaitingPayment.Text" xml:space="preserve">
+    <value>Awaiting Payment</value>
+  </data>
+  <data name="OrderStatus_Canceled.Text" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="OrderStatus_Paid.Text" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="OrderStatus_Refunded.Text" xml:space="preserve">
+    <value>Refunded</value>
+  </data>
+  <data name="ChangeOrderStatus.Text" xml:space="preserve">
+    <value>Are you sure to change order status for these items?</value>
+  </data>
+  <data name="OrderStatus_All.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Help_VideoConvert_Offline.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;We also provide a windows appliation which lets you convert videos in your own computer. You can get it as follows:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Visit &lt;a href="http://DnnModule.com/FreeDownload.aspx" target="_blank"&gt;http://DnnModule.com/FreeDownload.aspx&lt;/a&gt;, download "Video convert application " file.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Unzip your download files to your cumputer.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Click "VideoConvert.exe" to run it.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Note, you must have .net framework installed on your computer to run it. You can install .net framework via windows update or other ways. Search Google for more information.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_VideoConvert_Online.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;To convert videos online, first you need to download execute packages:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Visit &lt;a href="http://DnnModule.com/FreeDownload.aspx" target="_blank"&gt;http://DnnModule.com/FreeDownload.aspx&lt;/a&gt;, download "Video convert execute package" file.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Unzip your download files to your cumputer.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Copy ffmpeg and mencoder folder and all files which under them to DesktopModules\CrossClassified\Exe directory of your site.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Second, web server must give execute permission to DesktopModules\CrossClassified\Exe folder, see sample image below. If you can access web server, configure it as follows:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. On the Windows 2003 server, open the Internet Information Services Manager.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Expand your site directory to DesktopModules\CrossClassified\exe folder, right click it, select "Properties", change its execute permission as "Scripts and Execute".&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Contact your hosting provider if you can't access web server.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_Payment_DineroMail.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;DineroMail is an online payment platform which allows any merchant
+to sell and receive payments in Latinamercia.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;You can try input "dineromail.test.checkout@gmail.com" as "Merchant Account" for test in Argentina/Chile and Mexico. &lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Note, it will be real real transactions so don't pay too much money while testing.
+&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Unlike PayPal, DineroMail doesn't provide any postback mechanism after client paid, so module has no way to know if money is really received. The typical process will like followings:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Client choose "DineroMail" payment gateway and paid on DineroMail site, then DineroMail will redirect him to your site.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. His order status will be changed as "awaiting payment" after redirect to your site. A mail will send to store administrator and seller about his order information.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Store administrator then change client order status as "paid"  by click "Admin Control Panel - Sales Report - Order History " when confirm that  money already received, and do necessay work, like shipping.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. If client  ordered is software or digital files, he can download them after his order status has been changed as "paid".
+&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;However, if you change "Admin Control Panel - Configurations - Store Settings - DineroMail payment gateway - Verify paid status" value from "Manual" to "Auto", then client order status will be automatic changed as "paid" after redirect to your site from DineroMail. But as mentioned above, DineroMail doesn't provide any postback mechanism to let module verify if money is really received. So in theory, a experienced hacker can pretend the redirect process without paid to grift you. Don't change "Verify paid status " as "Auto" unless followings:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. You don't care about these malice actions .&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. What you sell is goods which need to shipping, not software (digital files) or portal roles. In this case, if you found malice order without paid, you can delete these order information and don't shipping to them.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3.&lt;font color="red"&gt; Important notice, please beware of the risks before change "Verify paid status " to  "Auto".&lt;/font&gt; 
+&lt;/p&gt;</value>
+  </data>
+  <data name="Help_SilverlightUploadControl.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;You need to add mime type support on your web server before use Silverlight upload control, as follows.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. On the Windows 2003 server, open the Internet Information Services Manager.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Expand the Local Computer Server.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Right-click the local computer server and select Properties.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. Select the MIME Types tab.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;5. Click the New... button and enter the following information:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;6. Associated Extension box: .xap.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;7. MIME Type box: application/x-silverlight-app&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;8. Click Ok.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;9. Restart the World Wide Web Publishing service.&lt;/p&gt;</value>
+  </data>
+  <data name="secHelp_UploadControl.Text" xml:space="preserve">
+    <value>Silverlight upload control doesn't display? Expand here to see how to enable it.</value>
+  </data>
+  <data name="lblAddressEmail.Text" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="lblTitle.Text" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="Help_AddFromFtp.Text" xml:space="preserve">
+    <value>&lt;p&gt;You can choose an existing file from portal folder as download files (if you are a site administrator), please note:&lt;br/&gt;&lt;br/&gt;
+
+1. You need to upload files by click DNN standard menu "Admin - File Manager" first.&lt;br/&gt;&lt;br/&gt;
+
+2. If you have large files to upload (e.g. your zip package is is 100mb), we recommend you to upload them via ftp tools to portal folder first. Your portal folder locates under potals\[your portal id] of your sites folder. For example, if your portal id is 0, then your portal folder should be Portals\0\.&lt;br/&gt;&lt;br/&gt;
+
+3. We strongly recommend you to upload files under sub folder. For example, create a sub folder via DNN standard menu "Admin - File Manager" named "software", then upload your files to portals\0\software folder via ftp tools .&lt;br/&gt;&lt;br/&gt;
+
+4. After file upload, click DNN standard menu "Admin - File Manager", check on "Recursive" option and click "Synchronize Files" button to synchronize them to DNN file system.&lt;br/&gt;&lt;br/&gt;
+
+
+5. After you choose a file and click "Add File", Classified Pro will copy it to a separate folder and encrypt it, so only users who have ordered related product can download it.  However, your original file is still on your portal folder. And because your original file is not encrypted, anyone who knows its url can download it directly without buy your product. So, we recommend you to delete original files if you don't need it any more. You can check on "Delete this file after add" option to let module delete original files automatically, or delete it manually by click DNN standard menu "Admin - File Manager".&lt;br/&gt;&lt;br/&gt;
+
+6. Only site administrator can access "Add from existing files" button, so, don't worry about normal sellers misuse it.&lt;br/&gt;&lt;br/&gt;
+
+&lt;/p&gt;</value>
+  </data>
+  <data name="secHelp_AddFromFtp.Text" xml:space="preserve">
+    <value>How to add download files from ftp</value>
+  </data>
+  <data name="lblAction.Text" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Help_Payment_Paypal.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&lt;font color="red"&gt;Important notice, you must give "View Page" permission of current page (and also Cp_Admin sub module) to "All Users" to use PayPal payment gateway.&lt;/font&gt; &lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp; Module uses PayPal IPN (Instant Payment Notification) to verify transaction. During checkout, PayPal will try to post back data to your site and module will check these data (this is why you need to give "View Page" permission to "All Users"). When test in localhost domain names, this process can't be performed (PayPal doesn't know how to locate your localhost site). In this case, please be sure to click the "Return to yoursitename" button which is generate by PayPal after paid, otherwise module will ignore your payment. However, when your site goes live (can be accessed via Internet so PayPay can post back data), it doesn't matter if you don't click the button.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;PayPal allows 3-rd store to defind product name which will be sold, but the product name must &lt;font color="red"&gt;be alpha-numeric (a-z, A-Z, 0-9, blank space)&lt;/font&gt;. So, if a product name is valid (e.g. "Dell Computer t4200"), Classified Pro will submit it to PayPal payment center, and buyer can view that. If it is not valid (e.g. product name is "戴尔电脑"), Classified Pro will generate a new product name (using "Order" + current date/time), and submit it to PayPal.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;You can try test PayPal payment gateway by creating small amount price products (e.g. $0.1) and buy it. Besides that, PayPal sandbox provides a way to simulate real transaction without spend the true money, you can use it for testing purposes. We have created a few test accounts before, you can try them as follows:&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  1. In "Cp_Admin sub module - Admin Control Panel - Configurations - Store Settings - PayPal", check on "Use PayPal Sandbox" option.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;  2. Input "maosf2_1311946078_biz@sina.com" as  "PayPal Account", this account is created by DnnModule.com to offer client test. You can use your own if you have created a bussiness account on &lt;a href="https://developer.paypal.com/" target="_blank"&gt;https://developer.paypal.com/&lt;/a&gt;.&lt;/p&gt;
+ &lt;p&gt;&amp;nbsp;&amp;nbsp; 3. Before you check out via PayPal in the shopping cart of this site, open a new window of &lt;a href="https://developer.paypal.com/" target="_blank"&gt;https://developer.paypal.com/&lt;/a&gt;and login in with user name:"maosf2008@sina.com", password:"dnnmodules.cn" first.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp; 4. After you login to https://developer.paypal.com/, click "Confirm Order" button in the shopping cart of current site, module will navigate to PayPal test site, enter "maosf1_1311945954_per@sina.com" as PayPal account and "dnnmodules.cn" as its password, then you can check out in PayPal test site.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp; 5. PayPal is upgrading their sandbox environment since 07/2012, the sandbox doesn't post back data anymore since then. PayPal promised that they will fix this problem but don't know when it will be fixed. If you paid successfully in sandbox but your cart items still remain, please also click the "Return to yoursitename" button after paid. However, the PayPal real transaction works like before, so it doesn't matter if you don't click the button in real transactions.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp; &lt;font color="red"&gt;6. Please don't change any information related to above account (maosf2008@sina.com, maosf2_1311946078_biz@sina.com, maosf1_1311945954_per@sina.com)&lt;/font&gt;, these accounts are used in all clients of DnnModule.com for their test purpuses. Thanks for your support.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp; 7. If you have problem while using above accounts (maosf2008@sina.com, maosf2_1311946078_biz@sina.com, maosf1_1311945954_per@sina.com), then they must &lt;font color="red"&gt;be modified by some unmoral users&lt;/font&gt;. In this case, you may need to visit &lt;a href="https://developer.paypal.com/" target="_blank"&gt;https://developer.paypal.com/&lt;/a&gt; and create your own test accounts.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_SendReceiveMail.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Mail notification is everywhere in Clsssified pro module, whenever you place a order/create a help ticket/submit ratings, module will send related mails. To send &amp; receive these mail notification, please check below information.&lt;br/&gt;&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1, First, please login in as Host account, click "Host - Host Settings - Advanced Settings - SMTP Server Settings" to see if your Smtp server is configure correctly. See image below.&lt;br/&gt;&lt;br/&gt;
+     &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 2, Make sure your store email/seller email/buyer email address are valid.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 3, Sometimes module doesn't send mails while running on localhost domain, don't worry about it. It will work on official domain names.&lt;br/&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_ListPage.Text" xml:space="preserve">
+    <value>Select when click a item, which page will display related products. That page should have a Cp_Product_List sub module instance on it. If you don't specify, module will use the default list page for selected department (which is specified in "Cp_Admin sub module - Admin Control Panel - Departments") to display.</value>
+  </data>
+  <data name="StepFinishButton.Text" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Help_HowToStart.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Classified Pro is an enterprise-class DNN module which helps you to create an online store, auction website and also publish classified ads. It contains &lt;font color="red"&gt;16&lt;/font&gt; sub modules and &lt;font color="red"&gt;1&lt;/font&gt; skin object. When you put any sub module to a page for the first time, Classified Pro will show a &lt;font color="red"&gt;"Classified Pro Setup Wizard"&lt;/font&gt; to help you to setup it. We &lt;font color="red"&gt;strongly recommend&lt;/font&gt; you to follow this wizard to configurate Classified Pro module, it will save you a lot of time. However, if you want to setup it by yourself, please follow below steps:&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Add "Cp_Admin" sub module to a page to manage data. "Cp_Admin" sub module is used to &lt;font color="red"&gt;manage all data&lt;/font&gt; in Classified Pro package, in most cases, you should put only 1 instance of it per portal (if you want to support content localization or split Cp_Admin sub module feature, you can put multiple instances per portal). Please make sure the "view permission" of Cp_Admin sub module (and its parent page) is available for &lt;font color="red"&gt;"All Users"&lt;/font&gt;. The PayPal payment gateway requires this permission.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Configure payment gateway (PayPal / Google Checkout / Authorize.net / Stripe / DineroMail / Manual..etc) at "Cp_Admin sub module - Admin Control Panel - Configurations - Store Settings".
+ Module has some predefined test accounts, you can use them to test transactions first, then switch to real acounts when site goes live.&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Create at least 1 department in "Cp_Admin sub module - Admin Control Panel  - Departments", a detail page wizard will display after you update department information.
+ We recommend you to choose "Yes, create a new page and add Cp_Product_Detail module instance for me." option to let Classified Pro configure it for you. &lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. Now you can add products under "Cp_Admin sub module - Seller Center" section. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;5. Put "Cp_Product_List" sub module to a page, you will see your products. &lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;6. Congratulations! Now you have a powerful yet easy to use store, try click a product in "Cp_Product_List" sub module, add it to cart, check out with your payment gateway to see how it works. &lt;br/&gt;&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;7. There are 16 sub modules in Classified Pro package. Besides "Cp_Admin" sub module, the other 15 sub modules are all &lt;font color="red"&gt;used to display&lt;/font&gt; related data. For example, you can put "Cp_Product_Tag" module on a page to show product tags, put "Cp_Product_Category" module to show categories...etc.
+ Unlike "Cp_Admin" sub module, you can add &lt;font color="red"&gt;multiple instances&lt;/font&gt; of other 15 sub modules to different pages (or on same page if you like). These 15 sub modules are all template based, you can build your own templates to show related data if you don't like the default layout.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The frequently-used sub modules are Cp_Product_List (show products/listings with data list or data grid), Cp_Product_ListTab (Display categories with JQuery UI tabs, and show products/listings for each category as tab content), Cp_Product_Slideshow (show featured products/listings with JavaScript slideshow), Cp_Product_Detail (show product/listing detail), Cp_Product_MiniCart (the mini shopping cart), Cp_Product_Search (provide search function), and Cp_Product_Category (show categories), Cp_Product_Tag (show tags). Other sub modules are also useful in some situations. For more detail, please check "Cp_Admin sub module - Help - 16 sub modules and 1 skin object in Classified Pro" section.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;8. Classified Pro also contains a skin object which you can include in your skin, check &lt;a href="http://DnnModule.com" target="_blank"&gt;http://DnnModule.com&lt;/a&gt; for live demo.
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;9. Classified Pro supports &lt;font color="red"&gt;content localization&lt;/font&gt; well (e.g. publish product information with both English and Simple Chinese). For more detail, please check "Cp_Admin sub module - Content Localization (Multiple Languges Content) Support" section.&lt;br/&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;10. If you upgrade from trial version to official version, 
+simply re-install official package to overwrite trial version, your existing data will be kept after upgrade.&lt;br/&gt;&lt;/p&gt; 
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;11. Departments control the behavior of Classified Pro. To build a standard online store, try create at least 1 "Fixed Price" department;
+ to build an online auction site, try create at least 1 "Auction" department;
+ to publish classified ads (advertising goods or promoting services, or posting news articles / photos / videos / audio / documents / jobs /real estate /cars...etc),
+ try create at least 1 "Ad" department.
+ Of course, you can create multiple departments to let Classified Pro handle both online store, auction system, and classified ads on the same site.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Note, when you run the "Classified Pro Setup Wizard" (this wizard will display when there is no department specified), module will create some basic departments for you. You can choose to keep them or delete as your wish later.&lt;br/&gt;&lt;br/&gt;
+
+	   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Tips: why do we need department? Well, department offers the best solution to organize information. For example, if you want to sell portal roles and DNN modules, auction second-hand cars, and also list house rent information (not sell, just list) on current site. It is hard to organize these products without departments. But with department, things will become easy. You can do it as follows:&lt;br/&gt;
+
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(1). Create a "Fixed Price" department, name it as "Portal Roles", choose its "Sell Property" as "2 - Portal Roles".&lt;br/&gt;
+
+   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(2). Create another "Fixed Price" department, name it as "DotNetNuke Modules", choose its "Sell Property" as "1 - Software/Digital Files".&lt;br/&gt;
+
+   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(3). Create a "Auction" department, name it as "Second-hand Cars", choose its "Sell Property" as "0 - Physical Goods".&lt;br/&gt;
+
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(4). Create a "Ad" department, name it as "House Rent".&lt;br/&gt;
+
+
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(5). Create attributes for each department if necessary. For example, you can create an "Area" attribute for "House Rent" department.&lt;br/&gt;
+
+   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(6). Now you can publish products for each department. And you can then specify product attribute values while editing a product. For example, you can enter "300 square meter" as "Area" when publish a new house.&lt;br/&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="Help_Register.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;You currently have Classified Pro standard edition, please enter your invoice id while buying this module and click "Register". Note, don't click "Register" button if you just want to test this module on your site!!&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Normally seller will send invoice id to your mail address when you buy module. You can also login to site where you bought this module to find invoice id. If you bought it from snowcovered.com, click "My Account" after login to snowcovered.com. If you bought it from http://DnnModule.com, visit http://DnnModule.com/store.aspx and click "My orders" to find invoice id.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Unregisted version only allows you add up to 50 products. Contact xiaoqi98@msn.com if you have any problem while registering this module.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Thanks for your support.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_Showcase.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;If you want to be a showcase of our Classified Pro module, please fill your site information and click "Add Showcase", we will include your site in our showcase list (http://DnnModule.com/Showcase.aspx) and add a link to your site. This will also improve your site seo performance because external site link is vital to your Google page rank.&lt;br/&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Thanks for your support.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_Payment_GoogleCheckout.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Currently Google Checkout can only be applied to USA and England, and only accept US dollar ($).
+&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;While Google also provide a postback mechanism after client paid to let you check if money is really received like PayPal, it requires secure connection (https: ) and will also check if your site is digital signed by specific companies. This is unacceptable for most web sites (just compare to PayPal which doesn't need https and digital signed). So it is hard to know if money is really received unless login to your Google Checkout account. The typical transaction process will like followings:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Client click "Google Checkout" payment gateway button, site will redirect him to Google Checkout site.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Client click "Place your order now " button that appears beneath his order total. The ensuing page will display a link to return to your store. Client click that link to return to your store.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. His order status will be changed as "awaiting payment" after redirect to your site. A mail will be sent to store administrator and seller about his order information.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. Store administrator then login to his Google Checkout account and confirm that money already received, then change client order status as "paid"  by click "Admin Control Panel - Sales Report - Order History", and do necessay work, like shipping.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;5. If client ordered is software or digital files, he can download them after his order status has been changed as "paid".
+&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;However, if you change "Admin Control Panel - Configurations - Store Settings - Google checkout payment gateway - Verify paid status" value from "Manual" to "Auto", then client order status will be automatic change as "paid" after redirect to your site from Google. But as mentioned above, it is hard to know if money is really received unless login to your Google Checkout account. So in theory, a experienced hacker can pretend the redirect process without paid to grift you. Don't change "Verify paid status " as "Auto" unless followings:&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. You don't care about these malice actions .&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. What you sell is goods which need to shipping, not software (digital files) or portal roles. In this case, if you find malice order without paid, you can delete these order information and don't shipping to them.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3.&lt;font color="red"&gt; Important notice, please beware of the risks before change "Verify paid status " to  "Auto".&lt;/font&gt; 
+&lt;/p&gt;</value>
+  </data>
+  <data name="Help_Payment_GoogleCheckout_Sandbox.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The Sandbox is a Google Checkout environment that is designed to help you test your implementation by signing in as a buyer and placing an order without incurring charges. This lets you experience and test the steps that follow a purchase, such as receiving notification and state changes from the Checkout server. &lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Visit &lt;a href="http://code.google.com/intl/zh-CN/apis/checkout/developer/Google_Checkout_Basic_HTML_Sandbox.html" target="_blank"&gt;http://code.google.com/intl/zh-CN/apis/checkout/developer/Google_Checkout_Basic_HTML_Sandbox.html&lt;/a&gt; to see how to create Google sandbox accounts.
+&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_Template.Text" xml:space="preserve">
+    <value>All sub modules in Classified Pro package are template based, you can customize your desired display effect by create different templates. See "Classified Pro user guide.pdf" for more detail.</value>
+  </data>
+  <data name="lblLegend.Text" xml:space="preserve">
+    <value>Legend</value>
+  </data>
+  <data name="Tip_UpdateSuccess.Text" xml:space="preserve">
+    <value>Update Successfully.</value>
+  </data>
+  <data name="Tip_DeleteSuccess.Text" xml:space="preserve">
+    <value>Delete Successfully.</value>
+  </data>
+  <data name="Tip_ValueCanBeModify.Text" xml:space="preserve">
+    <value>Indicates field which value can be modified.</value>
+  </data>
+  <data name="Tip_InvalidEmail.Text" xml:space="preserve">
+    <value>Invalid email address.</value>
+  </data>
+  <data name="Help_ReadUserGuide.Text" xml:space="preserve">
+    <value>Click &lt;a href="{0}" target="_blank"&gt;&lt;font color="red"&gt;here to read Classified_Pro_User_Guide.pdf&lt;/font&gt;&lt;/a&gt; before configure your store.</value>
+  </data>
+  <data name="secHowtostart.Text" xml:space="preserve">
+    <value>New to Classified Pro? Expand here to see how to start</value>
+  </data>
+  <data name="Unlimited.Text" xml:space="preserve">
+    <value>[Unlimited]</value>
+  </data>
+  <data name="btnUpLevel.Text" xml:space="preserve">
+    <value>Up Level</value>
+  </data>
+  <data name="lblCoupon.Text" xml:space="preserve">
+    <value>Coupon</value>
+  </data>
+  <data name="Tip_LinkTarget.Text" xml:space="preserve">
+    <value>Select "Self Window" if you want to open link target in same tab of browser.</value>
+  </data>
+  <data name="li_All.Text" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Tip_GoogleMap.Text" xml:space="preserve">
+    <value>&lt;p&gt;You can provide latitude and longitude of your listing (product), and show it via Google Map. Please note:&lt;br/&gt;&lt;br/&gt;
+1. You must provide both latitude and longitude to show in Google Map.&lt;br/&gt;&lt;br/&gt;
+2. There are some free web services which can help you find latitude and longitude, e.g.&lt;a href="http://geocoder.us/" target="_blank"&gt;http://geocoder.us &lt;/a&gt;&lt;br/&gt;&lt;br/&gt;
+3. Latitude and longitude are both numeric fields, e.g. -83.022206, 39.998264&lt;br/&gt;&lt;br/&gt;
+4. The map title displays while user click the red air bubble (which indicate product position, see sample image). Module will use product name instead if you don't specify it.
+ &lt;/p&gt;</value>
+  </data>
+  <data name="li_SortField_CreationDateAsc.Text" xml:space="preserve">
+    <value>Creation Date Ascending</value>
+  </data>
+  <data name="li_SortField_CreationDateDesc.Text" xml:space="preserve">
+    <value>Creation Date Descending</value>
+  </data>
+  <data name="li_SortField_LastModifiedDateAsc.Text" xml:space="preserve">
+    <value>Last Modified Date Ascending</value>
+  </data>
+  <data name="li_SortField_LastModifiedDateDesc.Text" xml:space="preserve">
+    <value>Last Modified Date Descending</value>
+  </data>
+  <data name="li_SortField_NameAsc.Text" xml:space="preserve">
+    <value>Name Ascending (A - Z)</value>
+  </data>
+  <data name="li_SortField_NameDesc.Text" xml:space="preserve">
+    <value>Name Descending (Z - A)</value>
+  </data>
+  <data name="li_SortField_PublishDateAsc.Text" xml:space="preserve">
+    <value>Publish Date Ascending</value>
+  </data>
+  <data name="li_SortField_PublishDateDesc.Text" xml:space="preserve">
+    <value>Publish Date Descending</value>
+  </data>
+  <data name="li_SortField_PurchasePriceAsc.Text" xml:space="preserve">
+    <value>Purchase Price Ascending (for fixed price department only)</value>
+  </data>
+  <data name="li_SortField_PurchasePriceDesc.Text" xml:space="preserve">
+    <value>Purchase Price Descending (for fixed price department only)</value>
+  </data>
+  <data name="li_SortField_StartPriceAsc.Text" xml:space="preserve">
+    <value>Auction Start Price Ascending (for auction department only)</value>
+  </data>
+  <data name="li_SortField_StartPriceDesc.Text" xml:space="preserve">
+    <value>Auction Start Price Descending (for auction department only)</value>
+  </data>
+  <data name="li_SortField_ViewsAsc.Text" xml:space="preserve">
+    <value>Views Ascending</value>
+  </data>
+  <data name="li_SortField_ViewsDesc.Text" xml:space="preserve">
+    <value>Views Descending</value>
+  </data>
+  <data name="lbtnSetupWizard.Text" xml:space="preserve">
+    <value>Run Classified Pro Setup Wizard (Recommend for new users)</value>
+  </data>
+  <data name="li_BillFrequency_Day.Text" xml:space="preserve">
+    <value>Day(s)</value>
+  </data>
+  <data name="li_BillFrequency_Month.Text" xml:space="preserve">
+    <value>Month(s)</value>
+  </data>
+  <data name="li_BillFrequency_Week.Text" xml:space="preserve">
+    <value>Week(s)</value>
+  </data>
+  <data name="li_BillFrequency_Year.Text" xml:space="preserve">
+    <value>Year(s)</value>
+  </data>
+  <data name="li_ShippingFeeType_Default.Text" xml:space="preserve">
+    <value>Depends on the shipping method which client choose</value>
+  </data>
+  <data name="li_ShippingFeeType_FixedShippingFee.Text" xml:space="preserve">
+    <value>Fixed shipping fee</value>
+  </data>
+  <data name="li_ShippingFeeType_NoShippingFee.Text" xml:space="preserve">
+    <value>No shipping fee</value>
+  </data>
+  <data name="li_TaxRateType_Default.Text" xml:space="preserve">
+    <value>Use the site defined tax rate of current department</value>
+  </data>
+  <data name="li_TaxRateType_FixedTaxRate.Text" xml:space="preserve">
+    <value>Fixed tax rate</value>
+  </data>
+  <data name="li_TaxRateType_NoTax.Text" xml:space="preserve">
+    <value>No Tax</value>
+  </data>
+  <data name="li_TaxRateType_PriceIncludingTax.Text" xml:space="preserve">
+    <value>Price Including Tax</value>
+  </data>
+  <data name="plLocationCity.Help" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="plLocationCity.Text" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="plLocationCountry.Help" xml:space="preserve">
+    <value>Select Country</value>
+  </data>
+  <data name="plLocationCountry.Text" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="plLocationState.Help" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="plLocationState.Text" xml:space="preserve">
+    <value>State/Province</value>
+  </data>
+  <data name="plLocationTown.Help" xml:space="preserve">
+    <value>Town</value>
+  </data>
+  <data name="plLocationTown.Text" xml:space="preserve">
+    <value>Town</value>
+  </data>
+  <data name="Tip_Location.Text" xml:space="preserve">
+    <value>Specify the location property for this product (listing), this is useful if you want to allow visitor to search products based location. Location initial data is managed at "Cp_Admin sub module -  Admin Control Panel - Configurations - Location". Module support 4 level of regionalism (country, state/province, city, town). For example, country = USA, state/province = California, city = Los Angeles, town = Bell, or country = China, state/province = YunNan, city = KunMing, town = WuHua.</value>
+  </data>
+  <data name="Tip_ManagePermission.Text" xml:space="preserve">
+    <value>Note, only site administrators or product manage roles can access this tab. Normal user will use the default permissions which are specified in "Cp_Admin sub module - Admin Control Panel - Configurations - Store Settings".</value>
+  </data>
+  <data name="Help_ChargeCommision.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Classified Pro is multi-seller based. By default, only site administrators can post products and upload files on your site. You can specify other roles which can post products and upload files at "Cp_Admin sub module - Admin control panel - Seller Roles". If you want, you can also charge commission from seller sales, as follows:&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;1. &lt;font color="red"&gt;Don't check&lt;/font&gt; on the "Send money to seller account" option at "Cp_Admin sub module - Admin control panel - Configurations - Store Settings", this will make sure all transaction money will be sent to site defined account. For example, if you enable PayPal payment gateway, and enter "support@DnnModule.com" as "Cp_Admin sub module – Admin control panel – Configurations – Store Settings - PayPal payment gateway – PayPal account", then when a seller sale $1000, all these $1000 will be sent to support@DnnModule.com.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;2. When add/edit department at "Cp_Admin sub module - Admin Control Panel - Departments", enter commission percent as "Charge Percent". For example, if you enter 20, 
+then when a seller sale $1000, he should get $800, and your commision will be $200.&lt;br/&gt;&lt;br/&gt;
+
+
+&amp;nbsp;&amp;nbsp;3. Since all money are sent to site defined account, it is your responsibility to distribute seller sales to them periodically. You can choose to send them once a week/ a month/ a year, or any period you wish. Click "Cp_Admin sub module – Admin – Sales Report - Sales Statistic", you can search seller sale (and site commission) in a certain period. For example, if you enter "20" as department charge percent, then when a seller sale $1000 in this month, he should get $800, and you can keep $200.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;As you can image, you should send the $800 to seller. Seller can define his bank account information (or PayPal account) at "Cp_Admin sub module – Seller Center – My Profile", he can provide his PayPal account / Direct Deposit / Check information which can be used to receive money from you, you can view these information at "Cp_Admin sub module – Admin – Sales Report - Sales Statistic".&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;4. This is the same process as a DNN developer sell modules/skins on DNN official store. When a client buy a module/skin from DNN official store, all money will be sent to DNN store account. And DNN staff will charge certain percent from developer sales, and send the rest money back to developer twice per month. Developer can choose to receive these money via PayPal, or Direct Deposit, or check.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp; Note, besides charge commission, you can also use Classified Pro to sale portal roles (seller roles) to get money. Check "How to sale portal roles (seller roles)" section for more details.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_SellRole.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;Classified Pro allows you to sell goods / software(digital files) / portal roles / virtual items (services). To sell portal roles, please follow below steps:&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;1. When you run "Classified Pro setup wizard", it will display a option to let you choose "Sell portal roles". If you don't check that option, you need to create a fixed price department later at "Cp_Admin sub module - Admin Control Panel - Departments", choose its "Sell property" as "2 - Portal Roles".&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;2. Create roles (which used to sell, e.g. "Vip", "Golden Vip") at DNN built-in menu "Admin - Security Roles", make sure the "Auto Assignment" option is not checked while creating them.&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;3. Now you can create a product to sell these role in "Cp_Admin module - Seller Center - My Fixed Price Listings".&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Please note.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(1). Only site administrator can create products which used to sell portal roles.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(2). You can also add download files to a product which related to portal roles. Buyer can download these files before his role is expired.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(3). You can use "product options" to sell same role with different expire days (or different role).&lt;br/&gt;
+ 
+&amp;nbsp;&amp;nbsp;(4). Classified Pro allows you to charge recursive for portal roles (and also for other products if its department "Allow recursive charge" option is checked).&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(5). It is useless to sell "Registered Users" role because it is "Auto Assignment".&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;Classified Pro is multi-seller based. By default, only site administrators can post products and upload files on your site. You can specify other roles which can post products and upload files at "Cp_Admin sub module - Admin control panel - Seller Roles". If you want, you can use Classified Pro module to sell these seller roles, so user needs to buy (subscribe) these seller roles first before post products to your site. You can also charge seller roles based different conditions (departments, product count, disk quota, etc). For example:&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(1). Add "Vip" and "Golden Vip" roles in "Cp_Admin sub module - Admin control panel - Seller Roles", give "Vip" role 100 product quota and 50mb disk quota, give "Golden Vip" role 500 product quota and 500mb quota.
+ &lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(2). Create products at "Cp_Admin module - Seller Center - My Fixed Price Listings" to sell these two roles.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;(3). Now when a user buy and paid for "Vip" product, he can post up to 100 products on your site, and can upload 50mb files on your site. If he buy and paid for "Gloden Vip" product, he will get more quota.&lt;br/&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="Tip_GoogleMap_Hide.Text" xml:space="preserve">
+    <value>Note, if you don't need "Google Map" property for current department, you can click "Cp_Admin sub module -  Admin Control Panel - Departments", edit current department, uncheck its "Allow Google Map" property, then this "Google Map" tab will be hidden.</value>
+  </data>
+  <data name="Tip_Location_Hide.Text" xml:space="preserve">
+    <value>Note, if you don't need location property for current department, you can click "Cp_Admin sub module -  Admin Control Panel - Departments", edit current department, uncheck its "Allow Location" property, then this location tab will be hidden.</value>
+  </data>
+  <data name="Help_CreateBanner.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;As you can see, Classified Pro allows you to show products / auction listings / ads with JavaScript slideshow (via Cp_Product_Slideshow sub module) and Adobe Flash slideshow (via Cp_Product_ListDashboard sub module). When click a slideshow item, module will navigate to Cp_Product_Detail sub module to show its detail. This process works fine in most cases. &lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;However, you can also use Classified Pro module to create classical banners (slideshow) if necessary. For example, when click a slideshow item, redirect to "Home" page, not to Cp_Product_Detail sub module page. You can do it as follows:&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;1. Create a specific category in "Cp_Admin sub module - Admin Control Panel -  System Data - Categories", name it like "Banner Slideshow".&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;2. Prepare a few photos (it is better that they have same width and height), add them in "Cp_Admin sub module - Seller Center - My Classified Ads", select their category to "Banner Slideshow". Specify "Link Url" propery for each item. For example,
+for "photo a", you can link to "Home" page, for "photo b", you can link to "Services" page.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;3. Put Cp_Product_Slideshow sub module instance to a page, select its "Listing Source" to "Banner Slideshow" category only, and choose a slideshow mode to show them.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;4. Now when user click a slideshow item, he will be navigated to related pages.&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;5. View &lt;a href="http://dnnmodule.com/Modules/CrossPhotoGallery/DNNPhotoSlideshow-BootstrapCarousel.aspx" target="_blank"&gt;http://dnnmodule.com/Modules/CrossPhotoGallery/DNNPhotoSlideshow-BootstrapCarousel.aspx&lt;/a&gt; for live demo.
+&lt;/p&gt;</value>
+  </data>
+  <data name="secHelp_CreateBanner.Text" xml:space="preserve">
+    <value>How to create classical banners (slideshow)</value>
+  </data>
+  <data name="hlAdminControlPanel.Text" xml:space="preserve">
+    <value>Admin Control Panel</value>
+  </data>
+  <data name="Help_SplitCpAdmin.Text" xml:space="preserve">
+    <value>"Cp_Admin" sub module is used to manage all data in Classified Pro package, in most cases, you only need 1 instance per portal. However, it also allows you to split its content into different parts and show these parts on different pages. For example, if you want to separate "Admin Control Panel" / "Seller Center" / "Buyer Center" sections into different pages, you can do it as follows:&lt;br/&gt;&lt;br/&gt;
+1. Create a page (e.g, "Store Admin"), and put a Cp_Admin sub module instance on it. Click "Admin Control Panel - Configurations - Global Settings", under "Cp_Admin sub module layout content" section, select "Admin Control Panel only", then this instance of Cp_Admin sub module will only show its "Admin Control Panel" part.&lt;br/&gt;&lt;br/&gt;
+2. Create another page (e.g, "Seller Center"), and put another Cp_Admin sub module instance on it. Under "Cp_Admin sub module layout content" section, select "Seller Center only", then this instance of Cp_Admin sub module will only show its "Seller Center" part.&lt;br/&gt;&lt;br/&gt;
+3. Again, create another page (e.g, "Buyer Center"), and put another Cp_Admin sub module instance on it. Under "Cp_Admin sub module layout content" section, select "Buyer Center only" to make it only show its "Buyer Center" part. Note, the "view permission" of this Cp_Admin sub module instance (and the "Buyer Center" page) must be &lt;font color="red"&gt;available for "All Users"&lt;/font&gt;. The PayPal payment gateway requires this permission. However, "Store Admin" and "Seller Center" pages in step 1/2 don't need this permission.&lt;br/&gt;&lt;br/&gt;
+4. If DNN built-in "Content Localization" feature is enabled (check "Cp_Admin sub module -  Content Localization (Multiple Languges Content) Support" section for detail), and you also want to split Cp_Admin content in this case, you need to &lt;font color="red"&gt;carry above process for each language&lt;/font&gt;. For example, to support both English and Chinese, you need to create 3 pages ("Store Admin", "Seller Center", "Buyer Center") for English culture, and put 3 instances of Cp_Admin sub module to these pages. And also need to do same works for Chinese culture (create 3 pages for Chinese culture, and put 3 instances of Cp_Admin sub module too).</value>
+  </data>
+  <data name="imgContentLocalization.Text" xml:space="preserve">
+    <value>Content Localization</value>
+  </data>
+  <data name="lblClosePage.Text" xml:space="preserve">
+    <value>Close Page</value>
+  </data>
+  <data name="ProductWasDeleted.Text" xml:space="preserve">
+    <value>This product was already deleted, please contact site administrator.</value>
+  </data>
+  <data name="hlHelp.Text" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Help_ContentLocalization.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Localization in DNN can be done in two different ways, Classified Pro supports both of them well. Which way to choose depends on the content of your site, and how you 
+
+want to localize this content for different languages and countries.&lt;br/&gt;&lt;br/&gt;
+   
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The simplest way to start offering your site in multiple languages is to &lt;font color="red"&gt;add a portal per language&lt;/font&gt;. This will create a completely separate 
+
+environment for the new language, which is great if content is not really related, and you have independent editors taking care of the content for the site. Classified Pro supports this situation 
+
+easily using its setup wizard. For example, if you want to sell products to both English and Chinese customers, you can do it as follows:&lt;br/&gt;&lt;br/&gt;
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Create two portals in same DNN instance, one for Chinese (e.g. cn.DnnModule.com), the other for English (e.g. en.DnnModule.com).&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Put any sub module of Classified Pro to cn.DnnModule.com, it will show a setup wizard to help you to configure store. For more detail, please check "Cp_Admin sub module - 
+New to Classified Pro? Expand here to see how to start" section. After that, do same work to another portal (en.DnnModule.com).&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Now you can publish Chinese products on cn.DnnModule.com, and publish English products on en.DnnModule.com.&lt;/p&gt;
+
+
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;The second way is to offer multiple languages content in same portal. For example, publish pages/products with both Chinese and English, when Chinese customer visit your 
+
+site, show Chinese content of pages/products; when English customer visit your site, show English content of pages/products. For this situation, DNN has a built-in feature called "Content 
+
+Localization". This feature allows a site owner to duplicate a site for each desired language, give translators access to the language content they need, and permit a seamless switch between the 
+
+different languages. This is today's popular trend and we &lt;font color="red"&gt;strongly recommend&lt;/font&gt; you to choose this way to support multiple languages.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Classified Pro works seamless with this localization way, please follow below steps:&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Click DNN built-in Persona Bar "Settings - Site Settings - Languages" to install languages if they are not available. For example, if you need to publish Chinese content, you need to install "Chinese (Simplified, PRC)" language package first.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Click DNN built-in Persona Bar "Settings - Site Settings - Languages", check on "Allow Content Localization" option.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. DNN team has a detail blog about the "Content Localization" feature (&lt;a href="http://www.dnnsoftware.com/community-blog/cid/155042/content-localization-walkthrough" 
+
+target="_blank"&gt;http://www.dnnsoftware.com/community-blog/cid/155042/content-localization-walkthrough&lt;/a&gt;), we strongly recommend you to take a look at it.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. Now your site is ready for the "Content Localization" feature, and Classified Pro is also aware of that. When you put any sub module of Classified Pro to a page, it 
+
+will also show a setup wizard to help you to configure store. The setup wizard looks the same as the first localization way, but it will do more works (create more pages / put more sub modules, etc). Of course, if you want to setup it by yourself, please follow below steps (suppose you need to publish products with both English and Chinese):
+
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(a) For each language, create a separate page and put "Cp_Admin" sub module on it. For example, create two pages, one called "Store Admin" and its page culture is "en-US 
+
+(English)", the other called "网店管理" and its page culture is "zh-CN (Chinese)". You can create them by click "DNN built-in Persoan Bar - Content - Pages - Add New Page", select "Localization" tab, choose "Culture Type" as "Create Localized Versions of Page". Again, please make sure the "View Permission" for pages (and Cp_Admin sub modules) is available for "All Users", PayPal payment gateway requires that.&lt;/p&gt;
+
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(b) Now you should have 2 instances of "Cp_Admin sub module", access one of them, and configure payment gateway (PayPal / Google Checkout / Authorize.net / Stripe / 
+
+DineroMail / Manual..etc) at "Cp_Admin sub module - Admin Control Panel - Configurations - Store Settings". The data you entered in Cp_Admin sub module is &lt;font color="red"&gt;shared across the whole portal&lt;/font&gt;. That's to say, even you put 10 instances of "Cp_Admin sub module", they are all used to manage the same data. That's why in first localization way (add a portal per language), we only need 1 instance of Cp_Admin sub module per portal. But in second localization way, we need 1 instance of Cp_Admin sub module for each language, so an English seller/buyer can access English interface of Cp_Admin sub module, and a Chinese seller/buyer can access Chinese interface.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(c) Access your desired language of "Cp_Admin" page, and continue to add data (departments / categories / attributes / products / tags...etc). Note, the data you entered in the main edit interface is &lt;font color="red"&gt;corresponding to the site default language (e.g. English)&lt;/font&gt;. After update a item, you will see a &lt;img src="http://dnnmodule.com/DesktopModules/CrossClassified/Images/ml_content_16.gif"/&gt; link button, click it you can enter item multiple language content. For example, you can enter a product at "Cp_Admin sub module - Seller Center - My Fixed Price Listings", name it as "Dell Computer t5200", then click the &lt;img src="http://dnnmodule.com/DesktopModules/CrossClassified/Images/ml_content_16.gif"/&gt; link button, enter "戴尔电脑 t5200" as its Chinese name.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(d) Nearly all data (departments / categories / attributes / products / tags / location / shipping method...etc) in Classified Pro supports content localization, you need to &lt;font color="red"&gt;localize all of them&lt;/font&gt;, focus on product information only is not enough.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(e) For each language, create a separate page and put "Cp_Product_List" sub module on it to show products (listings). For example, create two pages, one called "Product List" and its page culture is "en-US (English)", the other called "产品列表" and its page culture is "zh-CN (Chinese)".&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(f) There are 16 sub modules in Classified Pro package. Except the Cp_Admin sub module, the other 15 sub modules are all used to display related data. And these 15 sub modules will display content based their parent page culture. For example, if current page culture is "en-US (English)", they will display English content; if current page culture is "zh-CN (Simple Chinese)", they will display Simple Chinese content; if page culture is &lt;font color="red"&gt;neutral&lt;/font&gt;, they will display content &lt;font color="red"&gt;according to current context culture&lt;/font&gt;. As you can see, if you want to show categories to public, you can put 2 instances of Cp_Product_Category to 2 different culture pages.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(g) Now everything is ok. An English buyer can view the English content of products, buy them with English interface. And a Chinese buyer will take the Chinese content. If your site skin contains the "language selection" skin object, visitors can switch English/Chinese easily to view different content.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Above method requires you to &lt;font color="red"&gt;create multiple pages (and also put related sub modules) for each language&lt;/font&gt;. It is user friendly and straightforward, but a little complex. If you don't like this way, you can try to create &lt;font color="red"&gt;neutral pages&lt;/font&gt; and put sub modules on them. As follows:&lt;br/&gt;
+         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(1) Create a neutral page, select its "Localization - Culture Type" as "Create Single Neutral Culture Page", put "Cp_Admin" sub module on it to manage data.&lt;br/&gt;
+         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(2) Create a neutral page, put "Cp_Product_List" sub module on it to show products (listings).&lt;br/&gt;
+         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;(3) Follow same method to handle other sub modules.&lt;p/&gt;
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;This method requires less pages and steps, but it also works. As we mentioned above, if page culture is neutral, Classified Pro will display content according to current context culture (show English content to English visitors, show Chinese content to Chinese visitors). The only problem is that the neutral page properties (page name, page title, description, keywords, etc.) &lt;font color="red"&gt;can't vary with languages&lt;/font&gt;. So it is not user friendly (and SEO friendly) like the previous method.&lt;/p&gt;</value>
+  </data>
+  <data name="Help_SubModulesIntroduction.Text" xml:space="preserve">
+    <value>&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Classified Pro is an enterprise-class DNN module which helps you to create an online store, auction website and also publish classified ads. It contains &lt;font 
+
+color="red"&gt;16&lt;/font&gt; sub modules and &lt;font color="red"&gt;1&lt;/font&gt; skin object, as follow:&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;1. Cp_Admin&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;It is the most important sub module which is used to &lt;font color="red"&gt;manage all data&lt;/font&gt; in Classified Pro package. In most cases, you should put only 1 instance of it 
+
+per portal (if you want to support content localization or split Cp_Admin sub module feature, you can put multiple instances per portal). Please note, The data you entered in Cp_Admin sub module is 
+
+&lt;font color="red"&gt;shared across the whole portal&lt;/font&gt;. That's is to say, even you put 10 instances of "Cp_Admin sub module", they are all used to manage the same data.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Besides "Cp_Admin" sub module, the other 15 sub modules are all &lt;font color="red"&gt;used to display&lt;/font&gt; related data. Unlike "Cp_Admin" sub module, you can add &lt;font 
+
+color="red"&gt;multiple instances&lt;/font&gt; of other 15 sub modules to different pages (or on same page if you like). These 15 sub modules are all template based, you can build your own templates to show 
+
+related data if you don't like the default layout. Each module has its own control options, you can control the features and data in these sub modules by specifing different options.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;If you enable the DNN built-in "Content Localization" feature (check "Cp_Admin sub module - Content Localization (Multiple Languges Content) Support" section). These 15 
+
+sub module will display content &lt;font color="red"&gt;based their parent page culture&lt;/font&gt;. For example, if current page culture is "en-US (English)", they will display English content; if current 
+
+page culture is "zh-CN (Simple Chinese)", they will display Simple Chinese content; if page culture is &lt;font color="red"&gt;neutral&lt;/font&gt;, they will display content &lt;font color="red"&gt;according to 
+
+current context culture&lt;/font&gt;. As you can see, if you want to show categories to public, you can put 2 instances of Cp_Product_Category to 2 different culture pages.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. Cp_Product_List&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;It is used to show products (listings) with data list or data grid, and is always used combined with other sub modules. For example, when click a product (listing) in 
+
+Cp_Product_List sub module, module will show product (listing) detail in Cp_Product_Detail sub module; when click a category in Cp_Product_Category sub module, products (listings) which  
+
+belong to that category should be shown via Cp_Product_List sub module; when search in Cp_Product_Search sub module, the result will also be shown in Cp_Product_List sub module... For this 
+
+reason, it is the most frequently-used sub module in Classified Pro package.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;3. Cp_Product_Detail&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;It is used to display product (listing) detail to public. For each department you created in "Cp_Admin sub module - Admin Control Panel - Departments", you 
+
+need to provide at least 1 Cp_Product_Detail sub module instance for it. This sub module is also vital to integrate with DNN built-in search mechanism. If you can't search your products with DNN 
+
+built-in search, please check the "Cp_Product_Detail sub module page" property for each department.&lt;br/&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;It is also one of the frequently-used sub modules in Classified Pro package. And it is always used combined with other sub modules. For example, when click a product 
+
+(listing) in Cp_Product_List (or Cp_Product_Slideshow/Cp_Product_ListDashboard) sub module, module will show product (listing) detail in Cp_Product_Detail sub module.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;4. Cp_Product_ListTab&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show products (listings) with JQuery UI Tabs. Each tab is corresponding to a category, module will display products which belong to each category as tab content. For example, if you create 3 categories ("Man Clothes", "Woman Clothes", "Kid Clothes") at "Cp_Admin sub module - Admin Control Panel - System Data - Categories", you can select "Tab Category 1" as "Man Clothes", "Tab Category 2" as "Woman Clothes", then module will show two tabs. For tab 1, module will show products which belong to "Man Clothes" category, for tab 2, module will show products which belong to "Woman Clothes" category.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;5. Cp_Product_Slideshow&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show products (listings) with JavaScript slideshow (supports 10 slideshow effects). When click a slide, module will navigate to Cp_Product_Detail sub module page to show product (listing) detail. Since it 
+
+is JavaScript based, it can also be run under mobile and tablet pc.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;6. Cp_Product_MiniCart&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show products (listings) which are added into current user's shopping cart.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;7. Cp_Product_Category&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show categories to public. When click a category, module will navigate to Cp_Product_List sub module page and show products (listings) which belong to this category. 
+
+Classified Pro supports unlimited level of categories, you can manage them at "Cp_Admin sub module - Admin control panel - System Data - Categories".&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;8. Cp_Product_Search&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Provide a stand alone search interface to public. It is always used combined with Cp_Product_List sub module. After user specify the search condition and click "Search" 
+
+button, the result will be shown in Cp_Product_List sub module. Note, Cp_Product_List sub module also includes a search feature which works similiar to Cp_Product_Search sub module.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;9. Cp_Product_Tag&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show product (listing) tags with data list. When click a tag, module will navigate to Cp_Product_List sub module page to show products (listings) which belong to this 
+
+tag.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;10. Cp_Product_AccountLink&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show common links for the buyer (e.g. My Cart, My Orders). These links are mainly link to Cp_Admin sub module. For example, click "My Cart" link is equal to click "Cp_Admin 
+
+sub module - Buyer Center - My Cart". Classified Pro also contains a skin object which works the same as Cp_Product_AccountLink sub module.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;11. Cp_Product_Archive&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show month/date archive links. When click a month/date link, module will navigate to Cp_Product_List sub module page and show products (listings) which are created in this 
+
+period (e.g. May 2015).&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;12. Cp_Product_ListDashboard&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show products (listings) with Adobe Flash slideshow. When click a slide, module will navigate to Cp_Product_Detail sub module page to show product (listing) detail. Since it 
+
+is Flash based, it doesn't run under mobile. We recommend you to choose Cp_Product_Slideshow sub module instead.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;13. Cp_Product_TagDashboard&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show product (listing) tags with Adobe Flash slideshow. When click a tag, module will navigate to Cp_Product_List sub module page to show products (listings) which belong to this tag. Again, it doesn't support mobile.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;14. Cp_Product_Vendor&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Classified Pro is multi-seller based, you can allow other users to post products on the site at "Cp_Admin sub module - Admin control panel - Configurations - Seller Roles". Cp_Product_Vendor (in old vesion of Classified Pro, we called seller as "vendor") is used to show these seller (user who posts products on your site) links. When click a seller link, module will navigate to Cp_Product_List sub module page and show products (listings) which are created by this user. This sub module is useful if you have multiple users posting products on your site.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;15. Cp_Product_Type&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Show product (listing) departments with data list. When click a department, module will navigate to Cp_Product_List sub module page to show products (listings) which belong to this department. In old version of Classified Pro, we called department as "type", later some customer suggested that "department" is a better word, and we accepted it. But we have to keep Cp_Product_Type sub module name for legacy support.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;16. Cp_Product_Manufacturer&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Classified Pro allows you to create multiple manufacturers, you can manage them at "Cp_Admin sub module - Admin control panel -  Categories &amp; Attributes &amp; Manufacturers". Cp_Product_Manufacturer sub module is used to show these manufacturers to public. When click a manufacturer, module will navigate to Cp_Product_List sub module page and show products (listings) which belong to this manufacturer.&lt;/p&gt;
+
+
+&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;17. Skin Object&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;As we mentioned before, Classified Pro contains a skin object which works the same as Cp_Product_AccountLink sub module. However, since it is a skin object, it can be easily integrated with your site skin (theme) and looks more elegant. Please read "Classified Pro user guide.pdf - Skin Object" section to see how to integrate it with your skin.&lt;/p&gt;</value>
+  </data>
+  <data name="lblType_Ad.Text" xml:space="preserve">
+    <value>(Ad)</value>
+  </data>
+  <data name="lblType_Auction.Text" xml:space="preserve">
+    <value>(Auction)</value>
+  </data>
+  <data name="lblType_FixedPrice.Text" xml:space="preserve">
+    <value>(Fixed Price)</value>
+  </data>
+  <data name="li_ShippingStatus_Delivered.Text" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
+  <data name="li_ShippingStatus_Dispatching.Text" xml:space="preserve">
+    <value>Dispatching</value>
+  </data>
+  <data name="li_ShippingStatus_NotRequired.Text" xml:space="preserve">
+    <value>Not Required</value>
+  </data>
+  <data name="li_ShippingStatus_NotShipped.Text" xml:space="preserve">
+    <value>Not Shipped</value>
+  </data>
+  <data name="li_ShippingStatus_OtherStatus.Text" xml:space="preserve">
+    <value>Other Status</value>
+  </data>
+  <data name="li_ShippingStatus_Packed.Text" xml:space="preserve">
+    <value>Packed</value>
+  </data>
+  <data name="li_ShippingStatus_Packing.Text" xml:space="preserve">
+    <value>Packing</value>
+  </data>
+  <data name="li_ShippingStatus_Undeliverable.Text" xml:space="preserve">
+    <value>Undeliverable</value>
+  </data>
+  <data name="lblVariant.Text" xml:space="preserve">
+    <value>Variant Choices</value>
+  </data>
+  <data name="Help_AttributeAndOption.Text" xml:space="preserve">
+    <value>Classified Pro supports Attributes, Options, and Variants. These concepts look similar, but in Classified Pro, they are used for different purpose.&lt;br/&gt;&lt;br/&gt;
+  &lt;font color="red"&gt;Attributes&lt;/font&gt; are used to create extra inter-dependant product data fields. After create an attribute, seller can then enter specific attribute values for an individual product. These attribute values can also be shown in Cp_Product_List (and Cp_Product_Detail) sub modules.&lt;br/&gt;&lt;br/&gt;
+  You can also search products based these attributes via Cp_Product_Search (or Cp_Product_List) sub module. For example, you can allow visitors to search "Platform" attribute in Cp_Product_List sub module after create it.&lt;br/&gt;&lt;br/&gt;
+  Attributes can be applied to all departments (fixed price / auction / ad), the attribute value is specified by the seller, and the buyer (visitor) can only view (search) it.&lt;br/&gt;&lt;br/&gt;
+  
+  For example, when selling mobile phones, and you want to specify their brands. You can do it as follows:&lt;br/&gt;&lt;br/&gt;
+  1. Create an attribute definition at "Cp_Admin sub module - Admin Control Panel -  System Data (Categories &amp; Attributes &amp; Manufacturers) - Attributes", name it as "Brand".&lt;br/&gt;&lt;br/&gt;
+
+  2. Then when the seller publish his mobile phones at "Seller Center - My Fixed Price Listings", he will see a "Brand" data field, he can specify values for different products. 
+For example, for "iPhone 6s" product, he can specify "Brand" as "Apple", for "Huawei Mate 7", he can specify "Brand" as "Huawei (China)".&lt;br/&gt;&lt;br/&gt;
+
+  3. Client can view (search) these attribute values in Cp_Product_List and Cp_Product_Detail sub modules.&lt;br/&gt;&lt;br/&gt;
+
+
+  &lt;font color="red"&gt;Options and Variants&lt;/font&gt; can be applied to fixed price departments only. They are used to provide a way to allow client choosing his favorite product properties while adding to cart (in Cp_Product_Detail sub module only).
+They are very similar, the only difference is that Option supports stock (and discount / coupon) properties, while Variant doesn't support stock, and the discount (and coupon) also can't be applied to Variants.&lt;br/&gt;&lt;br/&gt;
+
+  For example, you are selling "iPhone 6s" with different memories (and different unit price). For 16G memory, you have 100 stock, for 64G memory, you have 200 stock, and for 128G memory, you have 300 stock. You can do it as follows:&lt;br/&gt;&lt;br/&gt;
+  1. Create a "iPhone 6s" product at "Seller Center - My Fixed Price Listings". Specify its price as $500.&lt;br/&gt;&lt;br/&gt;
+  2. Create 3 options for this product. &lt;br/&gt;Option 1: Name "16G memory", Stock: 100, Bonus: 0. &lt;br/&gt; Option 2: Name "32G memory", Stock: 200, Bonus: 200.  &lt;br/&gt;Option 3: Name "128G memory", Stock: 300, Bonus: 400.&lt;br/&gt;&lt;br/&gt; 
+  
+  Then when a buyer buy this product, he can choose his favorite option (16g, 64g, 128g) and pay different price.&lt;br/&gt;&lt;br/&gt;
+
+  Variant works the same as Option except the stock (and discount / coupon) properties. For example, you want to allow client choosing his favorite cover color for the "iPhone 6s" (suppose you can satisfy all the requests, don't care the stock for the cover color). You can do it as follows:&lt;br/&gt;&lt;br/&gt;
+  1. Create a "Cover Color" variant group at "Cp_Admin sub module -  Admin Control Panel -  Departments - Fixed Price Departments". Classified Pro supports multiple variant groups.&lt;br/&gt;
+
+  2. Click "Cp_Admin sub module - Seller Center - My Fixed Price Listings", create 5 variants (Red, Green, Black, Yellow, Gold) for product "iPhone 6s".&lt;br/&gt;
+
+  Then when a buyer buy this product, he can choose "Gold" as his favorite "Cover Color". And seller can view his choice (and delivery related product).&lt;br/&gt;&lt;br/&gt;
+
+  Tips: why do we need to split Option and Variant since they are so similar? The main reason is the stock property. Classified Pro supports multiple variant groups, for example, you can create 3 variant groups ("Cover Color", "Size", "OS"), and create many variants for each group. If we allow each variant to specify its stock property, then it is hard to judge the final stock from huge permutation and combination of these variants. For this reason, we create a Option concept which supports stock, and disable the stock property for the variant.</value>
+  </data>
+</root>

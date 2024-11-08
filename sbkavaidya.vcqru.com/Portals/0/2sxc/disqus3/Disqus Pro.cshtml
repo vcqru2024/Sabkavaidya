@@ -1,0 +1,42 @@
+@inherits Custom.Hybrid.RazorTyped
+@{  
+  var disqus = MyItem;
+  var configSuccess = App.Settings.String("DomainKey") != "2sxc-org.disqus.com";
+  var data = new {
+    domainKey = App.Settings.String("DomainKey")
+  };
+
+}
+
+<div class="app-disqus2-toolbar" @Kit.Toolbar.Default(disqus)>
+</div>
+
+<style>
+  .app-disqus2-toolbar {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+</style>
+
+<div id="disqus_thread" @Kit.Toolbar.Default(disqus)>
+  @if (!configSuccess) {
+    <div class="app-disqus2-warning">@Html.Raw(App.Resources.String("ConfigurationWarning"))</div>
+    <style>
+      .app-disqus2-warning {
+        color: #856404;
+        background-color: #fff3cd;
+        padding: .75rem 1.25rem;
+        margin-bottom: 1rem;
+        border-radius: .25rem;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    return;
+  }
+  <div id="disqus_thread_loader">@Html.Raw(App.Resources.String("DisqusLoadingMessage"))</div>
+</div>
+
+<script src="@App.Folder.Url/src/js/index.js" @Kit.Page.AssetAttributes()></script>
+ @Kit.Page.TurnOn("window.appDisqus3.initPro()", data: data)
+

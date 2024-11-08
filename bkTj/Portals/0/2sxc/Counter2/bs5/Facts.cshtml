@@ -1,0 +1,42 @@
+@inherits Custom.Hybrid.RazorTyped
+@using ToSic.Razor.Blade;
+@{
+  var facts = MyItems;
+
+  var counterJsAttribute = "app-counter2-js-" + UniqueKey;
+  var factToolbar = Kit.Toolbar.Default().Layout("-");
+  var headerToolbar = Kit.Toolbar.Default().Settings(hover: "left", autoAddMore: "start");
+  var backgroundImage = MyHeader.IsNotEmpty("Background")
+  ? "background-image: url(" + Link.Image(MyHeader.Url("Background"), AllSettings.String("Images.Section")) + ");"
+  : "";
+  var textWhite = (MyHeader.Bool("TextColor") ? "text-white" : "");
+}
+
+<div class='app-counter2 @(MyHeader.IsNotEmpty("Background") ? "app-counter2-has-background py-4" : "")' @Kit.Toolbar.Default(MyHeader)>
+  @if (Text.Has(MyHeader.String("Title")) && MyHeader.Bool("HideTitle") != true) {
+    <h2 class="text-center mb-3 mb-lg-4 @textWhite">@MyHeader.String("Title")</h2>
+  }
+  <div class='app-counter2-wrapper @(Text.Has(MyHeader.String("Background")) ? "container" : " ")'>
+    <div class="row justify-content-center">
+      @foreach (var fact in facts) {
+        <div class="col-md-6 col-lg-3" @factToolbar.For(fact)>
+          <div class="p-2 p-lg-3 bg-primary rounded @textWhite text-center h-100">
+            <i class='co-icon fas @fact.String("Icon") fa-3x textWhite mb-2' aria-hidden="true"></i>
+            <div class="h2 @textWhite">
+              <span class='@counterJsAttribute h2 @textWhite' data-count='@fact.Int("Number")'></span>@(Text.Has(fact.String("Unit")) ? " " + fact.String("Unit") : "")
+            </div>
+            <span>@fact.Get("Title")</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  @if (MyHeader.IsNotEmpty("Background")) {
+    <img loading="lazy" class="d-flex bg-img" src='@Link.Image(MyHeader.Url("Background"), AllSettings.String("Images.Section"))'>
+  }  
+</div>
+
+
+
+@Html.Partial("Assets.cshtml", new { counterJsAttribute })

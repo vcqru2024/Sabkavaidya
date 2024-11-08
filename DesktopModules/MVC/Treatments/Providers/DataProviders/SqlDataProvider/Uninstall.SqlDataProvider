@@ -1,0 +1,16 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****              Uninstall Script                    *****/
+/*****                                                  *****/
+/************************************************************/
+
+-- Drop the RelatedTreatments table if it exists
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Related_Treatments]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Related_Treatments]
+GO
+
+-- Drop the Treatments table if it exists
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Treatments_Treatments]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}Treatments_Treatments]
+GO

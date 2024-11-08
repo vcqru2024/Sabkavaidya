@@ -1,0 +1,80 @@
+﻿@using System.Collections.Specialized;
+@using DotNetNuke.Entities.Users;
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Data.Dnn;
+@using Revindex.Dnn.RevindexStorefront.Pages;
+@using Revindex.Dnn;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@using Revindex.Web.UI.DynamicControls;
+@inherits Revindex.Web.Mvc.Dnn.RazorPages.DotNetNukeRazorPage<ManageRightViewModel>
+
+<div class="rvd-module-container rvdsf rvdsf-manageright-container">
+	@if (Model.Visible)
+	{
+		if (!String.IsNullOrEmpty((string)Model.TempData.Peek(Global.TempDataKeys.Alert)) && !Model.IsRedirecting)
+		{
+			<div class="alert alert-@(Model.TempData[Global.TempDataKeys.Alert])">@Model.TempData[Global.TempDataKeys.Message]</div>
+		}
+		<div class="rvd-form">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+					
+				</div>
+			</div>
+			<hr />
+			<fieldset>
+				
+			</fieldset>
+		</div>
+		<div class="rvdsf-list-container">
+			<div class="row rvdsf-actionbar-container">
+				<div class="col-sm-6">
+				</div>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="list-group mb-3">
+						@foreach (var right in Model.Rights.OrderBy(r => r.RightDefinition.Name))
+						{
+						<li class="list-group-item">
+							<p><strong>@right.RightDefinition.Name</strong></p>
+							<p>
+								<pre id="rvdsfManageRightPre_@right.RightID" style="max-height: 200px;">@right.Code</pre>
+							</p>
+							<div class="text-right">
+								<button type="button" class="btn btn-primary" href="#" onclick="rvdsfManageRight.copyToClipboard('rvdsfManageRightPre_@right.RightID'); return false;">
+									@Html.LocalizeString("CopyLink")
+								</button>
+							</div>
+						</li>
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	}
+	<input type="hidden" name="@Model.ViewStateName" value="@Model.ViewStateData" />
+	<script type="text/plain" id="rvdsfStartupScriptManageOrder">
+		@foreach (var script in Model.StartupScripts)
+		{
+			<text>@Html.Raw(script)</text>
+		}
+	</script>
+</div>
+
+<script>
+	var rvdsfManageRight = rvdsfManageRight || {}
+
+	rvdsfManageRight.copyToClipboard = function (targetID) {
+
+		// Create hidden input to perform copy operation
+		var aux = document.createElement("input")
+		aux.setAttribute("value", document.getElementById(targetID).innerText)
+		document.body.appendChild(aux)
+		aux.select()
+		document.execCommand("copy")
+		document.body.removeChild(aux)
+	}
+
+</script>

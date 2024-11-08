@@ -1,0 +1,61 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+--------------------
+-- Schema Statements
+--------------------
+BEGIN TRANSACTION
+
+	-- Support pickup point
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD ShippingDestinationPoint varchar(100) NULL
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD	ShippingDestinationPoint varchar(100) NULL
+
+	-- Support SkyNet shipping
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider ADD
+		SkyNetUsername varchar(255) NULL,
+		SkyNetPassword varchar(255) NULL,
+		SkyNetSystemID varchar(255) NULL,
+		SkyNetAccountNumber varchar(255) NULL,
+		SkyNetCustomerReferenceFormat varchar(50) NULL
+
+	-- Support Pargo shipping
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider ADD
+		PargoUsername varchar(255) NULL,
+		PargoPassword varchar(255) NULL
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider ADD PargoTestMode bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingProvider_PargoTestMode DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingProvider DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ShippingProvider_PargoTestMode
+
+	-- Add phone for general store configuration
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD GeneralStorePhone varchar(50) NULL
+
+	-- Add ShippingLabelFile column
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD ShippingLabelFile varchar(256) NULL
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD ShippingLabelType varchar(50) NULL
+
+COMMIT TRANSACTION
+GO
+
+-----------------
+-- DML Statements
+-----------------
+BEGIN TRY
+	BEGIN TRANSACTION
+
+		
+
+	COMMIT TRANSACTION
+END TRY
+BEGIN CATCH
+	DECLARE @errorMessage NVARCHAR(4000)
+	DECLARE @errorSeverity INT
+	DECLARE @errorState INT
+
+	SELECT @errorMessage = ERROR_MESSAGE(), @errorSeverity = ERROR_SEVERITY(), @errorState = ERROR_STATE()
+	RAISERROR (@errorMessage, @errorSeverity, @errorState)
+END CATCH
+GO

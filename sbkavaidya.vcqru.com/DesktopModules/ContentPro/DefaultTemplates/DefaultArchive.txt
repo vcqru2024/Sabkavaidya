@@ -1,0 +1,34 @@
+@inherits DotNetNuke.Web.Razor.DotNetNukeWebPage<puresystems.Modules.ContentPro.Components.RazorModel>
+@foreach (var Item in Model.Content.List)
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="widget-accordion-group">
+                @{
+                    int LastYear = 0;
+                }
+                @foreach (puresystems.Modules.ContentPro.Components.Archive archive in Item.Content.ContentList)
+                {
+                    if (LastYear != archive.ArchiveYear)
+                    {
+                        LastYear = archive.ArchiveYear;
+                        @archive.ArchiveYear
+
+                    }
+
+
+                            <ul class="open">
+                                <li class="liMonthArchive" title="Click to view this months posts">
+                                    @{int monthid= Convert.ToDateTime("01-"+archive.ArchiveMonth+"-2016").Month;
+                                    }
+                                    <a class="MonthArchive" href='@string.Format("{0}/{1}/month/{2}", Item.Content.Url,archive.ArchiveYear,monthid)' >
+                                            @archive.ArchiveMonth (@archive.Count)
+                                        </a>
+                                </li>
+                            </ul>
+                       
+                }
+            </div>
+        </div>
+    </div>
+}

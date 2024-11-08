@@ -1,0 +1,161 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add ManageFundDisplayTemplate column
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'ManageFundDisplayTemplate')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ManageFundDisplayTemplate varchar(255) NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFundDisplayTemplate DEFAULT 'StandardPanel'
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD ManageFundActive bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFundActive DEFAULT 0
+
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFundDisplayTemplate
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_Configuration_ManageFundActive
+END 
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_FundHistory' AND COLUMN_NAME = 'SalesOrderID')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory ADD SalesOrderID int NULL
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory ADD CONSTRAINT FK_{objectQualifier}Revindex_Storefront_FundHistory_Revindex_Storefront_SalesOrder FOREIGN KEY (SalesOrderID) REFERENCES {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder (SalesOrderID) ON UPDATE  NO ACTION ON DELETE  NO ACTION 
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_FundHistory' AND COLUMN_NAME = 'SalesOrderID')
+BEGIN
+	DROP INDEX IX_{objectQualifier}Revindex_Storefront_FundHistory ON {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory
+	CREATE NONCLUSTERED INDEX IX_{objectQualifier}Revindex_Storefront_FundHistory ON {databaseOwner}{objectQualifier}Revindex_Storefront_FundHistory (FundID, HistoryDate)
+END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_ProductVariant' AND COLUMN_NAME = 'IssueFund')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant ADD IssueFund bit NOT NULL CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_IssueFund DEFAULT 0
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_ProductVariant DROP CONSTRAINT DF_{objectQualifier}Revindex_Storefront_ProductVariant_IssueFund
+END
+GO
+
+
+-- Rename Domestic USPS Service names
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:FIRST-CLASS MAIL STAMPED LETTER' WHERE UniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; STAMPED LETTER'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL STAMPED LETTER' WHERE ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; STAMPED LETTER'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:FIRST-CLASS PACKAGE SERVICE - RETAIL' WHERE UniversalServiceName = 'USPS:FIRST-CLASS PACKAGE SERVICE - RETAIL&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:FIRST-CLASS PACKAGE SERVICE - RETAIL' WHERE ShippingUniversalServiceName = 'USPS:FIRST-CLASS PACKAGE SERVICE - RETAIL&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:FIRST-CLASS MAIL POSTCARDS' WHERE UniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; POSTCARDS'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL POSTCARDS' WHERE ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; POSTCARDS'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:FIRST-CLASS MAIL LARGE ENVELOPE' WHERE UniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL LARGE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:FIRST-CLASS MAIL LARGE POSTCARDS' WHERE UniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE POSTCARDS'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL LARGE POSTCARDS' WHERE ShippingUniversalServiceName = 'USPS:FIRST-CLASS MAIL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE POSTCARDS'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:LIBRARY MAIL PARCEL' WHERE UniversalServiceName = 'USPS:LIBRARY MAIL PARCEL'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:LIBRARY MAIL PARCEL' WHERE ShippingUniversalServiceName = 'USPS:LIBRARY MAIL PARCEL'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:MEDIA MAIL PARCEL' WHERE UniversalServiceName = 'USPS:MEDIA MAIL PARCEL'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:MEDIA MAIL PARCEL' WHERE ShippingUniversalServiceName = 'USPS:MEDIA MAIL PARCEL'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL LARGE FLAT RATE BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; LARGE FLAT RATE BOX'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL LARGE FLAT RATE BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; LARGE FLAT RATE BOX'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL MEDIUM FLAT RATE BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; MEDIUM FLAT RATE BOX'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL MEDIUM FLAT RATE BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; MEDIUM FLAT RATE BOX'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL SMALL FLAT RATE BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; SMALL FLAT RATE BOX'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL SMALL FLAT RATE BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; SMALL FLAT RATE BOX'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL LEGAL FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; LEGAL FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL LEGAL FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; LEGAL FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL PADDED FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; PADDED FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL PADDED FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; PADDED FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL GIFT CARD FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; GIFT CARD FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL GIFT CARD FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; GIFT CARD FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL SMALL FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; SMALL FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL SMALL FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; SMALL FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL WINDOW FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; WINDOW FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL WINDOW FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL &LT;SUP&GT;&#8482;&LT;/SUP&GT; WINDOW FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS HOLD FOR PICKUP' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; HOLD FOR PICKUP'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS HOLD FOR PICKUP' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; HOLD FOR PICKUP'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE BOXES' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE BOXES'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE BOXES' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE BOXES'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE BOXES HOLD FOR PICKUP' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE BOXES HOLD FOR PICKUP'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE BOXES HOLD FOR PICKUP' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE BOXES HOLD FOR PICKUP'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE ENVELOPE HOLD FOR PICKUP' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE ENVELOPE HOLD FOR PICKUP'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS FLAT RATE ENVELOPE HOLD FOR PICKUP' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE ENVELOPE HOLD FOR PICKUP'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS LEGAL FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; LEGAL FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS LEGAL FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; LEGAL FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS LEGAL FLAT RATE ENVELOPE HOLD FOR PICKUP' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; LEGAL FLAT RATE ENVELOPE HOLD FOR PICKUP'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS LEGAL FLAT RATE ENVELOPE HOLD FOR PICKUP' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; LEGAL FLAT RATE ENVELOPE HOLD FOR PICKUP'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS PADDED FLAT RATE ENVELOPE' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; PADDED FLAT RATE ENVELOPE'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS PADDED FLAT RATE ENVELOPE' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; PADDED FLAT RATE ENVELOPE'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS PADDED FLAT RATE ENVELOPE HOLD FOR PICKUP' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; PADDED FLAT RATE ENVELOPE HOLD FOR PICKUP'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS PADDED FLAT RATE ENVELOPE HOLD FOR PICKUP' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS &LT;SUP&GT;&#8482;&LT;/SUP&GT; PADDED FLAT RATE ENVELOPE HOLD FOR PICKUP'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:USPS RETAIL GROUND' WHERE UniversalServiceName = 'USPS:USPS RETAIL GROUND&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:USPS RETAIL GROUND' WHERE ShippingUniversalServiceName = 'USPS:USPS RETAIL GROUND&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+
+
+
+-- Rename International USPS Service names
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL FLAT RATE BOXES' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL&LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE BOXES'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL FLAT RATE BOXES' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL EXPRESS INTERNATIONAL&LT;SUP&GT;&#8482;&LT;/SUP&GT; FLAT RATE BOXES'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:USPS GXG ENVELOPES' WHERE UniversalServiceName = 'USPS:USPS GXG&LT;SUP&GT;&#8482;&LT;/SUP&GT; ENVELOPES'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:USPS GXG ENVELOPES' WHERE ShippingUniversalServiceName = 'USPS:USPS GXG&LT;SUP&GT;&#8482;&LT;/SUP&GT; ENVELOPES'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:FIRST-CLASS PACKAGE INTERNATIONAL SERVICE' WHERE UniversalServiceName = 'USPS:FIRST-CLASS PACKAGE INTERNATIONAL SERVICE&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:FIRST-CLASS PACKAGE INTERNATIONAL SERVICE' WHERE ShippingUniversalServiceName = 'USPS:FIRST-CLASS PACKAGE INTERNATIONAL SERVICE&LT;SUP&GT;&#8482;&LT;/SUP&GT;'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT;'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT;'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL LARGE FLAT RATE BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE FLAT RATE BOX'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL LARGE FLAT RATE BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE FLAT RATE BOX'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL MEDIUM FLAT RATE BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;;&LT;/SUP&GT; MEDIUM FLAT RATE BOX'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL MEDIUM FLAT RATE BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;;&LT;/SUP&GT; MEDIUM FLAT RATE BOX'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL SMALL FLAT RATE BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; SMALL FLAT RATE BOX**'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL SMALL FLAT RATE BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; SMALL FLAT RATE BOX**'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL DVD FLAT RATE PRICED BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; DVD FLAT RATE PRICED BOX**'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL DVD FLAT RATE PRICED BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; DVD FLAT RATE PRICED BOX**'
+
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_ShippingMethod SET UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL LARGE VIDEO FLAT RATE PRICED BOX' WHERE UniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE VIDEO FLAT RATE PRICED BOX**'
+UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder SET ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL LARGE VIDEO FLAT RATE PRICED BOX' WHERE ShippingUniversalServiceName = 'USPS:PRIORITY MAIL INTERNATIONAL&LT;SUP&GT;&#174;&LT;/SUP&GT; LARGE VIDEO FLAT RATE PRICED BOX**'
+
+
+GO

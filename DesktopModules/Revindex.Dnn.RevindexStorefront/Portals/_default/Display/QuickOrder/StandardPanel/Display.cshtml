@@ -1,0 +1,630 @@
+﻿@* Template name: StandardPanel *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Globalization;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ClientSideWebViewPage
+
+<div id="rvdsfQuickOrderPanelContainer" class="rvdsf rvdsf-quickorder-container">
+	<div class="alert alert-danger" data-bind="visible: ValidationResults().length > 0" style="display:none">
+		<div data-bind="foreach: ValidationResults">
+			<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> <span data-bind="text: Message"></span>
+		</div>
+	</div>
+	<div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label class="control-label">@Html.LocalizeString("ProductSearchLabel")</label>
+					<input id="rvdsfQuickOrderProductSearchInput" placeholder="@Html.LocalizeString("ProductSearchPlaceholder")" class="form-control" style="width: 100%;" />
+					<!-- ko text: quickOrderContainer.viewModel.initializeProductSearch() --><!-- /ko -->
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<div class="form-group">
+					<label class="control-label">@Html.LocalizeString("ProductVariantSearchLabel")</label>
+					<select class="form-control" data-bind="options: ProductVariants, optionsText: function(item) { return (item.Name ? item.Name : '') + (item.SKU ? ' (SKU #' + item.SKU + ')' : '') }, value: SelectedProductVariant"></select>
+				</div>
+			</div>
+			<!-- ko if: SelectedProductVariant() -->
+			<div class="col-sm-1 rvdsf-field-qty">
+				<div class="form-group">
+					<label class="control-label">@Html.LocalizeString("QuantityLabel")</label>
+					<!-- ko if: SelectedProductVariant().HasAcceptableInventory -->
+						<!-- ko if: !SelectedProductVariant().AllowableOrderQuantityList || SelectedProductVariant().AllowableOrderQuantityList.length == 0 -->
+						<input id="rvdsfQuickOrderQuantityInput" type="number" class="form-control" data-bind="value: SelectedProductVariant().DefaultQuantity, attr: {'min': SelectedProductVariant().MinOrderQuantity == null ? SelectedProductVariant().DefaultQuantity : SelectedProductVariant().MinOrderQuantity, 'max': SelectedProductVariant().MaxOrderQuantity == null ? 9999 : SelectedProductVariant().MaxOrderQuantity }" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+						<!-- /ko -->
+						<!-- ko if: SelectedProductVariant().AllowableOrderQuantityList && SelectedProductVariant().AllowableOrderQuantityList.length > 0 -->
+						<select id="rvdsfQuickOrderQuantityInput" class="form-control" data-bind="options: SelectedProductVariant().AllowableOrderQuantityList"></select>
+						<!-- /ko -->
+					<!-- /ko -->
+					<!-- ko ifnot: SelectedProductVariant().HasAcceptableInventory -->
+						<p class="form-control-static form-control-plaintext">@Html.LocalizeString("SoldOutLabel")</p>
+					<!-- /ko -->
+				</div>
+			</div>
+			<div class="col-sm-1" data-bind="visible: SelectedProductVariant().Product.ShowPrice">
+				<div class="form-group">
+					<label class="control-label">@Html.LocalizeString("PriceLabel")</label>
+					<!-- ko if: !SelectedProductVariant().PriceText && SelectedProductVariant().SalesType != 2 && SelectedProductVariant().Product.ShowPrice -->
+					<p class="form-control-static form-control-plaintext" data-bind="text: SelectedProductVariant().FormattedCombinedSellingPrice"></p>
+					<!-- /ko -->
+					<!-- ko if: SelectedProductVariant().PriceText -->
+					<p class="form-control-static form-control-plaintext" data-bind="text: SelectedProductVariant().PriceText"></p>
+					<!-- /ko -->
+				</div>
+			</div>
+			<!-- /ko -->
+		</div>
+		<!-- ko if: SelectedProductVariant() -->
+			<!-- ko ifnot: SelectedProductVariant().HasAcceptableInventory && SelectedProductVariant().Product.AllowInternetOrder && !SelectedProductVariant().HasFormFields -->
+				<div class="alert alert-info">@Html.LocalizeString(Global.LocalizedStrings.Message_AddToCartFromProductDetailOnly, Global.FilePaths.LocalSharedResourceFile)</div>
+			<!-- /ko -->
+		<!-- /ko -->
+		<div class="btn-toolbar">
+			<!-- ko if: SelectedProductVariant() -->
+				<button type="button" class="rvdsf-btn-seedetails btn btn-primary" data-bind="click: function() { window.open(SelectedProductVariant().ProductDetail.TabUrl, '_blank') }">@Html.LocalizeString("SeeDetailsLink")</button>
+				<!-- ko if: SelectedProductVariant().HasAcceptableInventory && SelectedProductVariant().Product.AllowInternetOrder && !SelectedProductVariant().HasFormFields -->
+					<!-- ko if: SelectedProductVariant().SalesType == 1 -->
+					<button type="button" class="rvdsf-btn-addtocart btn btn-primary" data-bind="click: function() {addProductToCart(quickOrderContainer.viewModel.SelectedProductVariant().ProductVariantID, $('#rvdsfQuickOrderQuantityInput').val(), 'AddProductMessage')}">@Html.LocalizeString("AddToCartLink")</button>
+					<!-- /ko -->
+					<!-- ko if: SelectedProductVariant().SalesType == 2 -->
+					<button type="button" class="rvdsf-btn-addtocart btn btn-primary" data-bind="click: function() {addProductToCart(quickOrderContainer.viewModel.SelectedProductVariant().ProductVariantID, $('#rvdsfQuickOrderQuantityInput').val(), 'AddProductMessage')}">@Html.LocalizeString("AddToQuoteLink")</button>
+					<!-- /ko -->
+				<!-- /ko -->
+			<!-- /ko -->
+		</div>
+		<div id="AddProductMessage" style="display:none"></div>
+	</div>
+	<hr />
+	<div data-bind="visible: SalesOrderSet.MainQuantity() == 0" style="display:none">
+		<div class="alert alert-info">@Html.LocalizeString(Global.LocalizedStrings.Message_CartEmpty, Global.FilePaths.LocalSharedResourceFile)</div>
+	</div>
+	<div data-bind="visible: SalesOrderSet.MainQuantity() > 0" style="display:none">
+		<table class="table table-striped rvdsf-salesorderdetail-table">
+			<thead>
+				<tr>
+					<th class="col-sm-1 hidden-xs d-none d-sm-table-cell"></th>
+					<th class="col-sm-6">@Html.LocalizeString("ProductColumn")</th>
+					<th class="col-sm-2 hidden-xs d-none d-sm-table-cell">@Html.LocalizeString("SKUColumn")</th>
+					<th class="col-sm-1">@Html.LocalizeString("QuantityColumn")</th>
+					<th class="col-sm-1"></th>
+					<th class="col-sm-1 hidden-xs d-none d-sm-table-cell">@Html.LocalizeString("AmountColumn")</th>
+				</tr>
+			</thead>
+			<tbody data-bind="foreach: { data: SalesOrderSet.MainSalesOrderDetails, as: 'sod'}">
+				<tr>
+					<td class="hidden-xs d-none d-sm-table-cell" data-bind="if: sod.ProductVariant.MainThumbnailGallery"><a data-bind="attr: { href: sod.ProductVariant.ProductDetail.TabUrl }"><img class="img-responsive img-fluid" data-bind="attr: {src: sod.ProductVariant.MainThumbnailGallery.MediaUrl}" /></a></td>
+					<td>
+						<a data-bind="text: sod.ProductName, attr: { href: sod.ProductVariant.ProductDetail.TabUrl }"></a>
+						<div class="rvdsf-productvariant-name" data-bind="visible: sod.ProductVariantName, text: sod.ProductVariantName"></div>
+						<!-- ko if: FormattedBookingStartDate -->
+						<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-bookingdates" style="width: auto">
+							<tr>
+								<td><strong>@Html.LocalizeString("BookingStartDateLabel")</strong></td>
+								<td data-bind="text: sod.FormattedBookingStartDate"></td>
+							</tr>
+							<tr>
+								<td><strong>@Html.LocalizeString("BookingStopDateLabel")</strong></td>
+								<td data-bind="text: sod.FormattedBookingStopDate"></td>
+							</tr>
+						</table>
+						<!-- /ko -->
+						<!-- ko if: Object.keys(sod.DynamicFormResult).length > 0 -->
+						<!-- ko with: sod.DynamicFormResult -->
+						<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-dynamicformresult" data-bind="foreach: Object.keys($data)" style="width: auto">
+							<tr>
+								<td><strong data-bind="text: $data + ':'"></strong></td>
+								<td data-bind="text: $parent[$data]"></td>
+							</tr>
+						</table>
+						<!-- /ko -->
+						<!-- /ko -->
+						<table class="table table-unstriped table-condensed table-sm table-borderless rvdsf-productparts" data-bind="foreach: { data: $parent.SalesOrderSet.SalesOrderDetails, as: 'csod' }" style="width: auto">
+							<tr data-bind="if: csod.ParentSalesOrderDetailID() == sod.SalesOrderDetailID()">
+								<td><strong data-bind="text: csod.ProductName"></strong><strong data-bind="visible: csod.ProductVariantName, text: ' - ' + csod.ProductVariantName()"></strong></td>
+								<td data-bind="text: csod.PartQuantity"></td>
+							</tr>
+						</table>
+					</td>
+					<td class="hidden-xs d-none d-sm-table-cell">
+						<span data-bind="text: SKU"></span>
+					</td>
+					<td class="rvdsf-field-qty">
+						<!-- ko if: ProductVariant.AllowableOrderQuantityList().length == 0 -->
+						<input class="form-control" type="number" required data-bind="value: Quantity, attr: {'id': 'rvdsfSalesOrderDetailQuantityInput_' + SalesOrderDetailID(), 'readonly': $parent.SalesOrderSet.OrderLocked(), 'min': ProductVariant.MinOrderQuantity() == null ? ProductVariant.DefaultQuantity() : ProductVariant.MinOrderQuantity(), 'max': ProductVariant.MaxOrderQuantity() == null ? 9999 : ProductVariant.MaxOrderQuantity(), 'data-salesorderdetailid': sod.SalesOrderDetailID() }" step="1" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+						<!-- /ko -->
+						<!-- ko ifnot: ProductVariant.AllowableOrderQuantityList().length == 0 -->
+						<select class="form-control" data-bind="value: Quantity, options: ProductVariant.AllowableOrderQuantityList, attr: {'id': 'rvdsfSalesOrderDetailQuantityInput_' + SalesOrderDetailID(), 'readonly': $parent.SalesOrderSet.OrderLocked(), 'data-salesorderdetailid': sod.SalesOrderDetailID() }"></select>
+						<!-- /ko -->
+						<div class="visible-xs d-block d-sm-none rvdsf-label-amount" data-bind="text: Status() == 9 ? null : FormattedCombinedTotalAmount"></div>
+					</td>
+					<td><a class="btn btn-link rvdsf-btn-remove" data-bind="visible: !$parent.SalesOrderSet.OrderLocked(), click: $root.removeSalesOrderDetail" href="#"><em class="glyphicon glyphicon-remove fa fas fa-trash"></em></a></td>
+					<td class="rvdsf-label-amount hidden-xs d-none d-sm-table-cell" data-bind="text: Status() == 9 ? null : FormattedCombinedTotalAmount"></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- ko if: Object.keys(SalesOrderSet.DynamicFormResult).length > 0 -->
+		<!-- ko with: SalesOrderSet.DynamicFormResult -->
+		<table class="table table-condensed table-sm table-borderless rvdsf-dynamicformresult" data-bind="foreach: Object.keys($data)" style="width: auto">
+			<tr>
+				<td><strong data-bind="text: $data + ':'"></strong></td>
+				<td data-bind="text: $parent[$data]"></td>
+			</tr>
+		</table>
+		<!-- /ko -->
+		<!-- /ko -->
+		<div class="btn-toolbar pull-right float-right">
+			<button type="button" class="btn btn-primary rvdsf-btn-updatecart" data-bind="click: updateCart">@Html.LocalizeString("UpdateCartLink")</button>
+			<button type="button" data-bind="click: resetCart" class="btn btn-default btn-light rvdsf-btn-resetcart">@Html.LocalizeString("ResetCartLink")</button>
+		</div>
+		<div class="clearfix"></div>
+		<div class="form-horizontal rvdsf-cart-amount-container" data-bind="visible: !SalesOrderSet.HasQuotedProduct()">
+			<div class="col-sm-offset-6 offset-sm-6 col-sm-6 col-xs-12 col-12">
+				<div class="form-group row rvdsf-label-totalsalesorderdetaildiscountamount" data-bind="visible: SalesOrderSet.TotalSalesOrderDetailDiscountAmount() < 0">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalSalesOrderDetailDiscountLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalSalesOrderDetailDiscountAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-subtotalamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("SubTotalLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedSubTotalAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalhandlingamount" data-bind="visible: SalesOrderSet.TotalHandlingAmount() > 0">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalHandlingLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalHandlingAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalshippingamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalShippingLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalShippingAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totaltaxamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalTaxLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalTaxAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalamount">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalsavingsamount" data-bind="visible: SalesOrderSet.TotalSavingsAmount() < 0">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("TotalSavingsLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedTotalSavingsAmount"></p>
+					</div>
+				</div>
+				<div class="form-group row rvdsf-label-totalrewardspoint" data-bind="visible: ShowRewardsPoint">
+					<label class="control-label col-form-label col-xs-7 col-7 text-right">@Html.LocalizeString("RewardsPointQualifiedLabel")</label>
+					<div class="col-xs-5 col-5">
+						<p class="form-control-static form-control-plaintext" data-bind="text: SalesOrderSet.FormattedRewardsPointsQualified"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="btn-toolbar">
+			<button type="button" data-bind="visible: ValidationResults().length == 0, click: checkout" class="pull-right float-right btn btn-primary rvdsf-btn-checkout">@Html.LocalizeString("CheckoutLink")</button>
+		</div>
+	</div>
+	<div id="rvdsfQuickOrderCrosssellProductModal" class="modal fade rvdsf-crosssellproduct-container" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel" style="display: inline-block">@Html.LocalizeString("CrosssellProductLabel")</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<div class="modal-body row" data-bind="foreach: CrosssellProducts" style="padding: 20px">
+					<div class="col-xs-12 col-12 col-sm-6">
+						<div class="row">
+							<div class="rvdsf-crosssellproduct-header col-xs-12 col-12">
+								<h5 data-bind="text: Title"></h5>
+								<div data-bind="text: Description"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-12">
+								<div class="rvdsf-product-container">
+									<!-- ko if: OfferProduct.ShowPrice() && OfferProduct.DefaultProductVariant.CombinedSavings() > 0 -->
+									<div class="rvdsf-label-savings">
+										@Html.LocalizeString("SavingsLabel")
+										<span data-bind="visible: OfferProduct.ProductVariants().length == 1, text: ' ' + OfferProduct.DefaultProductVariant.FormattedCombinedPercentSavings()"></span>
+									</div>
+									<!-- /ko -->
+									<div class="rvdsf-product-gallery-container">
+										<!-- ko if: OfferProduct.DefaultThumbnailGallery -->
+										<a data-bind="attr: { href: OfferProduct.ProductDetail.TabUrl }"><img class="img-responsive img-fluid center-block d-block mx-auto" data-bind="attr: { src: OfferProduct.DefaultThumbnailGallery.MediaUrl, alt: OfferProduct.DefaultThumbnailGallery.AlternateText }" /></a>
+										<!-- /ko -->
+									</div>
+									<div class="rvdsf-product-info-container">
+
+										<div class="rvdsf-field-name">
+											<a class="rvdsf-label-name" data-bind="text: OfferProduct.Name, attr: { href: OfferProduct.ProductDetail.TabUrl }"></a>
+										</div>
+										<!-- ko if: OfferProduct.ShowProductReviews -->
+										<div class="rvdsf-field-rating">
+											<input class="rating" type="hidden" readonly data-bind="attr: { 'value': (OfferProduct.AverageOverallRating() == 0 ? '' : OfferProduct.AverageOverallRating()) }" />
+											<span class="badge" data-bind="visible: OfferProduct.RatingCount() > 0, text: OfferProduct.RatingCount"></span>
+										</div>
+										<!-- /ko -->
+										<!-- ko if: OfferProduct.ShowPrice -->
+										<!-- ko if: OfferProduct.ProductVariants().length == 1 -->
+										<!-- ko if: !OfferProduct.DefaultProductVariant.PriceText() && OfferProduct.DefaultProductVariant.SalesType() != 2 -->
+										<div class="rvdsf-field-price">
+											<!-- ko if: OfferProduct.DefaultProductVariant.CombinedPromotionPrice() != null -->
+											<span class="rvdsf-label-price"><s data-bind="text: OfferProduct.DefaultProductVariant.FormattedCombinedPrice"></s></span>
+											<span class="rvdsf-label-promotionprice" data-bind="text: OfferProduct.DefaultProductVariant.FormattedCombinedPromotionPrice"></span>
+											<!-- /ko -->
+											<!-- ko if: OfferProduct.DefaultProductVariant.CombinedPromotionPrice() == null -->
+											<span class="rvdsf-label-price" data-bind="text: OfferProduct.DefaultProductVariant.FormattedCombinedPrice"></span>
+											<!-- /ko -->
+										</div>
+										<!-- /ko -->
+										<!-- ko if: OfferProduct.DefaultProductVariant.PriceText() -->
+										<div class="rvdsf-field-price">
+											<span class="rvdsf-label-pricetext" data-bind="text: OfferProduct.DefaultProductVariant.PriceText"></span>
+										</div>
+										<!-- /ko -->
+										<!-- /ko -->
+										<!-- ko if: OfferProduct.ProductVariants().length > 1 && OfferProduct.FormattedMinCombinedSellingPrice() && OfferProduct.FormattedMaxCombinedSellingPrice -->
+										<div class="rvdsf-field-price">
+											<span class="rvdsf-label-price" data-bind="text: OfferProduct.FormattedMinCombinedSellingPrice() == OfferProduct.FormattedMaxCombinedSellingPrice() ? OfferProduct.FormattedMinCombinedSellingPrice() : OfferProduct.FormattedMinCombinedSellingPrice() + ' - ' + OfferProduct.FormattedMaxCombinedSellingPrice()"></span>
+										</div>
+										<!-- /ko -->
+										<!-- /ko -->
+									</div>
+									<!-- ko if: OfferProduct.ShowQuantity() && OfferProduct.AllowInternetOrder() && !OfferProduct.DefaultProductVariant.HasFormFields() && OfferProduct.ProductVariants().length == 1 -->
+									<div class="rvdsf-product-form-container form-horizontal">
+										<div class="form-group row rvdsf-field-qty">
+											<label class="control-label col-form-label col-xs-6 col-6 text-right" data-bind="attr: { for: 'rvdsfProductListQuantityInput_' + OfferProduct.ProductID() } ">@Html.LocalizeString("QuantityLabel")</label>
+											<div class="col-xs-6 col-6 text-left">
+												<!-- ko if: OfferProduct.DefaultProductVariant.AllowableOrderQuantityList().length == 0 -->
+												<input data-bind="value: OfferProduct.DefaultProductVariant.DefaultQuantity, attr: { id: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID(), name: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID(), min: OfferProduct.DefaultProductVariant.MinOrderQuantity() ? OfferProduct.DefaultProductVariant.MinOrderQuantity() : OfferProduct.DefaultProductVariant.DefaultQuantity(), max: OfferProduct.DefaultProductVariant.MaxOrderQuantity() ? OfferProduct.DefaultProductVariant.MaxOrderQuantity() : 9999 } " type="number" required step="1" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+												<!-- /ko -->
+												<!-- ko ifnot: OfferProduct.DefaultProductVariant.AllowableOrderQuantityList().length == 0 -->
+												<select class="form-control" data-bind="options: OfferProduct.DefaultProductVariant.AllowableOrderQuantityList, attr: {'id': 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID(), name: 'rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID() }"></select>
+												<!-- /ko -->
+											</div>
+										</div>
+									</div>
+									<!-- /ko -->
+									<div class="btn-toolbar">
+										<!-- ko if: OfferProduct.ShowSeeDetails -->
+										<button type="button" class="rvdsf-btn-seedetails btn btn-primary" data-bind="click: function() { location.href = OfferProduct.ProductDetail.TabUrl(); } ">@Html.LocalizeString("SeeDetailsLink")</button>
+										<!-- /ko -->
+										<!-- ko if: OfferProduct.AllowInternetOrder() && OfferProduct.ProductVariants().length == 1 && !OfferProduct.DefaultProductVariant.HasFormFields() && OfferProduct.DefaultProductVariant.HasAcceptableInventory() -->
+										<!-- ko if: OfferProduct.ShowAddToCart -->
+										<button type="button" class="rvdsf-btn-addtocart btn btn-primary" data-bind="text: OfferProduct.DefaultProductVariant.SalesType() == 2 ? '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("AddToQuoteLink"))' : '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("AddToCartLink"))', click: function () { $root.addProductToCart(OfferProduct.DefaultProductVariant.ProductVariantID(), ($('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).length ? $('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).val() : OfferProduct.DefaultProductVariant.DefaultQuantity()), 'rvdsfProductListMessage_' + OfferProduct.ProductID(), null) }"></button>
+										<!-- /ko -->
+										<!-- ko if: OfferProduct.ShowBuyNow -->
+										<button type="button" class="rvdsf-btn-buynow btn btn-primary" data-bind="text: OfferProduct.DefaultProductVariant.SalesType() == 2 ? '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("QuoteNowLink"))' : '@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("BuyNowLink"))', click: function () { $root.addProductToCart(OfferProduct.DefaultProductVariant.ProductVariantID(), ($('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).length ? $('#rvdsfCrosssellProductQuantityInput_' + OfferProduct.ProductID()).val() : OfferProduct.DefaultProductVariant.DefaultQuantity()), 'rvdsfProductListMessage_' + OfferProduct.ProductID(), $root.Checkout.TabUrl()) }"></button>
+										<!-- /ko -->
+										<!-- /ko -->
+									</div>
+									<!-- ko ifnot: OfferProduct.ProductVariants().some(function (pv) { return pv.HasAcceptableInventory()}) -->
+									<div class="alert alert-info rvdsf-label-soldout">@Html.LocalizeString("SoldOutLabel")</div>
+									<!-- /ko -->
+									<div data-bind="attr: { id: 'rvdsfProductListMessage_' + OfferProduct.ProductID() }" style="display:none"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" data-bind="click: function() { location.href = Checkout.TabUrl() }" class="pull-right float-right btn btn-primary rvdsf-btn-checkout">@Html.LocalizeString("CloseCrosssellProductLink")</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="rvdsfLoading" class="rvd-loading" style="display: none"><img src="~/Images/Loading.gif" /></div>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses KnockoutJS. See http://knockoutjs.com *@
+@{
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.Knockout);
+	DotNetNuke.Framework.JavaScriptLibraries.JavaScript.RequestRegistration(DotNetNuke.Framework.JavaScriptLibraries.CommonJs.KnockoutMapping);
+}
+
+@* Uses jQuery Validation. See https://jqueryvalidation.org *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/jquery-validation/jquery.validate.min.js" defer></script>
+
+@* Uses JSON-cycle to resolve references *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/json-cycle/cycle.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.data.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.virtuallist.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.popup.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.list.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.combobox.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+
+<script type="text/javascript">
+	var rvdsfQuickOrder = rvdsfQuickOrder || {}
+	var quickOrderContainer
+
+    $(document).ready(function () {
+
+        // Initialize progress loading
+        $(document).ajaxStart(function () {
+            // Only show loading if it exceeds 1 sec
+            $("#rvdsfLoading").data("timer", setTimeout(function () { $("#rvdsfLoading").show(); }, 1000))
+        }).ajaxStop(function () {
+            if ($("#rvdsfLoading").data("timer"))
+                clearTimeout($("#rvdsfLoading").data("timer"))
+
+            $("#rvdsfLoading").hide();
+        })
+
+        // Initialize jQuery Validation with Bootstrap default styles
+        $('#Form').validate({
+            highlight: function(element) {
+				$(element).closest('.form-group').addClass('has-error');
+				$(element).addClass('is-invalid');
+			},
+			unhighlight: function(element) {
+				$(element).closest('.form-group').removeClass('has-error');
+				$(element).removeClass('is-invalid');
+			},
+			errorElement: 'div',
+			errorClass: 'help-block invalid-feedback',
+			errorPlacement: function(error, element) {
+				if (element.parent('.input-group').length) {
+					error.insertAfter(element.parent());
+				} else if(element.prop('type') === 'checkbox') {
+					error.appendTo(element.parent().parent());
+				} else if(element.prop('type') === 'radio') {
+					error.appendTo(element.parent().parent());
+				} else {
+					error.insertAfter(element);
+				}
+			},
+			onsubmit: false
+        })
+
+        // Add custom method to validate at least one checkbox in group is selected
+        $.validator.addMethod("requiredGroup", function (value, element, params) {
+            if (params)
+                return ($("input[name='" + params + "']:checked").length > 0)
+            else
+                return true
+        }, "@HttpUtility.JavaScriptStringEncode(DotNetNuke.Services.Localization.Localization.GetString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile))")
+
+        // Bind KnockoutJS view model
+        quickOrderContainer = document.getElementById("rvdsfQuickOrderPanelContainer")
+        quickOrderContainer.databind = function () {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+            $.ajax({
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "QuickOrder/ViewModel"
+            })
+            .done(function (data, status) {
+
+                var mapping = {
+                    'SalesOrders': {
+                        key: function (data) {
+                            return ko.utils.unwrapObservable(data.SalesOrderID);
+                        }
+                    }
+                }
+
+                if (quickOrderContainer.viewModel) {
+                    ko.mapping.fromJS(data, mapping, quickOrderContainer.viewModel)
+                }
+                else {
+                	quickOrderContainer.viewModel = ko.mapping.fromJS(data, mapping);
+
+                	quickOrderContainer.viewModel.ProductVariants = ko.observableArray(null)
+					quickOrderContainer.viewModel.SelectedProductVariant = ko.observable(null)
+					quickOrderContainer.viewModel.SalesOrderSet.MainSalesOrderDetails().map(function (sod) {
+						sod.PreviousQuantity = ko.observable(sod.Quantity())
+					})
+
+                	quickOrderContainer.viewModel.addProductToCart = function (productVariantID, quantity, messageContainerID, redirect) {
+                		var salesOrderDetailData = {
+                			ProductVariantID: productVariantID,
+                			Quantity: quantity
+                		}
+
+                		var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+                		$.ajax({
+                			type: "POST",
+                			beforeSend: servicesFramework.setModuleHeaders,
+                			url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                			data: salesOrderDetailData
+                		})
+                        .done(function (data, textStatus, jqXHR) {
+
+                        	// Notify all Cart Summary modules to rebind
+                        	$(".rvdsf-cartsummary-container").each(function () {
+                        		this.databind()
+                        	})
+
+                        	$("#" + messageContainerID).attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToCart, Global.FilePaths.LocalSharedResourceFile))").show().fadeOut(10000)
+
+                        	if (redirect)
+                        		location.href = redirect
+                        	else
+                        		quickOrderContainer.databind()
+                        })
+                        .fail(function (data, textStatus, errorThrown) {
+                        	$("#" + messageContainerID).attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+                        })
+                	}
+
+                    quickOrderContainer.viewModel.checkout = function () {
+						if (!quickOrderContainer.viewModel.CrosssellProductShown && quickOrderContainer.viewModel.ShowCrosssellProduct() && quickOrderContainer.viewModel.CrosssellProducts().length > 0) {
+							$('#rvdsfQuickOrderCrosssellProductModal').modal({ backdrop: false })
+							quickOrderContainer.viewModel.CrosssellProductShown = true
+
+							// Initialize ratings after KO has run
+							$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+						}
+                        else
+                            window.location = quickOrderContainer.viewModel.Checkout.TabUrl()
+                    }
+
+                    quickOrderContainer.viewModel.initializeProductSearch = function () {
+                    	var comboBox = $("#rvdsfQuickOrderProductSearchInput").kendoComboBox({
+                    		autoBind: false,
+                    		change: function (e) {
+                    			quickOrderContainer.viewModel.ProductVariants.removeAll()
+
+                    			// We need to restore circular references 
+                    			// because Kendo UI can only support flat structure during loading
+                    			if (this.selectedIndex >= 0) {
+									var data = JSON.retrocycle(this.dataSource.data())
+									var that = this
+									data.find(function (o) { return o.ProductID == that.value() }).ProductVariants.map(function (pv) {
+                    					quickOrderContainer.viewModel.ProductVariants.push(pv)
+                    				})
+                    			}
+                    		},
+							clearButton: true,
+							dataTextField: "Name",
+							dataValueField: "ProductID",
+							enforceMinLength: true,
+							minLength: 2,
+							dataSource: new kendo.data.DataSource({
+								serverFiltering: true,
+                        		transport: {
+                        			read: {
+                        				type: "POST",
+                        				url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Product/Search",
+                        				beforeSend: servicesFramework.setModuleHeaders,
+                        				data: function () {
+											// Check length because minLength is not foolproof.
+                        					if (comboBox.input.val().length > 1)
+                        						return {
+                        							Query: comboBox.input.val(),
+													MaxItems: 30
+                        						}
+                        					else
+                        						return null
+                        				},
+                        				dataType: "json",
+                        				contentType: "application/json; charset=UTF-8"
+                        			},
+                        			parameterMap: function (data, type) {
+                        				return kendo.stringify(data);
+                        			}
+                        		},
+								schema: {
+									data: function (response) {
+
+										// We need to decycle any circular references because Kendo UI can only support flat structure
+										return JSON.decycle(response)
+									}
+								},
+								sort: { field: "Name", dir: "asc" }
+							}),
+							filter: "contains",
+							suggest: false
+                    	}).data("kendoComboBox")
+                    }
+
+                    quickOrderContainer.viewModel.removeSalesOrderDetail = function (sod) {
+
+                        var salesOrderDetailData = {
+                            SalesOrderDetailID: sod.SalesOrderDetailID()
+                        }
+
+                        $.ajax({
+                            type: "DELETE",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+                            data: salesOrderDetailData
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+							})
+
+                            quickOrderContainer.databind()
+                        })
+                    }
+
+                    quickOrderContainer.viewModel.resetCart = function () {
+
+                        $.ajax({
+                            type: "DELETE",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/Cart"
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+							})
+
+                            quickOrderContainer.databind()
+                        })
+                    }
+
+                    quickOrderContainer.viewModel.updateCart = function () {
+
+                        var salesOrderDetailDataList = []
+
+						quickOrderContainer.viewModel.SalesOrderSet.MainSalesOrderDetails().map(function (sod) {
+							if (sod.PreviousQuantity() != sod.Quantity()) {
+								var salesOrderDetailData = { SalesOrderDetailID: sod.SalesOrderDetailID(), Quantity: sod.Quantity() }
+								salesOrderDetailDataList.push(salesOrderDetailData)
+							}
+                        })
+
+                        $.ajax({
+                            type: "PUT",
+                            beforeSend: servicesFramework.setModuleHeaders,
+                            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetails",
+                            data: JSON.stringify(salesOrderDetailDataList),
+                            contentType: 'application/json'
+                        })
+                        .done(function (data, textStatus, jqXHR) {
+							// Notify all Cart Summary modules to rebind
+                            $(".rvdsf-cartsummary-container").each(function () {
+                                this.databind()
+							})
+
+                            quickOrderContainer.databind()
+                        })
+                    }
+
+                    // Helper function to format currency
+                    quickOrderContainer.viewModel.formatCurrency = function (number) {
+                        return new Intl.NumberFormat(this.Currency.CultureCode(), { style: 'currency', currency: this.Currency.CurrencyCode() }).format((typeof number === "function" ? number() : number) * this.Currency.ExchangeRate());
+                    }
+
+					ko.applyBindings(quickOrderContainer.viewModel, quickOrderContainer)
+				}
+
+				// Initialize ratings after KO has run
+				if (quickOrderContainer.viewModel.CrosssellProductShown)
+					$('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+            })
+        }
+
+        quickOrderContainer.databind()
+    })
+</script>
+

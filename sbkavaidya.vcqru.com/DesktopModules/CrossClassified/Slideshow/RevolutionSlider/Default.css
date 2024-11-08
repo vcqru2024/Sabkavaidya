@@ -1,0 +1,95 @@
+  /*	-	THE BANNER CONTAINER (Padding, Shadow, Border etc. )	-	*/
+
+.fullwidthbanner-container{width:100% !important;position:relative;padding:0;max-height:500px !important;overflow:hidden;}
+.fullwidthbanner .title1{ font-size:64px;padding:5px 10px; line-height:30px; color:#fff; text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2)}
+.fullwidthbanner .title2{ font-size:48px;padding:5px 10px; line-height:30px; color:#fff; text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);}
+.fullwidthbanner .title3{ font-size:24px;padding:5px 10px; line-height:30px; color:#fff; text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);}
+.fullwidthbanner ul,.fullwidthbanner ul li{ margin:0px; padding:0px; list-style:none}
+/****************************************************************
+
+	-	SET THE ANIMATION EVEN MORE SMOOTHER ON ANDROID   -
+
+******************************************************************/
+
+.tp-simpleresponsive .slotholder *,
+.tp-simpleresponsive img			{ -webkit-transform: translateZ(0);   -webkit-backface-visibility: hidden;   -webkit-perspective: 1000; 		}
+
+
+/************************************************
+	  - SOME CAPTION MODIFICATION AT START  -
+*************************************************/
+.tp-simpleresponsive .caption,
+.tp-simpleresponsive .tp-caption {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; position:absolute; visibility: hidden; }
+.tp-simpleresponsive img	{ max-width:none;}
+
+/******************************
+	-	IE8 HACKS	-
+*******************************/
+.noFilterClass {
+	filter:none !important;
+}
+
+/********************************
+	-	FULLSCREEN VIDEO	-
+*********************************/
+.caption.fullscreenvideo { left:0px; top:0px; position:absolute;width:100%;height:100%;}
+.caption.fullscreenvideo iframe	{ width:100% !important; height:100% !important;}
+
+.tp-caption.fullscreenvideo { left:0px; top:0px; position:absolute;width:100%;height:100%;}
+.tp-caption.fullscreenvideo iframe	{ width:100% !important; height:100% !important;}
+
+/************************
+	-	NAVIGATION	-
+*************************/
+
+/** BULLETS **/
+
+.tpclear								{ clear:both;}
+.tp-bullets								{ z-index:900; position:absolute; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; -moz-opacity: 1; -khtml-opacity: 1; opacity: 1; -webkit-transition: opacity 0.2s ease-out; -moz-transition: opacity 0.2s ease-out; -o-transition: opacity 0.2s ease-out; -ms-transition: opacity 0.2s ease-out}
+.tp-bullets.hidebullets					{ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; -moz-opacity: 0; -khtml-opacity: 0; opacity: 0;}
+
+.tp-bullets.simplebullets.round-old .bullet			{ cursor:pointer; position:relative; background:#fff; width:10px;height:10px;  margin:0 5px; float:left; margin-top:0px; border:2px #000 solid;-webkit-border-radius: 40px; -moz-border-radius: 40px; border-radius: 40px}
+
+.tp-bullets.simplebullets .bullet:hover,
+.tp-bullets.simplebullets .bullet.selected				{ background:#333}
+
+/*************************************
+	-	TP ARROWS 	-
+**************************************/
+.tparrows												{ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; -webkit-transition: opacity 0.2s ease-out; -moz-transition: opacity 0.2s ease-out; -o-transition: opacity 0.2s ease-out; -ms-transition: opacity 0.2s ease-out; text-align:center; line-height:55px; color:#fff; font-weight:bold; background:#000; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; width:40px; height:55px; 	}
+.tparrows.hidearrows									{ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; -moz-opacity:0; -khtml-opacity:0; opacity:0; 		}
+.fullwidthbanner-container:hover .tparrows				{ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; -moz-opacity: 0.5; -khtml-opacity: 0.5; opacity: 0.5;}
+.fullwidthbanner-container:hover .tparrows:hover		{ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; -moz-opacity: 1; -khtml-opacity: 1; opacity: 1;}
+.tp-leftarrow.default									{ z-index:100;cursor:pointer; position:relative;left: 60px}
+.tp-rightarrow.default									{ z-index:100;cursor:pointer; position:relative;right: 60px; }
+
+.tp-leftarrow:hover,
+.tp-rightarrow:hover 									{ background:#f00;}
+
+/***************************************
+	-	RESPONSIVE SETTINGS 	-
+****************************************/
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.responsive .tp-bullets.tp-thumbs				{ width:300px !important; height:30px !important;}
+.responsive .tp-bullets.tp-thumbs .tp-mask		{ width:300px !important; height:30px !important;}
+.responsive .tp-bullets.tp-thumbs .bullet		{ width:60px !important;height:30px !important;}
+.fullwidthbanner .title1{ font-size:34px;}
+.fullwidthbanner .title2{ font-size:28px;}
+.fullwidthbanner .title3{ font-size:14px}
+
+}
+@media only screen and (min-width: 0px) and (max-width: 479px) {
+.tparrows										{ line-height:25px; color:#fff; font-weight:bold; background:#000; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; width:20px; height:25px; 	}
+.tp-bullets.simplebullets.round-old .bullet		{ cursor:pointer; position:relative; background:#fff; width:5px;height:5px;  margin:0 5px; float:left; margin-top:0px; border:1px #fff solid;-webkit-border-radius: 40px; -moz-border-radius: 40px; border-radius: 40px}
+.tp-bullets.simplebullets .bullet:hover,
+.tp-bullets.simplebullets .bullet.selected				{ background:#333; border:1px #333 solid}
+
+.fullwidthbanner .title1{ font-size:18px;}
+.fullwidthbanner .title2{ font-size:16px;}
+.fullwidthbanner .title3{ font-size:12px}
+
+
+}

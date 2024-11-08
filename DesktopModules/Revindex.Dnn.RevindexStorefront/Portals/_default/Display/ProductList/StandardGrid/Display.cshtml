@@ -1,0 +1,872 @@
+﻿@* Template name: StandardGrid *@
+@using Revindex.Business.Revindex.Revindex.Storefront;
+@using Revindex.Dnn.RevindexStorefront.Models;
+@using Revindex.Web.Mvc.Dnn.Helpers;
+@inherits Revindex.Dnn.RevindexStorefront.Views.ProductListWebViewPage<ProductListViewModel>
+
+<div class="rvdsf rvdsf-productlist-container container-fluid">
+    @if (Model.Category != null || Model.Distributor != null || Model.Manufacturer != null || Model.Seller != null)
+    {
+        <div class="rvdsf-field-description">
+            @Html.Raw(Model.Category == null ? (Model.Distributor == null ? (Model.Manufacturer == null ? (Model.Seller == null ? "" : Model.Seller.Description) : Model.Manufacturer.Description) : Model.Distributor.Description) : Model.Category.Description)
+        </div>
+    }
+    @if (Model.ShowSubCategory)
+    {
+        <ul class="row list-unstyled rvdsf-productlist-subcategories hidden-xs">
+            @foreach (var category in Model.SubCategories)
+            {
+                <li class="list-group-item col-sm-4">
+                    <div class="rvdsf-category-gallery-container">
+                        @if (category.DefaultThumbnailGallery != null)
+                        {
+                            <a href="@category.ProductList.TabUrl"><img class="img-responsive img-fluid center-block d-block mx-auto" src="@category.DefaultThumbnailGallery.MediaUrl" alt="@category.DefaultThumbnailGallery.AlternateText" /></a>
+                        }
+                    </div>
+                    <div class="rvdsf-category-info-container">
+                        <div class="rvdsf-field-name">
+                            <a href="@category.ProductList.TabUrl">@category.Name</a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+    <div class="rvdsf-productlist-navbar">
+        <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group rvdsf-field-pageviewdisplayorder">
+                @{
+                    var urlParams = HttpUtility.ParseQueryString(Request.Url.Query);
+                    urlParams.Remove(Global.QueryStringKeys.PageViewNumber);
+                }
+                <div class="dropdown">
+                    <button class="btn btn-default btn-light btn-light btn-block dropdown-toggle bg-transparent border-0" type="button" data-toggle="dropdown">@Html.LocalizeString(Model.PageViewDisplayOrder.ToString() + "DisplayOrderLabel") <span class="caret"></span></button>
+                    <ul class="dropdown-menu" style="width: 100%">
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "1");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("RecommendedDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "8");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("NewestDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "9");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("OldestDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "4");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("LowestPriceDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "5");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("HighestPriceDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "2");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("AlphabeticalNameDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "3");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("ReverseNameDisplayOrderLabel")</a></li>
+					    @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "10");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("AlphabeticalSKUDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "11");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("ReverseSKUDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "6");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("LowestRatingsDisplayOrderLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewDisplayOrder, "7");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">@Html.LocalizeString("HighestRatingsDisplayOrderLabel")</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group rvdsf-field-pageviewsize">
+                @{ 
+                    urlParams = HttpUtility.ParseQueryString(Request.Url.Query);
+                    urlParams.Remove(Global.QueryStringKeys.PageViewNumber);
+                 }
+                <div class="dropdown">
+                    <button class="btn btn-default btn-light btn-light btn-block dropdown-toggle bg-transparent border-0" type="button" data-toggle="dropdown">@Model.PageViewSize @Html.LocalizeString("PerPageSizeLabel") <span class="caret" style="display: inline-block; text-align: right"></span></button>
+                    <ul class="dropdown-menu" style="width: 100%">
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewSize, "12");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">12 @Html.LocalizeString("PerPageSizeLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewSize, "24");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">24 @Html.LocalizeString("PerPageSizeLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewSize, "48");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">48 @Html.LocalizeString("PerPageSizeLabel")</a></li>
+                        @{urlParams.Set(Global.QueryStringKeys.PageViewSize, "96");}<li class="dropdown-item"><a href="@Url.NavigateUrl(urlParams)">96 @Html.LocalizeString("PerPageSizeLabel")</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 text-right">
+            <div class="rvdsf-field-pageviewmode hidden-xs d-none d-sm-block">
+                @{
+                    urlParams = HttpUtility.ParseQueryString(Request.Url.Query);
+                }
+                @{urlParams.Set(Global.QueryStringKeys.PageViewMode, "grid");}<a href="@Url.NavigateUrl(urlParams)" class="@(String.IsNullOrEmpty(Model.PageViewMode) || Model.PageViewMode == "grid" ? "active" : "")" rel="nofollow"><span class="glyphicon glyphicon-th-large fa fas fa-th-large"></span></a>&nbsp;
+                @{urlParams.Set(Global.QueryStringKeys.PageViewMode, "list");}<a href="@Url.NavigateUrl(urlParams)" class="@(Model.PageViewMode == "list" ? "active" : "")" rel="nofollow"><span class="glyphicon glyphicon-th-list fa fas fa-th-list"></span></a>
+            </div>
+        </div>
+        </div>
+        @if (Model.ShowFilter || Model.ShowSearch)
+		{
+            <div class="row mt-2">
+                <div class="col-9 col-xs-9 col-sm-10">
+                    @if (Model.ShowSearch)
+					{
+                        <div class="input-group">
+                            <input id="rvdsfProductListSearchQueryInput" type="search" onkeypress="if (event.keyCode == '13') { event.preventDefault(); $('#rvdsfProductListSearchSubmitButton').click() }" class="form-control" placeholder="@Html.LocalizeString("SearchPlaceholder")" value="@Model.SearchQuery">
+                            <div class="input-group-btn input-group-append">
+                                <button id="rvdsfProductListSearchSubmitButton" class="btn btn-primary rvd-btn-search" type="button" onclick="var url = new window.URL(location.href); if ($('#rvdsfProductListSearchQueryInput').val() == '') url.searchParams.delete('@Global.QueryStringKeys.SearchQuery'); else url.searchParams.set('@Global.QueryStringKeys.SearchQuery', $('#rvdsfProductListSearchQueryInput').val()); location.href = url.href;"><i class="glyphicon glyphicon-search fa fas fa-search"></i></button>
+                            </div>
+                        </div>
+					}
+                </div>
+                <div class="col-3 col-xs-3 col-sm-2 text-right">
+                    @if (Model.ShowFilter)
+					{
+                        <button class="btn btn-secondary" type="button" data-toggle="collapse" href="#rvdsfProductListFilterPanel"><em class="glyphicon glyphicon-filter fa fas fa-filter"></em><span class="hidden-xs d-none d-sm-inline"> @Html.LocalizeString("FilterLink")@(Model.ProductFilter.IsApplied ? " (" + Model.ProductFilter.AppliedCount + ")" : "")</span></button>
+					}
+                </div>
+            </div>
+		}
+        @if (Model.ShowFilter)
+		{
+            <div id="rvdsfProductListFilterPanel" class="rvdsf-productlistfilter-container collapse">
+                <hr/>
+                @if (Model.ProductFilter.IsApplied)
+                {
+                    <div class="btn-toolbar text-center">
+                        <button type="button" class="btn btn-primary mx-auto" onclick="rvdsfProductList.resetFilter()"><span class="glyphicon glyphicon-remove fa fas fa-trash"></span> @Html.LocalizeString("ResetFilterLink")</button>
+                    </div>
+			    }
+
+                @if (Model.PriceFilterable)
+                {
+                    decimal min = Model.Products.Select(p => p.MinCombinedSellingPrice).DefaultIfEmpty().Min();
+                    decimal max = Model.Products.Select(p => p.MaxCombinedSellingPrice).DefaultIfEmpty().Max();
+                    var filter = Model.ProductFilter.PriceFilter;
+
+                    <div class="rvdsf-field-definition">
+                        <label for="" class="control-label">@Html.LocalizeString("PriceLabel")</label>
+                        <div>
+                            <div class="form-group text-center">
+                                <div class="badge badge-secondary">@(filter != null ? filter.MinPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " - " + filter.MaxPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " - " + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))</div>
+                                <div style="display: block; margin: auto;" data-id="@Global.ProductFilterKeys.Price" data-role="rangeslider" data-small-step="@Model.PriceStepSize.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-min="@min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-max="@max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-value="[@(filter != null ? filter.MinPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "," + filter.MaxPrice.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "," + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))]" >
+                                    <input />
+                                    <input />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+			    }
+
+                @if (Model.ManufacturerFilterable && Model.Manufacturers.Count > 0)
+                {
+                    var filter = Model.ProductFilter.ManufacturerFilter;
+
+                    <div class="rvdsf-field-definition">
+                        <label for="" class="control-label">@Html.LocalizeString("ManufacturerLabel")</label>
+                        <div class="row">
+                            @foreach (var manufacturer in Model.Manufacturers)
+						    {
+                                <div class="form-group col-xs-6 col-6">
+                                    <div class="checkbox form-check">
+                                        <label><input type="checkbox" @(filter != null && filter.ManufacturerIDs.Contains(manufacturer.ManufacturerID) ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addFilter('@Global.ProductFilterKeys.Manufacturer', '@manufacturer.ManufacturerID'); else rvdsfProductList.removeFilter('@Global.ProductFilterKeys.Manufacturer', '@manufacturer.ManufacturerID');"> @manufacturer.Name</label>
+                                    </div>
+                                </div>
+						    }
+                        </div>
+                    </div>
+			    }
+
+                @if (Model.DistributorFilterable && Model.Distributors.Count > 0)
+                {
+                    var filter = Model.ProductFilter.DistributorFilter;
+
+                    <div class="rvdsf-field-definition">
+                        <label for="" class="control-label">@Html.LocalizeString("DistributorLabel")</label>
+                        <div class="row">
+                            @foreach (var distributor in Model.Distributors)
+						    {
+                                <div class="form-group col-xs-6 col-6">
+                                    <div class="checkbox form-check">
+                                        <label><input type="checkbox" @(filter != null && filter.DistributorIDs.Contains(distributor.DistributorID) ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addFilter('@Global.ProductFilterKeys.Distributor', '@distributor.DistributorID'); else rvdsfProductList.removeFilter('@Global.ProductFilterKeys.Distributor', '@distributor.DistributorID');"> @distributor.Name</label>
+                                    </div>
+                                </div>
+						    }
+                        </div>
+                    </div>
+			    }
+
+                @if (Model.SellerFilterable && Model.Sellers.Count > 0)
+                {
+                    var filter = Model.ProductFilter.SellerFilter;
+
+                    <div class="rvdsf-field-definition">
+                        <label for="" class="control-label">@Html.LocalizeString("SellerLabel")</label>
+                        <div class="row">
+                            @foreach (var seller in Model.Sellers)
+						    {
+                                <div class="form-group col-xs-6 col-6">
+                                    <div class="checkbox form-check">
+                                        <label><input type="checkbox" @(filter != null && filter.SellerIDs.Contains(seller.SellerID) ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addFilter('@Global.ProductFilterKeys.Seller', '@seller.SellerID'); else rvdsfProductList.removeFilter('@Global.ProductFilterKeys.Seller', '@seller.SellerID');"> @seller.Name</label>
+                                    </div>
+                                </div>
+						    }
+                        </div>
+                    </div>
+			    }
+
+                @if (Model.BookingDateFilterable)
+                {
+                    DateTime min = DateTime.Today;
+                    DateTime max = DateTime.Today.AddYears(3);
+                    var filter = Model.ProductFilter.PriceFilter;
+
+                    <div class="rvdsf-field-definition">
+                        <label for="" class="control-label">@Html.LocalizeString("BookingDateLabel")</label>
+                        <div style="margin-bottom: 60px">
+                            <div class="form-group">
+                                <label for="rvdsfProductListBookingStartDateInput" class="col-sm-2">@Html.LocalizeString("BookingStartDateLabel")</label>
+                                <div class="col-sm-10">
+                                    <input id="rvdsfProductListBookingStartDateInput" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" placeholder="YYYY-MM-DD" value="@(Model.ProductFilter.BookingDateFilter == null ? "" : TimeZoneInfo.ConvertTimeFromUtc(Model.ProductFilter.BookingDateFilter.StartDate, Dnn.Portal.TimeZone).ToString("yyyy-MM-dd HH:mm:ss"))" />
+                                </div>
+                            </div>
+                            <div class="form-group" style="padding-top: 50px">
+                                <label for="rvdsfProductListBookingStopDateInput" class="col-sm-2">@Html.LocalizeString("BookingStopDateLabel")</label>
+                                <div class="col-sm-10">
+                                    <input id="rvdsfProductListBookingStopDateInput" class="form-control" type="text" required data-msg="@Html.LocalizeString(Global.LocalizedStrings.Message_FieldRequiredError, Global.FilePaths.LocalSharedResourceFile)" placeholder="YYYY-MM-DD" value="@(Model.ProductFilter.BookingDateFilter == null ? "" : TimeZoneInfo.ConvertTimeFromUtc(Model.ProductFilter.BookingDateFilter.StopDate, Dnn.Portal.TimeZone).ToString("yyyy-MM-dd HH:mm:ss"))"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            // Initialize datetimepicker
+                            var minDate = @Html.Raw("moment.utc().toDate()")
+                            var maxDate = @Html.Raw("moment(minDate).add(3, 'years').toDate()")                    
+
+					        $("#rvdsfProductListBookingStartDateInput").kendoDatePicker({
+						        culture: "@Dnn.Portal.CultureCode",
+						        format: @Html.Raw("'yyyy-MM-dd'"),
+						        min: minDate,
+						        max: maxDate,
+						        interval: 60,
+						        change: function () {
+							        // Clear stop value
+                                    var stopKendoDateTimePicker = $('#rvdsfProductListBookingStopDateInput').data('kendoDatePicker')
+                                    stopKendoDateTimePicker.value(null)
+
+                                    if (this.value()) {
+                                        stopKendoDateTimePicker.min(moment(this.value()).add(1, "days").toDate())
+                                    }
+                                    else {
+                                        stopKendoDateTimePicker.min(minDate)
+                                        rvdsfProductList.resetFilter('@Global.ProductFilterKeys.BookingDate')
+                                    }
+						        }
+                            })
+
+                            $("#rvdsfProductListBookingStopDateInput").kendoDatePicker({
+                                culture: "@Dnn.Portal.CultureCode",
+                                format: @Html.Raw("'yyyy-MM-dd'"),
+                                min: minDate,
+                                max: maxDate,
+                                interval: 60,
+                                change: function () {
+                                    var startKendoDateTimePicker = $('#rvdsfProductListBookingStartDateInput').data('kendoDatePicker')
+
+                                    if (this.value() && startKendoDateTimePicker.value()) {
+                                        var startDate = moment.tz(kendo.toString(startKendoDateTimePicker.value(), 'yyyy-MM-dd 00:00:00'), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss")
+                                        var stopDate = moment.tz(kendo.toString(this.value(), 'yyyy-MM-dd 00:00:00'), "@Revindex.Text.StringConvert.ToIanaTimeZoneName(Dnn.Portal.TimeZone.StandardName)").utc().format("YYYY-MM-DD HH:mm:ss")
+                                        var values = new Array(startDate, stopDate)
+                                        rvdsfProductList.setFilter('@Global.ProductFilterKeys.BookingDate', values)
+                                    }
+                                }
+					        })
+                        });
+			        </script>
+                }
+
+                @foreach (var productAttributeGroup in Model.ProductAttributeGroups)
+                {
+                    if (productAttributeGroup != null)
+                    {
+                        <div class="h4" style="cursor: pointer; clear: both"><span class="glyphicon glyphicon-chevron-down fa fas fa-chevron-down"></span> @productAttributeGroup.Name</div>
+				    }
+				    foreach (var productAttributeDefinition in Model.ProductAttributeDefinitions.Where(pad => pad.ProductAttributeGroup == productAttributeGroup))
+				    {
+					    var filter = Model.ProductFilter.ProductAttributeFilters.Where(paf => paf.ProductAttributeDefinitionID == productAttributeDefinition.ProductAttributeDefinitionID).FirstOrDefault();
+
+                        <div class="rvdsf-field-definition">
+                            <label for="" class="control-label">@productAttributeDefinition.Name</label>
+                            @if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Boolean)
+						    {
+                                <div class="row">
+                                    <div class="form-group col-xs-6 col-6">
+                                        <div class="checkbox form-check">
+                                            <label><input type="checkbox" @(filter != null && filter.Values.Contains("true") ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'true'); else rvdsfProductList.removeFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'true');"> @Html.LocalizeString("YesLabel")</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-6 col-6">
+                                        <div class="checkbox form-check">
+                                            <label><input type="checkbox" @(filter != null && filter.Values.Contains("false") ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'false'); else rvdsfProductList.removeFilter(@productAttributeDefinition.ProductAttributeDefinitionID, 'false');"> @Html.LocalizeString("NoLabel")</label>
+                                        </div>
+                                    </div>
+                                </div>
+						    }
+						    else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Decimal || productAttributeDefinition.ProductAttributeType == ProductAttributeType.Integer)
+						    {
+							    decimal min = 0;
+							    decimal max = decimal.MaxValue;
+							    if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Decimal)
+							    {
+								    max = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.DecimalValue.HasValue).Select(pa => pa.DecimalValue.Value).Max();
+								    min = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.DecimalValue.HasValue).Select(pa => pa.DecimalValue.Value).Min();
+							    }
+							    else
+							    {
+								    max = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.IntegerValue.HasValue).Select(pa => pa.IntegerValue.Value).Max();
+								    min = Model.ProductAttributes.Where(pa => pa.ProductAttributeDefinition == productAttributeDefinition && pa.IntegerValue.HasValue).Select(pa => pa.IntegerValue.Value).Min();
+							    }
+                                <div>
+                                    <div class="form-group text-center">
+                                        <div class="badge badge-secondary">@(filter != null ? filter.Values[0] + " - " + filter.Values[1] : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + " - " + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))</div>
+                                        <div style="display: block; margin: auto;" data-id="@productAttributeDefinition.ProductAttributeDefinitionID" data-role="rangeslider" data-precision="@(productAttributeDefinition.ProductAttributeType == ProductAttributeType.Integer ? 0 : 1)" data-small-step="@productAttributeDefinition.StepSize.ToString(System.Globalization.CultureInfo.InvariantCulture)" data-min="@min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-max="@max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)" data-value="[@(filter != null ? filter.Values[0] + "," + filter.Values[1] : min.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) + "," + max.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture))]" >
+                                            <input />
+                                            <input />
+                                        </div>
+                                    </div>
+                                </div>
+						    }
+						    else if (productAttributeDefinition.ProductAttributeType == ProductAttributeType.Selection)
+						    {
+                                <div class="row">
+                                    @foreach (var productAttributeDefinitionSelection in productAttributeDefinition.ProductAttributeDefinitionSelections.OrderBy(pads => pads.DisplayOrder))
+								    {
+									    if (Model.Products.SelectMany(p => p.ProductVariants).SelectMany(pv => pv.MainProductAttributes).Any(pa => pa.SelectionValue.Contains(productAttributeDefinitionSelection)))
+									    {
+                                            <div class="form-group col-xs-6 col-6">
+                                                <div class="checkbox form-check">
+                                                    <label><input type="checkbox" @(filter != null && filter.Values.Contains(productAttributeDefinitionSelection.ProductAttributeDefinitionSelectionID.ToString()) ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addFilter(@productAttributeDefinition.ProductAttributeDefinitionID, '@productAttributeDefinitionSelection.ProductAttributeDefinitionSelectionID'); else rvdsfProductList.removeFilter(@productAttributeDefinition.ProductAttributeDefinitionID, '@productAttributeDefinitionSelection.ProductAttributeDefinitionSelectionID');"> @productAttributeDefinitionSelection.Text</label>
+                                                </div>
+                                            </div>
+									    }
+								    }
+                                </div>
+						    }
+                        </div>
+				    }
+			    }
+            </div>
+		}
+    </div>
+
+    <div class="row @(Model.PageViewMode == "list" && !Revindex.Web.UI.WebControls.Util.IsMobileDevice() ? "rvdsf-productlist-list" : "rvdsf-productlist-grid") rvdsf-productlist-products" >
+        @if (Model.FilteredProducts.Count == 0)
+        {
+            <div class="alert alert-info col">@Html.LocalizeString(Global.LocalizedStrings.Message_ProductsNotFound, Global.FilePaths.LocalSharedResourceFile)</div>
+		}
+        @foreach (var product in Model.PagedFilteredProducts)
+        {
+            <div class="@(Model.PageViewMode == "list" && !Revindex.Web.UI.WebControls.Util.IsMobileDevice() ? "col-xs-12 col-12" : "col-sm-4")">
+                <div class="rvdsf-product-container">
+                    @if (product.ShowPrice && product.DefaultProductVariant.CombinedSavings > 0 && product.ShowSavings)
+                    {
+                        <div class="rvdsf-label-savings">@Html.LocalizeString("SavingsLabel")@if (product.ProductVariants.Count == 1) {<span> @product.DefaultProductVariant.FormattedCombinedPercentSavings</span>}</div>
+                    }
+                    <div class="rvdsf-product-gallery-container">
+                        @if (product.DefaultThumbnailGallery != null)
+                        {
+                            <a href="@product.ProductDetail.TabUrl"><img class="img-responsive img-fluid center-block d-block mx-auto" src="@product.DefaultThumbnailGallery.MediaUrl" alt="@product.DefaultThumbnailGallery.AlternateText" loading="lazy" srcset="@String.Join(", ", product.Galleries.Where(g => g.Format == GalleryFormatType.Thumbnail).Select(g => g.MediaUrl + " 1x"))" onmouseenter="this.srcset2 = this.srcset; var that = this; this.interval = setInterval(function() { var ss = that.srcset.split(', '); ss.push(ss.shift()); that.srcset = ss.join(', ');}, 1000)" onmouseleave="clearInterval(this.interval); this.srcset = this.srcset2;"/></a>
+                        }
+                    </div>
+                    <div class="rvdsf-product-info-container">
+                        <div class="rvdsf-field-name">
+                            @if (Model.ShowAddToFavorite)
+					        {
+                                <i class="glyphicon glyphicon-heart fas fa-heart rvdsf-btn-addtofavorite @(product.IsFavorite ? "active" : "")" onclick="if (this.classList.contains('active')) { rvdsfProductList.removeFavorite(@product.ProductID); this.classList.remove('active'); } else { rvdsfProductList.addFavorite(@product.ProductID); this.classList.add('active'); }" title="@Html.LocalizeString("AddToFavoriteLink")"></i>
+					        }
+                            <a class="rvdsf-label-name" href="@product.ProductDetail.TabUrl">@product.Name</a>
+                        </div>
+                        @if (product.ShowProductReviews)
+                        {
+						<div class="rvdsf-field-rating">
+							<input type="hidden" class="rating" readonly value="@(product.AverageOverallRating == 0 ? "" : product.AverageOverallRating.ToString(System.Globalization.CultureInfo.InvariantCulture))" />
+							@if (product.RatingCount > 0)
+							{
+								<span class="badge">@product.RatingCount</span>
+							}
+						</div>
+                        }
+                        @if (product.ShowPrice)
+                        {
+                            if (product.ProductVariants.Count == 1)
+                            {
+                                if (String.IsNullOrEmpty(product.DefaultProductVariant.PriceText) && product.DefaultProductVariant.SalesType != SalesType.Quote)
+                                {
+                                    <div class="rvdsf-field-price">
+                                        @if (product.DefaultProductVariant.CombinedPromotionPrice.HasValue)
+                                        {
+                                            <span class="rvdsf-label-price"><s>@product.DefaultProductVariant.FormattedCombinedPrice</s></span>
+                                            <span class="rvdsf-label-promotionprice">@product.DefaultProductVariant.FormattedCombinedPromotionPrice</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="rvdsf-label-price">@product.DefaultProductVariant.FormattedCombinedPrice</span>
+                                        }
+                                    </div>
+                                }
+                                else if (!String.IsNullOrEmpty(product.DefaultProductVariant.PriceText))
+                                {
+                                    <div class="rvdsf-field-price">
+                                        <span class="rvdsf-label-pricetext">@product.DefaultProductVariant.PriceText</span>
+                                    </div>
+                                }
+                            }
+                            else if (product.ProductVariants.Count > 1 && !String.IsNullOrEmpty(product.FormattedMinCombinedSellingPrice) && !String.IsNullOrEmpty(product.FormattedMaxCombinedSellingPrice))
+                            {
+                                <div class="rvdsf-field-price">
+                                    <span class="rvdsf-label-price">@(product.FormattedMinCombinedSellingPrice == product.FormattedMaxCombinedSellingPrice ? product.FormattedMinCombinedSellingPrice : product.FormattedMinCombinedSellingPrice + " - " + product.FormattedMaxCombinedSellingPrice)</span>
+                                </div>
+                            }
+                        }
+                    </div>
+                    @if (product.ShowQuantity && product.AllowInternetOrder && !product.DefaultProductVariant.HasFormFields && product.ProductVariants.Count == 1)
+                    {
+                        <div class="rvdsf-product-form-container form-horizontal">
+                            <div class="form-group rvdsf-field-qty row">
+                                    <label class="control-label col-form-label col-xs-6 col-6 text-right" for="rvdsfProductListQuantityInput_@(product.ProductID)">@Html.LocalizeString("QuantityLabel")</label>
+                                    <div class="col-xs-6 col-6 text-left">
+                                        @if (product.DefaultProductVariant.AllowableOrderQuantityList.Count == 0)
+                                        {
+                                            <input id="rvdsfProductListQuantityInput_@(product.ProductID)" name="rvdsfProductListQuantityInput_@(product.ProductID)" type="number" class="form-control" required step="1" min="@(product.DefaultProductVariant.MinOrderQuantity.HasValue ? product.DefaultProductVariant.MinOrderQuantity : product.DefaultProductVariant.DefaultQuantity)" max="@(product.DefaultProductVariant.MaxOrderQuantity.HasValue ? product.DefaultProductVariant.MaxOrderQuantity : 9999 )" value="@product.DefaultProductVariant.DefaultQuantity" onchange="if (this.value == '') this.value = this.min; else if (parseInt(this.value) > this.max) this.value = this.max; else if (parseInt(this.value) < this.min) this.value = this.min;" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                        }
+                                        else
+                                        {
+                                            <select id="rvdsfProductListQuantityInput_@(product.ProductID)" name="rvdsfProductListQuantityInput_@(product.ProductID)" class="form-control">
+                                                @foreach (var qty in product.DefaultProductVariant.AllowableOrderQuantityList)
+                                                {
+                                                    <option value="@qty">@qty</option>
+                                                }
+                                            </select>
+                                        }
+                                    </div>                                
+                            </div>
+                        </div>
+                    }
+                    <div class="btn-toolbar">
+                        @if (product.DefaultProductVariant.AllowProductComparison)
+                        {
+                            <div class="rvdsf-field-compare">
+                                <label><input type="checkbox" @(product.DefaultProductVariant.IsCompared ? "checked" : "") onchange="if (this.checked) rvdsfProductList.addProductComparison(@product.DefaultProductVariant.ProductVariantID); else rvdsfProductList.removeProductComparison(@product.DefaultProductVariant.ProductVariantID);" /> <a href="@Model.ProductComparison.TabUrl">@Html.LocalizeString("CompareLink")</a></label>
+                            </div>
+                        }
+                        @if (product.ShowSeeDetails)
+                        {
+                            <button type="button" class="rvdsf-btn-seedetails btn btn-primary" onclick="location.href = '@product.ProductDetail.TabUrl'">@Html.LocalizeString("SeeDetailsLink")</button>
+                        }
+
+                        @if (product.AllowInternetOrder && product.ProductVariants.Count == 1 && !product.DefaultProductVariant.HasFormFields && product.DefaultProductVariant.HasAcceptableInventory)
+                        {
+                            if (product.ShowAddToCart)
+                            {
+                                <button type="button" class="rvdsf-btn-addtocart btn btn-primary" onclick="rvdsfProductList.addProductToCart(@product.DefaultProductVariant.ProductVariantID, ($('#rvdsfProductListQuantityInput_@(product.ProductID)').length ? $('#rvdsfProductListQuantityInput_@(product.ProductID)').val() : @product.DefaultProductVariant.DefaultQuantity), 'rvdsfProductListMessage_@(product.ProductID)', null)">@(product.DefaultProductVariant.SalesType == SalesType.Quote ? Html.LocalizeString("AddToQuoteLink") : Html.LocalizeString("AddToCartLink"))</button>
+                            }
+
+                            if (product.ShowBuyNow)
+                            {
+                                <button type="button" class="rvdsf-btn-buynow btn btn-primary" onclick="rvdsfProductList.addProductToCart(@product.DefaultProductVariant.ProductVariantID, ($('#rvdsfProductListQuantityInput_@(product.ProductID)').length ? $('#rvdsfProductListQuantityInput_@(product.ProductID)').val() : @product.DefaultProductVariant.DefaultQuantity), 'rvdsfProductListMessage_@(product.ProductID)', '@Model.Checkout.TabUrl')">@(product.DefaultProductVariant.SalesType == SalesType.Quote ? Html.LocalizeString("QuoteNowLink") : Html.LocalizeString("BuyNowLink"))</button>
+                            }
+                        }
+                    </div>
+                    @if (!product.ProductVariants.Exists(pv => pv.HasAcceptableInventory))
+                    {
+                        <div class="alert alert-info rvdsf-label-soldout">@Html.LocalizeString("SoldOutLabel")</div>
+                    }
+                    <div id="rvdsfProductListMessage_@(product.ProductID)" style="display:none"></div>
+                </div>
+            </div>
+        }
+        @if (Model.Pager.CurrentPageNumber < Model.Pager.TotalPages)
+        {
+            urlParams = HttpUtility.ParseQueryString(Request.Url.Query);
+            urlParams.Set(Global.QueryStringKeys.PageViewNumber, (Model.Pager.CurrentPageNumber + 1).ToString());
+            <div class="col-12 col-xs-12 text-center rvdsf-productlist-pager d-sm-none visible-xs">
+                <a class="btn btn-lg btn-primary btn-loadmore btn-block" href="@(Url.NavigateUrl(urlParams))" onclick="var that = this; $.get(this.href, function (data) { $('.rvdsf-productlist-products').find('div').last().after($(data).find('.rvdsf-productlist-products').html()); $(that).parent().remove(); window.history.replaceState({ content: $('.rvdsf-productlist-products').html() }, '', window.location.href); }); return false;">@Html.LocalizeString("LoadMoreLink")</a>
+                <script type="text/javascript">
+                    $(window).on('load', function () {
+                        // Restore infinite scroll last loaded content returning from browser back
+                        if (window.history.state && window.history.state.content) {
+                            $('.rvdsf-productlist-products').empty().append(window.history.state.content)
+                        }
+                    })
+                </script>
+            </div>
+        }
+    </div>
+    @if (Model.Pager.TotalPages > 1)
+    {
+        var maxNumerators = 5;
+        var beginNumerator = (Math.Ceiling((decimal)Model.Pager.CurrentPageNumber / maxNumerators) * maxNumerators) - maxNumerators + 1;
+        var endNumerator = Math.Min(Model.Pager.TotalPages, beginNumerator + maxNumerators - 1);
+        urlParams = HttpUtility.ParseQueryString(Request.Url.Query);
+
+        <div class="rvdsf-productlist-pager hidden-xs d-none d-sm-block">
+            <ul class="pagination @(Revindex.Web.UI.WebControls.Util.IsMobileDevice() ? "pagination-sm" : "") justify-content-center m-3">
+                @if (Model.Pager.CurrentPageNumber > 1)
+                {
+                    urlParams.Set(Global.QueryStringKeys.PageViewNumber, (Model.Pager.CurrentPageNumber - 1).ToString());
+
+                    <li class="page-item">
+                        <a class="page-link" href="@(Url.NavigateUrl(urlParams))"><span class="glyphicon glyphicon-chevron-left fa fas fa-chevron-left"></span></a>
+                    </li>
+                }
+
+                @if (!Revindex.Web.UI.WebControls.Util.IsMobileDevice() && beginNumerator > 1)
+                {
+                    urlParams.Set(Global.QueryStringKeys.PageViewNumber, (beginNumerator - maxNumerators).ToString());
+
+                    <li class="page-item">
+                        <a class="page-link" href="@(Url.NavigateUrl(urlParams))"><span class="glyphicon glyphicon-option-horizontal fa fas fa-ellipsis-h"></span></a>
+                    </li>
+                }
+
+                @for (var page = beginNumerator; page <= endNumerator; page++)
+                {
+                    urlParams.Set(Global.QueryStringKeys.PageViewNumber, page.ToString());
+
+                    <li class="@(page == Model.Pager.CurrentPageNumber ? "active" : "") page-item">
+                        <a class="page-link" href="@(Url.NavigateUrl(urlParams))">@page</a>
+                    </li>
+                }
+
+                @if (!Revindex.Web.UI.WebControls.Util.IsMobileDevice() && endNumerator < Model.Pager.TotalPages)
+                {
+                    urlParams.Set(Global.QueryStringKeys.PageViewNumber, (endNumerator + 1).ToString());
+
+                    <li class="page-item">
+                        <a class="page-link" href="@(Url.NavigateUrl(urlParams))"><span class="glyphicon glyphicon-option-horizontal fa fas fa-ellipsis-h"></span></a>
+                    </li>
+                }
+
+                @if (Model.Pager.CurrentPageNumber < Model.Pager.TotalPages)
+                {
+                    urlParams.Set(Global.QueryStringKeys.PageViewNumber, (Model.Pager.CurrentPageNumber + 1).ToString());
+
+                    <li class="page-item">
+                        <a class="page-link" href="@(Url.NavigateUrl(urlParams))"><span class="glyphicon glyphicon-chevron-right fa fas fa-chevron-right"></span></a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+@* Uses polyfill. See https://qa.polyfill.io *@
+<script src="https://polyfill.io/v3/polyfill.min.js?flags=gated&features=default"></script>
+
+@* Uses Revindex *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/Revindex/Global.js" defer></script>
+
+@* Uses Moment library. See https://momentjs.com/ *@
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment/min/moment-with-locales.min.js" defer></script>
+<script src="~/DesktopModules/Revindex.Dnn.RevindexStorefront/Scripts/moment-timezone/moment-timezone-with-data.min.js" defer></script>
+
+@* Uses Kendo UI. See https://www.telerik.com/documentation *@
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.common-bootstrap.min.css">
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.3.1021/styles/kendo.bootstrap.min.css">
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.core.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.data.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.calendar.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.popup.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.datepicker.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.timepicker.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.datetimepicker.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.list.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.autocomplete.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.rating.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.userevents.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.draganddrop.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/kendo.slider.min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/cultures/kendo.culture.@(Dnn.Portal.CultureCode).min.js" defer></script>
+<script src="https://kendo.cdn.telerik.com/2020.3.1021/js/messages/kendo.messages.@(Dnn.Portal.CultureCode).min.js" defer></script>
+
+<script type="text/javascript">
+	var rvdsfProductList = rvdsfProductList || {}
+
+	// Handle anti-forgery error when user is logged out
+	$(document).ajaxError(function (event, jqxhr, settings, thrownError) {
+		if (jqxhr.status == 401)
+			window.location.reload(true)
+    })
+
+    rvdsfProductList.addFavorite = function (productID) {
+        if (@Dnn.User.UserID <= 0)
+            location.href = "@(Model.Login.TabUrl)?returnurl=" + escape(window.location.href)
+        else
+        {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+            var favoriteData = {
+                ProductID: productID,
+            }
+
+            $.ajax({
+                type: "POST",
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Favorite/Product",
+                data: favoriteData
+            })
+        }
+    }
+
+    rvdsfProductList.addFilter = function (productAttributeDefinitionID, value) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+        var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+        var encodedValues = params.get(String(productAttributeDefinitionID)) || ""
+
+        var values = []
+        encodedValues.split("|").map(function (val) { val && values.push(decodeURIComponent(val)) })
+
+        if (values.indexOf(value) < 0)
+            values.push(value)
+
+        encodedValues = ""
+        values.map(function (val) { encodedValues += encodeURIComponent(val) + "|" })
+
+        params.set(String(productAttributeDefinitionID), encodedValues)
+        url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    rvdsfProductList.addProductToCart = function (productVariantID, quantity, messageContainerID, redirect) {
+        var salesOrderDetailData = {
+            ProductVariantID: productVariantID,
+            Quantity: quantity
+        }
+
+        var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+        $.ajax({
+            type: "POST",
+            beforeSend: servicesFramework.setModuleHeaders,
+            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Cart/SalesOrderDetail",
+            data: salesOrderDetailData
+        })
+        .done(function (data, textStatus, jqXHR) {
+
+            // Notify all Cart Summary modules to rebind
+            $(".rvdsf-cartsummary-container").each(function () {
+                this.databind()
+            })
+
+            $("#" + messageContainerID).attr("class", "alert alert-success").html("<span class='glyphicon glyphicon-ok fa fas fa-check'></span> @HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductAddedToCart, Global.FilePaths.LocalSharedResourceFile)) <a class='btn btn-link' href='@Model.Cart.TabUrl'>@HttpUtility.JavaScriptStringEncode(Html.LocalizeString("CartLink"))</a>").show().fadeOut(10000)
+
+            if (redirect)
+                location.href = redirect
+        })
+        .fail(function (data, textStatus, errorThrown) {
+            $("#" + messageContainerID).attr("class", "alert alert-danger").html("<span class='glyphicon glyphicon-remove fa fas fa-exclamation-circle'></span> " + (data.responseJSON.Message ? kendo.htmlEncode(data.responseJSON.Message) : "@HttpUtility.JavaScriptStringEncode(Html.LocalizeString(Global.LocalizedStrings.Message_ProductNotAvailable, Global.FilePaths.LocalSharedResourceFile))")).show().fadeOut(10000)
+        })
+    }
+
+    rvdsfProductList.addProductComparison = function (productVariantID) {
+        var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+        var productVariantData = {
+            ProductVariantID: productVariantID
+        }
+
+        $.ajax({
+            type: "POST",
+            beforeSend: servicesFramework.setModuleHeaders,
+            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductComparison/ProductVariant",
+            data: productVariantData
+        })
+    }
+
+    rvdsfProductList.removeFavorite = function (productID) {
+
+        if (@Dnn.User.UserID <= 0)
+            location.href = "@(Model.Login.TabUrl)?returnurl=" + escape(window.location.href)
+        else
+        {
+            var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+            var favoriteData = {
+                ProductID: productID,
+            }
+
+            $.ajax({
+                type: "DELETE",
+                beforeSend: servicesFramework.setModuleHeaders,
+                url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Favorite/Product",
+                data: favoriteData
+            })
+        }
+    }
+
+    rvdsfProductList.removeFilter = function (productAttributeDefinitionID, value) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+        var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+        var encodedValues = params.get(String(productAttributeDefinitionID)) || ""
+
+        var values = []
+        encodedValues.split("|").map(function (val) { val && values.push(decodeURIComponent(val)) })
+
+        var index = values.indexOf(value)
+        if (index >= 0)
+            values.splice(index, 1)
+
+        encodedValues = ""
+        values.map(function (val) { encodedValues += encodeURIComponent(val) + "|" })
+
+        if (encodedValues == "|" || encodedValues == "")
+            params.delete(String(productAttributeDefinitionID))
+        else
+            params.set(String(productAttributeDefinitionID), encodedValues)
+
+        url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+        if (!url.searchParams.get("@Global.QueryStringKeys.ProductFilter"))
+            url.searchParams.delete("@Global.QueryStringKeys.ProductFilter")
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    rvdsfProductList.removeProductComparison = function (productVariantID) {
+        var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+        $.ajax({
+            type: "DELETE",
+            beforeSend: servicesFramework.setModuleHeaders,
+            url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "ProductComparison/ProductVariant?productVariantID=" + productVariantID
+        })
+    }
+
+    rvdsfProductList.resetFilter = function (productAttributeDefinitionID) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+
+        if (productAttributeDefinitionID == null || typeof (productAttributeDefinitionID) === "undefined")
+            url.searchParams.delete("@Global.QueryStringKeys.ProductFilter")
+        else {
+            var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+            params.delete(String(productAttributeDefinitionID))
+
+            url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+            if (!url.searchParams.get("@Global.QueryStringKeys.ProductFilter"))
+                url.searchParams.delete("@Global.QueryStringKeys.ProductFilter")
+        }
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    rvdsfProductList.setFilter = function (productAttributeDefinitionID, values) {
+        // Parse query string formatted as Key1=Encoded|Encoded&Key2=Encoded|Encoded
+        var url = new window.URL(location.href)
+        var params = new URLSearchParams(url.searchParams.get("@Global.QueryStringKeys.ProductFilter") || "");
+
+        encodedValues = ""
+        values.map(function(val) { encodedValues += encodeURIComponent(val) + "|" })
+
+        params.set(String(productAttributeDefinitionID), encodedValues)
+        url.searchParams.set("@Global.QueryStringKeys.ProductFilter", params.toString())
+
+        // Reset page number
+        url.searchParams.delete("@Global.QueryStringKeys.PageViewNumber")
+        url.pathname = url.pathname.replace(/\/@Global.QueryStringKeys.PageViewNumber\/\d+/, '')
+
+        location.href = url.href
+    }
+
+    $(document).ready(function () {
+        var servicesFramework = $.ServicesFramework(@Dnn.Module.ModuleID);
+
+        // Change module title
+        var moduleTitle = "@(Model.Category == null ? (Model.Distributor == null ? (Model.Manufacturer == null ? "" : Model.Manufacturer.Name) : Model.Distributor.Name) : Model.Category.Name)";
+
+        if (moduleTitle)
+            $("#dnn_ctr@(Dnn.Module.ModuleID)_dnnTITLE_titleLabel").html(moduleTitle)
+
+        $('input.rating').not('.k-hidden').kendoRating({ label: false, precision: 'half' })
+
+        // Bind search autocomplete
+        var queryAutoComplete = $("#rvdsfProductListSearchQueryInput").kendoAutoComplete({
+            dataTextField: "Name",
+			dataValueField: "ProductID",
+            dataSource: new kendo.data.DataSource({
+                serverFiltering: true,
+                transport: {
+                    read: {
+                        type: "POST",
+                        url: servicesFramework.getServiceRoot("@Dnn.Module.DesktopModule.FolderName") + "Product/Search",
+                        beforeSend: servicesFramework.setModuleHeaders,
+                        data: function () {
+                        	return {
+                        		Query: queryAutoComplete.value(),
+								MaxItems: 30
+                        	}
+                        },
+                        dataType: "json",
+                        contentType: "application/json; charset=UTF-8",
+                    },
+                    parameterMap: function (data, type) {
+                        return kendo.stringify(data);
+                    }
+                },
+                schema: {
+					data: function (response) {
+
+						// We need to decycle any circular references because Kendo UI can only support flat structure
+						return JSON.decycle(response)
+					}
+				},
+            }),
+            autoWidth: true,
+            enforceMinLength: true,
+            height: 400,
+            minLength: 3,
+            filter: "contains",
+            suggest: false,
+            template: `<div class="k-state-default" style="margin: 10px;"><a href="#: data.ProductDetail.TabUrl #"><img src="#if (data.DefaultThumbnailGallery != null) {# #= data.DefaultThumbnailGallery.MediaUrl # #}#" style="min-width: 40px; width: 40px; margin-right: 10px;" /></a><strong><a href="#: data.ProductDetail.TabUrl #">#: data.Name #</a></strong></div>`,
+            footerTemplate: `<div class="text-center" style="margin: 10px;"><a class="btn btn-primary btn-sm" href="\\\\#" onclick="$('\\\\#rvdsfProductListSearchSubmitButton').click();">@Html.Raw(Html.LocalizeString("MoreResultsLabel"))</a></div>`,
+        }).data("kendoAutoComplete")
+
+        // Make groups collapsible
+        $('.rvdsf-productlistfilter-container div.h4').click(function () {
+            $(this).nextUntil('div.h4').slideToggle(100)
+            $(this).find("span.glyphicon").toggleClass('glyphicon-chevron-right').toggleClass('glyphicon-chevron-down')
+        })
+
+        // Bind slider event
+        $(".rvdsf-productlistfilter-container div[data-role='rangeslider']").each(function () {
+            var that = this
+            $(this).kendoRangeSlider({
+                min: parseFloat($(this).data("min")),
+                max: parseFloat($(this).data("max")),
+                smallStep: parseFloat($(this).data("small-step")),
+                tickPlacement: "BOTTOMRIGHT",
+                tooltip: { enabled: false },
+                change: function (e) { rvdsfProductList.setFilter($(e.sender.element).data("id"), e.values) },
+                slide: function (e) {
+                    // Change label
+                    $(that).parent().parent().prev(".badge").text(e.values[0].toFixed(1) + " - " + e.values[1].toFixed(1))
+                }
+            });
+
+            var rangeSlider = $(this).data("kendoRangeSlider")
+            rangeSlider.value($(this).data("value"))
+        })
+
+        // Make slider full width when filter panel is shown
+        $('#rvdsfProductListFilterPanel').on('shown.bs.collapse', function () {
+            $("[data-role='rangeslider']").each(function () {
+                var rangeSlider = $(this).data("kendoRangeSlider");
+                rangeSlider.wrapper.css("width", "95%");
+                rangeSlider.resize();
+            });
+        })
+
+        // Resize slider when window is resized
+        $(window).on('resize', function () {
+            $("[data-role='rangeslider']").each(function () {
+                var rangeSlider = $(this).data("kendoRangeSlider");
+                rangeSlider.wrapper.css("width", "95%");
+                rangeSlider.resize();
+            });
+        });
+    })
+</script>

@@ -1,0 +1,202 @@
+﻿SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET NOCOUNT ON
+SET QUOTED_IDENTIFIER ON
+SET XACT_ABORT ON
+GO
+
+-- Add Unit and District columns to Configuration table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'GeneralStoreUnit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration ADD
+		GeneralStoreUnit nvarchar(200) NULL,
+		GeneralStoreDistrict nvarchar(50) NULL
+END 
+GO
+
+-- Update Street second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Configuration' AND COLUMN_NAME = 'GeneralStoreUnit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Configuration
+	SET 
+		GeneralStoreStreet = LTRIM(RTRIM(REPLACE(SUBSTRING(GeneralStoreStreet, 0, CHARINDEX(CHAR(10), GeneralStoreStreet)), CHAR(13), ''))),
+		GeneralStoreUnit = LTRIM(RTRIM(REPLACE(SUBSTRING(GeneralStoreStreet, CHARINDEX(CHAR(10), GeneralStoreStreet) + 1, 10000), CHAR(13), '')))
+	WHERE GeneralStoreStreet LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Add Unit and District columns to Seller table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Seller' AND COLUMN_NAME = 'Unit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Seller ADD
+		Unit nvarchar(200) NULL,
+		District nvarchar(50) NULL
+END
+GO
+
+-- Update Street second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Seller' AND COLUMN_NAME = 'Unit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Seller
+	SET 
+		Street = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, 0, CHARINDEX(CHAR(10), Street)), CHAR(13), ''))),
+		Unit = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, CHARINDEX(CHAR(10), Street) + 1, 10000), CHAR(13), '')))
+	WHERE Street LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Add Unit and District columns to Warehouse table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Warehouse' AND COLUMN_NAME = 'Unit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_Warehouse ADD
+		Unit nvarchar(200) NULL,
+		District nvarchar(50) NULL
+END
+GO
+
+-- Update Street second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_Warehouse' AND COLUMN_NAME = 'Unit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_Warehouse
+	SET 
+		Street = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, 0, CHARINDEX(CHAR(10), Street)), CHAR(13), ''))),
+		Unit = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, CHARINDEX(CHAR(10), Street) + 1, 10000), CHAR(13), '')))
+	WHERE Street LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Add ShippingUnit and ShippingDistrict columns to RecurringSalesOrder table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder ADD
+		ShippingUnit nvarchar(200) NULL,
+		ShippingDistrict nvarchar(50) NULL
+END
+GO
+
+-- Update ShippingStreet second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_RecurringSalesOrder' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_RecurringSalesOrder
+	SET 
+		ShippingStreet = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, 0, CHARINDEX(CHAR(10), ShippingStreet)), CHAR(13), ''))),
+		ShippingUnit = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, CHARINDEX(CHAR(10), ShippingStreet) + 1, 10000), CHAR(13), '')))
+	WHERE ShippingStreet LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Add BillingUnit, ShippingUnit and BillingDistrict, ShippingDistrict columns to SalesOrder table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesOrder' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder ADD
+		BillingUnit nvarchar(200) NULL,
+		BillingDistrict nvarchar(50) NULL,
+		ShippingUnit nvarchar(200) NULL,
+		ShippingDistrict nvarchar(50) NULL
+END
+GO
+
+-- Update BillingStreet second line to BillingUnit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesOrder' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder
+	SET 
+		BillingStreet = LTRIM(RTRIM(REPLACE(SUBSTRING(BillingStreet, 0, CHARINDEX(CHAR(10), BillingStreet)), CHAR(13), ''))),
+		BillingUnit = LTRIM(RTRIM(REPLACE(SUBSTRING(BillingStreet, CHARINDEX(CHAR(10), BillingStreet) + 1, 10000), CHAR(13), '')))
+	WHERE BillingStreet LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Update ShippingStreet second line to ShippingUnit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesOrder' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesOrder
+	SET 
+		ShippingStreet = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, 0, CHARINDEX(CHAR(10), ShippingStreet)), CHAR(13), ''))),
+		ShippingUnit = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, CHARINDEX(CHAR(10), ShippingStreet) + 1, 10000), CHAR(13), '')))
+	WHERE ShippingStreet LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+
+-- Add Unit and District columns to SalesPayment table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesPayment' AND COLUMN_NAME = 'Unit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment ADD
+		Unit nvarchar(200) NULL,
+		District nvarchar(50) NULL
+END
+GO
+
+-- Update Street second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesPayment' AND COLUMN_NAME = 'Unit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesPayment
+	SET 
+		Street = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, 0, CHARINDEX(CHAR(10), Street)), CHAR(13), ''))),
+		Unit = LTRIM(RTRIM(REPLACE(SUBSTRING(Street, CHARINDEX(CHAR(10), Street) + 1, 10000), CHAR(13), '')))
+	WHERE Street LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Add ShippingUnit and ShippingDistrict columns to SalesReturn table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesReturn' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesReturn ADD
+		ShippingUnit nvarchar(200) NULL,
+		ShippingDistrict nvarchar(50) NULL
+END
+GO
+
+-- Update ShippingStreet second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_SalesReturn' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_SalesReturn
+	SET 
+		ShippingStreet = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, 0, CHARINDEX(CHAR(10), ShippingStreet)), CHAR(13), ''))),
+		ShippingUnit = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, CHARINDEX(CHAR(10), ShippingStreet) + 1, 10000), CHAR(13), '')))
+	WHERE ShippingStreet LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+-- Add Unit and District columns to UserAddress table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserAddress' AND COLUMN_NAME = 'Unit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_UserAddress ADD
+		Unit nvarchar(200) NULL,
+		District nvarchar(50) NULL
+END
+GO
+
+
+-- Add Unit and District columns to UserPayment table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_UserPayment' AND COLUMN_NAME = 'Unit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_UserPayment ADD
+		Unit nvarchar(200) NULL,
+		District nvarchar(50) NULL
+END
+GO
+
+
+-- Add ShippingUnit and ShippingDistrict columns to WishList table
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_WishList' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	ALTER TABLE {databaseOwner}{objectQualifier}Revindex_Storefront_WishList ADD
+		ShippingUnit nvarchar(200) NULL,
+		ShippingDistrict nvarchar(50) NULL
+END
+GO
+
+-- Update ShippingStreet second line to Unit
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{objectQualifier}Revindex_Storefront_WishList' AND COLUMN_NAME = 'ShippingUnit')
+BEGIN
+	UPDATE {databaseOwner}{objectQualifier}Revindex_Storefront_WishList
+	SET 
+		ShippingStreet = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, 0, CHARINDEX(CHAR(10), ShippingStreet)), CHAR(13), ''))),
+		ShippingUnit = LTRIM(RTRIM(REPLACE(SUBSTRING(ShippingStreet, CHARINDEX(CHAR(10), ShippingStreet) + 1, 10000), CHAR(13), '')))
+	WHERE ShippingStreet LIKE '%' + CHAR(10) + '%'
+END
+GO
+
+

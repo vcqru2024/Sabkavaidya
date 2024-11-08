@@ -1,0 +1,55 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+
+if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Categories') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_Categories') and name='IsTag'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Categories] ADD
+[IsTag] [bit] NULL
+GO
+
+CREATE TABLE {databaseOwner}[{objectQualifier}ContentPro_Comments](
+	[CommentID] [int] IDENTITY(1,1) NOT NULL,
+	[ContentID] [int] NULL,
+	[CreatedByUser] [int] NULL,
+	[Comment] [nvarchar](max) NULL,
+	[CreatedOnDate] [datetime] NULL,
+	[Title] [nvarchar](max) NULL,
+	[Email] [nvarchar](max) NULL,
+	[Website] [nvarchar](max) NULL,
+	[Approved] [bit] NULL,
+	[Author] [nvarchar](max) NULL,
+	[ParentID] [int] NULL,
+	[IP] [nvarchar](max) NULL,
+	[LastModifiedByUser] [int] NULL,
+	[LastModifiedOnDate] [datetime] NULL,
+	CONSTRAINT [PK{objectQualifier}ContentPro_Comments] PRIMARY KEY CLUSTERED 
+(
+	[CommentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+GO
+
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Comments]  WITH CHECK ADD  CONSTRAINT [FK{objectQualifier}ContentPro_Comments_ContentPro_Content] FOREIGN KEY([ContentID])
+REFERENCES {databaseOwner}[{objectQualifier}ContentPro_Content] ([ContentID])
+ON DELETE CASCADE
+
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_Comments] CHECK CONSTRAINT [FK{objectQualifier}ContentPro_Comments_ContentPro_Content]
+
+GO
+
+if (exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and OBJECTPROPERTY(id, N'IsTable') = 1)) and (not exists (select * from dbo.syscolumns where id = object_id(N'{databaseOwner}{objectQualifier}ContentPro_View') and name='AllowComments'))
+ALTER TABLE {databaseOwner}[{objectQualifier}ContentPro_View] ADD
+[AllowComments] [bit] NULL
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

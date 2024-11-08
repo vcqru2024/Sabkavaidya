@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="plTemplate.Text" xml:space="preserve">
+    <value>Template </value>
+  </data>
+  <data name="plTemplate.Help" xml:space="preserve">
+    <value>Department template locates under desktopmodules/crossclassified/template/product/type directory, you can costomize your own.</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Product department list settings</value>
+  </data>
+  <data name="plTypeList.Help" xml:space="preserve">
+    <value>Check items to show in list. Uncheck all of them will display all departments.</value>
+  </data>
+  <data name="plTypeList.Text" xml:space="preserve">
+    <value>Items To Show</value>
+  </data>
+  <data name="plColCount.Help" xml:space="preserve">
+    <value>Enter column per row</value>
+  </data>
+  <data name="plColCount.Text" xml:space="preserve">
+    <value>Items Per Row</value>
+  </data>
+  <data name="plImageWidth.Help" xml:space="preserve">
+    <value>Set type image width (px)</value>
+  </data>
+  <data name="plImageWidth.Text" xml:space="preserve">
+    <value>Image Width</value>
+  </data>
+  <data name="plShowImage.Help" xml:space="preserve">
+    <value>Check to show department image in list</value>
+  </data>
+  <data name="plShowImage.Text" xml:space="preserve">
+    <value>Show Image</value>
+  </data>
+  <data name="plShowProductCounts.Help" xml:space="preserve">
+    <value>Check to show product count belong to department</value>
+  </data>
+  <data name="plShowProductCounts.Text" xml:space="preserve">
+    <value>Show Product Counts</value>
+  </data>
+  <data name="plLinkTarget.Help" xml:space="preserve">
+    <value>Choose link target.</value>
+  </data>
+  <data name="plLinkTarget.Text" xml:space="preserve">
+    <value>Link Target</value>
+  </data>
+  <data name="plShowDescription.Help" xml:space="preserve">
+    <value>Check to show department description in list.</value>
+  </data>
+  <data name="plShowDescription.Text" xml:space="preserve">
+    <value>Show Description</value>
+  </data>
+  <data name="plDisplayRss.Help" xml:space="preserve">
+    <value>Check to display RSS link next to department item.</value>
+  </data>
+  <data name="plDisplayRss.Text" xml:space="preserve">
+    <value>Display RSS</value>
+  </data>
+  <data name="Tip_TypeList.Text" xml:space="preserve">
+    <value>Check item to show in list. Uncheck all of them will display all departments.</value>
+  </data>
+  <data name="secAbout.Text" xml:space="preserve">
+    <value>About Cp_Product_Type sub module</value>
+  </data>
+  <data name="secGeneral.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Tip_About.Text" xml:space="preserve">
+    <value>Classified Pro is an enterprise-class DNN module which helps you to create an online store, auction website and also publish classified ads. It contains 16 sub modules and 1 skin object. 
+Cp_Product_Type is one of these 16 sub modules, it is used to show product (listing) departments with data list. In old version of Classified Pro, we called department as "type", then some customer suggested that "department" is a better word, and we accepted it. But we have to keep Cp_Product_Type sub module name for legacy support. &lt;br/&gt;&lt;br/&gt;
+
+When click a department, module will navigate to Cp_Product_List sub module page to show products (listings) which belong to this department. You can add multiple instances of Cp_Product_Type sub module to different pages (or on same page).  It is template based, you can customize your desired display effect by create different templates.&lt;br/&gt;&lt;br/&gt;
+If current site enables content localization, Cp_Product_Type sub module will show departments according to page culture. For example, if current page culture is "en-US (English)", it will show English content of departments; if current page culture is "zh-CN (Simple Chinese)", it will show Simple Chinese content of departments; if page culture is neutral, it will show departments according to current context culture.</value>
+  </data>
+</root>

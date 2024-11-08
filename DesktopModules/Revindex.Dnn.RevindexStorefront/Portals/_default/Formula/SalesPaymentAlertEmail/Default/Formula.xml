@@ -1,0 +1,200 @@
+﻿<data method="BasicSalesPaymentAlertEmail" version="1.0">
+  <mailFrom></mailFrom>
+  <mailTo></mailTo>
+  <mailBcc></mailBcc>
+  <subject>{xsl:value-of select="in/configuration/generalStoreName" /} Payment Alert [{xsl:value-of select="in/user/username" /} - Order #{xsl:value-of select="in/salesOrder/salesOrderNumber" /}]</subject>
+  <htmlBody>
+    <![CDATA[
+<h1>{xsl:value-of select="in/configuration/generalStoreName" /} Payment Alert</h1>
+<table border="0" cellpadding="0" cellspacing="3" style="width: 100%">
+	<tbody>
+		<tr>
+			<td>
+				<strong>Order Number:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/salesOrderNumber" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>PO Number:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/purchaseOrderNumber" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Order Date:</strong>
+				<br />
+    &nbsp;
+			</td>
+			<td>{xsl:value-of select="format-dateTime(in/salesOrder/orderDate, '[Y]-[M01]-[D01] [H01]:[m01]')"/}
+				<br />
+    &nbsp;
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">
+				<strong>Bill To:</strong>
+			</td>
+			<td>
+				{xsl:value-of select="/in/salesOrder/billingCompany" /}<br />
+				{xsl:value-of select="concat(/in/salesOrder/billingFirstName, ' ', /in/salesOrder/billingLastName)" /}<br />
+				{xsl:value-of select="/in/salesOrder/billingStreet" /}, 
+				{xsl:if test="/in/salesOrder/billingUnit != ''" }
+					{xsl:value-of select="/in/salesOrder/billingUnit" /},
+				{/xsl:if}
+				{xsl:if test="/in/salesOrder/billingDistrict != ''" }
+					{xsl:value-of select="/in/salesOrder/billingDistrict" /}, 
+				{/xsl:if}
+				{xsl:value-of select="/in/salesOrder/billingCity" /},
+				{xsl:if test="/in/salesOrder/billingSubdivisionName != ''" }
+					{xsl:value-of select="/in/salesOrder/billingSubdivisionName" /},
+				{/xsl:if}
+				{xsl:if test="/in/salesOrder/billingPostalCode != ''" }
+					{xsl:value-of select="/in/salesOrder/billingPostalCode" /}, 
+				{/xsl:if}
+				{xsl:value-of select="/in/salesOrder/billingCountryName" /}
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">
+				<strong>Ship To:</strong>
+			</td>
+			<td>
+				{xsl:value-of select="/in/salesOrder/shippingCompany" /}<br />
+				{xsl:value-of select="concat(/in/salesOrder/shippingFirstName, ' ', /in/salesOrder/shippingLastName)" /}<br />
+				{xsl:value-of select="/in/salesOrder/shippingStreet" /}, 
+				{xsl:if test="/in/salesOrder/shippingUnit != ''" }
+					{xsl:value-of select="/in/salesOrder/shippingUnit" /},
+				{/xsl:if}
+				{xsl:if test="/in/salesOrder/shippingDistrict != ''" }
+					{xsl:value-of select="/in/salesOrder/shippingDistrict" /}, 
+				{/xsl:if}
+				{xsl:value-of select="/in/salesOrder/shippingCity" /}, 
+				{xsl:if test="/in/salesOrder/shippingSubdivisionName != ''" }
+					{xsl:value-of select="/in/salesOrder/shippingSubdivisionName" /}, 
+				{/xsl:if}
+				{xsl:if test="/in/salesOrder/shippingPostalCode != ''" }
+					{xsl:value-of select="/in/salesOrder/shippingPostalCode" /}, 
+				{/xsl:if}
+				{xsl:value-of select="/in/salesOrder/shippingCountryName" /}
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">
+				<strong>Payment:</strong>
+			</td>
+			<td>{xsl:for-each select="in/salesOrder/salesPayments/salesPayment[transactionType = 1 or transactionType = 2]"} {xsl:value-of select="paymentMethodName"/}&nbsp;{xsl:value-of select="creditCardHint"/}{xsl:value-of select="paymentHint"/}{xsl:value-of select="voucherHint"/}&nbsp;{xsl:value-of select="/in/salesOrder/currency/currencySymbol" /}{xsl:value-of select="format-number(amount * /in/salesOrder/exchangeRate, '#,##0.00')" /}
+				<br />
+    {/xsl:for-each}
+			</td>
+		</tr>
+	</tbody>
+</table>
+    &nbsp;
+
+    
+<table border="1" cellpadding="3" cellspacing="0" style="width: 100%; word-wrap: break-word; border-collapse: collapse;">
+	<tbody>
+		<tr style="background-color: #ccc;">
+			<td style="width: 20%;">
+				<strong>SKU</strong>
+			</td>
+			<td style="width: 40%;">
+				<strong>Item</strong>
+			</td>
+			<td style="width: 15%;">
+				<strong>Qty</strong>
+			</td>
+			<td style="width: 25%;">
+				<strong>Amount</strong>
+			</td>
+		</tr>
+    {xsl:for-each select="in/salesOrder/salesOrderDetails/salesOrderDetail[parentSalesOrderDetailID='']"}
+    
+		<tr>
+			<td>{xsl:value-of select="sku" /}</td>
+			<td>{xsl:value-of select="productName" /}
+				<br />
+    {xsl:value-of select="productVariantName" /}{xsl:for-each select="salesOrderDetails/salesOrderDetail"}
+				<br />
+    {xsl:value-of select="productName" /} - {xsl:value-of select="productVariantName" /}: {xsl:value-of select="quantity" /}
+				<br />
+    {/xsl:for-each}{xsl:if test="bookingStartDate != ''"}From: {xsl:value-of select="format-dateTime(bookingStartDate, '[Y]-[M01]-[D01] [H01]:[m01]')"/}
+				<br />
+    Until: {xsl:value-of select="format-dateTime(bookingStopDate, '[Y]-[M01]-[D01] [H01]:[m01]')"/}
+				<br />
+    {/xsl:if}{xsl:for-each select="dynamicFormResult/fields/field"}
+				<br />
+    {xsl:value-of select="replace(@id, '_', ' ')" /}: {xsl:value-of select="*|text()" separator=", " /}
+				<br />
+    {/xsl:for-each}
+			</td>
+			<td>{xsl:value-of select="quantity" /}</td>
+			<td>{xsl:value-of select="formattedCombinedTotalAmount" /}</td>
+		</tr>
+    {/xsl:for-each}
+
+	</tbody>
+</table>
+<p>{xsl:for-each select="in/salesOrder/dynamicFormResult/fields/field"}{xsl:value-of select="replace(@id, '_', ' ')" /}: {xsl:value-of select="*|text()" separator=", " /}
+	<br />
+    {/xsl:for-each}&nbsp;
+</p>
+    &nbsp;
+
+    
+<table border="0" cellpadding="3" cellspacing="0" style="width: 40%">
+	<tbody>
+		<tr>
+			<td>
+				<strong>Discount:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedTotalSalesOrderDetailDiscountAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Sub-Total:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedSubTotalAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Shipping:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedTotalShippingAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Handling:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedTotalHandlingAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Taxes:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedTotalTaxAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Total:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedTotalAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Total Savings:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/formattedTotalSavingsAmount" /}</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Points Earned:</strong>
+			</td>
+			<td>{xsl:value-of select="in/salesOrder/rewardsPointsQualified" /}</td>
+		</tr>
+	</tbody>
+</table>
+]]>
+  </htmlBody>
+</data>
